@@ -127,6 +127,7 @@
 #include "../model/Media.h"   // Includi le tue classi reali
 #include "../model/Film.h"
 #include "../model/Trailer.h"
+#include "../model/Inserzione.h"
 using namespace std;
 using namespace std::chrono;
 
@@ -155,8 +156,8 @@ void testEstensioneTrailer() {
     year_month_day fine2{2025y, May, 1d};
 
     Film film("Regista", "Titolo", "Descrizione", inizio, fine, 100, 120, "Azione", Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
-    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2, Classificazione::QUATTORDICI_PIU, &film);
-    Trailer* t2 = new Trailer("Autore", "T1", "Desc", inizio, fine2, 50, 2, Classificazione::QUATTORDICI_PIU, &film);
+    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2, Classificazione::QUATTORDICI_PIU, 4, &film);
+    Trailer* t2 = new Trailer("Autore", "T1", "Desc", inizio, fine2, 50, 2, Classificazione::QUATTORDICI_PIU, 5, &film);
 
     film.aggiungiTrailer(t1);
     film.aggiungiTrailer(t2);
@@ -183,25 +184,39 @@ void testTrailerFuoriProduzione() {
 
     year_month_day inizio{2025y, April, 1d};
     year_month_day fine{2025y, April, 15d};
-
+    
     Film film("Regista", "Titolo", "Descrizione", inizio, year_month_day{2025y, May, 15d}, 100, 120, "Azione", Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
-    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2, Classificazione::QUATTORDICI_PIU, &film);
-
+    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2, Classificazione::QUATTORDICI_PIU, 5, &film);
+    
     film.aggiungiTrailer(t1);
     film.estendiDataFineRilascio();
-
+    
     if (t1->getDataFineRilascio() == fine) {
         cout << "Test 3 superato: trailer fuori produzione non è stato aggiornato\n";
     } else {
         cout << " Test 3 fallito: trailer aggiornato a " << static_cast<unsigned>(t1->getDataFineRilascio().day()) << "/" << static_cast<unsigned>(t1->getDataFineRilascio().month()) << "/" << int(t1->getDataFineRilascio().year()) << "\n";
     }
+    
+}
 
+void testInserzioneAttiva(){
+    cout << "Test 4: Tentativo di estendere data Inserzione attiva...\n";
+    year_month_day inizio{2025y, May, 1d};
+    year_month_day fine{2025y, May, 15d};
+    Inserzione i1("Autore","Mi sono fatto la cacca addosso","Un bambino si fa la cacca addosso", inizio, fine,124,23,Classificazione::TUTTI, 2,"Michelangelo",120);
+    i1.estendiDataFineRilascio();
+    if(i1.getDataFineRilascio()==year_month_day{2025y,June,15d})
+        cout << "Test 4 superato";
+    else {
+        cout << "   Test 4 fallito, inserzione ha data" << static_cast<unsigned>(i1.getDataFineRilascio().day()) << "/" << static_cast<unsigned>(i1.getDataFineRilascio().month()) << "/" << int(i1.getDataFineRilascio().year()) << "\n";
+    }
 }
 
 int main() {
     testEstensioneFilmAttivo();
     testEstensioneTrailer();
     testTrailerFuoriProduzione();
+    testInserzioneAttiva();
 
     return 0;
 }
