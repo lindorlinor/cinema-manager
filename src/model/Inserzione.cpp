@@ -15,5 +15,5 @@ void Inserzione::estendiDataFineRilascio() {
 
 
 double Inserzione::calcolaIncasso() {
-    //TO DO da implementare
+    return getVisualizzazioni()*COSTO_FISSO_PROIEZIONE;
 }
