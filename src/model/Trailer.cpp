@@ -11,11 +11,10 @@ Trailer::~Trailer(){
 void Trailer::associaFilm(Film* film){
     _film=film;
 }
-//mi fa strano che sia uguale a film
-void Trailer::estendiDataFineRilascio(){
-    if(!FuoriProduzione()){
-        year_month_day data = getDataFineRilascio();
-        setDataFineRilascio(data.year()/data.month()/(data.day()+days{7}));
+//prende la data di fine rilascio del film ad esso associato e imposta quella
+void Trailer::estendiDataFineRilascio() {
+    if (!FuoriProduzione() && _film) {
+        setDataFineRilascio(_film->getDataFineRilascio());
     }
 }
 

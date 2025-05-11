@@ -77,12 +77,23 @@ double Film::calcolaIncasso(){
     return getVisualizzazioni() * _costoBiglietto;
 }
 
-void Film::estendiDataFineRilascio(){
-    if(!FuoriProduzione()){
-        year_month_day data = getDataFineRilascio();
-        setDataFineRilascio(data.year()/data.month()/(data.day()+days{7}));
+
+void Film::estendiDataFineRilascio() {
+    if (!FuoriProduzione()) {
+        // Converti year_month_day a sys_days per sommare giorni
+        std::chrono::sys_days dataFine = std::chrono::sys_days(getDataFineRilascio());
+        dataFine += std::chrono::days{7}; // aggiungi 7 giorni
+        setDataFineRilascio(std::chrono::year_month_day{dataFine}); // aggiorna
+
+        // Estendi i trailer associati che non sono fuori produzione
+        for (Trailer* trailer : trailers) {
+            if (trailer && !trailer->FuoriProduzione()) {
+                trailer->estendiDataFineRilascio();
+            }
+        }
     }
 }
+
 bool Film::isInTrailer(Trailer * trailer) const{
     if(!trailers.size()) return false;
     for(vector<Trailer*>::const_iterator cit = trailers.begin();cit!=trailers.end();++cit){
