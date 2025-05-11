@@ -84,10 +84,10 @@ void Film::estendiDataFineRilascio() {
         std::chrono::sys_days dataFine = std::chrono::sys_days(getDataFineRilascio());
         dataFine += std::chrono::days{7}; // aggiungi 7 giorni
         setDataFineRilascio(std::chrono::year_month_day{dataFine}); // aggiorna
-
         // Estendi i trailer associati che non sono fuori produzione
         for (Trailer* trailer : trailers) {
-            if (trailer && !trailer->FuoriProduzione()) {
+             cout << trailer->FuoriProduzione();
+            if (trailer && !(trailer->FuoriProduzione())) {
                 trailer->estendiDataFineRilascio();
             }
         }
@@ -117,12 +117,4 @@ void Film::rimuoviTrailer(Trailer* trailer){
         }
 }
 
-void Film::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) {
-    Media::setDataFineRilascio(gg_mm_aaFineRilascio);
-    for (auto it = trailers.begin(); it != trailers.end(); ++it) {
-        if (*it) {
-            (*it)->setDataFineRilascio(gg_mm_aaFineRilascio);
-        }
-    }
-}
 

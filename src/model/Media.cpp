@@ -99,8 +99,8 @@ vector<Lingua> Media::getSottotitoli() const {
 
 
 bool Media::FuoriProduzione() const {
-    auto today = year_month_day{floor<days>(system_clock::now())}; 
-    return today >= _dataFineRilascio; 
+    auto today = year_month_day{floor<days>(system_clock::now())};
+    return today > _dataFineRilascio; 
 }
 
 unsigned int Media::DurataCampagna() const {

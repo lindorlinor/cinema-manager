@@ -31,7 +31,7 @@ public:
     Film(const string& regista, const string& titolo, const string& descrizione, year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio, unsigned int visualizzazioni, unsigned int durataMinuti, const string& genere, Classificazione classificazione, double valutazione, const string& casaDiProduzione,unsigned int nPostCredit,double costoBiglietto);
     
     //metodi set
-    void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) override;
+    // void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) override;
     void aggiungiAttore(const string& nomeAttore);
     void rimuoviAttore(const string& nomeAttore);
     void setGenere(const string& genere);
