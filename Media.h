@@ -7,7 +7,7 @@
 #include <iostream>
 
 #include <vector>
-#include "../include/EnumClasses.h"
+#include "EnumClasses.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -72,11 +72,6 @@ public:
     virtual ~Media () = 0;
     virtual void estendiDataFineRilascio() = 0;
     virtual double calcolaIncasso() = 0;
-
-
-
-
-   
 
 };
 

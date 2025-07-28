@@ -124,10 +124,10 @@
 
 #include <iostream>
 #include <chrono>
-#include "../model/Media.h"   // Includi le tue classi reali
-#include "../model/Film.h"
-#include "../model/Trailer.h"
-#include "../model/Inserzione.h"
+#include "../Media.h"   // Includi le tue classi reali
+#include "../Film.h"
+#include "../Trailer.h"
+#include "../Inserzione.h"
 using namespace std;
 using namespace std::chrono;
 

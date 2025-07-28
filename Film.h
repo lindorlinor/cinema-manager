@@ -1,18 +1,16 @@
 #ifndef FILM_H
 #define FILM_H
 
-
 #include <string>
 #include <vector>
 #include <map>
 #include <chrono>
 #include "Media.h"
 #include "Trailer.h"
-#include "../include/EnumClasses.h"
+#include "EnumClasses.h"
 using namespace std;
+#include <chrono>
 using namespace std::chrono;
-
-
 
 class Film: public Media{
 private:
@@ -55,9 +53,6 @@ public:
     //i metodi puri
     double calcolaIncasso() override;
     void estendiDataFineRilascio() override;
-
-
-
 };
 
 #endif 
