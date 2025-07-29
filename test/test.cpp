@@ -217,6 +217,6 @@ int main() {
     testEstensioneTrailer();
     testTrailerFuoriProduzione();
     testInserzioneAttiva();
-
+    cout << "caca" << endl;
     return 0;
 }

@@ -19,13 +19,13 @@ HEADERS +=  \
             Media.h \
             Pubblicita.h \
             Trailer.h \
-            Film.h 
+            Film.h \
+            catch.hpp
 SOURCES +=  \
-            main.cpp \ 
+            main.cpp \
             MainWindow.cpp \
             Inserzione.cpp \
             Media.cpp \
             Pubblicita.cpp \
             Trailer.cpp \
-            Film.cpp \
-            test/test.cpp
+            Film.cpp 
