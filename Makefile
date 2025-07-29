@@ -411,6 +411,7 @@ Makefile: my-library.pro ../../../../msys64/ucrt64/share/qt6/mkspecs/win32-g++/q
 		../../../../msys64/ucrt64/share/qt6/mkspecs/features/resolve_config.prf \
 		../../../../msys64/ucrt64/share/qt6/mkspecs/features/exclusive_builds_post.prf \
 		../../../../msys64/ucrt64/share/qt6/mkspecs/features/default_post.prf \
+		../../../../msys64/ucrt64/share/qt6/mkspecs/features/win32/console.prf \
 		../../../../msys64/ucrt64/share/qt6/mkspecs/features/precompile_header.prf \
 		../../../../msys64/ucrt64/share/qt6/mkspecs/features/warn_on.prf \
 		../../../../msys64/ucrt64/share/qt6/mkspecs/features/permissions.prf \
@@ -422,13 +423,11 @@ Makefile: my-library.pro ../../../../msys64/ucrt64/share/qt6/mkspecs/win32-g++/q
 		../../../../msys64/ucrt64/share/qt6/mkspecs/features/uic.prf \
 		../../../../msys64/ucrt64/share/qt6/mkspecs/features/qmake_use.prf \
 		../../../../msys64/ucrt64/share/qt6/mkspecs/features/file_copies.prf \
-		../../../../msys64/ucrt64/share/qt6/mkspecs/features/win32/windows.prf \
 		../../../../msys64/ucrt64/share/qt6/mkspecs/features/testcase_targets.prf \
 		../../../../msys64/ucrt64/share/qt6/mkspecs/features/exceptions.prf \
 		../../../../msys64/ucrt64/share/qt6/mkspecs/features/yacc.prf \
 		../../../../msys64/ucrt64/share/qt6/mkspecs/features/lex.prf \
 		my-library.pro \
-		../../../../msys64/ucrt64/lib/Qt6EntryPoint.prl \
 		../../../../msys64/ucrt64/share/qt6/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile my-library.pro
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/spec_pre.prf:
@@ -772,6 +771,7 @@ Makefile: my-library.pro ../../../../msys64/ucrt64/share/qt6/mkspecs/win32-g++/q
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/resolve_config.prf:
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/exclusive_builds_post.prf:
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/default_post.prf:
+../../../../msys64/ucrt64/share/qt6/mkspecs/features/win32/console.prf:
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/precompile_header.prf:
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/warn_on.prf:
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/permissions.prf:
@@ -783,13 +783,11 @@ Makefile: my-library.pro ../../../../msys64/ucrt64/share/qt6/mkspecs/win32-g++/q
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/uic.prf:
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/qmake_use.prf:
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/file_copies.prf:
-../../../../msys64/ucrt64/share/qt6/mkspecs/features/win32/windows.prf:
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/testcase_targets.prf:
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/exceptions.prf:
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/yacc.prf:
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/lex.prf:
 my-library.pro:
-../../../../msys64/ucrt64/lib/Qt6EntryPoint.prl:
 ../../../../msys64/ucrt64/share/qt6/mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile my-library.pro

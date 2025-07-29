@@ -1,4 +1,5 @@
 CONFIG += c++20
+CONFIG += console
 
 QMAKE_CXXFLAGS += -std=c++20
 
@@ -28,4 +29,5 @@ SOURCES +=  \
             Media.cpp \
             Pubblicita.cpp \
             Trailer.cpp \
-            Film.cpp 
+            Film.cpp \
+            test/test.cpp

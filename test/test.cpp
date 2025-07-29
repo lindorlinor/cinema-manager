@@ -121,7 +121,7 @@
     
 //     return 0;
 // }
-
+/*/
 #include <iostream>
 #include <chrono>
 #include "../Media.h"   // Includi le tue classi reali
@@ -219,4 +219,11 @@ int main() {
     testInserzioneAttiva();
     cout << "caca" << endl;
     return 0;
+}
+ */
+
+ #include "../catch.hpp"
+
+TEST_CASE("Prova di base") {
+    REQUIRE(1 + 1 == 2);
 }
