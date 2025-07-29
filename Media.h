@@ -50,7 +50,7 @@ public:
     string getTitolo() const;
     string getDescrizione() const;
     year_month_day getDataInizioRilascio() const;
-    year_month_day getDataFineRilascio() const;
+    year_month_day getDataFineRilascio() const; 
     unsigned int getVisualizzazioni() const;
     unsigned int getDurataMinuti() const;
     vector<Lingua> getLingue() const;

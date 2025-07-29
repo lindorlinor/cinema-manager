@@ -222,8 +222,92 @@ int main() {
 }
  */
 
- #include "../catch.hpp"
+#include "../catch.hpp"
+#include "../Film.h"
+#include "../Trailer.h"
+#include "../Inserzione.h"
+#include <chrono>
 
-TEST_CASE("Prova di base") {
-    REQUIRE(1 + 1 == 2);
+using namespace std;
+using namespace std::chrono;
+
+// Test 1
+TEST_CASE("1. Estensione Film attivo") {
+    year_month_day inizio{2025y, August, 1d};
+    year_month_day fine{2025y, August, 15d};
+
+    Film film("Regista", "Titolo", "Descrizione", inizio, fine, 100, 120, "Azione",
+              Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
+
+    film.estendiDataFineRilascio();
+
+    year_month_day atteso = year_month_day{sys_days(fine) + days{7}};
+    REQUIRE(film.getDataFineRilascio() == atteso);
+}
+
+// Test 2: Trailer aggiornati solo se data coincide
+TEST_CASE("2. Estensione Trailer associati condizionale") {
+    year_month_day inizio{2025y, April, 1d};
+    year_month_day fine{2025y, August, 15d};
+    year_month_day fine2{2025y, May, 1d};
+
+    Film film("Regista", "Titolo", "Descrizione", inizio, fine, 100, 120, "Azione",
+              Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
+
+    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2,
+                              Classificazione::QUATTORDICI_PIU, 4, &film);
+    Trailer* t2 = new Trailer("Autore", "T2", "Desc", inizio, fine2, 50, 2,
+                              Classificazione::QUATTORDICI_PIU, 5, &film);
+
+    film.aggiungiTrailer(t1);
+    film.aggiungiTrailer(t2);
+
+    film.estendiDataFineRilascio();
+
+    year_month_day nuovaData = film.getDataFineRilascio();
+
+    SECTION("2.1 Trailer non fuori produzione viene aggiornato") {
+        REQUIRE(t1->getDataFineRilascio() == nuovaData);
+    }
+
+    SECTION("2.2 Trailer fuori produzione non viene aggiornato") {
+        REQUIRE(t2->getDataFineRilascio() == fine2);
+    }
+
+}
+
+// Test 3: Trailer fuori produzione
+TEST_CASE("3. Trailer fuori produzione non aggiornato") {
+     std::cout << "Eseguo test 3\n";
+    year_month_day inizio{2025y, April, 1d};
+    year_month_day fine{2025y, April, 15d};
+
+    Film film("Regista", "Titolo", "Descrizione", inizio,
+              year_month_day{2025y, August, 15d}, 100, 120, "Azione",
+              Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
+
+    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2,
+                              Classificazione::QUATTORDICI_PIU, 5, &film);
+
+    film.aggiungiTrailer(t1);
+    film.estendiDataFineRilascio();
+
+    REQUIRE(t1->getDataFineRilascio() == fine);
+
+}
+
+// Test 4: Estensione Inserzione
+TEST_CASE("4. Estensione Inserzione attiva") {
+    year_month_day inizio{2025y, May, 1d};
+    year_month_day fine{2025y, May, 15d};
+
+    Inserzione i1("Autore", "Titolo", "Descrizione",
+                  inizio, fine, 124, 23, Classificazione::TUTTI,
+                  2, "Michelangelo", 120);
+
+    i1.estendiDataFineRilascio();
+
+    year_month_day attesa{2025y, June, 15d};
+
+    REQUIRE(i1.getDataFineRilascio() == attesa);
 }

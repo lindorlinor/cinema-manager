@@ -86,7 +86,6 @@ void Film::estendiDataFineRilascio() {
         setDataFineRilascio(std::chrono::year_month_day{dataFine}); // aggiorna
         // Estendi i trailer associati che non sono fuori produzione
         for (Trailer* trailer : trailers) {
-             cout << trailer->FuoriProduzione();
             if (trailer && !(trailer->FuoriProduzione())) {
                 trailer->estendiDataFineRilascio();
             }
