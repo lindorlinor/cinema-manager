@@ -50,11 +50,22 @@ void Media::rimuoviSottotitolo(Lingua lingua) {
 }
 
 //metodi get
+year_month_day Media::getDataInizioRilascio() const {
+    return m_dataInizioRilascio;
+}
+
 year_month_day Media::getDataFineRilascio() const {
     return m_dataFineRilascio;
 }
 
+void Media::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) {
+    m_dataFineRilascio = gg_mm_aaFineRilascio;
+}
 
+
+unsigned int Media::getVisualizzazioni() const {
+    return m_visualizzazioni;
+}
 
 
 
@@ -75,9 +86,6 @@ year_month_day Media::getDataFineRilascio() const {
 //     m_dataInizioRilascio = gg_mm_aaInizioRilascio;
 // }
 
-void Media::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) {
-    m_dataFineRilascio = gg_mm_aaFineRilascio;
-}
 
 // void Media::setVisualizzazioni(unsigned int visualizzazioni) {
 //     m_visualizzazioni = visualizzazioni;
@@ -99,14 +107,6 @@ void Media::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) {
 //     return m_descrizione;
 // }
 
-year_month_day Media::getDataInizioRilascio() const {
-    return m_dataInizioRilascio;
-}
-
-
-unsigned int Media::getVisualizzazioni() const {
-    return m_visualizzazioni;
-}
 
 // unsigned int Media::getDurataMinuti() const {
 //     return m_durataMinuti;

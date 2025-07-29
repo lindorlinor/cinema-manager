@@ -29,15 +29,14 @@ private:
     //aggiungere cinema lista
 public:
 
-    Media(const string& autore, const string& titolo, const string& descrizione, year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio, unsigned int 
-    visualizzaioni, unsigned int durataMinuti);
+    Media(  const string& autore, const string& titolo, const string& descrizione, year_month_day gg_mm_aaInizioRilascio, 
+            year_month_day gg_mm_aaFineRilascio, unsigned int visualizzaioni, unsigned int durataMinuti);
 
     // //metodi set
     // void setAutore(const string& autore);
     // void setTitolo(const string& titolo);
     // void setDescrizione(const string& descrizione);
     // void setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio);
-     virtual void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio); //TO DO
     // void setVisualizzazioni(unsigned int visualizzazioni);
     // void setDurataMinuti(unsigned int durata);
     
@@ -45,8 +44,6 @@ public:
     // string getAutore() const;
     // string getTitolo() const;
     // string getDescrizione() const;
-    year_month_day getDataInizioRilascio() const;
-     unsigned int getVisualizzazioni() const; //TO DO
     // unsigned int getDurataMinuti() const;
     // vector<Lingua> getLingue() const;
     // vector<Lingua> getSottotitoli() const;
@@ -65,10 +62,13 @@ public:
     
     unsigned int DurataCampagna() const;
     
-    //metodi get
+    //metodi get e set
+    unsigned int getVisualizzazioni() const;
+    year_month_day getDataInizioRilascio() const; 
     year_month_day getDataFineRilascio() const;
-
-
+    virtual void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio);
+    
+    
     //metodi astratti 
     virtual ~Media () = 0;
     virtual void estendiDataFineRilascio() = 0;

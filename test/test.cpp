@@ -188,7 +188,7 @@ TEST_CASE("3. Trailer fuori produzione non aggiornato") {
 // Test 4: Estensione Inserzione
 TEST_CASE("4. Estensione Inserzione attiva") {
     year_month_day inizio{2025y, May, 1d};
-    year_month_day fine{2025y, May, 15d};
+    year_month_day fine{2025y, June, 15d};
 
     Inserzione i1("Autore", "Titolo", "Descrizione",
                   inizio, fine, 124, 23, Classificazione::TUTTI,

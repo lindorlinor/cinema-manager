@@ -792,7 +792,13 @@ debug/Film.o: Film.cpp Film.h \
 		Pubblicita.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/Film.o Film.cpp
 
-debug/test.o: test/test.cpp catch.hpp
+debug/test.o: test/test.cpp catch.hpp \
+		Film.h \
+		Media.h \
+		EnumClasses.h \
+		Trailer.h \
+		Pubblicita.h \
+		Inserzione.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/test.o test/test.cpp
 
 debug/moc_MainWindow.o: debug/moc_MainWindow.cpp 
