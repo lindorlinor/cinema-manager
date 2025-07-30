@@ -185,18 +185,25 @@ TEST_CASE("3. Trailer fuori produzione non aggiornato") {
 
 }
 
-// Test 4: Estensione Inserzione
-TEST_CASE("4. Estensione Inserzione attiva") {
-    year_month_day inizio{2025y, May, 1d};
-    year_month_day fine{2025y, May, 15d};
 
-    Inserzione i1("Autore", "Titolo", "Descrizione",
-                  inizio, fine, 124, 23, Classificazione::TUTTI,
-                  2, "Michelangelo", 120);
+TEST_CASE("4. Inserzione.estendiDataFineRilascio()"){
+    year_month_day inizio{2025y,July,30d};
+    year_month_day fine{2025y,August,15d};
+    year_month_day fine2{2025y,July,29d};
 
+    Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",inizio,fine,200,1,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
+    Inserzione i2("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",inizio,fine,200,1,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
     i1.estendiDataFineRilascio();
+    SECTION("4.1 Inserzione attiva"){
+        REQUIRE(i1.getDataFineRilascio() == fine+months{1});
+    }
+    SECTION("4.1 Inserzione fuori produzione"){
+        REQUIRE(i1.getDataFineRilascio() == fine+months{1});
+    }
+}
 
-    year_month_day attesa{2025y, June, 15d};
 
-    REQUIRE(i1.getDataFineRilascio() == attesa);
+TEST_CASE("5. Inserzione.calcolaIncasso()"){
+    Inserzione i1("Matteo Villalonghi", "All you can pasta 2025","Contenuto promozionale",year_month_day{2025y,July,1d},year_month_day{2025y,July,30d},200,1,Classificazione::TUTTI,10,"caca",15);
+    REQUIRE(i1.calcolaIncasso()==30*10*15);
 }

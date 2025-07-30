@@ -4,10 +4,9 @@ Inserzione::Inserzione(const string& regista, const string& titolo, const string
     visualizzaioni, unsigned int durataMinuti, const Classificazione& target,unsigned int nProiezioniGiornaliere, const string& aziendaInserzionista, int costoProiezione):Pubblicita(regista, titolo,descrizione, gg_mm_aaInizioRilascio,gg_mm_aaFineRilascio, visualizzaioni, durataMinuti,target,nProiezioniGiornaliere),_aziendaInserzionista(aziendaInserzionista),COSTO_FISSO_PROIEZIONE(costoProiezione){}
 
 
-//TODO da implementare
+
 void Inserzione::estendiDataFineRilascio() {
     if (!FuoriProduzione()) {
-        // Converti year_month_day a sys_days per sommare giorni
         year_month_day dataFine = getDataFineRilascio() + months{1};
         setDataFineRilascio(year_month_day(dataFine));
     }
@@ -15,5 +14,5 @@ void Inserzione::estendiDataFineRilascio() {
 
 
 double Inserzione::calcolaIncasso() {
-    return getVisualizzazioni()*COSTO_FISSO_PROIEZIONE;
+    return DurataCampagna()*getNProiezioniGiornaliere()*COSTO_FISSO_PROIEZIONE;
 }

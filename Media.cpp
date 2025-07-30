@@ -20,7 +20,7 @@ unsigned int Media::DurataCampagna() const
 {
     sys_days inizio = m_dataInizioRilascio;
     sys_days fine = m_dataFineRilascio;
-    return static_cast<unsigned int>((fine - inizio).count());
+    return static_cast<unsigned int>((fine - inizio).count()+1);
 }
 
 void Media::aggiungiLingua(Lingua lingua) {
