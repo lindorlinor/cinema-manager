@@ -4,9 +4,9 @@
 Trailer::Trailer(   const string& regista, const string& titolo, const string& descrizione, 
                     year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio, unsigned int 
                     visualizzaioni, unsigned int durataMinuti, const Classificazione& target,
-                    unsigned int nProiezioniGiornaliere, Film* film):Pubblicita(regista, titolo,descrizione, 
-                    gg_mm_aaInizioRilascio,gg_mm_aaFineRilascio, visualizzaioni, durataMinuti,target,
-                    nProiezioniGiornaliere),t_film(film){}
+                    unsigned int nProiezioniGiornaliere, Film* film):
+                    Pubblicita(regista, titolo,descrizione, gg_mm_aaInizioRilascio,gg_mm_aaFineRilascio, 
+                    visualizzaioni, durataMinuti,target, nProiezioniGiornaliere),t_film(film){}
 
 Trailer::~Trailer(){
     delete t_film;

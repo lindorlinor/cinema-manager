@@ -27,6 +27,7 @@ private:
     //aggiungere formato
     //aggiungere risoluzione
     //aggiungere cinema lista
+    //aggiungere path
 public:
 
     Media(  const string& autore, const string& titolo, const string& descrizione, year_month_day gg_mm_aaInizioRilascio, 

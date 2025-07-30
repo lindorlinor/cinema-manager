@@ -15,6 +15,6 @@ Pubblicita::Pubblicita(     const string& autore, const string& titolo, const st
 //     p_target=target;
 // }
 
-unsigned int Pubblicita::getNProiezioniGiornaliere() const{ //TO DO
+unsigned int Pubblicita::getNProiezioniGiornaliere() const{
     return p_nProiezioniGiornaliere;
 }

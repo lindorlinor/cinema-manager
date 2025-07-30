@@ -17,7 +17,7 @@ public:
                     unsigned int nProiezioniGiornaliere);
 
     // Classificazione getTarget() const;
-    unsigned int getNProiezioniGiornaliere() const; //TO DO
+    unsigned int getNProiezioniGiornaliere() const; 
     // void setTarget(Classificazione target);
 };
 
