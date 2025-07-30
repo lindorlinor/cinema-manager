@@ -5,7 +5,7 @@
 #include <map>
 #include <string>
 
-enum class Formato {
+ enum class Formato {
     DCP,
     RealD_3D,
     MOV_ProRes,
@@ -36,11 +36,12 @@ enum class FasciaOraria{
 
 
 
-const char* toString(FasciaOraria fo) {
+inline const char* toString(FasciaOraria fo) {
     switch (fo) {
         case FasciaOraria::Mattina: return "Mattina";
         case FasciaOraria::Pomeriggio: return "Pomeriggio";
         case FasciaOraria::Sera: return "Sera";
+        default: return "Non trovato";
     }
 }
 
@@ -54,13 +55,14 @@ enum class Lingua {
     Cinese
 };
 
-const char* toString(Lingua l) {
+inline const char* toString(Lingua l) {
     switch (l) {
         case Lingua::Italiano: return "Italiano";
         case Lingua::Inglese: return "Inglese";
         case Lingua::Francese: return "Francese";
         case Lingua::Spagnolo: return "Spagnolo";
         case Lingua::Tedesco: return "Tedesco";
+        default: return "Non trovato";
     }
 }
 
@@ -71,12 +73,13 @@ enum class Classificazione {
     DICIOTTO_PIU=18
 };
 
-const char* toString(Classificazione c) {
+inline const char* toString(Classificazione c) {
     switch (c) {
         case Classificazione::TUTTI: return "T";
         case Classificazione::SEI_PIU: return "6+";
         case Classificazione::QUATTORDICI_PIU: return "14+";
         case Classificazione::DICIOTTO_PIU: return "18+";
+        default: return "Non trovato";
     }
 }
 
