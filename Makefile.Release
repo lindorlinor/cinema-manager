@@ -792,7 +792,13 @@ release/Film.o: Film.cpp Film.h \
 		Pubblicita.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/Film.o Film.cpp
 
-release/test.o: test/test.cpp catch.hpp
+release/test.o: test/test.cpp catch.hpp \
+		Film.h \
+		Media.h \
+		EnumClasses.h \
+		Trailer.h \
+		Pubblicita.h \
+		Inserzione.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/test.o test/test.cpp
 
 release/moc_MainWindow.o: release/moc_MainWindow.cpp 

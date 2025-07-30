@@ -185,7 +185,6 @@ TEST_CASE("3. Trailer fuori produzione non aggiornato") {
 
 }
 
-
 TEST_CASE("4. Inserzione.estendiDataFineRilascio()"){
     year_month_day inizio{2025y,July,30d};
     year_month_day fine{2025y,August,15d};
