@@ -41,6 +41,8 @@ void Film::estendiDataFineRilascio()
     }
 }
 
+//TO DO: isInTrailer ritorna 0 se non è preste, !=0 se è presente e ritorna l'indice poi si fa semplicemente vettore.erase(vettore.begin()+indice) per rimuoverlo
+//in questo modo oltre che in aggiungiTrailer si può usare il metodo anche in rimuoviTrailer. Poi inserzione ho fatto cosi 
 bool Film::isInTrailer(Trailer *trailer) const
 {
     if (!trailers.size())

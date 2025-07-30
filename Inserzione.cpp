@@ -10,6 +10,39 @@ Inserzione::Inserzione( const string& regista, const string& titolo, const strin
                         i_costoFissoProiezione(costoProiezione){}
 
 
+
+unsigned int Inserzione::isFasciaOrariaIn(FasciaOraria fasciaO) const {
+    vector<FasciaOraria>::const_iterator cit = std::find(i_fasceOrarie.begin(),i_fasceOrarie.end(),fasciaO);
+    if(cit!=i_fasceOrarie.end())
+        return std::distance(i_fasceOrarie.begin(),cit);
+    else
+        return 0;
+}
+
+void Inserzione::aggiungiFasciaOraria(FasciaOraria fasciaO){
+    if(!isFasciaOrariaIn(fasciaO))
+        i_fasceOrarie.push_back(fasciaO);
+}
+
+void Inserzione::rimuoviFasciaOraria(FasciaOraria fasciaO){
+    int i_fasciaO =isFasciaOrariaIn(fasciaO);
+    if(i_fasciaO)
+        i_fasceOrarie.erase(i_fasceOrarie.begin()+i_fasciaO);
+}
+
+double Inserzione::fattoreVariazionePrezzo() const{
+    double percentuale=1;
+    for(FasciaOraria fa : i_fasceOrarie){
+        if(fa==FasciaOraria::Pomeriggio){
+            percentuale+=0.1;
+        }
+        if(fa==FasciaOraria::Sera){
+            percentuale+=0.2;
+        }
+    }
+    return percentuale;
+}
+
 void Inserzione::estendiDataFineRilascio() {
     if (!FuoriProduzione()) {
         year_month_day dataFine = getDataFineRilascio() + months{1};
@@ -18,5 +51,5 @@ void Inserzione::estendiDataFineRilascio() {
 }
 
 double Inserzione::calcolaIncasso() {
-    return DurataCampagna()*getNProiezioniGiornaliere()*i_costoFissoProiezione;
+    return DurataCampagna()*getNProiezioniGiornaliere()*i_costoFissoProiezione*fattoreVariazionePrezzo();
 }
