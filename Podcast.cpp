@@ -3,9 +3,10 @@
 
 Podcast::Podcast(    const string& autore, const string& titolo, const string& descrizione, 
                     year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio, 
-                    unsigned int visualizzazioni, unsigned int durataMinuti, string& conduttore):
+                    unsigned int visualizzazioni, unsigned int durataMinuti, const string& path, 
+                    Formato formato, string& conduttore):
                     Media(autore, titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio, 
-                    visualizzazioni, durataMinuti), p_conduttore(conduttore){};
+                    visualizzazioni, durataMinuti, path, formato), p_conduttore(conduttore){};
 
 void Podcast::aggiungiPuntata(Puntata* puntata){
     p_elencoPuntate.push_back(puntata);

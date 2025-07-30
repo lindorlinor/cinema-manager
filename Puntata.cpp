@@ -3,9 +3,10 @@
 
 Puntata::Puntata(   const string& autore, const string& titolo, const string& descrizione, 
                     year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio, 
-                    unsigned int visualizzazioni, unsigned int durataMinuti, Podcast* podcast, unsigned int numeroPubblicita):
+                    unsigned int visualizzazioni, unsigned int durataMinuti, const string& path, 
+                    Formato formato, Podcast* podcast, unsigned int numeroPubblicita):
                     Media(autore, titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio, 
-                    visualizzazioni, durataMinuti), p_podcast(podcast),p_numeroPubblicita(numeroPubblicita){};
+                    visualizzazioni, durataMinuti, path, formato), p_podcast(podcast),p_numeroPubblicita(numeroPubblicita){};
 
 void Puntata::aggiungiOspite(const string& ospite){
     p_ospiti.push_back(ospite);

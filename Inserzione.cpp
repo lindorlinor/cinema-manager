@@ -2,11 +2,12 @@
 
 Inserzione::Inserzione( const string& regista, const string& titolo, const string& descrizione, 
                         year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio, unsigned int 
-                        visualizzaioni, unsigned int durataMinuti, const Classificazione& target,
-                        unsigned int nProiezioniGiornaliere, const string& aziendaInserzionista, double costoProiezione):
+                        visualizzaioni, unsigned int durataMinuti, const string& path, 
+                        Formato formato, const Classificazione& target, unsigned int nProiezioniGiornaliere, 
+                        const string& aziendaInserzionista, double costoProiezione):
                         
                         Pubblicita(regista, titolo,descrizione, gg_mm_aaInizioRilascio,gg_mm_aaFineRilascio, visualizzaioni, 
-                        durataMinuti,target,nProiezioniGiornaliere),i_aziendaInserzionista(aziendaInserzionista),
+                        durataMinuti, path, formato, target,nProiezioniGiornaliere),i_aziendaInserzionista(aziendaInserzionista),
                         i_costoFissoProiezione(costoProiezione){}
 
 

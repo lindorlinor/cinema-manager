@@ -6,9 +6,12 @@
 Media::~Media() {}
 
 // Costruttore
-Media::Media(const string &autore, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio, unsigned int visualizzazioni, unsigned int durataMinuti)
-    : m_autore(autore), m_titolo(titolo), m_descrizione(descrizione), m_dataInizioRilascio(gg_mm_aaInizioRilascio), m_dataFineRilascio(gg_mm_aaFineRilascio),
-      m_visualizzazioni(visualizzazioni), m_durataMinuti(durataMinuti) {}
+Media::Media(   const string &autore, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio, 
+                year_month_day gg_mm_aaFineRilascio, unsigned int visualizzazioni, unsigned int durataMinuti, const string& path,
+                Formato formato): 
+                m_autore(autore), m_titolo(titolo), m_descrizione(descrizione), m_dataInizioRilascio(gg_mm_aaInizioRilascio), 
+                m_dataFineRilascio(gg_mm_aaFineRilascio), m_visualizzazioni(visualizzazioni), m_durataMinuti(durataMinuti), 
+                m_path(path), m_formato(formato) {}
 
 bool Media::FuoriProduzione() const
 {

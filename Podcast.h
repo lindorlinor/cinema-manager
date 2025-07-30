@@ -12,7 +12,8 @@ class Podcast:public Media{
     public:
         Podcast(    const string& autore, const string& titolo, const string& descrizione, 
                     year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio, 
-                    unsigned int visualizzazioni, unsigned int durataMinuti, string& conduttore);
+                    unsigned int visualizzazioni, unsigned int durataMinuti, const string& path, 
+                    Formato formato, string& conduttore);
 
         void aggiungiPuntata(Puntata* puntata);
         void rimuoviPuntata(Puntata* puntata);

@@ -201,7 +201,6 @@ TEST_CASE("4. Inserzione.estendiDataFineRilascio()"){
     }
 }
 
-
 TEST_CASE("5. Inserzione.calcolaIncasso()"){
     Inserzione i1("Matteo Villalonghi", "All you can pasta 2025","Contenuto promozionale",year_month_day{2025y,July,1d},year_month_day{2025y,July,30d},200,1,Classificazione::TUTTI,10,"caca",15);
     REQUIRE(i1.calcolaIncasso()==30*10*15);

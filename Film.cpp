@@ -3,11 +3,11 @@
 
 // Costruttore
 Film::Film(const string &regista, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
-           year_month_day gg_mm_aaFineRilascio, unsigned int visualizzazioni, unsigned int durataMinuti,
-           const string &genere, Classificazione classificazione, double valutazione, const string &casaDiProduzione,
+           year_month_day gg_mm_aaFineRilascio, unsigned int visualizzazioni, unsigned int durataMinuti, const string& path, 
+            Formato formato, const string &genere, Classificazione classificazione, double valutazione, const string &casaDiProduzione,
            unsigned int nPostCredit, double costoBiglietto) :
 
-            Media(regista, titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio, visualizzazioni, durataMinuti),
+            Media(regista, titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio, visualizzazioni, durataMinuti, path, formato),
             f_genere(genere), f_classificazione(classificazione), f_valutazione(valutazione),
             f_casaDiProduzione(casaDiProduzione), f_nPostCredit(nPostCredit), f_costoBiglietto(costoBiglietto)
 {}

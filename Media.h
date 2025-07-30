@@ -24,14 +24,14 @@ private:
     unsigned int m_durataMinuti;
     vector<Lingua> m_lingueDisponibili;
     vector<Lingua> m_sottotitoliDisponibili;
-    //aggiungere formato
+    string m_path;
+    Formato m_formato;
     //aggiungere risoluzione
-    //aggiungere cinema lista
-    //aggiungere path
 public:
 
     Media(  const string& autore, const string& titolo, const string& descrizione, year_month_day gg_mm_aaInizioRilascio, 
-            year_month_day gg_mm_aaFineRilascio, unsigned int visualizzaioni, unsigned int durataMinuti);
+            year_month_day gg_mm_aaFineRilascio, unsigned int visualizzaioni, unsigned int durataMinuti, const string& path, 
+            Formato formato);
 
     // //metodi set
     // void setAutore(const string& autore);
