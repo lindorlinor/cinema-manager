@@ -125,7 +125,7 @@ TEST_CASE("1. Estensione Film attivo") {
     year_month_day inizio{2025y, August, 1d};
     year_month_day fine{2025y, August, 15d};
 
-    Film film("Regista", "Titolo", "Descrizione", inizio, fine, 100, 120, "Azione",
+    Film film("Regista", "Titolo", "Descrizione", inizio, fine, 100, 120, "path", Formato::IMAX_3D,"Azione",
               Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
 
     film.estendiDataFineRilascio();
@@ -140,12 +140,12 @@ TEST_CASE("2. Estensione Trailer associati condizionale") {
     year_month_day fine{2025y, August, 15d};
     year_month_day fine2{2025y, May, 1d};
 
-    Film film("Regista", "Titolo", "Descrizione", inizio, fine, 100, 120, "Azione",
+    Film film("Regista", "Titolo", "Descrizione", inizio, fine, 100, 120,"path", Formato::IMAX_3D, "Azione",
               Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
 
-    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2,
+    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2,"path", Formato::IMAX_3D,
                               Classificazione::QUATTORDICI_PIU, 4, &film);
-    Trailer* t2 = new Trailer("Autore", "T2", "Desc", inizio, fine2, 50, 2,
+    Trailer* t2 = new Trailer("Autore", "T2", "Desc", inizio, fine2, 50, 2,"path", Formato::IMAX_3D,
                               Classificazione::QUATTORDICI_PIU, 5, &film);
 
     film.aggiungiTrailer(t1);
@@ -172,10 +172,10 @@ TEST_CASE("3. Trailer fuori produzione non aggiornato") {
     year_month_day fine{2025y, April, 15d};
 
     Film film("Regista", "Titolo", "Descrizione", inizio,
-              year_month_day{2025y, August, 15d}, 100, 120, "Azione",
+              year_month_day{2025y, August, 15d}, 100, 120,"path", Formato::IMAX_3D, "Azione",
               Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
 
-    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2,
+    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2, "path", Formato::IMAX_3D,
                               Classificazione::QUATTORDICI_PIU, 5, &film);
 
     film.aggiungiTrailer(t1);
@@ -190,8 +190,8 @@ TEST_CASE("4. Inserzione.estendiDataFineRilascio()"){
     year_month_day fine{2025y,August,15d};
     year_month_day fine2{2025y,July,29d};
 
-    Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",inizio,fine,200,1,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
-    Inserzione i2("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",inizio,fine,200,1,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
+    Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",inizio,fine,200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
+    Inserzione i2("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",inizio,fine,200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
     i1.estendiDataFineRilascio();
     SECTION("4.1 Inserzione attiva"){
         REQUIRE(i1.getDataFineRilascio() == fine+months{1});
@@ -202,6 +202,6 @@ TEST_CASE("4. Inserzione.estendiDataFineRilascio()"){
 }
 
 TEST_CASE("5. Inserzione.calcolaIncasso()"){
-    Inserzione i1("Matteo Villalonghi", "All you can pasta 2025","Contenuto promozionale",year_month_day{2025y,July,1d},year_month_day{2025y,July,30d},200,1,Classificazione::TUTTI,10,"caca",15);
+    Inserzione i1("Matteo Villalonghi", "All you can pasta 2025","Contenuto promozionale",year_month_day{2025y,July,1d},year_month_day{2025y,July,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,10,"caca",15);
     REQUIRE(i1.calcolaIncasso()==30*10*15);
 }
