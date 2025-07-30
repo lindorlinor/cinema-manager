@@ -60,6 +60,8 @@ public:
     //i metodi puri
     double calcolaIncasso() override;
     void estendiDataFineRilascio() override;
+
+    ~Film();
 };
 
 #endif 

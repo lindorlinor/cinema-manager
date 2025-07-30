@@ -12,6 +12,14 @@ Film::Film(const string &regista, const string &titolo, const string &descrizion
             f_casaDiProduzione(casaDiProduzione), f_nPostCredit(nPostCredit), f_costoBiglietto(costoBiglietto)
 {}
 
+
+Film::~Film(){
+    while (!trailers.empty()) {
+        delete trailers.back();
+        trailers.pop_back();
+    }
+}
+
 double Film::calcolaIncasso() { return getVisualizzazioni() * f_costoBiglietto; }
 
 void Film::estendiDataFineRilascio()
