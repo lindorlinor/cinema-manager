@@ -219,9 +219,53 @@ vector<FasciaOraria> getFasceOrarie(const Inserzione& i){
 }
 
 TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
-    Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",year_month_day{2025y,July,30d},year_month_day{2025y,August,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
-    i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
-    i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
-    REQUIRE(getFasceOrarie(i1)[0]==FasciaOraria::Mattina);
-    REQUIRE(getFasceOrarie(i1).size() == 1);
+    SECTION("6.1 verifica aggiunta della stessa fascia oraria"){
+        Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",year_month_day{2025y,July,30d},year_month_day{2025y,August,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
+        i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
+        i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
+        REQUIRE(getFasceOrarie(i1)[0]==FasciaOraria::Mattina);
+        REQUIRE(getFasceOrarie(i1).size() == 1);
+
+    }
+
+    SECTION("6.2 verifica calcoloIncasso"){
+        Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",year_month_day{2025y,July,30d},year_month_day{2025y,August,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
+        i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
+        REQUIRE(i1.calcolaIncasso()==15*15*i1.DurataCampagna());
+        i1.aggiungiFasciaOraria(FasciaOraria::Sera);
+        REQUIRE(i1.calcolaIncasso()==15*15*i1.DurataCampagna()*1.2);
+        i1.aggiungiFasciaOraria(FasciaOraria::Pomeriggio);
+        REQUIRE(i1.calcolaIncasso()==15*15*i1.DurataCampagna()*1.3);
+    }
+}
+
+TEST_CASE("7. Inserzione.rimuoviFasciaOraria(FasciaOraria)"){
+    SECTION("7.1 verifica rimozione di una fascia oraria aggiunta"){
+        Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",year_month_day{2025y,July,30d},year_month_day{2025y,August,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
+        i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
+        REQUIRE(getFasceOrarie(i1)[0]==FasciaOraria::Mattina);
+        REQUIRE(getFasceOrarie(i1).size() == 1);
+        i1.rimuoviFasciaOraria(FasciaOraria::Mattina);
+        REQUIRE(getFasceOrarie(i1).size() == 0);
+
+    }
+     SECTION("7.2 verifica rimozione di una fascia oraria non aggiunta"){
+        Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",year_month_day{2025y,July,30d},year_month_day{2025y,August,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
+        i1.rimuoviFasciaOraria(FasciaOraria::Sera);
+        REQUIRE(getFasceOrarie(i1).size() == 0);
+
+    }
+
+    SECTION("7.3 verifica calcoloIncasso"){
+        Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",year_month_day{2025y,July,30d},year_month_day{2025y,August,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
+        i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
+        i1.aggiungiFasciaOraria(FasciaOraria::Sera);
+        i1.aggiungiFasciaOraria(FasciaOraria::Pomeriggio);
+        i1.rimuoviFasciaOraria(FasciaOraria::Mattina);
+        REQUIRE(i1.calcolaIncasso()==15*15*i1.DurataCampagna()*1.3);
+        i1.rimuoviFasciaOraria(FasciaOraria::Pomeriggio);
+        REQUIRE(i1.calcolaIncasso()==15*15*i1.DurataCampagna()*1.2);
+        i1.rimuoviFasciaOraria(FasciaOraria::Sera);
+        REQUIRE(i1.calcolaIncasso()==15*15*i1.DurataCampagna());
+    }
 }

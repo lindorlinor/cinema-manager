@@ -15,11 +15,9 @@ Inserzione::Inserzione( const string& regista, const string& titolo, const strin
  int Inserzione::isFasciaOrariaIn(FasciaOraria fasciaO) const {
     vector<FasciaOraria>::const_iterator cit = std::find(i_fasceOrarie.begin(),i_fasceOrarie.end(),fasciaO);
     if(cit!=i_fasceOrarie.end()){
-        cout << "pupu" << endl;
         return std::distance(i_fasceOrarie.begin(),cit);
     }  
     else{
-        cout << "caca" << endl;
         return -1;
     }
 }
