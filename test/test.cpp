@@ -206,14 +206,6 @@ TEST_CASE("5. Inserzione.calcolaIncasso()"){
     REQUIRE(i1.calcolaIncasso()==30*10*15);
 }
 
-//TO DO
-/* test case che verifica il funzionamento di aggiungiFasciaOraria e rimuoviFascia oraria
-    * caso in cui non esiste, caso in cui è vuoto (per rimozione), caso in cui c'è
-    * testa fattore variazione prezzo con le fasce orarie
- * cambia il metodo di aggiungiTrailer e rimuovi Trailer in Film + test
- *       caso in cui non esiste, caso in cui è vuoto (per rimozione), caso in cui c'è
- *  
- */
 vector<FasciaOraria> getFasceOrarie(const Inserzione& i){
     return i.i_fasceOrarie;
 }
@@ -225,7 +217,6 @@ TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         REQUIRE(getFasceOrarie(i1)[0]==FasciaOraria::Mattina);
         REQUIRE(getFasceOrarie(i1).size() == 1);
-
     }
 
     SECTION("6.2 verifica calcoloIncasso"){

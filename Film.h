@@ -24,7 +24,7 @@ private:
     double f_costoBiglietto;
 
     //ritorna vero se il trailer è già all'interno della lista, falso altrimenti
-    bool isInTrailer(Trailer * trailer) const;
+    int isTrailerIn(Trailer * trailer) const;
 public:
     Film(   const string& regista, const string& titolo, const string& descrizione, year_month_day gg_mm_aaInizioRilascio, 
             year_month_day gg_mm_aaFineRilascio, unsigned int visualizzazioni, unsigned int durataMinuti, const string& path, 

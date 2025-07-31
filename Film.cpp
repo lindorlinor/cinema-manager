@@ -43,38 +43,28 @@ void Film::estendiDataFineRilascio()
 
 //TO DO: isInTrailer ritorna 0 se non è preste, !=0 se è presente e ritorna l'indice poi si fa semplicemente vettore.erase(vettore.begin()+indice) per rimuoverlo
 //in questo modo oltre che in aggiungiTrailer si può usare il metodo anche in rimuoviTrailer. Poi inserzione ho fatto cosi 
-bool Film::isInTrailer(Trailer *trailer) const
-{
-    if (!trailers.size())
-        return false;
-    for (vector<Trailer *>::const_iterator cit = trailers.begin(); cit != trailers.end(); ++cit)
-    {
-        if (((*cit)) == trailer)
-            return true;
+int Film::isTrailerIn(Trailer* trailer) const {
+    auto it = std::find(trailers.begin(), trailers.end(), trailer);
+    if (it != trailers.end()) {
+        return std::distance(trailers.begin(), it);
+    } else {
+        return -1;
     }
-    return false;
 }
 
-void Film::aggiungiTrailer(Trailer *trailer)
-{
-    if (trailer && !isInTrailer(trailer))
+void Film::aggiungiTrailer(Trailer* trailer) {
+    if (trailer && isTrailerIn(trailer) == -1) {
         trailers.push_back(trailer);
-}
-
-void Film::rimuoviTrailer(Trailer *trailer)
-{
-    bool found = false;
-    ;
-    if ((!trailers.empty()) && trailer)
-    for (vector<Trailer *>::iterator it = trailers.begin(); it != trailers.end() && !found; ++it)
-    {
-        if (((*it)) == trailer)
-        {
-            trailers.erase(it);
-            found = true;
-        }
     }
 }
+
+void Film::rimuoviTrailer(Trailer* trailer) {
+    int i_trailer = isTrailerIn(trailer);
+    if (i_trailer != -1) {
+        trailers.erase(trailers.begin() + i_trailer);
+    }
+}
+
 
 //metodi get
 double Film::getCostoBiglietto() const {
