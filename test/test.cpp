@@ -280,7 +280,8 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
         Podcast podcast("regista","titolo","descrizione",inizio,fine,200,0,"path", Formato::IMAX_3D,"Sushi");
         Puntata* puntata1 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",inizio,fine,200,40,"path", Formato::IMAX_3D, &podcast, 3);
         podcast.aggiungiPuntata(puntata1);
-        podcast.estendiDataFineRilascio();
+        //podcast.estendiDataFineRilascio(); non lo faccio perché non ha senso farlo, in quanto non accadrà mai
+        puntata1->estendiDataFineRilascio();
         
         REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 22d});
         REQUIRE(puntata1->getDataFineRilascio()==year_month_day{2025y, August, 22d});
@@ -310,4 +311,42 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
         REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 15d});
         REQUIRE(podcast.getDurataMinuti()==40);
     }
+
+        SECTION("8.3 verifica errore con aggiunta di una puntata con data scorretta"){
+
+        Podcast podcast("regista","titolo","descrizione",year_month_day {2025y, April, 1d},year_month_day {2025y, April, 15d},200,0,"path", Formato::IMAX_3D,"Sushi");
+        Puntata* puntata1 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",year_month_day {2025y, August, 15d},year_month_day {2025y, August, 15d},200,40,"path", Formato::IMAX_3D, &podcast, 3);
+        Puntata* puntata2 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",year_month_day {2025y, August, 1d},year_month_day {2025y, August, 10d},200,40,"path", Formato::IMAX_3D, &podcast, 3);
+        
+        try{
+            podcast.aggiungiPuntata(puntata1);
+            podcast.aggiungiPuntata(puntata2);
+            FAIL("Expected std::invalid_argument not thrown"); //sto aspettando che lanci un'eccezione, se non fallisce da errore
+        }
+        catch(const std::invalid_argument& e){
+            REQUIRE(std::string(e.what())=="La data di fine è inferiore a quella dell'ultima puntata aggiunta");
+        }
+    }
+}
+
+TEST_CASE("9. Verifica aggiunta ospite e rimozione"){
+
+    Podcast* podcast = new Podcast("regista","titolo","descrizione",year_month_day {2025y, August, 15d},year_month_day {2025y, August, 25d},200,0,"path", Formato::IMAX_3D,"Sushi");
+    Puntata puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",{2025y, August, 15d},year_month_day {2025y, August, 25d},200,40,"path", Formato::IMAX_3D, podcast, 3);
+    puntata.aggiungiOspite("Minnie");
+    puntata.aggiungiOspite("Topolino");
+    puntata.aggiungiOspite("Paperino");
+
+    podcast->aggiungiPuntata(&puntata);
+
+    std::vector<string> OspitiAttesi1 = {"Minnie", "Topolino", "Paperino"};
+    
+    REQUIRE(puntata.getOspiti()==OspitiAttesi1);
+    puntata.rimuoviOspite("Topolino");
+    std::vector<string> OspitiAttesi2 = {"Minnie", "Paperino"};
+    REQUIRE(puntata.getOspiti()==OspitiAttesi2);
+        
+    REQUIRE(puntata.calcolaIncasso() == Approx(200*3*0.05));
+    puntata.estendiDataFineRilascio();
+    REQUIRE(puntata.getDataFineRilascio() == year_month_day {2025y, September, 1d});    
 }

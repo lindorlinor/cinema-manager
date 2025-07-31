@@ -23,8 +23,21 @@ double Puntata::calcolaIncasso(){
     return getVisualizzazioni()* (p_numeroPubblicita * 0.05); //5 centesimi per ogni visualizzazione si una pubblicità
 }
 
+//aggiorna tutte le data fine rilascio dalla puntata chiamata alle successive, infine estende la data anche sul podcast a cui punta
 void Puntata::estendiDataFineRilascio() {
     if (!FuoriProduzione() && p_podcast) {
-        setDataFineRilascio(p_podcast->getDataFineRilascio());
+        const vector<Puntata*>& elenco = p_podcast->getElencoPuntate(); //per evitare la copia dell'intero vettore
+        auto it = std::find(elenco.begin(), elenco.end(), this);
+        while(it!=elenco.end()){
+            auto dataFine = std::chrono::sys_days((*it)->getDataFineRilascio());
+            dataFine += std::chrono::days{7};                           // aggiungi 7 giorni
+            (*it)->setDataFineRilascio(std::chrono::year_month_day{dataFine}); // aggiorna
+            it++;
+        }
+        p_podcast->estendiDataFineRilascio();
     }
 }
+
+vector<string> Puntata::getOspiti() const{
+    return p_ospiti;
+};

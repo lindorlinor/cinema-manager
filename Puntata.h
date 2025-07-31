@@ -19,6 +19,7 @@ class Puntata: public Media{
         void rimuoviOspite(const string&);
         void estendiDataFineRilascio() override; 
         double calcolaIncasso() override;
+        vector<string> getOspiti() const;
 };
 
 #endif //PUNTATA_H
