@@ -8,10 +8,6 @@ Trailer::Trailer(   const string& regista, const string& titolo, const string& d
                     Pubblicita(regista, titolo,descrizione, gg_mm_aaInizioRilascio,gg_mm_aaFineRilascio, 
                     visualizzaioni, durataMinuti,path, formato,target, nProiezioniGiornaliere),t_film(film){}
 
-Trailer::~Trailer(){
-    delete t_film;
-}
-
 void Trailer::associaFilm(Film* film){
     t_film=film;
 }

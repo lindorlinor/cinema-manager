@@ -12,22 +12,26 @@ Inserzione::Inserzione( const string& regista, const string& titolo, const strin
 
 
 
-unsigned int Inserzione::isFasciaOrariaIn(FasciaOraria fasciaO) const {
+ int Inserzione::isFasciaOrariaIn(FasciaOraria fasciaO) const {
     vector<FasciaOraria>::const_iterator cit = std::find(i_fasceOrarie.begin(),i_fasceOrarie.end(),fasciaO);
-    if(cit!=i_fasceOrarie.end())
+    if(cit!=i_fasceOrarie.end()){
+        cout << "pupu" << endl;
         return std::distance(i_fasceOrarie.begin(),cit);
-    else
-        return 0;
+    }  
+    else{
+        cout << "caca" << endl;
+        return -1;
+    }
 }
 
 void Inserzione::aggiungiFasciaOraria(FasciaOraria fasciaO){
-    if(!isFasciaOrariaIn(fasciaO))
+    if(isFasciaOrariaIn(fasciaO)==-1)
         i_fasceOrarie.push_back(fasciaO);
 }
 
 void Inserzione::rimuoviFasciaOraria(FasciaOraria fasciaO){
     int i_fasciaO =isFasciaOrariaIn(fasciaO);
-    if(i_fasciaO)
+    if(i_fasciaO!=-1)
         i_fasceOrarie.erase(i_fasceOrarie.begin()+i_fasciaO);
 }
 

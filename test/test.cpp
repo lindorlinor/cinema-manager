@@ -205,3 +205,23 @@ TEST_CASE("5. Inserzione.calcolaIncasso()"){
     Inserzione i1("Matteo Villalonghi", "All you can pasta 2025","Contenuto promozionale",year_month_day{2025y,July,1d},year_month_day{2025y,July,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,10,"caca",15);
     REQUIRE(i1.calcolaIncasso()==30*10*15);
 }
+
+//TO DO
+/* test case che verifica il funzionamento di aggiungiFasciaOraria e rimuoviFascia oraria
+    * caso in cui non esiste, caso in cui è vuoto (per rimozione), caso in cui c'è
+    * testa fattore variazione prezzo con le fasce orarie
+ * cambia il metodo di aggiungiTrailer e rimuovi Trailer in Film + test
+ *       caso in cui non esiste, caso in cui è vuoto (per rimozione), caso in cui c'è
+ *  
+ */
+vector<FasciaOraria> getFasceOrarie(const Inserzione& i){
+    return i.i_fasceOrarie;
+}
+
+TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
+    Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",year_month_day{2025y,July,30d},year_month_day{2025y,August,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
+    i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
+    i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
+    REQUIRE(getFasceOrarie(i1)[0]==FasciaOraria::Mattina);
+    REQUIRE(getFasceOrarie(i1).size() == 1);
+}

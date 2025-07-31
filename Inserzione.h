@@ -8,7 +8,7 @@ class Inserzione : public Pubblicita{
     const double i_costoFissoProiezione;
     vector<FasciaOraria> i_fasceOrarie;
     double fattoreVariazionePrezzo() const;
-    unsigned int isFasciaOrariaIn(FasciaOraria fasciaO) const;
+    int isFasciaOrariaIn(FasciaOraria fasciaO) const;
 public:
     Inserzione( const string& autore, const string& titolo, const string& descrizione, year_month_day gg_mm_aaInizioRilascio, 
                 year_month_day gg_mm_aaFineRilascio, unsigned int visualizzaioni, unsigned int durataMinuti,const string& path, 
@@ -18,6 +18,8 @@ public:
     void estendiDataFineRilascio() override;
     void aggiungiFasciaOraria(FasciaOraria fasciaO);
     void rimuoviFasciaOraria(FasciaOraria fasciaO);
+    
+    friend vector<FasciaOraria> getFasceOrarie(const Inserzione&);
 };
 
 #endif 
