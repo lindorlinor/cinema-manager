@@ -2,16 +2,14 @@
 #include <iostream>
 #include <algorithm>
 
-
 Media::~Media() {}
 
 // Costruttore
-Media::Media(   const string &autore, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio, 
-                year_month_day gg_mm_aaFineRilascio, unsigned int visualizzazioni, unsigned int durataMinuti, const string& path,
-                Formato formato): 
-                m_autore(autore), m_titolo(titolo), m_descrizione(descrizione), m_dataInizioRilascio(gg_mm_aaInizioRilascio), 
-                m_dataFineRilascio(gg_mm_aaFineRilascio), m_visualizzazioni(visualizzazioni), m_durataMinuti(durataMinuti), 
-                m_path(path), m_formato(formato) {}
+Media::Media(const string &autore, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+             year_month_day gg_mm_aaFineRilascio, unsigned int visualizzazioni, unsigned int durataMinuti, const string &path,
+             Formato formato) : m_autore(autore), m_titolo(titolo), m_descrizione(descrizione), m_dataInizioRilascio(gg_mm_aaInizioRilascio),
+                                m_dataFineRilascio(gg_mm_aaFineRilascio), m_visualizzazioni(visualizzazioni), m_durataMinuti(durataMinuti),
+                                m_path(path), m_formato(formato) {}
 
 bool Media::FuoriProduzione() const
 {
@@ -23,55 +21,73 @@ unsigned int Media::DurataCampagna() const
 {
     sys_days inizio = m_dataInizioRilascio;
     sys_days fine = m_dataFineRilascio;
-    return static_cast<unsigned int>((fine - inizio).count()+1);
+    return static_cast<unsigned int>((fine - inizio).count() + 1);
 }
 
-void Media::aggiungiLingua(Lingua lingua) {
-    if (find(m_lingueDisponibili.begin(), m_lingueDisponibili.end(), lingua) == m_lingueDisponibili.end()) {
+void Media::aggiungiLingua(Lingua lingua)
+{
+    if (find(m_lingueDisponibili.begin(), m_lingueDisponibili.end(), lingua) == m_lingueDisponibili.end())
+    {
         m_lingueDisponibili.push_back(lingua);
     }
 }
 
-void Media::aggiungiSottotitolo(Lingua lingua) {
-    if (find(m_sottotitoliDisponibili.begin(), m_sottotitoliDisponibili.end(), lingua) == m_sottotitoliDisponibili.end()) {
+void Media::aggiungiSottotitolo(Lingua lingua)
+{
+    if (find(m_sottotitoliDisponibili.begin(), m_sottotitoliDisponibili.end(), lingua) == m_sottotitoliDisponibili.end())
+    {
         m_sottotitoliDisponibili.push_back(lingua);
     }
 }
 
-void Media::rimuoviLingua(Lingua lingua) {
+void Media::rimuoviLingua(Lingua lingua)
+{
     auto it = find(m_lingueDisponibili.begin(), m_lingueDisponibili.end(), lingua);
-    if (it != m_lingueDisponibili.end()) {
+    if (it != m_lingueDisponibili.end())
+    {
         m_lingueDisponibili.erase(it);
     }
 }
 
-void Media::rimuoviSottotitolo(Lingua lingua) {
+void Media::rimuoviSottotitolo(Lingua lingua)
+{
     auto it = find(m_sottotitoliDisponibili.begin(), m_sottotitoliDisponibili.end(), lingua);
-    if (it != m_sottotitoliDisponibili.end()) {
+    if (it != m_sottotitoliDisponibili.end())
+    {
         m_sottotitoliDisponibili.erase(it);
     }
 }
 
-//metodi get
-year_month_day Media::getDataInizioRilascio() const {
+// metodi get
+year_month_day Media::getDataInizioRilascio() const
+{
     return m_dataInizioRilascio;
 }
 
-year_month_day Media::getDataFineRilascio() const {
+year_month_day Media::getDataFineRilascio() const
+{
     return m_dataFineRilascio;
 }
 
-void Media::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) {
+void Media::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio)
+{
     m_dataFineRilascio = gg_mm_aaFineRilascio;
 }
 
-
-unsigned int Media::getVisualizzazioni() const {
+unsigned int Media::getVisualizzazioni() const
+{
     return m_visualizzazioni;
 }
 
+void Media::setDurataMinuti(unsigned int durata)
+{
+    m_durataMinuti = durata;
+}
 
-
+unsigned int Media::getDurataMinuti() const
+{
+    return m_durataMinuti;
+}
 
 // // Metodi set
 // void Media::setAutore(const string& autore){
@@ -89,13 +105,8 @@ unsigned int Media::getVisualizzazioni() const {
 //     m_dataInizioRilascio = gg_mm_aaInizioRilascio;
 // }
 
-
 // void Media::setVisualizzazioni(unsigned int visualizzazioni) {
 //     m_visualizzazioni = visualizzazioni;
-// }
-
-// void Media::setDurataMinuti(unsigned int durata) {
-//     m_durataMinuti = durata;
 // }
 
 // // Metodi get
@@ -108,11 +119,6 @@ unsigned int Media::getVisualizzazioni() const {
 
 // string Media::getDescrizione() const {
 //     return m_descrizione;
-// }
-
-
-// unsigned int Media::getDurataMinuti() const {
-//     return m_durataMinuti;
 // }
 
 // vector<Lingua> Media::getLingue() const {

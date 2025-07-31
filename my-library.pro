@@ -21,6 +21,8 @@ HEADERS +=  \
             Pubblicita.h \
             Trailer.h \
             Film.h \
+            Podcast.h \
+            Puntata.h \
             catch.hpp
 SOURCES +=  \
             main.cpp \
@@ -30,4 +32,6 @@ SOURCES +=  \
             Pubblicita.cpp \
             Trailer.cpp \
             Film.cpp \
+            Podcast.cpp \
+            Puntata.cpp \
             test/test.cpp

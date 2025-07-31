@@ -20,7 +20,7 @@ void Puntata::rimuoviOspite(const string& ospite) {
 }
 
 double Puntata::calcolaIncasso(){
-    return getVisualizzazioni()* (p_numeroPubblicita * 0.005); //5 centesimi per ogni visualizzazione si una pubblicità
+    return getVisualizzazioni()* (p_numeroPubblicita * 0.05); //5 centesimi per ogni visualizzazione si una pubblicità
 }
 
 void Puntata::estendiDataFineRilascio() {

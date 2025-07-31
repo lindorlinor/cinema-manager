@@ -15,8 +15,8 @@ class Puntata: public Media{
                     year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio, 
                     unsigned int visualizzazioni, unsigned int durataMinuti,const string& path, 
                     Formato formato, Podcast* podcast, unsigned int numeroPubblicita);
-        void aggiungiOspite(const string& ospite);
-        void rimuoviOspite(const string& ospite);
+        void aggiungiOspite(const string&);
+        void rimuoviOspite(const string&);
         void estendiDataFineRilascio() override; 
         double calcolaIncasso() override;
 };

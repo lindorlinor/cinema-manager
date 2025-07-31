@@ -21,9 +21,9 @@ private:
     year_month_day m_dataInizioRilascio;  
     year_month_day m_dataFineRilascio;  
     unsigned int m_visualizzazioni;
-    unsigned int m_durataMinuti;
     vector<Lingua> m_lingueDisponibili;
     vector<Lingua> m_sottotitoliDisponibili;
+    unsigned int m_durataMinuti;
     string m_path;
     Formato m_formato;
     //aggiungere risoluzione
@@ -39,13 +39,11 @@ public:
     // void setDescrizione(const string& descrizione);
     // void setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio);
     // void setVisualizzazioni(unsigned int visualizzazioni);
-    // void setDurataMinuti(unsigned int durata);
     
     // //metodi get
     // string getAutore() const;
     // string getTitolo() const;
     // string getDescrizione() const;
-    // unsigned int getDurataMinuti() const;
     // vector<Lingua> getLingue() const;
     // vector<Lingua> getSottotitoli() const;
     
@@ -68,6 +66,8 @@ public:
     year_month_day getDataInizioRilascio() const; 
     year_month_day getDataFineRilascio() const;
     virtual void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio);
+    unsigned int getDurataMinuti() const;
+    void setDurataMinuti(unsigned int durata);
     
     
     //metodi astratti 

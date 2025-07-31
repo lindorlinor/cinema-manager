@@ -115,6 +115,8 @@ int main() {
 #include "../Film.h"
 #include "../Trailer.h"
 #include "../Inserzione.h"
+#include "../Podcast.h"
+#include "../Puntata.h"
 #include <chrono>
 
 using namespace std;
@@ -267,5 +269,45 @@ TEST_CASE("7. Inserzione.rimuoviFasciaOraria(FasciaOraria)"){
         REQUIRE(i1.calcolaIncasso()==15*15*i1.DurataCampagna()*1.2);
         i1.rimuoviFasciaOraria(FasciaOraria::Sera);
         REQUIRE(i1.calcolaIncasso()==15*15*i1.DurataCampagna());
+    }
+}
+
+TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
+    SECTION("8.1 verifica aggiunta della puntata"){
+        year_month_day inizio{2025y, August, 1d};
+        year_month_day fine{2025y, August, 15d};
+
+        Podcast podcast("regista","titolo","descrizione",inizio,fine,200,0,"path", Formato::IMAX_3D,"Sushi");
+        Puntata* puntata1 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",inizio,fine,200,40,"path", Formato::IMAX_3D, &podcast, 3);
+        podcast.aggiungiPuntata(puntata1);
+        podcast.estendiDataFineRilascio();
+        
+        REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 22d});
+        REQUIRE(puntata1->getDataFineRilascio()==year_month_day{2025y, August, 22d});
+        REQUIRE(podcast.getDurataMinuti()==40);
+
+        Puntata* puntata2 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",year_month_day {2025y, August, 15d},year_month_day {2025y, August, 25d},200,40,"path", Formato::IMAX_3D, &podcast, 3);
+        podcast.aggiungiPuntata(puntata2);
+        REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 25d});
+        REQUIRE(podcast.getDurataMinuti()==80);
+    }
+
+    SECTION("8.2 verifica rimozione della puntata"){
+        year_month_day inizio{2025y, April, 1d};
+        year_month_day fine{2025y, April, 15d};
+
+        Podcast podcast("regista","titolo","descrizione",inizio,fine,200,0,"path", Formato::IMAX_3D,"Sushi");
+        Puntata* puntata1 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",year_month_day {2025y, August, 15d},year_month_day {2025y, August, 15d},200,40,"path", Formato::IMAX_3D, &podcast, 3);
+        Puntata* puntata2 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",year_month_day {2025y, August, 15d},year_month_day {2025y, August, 25d},200,40,"path", Formato::IMAX_3D, &podcast, 3);
+        
+        podcast.aggiungiPuntata(puntata1);
+        REQUIRE((podcast.getElencoPuntate()).empty()==false);
+        podcast.aggiungiPuntata(puntata2);
+        REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 25d});
+        REQUIRE(puntata1->calcolaIncasso()==Approx(200*3*0.05));
+        REQUIRE(podcast.calcolaIncasso()==Approx(200*3*0.05*2));
+        podcast.rimuoviPuntata(puntata2);
+        REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 15d});
+        REQUIRE(podcast.getDurataMinuti()==40);
     }
 }
