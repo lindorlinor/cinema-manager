@@ -6,6 +6,7 @@
 #include <iostream>
 
 #include <vector>
+#include <random>
 #include "EnumClasses.h"
 
 using namespace std;
@@ -20,22 +21,24 @@ using namespace std::chrono;
 class Media
 {
 private:
-    string m_autore;
     string m_titolo;
     string m_descrizione;
     year_month_day m_dataInizioRilascio;
     year_month_day m_dataFineRilascio;
+    unsigned int m_durataMinuti;
+    Formato m_formato;
+    Risoluzione m_risoluzione;
+    string m_autore;
+    string m_path;
+    year_month_day m_dataLastViewUpdate;
     unsigned int m_visualizzazioni;
+    
     vector<Lingua> m_lingueDisponibili;
     vector<Lingua> m_sottotitoliDisponibili;
-    unsigned int m_durataMinuti;
-    string m_path;
-    Formato m_formato;
-    // aggiungere risoluzione
 public:
-    Media(const string &autore, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
-          year_month_day gg_mm_aaFineRilascio, unsigned int visualizzaioni, unsigned int durataMinuti, const string &path,
-          Formato formato);
+    Media(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+          year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
+          const string &autore = "Sconosciuto", const string &path = "immGrigia");
 
     // //metodi set
     // void setAutore(const string& autore);
@@ -43,7 +46,7 @@ public:
     // void setD
     // //metodi getescrizione(const string& descrizione);
     // void setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio);
-    
+
     // //metodi get
     // string getAutore() const;
     // string getTitolo() const;
@@ -55,7 +58,6 @@ public:
     void aggiungiSottotitolo(Lingua lingua);
     void rimuoviLingua(Lingua lingua);
     void rimuoviSottotitolo(Lingua lingua);
-
 
     /**
      * @brief Verifca se il media è correntemente distribuito nei canali del cinema.
@@ -70,15 +72,19 @@ public:
      * @return Il numero di giorni in cui il media è attivo nei canali.
      */
     unsigned int DurataCampagna() const;
-    
-    //metodi get e set
+
+    // metodi get e set
     void setVisualizzazioni(unsigned int visualizzazioni);
     unsigned int getVisualizzazioni() const;
     year_month_day getDataInizioRilascio() const;
     year_month_day getDataFineRilascio() const;
+    year_month_day getDataLastViewUpdate() const;
     virtual void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio);
     unsigned int getDurataMinuti() const;
     void setDurataMinuti(unsigned int durata);
+    Formato getFormato()const;
+    Risoluzione getRisoluzione()const;
+
 
     // metodi astratti
     virtual ~Media() = 0;
@@ -95,6 +101,10 @@ public:
      * Questa funzione deve essere implementata dalle classi derivate.
      */
     virtual double calcolaIncasso() = 0;
+
+    // assegna un numero di visualizzazioni in automatico simulando una reale attività, aggiunge un numero randomico di
+    // visualizzazioni per ogni giorno dalla data di InizioRilascio finché il media non raggiunge la data di FineRIlascio
+    void IncrementaVisualizzazioni();
 };
 
 #endif

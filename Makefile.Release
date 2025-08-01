@@ -566,7 +566,9 @@ release/main.o: main.cpp catch.hpp \
 		C:/msys64/ucrt64/include/qt6/QtCore/QSizeF \
 		C:/msys64/ucrt64/include/qt6/QtGui/QTransform \
 		C:/msys64/ucrt64/include/qt6/QtGui/qscreen_platform.h \
-		C:/msys64/ucrt64/include/qt6/QtWidgets/qtabwidget.h
+		C:/msys64/ucrt64/include/qt6/QtWidgets/qtabwidget.h \
+		Media.h \
+		EnumClasses.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/main.o main.cpp
 
 release/MainWindow.o: MainWindow.cpp MainWindow.h \

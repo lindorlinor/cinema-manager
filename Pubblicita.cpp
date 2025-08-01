@@ -1,14 +1,12 @@
 #include "Pubblicita.h"
 
-Pubblicita::Pubblicita(     const string& autore, const string& titolo, const string& descrizione, 
-                            year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio, 
-                            unsigned int visualizzaioni, unsigned int durataMinuti, const string& path, 
-                            Formato formato, Classificazione target, 
-                            unsigned int nProiezioniGiornaliere):
-                            
-                            Media(autore,titolo, descrizione, gg_mm_aaInizioRilascio,gg_mm_aaFineRilascio,
-                            visualizzaioni,durataMinuti, path, formato),p_target(target), 
-                            p_nProiezioniGiornaliere(nProiezioniGiornaliere){}
+Pubblicita::Pubblicita(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+                       year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
+                       unsigned int nProiezioniGiornaliere, const string &autore, const string &path) :
+
+                                    Media(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
+                                    durataMinuti, formato, risoluzione, autore, path),
+                                    p_nProiezioniGiornaliere(nProiezioniGiornaliere){}
 
 // Classificazione Pubblicita::getTarget() const{
 //     return p_target;
@@ -17,6 +15,7 @@ Pubblicita::Pubblicita(     const string& autore, const string& titolo, const st
 //     p_target=target;
 // }
 
-unsigned int Pubblicita::getNProiezioniGiornaliere() const{
+unsigned int Pubblicita::getNProiezioniGiornaliere() const
+{
     return p_nProiezioniGiornaliere;
 }

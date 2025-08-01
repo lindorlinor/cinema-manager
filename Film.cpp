@@ -2,15 +2,15 @@
 #include <algorithm>
 
 // Costruttore
-Film::Film(const string &regista, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
-           year_month_day gg_mm_aaFineRilascio, unsigned int visualizzazioni, unsigned int durataMinuti, const string& path, 
-            Formato formato, Genere genere, Classificazione classificazione, double valutazione, const string &casaDiProduzione,
-           unsigned int nPostCredit, double costoBiglietto) :
+Film::Film( const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+            year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
+            Genere genere, const string &casaDiProduzione, unsigned int nPostCredit, double costoBiglietto, 
+            const string &autore, const string &path, Classificazione target):
 
-            Media(regista, titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio, visualizzazioni, durataMinuti, path, formato),
-            f_genere(genere), f_classificazione(classificazione), f_valutazione(valutazione),
-            f_casaDiProduzione(casaDiProduzione), f_nPostCredit(nPostCredit), f_costoBiglietto(costoBiglietto)
-{}
+                    Media(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
+                    durataMinuti, formato, risoluzione, autore, path), f_genere(genere), 
+                    f_target(target),f_casaDiProduzione(casaDiProduzione), f_nPostCredit(nPostCredit), 
+                    f_costoBiglietto(costoBiglietto),f_valutazione(0){}
 
 
 Film::~Film(){
@@ -72,11 +72,25 @@ Genere Film::getGenere() const {
 }
 
 Classificazione Film::getClassificazione() const {
-    return f_classificazione;
+    return f_target;
 }
 
 double Film::getValutazione() const {
     return f_valutazione;
+}
+
+void Film::setValutazione(){
+    sys_days inizio = getDataInizioRilascio();
+    sys_days fine = getDataLastViewUpdate();
+    unsigned int giorni = (fine-inizio).count();
+
+    if (giorni == 0 || getVisualizzazioni() == 0){
+        f_valutazione = 0.0;
+    }
+    else{
+        double proporzione = getVisualizzazioni()/(static_cast<double>(giorni*1200)); 
+        f_valutazione = std::round((proporzione*5)>5? 5 : (proporzione*5)*10)/10.0;
+    }
 }
 
 // //metodi set
@@ -99,10 +113,6 @@ double Film::getValutazione() const {
 
 // void Film::setClassificazione(Classificazione classificazione) {
 //     _classificazione = classificazione;
-// }
-
-// void Film::setValutazione(double valutazione) {
-//     _valutazione = valutazione;
 // }
 
 // void Film::setCasaDiProduzione(const string& casaDiProduzione) {

@@ -19,39 +19,38 @@ using namespace std::chrono;
 class Film : public Media
 {
 private:
+Genere f_genere;
     vector<string> f_attoriPrincipali;
-    Genere f_genere;
-    Classificazione f_classificazione;
+    Classificazione f_target;
     vector<Trailer *> trailers;
-    double f_valutazione;
     string f_casaDiProduzione;
     unsigned int f_nPostCredit;
     double f_costoBiglietto;
+    double f_valutazione;
     int isTrailerIn(Trailer *trailer) const;
 
 public:
-    Film(const string &regista, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
-         year_month_day gg_mm_aaFineRilascio, unsigned int visualizzazioni, unsigned int durataMinuti, const string &path,
-         Formato formato, Genere genere, Classificazione classificazione, double valutazione, const string &casaDiProduzione,
-         unsigned int nPostCredit, double costoBiglietto);
+    Film(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+         year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
+         Genere genere, const string &casaDiProduzione, unsigned int nPostCredit, double costoBiglietto, 
+         const string &autore = "Sconosciuto", const string &path = "immGrigia", Classificazione target = Classificazione::TUTTI);
 
     // //metodi set
 
     /**
      * @brief Imposta una specifica data di fine rilascio del film e aggiorna quella dei trailer associati.
-     * 
+     *
      * Imposta una nuova data di fine rilascio per il film e assegna la stessa data
      * a tutti i trailer associati che non sono fuori produzione.
-     * 
+     *
      * @param gg_mm_aaFineRilascio La nuova data di fine rilascio del film.
-     * 
-    */
+     *
+     */
     void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) override;
     // void aggiungiAttore(const string& nomeAttore);
     // void rimuoviAttore(const string& nomeAttore);
     // void setGenere(const string& genere);
     // void setClassificazione(Classificazione classificazione);
-    // void setValutazione(double valutazione);
     // void setCasaDiProduzione(const string& casaDiProduzione);
     // void setNPostCredit(unsigned int nPostCredit);
     // void setCostoBiglietto(double costoBiglietto);
@@ -68,7 +67,6 @@ public:
     void aggiungiTrailer(Trailer *trailer);
     void rimuoviTrailer(Trailer *trailer);
 
-        
     // i metodi puri
 
     /**
@@ -83,6 +81,8 @@ public:
      * L'incasso del film si calcola moltiplicando le visualizzazioni per il costo del biglietto del film.
      */
     double calcolaIncasso() override;
+
+    void setValutazione();
 
     ~Film();
 };

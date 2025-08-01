@@ -10,13 +10,12 @@ class Podcast : public Media
 private:
     string p_conduttore;
     vector<Puntata *> p_elencoPuntate;
-    bool isInPuntata(Puntata * puntata) const;
+    bool isInPuntata(Puntata *puntata) const;
 
 public:
-    Podcast(const string &autore, const string &titolo, const string &descrizione,
-            year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio,
-            unsigned int visualizzazioni, unsigned int durataMinuti, const string &path,
-            Formato formato, const string &conduttore);
+    Podcast(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+            year_month_day gg_mm_aaFineRilascio, Formato formato, Risoluzione risoluzione,
+            const string &autore = "Sconosciuto", const string &path = "immGrigia", const string &conduttore="Sconosciuto");
 
     ~Podcast();
 

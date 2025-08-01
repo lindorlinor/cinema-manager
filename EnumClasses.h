@@ -129,5 +129,25 @@ inline const char* toString(Genere g) {
     }
 }
 
+enum class Risoluzione {
+    SD_480p,    // 720x480
+    HD_720p,    // 1280x720
+    FullHD_1080p, // 1920x1080
+    QHD_1440p,  // 2560x1440
+    UHD_4K_2160p, // 3840x2160
+    UHD_8K_4320p  // 7680x4320
+};
+
+inline const char* toString(Risoluzione r) {
+    switch (r) {
+        case Risoluzione::SD_480p: return "SD_480p";
+        case Risoluzione::HD_720p: return "HD_720p";
+        case Risoluzione::QHD_1440p: return "QHD_1440p";
+        case Risoluzione::UHD_4K_2160p: return "UHD_4K_2160p";
+        case Risoluzione::UHD_8K_4320p: return "UHD_8K_4320p";
+        default: return "Non trovato";
+    }
+}
+
 #endif // NOME_DEL_FILE_H
 

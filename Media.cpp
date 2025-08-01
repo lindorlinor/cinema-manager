@@ -5,11 +5,13 @@
 Media::~Media() {}
 
 // Costruttore
-Media::Media(const string &autore, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
-             year_month_day gg_mm_aaFineRilascio, unsigned int visualizzazioni, unsigned int durataMinuti, const string &path,
-             Formato formato) : m_autore(autore), m_titolo(titolo), m_descrizione(descrizione), m_dataInizioRilascio(gg_mm_aaInizioRilascio),
-                                m_dataFineRilascio(gg_mm_aaFineRilascio), m_visualizzazioni(visualizzazioni), m_durataMinuti(durataMinuti),
-                                m_path(path), m_formato(formato) {}
+Media::Media(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+             year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
+             const string &autore, const string &path) : 
+                                                 m_titolo(titolo), m_descrizione(descrizione), m_dataInizioRilascio(gg_mm_aaInizioRilascio),
+                                                 m_dataFineRilascio(gg_mm_aaFineRilascio), m_durataMinuti(durataMinuti), m_formato(formato),
+                                                 m_risoluzione(risoluzione), m_autore(autore), m_path(path), 
+                                                 m_dataLastViewUpdate(gg_mm_aaInizioRilascio), m_visualizzazioni(0) {}
 
 bool Media::FuoriProduzione() const
 {
@@ -69,10 +71,15 @@ year_month_day Media::getDataFineRilascio() const
     return m_dataFineRilascio;
 }
 
+year_month_day Media::getDataLastViewUpdate() const{
+    return m_dataLastViewUpdate;
+}
+
 void Media::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio)
 {
     m_dataFineRilascio = gg_mm_aaFineRilascio;
 }
+
 
 unsigned int Media::getVisualizzazioni() const
 {
@@ -89,14 +96,45 @@ unsigned int Media::getDurataMinuti() const
     return m_durataMinuti;
 }
 
-void Media::setVisualizzazioni(unsigned int visualizzazioni) {
+void Media::setVisualizzazioni(unsigned int visualizzazioni)
+{
     m_visualizzazioni = visualizzazioni;
+}
+
+Formato Media::getFormato()const{
+    return m_formato;
+}
+
+Risoluzione Media::getRisoluzione()const{
+    return m_risoluzione;
+}
+
+void Media::IncrementaVisualizzazioni()
+{
+    // per poter facilitare i calcoli sulla data
+    sys_days inizio = sys_days{m_dataLastViewUpdate};
+    sys_days fine = sys_days{m_dataFineRilascio};
+    sys_days oggi = floor<days>(system_clock::now());
+
+    std::srand(std::time(nullptr)); // seme basato sull’orario attuale
+
+    if (inizio != fine)
+    {
+        for (sys_days it = inizio; it <= oggi && it <= fine; it += days{1})
+        {
+            unsigned int numero = std::rand() % 1201; // al massimo 1200 visualizzazioni al giorno
+            setVisualizzazioni(getVisualizzazioni() + numero);
+
+            if(it + days{1} == fine) m_dataLastViewUpdate = m_dataFineRilascio;
+            else if(it + days{1} == oggi) m_dataLastViewUpdate = year_month_day{oggi};
+        }
+    }
 }
 
 // // Metodi set
 // void Media::setAutore(const string& autore){
-    //     m_autore = autore;
-    // }
+//     m_autore = autore;
+// }
 // void Media::setTitolo(const string& titolo) {
 //     m_titolo = titolo;
 // }
@@ -108,7 +146,6 @@ void Media::setVisualizzazioni(unsigned int visualizzazioni) {
 // void Media::setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio) {
 //     m_dataInizioRilascio = gg_mm_aaInizioRilascio;
 // }
-
 
 // // Metodi get
 // string Media::getAutore() const{

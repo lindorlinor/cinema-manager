@@ -2,6 +2,7 @@
 #include "catch.hpp"
 #include <QApplication>
 #include "mainwindow.h"
+#include "Media.h"
 
 int main(int argc, char *argv[])
 {
@@ -23,7 +24,7 @@ int main(int argc, char *argv[])
     if (test_result != 0) {
         return test_result;  // esci se i test falliscono
     }
-
+    
     // Avvia l'applicazione Qt solo se i test passano
     MainWindow w;
     w.show();

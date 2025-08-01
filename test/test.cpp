@@ -127,8 +127,8 @@ TEST_CASE("1. Estensione Film attivo") {
     year_month_day inizio{2025y, August, 1d};
     year_month_day fine{2025y, August, 15d};
 
-    Film film("Regista", "Titolo", "Descrizione", inizio, fine, 100, 120, "path", Formato::IMAX_3D, Genere::Azione,
-              Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
+    Film film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
+              "CasaProd", 3, 9.3, "Autore");
 
     film.estendiDataFineRilascio();
 
@@ -140,15 +140,15 @@ TEST_CASE("1. Estensione Film attivo") {
 TEST_CASE("2. Estensione Trailer associati condizionale") {
     year_month_day inizio{2025y, April, 1d};
     year_month_day fine{2025y, August, 15d};
-    year_month_day fine2{2025y, May, 1d};
+    year_month_day fine2{2025y, August, 22d};
 
-    Film film("Regista", "Titolo", "Descrizione", inizio, fine, 100, 120,"path", Formato::IMAX_3D, Genere::Azione,
-              Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
+    Film film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
+              "CasaProd", 3, 9.3, "Autore");
 
-    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2,"path", Formato::IMAX_3D,
-                              Classificazione::QUATTORDICI_PIU, 4, &film);
-    Trailer* t2 = new Trailer("Autore", "T2", "Desc", inizio, fine2, 50, 2,"path", Formato::IMAX_3D,
-                              Classificazione::QUATTORDICI_PIU, 5, &film);
+    Trailer* t1 = new Trailer(  "Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
+                                3, &film, "Autore");
+    Trailer* t2 = new Trailer(  "Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
+                                3, &film, "Autore");
 
     film.aggiungiTrailer(t1);
     film.aggiungiTrailer(t2);
@@ -173,12 +173,11 @@ TEST_CASE("3. Trailer fuori produzione non aggiornato") {
     year_month_day inizio{2025y, April, 1d};
     year_month_day fine{2025y, April, 15d};
 
-    Film film("Regista", "Titolo", "Descrizione", inizio,
-              year_month_day{2025y, August, 15d}, 100, 120,"path", Formato::IMAX_3D, Genere::Azione,
-              Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
+    Film film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
+              "CasaProd", 3, 9.3, "Autore");
 
-    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2, "path", Formato::IMAX_3D,
-                              Classificazione::QUATTORDICI_PIU, 5, &film);
+    Trailer* t1 = new Trailer(  "Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
+                                3, &film, "Autore");
 
     film.aggiungiTrailer(t1);
     film.estendiDataFineRilascio();
@@ -192,9 +191,10 @@ TEST_CASE("4. Inserzione.estendiDataFineRilascio()"){
     year_month_day fine{2025y,August,15d};
     year_month_day fine2{2025y,July,29d};
 
-    Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",inizio,fine,200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
-    Inserzione i2("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",inizio,fine,200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
-    i1.estendiDataFineRilascio();
+    Inserzione i1(  "Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
+                    3, "azienda", 20.0);
+    Inserzione i2(  "Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
+                    3, "azienda", 20.0);    i1.estendiDataFineRilascio();
     SECTION("4.1 Inserzione attiva"){
         REQUIRE(i1.getDataFineRilascio() == fine+months{1});
     }
@@ -204,8 +204,10 @@ TEST_CASE("4. Inserzione.estendiDataFineRilascio()"){
 }
 
 TEST_CASE("5. Inserzione.calcolaIncasso()"){
-    Inserzione i1("Matteo Villalonghi", "All you can pasta 2025","Contenuto promozionale",year_month_day{2025y,July,1d},year_month_day{2025y,July,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,10,"caca",15);
-    REQUIRE(i1.calcolaIncasso()==30*10*15);
+    Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
+                    Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, "azienda", 30.0);    
+
+    REQUIRE(i1.calcolaIncasso()==30*15*i1.DurataCampagna());
 }
 
 vector<FasciaOraria> getFasceOrarie(const Inserzione& i){
@@ -214,7 +216,8 @@ vector<FasciaOraria> getFasceOrarie(const Inserzione& i){
 
 TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
     SECTION("6.1 verifica aggiunta della stessa fascia oraria"){
-        Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",year_month_day{2025y,July,30d},year_month_day{2025y,August,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
+        Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, "azienda", 15.0);          
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         REQUIRE(getFasceOrarie(i1)[0]==FasciaOraria::Mattina);
@@ -222,7 +225,8 @@ TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
     }
 
     SECTION("6.2 Inserzione.calcoloIncasso()"){
-        Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",year_month_day{2025y,July,30d},year_month_day{2025y,August,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
+        Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, "azienda", 15.0);          
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         REQUIRE(i1.calcolaIncasso()==15*15*i1.DurataCampagna());
         i1.aggiungiFasciaOraria(FasciaOraria::Sera);
@@ -234,7 +238,8 @@ TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
 
 TEST_CASE("7. Inserzione.rimuoviFasciaOraria(FasciaOraria)"){
     SECTION("7.1 verifica rimozione di una fascia oraria aggiunta"){
-        Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",year_month_day{2025y,July,30d},year_month_day{2025y,August,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
+        Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, "azienda", 15.0);  
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         REQUIRE(getFasceOrarie(i1)[0]==FasciaOraria::Mattina);
         REQUIRE(getFasceOrarie(i1).size() == 1);
@@ -243,19 +248,22 @@ TEST_CASE("7. Inserzione.rimuoviFasciaOraria(FasciaOraria)"){
 
     }
      SECTION("7.2 verifica rimozione di una fascia oraria non aggiunta"){
-        Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",year_month_day{2025y,July,30d},year_month_day{2025y,August,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
+        Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 3, "azienda", 20.0);          
         i1.rimuoviFasciaOraria(FasciaOraria::Sera);
         REQUIRE(getFasceOrarie(i1).size() == 0);
 
     }
 
     SECTION("7.3 verifica calcoloIncasso"){
-        Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",year_month_day{2025y,July,30d},year_month_day{2025y,August,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
+        Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, "azienda",15.0);          
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         i1.aggiungiFasciaOraria(FasciaOraria::Sera);
         i1.aggiungiFasciaOraria(FasciaOraria::Pomeriggio);
         i1.rimuoviFasciaOraria(FasciaOraria::Mattina);
         REQUIRE(i1.calcolaIncasso()==15*15*i1.DurataCampagna()*1.3);
+
         i1.rimuoviFasciaOraria(FasciaOraria::Pomeriggio);
         REQUIRE(i1.calcolaIncasso()==15*15*i1.DurataCampagna()*1.2);
         i1.rimuoviFasciaOraria(FasciaOraria::Sera);
@@ -268,49 +276,63 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
         year_month_day inizio{2025y, August, 1d};
         year_month_day fine{2025y, August, 15d};
 
-        Podcast podcast("regista","titolo","descrizione",inizio,fine,200,0,"path", Formato::IMAX_3D,"Sushi");
-        Puntata* puntata1 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",inizio,fine,200,40,"path", Formato::IMAX_3D, &podcast, 3);
+        Podcast podcast("Titolo", "Descrizione", inizio, fine, 
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p);
+        Puntata* puntata1 = new Puntata("Titolo", "Descrizione", inizio, fine, 60, &podcast,3);
         podcast.aggiungiPuntata(puntata1);
         //podcast.estendiDataFineRilascio(); non lo faccio perché non ha senso farlo, in quanto non accadrà mai
         puntata1->estendiDataFineRilascio();
         
         REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 22d});
         REQUIRE(puntata1->getDataFineRilascio()==year_month_day{2025y, August, 22d});
-        REQUIRE(podcast.getDurataMinuti()==40);
+        REQUIRE(podcast.getDurataMinuti()==60);
 
-        Puntata* puntata2 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",year_month_day {2025y, August, 15d},year_month_day {2025y, August, 25d},200,40,"path", Formato::IMAX_3D, &podcast, 3);
+        Puntata* puntata2 = new Puntata("Titolo", "Descrizione", year_month_day {2025y, August, 15d},year_month_day {2025y, August, 25d},
+                            60, &podcast,3);        
         podcast.aggiungiPuntata(puntata2);
         REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 25d});
-        REQUIRE(podcast.getDurataMinuti()==80);
+        REQUIRE(podcast.getDurataMinuti()==120);
     }
 
     SECTION("8.2 verifica rimozione della puntata"){
         year_month_day inizio{2025y, April, 1d};
         year_month_day fine{2025y, April, 15d};
 
-        Podcast podcast("regista","titolo","descrizione",inizio,fine,0,0,"path", Formato::IMAX_3D,"Sushi");
-        Puntata* puntata1 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",year_month_day {2025y, August, 15d},year_month_day {2025y, August, 15d},200,40,"path", Formato::IMAX_3D, &podcast, 3);
-        Puntata* puntata2 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",year_month_day {2025y, August, 15d},year_month_day {2025y, August, 25d},200,40,"path", Formato::IMAX_3D, &podcast, 3);
+        Podcast podcast("Titolo", "Descrizione", inizio, fine, 
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p);
+
+        Puntata* puntata1 = new Puntata("Titolo", "Descrizione", 
+                            year_month_day {2025y, August, 15d},year_month_day {2025y, August, 19d},
+                            60, &podcast,3);  
+        Puntata* puntata2 = new Puntata("Titolo", "Descrizione", 
+                            year_month_day {2025y, August, 15d},year_month_day {2025y, August, 25d},
+                            60, &podcast,3);  
         
         podcast.aggiungiPuntata(puntata1);
         REQUIRE((podcast.getElencoPuntate()).empty()==false);
-        REQUIRE((podcast.getVisualizzazioni())==200);
+        REQUIRE((podcast.getVisualizzazioni())==puntata1->getVisualizzazioni());
         podcast.aggiungiPuntata(puntata2);
-        REQUIRE((podcast.getVisualizzazioni())==400);
+        REQUIRE((podcast.getVisualizzazioni())==puntata1->getVisualizzazioni()+puntata2->getVisualizzazioni());
         REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 25d});
-        REQUIRE(puntata1->calcolaIncasso()==Approx(200*3*0.05));
-        REQUIRE(podcast.calcolaIncasso()==Approx(200*3*0.05*2));
+        REQUIRE(puntata1->calcolaIncasso()==Approx(puntata1->getVisualizzazioni()*3*0.05));
+        REQUIRE(podcast.calcolaIncasso()==Approx(puntata1->getVisualizzazioni()*3*0.05 + puntata2->getVisualizzazioni()*3*0.05));
         podcast.rimuoviPuntata(puntata2);
-        REQUIRE((podcast.getVisualizzazioni())==200);
-        REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 15d});
-        REQUIRE(podcast.getDurataMinuti()==40);
+        REQUIRE((podcast.getVisualizzazioni())==puntata1->getVisualizzazioni());
+        REQUIRE((podcast.calcolaIncasso())==Approx(puntata1->getVisualizzazioni()*3*0.05));
+        REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 19d});
+        REQUIRE(podcast.getDurataMinuti()==60);
     }
 
         SECTION("8.3 verifica errore con aggiunta di una puntata con data scorretta"){
 
-        Podcast podcast("regista","titolo","descrizione",year_month_day {2025y, April, 1d},year_month_day {2025y, April, 15d},200,0,"path", Formato::IMAX_3D,"Sushi");
-        Puntata* puntata1 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",year_month_day {2025y, August, 15d},year_month_day {2025y, August, 15d},200,40,"path", Formato::IMAX_3D, &podcast, 3);
-        Puntata* puntata2 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",year_month_day {2025y, August, 1d},year_month_day {2025y, August, 10d},200,40,"path", Formato::IMAX_3D, &podcast, 3);
+        Podcast podcast("Titolo", "Descrizione", year_month_day {2025y, April, 1d},year_month_day {2025y, April, 15d}, 
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p);
+        Puntata* puntata1 = new Puntata("Titolo", "Descrizione", 
+                            year_month_day {2025y, August, 15d},year_month_day {2025y, August, 19d},
+                            60, &podcast,3);  
+        Puntata* puntata2 = new Puntata("Titolo", "Descrizione", 
+                            year_month_day {2025y, August, 10d},year_month_day {2025y, August, 15d},
+                            60, &podcast,3);  
         
         try{
             podcast.aggiungiPuntata(puntata1);
@@ -325,8 +347,10 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
 
 TEST_CASE("9. Verifica aggiunta ospite e rimozione"){
 
-    Podcast* podcast = new Podcast("regista","titolo","descrizione",year_month_day {2025y, August, 15d},year_month_day {2025y, August, 25d},200,0,"path", Formato::IMAX_3D,"Sushi");
-    Puntata puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",{2025y, August, 15d},year_month_day {2025y, August, 25d},200,40,"path", Formato::IMAX_3D, podcast, 3);
+    Podcast* podcast = new Podcast("Titolo", "Descrizione", year_month_day {2025y, April, 1d},year_month_day {2025y, April, 15d}, 
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p);
+    Puntata puntata("Titolo", "Descrizione", year_month_day {2025y, August, 15d},year_month_day {2025y, August, 19d},
+                    60, podcast,3);
     puntata.aggiungiOspite("Minnie");
     puntata.aggiungiOspite("Topolino");
     puntata.aggiungiOspite("Paperino");
@@ -340,7 +364,28 @@ TEST_CASE("9. Verifica aggiunta ospite e rimozione"){
     std::vector<string> OspitiAttesi2 = {"Minnie", "Paperino"};
     REQUIRE(puntata.getOspiti()==OspitiAttesi2);
         
-    REQUIRE(puntata.calcolaIncasso() == Approx(200*3*0.05));
+    REQUIRE(puntata.calcolaIncasso() == Approx(puntata.getVisualizzazioni()*3*0.05)); 
     puntata.estendiDataFineRilascio();
-    REQUIRE(puntata.getDataFineRilascio() == year_month_day {2025y, September, 1d});    
+    REQUIRE(puntata.getDataFineRilascio() == year_month_day {2025y, August, 26d});    
+}
+
+TEST_CASE("10. Verifica valutazione corretta"){
+    year_month_day inizio{2025y, July, 1d};
+    year_month_day fine{2025y, July, 15d};
+
+    Film film1("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
+              "CasaProd", 3, 9.3, "Autore");
+    Film film2("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
+              "CasaProd", 3, 9.3, "Autore");
+    film1.IncrementaVisualizzazioni();
+    REQUIRE(film1.getVisualizzazioni()!=0);
+    REQUIRE(film1.getDataLastViewUpdate()!=inizio);
+    film1.setValutazione();
+    REQUIRE(film1.getValutazione()<=5);
+
+    film2.IncrementaVisualizzazioni();
+    film2.setValutazione();
+    REQUIRE(film2.getVisualizzazioni()!=0);
+    REQUIRE(film2.getValutazione()<=5);
+    
 }
