@@ -5,7 +5,7 @@
 #include "Media.h"
 
 /**
- * @class Pubblicità
+ * @class Pubblicita
  * @brief Rappresenta una pubblicità distribuita dal cinema nei canali appropriati.
  * 
  * Classe astratta derivata dalla classe base astratta Media. Una pubblicità riporta

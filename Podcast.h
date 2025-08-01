@@ -7,7 +7,7 @@ class Puntata; // dichiarazione incompleta
 
 /**
  * @class Podcast
- * @brief Rappresenta un podcast distribuito dal cinema nei canali appropriati.
+ * @brief Rappresenta un podcast distribuito dal cinema nei canali appropriati. Deriva direttamente da Media
  * 
  * Un podcast ha un conduttore ed è composto da delle puntate. La durata del podcast corrisponde alla durata complessiva
  * di tutte le puntate che lo compongono. La data di fine rilascio di un podcast coincide con quella dell'ultima puntata pubblicata.

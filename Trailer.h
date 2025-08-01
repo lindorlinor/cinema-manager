@@ -6,7 +6,7 @@ class Film; //forward declaration
 
 
 /**
- * @class Pubblicità
+ * @class Trailer
  * @brief Rappresenta un trailer proiettato al cinema.
  * 
  * Un trailer è una pubblicità proiettata nelle sale del cinema. Un trailer è sempre associato ad un film esistente del cinema.
