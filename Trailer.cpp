@@ -21,7 +21,7 @@ void Trailer::estendiDataFineRilascio() {
 double Trailer::calcolaTassoDiStima() const {
     double tasso = 0.1; 
     if (t_film->getValutazione() > 8.0) tasso += 0.03;
-    if (t_film->getGenere() == "Azione" || t_film->getGenere() == "Supereroi") tasso += 0.02;
+    if (t_film->getGenere() == Genere::Azione || t_film->getGenere() == Genere::Supereroi) tasso += 0.02;
     if (t_film->getClassificazione() == Classificazione::DICIOTTO_PIU) tasso -= 0.02;
 
     

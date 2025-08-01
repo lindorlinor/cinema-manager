@@ -20,7 +20,7 @@ class Film : public Media
 {
 private:
     vector<string> f_attoriPrincipali;
-    string f_genere;
+    Genere f_genere;
     Classificazione f_classificazione;
     vector<Trailer *> trailers;
     double f_valutazione;
@@ -32,7 +32,7 @@ private:
 public:
     Film(const string &regista, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
          year_month_day gg_mm_aaFineRilascio, unsigned int visualizzazioni, unsigned int durataMinuti, const string &path,
-         Formato formato, const string &genere, Classificazione classificazione, double valutazione, const string &casaDiProduzione,
+         Formato formato, Genere genere, Classificazione classificazione, double valutazione, const string &casaDiProduzione,
          unsigned int nPostCredit, double costoBiglietto);
 
     // //metodi set
@@ -59,7 +59,7 @@ public:
     // // metodi get
     // string getCasaDiProduzione() const;
     // unsigned int getNPostCredit() const;
-    string getGenere() const;
+    Genere getGenere() const;
     double getValutazione() const;
     Classificazione getClassificazione() const;
     double getCostoBiglietto() const;

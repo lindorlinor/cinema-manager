@@ -4,7 +4,7 @@
 // Costruttore
 Film::Film(const string &regista, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
            year_month_day gg_mm_aaFineRilascio, unsigned int visualizzazioni, unsigned int durataMinuti, const string& path, 
-            Formato formato, const string &genere, Classificazione classificazione, double valutazione, const string &casaDiProduzione,
+            Formato formato, Genere genere, Classificazione classificazione, double valutazione, const string &casaDiProduzione,
            unsigned int nPostCredit, double costoBiglietto) :
 
             Media(regista, titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio, visualizzazioni, durataMinuti, path, formato),
@@ -67,7 +67,7 @@ double Film::getCostoBiglietto() const {
     return f_costoBiglietto;
 }
 
-string Film::getGenere() const {
+Genere Film::getGenere() const {
     return f_genere;
 }
 

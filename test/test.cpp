@@ -127,7 +127,7 @@ TEST_CASE("1. Estensione Film attivo") {
     year_month_day inizio{2025y, August, 1d};
     year_month_day fine{2025y, August, 15d};
 
-    Film film("Regista", "Titolo", "Descrizione", inizio, fine, 100, 120, "path", Formato::IMAX_3D,"Azione",
+    Film film("Regista", "Titolo", "Descrizione", inizio, fine, 100, 120, "path", Formato::IMAX_3D, Genere::Azione,
               Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
 
     film.estendiDataFineRilascio();
@@ -142,7 +142,7 @@ TEST_CASE("2. Estensione Trailer associati condizionale") {
     year_month_day fine{2025y, August, 15d};
     year_month_day fine2{2025y, May, 1d};
 
-    Film film("Regista", "Titolo", "Descrizione", inizio, fine, 100, 120,"path", Formato::IMAX_3D, "Azione",
+    Film film("Regista", "Titolo", "Descrizione", inizio, fine, 100, 120,"path", Formato::IMAX_3D, Genere::Azione,
               Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
 
     Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2,"path", Formato::IMAX_3D,
@@ -174,7 +174,7 @@ TEST_CASE("3. Trailer fuori produzione non aggiornato") {
     year_month_day fine{2025y, April, 15d};
 
     Film film("Regista", "Titolo", "Descrizione", inizio,
-              year_month_day{2025y, August, 15d}, 100, 120,"path", Formato::IMAX_3D, "Azione",
+              year_month_day{2025y, August, 15d}, 100, 120,"path", Formato::IMAX_3D, Genere::Azione,
               Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
 
     Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2, "path", Formato::IMAX_3D,

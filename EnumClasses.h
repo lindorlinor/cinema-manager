@@ -88,5 +88,46 @@ inline const char* toString(Classificazione c) {
     }
 }
 
+enum class Genere {
+    Azione, 
+    Avventura,
+    Commedia, 
+    Crime,
+    Drama,
+    Fantasy,
+    Horror,
+    Thriller,
+    ScienceFiction,
+    Mistero,
+    Western,
+    Documentario,
+    Animazione,
+    Storico,
+    Romantico,
+    Supereroi
+};
+
+inline const char* toString(Genere g) {
+    switch (g) {
+        case Genere::Azione: return "Azione";
+        case Genere::Avventura: return "Avventura";
+        case Genere::Commedia: return "Commedia";
+        case Genere::Crime: return "Crime";
+        case Genere::Drama: return "Drama";
+        case Genere::Fantasy: return "Fantasy";
+        case Genere::Horror: return "Horror";
+        case Genere::Thriller: return "Thriller";
+        case Genere::ScienceFiction: return "ScienceFiction";
+        case Genere::Mistero: return "Mistero";
+        case Genere::Western: return "Western";
+        case Genere::Documentario: return "Documentario";
+        case Genere::Animazione: return "Animazione";
+        case Genere::Storico: return "Storico";
+        case Genere::Romantico: return "Romantico";
+        case Genere::Supereroi: return "Supereroi";
+        default: return "Non trovato";
+    }
+}
+
 #endif // NOME_DEL_FILE_H
 
