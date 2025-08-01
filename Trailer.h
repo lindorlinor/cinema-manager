@@ -29,8 +29,8 @@ public:
      * negativo imposta la data di fine del trailer
      * 
      * @param gg_mm_aaFineRilascio La data di fine rilascio del trailer
-     */
-     //NOTA: non si controlla se il trailer non è fuori produzione perchè non è richiesto per "contratto del metodo", quello è compito di estendi
+     * @note non si controlla se il trailer non è fuori produzione perchè non è richiesto per "contratto del metodo", quello è compito di estendi
+     */ 
     void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) override; 
    
     /**
