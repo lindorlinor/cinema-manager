@@ -109,11 +109,8 @@ void Podcast::estendiDataFineRilascio(){
         std::chrono::sys_days dataFine = std::chrono::sys_days(getDataFineRilascio());
         dataFine += std::chrono::days{7};                           // aggiungi 7 giorni
         setDataFineRilascio(std::chrono::year_month_day{dataFine}); // aggiorna
-
-        //non ha alcuna azione sulle puntate perché la data di fine rilascio del podcast dipende da quella
-        //di fine rilascio delle stesse puntate, quindi non è possibile estendere la fine del podcast senza 
-        //prima estendere quella delle puntate, il quale metodo richiama questo stesso metodo per aggiornare
-        // la data di fine rilascio del podcast
+        
+        
     }
 } 
 

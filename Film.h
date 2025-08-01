@@ -72,8 +72,8 @@ public:
     // i metodi puri
 
     /**
-     * @brief Estende la data di fine rilascio del film aggiungendo 7 giorni. Modifica la data dei trailer associati che non sono fuori produzione.
-     * Estende la data dei trailer associati richiamando il metodo @ref setDataFineRilascio(chrono::year_month_day) "setDataFineRilascio(year_month_day gg_mm_aaFineRilascio)"
+     * @brief  Estende di 7 giorni la data di fine rilascio del film, se non è ancora fuori produzione. Modifica la data dei trailer associati che non sono fuori produzione.
+     * Estende la data dei trailer associati richiamando il metodo @ref setDataFineRilascio "setDataFineRilascio(year_month_day gg_mm_aaFineRilascio)"
      */
     void estendiDataFineRilascio() override;
 

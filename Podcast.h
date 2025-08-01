@@ -31,20 +31,60 @@ public:
     ~Podcast();
     
     /**
-     * @brief Aggiunge una puntata al podcast, modificando opportunamente i campi dati del podcast stesso.
+     * @brief Aggiunge una puntata al podcast, modificando opportunamente i campi dato del podcast stesso.
      * 
-     * Le visualizzazioni del podcast aumentano di quelle della puntata.
-     * La durata viene incrementata di quella della puntata.
-     * La data di fine rilascio del podcast viene aggiornata a quella della puntata.
+     * Le visualizzazioni del podcast aumentano di quelle della  aggiunta.
+     * La durata viene incrementata di quella della puntata aggiunta.
+     * La data di fine rilascio del podcast viene aggiornata a quella della puntata aggiunta.
      * L'inserimento di una puntata con DataFineRilascio < della DataFineRilascio del podcast corrente lancia un'eccezione invalid_argument 
      * 
-     * @param p Puntatore a puntata esistente associata al Podcast
+     * @param p Puntatore a puntata esistente
      */
     //TO DO: DA MODIFICARE FORSE LA DOCUMENTAZIONE su come è gestita la parte con l'eccezione
     void aggiungiPuntata(Puntata * p);
+
+    /**
+     * @brief Rimuove una puntata al podcast, modificando opportunamente i campi dato del podcast stesso.
+     * 
+     * Le visualizzazioni del podcast diminuiscono di quelle della puntata rimossa.
+     * La durata viene decrementata di quella della puntata rimossa.
+     * La data di fine rilascio viene aggiornata solo se la puntata rimossa era l’ultima del podcast. In tal caso, la nuova data di fine rilascio sarà quella dell’ultima puntata rimasta dopo la rimozione.
+     * Se, invece, dopo la rimozione non ci sono più puntate, la data di fine rilascio rimane invariata.
+     * 
+     * @param p Puntatore a puntata esistente
+     */
     void rimuoviPuntata(Puntata * p);
 
+
+    /**
+     * @brief Estende di 7 giorni la data di fine rilascio del podcast, se non è ancora fuori produzione.
+     *
+     * non ha alcuna azione sulle puntate perché la data di fine rilascio del podcast dipende da quella
+     * di fine rilascio delle stesse puntate, quindi non è possibile estendere la fine del podcast senza 
+     * prima estendere quella delle puntate, il quale metodo richiama questo stesso metodo per aggiornare
+     * la data di fine rilascio del podcast
+     */
+
+    // TO DO: preferisco cambiare la logica, non 7 giorni ma magari 3? 2? 1? idkkkkk però potremmo cambiarlo,
+    // inoltre preferirei che se fai estendi allora estende la data dell'ultima puntata (così rimane valido che 
+    //la data di fine rilascio dell'ultima puntata del podcast = data fine rilascio podcast, logica espressa in aggiungiPuntata e (circa) in rimuoviPuntata)
+    // il commento doxy diventerebbe:
+    /* 
+    * @brief Estende di 2 giorni la data di fine rilascio del podcast, se non è ancora fuori produzione.
+    * 
+    * L'estensione della data di fine rilascio ha effetto di aumentare dello stesso numero di giorni la data di fine rilascio dell'ultima puntata inserita.
+    */
     void estendiDataFineRilascio() override;
+
+    /**
+     * @brief Calcola l'incasso totale generato dal podcast.
+     * 
+     * Somma gli incassi di tutte le puntate presenti nella lista del podcast.
+     * Le puntate null eventualmente presenti vengono ignorate.
+     * 
+     * @return double L'incasso totale del podcast.
+     */
+
     double calcolaIncasso() override;
 
     vector<Puntata *> getElencoPuntate() const;
