@@ -38,7 +38,6 @@ public:
     // void setTitolo(const string& titolo);
     // void setDescrizione(const string& descrizione);
     // void setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio);
-    // void setVisualizzazioni(unsigned int visualizzazioni);
     
     // //metodi get
     // string getAutore() const;
@@ -62,6 +61,7 @@ public:
     unsigned int DurataCampagna() const;
     
     //metodi get e set
+    void setVisualizzazioni(unsigned int visualizzazioni);
     unsigned int getVisualizzazioni() const;
     year_month_day getDataInizioRilascio() const; 
     year_month_day getDataFineRilascio() const;
