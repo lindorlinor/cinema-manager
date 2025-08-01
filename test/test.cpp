@@ -221,7 +221,7 @@ TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
         REQUIRE(getFasceOrarie(i1).size() == 1);
     }
 
-    SECTION("6.2 verifica calcoloIncasso"){
+    SECTION("6.2 Inserzione.calcoloIncasso()"){
         Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",year_month_day{2025y,July,30d},year_month_day{2025y,August,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         REQUIRE(i1.calcolaIncasso()==15*15*i1.DurataCampagna());
