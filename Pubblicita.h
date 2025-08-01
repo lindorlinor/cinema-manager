@@ -4,6 +4,13 @@
 #include <string>
 #include "Media.h"
 
+/**
+ * @class Pubblicità
+ * @brief Rappresenta una pubblicità distribuita dal cinema nei canali appropriati.
+ * 
+ * Classe astratta derivata dalla classe base astratta Media. Una pubblicità riporta
+ * in più il numero di proiezioni giornaliere del media nei canali adatti del cinema.
+ */
 class Pubblicita : public Media
 {
 private:

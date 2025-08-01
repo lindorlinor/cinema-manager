@@ -4,6 +4,13 @@
 #include "Pubblicita.h"
 class Film; //forward declaration
 
+
+/**
+ * @class Pubblicità
+ * @brief Rappresenta un trailer proiettato al cinema.
+ * 
+ * Un trailer è una pubblicità proiettata nelle sale del cinema. Un trailer è sempre associato ad un film esistente del cinema
+ */
 class Trailer : public Pubblicita{
     Film* t_film;
     double calcolaTassoDiStima() const;
@@ -12,7 +19,6 @@ public:
                 year_month_day gg_mm_aaFineRilascio, unsigned int visualizzaioni,  unsigned int durataMinuti, const string& path, 
                 Formato formato, const Classificazione& target, unsigned int nProiezioniGiornaliere, Film* film);
     void associaFilm(Film* film);
-    //ha senso che la data di fine rilascio sia uguale a quella del film
     double calcolaIncasso() override;
     void estendiDataFineRilascio() override;
 };

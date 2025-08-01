@@ -14,7 +14,7 @@ using namespace std::chrono;
 
 /**
  * @class Film
- * @brief Rappresenta i film distribuiti al cinema.
+ * @brief Rappresenta un film distribuito al cinema.
  */
 class Film : public Media
 {

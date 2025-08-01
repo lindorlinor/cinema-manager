@@ -5,7 +5,7 @@ Trailer::Trailer(   const string& regista, const string& titolo, const string& d
                     visualizzaioni, unsigned int durataMinuti, const string& path, 
                     Formato formato, const Classificazione& target,
                     unsigned int nProiezioniGiornaliere, Film* film):
-                    Pubblicita(regista, titolo,descrizione, gg_mm_aaInizioRilascio,gg_mm_aaFineRilascio, 
+                    Pubblicita(regista, titolo,descrizione, gg_mm_aaInizioRilascio,(gg_mm_aaFineRilascio>film->getDataFineRilascio()?film->getDataFineRilascio():gg_mm_aaFineRilascio) , 
                     visualizzaioni, durataMinuti,path, formato,target, nProiezioniGiornaliere),t_film(film){}
 
 void Trailer::associaFilm(Film* film){

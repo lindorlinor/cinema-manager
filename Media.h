@@ -59,14 +59,18 @@ public:
 
     /**
      * @brief Verifca se il media è correntemente distribuito nei canali del cinema.
+     * 
      * Il media è fuori produzione se la data di fine rilascio è < della data corrente.
+     * 
      * @return True se il media è fuori produzione
      */
     bool FuoriProduzione() const;
 
     /**
      * @brief Indica il numero di giorni in cui il media è distribuito nei canali del cinema.
+     * 
      * Il numero di giorni contando i giorni in cui il film non è fuori produzione.
+     * 
      * @return Il numero di giorni in cui il media è attivo nei canali.
      */
     unsigned int DurataCampagna() const;
@@ -85,14 +89,17 @@ public:
 
     /**
      * @brief Estende la data di fine rilascio a seconda del tipo di media e del suo stato corrente.
+     * 
      * Questa funzione deve essere implementata dalle classi derivate.
      */
     virtual void estendiDataFineRilascio() = 0;
 
     /**
      * @brief Calcola l'incasso della distribuzione del media che viene fatta nei canali appropriati del cinema.
-     * @return L'incasso calcolato
+     * 
      * Questa funzione deve essere implementata dalle classi derivate.
+     * 
+     * @return L'incasso calcolato
      */
     virtual double calcolaIncasso() = 0;
 };
