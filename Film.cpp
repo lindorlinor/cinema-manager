@@ -22,8 +22,8 @@ Film::~Film(){
 
 double Film::calcolaIncasso() { return getVisualizzazioni() * f_costoBiglietto; }
 
-void Film::setDataFineRilascio(year_month_day gg_mm__aaFineRilascio){
-    Media::setDataFineRilascio(gg_mm__aaFineRilascio);
+void Film::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio){
+    Media::setDataFineRilascio(gg_mm_aaFineRilascio);
      for (Trailer *trailer : trailers) {
         if (trailer && !(trailer->FuoriProduzione())){
             trailer->estendiDataFineRilascio();
@@ -33,7 +33,7 @@ void Film::setDataFineRilascio(year_month_day gg_mm__aaFineRilascio){
 
 void Film::estendiDataFineRilascio(){
     if (!FuoriProduzione()) {
-        std::chrono::sys_days dataFine = std::chrono::sys_days();
+        std::chrono::sys_days dataFine = std::chrono::sys_days(getDataFineRilascio());
         setDataFineRilascio(dataFine+days{7});
     }
 }
