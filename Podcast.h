@@ -79,10 +79,10 @@ public:
     /**
      * @brief Calcola l'incasso totale generato dal podcast.
      * 
-     * Somma gli incassi di tutte le puntate presenti nella lista del podcast.
+     * Somma gli incassi di tutte le puntate presenti nella lista del podcast richiamando @ref Puntata::calcolaIncasso
      * Le puntate null eventualmente presenti vengono ignorate.
      * 
-     * @return double L'incasso totale del podcast.
+     * @return L'incasso totale del podcast.
      */
 
     double calcolaIncasso() override;

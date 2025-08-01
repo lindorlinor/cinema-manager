@@ -32,7 +32,7 @@ public:
      * @brief Estende di 7 giorni la data di fine rilascio dalla puntata corrente in poi.
      * 
      * Se il podcast associato non è fuori produzione, estende di 7 giorni la data di fine rilascio
-     * della puntata corrente e di tutte quelle successive nell'elenco del podcast. Infine,
+     * della puntata corrente e di tutte quelle successive nell'elenco del podcast. Infine
      * richiama il metodo @ref Podcast::estendiDataFineRilascio per aggiornare la data di fine rilascio del podcast stesso.
      * 
      * @note Il metodo non ha effetto se il podcast è fuori produzione o non esiste.
