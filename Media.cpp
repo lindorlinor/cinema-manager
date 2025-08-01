@@ -89,10 +89,14 @@ unsigned int Media::getDurataMinuti() const
     return m_durataMinuti;
 }
 
+void Media::setVisualizzazioni(unsigned int visualizzazioni) {
+    m_visualizzazioni = visualizzazioni;
+}
+
 // // Metodi set
 // void Media::setAutore(const string& autore){
-//     m_autore = autore;
-// }
+    //     m_autore = autore;
+    // }
 // void Media::setTitolo(const string& titolo) {
 //     m_titolo = titolo;
 // }
@@ -105,9 +109,6 @@ unsigned int Media::getDurataMinuti() const
 //     m_dataInizioRilascio = gg_mm_aaInizioRilascio;
 // }
 
-// void Media::setVisualizzazioni(unsigned int visualizzazioni) {
-//     m_visualizzazioni = visualizzazioni;
-// }
 
 // // Metodi get
 // string Media::getAutore() const{

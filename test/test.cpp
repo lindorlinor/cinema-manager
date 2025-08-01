@@ -288,17 +288,20 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
         year_month_day inizio{2025y, April, 1d};
         year_month_day fine{2025y, April, 15d};
 
-        Podcast podcast("regista","titolo","descrizione",inizio,fine,200,0,"path", Formato::IMAX_3D,"Sushi");
+        Podcast podcast("regista","titolo","descrizione",inizio,fine,0,0,"path", Formato::IMAX_3D,"Sushi");
         Puntata* puntata1 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",year_month_day {2025y, August, 15d},year_month_day {2025y, August, 15d},200,40,"path", Formato::IMAX_3D, &podcast, 3);
         Puntata* puntata2 = new Puntata("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per cinema 2025 per Sushi Zu",year_month_day {2025y, August, 15d},year_month_day {2025y, August, 25d},200,40,"path", Formato::IMAX_3D, &podcast, 3);
         
         podcast.aggiungiPuntata(puntata1);
         REQUIRE((podcast.getElencoPuntate()).empty()==false);
+        REQUIRE((podcast.getVisualizzazioni())==200);
         podcast.aggiungiPuntata(puntata2);
+        REQUIRE((podcast.getVisualizzazioni())==400);
         REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 25d});
         REQUIRE(puntata1->calcolaIncasso()==Approx(200*3*0.05));
         REQUIRE(podcast.calcolaIncasso()==Approx(200*3*0.05*2));
         podcast.rimuoviPuntata(puntata2);
+        REQUIRE((podcast.getVisualizzazioni())==200);
         REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 15d});
         REQUIRE(podcast.getDurataMinuti()==40);
     }

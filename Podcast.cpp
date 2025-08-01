@@ -21,6 +21,7 @@ void Podcast::aggiungiPuntata(Puntata* puntata){
             if(puntata->getDataFineRilascio() < p_elencoPuntate.back()->getDataFineRilascio()){
                 throw std::invalid_argument("La data di fine è inferiore a quella dell'ultima puntata aggiunta");
         }
+        setVisualizzazioni(getVisualizzazioni()+puntata->getVisualizzazioni());
         setDataFineRilascio(puntata->getDataFineRilascio());
         setDurataMinuti(getDurataMinuti() + puntata->getDurataMinuti());
         p_elencoPuntate.push_back(puntata);
@@ -42,6 +43,7 @@ void Podcast::rimuoviPuntata(Puntata* puntata){
     if (!p_elencoPuntate.empty()) {
         auto it = std::find(p_elencoPuntate.begin(), p_elencoPuntate.end(), puntata);
         if (it != p_elencoPuntate.end()){
+            setVisualizzazioni(getVisualizzazioni()-puntata->getVisualizzazioni());
             setDurataMinuti(getDurataMinuti() - puntata->getDurataMinuti());
             p_elencoPuntate.erase(it);
             if(getDataFineRilascio() != p_elencoPuntate.back()->getDataFineRilascio())

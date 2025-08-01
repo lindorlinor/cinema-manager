@@ -43,8 +43,8 @@ public:
     // void setD
     // //metodi getescrizione(const string& descrizione);
     // void setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio);
-    // void setVisualizzazioni(unsigned int visualizzazioni);
-
+    
+    // //metodi get
     // string getAutore() const;
     // string getTitolo() const;
     // string getDescrizione() const;
@@ -70,8 +70,9 @@ public:
      * @return Il numero di giorni in cui il media è attivo nei canali.
      */
     unsigned int DurataCampagna() const;
-
-    // metodi get e set
+    
+    //metodi get e set
+    void setVisualizzazioni(unsigned int visualizzazioni);
     unsigned int getVisualizzazioni() const;
     year_month_day getDataInizioRilascio() const;
     year_month_day getDataFineRilascio() const;
