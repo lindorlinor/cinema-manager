@@ -236,13 +236,13 @@ TEST_CASE("7. Inserzione.rimuoviFasciaOraria(FasciaOraria)"){
         REQUIRE(getFasceOrarie(i1)[0]==FasciaOraria::Mattina);
         REQUIRE(getFasceOrarie(i1).size() == 1);
         i1.rimuoviFasciaOraria(FasciaOraria::Mattina);
-        REQUIRE(getFasceOrarie(i1).size() == 0);
+        REQUIRE(getFasceOrarie(i1).size() == 1); //sempre presente mattina
 
     }
      SECTION("7.2 verifica rimozione di una fascia oraria non aggiunta"){
         Inserzione i1("Lupo Lucio","Sushi Zu commercial 2025","Pubblicita' per ciname 2025 per Sushi Zu",year_month_day{2025y,July,30d},year_month_day{2025y,August,30d},200,1,"path", Formato::IMAX_3D,Classificazione::TUTTI,15,"Sushi Zu srl.",15);
         i1.rimuoviFasciaOraria(FasciaOraria::Sera);
-        REQUIRE(getFasceOrarie(i1).size() == 0);
+        REQUIRE(getFasceOrarie(i1).size() == 1); //presente mattina
 
     }
 

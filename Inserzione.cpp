@@ -30,9 +30,11 @@ void Inserzione::aggiungiFasciaOraria(FasciaOraria fasciaO){
 }
 
 void Inserzione::rimuoviFasciaOraria(FasciaOraria fasciaO){
-    int i_fasciaO =isFasciaOrariaIn(fasciaO);
-    if(i_fasciaO!=-1)
-        i_fasceOrarie.erase(i_fasceOrarie.begin()+i_fasciaO);
+    if(fasciaO!=FasciaOraria::Mattina){
+        int i_fasciaO =isFasciaOrariaIn(fasciaO);
+        if(i_fasciaO!=-1)
+            i_fasceOrarie.erase(i_fasceOrarie.begin()+i_fasciaO);
+    }
 }
 
 double Inserzione::fattoreVariazionePrezzo() const{
