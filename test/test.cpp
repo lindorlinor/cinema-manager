@@ -145,10 +145,8 @@ TEST_CASE("2. Estensione Trailer associati condizionale") {
     Film film("Regista", "Titolo", "Descrizione", inizio, fine, 100, 120,"path", Formato::IMAX_3D, Genere::Azione,
               Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
 
-    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2,"path", Formato::IMAX_3D,
-                              Classificazione::QUATTORDICI_PIU, 4, &film);
-    Trailer* t2 = new Trailer("Autore", "T2", "Desc", inizio, fine2, 50, 2,"path", Formato::IMAX_3D,
-                              Classificazione::QUATTORDICI_PIU, 5, &film);
+    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2,"path", Formato::IMAX_3D, 4, &film);
+    Trailer* t2 = new Trailer("Autore", "T2", "Desc", inizio, fine2, 50, 2,"path", Formato::IMAX_3D, 5, &film);
 
     film.aggiungiTrailer(t1);
     film.aggiungiTrailer(t2);
@@ -177,8 +175,7 @@ TEST_CASE("3. Trailer fuori produzione non aggiornato") {
               year_month_day{2025y, August, 15d}, 100, 120,"path", Formato::IMAX_3D, Genere::Azione,
               Classificazione::QUATTORDICI_PIU, 4.2, "Produzione", 1, 9.5);
 
-    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2, "path", Formato::IMAX_3D,
-                              Classificazione::QUATTORDICI_PIU, 5, &film);
+    Trailer* t1 = new Trailer("Autore", "T1", "Desc", inizio, fine, 50, 2, "path", Formato::IMAX_3D, 5, &film);
 
     film.aggiungiTrailer(t1);
     film.estendiDataFineRilascio();

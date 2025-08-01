@@ -3,15 +3,23 @@
 Trailer::Trailer(   const string& regista, const string& titolo, const string& descrizione, 
                     year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio, unsigned int 
                     visualizzaioni, unsigned int durataMinuti, const string& path, 
-                    Formato formato, const Classificazione& target,
-                    unsigned int nProiezioniGiornaliere, Film* film):
+                    Formato formato, unsigned int nProiezioniGiornaliere, Film* film):
                     Pubblicita(regista, titolo,descrizione, gg_mm_aaInizioRilascio,(gg_mm_aaFineRilascio>film->getDataFineRilascio()?film->getDataFineRilascio():gg_mm_aaFineRilascio) , 
-                    visualizzaioni, durataMinuti,path, formato,target, nProiezioniGiornaliere),t_film(film){}
+                    visualizzaioni, durataMinuti,path, formato, film->getClassificazione(),nProiezioniGiornaliere),t_film(film){}
 
 void Trailer::associaFilm(Film* film){
     t_film=film;
 }
-//prende la data di fine rilascio del film ad esso associato e imposta quella
+
+
+//nota: nella gui ovviamente dovrà essere avvisato l'utente che la data è maggiore e quindi viene messa quella del film.  
+void Trailer::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio){ 
+    if(gg_mm_aaFineRilascio>t_film->getDataFineRilascio())
+        t_film->getDataFineRilascio();
+    else 
+        Pubblicita::setDataFineRilascio(gg_mm_aaFineRilascio);
+}
+
 void Trailer::estendiDataFineRilascio() {
     if (!FuoriProduzione() && t_film) {
         setDataFineRilascio(t_film->getDataFineRilascio());

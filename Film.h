@@ -79,8 +79,10 @@ public:
 
     /**
      * @brief Calcola l'incasso della distribuzione del film al cinema.
-     * @return L'incasso calcolato.
+     * 
      * L'incasso del film si calcola moltiplicando le visualizzazioni per il costo del biglietto del film.
+     * 
+     * @return L'incasso calcolato.
      */
     double calcolaIncasso() override;
 

@@ -8,7 +8,9 @@ Inserzione::Inserzione( const string& regista, const string& titolo, const strin
                         
                         Pubblicita(regista, titolo,descrizione, gg_mm_aaInizioRilascio,gg_mm_aaFineRilascio, visualizzaioni, 
                         durataMinuti, path, formato, target,nProiezioniGiornaliere),i_aziendaInserzionista(aziendaInserzionista),
-                        i_costoFissoProiezione(costoProiezione){}
+                        i_costoFissoProiezione(costoProiezione){
+                            aggiungiFasciaOraria(FasciaOraria::Mattina);
+                        }
 
 
 
@@ -48,8 +50,7 @@ double Inserzione::fattoreVariazionePrezzo() const{
 
 void Inserzione::estendiDataFineRilascio() {
     if (!FuoriProduzione()) {
-        year_month_day dataFine = getDataFineRilascio() + months{1};
-        setDataFineRilascio(year_month_day(dataFine));
+        setDataFineRilascio(getDataFineRilascio() + months{1});
     }
 }
 
