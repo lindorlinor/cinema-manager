@@ -22,27 +22,23 @@ Film::~Film(){
 
 double Film::calcolaIncasso() { return getVisualizzazioni() * f_costoBiglietto; }
 
-void Film::estendiDataFineRilascio()
-{
-    if (!FuoriProduzione())
-    {
-        // Converti year_month_day a sys_days per sommare giorni
-        std::chrono::sys_days dataFine = std::chrono::sys_days(getDataFineRilascio());
-        dataFine += std::chrono::days{7};                           // aggiungi 7 giorni
-        setDataFineRilascio(std::chrono::year_month_day{dataFine}); // aggiorna
-        // Estendi i trailer associati che non sono fuori produzione
-        for (Trailer *trailer : trailers)
-        {
-            if (trailer && !(trailer->FuoriProduzione()))
-            {
-                trailer->estendiDataFineRilascio();
-            }
+void Film::setDataFineRilascio(year_month_day gg_mm__aaFineRilascio){
+    Media::setDataFineRilascio(gg_mm__aaFineRilascio);
+     for (Trailer *trailer : trailers) {
+        if (trailer && !(trailer->FuoriProduzione())){
+            trailer->estendiDataFineRilascio();
         }
     }
 }
 
-//TO DO: isInTrailer ritorna 0 se non è preste, !=0 se è presente e ritorna l'indice poi si fa semplicemente vettore.erase(vettore.begin()+indice) per rimuoverlo
-//in questo modo oltre che in aggiungiTrailer si può usare il metodo anche in rimuoviTrailer. Poi inserzione ho fatto cosi 
+void Film::estendiDataFineRilascio(){
+    if (!FuoriProduzione()) {
+        std::chrono::sys_days dataFine = std::chrono::sys_days();
+        setDataFineRilascio(dataFine+days{7});
+    }
+}
+
+
 int Film::isTrailerIn(Trailer* trailer) const {
     auto it = std::find(trailers.begin(), trailers.end(), trailer);
     if (it != trailers.end()) {

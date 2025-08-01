@@ -1,3 +1,8 @@
+/**
+ * @file EnumClasses.h
+ * @brief Dichiarazioni di tipi enum definiti in metodi e campi dati della gerarchia di media. Definizione di metodi inline di utilità per la conversione in stringa dei tipi enum.
+ */
+
 #ifndef ENUMCLASSES_H
 #define ENUMCLASSES_H
 
@@ -5,7 +10,7 @@
 #include <map>
 #include <string>
 
- enum class Formato {
+enum class Formato {
     DCP,
     RealD_3D,
     MOV_ProRes,
