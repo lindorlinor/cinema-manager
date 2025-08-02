@@ -24,7 +24,7 @@ double Film::calcolaIncasso() { return getVisualizzazioni() * f_costoBiglietto; 
 
 void Film::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio){
     Media::setDataFineRilascio(gg_mm_aaFineRilascio);
-     for (Trailer *trailer : trailers) {
+    for (Trailer *trailer : trailers) {
         if (trailer && !(trailer->FuoriProduzione())){
             trailer->estendiDataFineRilascio();
         }
@@ -49,7 +49,7 @@ int Film::isTrailerIn(Trailer* trailer) const {
 }
 
 void Film::aggiungiTrailer(Trailer* trailer) {
-    if (trailer && isTrailerIn(trailer) == -1) {
+    if (trailer &&  trailer->getFilm() == this && isTrailerIn(trailer) == -1) {
         trailers.push_back(trailer);
     }
 }
