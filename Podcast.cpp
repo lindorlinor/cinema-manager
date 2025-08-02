@@ -80,6 +80,7 @@ void Podcast::disaccoppiaPuntata(Puntata* puntata){
     int i_puntata= isPuntataIn(puntata);
     if (i_puntata != -1) {
         p_elencoPuntate.erase(p_elencoPuntate.begin() + i_puntata);
+        aggiornaDate();
     }
 }
 

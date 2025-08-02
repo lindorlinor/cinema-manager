@@ -87,7 +87,7 @@ public:
     
     void setVisualizzazioni(unsigned int visualizzazioni);
     void setDurataMinuti(unsigned int durata);
-    void setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio);
+    virtual void setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio);
     virtual void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio);
     
     /**

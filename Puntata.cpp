@@ -47,10 +47,16 @@ void Puntata::estendiDataFineRilascio() {
     }
 }
 
-
 void Puntata::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio){
     if(p_podcast){
         Media::setDataFineRilascio(gg_mm_aaFineRilascio);
+        p_podcast->aggiornaDate();
+    }
+}
+
+void Puntata::setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio){
+    if(p_podcast){
+        Media::setDataInizioRilascio(gg_mm_aaInizioRilascio);
         p_podcast->aggiornaDate();
     }
 }

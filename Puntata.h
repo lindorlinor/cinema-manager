@@ -57,11 +57,21 @@ public:
      * @brief Cambia la data di fine rilascio per puntata
      *
      * Puntata ha la necessità di fare un override su setDataFineRilascio in quanto la mmodifica della data
-     * influisce sulla modifica della data di fine rilascio delle puntate che seguono. Richiama il
-     * metodo @ref Puntata::IteraModificaDataFineRilascioPuntate per permettere la modifica delle puntate che seguono
+     * influisce sulla modifica della data di fine del podcast ad essa associato. Richiama il
+     * metodo @ref Podcast::aggiornaDate per modificare la data di fine di podcast
      */
 
     void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) override;
+
+    /**
+     * @brief Cambia la data di inizio rilascio per puntata
+     *
+     * Puntata ha la necessità di fare un override su setDataInizioRilascio in quanto la mmodifica della data
+     * influisce sulla modifica della data di inizio del podcast ad essa associato. Richiama il
+     * metodo @ref Podcast::aggiornaDate per modificare la data di inizio di podcast
+    */
+
+    void setDataInizioRilascio(year_month_day gg_mm_aaFineRilascio) override;
 
     /**
      * @brief Cambia la data di inizio rilascio per puntata
