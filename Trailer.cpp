@@ -16,7 +16,6 @@ void Trailer::associaFilm(Film* film){
 
 
 
-//nota: nella gui ovviamente dovrà essere avvisato l'utente che la data è maggiore e quindi viene messa quella del film.  
 void Trailer::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio){ 
     if(gg_mm_aaFineRilascio>t_film->getDataFineRilascio())
         t_film->getDataFineRilascio();

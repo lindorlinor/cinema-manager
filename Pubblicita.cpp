@@ -10,12 +10,6 @@ Pubblicita::Pubblicita(     const string& autore, const string& titolo, const st
                             visualizzaioni,durataMinuti, path, formato), 
                             p_nProiezioniGiornaliere(nProiezioniGiornaliere){}
 
-// Classificazione Pubblicita::getTarget() const{
-//     return p_target;
-// }
-// void Pubblicita::setTarget(Classificazione target) {
-//     p_target=target;
-// }
 
 unsigned int Pubblicita::getNProiezioniGiornaliere() const{
     return p_nProiezioniGiornaliere;

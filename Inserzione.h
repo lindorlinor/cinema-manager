@@ -10,6 +10,7 @@
  * Un'inserzione è una pubblicità commissionata da un'azienda per essere riprodotta al cinema nelle fasce orarie indicate. L'autore di una pubblicità è
  * il regista della pubblicità. Da contratto un'inserzione include sempre la fascia oraria mattutina. 
  * Le altre fasce orarie richiedono un pagamento di un'incremento sul costo base.
+ * @note l'inclusione della fascia oraria mattutina è una novità.
  */
 class Inserzione : public Pubblicita{
     Classificazione i_target;
@@ -32,7 +33,7 @@ public:
     //void setTarget(Classificazione target);
     
     /**
-     * @brief Estende la data di fine rilascio dell'inserzione di un mese.
+     * @brief Se la pubblicita non è fuori produzione, estende la data di fine rilascio dell'inserzione di un mese.
      */
     void estendiDataFineRilascio() override;
 
@@ -40,9 +41,10 @@ public:
      * @brief Calcola l'incasso della proiezione della pubblicità al cinema.
      * 
      * L'incasso è calcolato moltiplicando i giorni in cui la pubblicità è stata proiettata per il numero di proiezioni concordate per contratto. 
-     * Il valore dell'incasso inoltre varia a seconda delle fasce orarie in cui l'inserzione viene proiettata.
+     * Il valore dell'incasso inoltre varia a seconda delle fasce orarie in cui l'inserzione viene proiettata. La variazione fa uso del metodo @ref fattoreVariazionePrezzo.
      * 
      * @return L'incasso calcolato.
+     * @note non ho ancora fatto la documentazione di del metodo @ref fattoreVariazionePrezzo
      */
     double calcolaIncasso() override;
 

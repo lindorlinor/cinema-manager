@@ -36,6 +36,7 @@ public:
      * 
      * @param gg_mm_aaFineRilascio La data di fine rilascio del trailer
      * @note non si controlla se il trailer non è fuori produzione perchè non è richiesto per "contratto del metodo", quello è compito di estendi
+     * @note nella gui ovviamente dovrà essere avvisato l'utente che la data è maggiore e quindi viene messa quella del film.  
      */ 
     void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) override; 
    
@@ -50,9 +51,10 @@ public:
     /**
      * @brief Calcola l'incasso della distribuzione del trailer al cinema.
      * 
-     * L'incasso calcolato è una stima che si basa sulle visualizzazioni del trailer e sulle caratteristiche del flim associato.
-     * 
+     * L'incasso calcolato è una stima che si basa sulle visualizzazioni del trailer e sulle caratteristiche del flim associato. Il metodo fa uso
+     * di @ref calcolaTassoDiStima.
      * @return L'incasso calcolato.
+     * @note fare documentazione calcolaTassoDiStima
      */
     double calcolaIncasso() override;
     
