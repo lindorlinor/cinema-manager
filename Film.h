@@ -63,7 +63,6 @@ public:
     double getValutazione() const;
     Classificazione getClassificazione() const;
     double getCostoBiglietto() const;
-    vector<Trailer *> getTrailers() const;
     // metodi per aggiungere e togliere i trailer
     void aggiungiTrailer(Trailer *trailer);
     void rimuoviTrailer(Trailer *trailer);

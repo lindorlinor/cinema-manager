@@ -88,9 +88,6 @@ double Film::getValutazione() const {
     return f_valutazione;
 }
 
-vector<Trailer *> Film::getTrailers() const{
-    return trailers;
-}
 void Film::setValutazione(){
     sys_days inizio = getDataInizioRilascio();
     sys_days fine = getDataLastViewUpdate();
