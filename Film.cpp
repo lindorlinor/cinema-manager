@@ -54,12 +54,15 @@ void Film::aggiungiTrailer(Trailer* trailer) {
     }
 }
 
+
 void Film::rimuoviTrailer(Trailer* trailer) {
     int i_trailer = isTrailerIn(trailer);
     if (i_trailer != -1) {
+        delete trailers[i_trailer];
         trailers.erase(trailers.begin() + i_trailer);
     }
 }
+
 
 
 //metodi get

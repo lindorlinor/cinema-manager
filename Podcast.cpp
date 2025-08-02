@@ -16,13 +16,17 @@ Podcast::~Podcast()
     }
 }
 
-void Podcast::aggiungiPuntata(Puntata *puntata)
-{
-    if (puntata && !isInPuntata(puntata))
-    {
-        if (!p_elencoPuntate.empty())
-            if (puntata->getDataFineRilascio() < p_elencoPuntate.back()->getDataFineRilascio())
-            {
+void Podcast::aggiungiPuntata(Puntata* puntata){
+    if(puntata && isPuntataIn(puntata)==-1){
+        if(!p_elencoPuntate.empty()) 
+        //NOTA1: cosa succede se si usa setDataFineRilascio su una puntata? non ci dovrebbe essere il controllo? però allo stesso tempo, è corretto che uno possa modificare la data se ha sbagliato -> (vedi commento setDataFineRilascio riferito a estendiDataFineRilascio in Trailer)
+            //soluzione 1: permettere la modifica ma magari aggiungere un warning a livello di gui
+            //soluzione 2: overridare setDataFineRilascio non permettendo 
+        //NOTA2: le eccezioni modificano il flusso del programma, in trailer lo ho gestito impostando la data di fine uguale a quella del film. La gui poi si occupava di controllare i valori e avvertire del cambiamento l'utente (avevo chiesto a chatty e mi aveeva assicurato che la suddivisione dei compiti era corretta, ma chissà)
+           // SCELTO QUESTO soluzione1: lasciamo l'eccezione perchè, benchè sia diversa la risoluzione del problema in trailer, può aver senso in questo caso perchè non c'è una soluzione intuitivamente logica
+            //soluzione2: si forza un ragionamento per una soluzione concreta che non fa uso di eccezioni. Quello che avevo pensato era di impostare la data di fine rilascio dell'ultima puntata, avvertendo l'utente (tramite gui)
+            //soluzione3: si tiene l'eccezione e si modifica anche in trailer aggiungendo un'eccezione e chiedendo (tramite gui) di impostare una data di fine corretta per il trailer.           
+        if(puntata->getDataFineRilascio() < p_elencoPuntate.back()->getDataFineRilascio()){
                 throw std::invalid_argument("La data di fine è inferiore a quella dell'ultima puntata aggiunta");
             }
         puntata->IncrementaVisualizzazioni();
@@ -33,32 +37,29 @@ void Podcast::aggiungiPuntata(Puntata *puntata)
     }
 }
 
-bool Podcast::isInPuntata(Puntata *puntata) const
-{
-    if (p_elencoPuntate.empty())
-        return false;
-    for (Puntata *p : p_elencoPuntate)
-    {
-        if (p == puntata)
-            return true;
+ int Podcast::isPuntataIn(Puntata* puntata) const {
+    auto it = std::find(p_elencoPuntate.begin(), p_elencoPuntate.end(), puntata);
+    if (it != p_elencoPuntate.end()) {
+        return std::distance(p_elencoPuntate.begin(), it);
+    } else {
+        return -1;
     }
-    return false;
 }
 
-void Podcast::rimuoviPuntata(Puntata *puntata)
-{
-    if (!p_elencoPuntate.empty())
-    {
-        auto it = std::find(p_elencoPuntate.begin(), p_elencoPuntate.end(), puntata);
-        if (it != p_elencoPuntate.end())
-        {
-            setVisualizzazioni(getVisualizzazioni() - puntata->getVisualizzazioni());
-            setDurataMinuti(getDurataMinuti() - puntata->getDurataMinuti());
-            delete *it; // se una puntata viene cancellata dall'elenco, allora viene anche eliminata perché non ha senso che viva senza un film ad essa associato
-            p_elencoPuntate.erase(it);
-            if (!p_elencoPuntate.empty())
-                if (getDataFineRilascio() != p_elencoPuntate.back()->getDataFineRilascio()) // per non assegnare nuovamente lo stesso valore inutilmente
-                    setDataFineRilascio(p_elencoPuntate.back()->getDataFineRilascio());
+void Podcast::rimuoviPuntata(Puntata* puntata) {
+    int i_puntata = isPuntataIn(puntata);
+    if (i_puntata != -1) {
+        setVisualizzazioni(getVisualizzazioni() - puntata->getVisualizzazioni());
+        setDurataMinuti(getDurataMinuti() - puntata->getDurataMinuti());
+        delete puntata;
+
+        p_elencoPuntate.erase(p_elencoPuntate.begin() + i_puntata);
+
+        if (!p_elencoPuntate.empty()) {
+            // Aggiorna la data fine rilascio solo se l'ultima puntata è cambiata
+            if (getDataFineRilascio() != p_elencoPuntate.back()->getDataFineRilascio()) {
+                setDataFineRilascio(p_elencoPuntate.back()->getDataFineRilascio());
+            }
         }
     }
 }
@@ -78,15 +79,9 @@ void Podcast::estendiDataFineRilascio()
 {
     if (!FuoriProduzione())
     {
-        // Converti year_month_day a sys_days per sommare giorni
         std::chrono::sys_days dataFine = std::chrono::sys_days(getDataFineRilascio());
-        dataFine += std::chrono::days{1};                           
+        dataFine += std::chrono::days{1};                          
         setDataFineRilascio(std::chrono::year_month_day{dataFine});
-
-        // non ha alcuna azione sulle puntate perché la data di fine rilascio del podcast dipende da quella
-        // di fine rilascio delle stesse puntate, quindi non è possibile estendere la fine del podcast senza
-        // prima estendere quella delle puntate, il quale metodo richiama questo stesso metodo per aggiornare
-        //  la data di fine rilascio del podcast
     }
 }
 

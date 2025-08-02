@@ -2,12 +2,14 @@
 
 Inserzione::Inserzione(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
                        year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione, 
-                       unsigned int nProiezioniGiornaliere,const string &aziendaInserzionista, double costoProiezione,
+                       unsigned int nProiezioniGiornaliere,const Classificazione& target,const string &aziendaInserzionista, double costoProiezione,
                        const string &autore, const string &path) :
 
                                     Pubblicita(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
-                                    durataMinuti, formato, risoluzione, nProiezioniGiornaliere, autore, path),
-                                    i_aziendaInserzionista(aziendaInserzionista),i_costoFissoProiezione(costoProiezione){}
+                                    durataMinuti, formato, risoluzione, nProiezioniGiornaliere, autore, path),i_target(target),
+                                    i_aziendaInserzionista(aziendaInserzionista),i_costoFissoProiezione(costoProiezione){
+                                        aggiungiFasciaOraria(FasciaOraria::Mattina);
+                                    }
 
 int Inserzione::isFasciaOrariaIn(FasciaOraria fasciaO) const
 {
@@ -28,11 +30,12 @@ void Inserzione::aggiungiFasciaOraria(FasciaOraria fasciaO)
         i_fasceOrarie.push_back(fasciaO);
 }
 
-void Inserzione::rimuoviFasciaOraria(FasciaOraria fasciaO)
-{
-    int i_fasciaO = isFasciaOrariaIn(fasciaO);
-    if (i_fasciaO != -1)
-        i_fasceOrarie.erase(i_fasceOrarie.begin() + i_fasciaO);
+void Inserzione::rimuoviFasciaOraria(FasciaOraria fasciaO){
+    if(fasciaO!=FasciaOraria::Mattina){
+        int i_fasciaO =isFasciaOrariaIn(fasciaO);
+        if(i_fasciaO!=-1)
+            i_fasceOrarie.erase(i_fasceOrarie.begin()+i_fasciaO);
+    }
 }
 
 double Inserzione::fattoreVariazionePrezzo() const
@@ -52,12 +55,9 @@ double Inserzione::fattoreVariazionePrezzo() const
     return percentuale;
 }
 
-void Inserzione::estendiDataFineRilascio()
-{
-    if (!FuoriProduzione())
-    {
-        year_month_day dataFine = getDataFineRilascio() + months{1};
-        setDataFineRilascio(year_month_day(dataFine));
+void Inserzione::estendiDataFineRilascio() {
+    if (!FuoriProduzione()) {
+        setDataFineRilascio(getDataFineRilascio() + months{1});
     }
 }
 

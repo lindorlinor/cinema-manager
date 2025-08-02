@@ -1,21 +1,30 @@
 #include "Trailer.h"
 #include "Film.h"
+
 Trailer::Trailer(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
                 year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
                 unsigned int nProiezioniGiornaliere, Film *film, const string &autore, 
                 const string &path) : 
-                        Pubblicita(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
+                        Pubblicita(titolo, descrizione, gg_mm_aaInizioRilascio, (gg_mm_aaFineRilascio>film->getDataFineRilascio()?film->getDataFineRilascio():gg_mm_aaFineRilascio),
                                     durataMinuti, formato, risoluzione, nProiezioniGiornaliere, autore, path), t_film(film){}
 
-void Trailer::associaFilm(Film *film)
-{
+void Trailer::associaFilm(Film* film){
+    //TO DO TOGLIERE IL TRAILER DALLA LISTA DEL FILM VECCHIO
     t_film = film;
+    if (getDataFineRilascio() > film->getDataFineRilascio()) {
+        setDataFineRilascio(film->getDataFineRilascio());
+    }
 }
-// prende la data di fine rilascio del film ad esso associato e imposta quella
-void Trailer::estendiDataFineRilascio()
-{
-    if (!FuoriProduzione() && t_film)
-    {
+
+void Trailer::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio){ 
+    if(gg_mm_aaFineRilascio>t_film->getDataFineRilascio())
+        t_film->getDataFineRilascio();
+    else 
+        Pubblicita::setDataFineRilascio(gg_mm_aaFineRilascio);
+}
+
+void Trailer::estendiDataFineRilascio() {
+    if (!FuoriProduzione() && t_film) {
         setDataFineRilascio(t_film->getDataFineRilascio());
     }
 }

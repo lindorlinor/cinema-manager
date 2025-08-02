@@ -191,10 +191,10 @@ TEST_CASE("4. Inserzione.estendiDataFineRilascio()"){
     year_month_day fine{2025y,August,15d};
     year_month_day fine2{2025y,July,29d};
 
-    Inserzione i1(  "Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
-                    3, "azienda", 20.0);
+    Inserzione i1( "Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
+                    3, Classificazione::TUTTI, "azienda", 20.0);
     Inserzione i2(  "Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
-                    3, "azienda", 20.0);    i1.estendiDataFineRilascio();
+                    3, Classificazione::TUTTI, "azienda", 20.0);    i1.estendiDataFineRilascio();
     SECTION("4.1 Inserzione attiva"){
         REQUIRE(i1.getDataFineRilascio() == fine+months{1});
     }
@@ -205,7 +205,7 @@ TEST_CASE("4. Inserzione.estendiDataFineRilascio()"){
 
 TEST_CASE("5. Inserzione.calcolaIncasso()"){
     Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
-                    Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, "azienda", 30.0);    
+                    Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, Classificazione::TUTTI,  "azienda", 30.0);    
 
     REQUIRE(i1.calcolaIncasso()==30*15*i1.DurataCampagna());
 }
@@ -217,7 +217,7 @@ vector<FasciaOraria> getFasceOrarie(const Inserzione& i){
 TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
     SECTION("6.1 verifica aggiunta della stessa fascia oraria"){
         Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
-                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, "azienda", 15.0);          
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, Classificazione::TUTTI, "azienda", 15.0);          
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         REQUIRE(getFasceOrarie(i1)[0]==FasciaOraria::Mattina);
@@ -226,7 +226,7 @@ TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
 
     SECTION("6.2 Inserzione.calcoloIncasso()"){
         Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
-                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, "azienda", 15.0);          
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15,Classificazione::TUTTI, "azienda", 15.0);          
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         REQUIRE(i1.calcolaIncasso()==15*15*i1.DurataCampagna());
         i1.aggiungiFasciaOraria(FasciaOraria::Sera);
@@ -239,25 +239,25 @@ TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
 TEST_CASE("7. Inserzione.rimuoviFasciaOraria(FasciaOraria)"){
     SECTION("7.1 verifica rimozione di una fascia oraria aggiunta"){
         Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
-                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, "azienda", 15.0);  
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, Classificazione::TUTTI, "azienda", 15.0);  
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         REQUIRE(getFasceOrarie(i1)[0]==FasciaOraria::Mattina);
         REQUIRE(getFasceOrarie(i1).size() == 1);
         i1.rimuoviFasciaOraria(FasciaOraria::Mattina);
-        REQUIRE(getFasceOrarie(i1).size() == 0);
+        REQUIRE(getFasceOrarie(i1).size() == 1); //sempre presente mattina
 
     }
      SECTION("7.2 verifica rimozione di una fascia oraria non aggiunta"){
         Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
-                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 3, "azienda", 20.0);          
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 3, Classificazione::TUTTI, "azienda", 20.0);          
         i1.rimuoviFasciaOraria(FasciaOraria::Sera);
-        REQUIRE(getFasceOrarie(i1).size() == 0);
+        REQUIRE(getFasceOrarie(i1).size() == 1); //presente mattina
 
     }
 
     SECTION("7.3 verifica calcoloIncasso"){
         Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
-                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, "azienda",15.0);          
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15,Classificazione::TUTTI, "azienda",15.0);          
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         i1.aggiungiFasciaOraria(FasciaOraria::Sera);
         i1.aggiungiFasciaOraria(FasciaOraria::Pomeriggio);

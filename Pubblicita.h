@@ -4,6 +4,13 @@
 #include <string>
 #include "Media.h"
 
+/**
+ * @class Pubblicita
+ * @brief Rappresenta una pubblicità distribuita dal cinema nei canali appropriati.
+ * 
+ * Classe astratta derivata dalla classe base astratta Media. Una pubblicità riporta
+ * in più il numero di proiezioni giornaliere del media nei canali adatti del cinema.
+ */
 class Pubblicita : public Media
 {
 private:
@@ -14,9 +21,9 @@ public:
                year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
                unsigned int nProiezioniGiornaliere, const string &autore = "Sconosciuto", const string &path = "immGrigia");
 
-    // Classificazione getTarget() const;
+    
     unsigned int getNProiezioniGiornaliere() const;
-    // void setTarget(Classificazione target);
+    
 };
 
 #endif
