@@ -136,6 +136,8 @@ void Media::IncrementaVisualizzazioni()
 }
 
 void Media::setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio) {
+    if(m_dataInizioRilascio>m_dataFineRilascio)
+        m_dataInizioRilascio = m_dataFineRilascio;
     m_dataInizioRilascio = gg_mm_aaInizioRilascio;
 }
 

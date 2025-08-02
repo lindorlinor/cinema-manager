@@ -41,37 +41,34 @@ double Puntata::calcolaIncasso(){
 
 void Puntata::estendiDataFineRilascio() {
     if (!FuoriProduzione() && p_podcast) {
-        IteraModificaDataFineRilascioPuntate(1);
-        p_podcast->estendiDataFineRilascio();
+        std::chrono::sys_days dataFine = std::chrono::sys_days(getDataFineRilascio());
+        setDataFineRilascio(dataFine+days{1});
+        p_podcast->aggiornaDate();
     }
 }
 
-void Puntata::IteraModificaDataFineRilascioPuntate(int n){
-    const vector<Puntata*>& elenco = p_podcast->getElencoPuntate();
-    auto it = std::find(elenco.begin(), elenco.end(), this);
-
-    while (it != elenco.end()){
-            auto dataFine = std::chrono::sys_days((*it)->getDataFineRilascio());
-            dataFine += std::chrono::days{n};                           
-            (*it)->Media::setDataFineRilascio(std::chrono::year_month_day{dataFine}); 
-            it++;
-    }
-}
 
 void Puntata::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio){
     if(p_podcast){
-        sys_days prima = getDataFineRilascio();
-        sys_days dopo = gg_mm_aaFineRilascio;
-        int giorni = (dopo-prima).count();
-        IteraModificaDataFineRilascioPuntate(giorni);
-        //non faccio il controllo per vedere se ci sono effettivamente delle puntate perché
-        //questo richiamo avviene perché si sta modificando una puntata
-        year_month_day nuova_data = p_podcast->getElencoPuntate().back()->getDataFineRilascio();
-        p_podcast->setDataFineRilascio(nuova_data);
+        Media::setDataFineRilascio(gg_mm_aaFineRilascio);
+        p_podcast->aggiornaDate();
     }
 }
 
 vector<string> Puntata::getOspiti() const
 {
     return p_ospiti;
-};
+}
+
+void Puntata::associaPodcast(Podcast* podcast){
+    if(!podcast || p_podcast == podcast) return; 
+    if(p_podcast){
+        p_podcast->disaccoppiaPuntata(this);
+    } 
+    p_podcast = podcast;
+    p_podcast->aggiungiPuntata(this);
+} 
+
+Podcast* Puntata::getPodcast()const{
+    return p_podcast;
+}

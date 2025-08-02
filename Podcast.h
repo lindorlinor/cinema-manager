@@ -23,7 +23,7 @@ private:
     int isPuntataIn(Puntata * puntata) const;
 
 public:
-    Podcast(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+    Podcast(const string &titolo, const string &descrizione,
             Formato formato, Risoluzione risoluzione,
             const string &autore = "Sconosciuto", const string &path = "immGrigia", const string &conduttore="Sconosciuto");
 
@@ -47,8 +47,8 @@ public:
      * 
      * Le visualizzazioni del podcast diminuiscono di quelle della puntata rimossa.
      * La durata viene decrementata di quella della puntata rimossa.
-     * La data di fine rilascio viene aggiornata solo se la puntata rimossa era l’ultima del podcast. In tal caso, la nuova data di fine rilascio sarà quella dell’ultima puntata rimasta dopo la rimozione.
-     * Se, invece, dopo la rimozione non ci sono più puntate, la data di fine rilascio rimane invariata.
+     * La data di fine rilascio viene aggiornata richiamando il metodo @ref aggiornaDate, in questo modo 
+     * la nuova data di fine rilascio sarà quella dell’ultima puntata rimasta dopo la rimozione.
      * 
      * @param p Puntatore a puntata esistente
      */
@@ -58,10 +58,8 @@ public:
     /**
      * @brief Estende di 1 giorno la data di fine rilascio del podcast, se non è ancora fuori produzione.
      *
-     * non ha alcuna azione sulle puntate perché la data di fine rilascio del podcast dipende da quella
-     * di fine rilascio delle stesse puntate, quindi non è possibile estendere la fine del podcast senza 
-     * prima estendere quella delle puntate, il quale metodo richiama questo stesso metodo per aggiornare
-     * la data di fine rilascio del podcast.
+     * estende di un giorno tutte le puntate che non sono fuori produzione, infine richiama il metodo
+     * @ref aggiornaDate per aggiornare la data di fine 
      */
 
     void estendiDataFineRilascio() override;
@@ -78,6 +76,16 @@ public:
     double calcolaIncasso() override;
 
     vector<Puntata *> getElencoPuntate() const;
+    void disaccoppiaPuntata(Puntata* puntata);
+
+    /**
+     * @brief Aggiorna la data di fine e di inizio
+     * 
+     * Se la lista delle puntate non è vuota, riordina in base alla data di inizio e 
+     * acquisisce come data di fine la più recente, mentre come data di inizio la meno recente 
+     * 
+     */
+    void aggiornaDate();
 };
 
 #endif // PODCAST_H

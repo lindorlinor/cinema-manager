@@ -29,11 +29,11 @@ public:
     void rimuoviOspite(const string &);
 
     /**
-     * @brief Estende di 7 giorni la data di fine rilascio dalla puntata corrente in poi.
+     * @brief Estende di un giorno la data di fine rilascio dalla puntata corrente
      * 
-     * Se il podcast associato non è fuori produzione, estende di 7 giorni la data di fine rilascio
-     * della puntata corrente e di tutte quelle successive nell'elenco del podcast. Infine
-     * richiama il metodo @ref Podcast::estendiDataFineRilascio per aggiornare la data di fine rilascio del podcast stesso.
+     * Se il podcast associato non è fuori produzione, estende di un giorno la data di fine rilascio
+     * della puntata corrente. Infine richiama il metodo @ref Podcast::aggiornaDate per aggiornare la data di fine 
+     * rilascio del podcast stesso
      * 
      * @note Il metodo non ha effetto se il podcast è fuori produzione o non esiste.
      */
@@ -50,14 +50,6 @@ public:
 
     double calcolaIncasso() override;
 
-    /**
-     * @brief Cambia la data di fine rilascio per tutte le puntate che seguono
-     *
-     * Questo metodo è stato inserito per comodità poiché sia @ref setDataFineRilascio che @ref estendiDataFineRilascio
-     * devono applicare la modifica della data di fine rilascio a tutti gli episodi che seguono
-     */
-
-    void IteraModificaDataFineRilascioPuntate(int);
 
     vector<string> getOspiti() const;
 
@@ -78,6 +70,10 @@ public:
      * influisce sulla modifica della data di fine rilascio delle puntate che seguono. Richiama il
      * metodo @ref Puntata::IteraModificaDataFineRilascioPuntate per permettere la modifica delle puntate che seguono
      */
+
+     void associaPodcast(Podcast* podcast); 
+
+     Podcast* getPodcast()const;
 };
 
 #endif // PUNTATA_H

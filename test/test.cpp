@@ -276,7 +276,7 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
         year_month_day inizio{2025y, August, 1d};
         year_month_day fine{2025y, August, 15d};
 
-        Podcast podcast("Titolo", "Descrizione", inizio, 
+        Podcast podcast("Titolo", "Descrizione", 
                         Formato::IMAX_3D, Risoluzione::FullHD_1080p);
         Puntata* puntata1 = new Puntata("Titolo", "Descrizione", inizio, fine, 60, &podcast,3);
         podcast.aggiungiPuntata(puntata1);
@@ -298,7 +298,7 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
         year_month_day inizio{2025y, April, 1d};
         year_month_day fine{2025y, April, 15d};
 
-        Podcast podcast("Titolo", "Descrizione", inizio, 
+        Podcast podcast("Titolo", "Descrizione", 
                         Formato::IMAX_3D, Risoluzione::FullHD_1080p);
 
         Puntata* puntata1 = new Puntata("Titolo", "Descrizione", 
@@ -323,31 +323,27 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
         REQUIRE(podcast.getDurataMinuti()==60);
     }
 
-        SECTION("8.3 verifica errore con aggiunta di una puntata con data scorretta"){
+        SECTION("8.3 verifica riassegnazione puntata"){
 
-        Podcast podcast("Titolo", "Descrizione", year_month_day {2025y, April, 1d}, 
+        Podcast podcast1("Titolo", "Descrizione", 
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p);
+
+        Podcast podcast2("Titolo", "Descrizione", 
                         Formato::IMAX_3D, Risoluzione::FullHD_1080p);
         Puntata* puntata1 = new Puntata("Titolo", "Descrizione", 
                             year_month_day {2025y, August, 15d},year_month_day {2025y, August, 19d},
-                            60, &podcast,3);  
-        Puntata* puntata2 = new Puntata("Titolo", "Descrizione", 
-                            year_month_day {2025y, August, 10d},year_month_day {2025y, August, 15d},
-                            60, &podcast,3);  
-        
-        try{
-            podcast.aggiungiPuntata(puntata1);
-            podcast.aggiungiPuntata(puntata2);
-            FAIL("Expected std::invalid_argument not thrown"); //sto aspettando che lanci un'eccezione, se non fallisce da errore
-        }
-        catch(const std::invalid_argument& e){
-            REQUIRE(std::string(e.what())=="La data di fine è inferiore a quella dell'ultima puntata aggiunta");
-        }
+                            60, &podcast1,3);  
+        podcast1.aggiungiPuntata(puntata1);
+        REQUIRE(podcast1.getElencoPuntate() == vector<Puntata*>{puntata1});
+        puntata1->associaPodcast(&podcast2);
+        REQUIRE(podcast1.getElencoPuntate().empty() == true);
+        REQUIRE(podcast2.getElencoPuntate() == vector<Puntata*>{puntata1});
     }
 }
 
 TEST_CASE("9. Verifica aggiunta ospite e rimozione"){
 
-    Podcast* podcast = new Podcast("Titolo", "Descrizione", year_month_day {2025y, April, 1d}, 
+    Podcast* podcast = new Podcast("Titolo", "Descrizione", 
                         Formato::IMAX_3D, Risoluzione::FullHD_1080p);
     Puntata puntata("Titolo", "Descrizione", year_month_day {2025y, August, 15d},year_month_day {2025y, August, 19d},
                     60, podcast,3);
@@ -392,7 +388,7 @@ TEST_CASE("10. Verifica valutazione corretta"){
 
 TEST_CASE("11. Verifica Puntata::setDataFineRilascio()"){
     SECTION("11.1 verifico che la modifica di una dataFineRilascio influisca sulle successive"){
-        Podcast* podcast = new Podcast("Titolo", "Descrizione", year_month_day {2025y, April, 1d}, 
+        Podcast* podcast = new Podcast("Titolo", "Descrizione", 
                             Formato::IMAX_3D, Risoluzione::FullHD_1080p);
         Puntata puntata1("Titolo", "Descrizione", year_month_day {2025y, August, 15d},year_month_day {2025y, August, 19d},
                         60, podcast,3);
@@ -401,10 +397,10 @@ TEST_CASE("11. Verifica Puntata::setDataFineRilascio()"){
         podcast->aggiungiPuntata(&puntata1);
         podcast->aggiungiPuntata(&puntata2);
 
-        puntata1.setDataFineRilascio({2025y, August, 26d});
-        REQUIRE(puntata1.getDataFineRilascio() == year_month_day {2025y, August, 26d});
-        REQUIRE(puntata2.getDataFineRilascio() == year_month_day {2025y, September, 2d});
-        REQUIRE(podcast->getDataFineRilascio() == year_month_day {2025y, September, 2d});
+        puntata1.setDataFineRilascio({2025y, August, 30d});
+        REQUIRE(puntata1.getDataFineRilascio() == year_month_day {2025y, August, 30d});
+        REQUIRE(puntata2.getDataFineRilascio() == year_month_day {2025y, August, 26d});
+        REQUIRE(podcast->getDataFineRilascio() == year_month_day {2025y, August, 30d});
 
         puntata1.setDataFineRilascio({2025y, August, 19d});
         REQUIRE(podcast->getDataFineRilascio() == year_month_day {2025y, August, 26d});
@@ -413,7 +409,7 @@ TEST_CASE("11. Verifica Puntata::setDataFineRilascio()"){
     }
 
     SECTION("11.2 verifico che se si immette una data di fine inferiore della data di inizio, questa venga sostituita con quella di inizio"){
-        Podcast* podcast = new Podcast("Titolo", "Descrizione", year_month_day {2025y, April, 1d}, 
+        Podcast* podcast = new Podcast("Titolo", "Descrizione",
                             Formato::IMAX_3D, Risoluzione::FullHD_1080p);
         Puntata puntata("Titolo", "Descrizione", year_month_day {2025y, August, 19d},year_month_day {2025y, August, 15d},
                         60, podcast,3);
