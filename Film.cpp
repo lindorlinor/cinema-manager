@@ -82,13 +82,13 @@ double Film::getValutazione() const {
 void Film::setValutazione(){
     sys_days inizio = getDataInizioRilascio();
     sys_days fine = getDataLastViewUpdate();
-    unsigned int giorni = (fine-inizio).count();
+    unsigned int giorni = (fine-inizio).count()+1;
 
     if (giorni == 0 || getVisualizzazioni() == 0){
         f_valutazione = 0.0;
     }
     else{
-        double proporzione = getVisualizzazioni()/(static_cast<double>(giorni*1200)); 
+        double proporzione = getVisualizzazioni()/(giorni*1200.0); 
         f_valutazione = std::round((proporzione*5)>5? 5 : (proporzione*5)*10)/10.0;
     }
 }

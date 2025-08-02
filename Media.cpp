@@ -7,11 +7,10 @@ Media::~Media() {}
 // Costruttore
 Media::Media(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
              year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
-             const string &autore, const string &path) : 
-                                                 m_titolo(titolo), m_descrizione(descrizione), m_dataInizioRilascio(gg_mm_aaInizioRilascio),
-                                                 m_dataFineRilascio(gg_mm_aaFineRilascio), m_durataMinuti(durataMinuti), m_formato(formato),
-                                                 m_risoluzione(risoluzione), m_autore(autore), m_path(path), 
-                                                 m_dataLastViewUpdate(gg_mm_aaInizioRilascio), m_visualizzazioni(0) {}
+             const string &autore, const string &path) : m_titolo(titolo), m_descrizione(descrizione), m_dataInizioRilascio(gg_mm_aaInizioRilascio),
+                                                         m_dataFineRilascio(gg_mm_aaFineRilascio), m_durataMinuti(durataMinuti), m_formato(formato),
+                                                         m_risoluzione(risoluzione), m_autore(autore), m_path(path),
+                                                         m_dataLastViewUpdate(gg_mm_aaInizioRilascio), m_visualizzazioni(0) {}
 
 bool Media::FuoriProduzione() const
 {
@@ -71,7 +70,8 @@ year_month_day Media::getDataFineRilascio() const
     return m_dataFineRilascio;
 }
 
-year_month_day Media::getDataLastViewUpdate() const{
+year_month_day Media::getDataLastViewUpdate() const
+{
     return m_dataLastViewUpdate;
 }
 
@@ -79,7 +79,6 @@ void Media::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio)
 {
     m_dataFineRilascio = gg_mm_aaFineRilascio;
 }
-
 
 unsigned int Media::getVisualizzazioni() const
 {
@@ -101,11 +100,13 @@ void Media::setVisualizzazioni(unsigned int visualizzazioni)
     m_visualizzazioni = visualizzazioni;
 }
 
-Formato Media::getFormato()const{
+Formato Media::getFormato() const
+{
     return m_formato;
 }
 
-Risoluzione Media::getRisoluzione()const{
+Risoluzione Media::getRisoluzione() const
+{
     return m_risoluzione;
 }
 
@@ -118,16 +119,15 @@ void Media::IncrementaVisualizzazioni()
 
     std::srand(std::time(nullptr)); // seme basato sull’orario attuale
 
-    if (inizio != fine)
+    for (sys_days it = inizio; it <= oggi && it <= fine; it += days{1})
     {
-        for (sys_days it = inizio; it <= oggi && it <= fine; it += days{1})
-        {
-            unsigned int numero = std::rand() % 1201; // al massimo 1200 visualizzazioni al giorno
-            setVisualizzazioni(getVisualizzazioni() + numero);
+        unsigned int numero = std::rand() % 1201; // al massimo 1200 visualizzazioni al giorno
+        setVisualizzazioni(getVisualizzazioni() + numero);
 
-            if(it + days{1} == fine) m_dataLastViewUpdate = m_dataFineRilascio;
-            else if(it + days{1} == oggi) m_dataLastViewUpdate = year_month_day{oggi};
-        }
+        if (it + days{1} == fine)
+            m_dataLastViewUpdate = m_dataFineRilascio;
+        else if (it + days{1} == oggi)
+            m_dataLastViewUpdate = year_month_day{oggi};
     }
 }
 

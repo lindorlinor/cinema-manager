@@ -39,8 +39,8 @@ void Puntata::estendiDataFineRilascio()
         while (it != elenco.end())
         {
             auto dataFine = std::chrono::sys_days((*it)->getDataFineRilascio());
-            dataFine += std::chrono::days{7};                                  // aggiungi 7 giorni
-            (*it)->setDataFineRilascio(std::chrono::year_month_day{dataFine}); // aggiorna
+            dataFine += std::chrono::days{1};                                  
+            (*it)->setDataFineRilascio(std::chrono::year_month_day{dataFine}); 
             it++;
         }
         p_podcast->estendiDataFineRilascio();
