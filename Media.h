@@ -84,12 +84,19 @@ public:
     unsigned int getDurataMinuti() const;
     Formato getFormato()const;
     Risoluzione getRisoluzione()const;
-
+    
     void setVisualizzazioni(unsigned int visualizzazioni);
     void setDurataMinuti(unsigned int durata);
     void setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio);
     virtual void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio);
     
+    /**
+     * @brief assegna in automatico il numeor di visualizzazioni
+     * assegna un numero di visualizzazioni in automatico simulando una reale attività, aggiunge un numero randomico di
+     * visualizzazioni per ogni giorno dalla data di InizioRilascio finché il media non raggiunge la data di FineRilascio
+     */
+
+    void IncrementaVisualizzazioni();
     
     // metodi astratti
     virtual ~Media() = 0;
@@ -110,13 +117,6 @@ public:
      */
     virtual double calcolaIncasso() = 0;
 
-    /**
-     * @brief assegna in automatico il numeor di visualizzazioni
-     * assegna un numero di visualizzazioni in automatico simulando una reale attività, aggiunge un numero randomico di
-     * visualizzazioni per ogni giorno dalla data di InizioRilascio finché il media non raggiunge la data di FineRilascio
-     */
-
-    void IncrementaVisualizzazioni();
 };
 
 #endif
