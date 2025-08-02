@@ -19,7 +19,13 @@ public:
                 year_month_day gg_mm_aaFineRilascio, unsigned int visualizzaioni,  unsigned int durataMinuti, const string& path, 
                 Formato formato, unsigned int nProiezioniGiornaliere, Film* film);
 
-    void associaFilm(Film* film); //NOTA: non è necessario alcun "dissocia film" perchè un trailer non può esistere senza film. La gui lo permetterà richiamando nuovamente associaFilm e fornendo un film esistente
+    /**
+     * @brief assegna un film ad un Trailer
+     * 
+     * @param film 
+     * @note non è necessario alcun "dissocia film" perchè un trailer non può esistere senza film. La gui lo permetterà richiamando nuovamente associaFilm e fornendo un film esistente
+     */
+    void associaFilm(Film* film); 
 
      /**
      * @brief Imposta la data di fine rilascio del trailer.

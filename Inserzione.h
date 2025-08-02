@@ -12,6 +12,7 @@
  * Le altre fasce orarie richiedono un pagamento di un'incremento sul costo base.
  */
 class Inserzione : public Pubblicita{
+    Classificazione i_target;
     string i_aziendaInserzionista;
     const double i_costoFissoProiezione;
     vector<FasciaOraria> i_fasceOrarie;
@@ -26,6 +27,9 @@ public:
     
     void aggiungiFasciaOraria(FasciaOraria fasciaO);
     void rimuoviFasciaOraria(FasciaOraria fasciaO);
+
+    // Classificazione getTarget() const;
+    //void setTarget(Classificazione target);
     
     /**
      * @brief Estende la data di fine rilascio dell'inserzione di un mese.

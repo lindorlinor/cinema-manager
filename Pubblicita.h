@@ -14,18 +14,18 @@
 class Pubblicita : public Media
 {
 private:
-    Classificazione p_target;
+   
     unsigned int p_nProiezioniGiornaliere;
 
 public:
     Pubblicita(     const string &autore, const string &titolo, const string &descrizione, 
                     year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio, 
                     unsigned int visualizzaioni, unsigned int durataMinuti, const string& path, 
-                    Formato formato, Classificazione target, unsigned int nProiezioniGiornaliere);
+                    Formato formato, unsigned int nProiezioniGiornaliere);
 
-    // Classificazione getTarget() const;
     unsigned int getNProiezioniGiornaliere() const; 
-    // void setTarget(Classificazione target);
+   
+
 };
 
 #endif

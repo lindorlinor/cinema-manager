@@ -4,10 +4,9 @@ Inserzione::Inserzione( const string& regista, const string& titolo, const strin
                         year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio, unsigned int 
                         visualizzaioni, unsigned int durataMinuti, const string& path, 
                         Formato formato, const Classificazione& target, unsigned int nProiezioniGiornaliere, 
-                        const string& aziendaInserzionista, double costoProiezione):
-                        
+                        const string& aziendaInserzionista, double costoProiezione): 
                         Pubblicita(regista, titolo,descrizione, gg_mm_aaInizioRilascio,gg_mm_aaFineRilascio, visualizzaioni, 
-                        durataMinuti, path, formato, target,nProiezioniGiornaliere),i_aziendaInserzionista(aziendaInserzionista),
+                        durataMinuti, path, formato,nProiezioniGiornaliere),i_target(target),i_aziendaInserzionista(aziendaInserzionista),
                         i_costoFissoProiezione(costoProiezione){
                             aggiungiFasciaOraria(FasciaOraria::Mattina);
                         }

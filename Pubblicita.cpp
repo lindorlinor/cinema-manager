@@ -3,11 +3,11 @@
 Pubblicita::Pubblicita(     const string& autore, const string& titolo, const string& descrizione, 
                             year_month_day gg_mm_aaInizioRilascio, year_month_day gg_mm_aaFineRilascio, 
                             unsigned int visualizzaioni, unsigned int durataMinuti, const string& path, 
-                            Formato formato, Classificazione target, 
+                            Formato formato, 
                             unsigned int nProiezioniGiornaliere):
                             
                             Media(autore,titolo, descrizione, gg_mm_aaInizioRilascio,gg_mm_aaFineRilascio,
-                            visualizzaioni,durataMinuti, path, formato),p_target(target), 
+                            visualizzaioni,durataMinuti, path, formato), 
                             p_nProiezioniGiornaliere(nProiezioniGiornaliere){}
 
 // Classificazione Pubblicita::getTarget() const{

@@ -5,11 +5,15 @@ Trailer::Trailer(   const string& regista, const string& titolo, const string& d
                     visualizzaioni, unsigned int durataMinuti, const string& path, 
                     Formato formato, unsigned int nProiezioniGiornaliere, Film* film):
                     Pubblicita(regista, titolo,descrizione, gg_mm_aaInizioRilascio,(gg_mm_aaFineRilascio>film->getDataFineRilascio()?film->getDataFineRilascio():gg_mm_aaFineRilascio) , 
-                    visualizzaioni, durataMinuti,path, formato, film->getClassificazione(),nProiezioniGiornaliere),t_film(film){}
+                    visualizzaioni, durataMinuti,path, formato,nProiezioniGiornaliere),t_film(film){}
 
 void Trailer::associaFilm(Film* film){
-    t_film=film;
+    t_film = film;
+    if (getDataFineRilascio() > film->getDataFineRilascio()) {
+        setDataFineRilascio(film->getDataFineRilascio());
+    }
 }
+
 
 
 //nota: nella gui ovviamente dovrà essere avvisato l'utente che la data è maggiore e quindi viene messa quella del film.  
