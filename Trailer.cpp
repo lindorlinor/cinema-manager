@@ -51,3 +51,8 @@ double Trailer::calcolaIncasso()
     }
     return 0.0;
 }
+
+
+Film* Trailer::getFilm() const {
+    return t_film;
+}

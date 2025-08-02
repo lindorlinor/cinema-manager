@@ -31,6 +31,8 @@ public:
      */
     void associaFilm(Film* film); 
 
+    Film* getFilm() const;
+    
      /**
      * @brief Imposta la data di fine rilascio del trailer.
      *
