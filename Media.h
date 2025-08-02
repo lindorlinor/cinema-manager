@@ -45,20 +45,19 @@ public:
     // void setTitolo(const string& titolo);
     // void setD
     // //metodi getescrizione(const string& descrizione);
-    // void setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio);
-
+    
     // //metodi get
     // string getAutore() const;
     // string getTitolo() const;
     // string getDescrizione() const;
     // vector<Lingua> getLingue() const;
     // vector<Lingua> getSottotitoli() const;
-
+    
     void aggiungiLingua(Lingua lingua);
     void aggiungiSottotitolo(Lingua lingua);
     void rimuoviLingua(Lingua lingua);
     void rimuoviSottotitolo(Lingua lingua);
-
+    
     /**
      * @brief Verifca se il media è correntemente distribuito nei canali del cinema.
      * 
@@ -67,7 +66,7 @@ public:
      * @return True se il media è fuori produzione
      */
     bool FuoriProduzione() const;
-
+    
     /**
      * @brief Indica il numero di giorni in cui il media è distribuito nei canali del cinema.
      * 
@@ -78,21 +77,30 @@ public:
     unsigned int DurataCampagna() const;
 
     // metodi get e set
-    void setVisualizzazioni(unsigned int visualizzazioni);
     unsigned int getVisualizzazioni() const;
     year_month_day getDataInizioRilascio() const;
     year_month_day getDataFineRilascio() const;
     year_month_day getDataLastViewUpdate() const;
-    virtual void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio);
     unsigned int getDurataMinuti() const;
-    void setDurataMinuti(unsigned int durata);
     Formato getFormato()const;
     Risoluzione getRisoluzione()const;
+    
+    void setVisualizzazioni(unsigned int visualizzazioni);
+    void setDurataMinuti(unsigned int durata);
+    void setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio);
+    virtual void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio);
+    
+    /**
+     * @brief assegna in automatico il numeor di visualizzazioni
+     * assegna un numero di visualizzazioni in automatico simulando una reale attività, aggiunge un numero randomico di
+     * visualizzazioni per ogni giorno dalla data di InizioRilascio finché il media non raggiunge la data di FineRilascio
+     */
 
-
+    void IncrementaVisualizzazioni();
+    
     // metodi astratti
     virtual ~Media() = 0;
-
+    
     /**
      * @brief Estende la data di fine rilascio a seconda del tipo di media e del suo stato corrente.
      * 
@@ -109,9 +117,6 @@ public:
      */
     virtual double calcolaIncasso() = 0;
 
-    // assegna un numero di visualizzazioni in automatico simulando una reale attività, aggiunge un numero randomico di
-    // visualizzazioni per ogni giorno dalla data di InizioRilascio finché il media non raggiunge la data di FineRIlascio
-    void IncrementaVisualizzazioni();
 };
 
 #endif

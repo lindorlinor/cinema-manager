@@ -24,7 +24,7 @@ private:
 
 public:
     Podcast(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
-            year_month_day gg_mm_aaFineRilascio, Formato formato, Risoluzione risoluzione,
+            Formato formato, Risoluzione risoluzione,
             const string &autore = "Sconosciuto", const string &path = "immGrigia", const string &conduttore="Sconosciuto");
 
     ~Podcast();

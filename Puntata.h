@@ -12,8 +12,7 @@ class Podcast;
  * di tutte le puntate che lo compongono. La data di fine rilascio di un podcast coincide con quella dell'ultima puntata pubblicata.
  * Invariante: Le puntate che compongono il podcast possono avere, tra di loro, date di fine rilascio diverse ma queste tra di loro devono sempre essere ordinate.
  */
-class Puntata : public Media
-{
+class Puntata : public Media{
 private:
     vector<string> p_ospiti;
     Podcast *p_podcast;
@@ -50,7 +49,35 @@ public:
      */
 
     double calcolaIncasso() override;
+
+    /**
+     * @brief Cambia la data di fine rilascio per tutte le puntate che seguono
+     *
+     * Questo metodo è stato inserito per comodità poiché sia @ref setDataFineRilascio che @ref estendiDataFineRilascio
+     * devono applicare la modifica della data di fine rilascio a tutti gli episodi che seguono
+     */
+
+    void IteraModificaDataFineRilascioPuntate(int);
+
     vector<string> getOspiti() const;
+
+    /**
+     * @brief Cambia la data di fine rilascio per puntata
+     *
+     * Puntata ha la necessità di fare un override su setDataFineRilascio in quanto la mmodifica della data
+     * influisce sulla modifica della data di fine rilascio delle puntate che seguono. Richiama il
+     * metodo @ref Puntata::IteraModificaDataFineRilascioPuntate per permettere la modifica delle puntate che seguono
+     */
+
+    void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) override;
+
+    /**
+     * @brief Cambia la data di inizio rilascio per puntata
+     *
+     * Puntata ha la necessità di fare un override su setDataFineRilascio in quanto la mmodifica della data
+     * influisce sulla modifica della data di fine rilascio delle puntate che seguono. Richiama il
+     * metodo @ref Puntata::IteraModificaDataFineRilascioPuntate per permettere la modifica delle puntate che seguono
+     */
 };
 
 #endif // PUNTATA_H
