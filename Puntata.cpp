@@ -44,7 +44,7 @@ void Puntata::estendiDataFineRilascio() {
         auto it = std::find(elenco.begin(), elenco.end(), this);
         while(it!=elenco.end()){
             auto dataFine = std::chrono::sys_days((*it)->getDataFineRilascio());
-            dataFine += std::chrono::days{7};                           
+            dataFine += std::chrono::days{1};                           
             (*it)->setDataFineRilascio(std::chrono::year_month_day{dataFine}); 
             it++;
         }

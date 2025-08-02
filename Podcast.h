@@ -57,23 +57,14 @@ public:
 
 
     /**
-     * @brief Estende di 7 giorni la data di fine rilascio del podcast, se non è ancora fuori produzione.
+     * @brief Estende di 1 giorno la data di fine rilascio del podcast, se non è ancora fuori produzione.
      *
      * non ha alcuna azione sulle puntate perché la data di fine rilascio del podcast dipende da quella
      * di fine rilascio delle stesse puntate, quindi non è possibile estendere la fine del podcast senza 
      * prima estendere quella delle puntate, il quale metodo richiama questo stesso metodo per aggiornare
-     * la data di fine rilascio del podcast
+     * la data di fine rilascio del podcast.
      */
 
-    // TO DO: preferisco cambiare la logica, non 7 giorni ma magari 3? 2? 1? idkkkkk però potremmo cambiarlo,
-    // inoltre preferirei che se fai estendi allora estende la data dell'ultima puntata (così rimane valido che 
-    //la data di fine rilascio dell'ultima puntata del podcast = data fine rilascio podcast, logica espressa in aggiungiPuntata e (circa) in rimuoviPuntata)
-    // il commento doxy diventerebbe:
-    /* 
-    * @brief Estende di 2 giorni la data di fine rilascio del podcast, se non è ancora fuori produzione.
-    * 
-    * L'estensione della data di fine rilascio ha effetto di aumentare dello stesso numero di giorni la data di fine rilascio dell'ultima puntata inserita.
-    */
     void estendiDataFineRilascio() override;
 
     /**

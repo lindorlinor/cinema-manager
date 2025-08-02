@@ -55,7 +55,6 @@ void Film::aggiungiTrailer(Trailer* trailer) {
 }
 
 
-//NOTA: deve apparire un warning pop up dicendo che verrà anche eliminato il trailer se si tenta di toglierlo. 
 void Film::rimuoviTrailer(Trailer* trailer) {
     int i_trailer = isTrailerIn(trailer);
     if (i_trailer != -1) {

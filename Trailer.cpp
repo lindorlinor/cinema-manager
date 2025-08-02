@@ -8,6 +8,7 @@ Trailer::Trailer(   const string& regista, const string& titolo, const string& d
                     visualizzaioni, durataMinuti,path, formato,nProiezioniGiornaliere),t_film(film){}
 
 void Trailer::associaFilm(Film* film){
+    //TO DO TOGLIERE IL TRAILER DALLA LISTA DEL FILM VECCHIO
     t_film = film;
     if (getDataFineRilascio() > film->getDataFineRilascio()) {
         setDataFineRilascio(film->getDataFineRilascio());

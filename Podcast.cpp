@@ -22,7 +22,7 @@ void Podcast::aggiungiPuntata(Puntata* puntata){
             //soluzione 1: permettere la modifica ma magari aggiungere un warning a livello di gui
             //soluzione 2: overridare setDataFineRilascio non permettendo 
         //NOTA2: le eccezioni modificano il flusso del programma, in trailer lo ho gestito impostando la data di fine uguale a quella del film. La gui poi si occupava di controllare i valori e avvertire del cambiamento l'utente (avevo chiesto a chatty e mi aveeva assicurato che la suddivisione dei compiti era corretta, ma chissà)
-            //soluzione1: lasciamo l'eccezione perchè, benchè sia diversa la risoluzione del problema in trailer, può aver senso in questo caso perchè non c'è una soluzione intuitivamente logica
+           // SCELTO QUESTO soluzione1: lasciamo l'eccezione perchè, benchè sia diversa la risoluzione del problema in trailer, può aver senso in questo caso perchè non c'è una soluzione intuitivamente logica
             //soluzione2: si forza un ragionamento per una soluzione concreta che non fa uso di eccezioni. Quello che avevo pensato era di impostare la data di fine rilascio dell'ultima puntata, avvertendo l'utente (tramite gui)
             //soluzione3: si tiene l'eccezione e si modifica anche in trailer aggiungendo un'eccezione e chiedendo (tramite gui) di impostare una data di fine corretta per il trailer.           
         if(puntata->getDataFineRilascio() < p_elencoPuntate.back()->getDataFineRilascio()){
@@ -35,19 +35,6 @@ void Podcast::aggiungiPuntata(Puntata* puntata){
     }
 }
 
-// TO DO: isPuntataIn è diversa
-/* PRIMA
-bool Podcast::isPuntataIn(Puntata * puntata) const{
-    if (p_elencoPuntate.empty())
-        return false;
-    for (Puntata* p : p_elencoPuntate)
-    {
-        if (p == puntata)
-            return true;
-    }
-    return false;
-}
- */
 
  int Podcast::isPuntataIn(Puntata* puntata) const {
     auto it = std::find(p_elencoPuntate.begin(), p_elencoPuntate.end(), puntata);
@@ -58,29 +45,13 @@ bool Podcast::isPuntataIn(Puntata * puntata) const{
     }
 }
 
-//TO DO: NOTA: prima non c'era alcuna dostruzione delle puntate (come per esempio c'è in film per trailer) è pensato o errore?
-/* PRIMA
-void Podcast::rimuoviPuntata(Puntata* puntata){
-    if (!p_elencoPuntate.empty()) {
-        auto it = std::find(p_elencoPuntate.begin(), p_elencoPuntate.end(), puntata);
-        if (it != p_elencoPuntate.end()){
-            setVisualizzazioni(getVisualizzazioni()-puntata->getVisualizzazioni());
-            setDurataMinuti(getDurataMinuti() - puntata->getDurataMinuti());
-            p_elencoPuntate.erase(it);
-            if(getDataFineRilascio() != p_elencoPuntate.back()->getDataFineRilascio())
-                setDataFineRilascio(p_elencoPuntate.back()->getDataFineRilascio());
-        } 
-    }
-}
- */
 
 void Podcast::rimuoviPuntata(Puntata* puntata) {
     int i_puntata = isPuntataIn(puntata);
     if (i_puntata != -1) {
         setVisualizzazioni(getVisualizzazioni() - puntata->getVisualizzazioni());
         setDurataMinuti(getDurataMinuti() - puntata->getDurataMinuti());
-
-        delete puntata;//TO DO: distruzione (vedi nota prima)
+        delete puntata;
 
         p_elencoPuntate.erase(p_elencoPuntate.begin() + i_puntata);
 
@@ -105,12 +76,9 @@ double Podcast::calcolaIncasso(){
 void Podcast::estendiDataFineRilascio(){
     if (!FuoriProduzione())
     {
-        // Converti year_month_day a sys_days per sommare giorni
         std::chrono::sys_days dataFine = std::chrono::sys_days(getDataFineRilascio());
-        dataFine += std::chrono::days{7};                           // aggiungi 7 giorni
-        setDataFineRilascio(std::chrono::year_month_day{dataFine}); // aggiorna
-        
-        
+        dataFine += std::chrono::days{1};                          
+        setDataFineRilascio(std::chrono::year_month_day{dataFine});
     }
 } 
 
