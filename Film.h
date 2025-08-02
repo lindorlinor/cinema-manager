@@ -27,14 +27,15 @@ Genere f_genere;
     unsigned int f_nPostCredit;
     double f_costoBiglietto;
     double f_valutazione;
-    int isTrailerIn(Trailer *trailer) const;
+    
 
 public:
     Film(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
          year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
          Genere genere, const string &casaDiProduzione, unsigned int nPostCredit, double costoBiglietto, 
          const string &autore = "Sconosciuto", const string &path = "immGrigia", Classificazione target = Classificazione::TUTTI);
-
+    
+    int isTrailerIn(Trailer *trailer) const;
     // //metodi set
 
     /**
@@ -62,11 +63,12 @@ public:
     double getValutazione() const;
     Classificazione getClassificazione() const;
     double getCostoBiglietto() const;
-
+    vector<Trailer *> getTrailers() const;
     // metodi per aggiungere e togliere i trailer
     void aggiungiTrailer(Trailer *trailer);
     void rimuoviTrailer(Trailer *trailer);
 
+    void disaccoppiaTrailer(Trailer* trailer);
     // i metodi puri
 
     /**

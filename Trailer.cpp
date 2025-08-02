@@ -8,13 +8,22 @@ Trailer::Trailer(const string &titolo, const string &descrizione, year_month_day
                         Pubblicita(titolo, descrizione, gg_mm_aaInizioRilascio, (gg_mm_aaFineRilascio>film->getDataFineRilascio()?film->getDataFineRilascio():gg_mm_aaFineRilascio),
                                     durataMinuti, formato, risoluzione, nProiezioniGiornaliere, autore, path), t_film(film){}
 
-void Trailer::associaFilm(Film* film){
-    //TO DO TOGLIERE IL TRAILER DALLA LISTA DEL FILM VECCHIO
+
+void Trailer::associaFilm(Film* film) {
+    if (!film || t_film == film)
+        return;
+
+    if (t_film){
+        t_film->disaccoppiaTrailer(this);
+    }
     t_film = film;
     if (getDataFineRilascio() > film->getDataFineRilascio()) {
         setDataFineRilascio(film->getDataFineRilascio());
     }
-}
+    film->aggiungiTrailer(this);
+}   
+
+
 
 void Trailer::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio){ 
     if(gg_mm_aaFineRilascio>t_film->getDataFineRilascio())
@@ -56,3 +65,4 @@ double Trailer::calcolaIncasso()
 Film* Trailer::getFilm() const {
     return t_film;
 }
+

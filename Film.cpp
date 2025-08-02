@@ -63,6 +63,12 @@ void Film::rimuoviTrailer(Trailer* trailer) {
     }
 }
 
+void Film::disaccoppiaTrailer(Trailer* trailer){
+    int i_trailer= isTrailerIn(trailer);
+    if (i_trailer != -1) {
+        trailers.erase(trailers.begin() + i_trailer);
+    }
+}
 
 
 //metodi get
@@ -82,6 +88,9 @@ double Film::getValutazione() const {
     return f_valutazione;
 }
 
+vector<Trailer *> Film::getTrailers() const{
+    return trailers;
+}
 void Film::setValutazione(){
     sys_days inizio = getDataInizioRilascio();
     sys_days fine = getDataLastViewUpdate();
