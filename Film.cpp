@@ -83,7 +83,7 @@ double Film::getValutazione() const {
 void Film::setValutazione(){
     sys_days inizio = getDataInizioRilascio();
     sys_days fine = getDataLastViewUpdate();
-    unsigned int giorni = (fine-inizio).count()+1;
+    unsigned int giorni = (fine-inizio).count();
 
     if (giorni == 0 || getVisualizzazioni() == 0){
         f_valutazione = 0.0;
