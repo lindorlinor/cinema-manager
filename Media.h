@@ -110,8 +110,12 @@ public:
      */
     virtual double calcolaIncasso() = 0;
 
-    // assegna un numero di visualizzazioni in automatico simulando una reale attività, aggiunge un numero randomico di
-    // visualizzazioni per ogni giorno dalla data di InizioRilascio finché il media non raggiunge la data di FineRIlascio
+    /**
+     * @brief assegna in automatico il numeor di visualizzazioni
+     * assegna un numero di visualizzazioni in automatico simulando una reale attività, aggiunge un numero randomico di
+     * visualizzazioni per ogni giorno dalla data di InizioRilascio finché il media non raggiunge la data di FineRilascio
+     */
+
     void IncrementaVisualizzazioni();
 };
 
