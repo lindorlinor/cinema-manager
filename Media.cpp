@@ -8,7 +8,8 @@ Media::~Media() {}
 Media::Media(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
              year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
              const string &autore, const string &path) : m_titolo(titolo), m_descrizione(descrizione), m_dataInizioRilascio(gg_mm_aaInizioRilascio),
-                                                         m_dataFineRilascio(gg_mm_aaFineRilascio), m_durataMinuti(durataMinuti), m_formato(formato),
+                                                         m_dataFineRilascio(gg_mm_aaFineRilascio<gg_mm_aaInizioRilascio?gg_mm_aaInizioRilascio:gg_mm_aaFineRilascio), 
+                                                         m_durataMinuti(durataMinuti), m_formato(formato),
                                                          m_risoluzione(risoluzione), m_autore(autore), m_path(path),
                                                          m_dataLastViewUpdate(gg_mm_aaInizioRilascio), m_visualizzazioni(0) {}
 
@@ -22,7 +23,7 @@ unsigned int Media::DurataCampagna() const
 {
     sys_days inizio = m_dataInizioRilascio;
     sys_days fine = m_dataFineRilascio;
-    return static_cast<unsigned int>((fine - inizio).count() + 1);
+    return static_cast<unsigned int>((fine - inizio).count() +1);
 }
 
 void Media::aggiungiLingua(Lingua lingua)
@@ -77,7 +78,10 @@ year_month_day Media::getDataLastViewUpdate() const
 
 void Media::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio)
 {
-    m_dataFineRilascio = gg_mm_aaFineRilascio;
+    if(gg_mm_aaFineRilascio<getDataInizioRilascio())
+        m_dataFineRilascio = m_dataInizioRilascio;
+    else
+        m_dataFineRilascio = gg_mm_aaFineRilascio;
 }
 
 unsigned int Media::getVisualizzazioni() const
@@ -131,6 +135,10 @@ void Media::IncrementaVisualizzazioni()
     }
 }
 
+void Media::setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio) {
+    m_dataInizioRilascio = gg_mm_aaInizioRilascio;
+}
+
 // // Metodi set
 // void Media::setAutore(const string& autore){
 //     m_autore = autore;
@@ -143,9 +151,6 @@ void Media::IncrementaVisualizzazioni()
 //     m_descrizione = descrizione;
 // }
 
-// void Media::setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio) {
-//     m_dataInizioRilascio = gg_mm_aaInizioRilascio;
-// }
 
 // // Metodi get
 // string Media::getAutore() const{

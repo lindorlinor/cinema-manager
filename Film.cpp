@@ -63,8 +63,6 @@ void Film::rimuoviTrailer(Trailer* trailer) {
     }
 }
 
-
-
 //metodi get
 double Film::getCostoBiglietto() const {
     return f_costoBiglietto;
