@@ -12,9 +12,9 @@ class Puntata; // dichiarazione incompleta
  * Un podcast ha un conduttore ed è composto da delle puntate. La durata del podcast corrisponde alla durata complessiva
  * di tutte le puntate che lo compongono. La data di fine rilascio di un podcast coincide con quella dell'ultima puntata pubblicata.
  * Invariante: Le puntate che compongono il podcast possono avere, tra di loro, date di fine rilascio diverse ma queste tra di loro devono sempre essere ordinate.
+ * @note L'INVARIANTE É BELLA, VEDI SE CI SONO PROBLEMI DI COERENZA CON I METODI (soprattutto setDataFineRilascio delle puntate!!)
  */
 
- //TO DO : L'INVARIANTE É BELLA, VEDI SE CI SONO PROBLEMI DI COERENZA CON I METODI (soprattutto setDataFineRilascio delle puntate!!)
 class Podcast : public Media
 {
 private:
@@ -33,7 +33,7 @@ public:
     /**
      * @brief Aggiunge una puntata al podcast, modificando opportunamente i campi dato del podcast stesso.
      * 
-     * Le visualizzazioni del podcast aumentano di quelle della  aggiunta.
+     * Le visualizzazioni del podcast aumentano di quelle della puntata aggiunta.
      * La durata viene incrementata di quella della puntata aggiunta.
      * La data di fine rilascio del podcast viene aggiornata a quella della puntata aggiunta.
      * L'inserimento di una puntata con DataFineRilascio < della DataFineRilascio del podcast corrente lancia un'eccezione invalid_argument 
