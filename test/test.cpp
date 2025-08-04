@@ -178,6 +178,7 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
                             60, &podcast,3);        
         REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 25d});
         REQUIRE(podcast.getDurataMinuti()==120);
+        REQUIRE(puntata2->getPodcast()==&podcast);
     }
 
     SECTION("8.2 verifica rimozione della puntata"){
