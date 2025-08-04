@@ -91,7 +91,7 @@ public:
     virtual void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio);
     
     /**
-     * @brief assegna in automatico il numeor di visualizzazioni
+     * @brief assegna in automatico il numero di visualizzazioni
      * assegna un numero di visualizzazioni in automatico simulando una reale attività, aggiunge un numero randomico di
      * visualizzazioni per ogni giorno dalla data di InizioRilascio finché il media non raggiunge la data di FineRilascio
      */
