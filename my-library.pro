@@ -1,21 +1,26 @@
 CONFIG += c++20
 CONFIG += console
 
-QMAKE_CXXFLAGS += -std=c++20
+CONFIG += debug
+OBJECTS_DIR = release
+MOC_DIR = release
+RCC_DIR = release
+UI_DIR = release
 
 QT += widgets
+QMAKE_CXXFLAGS += -g -O0
+
 
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 TEMPLATE = app
-TARGET = my-library
+TARGET = release/my-library
 INCLUDEPATH += .
 
 # Input
 HEADERS +=  \
             EnumClasses.h \
             MainWindow.h \
-            EnumClasses.h \
             Inserzione.h \
             Media.h \
             Pubblicita.h \

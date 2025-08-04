@@ -333,7 +333,7 @@ TEST_CASE("13. setDataFineRilascio Film -> trailer aggiornati") {
     REQUIRE(t->getDataFineRilascio() == nuovaFine);
 }
 
-// --- TEST 6: Trailer associato - disaccoppiamento ---
+
 TEST_CASE("14. disaccoppiaTrailer") {
     Film film("Film", "desc", year_month_day{2025y, July, 1d}, year_month_day{2025y, July, 31d},
               100, Formato::DCP, Risoluzione::HD_720p, Genere::Thriller, "Studio", 1, 9.0);
