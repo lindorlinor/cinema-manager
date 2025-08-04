@@ -330,6 +330,6 @@ TEST_CASE("14. disaccoppiaTrailer") {
                               3, Formato::DCP, Risoluzione::HD_720p, 2, &film);
     film.disaccoppiaTrailer(t);
     // Trailer ancora valido, ma non nella lista del film, deve essere distrutto
-    delete t;
     REQUIRE(t->getFilm() == &film);
+    delete t;
 }
