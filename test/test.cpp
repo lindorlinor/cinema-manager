@@ -306,7 +306,7 @@ TEST_CASE("11. Verifica Puntata::setDataFineRilascio()"){
     }
     
 }
-TEST_CASE("7. Film::rimuoviTrailer verifica liberazione memoria") {
+TEST_CASE("12. Film::rimuoviTrailer verifica liberazione memoria") {
     Film film("Remov", "desc", year_month_day{2025y, May, 1d}, year_month_day{2025y, May, 31d},
               110, Formato::DCP, Risoluzione::FullHD_1080p, Genere::Drama, "Studio", 0, 7.5);
 
@@ -318,7 +318,7 @@ TEST_CASE("7. Film::rimuoviTrailer verifica liberazione memoria") {
     REQUIRE(true);  // test base, controllo leak da fuori (valgrind)
 }
 
-TEST_CASE("8. setDataFineRilascio Film -> trailer aggiornati") {
+TEST_CASE("13. setDataFineRilascio Film -> trailer aggiornati") {
     Film film("Prolungato", "desc", year_month_day{2025y, August, 1d}, year_month_day{2025y, August, 20d},
               130, Formato::DCP, Risoluzione::FullHD_1080p, Genere::Azione, "Studio", 2, 11.0);
 
@@ -334,7 +334,7 @@ TEST_CASE("8. setDataFineRilascio Film -> trailer aggiornati") {
 }
 
 // --- TEST 6: Trailer associato - disaccoppiamento ---
-TEST_CASE("6. disaccoppiaTrailer") {
+TEST_CASE("14. disaccoppiaTrailer") {
     Film film("Film", "desc", year_month_day{2025y, July, 1d}, year_month_day{2025y, July, 31d},
               100, Formato::DCP, Risoluzione::HD_720p, Genere::Thriller, "Studio", 1, 9.0);
 
