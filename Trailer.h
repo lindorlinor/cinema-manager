@@ -9,9 +9,12 @@ class Film; // forward declaration
  * @class Trailer
  * @brief Rappresenta un trailer proiettato al cinema.
  * 
- * Un trailer è una pubblicità proiettata nelle sale del cinema. Un trailer è sempre associato ad un film esistente del cinema.
- * @note il puntatore a film nella GUI non potrà mai essere null perché è impossibile che l'utente non selezioni alcun film. Tuttavia nel modello è permesso
- * @see Trailer
+ * Un trailer è una pubblicità proiettata nelle sale del cinema. Un trailer è sempre associato ad un film esistente del cinema. L'associazione è sempre bidirezionale 
+ * e l'invariante è soddisfatta in ogni stato stabile del programma.
+ * 
+ * @note il puntatore a film nella GUI non potrà mai essere null perché è impossibile che l'utente non selezioni alcun film. Tuttavia nel modello è permesso quidi ci sono 
+ * delle verifiche attraverso if per controllare questa cosa
+ * @see Film
  */
 class Trailer : public Pubblicita{
     Film* t_film;
@@ -27,7 +30,8 @@ public:
      * @brief assegna un film ad un Trailer
      * 
      * @param film 
-     * @note non è necessario alcun "dissocia film" perchè un trailer non può esistere senza film. La gui lo permetterà richiamando nuovamente associaFilm e fornendo un film esistente
+     * 
+     * @see disaccoppiaFilm
      */
     void associaFilm(Film* film); 
 

@@ -7,7 +7,9 @@ Puntata::Puntata(const string &titolo, const string &descrizione, year_month_day
                  const string &path) : 
                             Media(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
                             durataMinuti, podcast->getFormato(), podcast->getRisoluzione(), autore, path),p_podcast(podcast), 
-                            p_numeroPubblicita(numeroPubblicita) {}
+                            p_numeroPubblicita(numeroPubblicita) {
+                                p_podcast->aggiungiPuntata(this);
+                            }
 
 
 int Puntata::isOspiteIn(const std::string& ospite) const {

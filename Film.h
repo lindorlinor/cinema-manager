@@ -15,6 +15,10 @@ using namespace std::chrono;
 /**
  * @class Film
  * @brief Rappresenta un film distribuito al cinema.
+ * 
+ * Un film possiede un vettore di trailer. L'associazione tra film e trailer è sempre bidirezionale:
+ * il trailer è collegato al film e il film al trailer. L'invariante è soddisfatta in ogni stato stabile del programma.
+ * @see Trailer
  */
 class Film : public Media
 {
@@ -65,11 +69,26 @@ public:
     double getCostoBiglietto() const;
     // metodi per aggiungere e togliere i trailer
     void aggiungiTrailer(Trailer *trailer);
+
+    /**
+     * @brief Disaccoppia un trailer dal film ed elimina definitivamennte il trailer
+     * 
+     * @see disaccoppiaTrailer
+     * 
+     * @param trailer 
+     * @note Duplicazione di codice tra @ref rimuoviTrailer e @ref disaccoppiaTrailer perchè è minimo
+     */
     void rimuoviTrailer(Trailer *trailer);
 
+    /**
+     * @brief Disaccoppia un trailer dal film
+     * 
+     * @param trailer 
+     */
     void disaccoppiaTrailer(Trailer* trailer);
-    // i metodi puri
 
+
+    // i metodi puri
     /**
      * @brief  Estende di 7 giorni la data di fine rilascio del film, se non è ancora fuori produzione. Modifica la data dei trailer associati che non sono fuori produzione.
      * Estende la data dei trailer associati richiamando il metodo @ref setDataFineRilascio

@@ -92,6 +92,7 @@ public:
     
     /**
      * @brief assegna in automatico il numero di visualizzazioni
+     * 
      * assegna un numero di visualizzazioni in automatico simulando una reale attività, aggiunge un numero randomico di
      * visualizzazioni per ogni giorno dalla data di InizioRilascio finché il media non raggiunge la data di FineRilascio
      */
