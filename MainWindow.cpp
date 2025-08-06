@@ -3,7 +3,8 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    // Qui puoi aggiungere widget o layout in seguito
+    SearchPanel *searchPanel = new SearchPanel(this);
+    setCentralWidget(searchPanel); 
 }
 
 MainWindow::~MainWindow()

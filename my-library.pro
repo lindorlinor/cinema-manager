@@ -28,6 +28,7 @@ HEADERS +=  \
             Film.h \
             Podcast.h \
             Puntata.h \
+            SearchPanel.h \
             catch.hpp
 SOURCES +=  \
             main.cpp \
@@ -39,4 +40,5 @@ SOURCES +=  \
             Film.cpp \
             Podcast.cpp \
             Puntata.cpp \
+            SearchPanel.cpp \
             test/test.cpp

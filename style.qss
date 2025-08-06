@@ -1,0 +1,144 @@
+QPushButton{
+    background-color: transparent;
+    color: #708084;
+    padding: 10px 15px;
+    font-family: "Inter";
+    font-size: 24pt;
+    border:none;
+    border-radius: 8px;
+}
+
+QPushButton:hover{
+    background-color: #1A2D31;
+    color: #e9fed46a;
+}
+
+QPushButton:pressed{
+    color: #e9fed46a;
+    background-color: transparent;
+}
+
+QPushButton:pressed{
+    color: #e9fed46a;
+}
+
+
+QWidget{
+    background-color:#243F46;
+}
+
+QMenu,QMenuBar{
+    color: #D9D9D9;
+    font-size: 14pt;
+}
+
+QMenuBar::item,
+QMenuBar::item:hover,
+QMenuBar::item:selected{
+    padding: 5px 10px;
+}
+
+QMenuBar::item:hover,
+QMenuBar::item:selected,
+QMenu::item:selected
+{
+    background-color:#1A2D31;
+}
+
+QStackedWidget{
+    background-color:#1A2D31;
+}
+
+QLineEdit{
+    background-color:#1A2D31;
+    border-radius: 20px;
+    padding:10px;
+    color: #708084;
+    font-size: 16pt;
+    min-height:10px;
+    max-height:50px;
+}
+
+QComboBox{
+    background-color:#1A2D31;
+    color: #708084;
+    padding: 10px;
+    min-width:100px;
+    max-width:400px;
+    min-height:10px;
+    max-height:50px;
+    font-size: 16pt;
+    min-height:50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border:none;
+    border-radius: 8px;
+}
+
+#addMedia{
+    background-color:#1A2D31;
+    color: #708084;
+    border-radius: 8px;
+    font-size: 30pt;
+    padding: 20px;
+    margin:20px 30px;
+    border-radius:20px;
+}
+
+#addMedia:pressed{
+    color: #243F46;
+}
+
+#addMedia:hover{
+    color: #e9fed46a;
+}
+
+
+#filtri{
+    color: #708084;
+    min-height:10px;
+    max-height:50px;
+}
+
+#filtri:hover{
+    background-color:#1A2D31;
+    color: #708084;
+    border-color:#1A2D31;
+}
+
+#filtri:pressed{
+    background-color: #1A2D31;
+    color: #243F46;
+    border-color:#1A2D31;
+}
+
+#invioCerca, #vista{
+    background-color:transparent;
+    color: #708084;
+    min-height:10px;
+    max-height:50px;
+}
+
+#invioCerca:hover,
+#vista:hover{
+    color: #1A2D31;
+}
+
+#invioCerca:pressed,
+#vista:pressed{
+    color: #1A2D31;
+}
+
+#addCinema{
+    border-radius:20px;
+    color:#e9fed46a;
+    background:#1A2D31;
+}
+
+#addCinema:hover{
+    color:#708084;
+}
+
+#addCinema:pressed{
+    color:#243F46;
+}
