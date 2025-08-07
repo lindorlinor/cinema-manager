@@ -30,7 +30,8 @@ HEADERS +=  \
             catch.hpp \
             GUI/CinemaButton.h \
             GUI/MainWindow.h \
-            GUI/CinemaSelectionPage.h
+            GUI/CinemaSelectionPage.h \
+            GUI/SearchPanel.h 
 SOURCES +=  \
             main.cpp \
             Inserzione.cpp \
@@ -43,5 +44,6 @@ SOURCES +=  \
             test/test.cpp \
             GUI/CinemaButton.cpp \
             GUI/MainWindow.cpp \
-            GUI/CinemaSelectionPage.cpp
+            GUI/CinemaSelectionPage.cpp \
+            GUI/SearchPanel.cpp 
 RESOURCES += GUI/resources.qrc
