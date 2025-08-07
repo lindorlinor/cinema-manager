@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     SearchPanel *searchPanel = new SearchPanel(this);
     setCentralWidget(searchPanel); 
+    resize(800,600);
 }
 
 MainWindow::~MainWindow()

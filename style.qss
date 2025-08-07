@@ -3,7 +3,7 @@ QPushButton{
     color: #708084;
     padding: 10px 15px;
     font-family: "Inter";
-    font-size: 24pt;
+    font-size: 20pt;
     border:none;
     border-radius: 8px;
 }
@@ -22,14 +22,28 @@ QPushButton:pressed{
     color: #e9fed46a;
 }
 
-
-QWidget{
-    background-color:#243F46;
-}
-
 QMenu,QMenuBar{
     color: #D9D9D9;
     font-size: 14pt;
+    background-color:#243F46;
+}
+
+QMenu{
+    border: 1px solid #be708084;
+    border-radius:8px;
+}
+
+QMenu::item{
+    border: 1px solid #be708084;
+    padding-left:8px;
+    padding-right:8px;
+    padding-top:3px;
+    padding-bottom:3px;
+}
+
+QMenuBar{
+    background-color:#243F46;
+    border-bottom:2px solid #1A2D31;
 }
 
 QMenuBar::item,
@@ -47,12 +61,13 @@ QMenu::item:selected
 
 QStackedWidget{
     background-color:#1A2D31;
+    border-top:2px solid #243F46;
 }
 
 QLineEdit{
-    background-color:#1A2D31;
+    background-color:#243F46;
     border-radius: 20px;
-    padding:10px;
+    padding:5px 10px;
     color: #708084;
     font-size: 16pt;
     min-height:10px;
@@ -60,19 +75,16 @@ QLineEdit{
 }
 
 QComboBox{
-    background-color:#1A2D31;
+    background-color:#243F46;
     color: #708084;
-    padding: 10px;
+    padding: 5px;
     min-width:100px;
     max-width:400px;
-    min-height:10px;
-    max-height:50px;
+    min-height:20px;
+    max-height:30px;
     font-size: 16pt;
-    min-height:50px;
-    margin-left: 10px;
-    margin-right: 10px;
     border:none;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 #addMedia{
@@ -89,27 +101,26 @@ QComboBox{
     color: #243F46;
 }
 
+#latoSinistraSP{
+    background-color:#243F46;
+}
+
+#latoDestraSP{
+    background-color: #1A2D31;
+}
+
+#widegetMedia QPushButton {
+    text-align: left;
+}
+
 #addMedia:hover{
     color: #e9fed46a;
 }
-
 
 #filtri{
     color: #708084;
     min-height:10px;
     max-height:50px;
-}
-
-#filtri:hover{
-    background-color:#1A2D31;
-    color: #708084;
-    border-color:#1A2D31;
-}
-
-#filtri:pressed{
-    background-color: #1A2D31;
-    color: #243F46;
-    border-color:#1A2D31;
 }
 
 #invioCerca, #vista{
@@ -120,25 +131,30 @@ QComboBox{
 }
 
 #invioCerca:hover,
-#vista:hover{
-    color: #1A2D31;
+#vista:hover,
+#filtri:hover{
+    color: #e9fed46a;
 }
 
 #invioCerca:pressed,
-#vista:pressed{
-    color: #1A2D31;
+#vista:pressed,
+#filtri:pressed{
+    color: #e9fed46a;
 }
 
 #addCinema{
     border-radius:20px;
     color:#e9fed46a;
-    background:#1A2D31;
+    background-color:#1A2D31;
+    text-align: center !important;
 }
 
 #addCinema:hover{
     color:#708084;
 }
 
-#addCinema:pressed{
-    color:#243F46;
+#cinema{
+    background-color:#1A2D31;
+    min-height:30px;
+    max-height:40px;
 }
