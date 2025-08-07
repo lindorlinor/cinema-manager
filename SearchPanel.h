@@ -43,7 +43,7 @@ class SearchPanel:public QWidget{
 	explicit SearchPanel(QWidget *parent);
 
     public slots:
-    void updateModifierPanel();
+    void updateModifierPanel(int index);
 };
 
 #endif //SEARCHPANEL_H
