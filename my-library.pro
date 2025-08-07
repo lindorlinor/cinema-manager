@@ -20,7 +20,6 @@ INCLUDEPATH += .
 # Input
 HEADERS +=  \
             EnumClasses.h \
-            MainWindow.h \
             Inserzione.h \
             Media.h \
             Pubblicita.h \
@@ -28,10 +27,12 @@ HEADERS +=  \
             Film.h \
             Podcast.h \
             Puntata.h \
-            catch.hpp
+            catch.hpp \
+            GUI/CinemaButton.h \
+            GUI/MainWindow.h \
+            GUI/CinemaSelectionPage.h
 SOURCES +=  \
             main.cpp \
-            MainWindow.cpp \
             Inserzione.cpp \
             Media.cpp \
             Pubblicita.cpp \
@@ -39,4 +40,8 @@ SOURCES +=  \
             Film.cpp \
             Podcast.cpp \
             Puntata.cpp \
-            test/test.cpp
+            test/test.cpp \
+            GUI/CinemaButton.cpp \
+            GUI/MainWindow.cpp \
+            GUI/CinemaSelectionPage.cpp
+RESOURCES += GUI/resources.qrc
