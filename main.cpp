@@ -30,15 +30,5 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    QFile file("style.qss");
-    if (file.open(QFile::ReadOnly))
-    {
-        QString styleSheet = QLatin1String(file.readAll());
-        qApp->setStyleSheet(styleSheet);
-        file.close();
-        qDebug() << "Style sheet applicato correttamente.";
-    }
-    else qDebug() << "Impossibile aprire il file style.qss";
-
     return a.exec();
 }

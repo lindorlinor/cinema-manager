@@ -43,7 +43,6 @@ QMenu::item{
 
 QMenuBar{
     background-color:#243F46;
-    border-bottom:2px solid #1A2D31;
 }
 
 QMenuBar::item,
@@ -91,10 +90,9 @@ QComboBox{
     background-color:#1A2D31;
     color: #708084;
     border-radius: 8px;
-    font-size: 30pt;
-    padding: 20px;
-    margin:20px 30px;
-    border-radius:20px;
+    font-size: 25pt;
+    padding: 30px;
+    border-radius:35px;
 }
 
 #addMedia:pressed{
@@ -103,10 +101,12 @@ QComboBox{
 
 #latoSinistraSP{
     background-color:#243F46;
+    border-top:2px solid #1A2D31;
 }
 
-#latoDestraSP{
+#stackModifiche{
     background-color: #1A2D31;
+    border-top:2px solid #1A2D31;
 }
 
 #widegetMedia QPushButton {

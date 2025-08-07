@@ -1,4 +1,5 @@
 #include "SearchPanel.h"
+#include "AddPanel.h"
 
 void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     QMenuBar* menuBar = new QMenuBar(this);
@@ -38,6 +39,10 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     mainLayout->addWidget(menuBar);
 }
 
+void SearchPanel::updateModifierPanel(int index){
+    stackModifiche->setCurrentIndex(index);
+}
+
 void SearchPanel::addLatoSinistra(QWidget* widgetSinistra){
     //agginta ricerca latoSinistra
     QVBoxLayout* latoSinistra = new QVBoxLayout;
@@ -72,17 +77,19 @@ void SearchPanel::addLatoSinistra(QWidget* widgetSinistra){
     widegetMedia->setLayout(selezioneMedia);
     
     //aggiungi Media
-    QPushButton* addMedia = new QPushButton("+ Aggiungi");
+    addMedia = new QPushButton("+ Aggiungi");
     addMedia->setObjectName("addMedia");
     
     //pannello latoSinistra completo
+    latoSinistra->addSpacing(100);
     latoSinistra->addWidget(addMedia);
+    latoSinistra->addSpacing(50);
     latoSinistra->addWidget(widegetMedia);
     latoSinistra->addWidget(widgetCinema);
     widgetSinistra->setLayout(latoSinistra);
 }
 
-void SearchPanel::addLatoDestra(QWidget* widgetDestra){
+void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     //aggiunta ricerca superiore
     QVBoxLayout* latoDestra = new QVBoxLayout;
     QHBoxLayout* barraCerca = new QHBoxLayout;
@@ -97,33 +104,38 @@ void SearchPanel::addLatoDestra(QWidget* widgetDestra){
     barraCerca->setContentsMargins(50, 10, 100, 0);
     barraCerca->addWidget(invioCerca);
     
+    
     //barra dei filtri
     QComboBox* attivita = new QComboBox;
     QComboBox* popolarita = new QComboBox;
     QComboBox* recenti = new QComboBox;
-
+    QWidget* widgetDestra = new QWidget;
+    
     attivita->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     popolarita->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     recenti->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     
     QPushButton* filtri = new QPushButton("icona Filtri");
     QPushButton* vista = new QPushButton("icona vista");
-
+    
     filtri->setObjectName("filtri");
     vista->setObjectName("vista");
     
     filtri->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     vista->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-
+    
     barraFiltri->addWidget(attivita,3);
+    barraFiltri->addSpacing(10);
     barraFiltri->addWidget(popolarita,3);
+    barraFiltri->addSpacing(10);
     barraFiltri->addWidget(recenti,3);
+    barraFiltri->addSpacing(10);
     barraFiltri->addWidget(filtri,1);
     barraFiltri->setContentsMargins(50, 10, 50, 0);
     barraFiltri->addWidget(vista,1,Qt::AlignRight);
     
-    stack = new QStackedWidget;
-
+    stackLibreria = new QStackedWidget;
+    
     connect(tutto, &QPushButton::clicked, this, [this](){SearchPanel::updateCerca("Tutto");}); //uso una lambda per passare la stringa "Tutto" poiché non è possibile chiamare la funzione
     connect(film, &QPushButton::clicked, this, [this](){SearchPanel::updateCerca("Film");});
     connect(trailer, &QPushButton::clicked, this, [this](){SearchPanel::updateCerca("Trailer");});
@@ -132,9 +144,19 @@ void SearchPanel::addLatoDestra(QWidget* widgetDestra){
     
     latoDestra->addLayout(barraCerca,2);
     latoDestra->addLayout(barraFiltri,1);
-    latoDestra->addWidget(stack,5);
-
+    latoDestra->addWidget(stackLibreria,5);
     widgetDestra->setLayout(latoDestra);
+    
+    stackModifiche->addWidget(widgetDestra);
+
+    //pannello per la libreria
+    stackModifiche->setCurrentIndex(0);
+
+    //pannello di aggiunta media
+    AddPanel* nuovoMedia = new AddPanel(this);
+    stackModifiche->addWidget(nuovoMedia);
+
+    connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
 }
 
 void SearchPanel::updateCerca(const QString& filtro){
@@ -143,21 +165,20 @@ void SearchPanel::updateCerca(const QString& filtro){
 
 void SearchPanel::addRicerca(QVBoxLayout* mainLayout){
     QWidget* widgetSinistra = new QWidget;
-    QWidget* widgetDestra = new QWidget;
+    stackModifiche = new QStackedWidget;
 
     widgetSinistra->setObjectName("latoSinistraSP");
-    widgetDestra->setObjectName("latoDestraSP");
-    
+    stackModifiche->setObjectName("stackModifiche");
     
     QHBoxLayout* ricerca = new QHBoxLayout;
     ricerca->setContentsMargins(0, 0, 0, 0); 
     ricerca->setSpacing(0);
 
     addLatoSinistra(widgetSinistra); 
-    addLatoDestra(widgetDestra); 
+    addLatoDestra(stackModifiche); 
     
     ricerca->addWidget(widgetSinistra,2);
-    ricerca->addWidget(widgetDestra,8);
+    ricerca->addWidget(stackModifiche,8);
     mainLayout->addLayout(ricerca);
 } 
 

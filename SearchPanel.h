@@ -20,6 +20,7 @@ class SearchPanel:public QWidget{
     void addMenus(QVBoxLayout* mainLayout);
 
     //selezione media
+    QPushButton* addMedia;
     QPushButton* tutto;
     QPushButton* film;
     QPushButton* trailer;
@@ -32,13 +33,17 @@ class SearchPanel:public QWidget{
     void updateCerca(const QString& filtro);
     void addRicerca(QVBoxLayout* mainLayout);
     void addLatoSinistra(QWidget* widgetSinistra);
-    void addLatoDestra(QWidget* widgetDestra);
+    void addLatoDestra(QStackedWidget* stackModifiche);
 
     //cambio pagina
-    QStackedWidget* stack;
+    QStackedWidget* stackLibreria;
+    QStackedWidget* stackModifiche;
 
     public:
 	explicit SearchPanel(QWidget *parent);
+
+    public slots:
+    void updateModifierPanel();
 };
 
 #endif //SEARCHPANEL_H

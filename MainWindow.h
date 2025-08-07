@@ -2,11 +2,17 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "SearchPanel.h"
+#include <QStackedWidget>
+
+class SearchPanel;
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
+private:
+    QStackedWidget* stack;
+    SearchPanel* searchPage;
 
 public:
     MainWindow(QWidget *parent = nullptr);
