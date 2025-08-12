@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_RUNNER
 #include "catch.hpp"
 #include <QApplication>
-#include "mainwindow.h"
+#include "GUI/MainWindow.h"
 #include "Media.h"
 
 int main(int argc, char *argv[])

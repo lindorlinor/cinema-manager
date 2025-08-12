@@ -3,20 +3,16 @@
 
 #include <QMainWindow>
 #include <QStackedWidget>
-
-class SearchPanel;
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
 private:
-    QStackedWidget* stack;
-    SearchPanel* searchPage;
-
+    QStackedWidget *stackedWidget;
 public:
     MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+public slots:
+    void showInsertCinemaPage();
+    void showSelectedCinemaPage(const QString& xmlPath);
 };
 
 #endif // MAINWINDOW_H
