@@ -44,6 +44,8 @@ class SearchPanel:public QWidget{
 
     public slots:
     void updateModifierPanel(int index);
+signals:
+    void escSearchPanel();
 };
 
 #endif //SEARCHPANEL_H

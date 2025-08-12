@@ -26,12 +26,13 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_MainWindow_t {
-    uint offsetsAndSizes[10];
+    uint offsetsAndSizes[12];
     char stringdata0[11];
     char stringdata1[21];
     char stringdata2[1];
     char stringdata3[23];
     char stringdata4[8];
+    char stringdata5[24];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_MainWindow_t::offsetsAndSizes) + ofs), len 
@@ -41,13 +42,15 @@ Q_CONSTINIT static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_Main
         QT_MOC_LITERAL(11, 20),  // "showInsertCinemaPage"
         QT_MOC_LITERAL(32, 0),  // ""
         QT_MOC_LITERAL(33, 22),  // "showSelectedCinemaPage"
-        QT_MOC_LITERAL(56, 7)   // "xmlPath"
+        QT_MOC_LITERAL(56, 7),  // "xmlPath"
+        QT_MOC_LITERAL(64, 23)   // "showCinemaSelectionPage"
     },
     "MainWindow",
     "showInsertCinemaPage",
     "",
     "showSelectedCinemaPage",
-    "xmlPath"
+    "xmlPath",
+    "showCinemaSelectionPage"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -58,7 +61,7 @@ Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -66,12 +69,14 @@ Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   26,    2, 0x0a,    1 /* Public */,
-       3,    1,   27,    2, 0x0a,    2 /* Public */,
+       1,    0,   32,    2, 0x0a,    1 /* Public */,
+       3,    1,   33,    2, 0x0a,    2 /* Public */,
+       5,    0,   36,    2, 0x0a,    4 /* Public */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    4,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -89,7 +94,9 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'showSelectedCinemaPage'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        // method 'showCinemaSelectionPage'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -102,6 +109,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->showInsertCinemaPage(); break;
         case 1: _t->showSelectedCinemaPage((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 2: _t->showCinemaSelectionPage(); break;
         default: ;
         }
     }
@@ -126,13 +134,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }
