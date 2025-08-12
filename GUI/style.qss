@@ -58,11 +58,6 @@ QMenu::item:selected
     background-color:#1A2D31;
 }
 
-QStackedWidget{
-    background-color:#1A2D31;
-    border-top:2px solid #243F46;
-}
-
 QLineEdit{
     background-color:#243F46;
     border-radius: 20px;
@@ -146,7 +141,7 @@ QComboBox{
     border-radius:20px;
     color:#e9fed46a;
     background-color:#1A2D31;
-    text-align: center !important;
+    text-align: center;
 }
 
 #addCinema:hover{
@@ -157,4 +152,13 @@ QComboBox{
     background-color:#1A2D31;
     min-height:30px;
     max-height:40px;
+}
+
+#widgetPath{
+    background:#fed46a;
+    min-height:300px;
+    max-height:400px;
+    max-width:400px;
+    min-width:300px;
+    border: 30px dashed #fed46a;
 }

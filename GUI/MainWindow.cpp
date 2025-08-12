@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(cinemaPage,&CinemaSelectionPage::insertCinema,this,&MainWindow::showInsertCinemaPage);
     connect(cinemaPage,&CinemaSelectionPage::selectedCinema,this,&MainWindow::showSelectedCinemaPage);
     SearchPanel * searchPage = new SearchPanel(this);
+    connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
     stackedWidget->addWidget(cinemaPage);
     stackedWidget->addWidget(searchPage);
     stackedWidget->setCurrentIndex(0);
@@ -22,7 +23,8 @@ MainWindow::MainWindow(QWidget *parent)
     resize(800, 600); 
     QDir dir(QCoreApplication::applicationDirPath());
     dir.cdUp();  // Da /release → [PROJECT_ROOT]
-    QFile file(dir.filePath("GUI/style.qss"));
+
+    /* QFile file(dir.filePath("GUI/style.qss"));
     if (file.open(QFile::ReadOnly))
     {
         QString styleSheet = QLatin1String(file.readAll());
@@ -30,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
         file.close();
         qDebug() << "Style sheet applicato correttamente.";
     }
-    else qDebug() << "Impossibile aprire il file style.qss";
+    else qDebug() << "Impossibile aprire il file style.qss"; */
 }
 
 
@@ -43,4 +45,7 @@ void MainWindow::showSelectedCinemaPage(const QString& xmlPath){
     //TO DO
     stackedWidget->setCurrentIndex(1);
     qDebug() << "Cinema al path " << xmlPath ;
+}
+void MainWindow::showCinemaSelectionPage(){
+    stackedWidget->setCurrentIndex(0);
 }

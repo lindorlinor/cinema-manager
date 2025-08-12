@@ -21,6 +21,7 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     file->addAction(new QAction("Esporta Media", file));
     file->addAction(new QAction("Importa Sessione", file));
     file->addAction(new QAction("Esporta Sessione", file));
+    file->addAction(new QAction("Torna a seleziona Cinema", file));
     file->addAction(new QAction("Esci Senza Salvare", file));
 
     //Menu "Modifica"
@@ -33,8 +34,8 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     visualizza->addAction(new QAction("Visualizza Podcast", visualizza));
     //Menu "Altro"
     altro->addAction(new QAction("Cambia Vista", altro));
-    
-    connect(file->actions()[5], &QAction::triggered, qApp, &QApplication::quit);
+    connect(file->actions()[5],&QAction::triggered, this, [=](){emit escSearchPanel();});
+    connect(file->actions()[6], &QAction::triggered, qApp, &QApplication::quit);
     
     mainLayout->addWidget(menuBar);
 }
@@ -155,6 +156,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     //pannello di aggiunta media
     AddPanel* nuovoMedia = new AddPanel(this);
     stackModifiche->addWidget(nuovoMedia);
+    nuovoMedia->setObjectName("nuovoMedia");
 
     connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
 }

@@ -13,6 +13,7 @@ public:
 public slots:
     void showInsertCinemaPage();
     void showSelectedCinemaPage(const QString& xmlPath);
+    void showCinemaSelectionPage();
 };
 
 #endif // MAINWINDOW_H
