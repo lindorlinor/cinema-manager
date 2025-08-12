@@ -54,11 +54,11 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(pare
     layoutRigaCinema->setAlignment(Qt::AlignCenter);
     layoutRigaCinema->setSpacing(20);
 
-    // 5. Container per il layout orizzontale
+    //Container per il layout orizzontale
     QWidget* containerRigaCinema = new QWidget;
     containerRigaCinema->setLayout(layoutRigaCinema);
 
-    // 6. Aggiunta al layout principale (centrato)
+    //Aggiunta al layout principale (centrato)
     layout->addWidget(containerRigaCinema, 0, Qt::AlignCenter);
     
     QPushButton* escButton = new QPushButton("Esci");
