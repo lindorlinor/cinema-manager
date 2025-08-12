@@ -9,6 +9,7 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QStackedLayout>
+#include <QFileDialog>
 
 class PathButton : public QFrame{
     Q_OBJECT
@@ -18,6 +19,7 @@ class PathButton : public QFrame{
 
     private:
     QLabel* imageLabel;
+    QString pathImage;
     QWidget* bottoni;
     QStackedLayout* stackPath;
 
@@ -27,6 +29,9 @@ class PathButton : public QFrame{
     protected:
     void enterEvent(QEnterEvent* event) override;
     void leaveEvent(QEvent* event) override;
+
+    public:
+    QString getPath();
 };
 
 #endif //PATHBUTTON_H

@@ -1,4 +1,4 @@
-QPushButton{
+/* QPushButton{
     background-color: transparent;
     color: #708084;
     padding: 10px 15px;
@@ -6,7 +6,7 @@ QPushButton{
     font-size: 20pt;
     border:none;
     border-radius: 8px;
-}
+} 
 
 QPushButton:hover{
     background-color: #1A2D31;
@@ -162,3 +162,5 @@ QComboBox{
     min-width:300px;
     border: 30px dashed #fed46a;
 }
+
+*/

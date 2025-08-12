@@ -66,13 +66,13 @@ SOURCES       = main.cpp \
 		GUI/CinemaSelectionPage.cpp \
 		GUI/SearchPanel.cpp \
 		GUI/PathButton.cpp \
-		GUI/AddPanel.cpp release/qrc_resources.cpp \
+		GUI/AddMedia.cpp release/qrc_resources.cpp \
 		release/moc_CinemaButton.cpp \
 		release/moc_MainWindow.cpp \
 		release/moc_CinemaSelectionPage.cpp \
 		release/moc_SearchPanel.cpp \
 		release/moc_PathButton.cpp \
-		release/moc_AddPanel.cpp
+		release/moc_AddMedia.cpp
 OBJECTS       = release/main.o \
 		release/Inserzione.o \
 		release/Media.o \
@@ -87,14 +87,14 @@ OBJECTS       = release/main.o \
 		release/CinemaSelectionPage.o \
 		release/SearchPanel.o \
 		release/PathButton.o \
-		release/AddPanel.o \
+		release/AddMedia.o \
 		release/qrc_resources.o \
 		release/moc_CinemaButton.o \
 		release/moc_MainWindow.o \
 		release/moc_CinemaSelectionPage.o \
 		release/moc_SearchPanel.o \
 		release/moc_PathButton.o \
-		release/moc_AddPanel.o
+		release/moc_AddMedia.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/linux.conf \
@@ -184,7 +184,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		GUI/CinemaSelectionPage.h \
 		GUI/SearchPanel.h \
 		GUI/PathButton.h \
-		GUI/AddPanel.h main.cpp \
+		GUI/AddMedia.h main.cpp \
 		Inserzione.cpp \
 		Media.cpp \
 		Pubblicita.cpp \
@@ -198,7 +198,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		GUI/CinemaSelectionPage.cpp \
 		GUI/SearchPanel.cpp \
 		GUI/PathButton.cpp \
-		GUI/AddPanel.cpp
+		GUI/AddMedia.cpp
 QMAKE_TARGET  = my-library
 DESTDIR       = release/
 TARGET        = release/my-library
@@ -388,8 +388,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents GUI/resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents EnumClasses.h Inserzione.h Media.h Pubblicita.h Trailer.h Film.h Podcast.h Puntata.h catch.hpp GUI/CinemaButton.h GUI/MainWindow.h GUI/CinemaSelectionPage.h GUI/SearchPanel.h GUI/PathButton.h GUI/AddPanel.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp Inserzione.cpp Media.cpp Pubblicita.cpp Trailer.cpp Film.cpp Podcast.cpp Puntata.cpp test/test.cpp GUI/CinemaButton.cpp GUI/MainWindow.cpp GUI/CinemaSelectionPage.cpp GUI/SearchPanel.cpp GUI/PathButton.cpp GUI/AddPanel.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents EnumClasses.h Inserzione.h Media.h Pubblicita.h Trailer.h Film.h Podcast.h Puntata.h catch.hpp GUI/CinemaButton.h GUI/MainWindow.h GUI/CinemaSelectionPage.h GUI/SearchPanel.h GUI/PathButton.h GUI/AddMedia.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp Inserzione.cpp Media.cpp Pubblicita.cpp Trailer.cpp Film.cpp Podcast.cpp Puntata.cpp test/test.cpp GUI/CinemaButton.cpp GUI/MainWindow.cpp GUI/CinemaSelectionPage.cpp GUI/SearchPanel.cpp GUI/PathButton.cpp GUI/AddMedia.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -430,9 +430,9 @@ compiler_moc_predefs_clean:
 release/moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -O0 -g -std=gnu++2a -Wall -Wextra -fPIC -dM -E -o release/moc_predefs.h /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: release/moc_CinemaButton.cpp release/moc_MainWindow.cpp release/moc_CinemaSelectionPage.cpp release/moc_SearchPanel.cpp release/moc_PathButton.cpp release/moc_AddPanel.cpp
+compiler_moc_header_make_all: release/moc_CinemaButton.cpp release/moc_MainWindow.cpp release/moc_CinemaSelectionPage.cpp release/moc_SearchPanel.cpp release/moc_PathButton.cpp release/moc_AddMedia.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release/moc_CinemaButton.cpp release/moc_MainWindow.cpp release/moc_CinemaSelectionPage.cpp release/moc_SearchPanel.cpp release/moc_PathButton.cpp release/moc_AddPanel.cpp
+	-$(DEL_FILE) release/moc_CinemaButton.cpp release/moc_MainWindow.cpp release/moc_CinemaSelectionPage.cpp release/moc_SearchPanel.cpp release/moc_PathButton.cpp release/moc_AddMedia.cpp
 release/moc_CinemaButton.cpp: GUI/CinemaButton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
@@ -1246,11 +1246,21 @@ release/moc_PathButton.cpp: GUI/PathButton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStackedLayout \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstackedlayout.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFileDialog \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qfiledialog.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfileinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcalendar.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlocale.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
 	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/PathButton.h -o release/moc_PathButton.cpp
 
-release/moc_AddPanel.cpp: GUI/AddPanel.h \
+release/moc_AddMedia.cpp: GUI/AddMedia.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -1414,14 +1424,52 @@ release/moc_AddPanel.cpp: GUI/AddPanel.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QStandardPaths \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstandardpaths.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTabWidget \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabwidget.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QComboBox \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qcombobox.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractitemdelegate.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyleoption.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractspinbox.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qvalidator.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qregularexpression.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qslider.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractslider.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyle.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabbar.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qrubberband.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qabstractitemmodel.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLineEdit \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlineedit.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextcursor.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextformat.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextoption.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QListWidget \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlistwidget.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlistview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractitemview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractscrollarea.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qitemselectionmodel.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QSpinBox \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qspinbox.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/QFont \
 		GUI/PathButton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStackedLayout \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstackedlayout.h \
+		Film.h \
+		Media.h \
+		EnumClasses.h \
+		Trailer.h \
+		Pubblicita.h \
+		Inserzione.h \
+		Podcast.h \
+		Puntata.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/AddPanel.h -o release/moc_AddPanel.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/AddMedia.h -o release/moc_AddMedia.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1611,28 +1659,293 @@ release/main.o: main.cpp catch.hpp \
 release/Inserzione.o: Inserzione.cpp Inserzione.h \
 		Pubblicita.h \
 		Media.h \
-		EnumClasses.h
+		EnumClasses.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydatapointer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydataops.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydata.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobal.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig-bootstrapped.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcore-config.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtconfigmacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcoreexports.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsystemdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qprocessordetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompilerdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsysinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlogging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompare_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasicatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_bootstrap.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_cxx11.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnumeric.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainertools_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnamespace.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qchar.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearray.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrefcount.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringliteral.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qutf8stringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringtokenizer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringbuilder.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearraylist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringmatcher.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/Inserzione.o Inserzione.cpp
 
 release/Media.o: Media.cpp Media.h \
-		EnumClasses.h
+		EnumClasses.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydatapointer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydataops.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydata.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobal.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig-bootstrapped.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcore-config.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtconfigmacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcoreexports.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsystemdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qprocessordetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompilerdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsysinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlogging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompare_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasicatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_bootstrap.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_cxx11.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnumeric.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainertools_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnamespace.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qchar.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearray.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrefcount.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringliteral.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qutf8stringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringtokenizer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringbuilder.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearraylist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringmatcher.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/Media.o Media.cpp
 
 release/Pubblicita.o: Pubblicita.cpp Pubblicita.h \
 		Media.h \
-		EnumClasses.h
+		EnumClasses.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydatapointer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydataops.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydata.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobal.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig-bootstrapped.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcore-config.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtconfigmacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcoreexports.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsystemdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qprocessordetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompilerdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsysinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlogging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompare_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasicatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_bootstrap.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_cxx11.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnumeric.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainertools_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnamespace.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qchar.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearray.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrefcount.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringliteral.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qutf8stringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringtokenizer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringbuilder.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearraylist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringmatcher.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/Pubblicita.o Pubblicita.cpp
 
 release/Trailer.o: Trailer.cpp Trailer.h \
 		Pubblicita.h \
 		Media.h \
 		EnumClasses.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydatapointer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydataops.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydata.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobal.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig-bootstrapped.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcore-config.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtconfigmacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcoreexports.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsystemdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qprocessordetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompilerdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsysinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlogging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompare_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasicatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_bootstrap.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_cxx11.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnumeric.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainertools_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnamespace.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qchar.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearray.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrefcount.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringliteral.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qutf8stringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringtokenizer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringbuilder.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearraylist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringmatcher.h \
 		Film.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/Trailer.o Trailer.cpp
 
 release/Film.o: Film.cpp Film.h \
 		Media.h \
 		EnumClasses.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydatapointer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydataops.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydata.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobal.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig-bootstrapped.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcore-config.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtconfigmacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcoreexports.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsystemdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qprocessordetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompilerdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsysinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlogging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompare_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasicatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_bootstrap.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_cxx11.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnumeric.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainertools_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnamespace.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qchar.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearray.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrefcount.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringliteral.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qutf8stringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringtokenizer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringbuilder.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearraylist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringmatcher.h \
 		Trailer.h \
 		Pubblicita.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/Film.o Film.cpp
@@ -1640,12 +1953,118 @@ release/Film.o: Film.cpp Film.h \
 release/Podcast.o: Podcast.cpp Podcast.h \
 		Media.h \
 		EnumClasses.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydatapointer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydataops.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydata.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobal.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig-bootstrapped.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcore-config.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtconfigmacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcoreexports.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsystemdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qprocessordetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompilerdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsysinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlogging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompare_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasicatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_bootstrap.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_cxx11.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnumeric.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainertools_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnamespace.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qchar.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearray.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrefcount.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringliteral.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qutf8stringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringtokenizer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringbuilder.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearraylist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringmatcher.h \
 		Puntata.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/Podcast.o Podcast.cpp
 
 release/Puntata.o: Puntata.cpp Puntata.h \
 		Media.h \
 		EnumClasses.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydatapointer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydataops.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydata.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobal.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig-bootstrapped.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcore-config.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtconfigmacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcoreexports.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsystemdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qprocessordetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompilerdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsysinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlogging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompare_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasicatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_bootstrap.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_cxx11.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnumeric.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainertools_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnamespace.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qchar.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearray.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrefcount.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringliteral.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qutf8stringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringtokenizer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringbuilder.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearraylist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringmatcher.h \
 		POdcast.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/Puntata.o Puntata.cpp
 
@@ -1653,6 +2072,59 @@ release/test.o: test/test.cpp catch.hpp \
 		Film.h \
 		Media.h \
 		EnumClasses.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydatapointer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydataops.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydata.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobal.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig-bootstrapped.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcore-config.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtconfigmacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcoreexports.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsystemdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qprocessordetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompilerdetection.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsysinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlogging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompare_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasicatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_bootstrap.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_cxx11.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnumeric.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainertools_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnamespace.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qchar.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearray.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrefcount.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringfwd.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringliteral.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qutf8stringview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringtokenizer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringbuilder.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearraylist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringmatcher.h \
 		Trailer.h \
 		Pubblicita.h \
 		Inserzione.h \
@@ -2426,7 +2898,7 @@ release/SearchPanel.o: GUI/SearchPanel.cpp GUI/SearchPanel.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QFile \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h \
-		GUI/AddPanel.h \
+		GUI/AddMedia.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLabel \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlabel.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpicture.h \
@@ -2441,11 +2913,29 @@ release/SearchPanel.o: GUI/SearchPanel.cpp GUI/SearchPanel.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QPixmap \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QStandardPaths \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstandardpaths.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTabWidget \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QListWidget \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlistwidget.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlistview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractitemview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractscrollarea.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qitemselectionmodel.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QSpinBox \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qspinbox.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/QFont \
 		GUI/PathButton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStackedLayout \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstackedlayout.h
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstackedlayout.h \
+		Film.h \
+		Media.h \
+		EnumClasses.h \
+		Trailer.h \
+		Pubblicita.h \
+		Inserzione.h \
+		Podcast.h \
+		Puntata.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/SearchPanel.o GUI/SearchPanel.cpp
 
 release/PathButton.o: GUI/PathButton.cpp GUI/PathButton.h \
@@ -2601,10 +3091,20 @@ release/PathButton.o: GUI/PathButton.cpp GUI/PathButton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStackedLayout \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstackedlayout.h
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstackedlayout.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFileDialog \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qfiledialog.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfileinfo.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcalendar.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlocale.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/PathButton.o GUI/PathButton.cpp
 
-release/AddPanel.o: GUI/AddPanel.cpp GUI/AddPanel.h \
+release/AddMedia.o: GUI/AddMedia.cpp GUI/AddMedia.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -2768,12 +3268,80 @@ release/AddPanel.o: GUI/AddPanel.cpp GUI/AddPanel.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QStandardPaths \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstandardpaths.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTabWidget \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabwidget.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QComboBox \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qcombobox.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractitemdelegate.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyleoption.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractspinbox.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qvalidator.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qregularexpression.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qslider.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractslider.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyle.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabbar.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qrubberband.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qabstractitemmodel.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLineEdit \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlineedit.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextcursor.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextformat.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextoption.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QListWidget \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlistwidget.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlistview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractitemview.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractscrollarea.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qitemselectionmodel.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QSpinBox \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qspinbox.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/QFont \
 		GUI/PathButton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStackedLayout \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstackedlayout.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/AddPanel.o GUI/AddPanel.cpp
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstackedlayout.h \
+		Film.h \
+		Media.h \
+		EnumClasses.h \
+		Trailer.h \
+		Pubblicita.h \
+		Inserzione.h \
+		Podcast.h \
+		Puntata.h \
+		GUI/SearchPanel.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMenu \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmenu.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStackedWidget \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstackedwidget.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMenuBar \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmenubar.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QApplication \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qapplication.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qeventloop.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qjnitypes.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfuture.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfutureinterface.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qmutex.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtsan_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qresultstore.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfuture_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qthreadpool.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qthread.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdeadlinetimer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qelapsedtimer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrunnable.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qexception.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpromise.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qinputmethod.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication_platform.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QFile
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/AddMedia.o GUI/AddMedia.cpp
 
 release/qrc_resources.o: release/qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/qrc_resources.o release/qrc_resources.cpp
@@ -2793,8 +3361,8 @@ release/moc_SearchPanel.o: release/moc_SearchPanel.cpp
 release/moc_PathButton.o: release/moc_PathButton.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/moc_PathButton.o release/moc_PathButton.cpp
 
-release/moc_AddPanel.o: release/moc_AddPanel.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/moc_AddPanel.o release/moc_AddPanel.cpp
+release/moc_AddMedia.o: release/moc_AddMedia.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/moc_AddMedia.o release/moc_AddMedia.cpp
 
 ####### Install
 

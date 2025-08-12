@@ -1,5 +1,5 @@
 #include "SearchPanel.h"
-#include "AddPanel.h"
+#include "AddMedia.h"
 
 void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     QMenuBar* menuBar = new QMenuBar(this);
@@ -40,6 +40,7 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
 }
 
 void SearchPanel::updateModifierPanel(int index){
+    previousIndex=stackModifiche->currentIndex();
     stackModifiche->setCurrentIndex(index);
 }
 
@@ -153,11 +154,14 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     stackModifiche->setCurrentIndex(0);
 
     //pannello di aggiunta media
-    AddPanel* nuovoMedia = new AddPanel(this);
+    AddMedia* nuovoMedia = new AddMedia(this);
     stackModifiche->addWidget(nuovoMedia);
     nuovoMedia->setObjectName("nuovoMedia");
 
     connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
+    connect(nuovoMedia, &AddMedia::tornaIndietro, this, [this](){
+        updateModifierPanel(previousIndex);
+    });
 }
 
 void SearchPanel::updateCerca(const QString& filtro){

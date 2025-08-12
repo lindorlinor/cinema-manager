@@ -25,7 +25,28 @@ PathButton::PathButton(const QPixmap& mediaImage,QFrame *parent):QFrame(parent)
     stackPath->setCurrentIndex(0);
     setLayout(stackPath);
 
+    connect(modifica, &QPushButton::clicked, this, [this](){
+        QString filePath = QFileDialog::getOpenFileName(this, "Seleziona una copertina", "", "Immagini (*.png *.jpg *.jpeg *.bmp)");
+
+        //l'utente non seleziona nulla
+        if (filePath.isEmpty())
+                return;
+
+        QString fileName = QFileInfo(filePath).fileName();
+        QString targetPath = QDir("images").filePath(fileName);
+        QDir().mkpath("images");
+        QFile::copy(filePath, targetPath);
+        pathImage=targetPath;
+
+        QPixmap pix(targetPath);
+        if (!pix.isNull()) {
+            imageLabel->setPixmap(pix.scaled(129, 180));
+        }
+    });
     
+    connect(elimina, &QPushButton::clicked, this, [this, mediaImage](){
+        imageLabel->setPixmap(mediaImage.scaled(129,180));
+    });
 }
 
 void PathButton::enterEvent(QEnterEvent* event) {
@@ -38,4 +59,8 @@ void PathButton::enterEvent(QEnterEvent* event) {
 void PathButton::leaveEvent(QEvent* event) {
     stackPath->setCurrentIndex(0);
     QFrame::leaveEvent(event);
+}
+
+QString PathButton::getPath(){
+    return pathImage;
 }

@@ -9,6 +9,7 @@
 
 #include <map>
 #include <string>
+#include <QList>
 
 enum class Formato {
     DCP,
@@ -70,6 +71,19 @@ inline const char* toString(Lingua l) {
         default: return "Non trovato";
     }
 }
+
+inline std::vector<Lingua> tutteLeLingue() {
+    return {
+        Lingua::Italiano,
+        Lingua::Inglese,
+        Lingua::Francese,
+        Lingua::Spagnolo,
+        Lingua::Tedesco,
+        Lingua::Giapponese,
+        Lingua::Cinese
+    };
+}
+
 
 enum class Classificazione {
     TUTTI=0,        

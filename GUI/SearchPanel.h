@@ -38,6 +38,7 @@ class SearchPanel:public QWidget{
     //cambio pagina
     QStackedWidget* stackLibreria;
     QStackedWidget* stackModifiche;
+    int previousIndex;
 
     public:
 	explicit SearchPanel(QWidget *parent);
