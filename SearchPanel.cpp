@@ -155,6 +155,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     //pannello di aggiunta media
     AddPanel* nuovoMedia = new AddPanel(this);
     stackModifiche->addWidget(nuovoMedia);
+    nuovoMedia->setObjectName("nuovoMedia");
 
     connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
 }

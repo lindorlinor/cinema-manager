@@ -1,13 +1,11 @@
 #include "AddPanel.h"
 
-QWidget* addPath(){
-    QWidget* widgetPath = new QWidget;
-    
-}
-
 void AddPanel::addPagina(QVBoxLayout* mainLayout){
     QLabel* titolo = new QLabel("Aggiungi un elemento alla libreria");
+    widgetPath = new PathButton;
 
+    mainLayout->addWidget(titolo);
+    mainLayout->addWidget(widgetPath);
 }
 
 AddPanel::AddPanel(QWidget *parent): QWidget(parent){

@@ -29,6 +29,8 @@ HEADERS +=  \
             Podcast.h \
             Puntata.h \
             SearchPanel.h \
+            AddPanel.h \
+            PathButton.h \
             catch.hpp
 SOURCES +=  \
             main.cpp \
@@ -41,4 +43,7 @@ SOURCES +=  \
             Podcast.cpp \
             Puntata.cpp \
             SearchPanel.cpp \
+            PathButton.cpp \
+            AddPanel.cpp \
             test/test.cpp
+RESOURCES += resources.qrc
