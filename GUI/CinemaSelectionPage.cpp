@@ -66,7 +66,6 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(pare
     connect(addButton,&QPushButton::clicked,this,&CinemaSelectionPage::insertCinema);
     layout->addWidget(escButton,0, Qt::AlignCenter);
 
-    setLayout(layout);
     setStyleSheet("QScrollArea { border: none; }");
 }
 

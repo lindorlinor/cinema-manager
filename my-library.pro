@@ -34,7 +34,8 @@ HEADERS +=  \
             GUI/SearchPanel.h \
             GUI/InsertCinemaPage.h \
             GUI/PathButton.h \
-            GUI/AddPanel.h 
+            GUI/AddPanel.h \
+            GUI/InsertImageFrame.h 
 SOURCES +=  \
             main.cpp \
             Inserzione.cpp \
@@ -51,5 +52,6 @@ SOURCES +=  \
             GUI/SearchPanel.cpp \
             GUI/InsertCinemaPage.cpp \
             GUI/PathButton.cpp \
-            GUI/AddPanel.cpp
+            GUI/AddPanel.cpp \
+            GUI/InsertImageFrame.cpp 
 RESOURCES += GUI/resources.qrc
