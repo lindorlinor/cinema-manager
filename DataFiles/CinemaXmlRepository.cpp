@@ -1,4 +1,4 @@
-// CinemaRepository.cpp
+
 #include "CinemaXmlRepository.h"
 #include <QFile>
 #include <QDir>

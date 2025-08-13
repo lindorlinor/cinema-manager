@@ -11,8 +11,7 @@ class CinemaSelectionPage : public QWidget
 private:
     QHBoxLayout* layoutPulsanti;
     QVector<CinemaButton*> cinemaButtons;
-    void creaBottoneCinema(const QString& nomeC, const QString& imPath, const QString& xmlPath, QHBoxLayout* layout);
-    /* void caricaCinemaDaXML(const QString& path); */
+    void creaBottoneCinema(const QString& nomeC, const QString& imPath, const QString& xmlPath);
 public:
     CinemaSelectionPage(QWidget *parent);
     void refresh();

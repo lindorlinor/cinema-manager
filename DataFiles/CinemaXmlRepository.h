@@ -20,4 +20,4 @@ public:
 private:
     QString m_basePath;
 };
-#endif// CINEMAXMLREPOSITORY_H.h
+#endif// CINEMAXMLREPOSITORY_H

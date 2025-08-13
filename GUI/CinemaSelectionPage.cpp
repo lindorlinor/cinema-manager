@@ -68,51 +68,10 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(pare
     setStyleSheet("QScrollArea { border: none; }");
 }
 
-/* void CinemaSelectionPage::caricaCinemaDaXML(const QString& path) {
-    QList<QStringList> lista;
-    QDir cinemaDir(path);
-    QStringList xmlFiles = cinemaDir.entryList(QStringList() << "*.xml", QDir::Files);
-    for (const QString &fileName : xmlFiles) {
-        QFile file(cinemaDir.filePath(fileName));
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-            qWarning() << "Impossibile aprire file:" << fileName;
-            continue;
-        }
-
-        QXmlStreamReader xml(&file);
-        QString nomeCinema, pathImmagine;
-        while (!xml.atEnd() && !xml.hasError()) {
-            xml.readNext();
-            if (xml.isStartElement()) {
-                if (xml.name().toString() == "nome") {
-                    nomeCinema = xml.readElementText();
-                } else if (xml.name().toString() == "immagine") {
-                    pathImmagine = xml.readElementText();
-                    break;
-                }
-            }
-        }
-
-        QString resourcePath = pathImmagine;
-        if (!pathImmagine.startsWith(":/")) {
-            resourcePath = ":/images/" + pathImmagine;
-        }
-        if (!nomeCinema.isEmpty()) {
-            qDebug() << "Carico immagine da:" << resourcePath;
-            creaBottoneCinema(nomeCinema,pathImmagine,cinemaDir.filePath(fileName), layoutPulsanti);
-        } else {
-            qWarning() << "Nessun nome trovato in" << fileName;
-        }
-
-        file.close();
-    }
-}
- */
-
-void CinemaSelectionPage::creaBottoneCinema(const QString& nomeC, const QString& imPath, const QString& xmlPath, QHBoxLayout* layout) {
+void CinemaSelectionPage::creaBottoneCinema(const QString& nomeC, const QString& imPath, const QString& xmlPath) {
     
     CinemaButton *btn = new CinemaButton(nomeC, QPixmap(imPath), xmlPath);
-    layout->addWidget(btn);
+    layoutPulsanti->addWidget(btn);
     cinemaButtons.append(btn);
 
     //TO DO
@@ -133,6 +92,6 @@ void CinemaSelectionPage::refresh() {
     CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
     auto cinemas = repo.loadAllCinemas();
     for (const auto& c : cinemas) {
-        creaBottoneCinema(c.nome, c.imagePath, c.xmlPath, layoutPulsanti);
+        creaBottoneCinema(c.nome, c.imagePath, c.xmlPath);
     }
 }
