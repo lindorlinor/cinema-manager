@@ -1,9 +1,14 @@
 #include "InsertCinemaPage.h"
+#include "../DataFiles/CinemaXmlRepository.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QLabel>
 #include <QFileDialog>
+#include <QMessageBox>
+#include <QDomDocument>
+#include <QCoreApplication>
+
 InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),textInput(new QLineEdit(this)),imageArea(new InsertImageFrame(this)){
     QVBoxLayout * layout = new QVBoxLayout(this);
     QLabel *label = new QLabel("Inserisci un nuovo cinema", this);
@@ -33,6 +38,7 @@ InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),textInput(n
     QPushButton * escButton = new QPushButton("Annulla");
     QPushButton * saveButton = new QPushButton("Salva");
     connect(escButton,&QPushButton::clicked,this,[=](){emit returnCinemaSelectionPage();});
+    connect(saveButton,&QPushButton::clicked,this,&InsertCinemaPage::saveCinemaInXml);
     layoutPulsanti->setSpacing(150);
     layoutPulsanti->addWidget(escButton,0, Qt::AlignCenter);
     layoutPulsanti->addWidget(saveButton,0, Qt::AlignCenter);
@@ -55,3 +61,17 @@ void InsertCinemaPage::chooseImage(){
     }
 }
 
+void InsertCinemaPage::saveCinemaInXml() {
+    Cinema cinema;
+    cinema.nome = textInput->text().trimmed();
+    cinema.imagePath = imagePath;
+
+    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
+    if (!repo.saveCinema(cinema)) {
+        QMessageBox::critical(this, tr("Errore"), tr("Impossibile salvare il file XML."));
+        return;
+    }
+
+    QMessageBox::information(this, tr("Salvato"), tr("Cinema salvato correttamente."));
+    emit returnCinemaSelectionPage();
+}

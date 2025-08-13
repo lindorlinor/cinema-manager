@@ -11,9 +11,11 @@ private:
     QString imagePath;
 public:
     explicit InsertCinemaPage(QWidget * parent= nullptr);
+    void saveCinemaInXml();
 public slots:
     void chooseImage();
 signals:
     void returnCinemaSelectionPage();
+    
 };
 #endif //INSERTCINEMAPAGE_H

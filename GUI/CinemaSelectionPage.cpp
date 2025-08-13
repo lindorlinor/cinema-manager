@@ -1,4 +1,5 @@
 #include "CinemaSelectionPage.h"
+#include "../DataFiles/CinemaXmlRepository.h"
 #include "CinemaButton.h"
 #include <QVBoxLayout>
 #include <QDir>
@@ -12,7 +13,7 @@
 #include <QFont>
 #include <QScrollArea>
 
-CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(parent){
+CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(parent),layoutPulsanti(new QHBoxLayout(nullptr)){
     QVBoxLayout * layout = new QVBoxLayout(this);
     layout->setSpacing(10);  
     layout->setContentsMargins(20, 20, 20, 20);
@@ -27,12 +28,10 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(pare
 
     //Layout orizzontale con i bottoni dei cinema
     QWidget* contenitorePulsanti = new QWidget;
-    QHBoxLayout* layoutPulsanti = new QHBoxLayout(contenitorePulsanti);
+    contenitorePulsanti->setLayout(layoutPulsanti);
 
     //Caricamento e creazione dei Button cinema
-    QDir baseDir(QCoreApplication::applicationDirPath());
-    baseDir.cdUp();  // Vai dalla /release alla root
-    caricaCinemaDaXML(baseDir.absolutePath(), layoutPulsanti);
+    refresh();
 
 
     //ScrollArea che mostra i bottoni
@@ -69,7 +68,7 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(pare
     setStyleSheet("QScrollArea { border: none; }");
 }
 
-void CinemaSelectionPage::caricaCinemaDaXML(const QString& path, QHBoxLayout * layout) {
+/* void CinemaSelectionPage::caricaCinemaDaXML(const QString& path) {
     QList<QStringList> lista;
     QDir cinemaDir(path);
     QStringList xmlFiles = cinemaDir.entryList(QStringList() << "*.xml", QDir::Files);
@@ -100,7 +99,7 @@ void CinemaSelectionPage::caricaCinemaDaXML(const QString& path, QHBoxLayout * l
         }
         if (!nomeCinema.isEmpty()) {
             qDebug() << "Carico immagine da:" << resourcePath;
-            creaBottoneCinema(nomeCinema,pathImmagine,cinemaDir.filePath(fileName), layout);
+            creaBottoneCinema(nomeCinema,pathImmagine,cinemaDir.filePath(fileName), layoutPulsanti);
         } else {
             qWarning() << "Nessun nome trovato in" << fileName;
         }
@@ -108,7 +107,7 @@ void CinemaSelectionPage::caricaCinemaDaXML(const QString& path, QHBoxLayout * l
         file.close();
     }
 }
-
+ */
 
 void CinemaSelectionPage::creaBottoneCinema(const QString& nomeC, const QString& imPath, const QString& xmlPath, QHBoxLayout* layout) {
     
@@ -120,4 +119,20 @@ void CinemaSelectionPage::creaBottoneCinema(const QString& nomeC, const QString&
     connect(btn, &CinemaButton::selected, this, [=](){
         emit selectedCinema(xmlPath);
     });
+}
+
+
+void CinemaSelectionPage::refresh() {
+    QLayoutItem* child;
+    while ((child = layoutPulsanti->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    cinemaButtons.clear();
+
+    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
+    auto cinemas = repo.loadAllCinemas();
+    for (const auto& c : cinemas) {
+        creaBottoneCinema(c.nome, c.imagePath, c.xmlPath, layoutPulsanti);
+    }
 }

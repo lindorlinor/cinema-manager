@@ -3,11 +3,13 @@
 
 #include <QMainWindow>
 #include <QStackedWidget>
+#include "CinemaSelectionPage.h"
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 private:
     QStackedWidget *stackedWidget;
+    CinemaSelectionPage * cinemaPage;
 public:
     MainWindow(QWidget *parent = nullptr);
 public slots:

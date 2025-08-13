@@ -8,6 +8,7 @@ RCC_DIR = release
 UI_DIR = release
 
 QT += widgets
+QT += xml
 QMAKE_CXXFLAGS += -g -O0
 
 
@@ -35,7 +36,8 @@ HEADERS +=  \
             GUI/InsertCinemaPage.h \
             GUI/PathButton.h \
             GUI/AddPanel.h \
-            GUI/InsertImageFrame.h 
+            GUI/InsertImageFrame.h \
+            DataFiles/CinemaXmlRepository.h 
 SOURCES +=  \
             main.cpp \
             Inserzione.cpp \
@@ -53,5 +55,6 @@ SOURCES +=  \
             GUI/InsertCinemaPage.cpp \
             GUI/PathButton.cpp \
             GUI/AddPanel.cpp \
-            GUI/InsertImageFrame.cpp 
+            GUI/InsertImageFrame.cpp \
+            DataFiles/CinemaXmlRepository.cpp
 RESOURCES += GUI/resources.qrc
