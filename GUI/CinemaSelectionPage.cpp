@@ -1,5 +1,4 @@
 #include "CinemaSelectionPage.h"
-#include "../DataFiles/CinemaXmlRepository.h"
 #include "CinemaButton.h"
 #include <QVBoxLayout>
 #include <QDir>
@@ -32,7 +31,6 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(pare
 
     //Caricamento e creazione dei Button cinema
     refresh();
-
 
     //ScrollArea che mostra i bottoni
     QScrollArea* scrollArea = new QScrollArea;
@@ -72,7 +70,6 @@ void CinemaSelectionPage::creaBottoneCinema(const QString& nomeC, const QString&
     
     CinemaButton *btn = new CinemaButton(nomeC, QPixmap(imPath), xmlPath);
     layoutPulsanti->addWidget(btn);
-    cinemaButtons.append(btn);
 
     //TO DO
     connect(btn, &CinemaButton::selected, this, [=](){
@@ -90,7 +87,7 @@ void CinemaSelectionPage::refresh() {
     cinemaButtons.clear();
 
     CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
-    auto cinemas = repo.loadAllCinemas();
+    cinemas = repo.loadAllCinemas();
     for (const auto& c : cinemas) {
         creaBottoneCinema(c.nome, c.imagePath, c.xmlPath);
     }

@@ -2,7 +2,6 @@
 #include "../DataFiles/CinemaXmlRepository.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <QPushButton>
 #include <QLabel>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -26,8 +25,17 @@ InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),textInput(n
     nameLayout->addWidget(nameLabel);
     nameLayout->addWidget(textInput);
 
+    //Messaggio di errore
+    errorLabel = new QLabel(this);
+    errorLabel->setStyleSheet("color: red; font-size: 11px;");
+    errorLabel->setText("");
+    errorLabel->setVisible(false);
+
     layoutInput->addLayout(nameLayout);
+    layoutInput->addWidget(errorLabel);
     layoutInput->addWidget(imageArea);
+
+    connect(textInput, &QLineEdit::textChanged, this, &InsertCinemaPage::checkCinemaNameAvailability);
     connect(imageArea,&InsertImageFrame::clicked,this,&InsertCinemaPage::chooseImage);
     input->setFixedSize(500,400);
     layoutInput->setSpacing(30);
@@ -35,8 +43,8 @@ InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),textInput(n
 
     QWidget * contenitorePulsanti = new QWidget;
     QHBoxLayout * layoutPulsanti = new QHBoxLayout(contenitorePulsanti);
-    QPushButton * escButton = new QPushButton("Annulla");
-    QPushButton * saveButton = new QPushButton("Salva");
+    escButton = new QPushButton("Annulla");
+    saveButton = new QPushButton("Salva");
     connect(escButton,&QPushButton::clicked,this,[=](){emit returnCinemaSelectionPage();});
     connect(saveButton,&QPushButton::clicked,this,&InsertCinemaPage::saveCinemaInXml);
     layoutPulsanti->setSpacing(150);
@@ -45,6 +53,32 @@ InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),textInput(n
     layout->addWidget(contenitorePulsanti, 0, Qt::AlignHCenter);
     
 }
+
+void InsertCinemaPage::checkCinemaNameAvailability(const QString& text) {
+    QString nome = text.trimmed();
+
+    // Carico la lista dei cinema esistenti
+    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
+    QList<Cinema> cinemaList = repo.loadAllCinemas();
+    
+    bool isAvailable = true;
+    for (const Cinema& c: cinemaList) {
+        if (c.nome.compare(nome, Qt::CaseInsensitive) == 0) {
+            isAvailable = false;
+            break;
+        }
+    }
+
+    if (!isAvailable) {
+        errorLabel->setText("Nome non disponibile. Scegliere un altro nome per il cinema");
+        errorLabel->setVisible(true);
+        saveButton->setEnabled(false); // disabilita bottone
+    } else {
+        errorLabel->setVisible(false);
+        saveButton->setEnabled(true);
+    }
+}
+
 
 void InsertCinemaPage::chooseImage(){
     QString fileName = QFileDialog::getOpenFileName(
@@ -56,7 +90,6 @@ void InsertCinemaPage::chooseImage(){
 
     if (!fileName.isEmpty()) {
         imagePath = fileName;
-        // Mostra solo il nome file
         imageArea->setText(QFileInfo(fileName).fileName());
     }
 }
