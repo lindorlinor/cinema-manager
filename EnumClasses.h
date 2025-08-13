@@ -29,9 +29,56 @@ enum class Formato {
     AI,
     EPS,
     HTML,
-    IMAX_3D,
-    Unknown
+    IMAX_3D
 };
+
+inline const char* toString(Formato f) {
+    switch (f) {
+        case Formato::DCP: return "DCP";
+        case Formato::RealD_3D: return "RealD 3D";
+        case Formato::MOV_ProRes: return "MOV ProRes";
+        case Formato::MXF: return "MXF";
+        case Formato::WAV_5_1: return "WAV 5.1";
+        case Formato::WAV_7_1: return "WAV 7.1";
+        case Formato::MP4: return "MP4";
+        case Formato::MOV_H264: return "MOV H264";
+        case Formato::GIF: return "GIF";
+        case Formato::PNG: return "PNG";
+        case Formato::JPG: return "JPG";
+        case Formato::WEBP: return "WEBP";
+        case Formato::PDF: return "PDF";
+        case Formato::TIFF: return "TIFF";
+        case Formato::AI: return "AI";
+        case Formato::EPS: return "EPS";
+        case Formato::HTML: return "HTML";
+        case Formato::IMAX_3D: return "IMAX 3D";
+        default: return "Non trovato";
+    }
+}
+
+inline std::vector<Formato> tuttiIFormati() {
+    return {
+        Formato::DCP,
+        Formato::RealD_3D,
+        Formato::MOV_ProRes,
+        Formato::MXF,
+        Formato::WAV_5_1,
+        Formato::WAV_7_1,
+        Formato::MP4,
+        Formato::MOV_H264,
+        Formato::GIF,
+        Formato::PNG,
+        Formato::JPG,
+        Formato::WEBP,
+        Formato::PDF,
+        Formato::TIFF,
+        Formato::AI,
+        Formato::EPS,
+        Formato::HTML,
+        Formato::IMAX_3D
+    };
+}
+
 
 
 enum class FasciaOraria{
@@ -154,14 +201,25 @@ enum class Risoluzione {
 
 inline const char* toString(Risoluzione r) {
     switch (r) {
-        case Risoluzione::SD_480p: return "SD_480p";
-        case Risoluzione::HD_720p: return "HD_720p";
-        case Risoluzione::QHD_1440p: return "QHD_1440p";
-        case Risoluzione::UHD_4K_2160p: return "UHD_4K_2160p";
-        case Risoluzione::UHD_8K_4320p: return "UHD_8K_4320p";
+        case Risoluzione::SD_480p: return "SD 480p";
+        case Risoluzione::HD_720p: return "HD 720p";
+        case Risoluzione::QHD_1440p: return "QHD 1440p";
+        case Risoluzione::UHD_4K_2160p: return "UHD 4K 2160p";
+        case Risoluzione::UHD_8K_4320p: return "UHD 8K 4320p";
         default: return "Non trovato";
     }
 }
+
+inline std::vector<Risoluzione> tutteLeRisoluzioni() {
+    return {
+        Risoluzione::SD_480p,
+        Risoluzione::HD_720p,
+        Risoluzione::QHD_1440p,
+        Risoluzione::UHD_4K_2160p,
+        Risoluzione::UHD_8K_4320p
+    };
+}
+
 
 #endif // NOME_DEL_FILE_H
 
