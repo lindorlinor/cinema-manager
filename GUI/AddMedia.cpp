@@ -1,10 +1,13 @@
 #include "AddMedia.h"
 #include "SearchPanel.h"
 
+//template
+
 template<class L, class T>
 void AddMedia::addInput(QLabel* label,  L* layout, T* inputWidget){
     QWidget* widget = new QWidget; 
     QVBoxLayout* l = new QVBoxLayout(this);
+    label->setAlignment(Qt::AlignTop);
     l->addWidget(label,1);
     l->addWidget(inputWidget,4);
     widget->setLayout(l);
@@ -31,16 +34,50 @@ void AddMedia::addEnumList(L* base, const QString& labelText, const std::vector<
     addInput(label, base, listWidget);
 }
 
-//tab Base
+template<class L, class T>
+void AddMedia::addEnumCombo(L* base, const QString& labelText, const std::vector<T>& items, QComboBox*& comboBox) {
+    QLabel* label = new QLabel(labelText);
+    comboBox = new QComboBox(this);
 
-void AddMedia::addTitolo(QHBoxLayout* baseH){
-    QLabel* label = new QLabel("Titolo");
-    QLineEdit* lineEdit = new QLineEdit(this);
-    lineEdit->setPlaceholderText("Titolo");
-    addInput(label, baseH, lineEdit);
+    for (T e : items) {
+        const char* str = toString(e);
+        if (QString::fromUtf8(str) == "Non trovato") continue;
+
+        comboBox->addItem(QString::fromUtf8(str), QVariant::fromValue(static_cast<int>(e)));
+    }
+
+    addInput(label, base, comboBox);
 }
 
-void AddMedia::addTipologia(QHBoxLayout* baseH){
+template<class L>
+void AddMedia::addLineEdit(const QString& testo, L* ly){
+    QLabel* label = new QLabel(testo,this);
+    QLineEdit* lineEdit = new QLineEdit(this);
+    lineEdit->setPlaceholderText(testo);
+    addInput(label, ly, lineEdit);
+}
+
+template<class L>
+void AddMedia::addSpin(const QString& testo, int min, int max, int standard, L* ly){
+    QLabel* label = new QLabel(testo,this);
+    QSpinBox * spin = new QSpinBox (this);
+    spin->setRange(min, max);
+    spin->setValue(standard);
+    addInput(label, ly, spin);
+}
+
+template<class L>
+void AddMedia::addDoubleSpin(const QString& testo, double min, double max, double standard, L* ly){
+    QLabel* label = new QLabel(testo,this);
+    QDoubleSpinBox* doubleSpin = new QDoubleSpinBox (this);
+    doubleSpin->setRange(min, max);
+    doubleSpin->setValue(standard);
+    addInput(label, ly, doubleSpin);
+}
+
+//tab Base
+
+void AddMedia::addTipologiaCombo(QHBoxLayout* baseH){
     QLabel* label = new QLabel("Tipologia");
     QComboBox* combo = new QComboBox(this);
     combo->addItem("Film");
@@ -59,42 +96,6 @@ void AddMedia::addTipologia(QHBoxLayout* baseH){
 void AddMedia::updateTabTipologia(int index){
     stackTipologia->setCurrentIndex(index);
 }
-
-void AddMedia::addAutore(QHBoxLayout* baseH){
-    QLabel* label = new QLabel("Autore");
-    QLineEdit* lineEdit = new QLineEdit(this);
-    lineEdit->setPlaceholderText("Autore");
-    addInput(label, baseH, lineEdit);
-}
-
-void AddMedia::addDurata(QHBoxLayout* baseH){
-    QLabel* label = new QLabel("Durata");
-    QSpinBox * spin = new QSpinBox (this);
-    spin->setRange(0,300);
-    spin->setValue(0);
-    label->setAlignment(Qt::AlignTop);
-    addInput(label, baseH, spin);
-}
-
-void AddMedia::addTipologia(QHBoxLayout* baseH){
-    stackTipologia = new QStackedLayout;
-
-    TipoFilm = new QWidget;
-    TipoTrailer = new QWidget;
-    TipoInserzione = new QWidget;
-    TipoPodcast = new QWidget;
-    TipoPuntata = new QWidget;
-
-    stackTipologia->addWidget(TipoFilm);
-    stackTipologia->addWidget(TipoTrailer);
-    stackTipologia->addWidget(TipoInserzione);
-    stackTipologia->addWidget(TipoPodcast);
-    stackTipologia->addWidget(TipoPuntata);
-
-    stackTipologia->setCurrentIndex(0);
-
-}
-
 //tab Descrizione
 
 void AddMedia::addDescrizione(QHBoxLayout* baseH){
@@ -109,28 +110,96 @@ void AddMedia::addDescrizione(QHBoxLayout* baseH){
 
 //tab Tipologia
 
+void AddMedia::addDataInizioRilascio(QHBoxLayout* ly){
+    QLabel* label = new QLabel("Data di Inizio Proiezione");
+    dataInizio = new QDateEdit;
+    dataInizio->setCalendarPopup(true);
+    dataInizio->setDisplayFormat("dd/MM/yyyy");
+    dataInizio->setDate(QDate::currentDate());
+    addInput(label, ly, dataInizio);
+}
+
+void AddMedia::addDataFineRilascio(QHBoxLayout* ly){
+    QLabel* label = new QLabel("Data di Fine Proiezione");
+    dataFine = new QDateEdit;
+    dataFine->setCalendarPopup(true);
+    dataFine->setDisplayFormat("dd/MM/yyyy");
+    dataFine->setDate(QDate::currentDate());
+    dataFine->setMinimumDate(dataInizio->date());
+    addInput(label, ly, dataFine);
+}
+
 //tipologia Film
 
+void AddMedia::addTipologiaFilm(QWidget* TipoFilm){
+    QHBoxLayout* filmH1 = new QHBoxLayout;
+    QHBoxLayout* filmH2 = new QHBoxLayout;
+    QHBoxLayout* filmH3 = new QHBoxLayout;
+    QHBoxLayout* filmH4 = new QHBoxLayout;
+    QVBoxLayout* filmV = new QVBoxLayout;
+    QWidget* widgetFilm1 = new QWidget;
+    QWidget* widgetFilm2 = new QWidget;
+    QWidget* widgetFilm3 = new QWidget;
+    QWidget* widgetFilm4 = new QWidget;
 
-
-void AddMedia::addAttori(){
-    QLineEdit* inputAttore = new QLineEdit(this);
-    QPushButton* aggiunti = new QPushButton("+",this); 
-    QPushButton* rimuovi = new QPushButton("Rimuovi selezionati",this);
-    QListWidget* listAttori = new QListWidget(this);
-    
-    QHBoxLayout* layoutH = new QHBoxLayout;
-    QVBoxLayout* layoutV = new QVBoxLayout;
-
-    layoutH->addWidget(inputAttore);
-    layoutH->addWidget(aggiunti);
-
-    layoutV->addLayout(layoutH);
-    layoutV->addWidget(listAttori);
-    layoutV->addWidget(listAttori);
-
-    
+    addDataInizioRilascio(filmH1);
+    addDataFineRilascio(filmH1);
+    addEnumList(filmH2, "Genere", tuttiIGeneri(), listGeneri);
+    addLineEdit("Casa di Produzione",filmH2);
+    addSpin("Numero di Post Credit", 0, 5, 0, filmH3);
+    addDoubleSpin("Costo Biglietto (€)", 0.0, 15.0, 8.0, filmH3);
+    widgetFilm1->setLayout(filmH1);
+    widgetFilm2->setLayout(filmH2);
+    widgetFilm3->setLayout(filmH3);
+    filmV->addWidget(widgetFilm1);
+    filmV->addWidget(widgetFilm2);
+    filmV->addWidget(widgetFilm3);
+    widgetFilm4->setLayout(filmV);
+    addPersone(filmH4);
+    filmH4->addWidget(widgetFilm4);
+    TipoFilm->setLayout(filmH4);
 }
+
+
+void AddMedia::addPersone(QHBoxLayout* filmH){
+    QLabel* label = new QLabel("Attori");
+    ListPersone* lista = new ListPersone(this); 
+    addInput(label, filmH, lista);
+}
+
+
+//tipologia Inserzione
+void AddMedia::addTipologiaInserzione(QWidget* TipoInserzione){
+    QHBoxLayout* inserzioneH1 = new QHBoxLayout;
+    QHBoxLayout* inserzioneH2 = new QHBoxLayout;
+    QVBoxLayout* inserzioneV = new QVBoxLayout;
+    QWidget* WidgetInserzione1 = new QWidget(this);
+    QWidget* WidgetInserzione2 = new QWidget(this);
+
+    addEnumList(inserzioneH1, "Fasce Orarie", tutteLeFasceOrarie(), listFasceOrarie);
+    addDataInizioRilascio(inserzioneH1);
+    addDataFineRilascio(inserzioneH1);
+    addSpin("Numero Proiezioni Giornaliere", 0, 20, 0, inserzioneH2);
+    addDoubleSpin("Costo Base oer Proieizone (€)", 30.0, 4000.0, 30.0, inserzioneH2);
+    addLineEdit("Azienda Inserzionistica", inserzioneH2);
+
+    WidgetInserzione1->setLayout(inserzioneH1);
+    WidgetInserzione2->setLayout(inserzioneH2);
+    inserzioneV->addWidget(WidgetInserzione1);
+    inserzioneV->addWidget(WidgetInserzione2);
+    TipoInserzione->setLayout(inserzioneV);
+}
+
+//tipologia Podcast
+void AddMedia::addTipologiaPodcast(QWidget* TipoPodcast){
+    QHBoxLayout* podcastH = new QHBoxLayout;
+    addLineEdit("Conduttore", podcastH);
+    TipoPodcast->setLayout(podcastH);
+}
+
+
+
+
 
 //aggiunta dei Tab
 
@@ -141,12 +210,12 @@ void AddMedia::addBase(QWidget* base){
     QWidget* widget1 = new QWidget;
     QWidget* widget2 = new QWidget;
     
-    addTitolo(baseH1);
-    addAutore(baseH1);
-    addTipologia(baseH1);
+    addLineEdit("Titolo", baseH1);
+    addLineEdit("Autore", baseH1);
+    addTipologiaCombo(baseH1);
     widget1->setLayout(baseH1);
     
-    addDurata(baseH2);
+    addSpin("Durata",0,500,0,baseH2);
     addEnumList(baseH2, "Lingue", tutteLeLingue(), listLingue);
     addEnumList(baseH2, "Sottotitoli", tutteLeLingue(), listSottotitoli);
     widget2->setLayout(baseH2);
@@ -162,17 +231,42 @@ void AddMedia::addDescrizione(QWidget* descrizione){
     QHBoxLayout* descrizioneH = new QHBoxLayout;
     QWidget* widget = new QWidget;
 
-    addEnumList(descrizioneV, "Formato", tuttiIFormati(), listFormato);
-    addEnumList(descrizioneV, "Risoluzione", tutteLeRisoluzioni(), listRisoluzione);
+    addEnumCombo(descrizioneV, "Formato", tuttiIFormati(), comboFormato);
+    addEnumCombo(descrizioneV, "Risoluzione", tutteLeRisoluzioni(), comboRisoluzione);
     widget->setLayout(descrizioneV);
     descrizioneH->addWidget(widget);
     addDescrizione(descrizioneH);
     descrizione->setLayout(descrizioneH);
 }
 
-void AddMedia::addTab(QHBoxLayout* layout){
+void AddMedia::addTipologia(QWidget* tipologia){
+    stackTipologia = new QStackedLayout;
+
+    TipoFilm = new QWidget;
+    TipoTrailer = new QWidget;
+    TipoInserzione = new QWidget;
+    TipoPodcast = new QWidget;
+    TipoPuntata = new QWidget;
+
+    addTipologiaFilm(TipoFilm);
+   // addTipologiaTrailer(TipoTrailer);
+    addTipologiaInserzione(TipoInserzione);
+    addTipologiaPodcast(TipoPodcast);
+   // addTipologiaPuntate(TipoPuntata);
+
+    stackTipologia->addWidget(TipoFilm);
+    stackTipologia->addWidget(TipoTrailer);
+    stackTipologia->addWidget(TipoPodcast);
+    stackTipologia->addWidget(TipoPuntata);
+    stackTipologia->addWidget(TipoInserzione);
+
+    stackTipologia->setCurrentIndex(0);
+    tipologia->setLayout(stackTipologia);
+}
+
+void AddMedia::addTabs(QHBoxLayout* layout){
     QTabWidget* tab = new QTabWidget(this);
-    tab->setFixedSize(500,300);
+    tab->setFixedSize(800,500);
     
     QWidget* base = new QWidget;
     QWidget* descrizione = new QWidget;
@@ -180,9 +274,11 @@ void AddMedia::addTab(QHBoxLayout* layout){
     
     addBase(base);
     addDescrizione(descrizione);
+    addTipologia(tipologia);
 
     tab->addTab(base, "Informazioni Base");
     tab->addTab(descrizione, "Descrizione");
+    tab->addTab(tipologia, "Specifiche Tipologia");
 
     layout->addWidget(tab,2);
 }
@@ -231,6 +327,7 @@ void AddMedia::salva(){
 
 void AddMedia::addPagina(QVBoxLayout* mainLayout){
     QLabel* titolo = new QLabel("Aggiungi un elemento alla libreria");
+    titolo->setAlignment(Qt::AlignTop);
     widgetPath = new PathButton;
     QVBoxLayout* sinistra = new QVBoxLayout();
     QHBoxLayout* layout = new QHBoxLayout();
@@ -246,7 +343,7 @@ void AddMedia::addPagina(QVBoxLayout* mainLayout){
     sinistra->addWidget(widgetPath);
     widgetSinistra->setLayout(sinistra);
     layout->addWidget(widgetSinistra);
-    addTab(layout);
+    addTabs(layout);
     widgetLayout->setLayout(layout);
     mainLayout->addWidget(widgetLayout);
 }

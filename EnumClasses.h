@@ -98,6 +98,14 @@ inline const char* toString(FasciaOraria fo) {
     }
 }
 
+inline std::vector<FasciaOraria> tutteLeFasceOrarie() {
+    return {
+        FasciaOraria::Mattina,
+        FasciaOraria::Pomeriggio,
+        FasciaOraria::Sera
+    };
+}
+
 enum class Lingua {
     Italiano,
     Inglese,
@@ -115,6 +123,8 @@ inline const char* toString(Lingua l) {
         case Lingua::Francese: return "Francese";
         case Lingua::Spagnolo: return "Spagnolo";
         case Lingua::Tedesco: return "Tedesco";
+        case Lingua::Giapponese: return "Giapponese";
+        case Lingua::Cinese: return "Cinese";
         default: return "Non trovato";
     }
 }
@@ -147,6 +157,15 @@ inline const char* toString(Classificazione c) {
         case Classificazione::DICIOTTO_PIU: return "18+";
         default: return "Non trovato";
     }
+}
+
+inline std::vector<Classificazione> tutteLeClassificazioni() {
+    return {
+        Classificazione::TUTTI,
+        Classificazione::SEI_PIU,
+        Classificazione::QUATTORDICI_PIU,
+        Classificazione::DICIOTTO_PIU
+    };
 }
 
 enum class Genere {
@@ -188,6 +207,27 @@ inline const char* toString(Genere g) {
         case Genere::Supereroi: return "Supereroi";
         default: return "Non trovato";
     }
+}
+
+inline std::vector<Genere> tuttiIGeneri() {
+    return {
+        Genere::Azione, 
+        Genere::Avventura,
+        Genere::Commedia, 
+        Genere::Crime,
+        Genere::Drama,
+        Genere::Fantasy,
+        Genere::Horror,
+        Genere::Thriller,
+        Genere::ScienceFiction,
+        Genere::Mistero,
+        Genere::Western,
+        Genere::Documentario,
+        Genere::Animazione,
+        Genere::Storico,
+        Genere::Romantico,
+        Genere::Supereroi
+    };
 }
 
 enum class Risoluzione {
