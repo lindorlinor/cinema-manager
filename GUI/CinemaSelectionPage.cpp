@@ -12,7 +12,7 @@
 #include <QFont>
 #include <QScrollArea>
 
-CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(parent){
+CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(parent),layoutPulsanti(new QHBoxLayout(nullptr)){
     QVBoxLayout * layout = new QVBoxLayout(this);
     layout->setSpacing(10);  
     layout->setContentsMargins(20, 20, 20, 20);
@@ -27,13 +27,10 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(pare
 
     //Layout orizzontale con i bottoni dei cinema
     QWidget* contenitorePulsanti = new QWidget;
-    QHBoxLayout* layoutPulsanti = new QHBoxLayout(contenitorePulsanti);
+    contenitorePulsanti->setLayout(layoutPulsanti);
 
     //Caricamento e creazione dei Button cinema
-    QDir baseDir(QCoreApplication::applicationDirPath());
-    baseDir.cdUp();  // Vai dalla /release alla root
-    caricaCinemaDaXML(baseDir.absolutePath(), layoutPulsanti);
-
+    refresh();
 
     //ScrollArea che mostra i bottoni
     QScrollArea* scrollArea = new QScrollArea;
@@ -54,11 +51,11 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(pare
     layoutRigaCinema->setAlignment(Qt::AlignCenter);
     layoutRigaCinema->setSpacing(20);
 
-    // 5. Container per il layout orizzontale
+    //Container per il layout orizzontale
     QWidget* containerRigaCinema = new QWidget;
     containerRigaCinema->setLayout(layoutRigaCinema);
 
-    // 6. Aggiunta al layout principale (centrato)
+    //Aggiunta al layout principale (centrato)
     layout->addWidget(containerRigaCinema, 0, Qt::AlignCenter);
     
     QPushButton* escButton = new QPushButton("Esci");
@@ -66,59 +63,32 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(pare
     connect(addButton,&QPushButton::clicked,this,&CinemaSelectionPage::insertCinema);
     layout->addWidget(escButton,0, Qt::AlignCenter);
 
-    setLayout(layout);
     setStyleSheet("QScrollArea { border: none; }");
 }
 
-void CinemaSelectionPage::caricaCinemaDaXML(const QString& path, QHBoxLayout * layout) {
-    QList<QStringList> lista;
-    QDir cinemaDir(path);
-    QStringList xmlFiles = cinemaDir.entryList(QStringList() << "*.xml", QDir::Files);
-    for (const QString &fileName : xmlFiles) {
-        QFile file(cinemaDir.filePath(fileName));
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-            qWarning() << "Impossibile aprire file:" << fileName;
-            continue;
-        }
-
-        QXmlStreamReader xml(&file);
-        QString nomeCinema, pathImmagine;
-        while (!xml.atEnd() && !xml.hasError()) {
-            xml.readNext();
-            if (xml.isStartElement()) {
-                if (xml.name().toString() == "nome") {
-                    nomeCinema = xml.readElementText();
-                } else if (xml.name().toString() == "immagine") {
-                    pathImmagine = xml.readElementText();
-                    break;
-                }
-            }
-        }
-
-        QString resourcePath = pathImmagine;
-        if (!pathImmagine.startsWith(":/")) {
-            resourcePath = ":/images/" + pathImmagine;
-        }
-        if (!nomeCinema.isEmpty()) {
-            qDebug() << "Carico immagine da:" << resourcePath;
-            creaBottoneCinema(nomeCinema,pathImmagine,cinemaDir.filePath(fileName), layout);
-        } else {
-            qWarning() << "Nessun nome trovato in" << fileName;
-        }
-
-        file.close();
-    }
-}
-
-
-void CinemaSelectionPage::creaBottoneCinema(const QString& nomeC, const QString& imPath, const QString& xmlPath, QHBoxLayout* layout) {
+void CinemaSelectionPage::creaBottoneCinema(const QString& nomeC, const QString& imPath, const QString& xmlPath) {
     
     CinemaButton *btn = new CinemaButton(nomeC, QPixmap(imPath), xmlPath);
-    layout->addWidget(btn);
-    cinemaButtons.append(btn);
+    layoutPulsanti->addWidget(btn);
 
     //TO DO
     connect(btn, &CinemaButton::selected, this, [=](){
         emit selectedCinema(xmlPath);
     });
+}
+
+
+void CinemaSelectionPage::refresh() {
+    QLayoutItem* child;
+    while ((child = layoutPulsanti->takeAt(0)) != nullptr) {
+        delete child->widget();
+        delete child;
+    }
+    cinemaButtons.clear();
+
+    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
+    cinemas = repo.loadAllCinemas();
+    for (const auto& c : cinemas) {
+        creaBottoneCinema(c.nome, c.imagePath, c.xmlPath);
+    }
 }

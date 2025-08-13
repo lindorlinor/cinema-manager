@@ -1,5 +1,6 @@
 #include "MainWindow.h" 
 #include "CinemaSelectionPage.h" 
+#include "InsertCinemaPage.h" 
 #include "SearchPanel.h" 
 #include <QVBoxLayout>
 #include <QDebug>
@@ -11,12 +12,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
     stackedWidget = new QStackedWidget(this);
     setCentralWidget(stackedWidget);
-    CinemaSelectionPage * cinemaPage = new CinemaSelectionPage(this);
+    cinemaPage = new CinemaSelectionPage(this);
     connect(cinemaPage,&CinemaSelectionPage::insertCinema,this,&MainWindow::showInsertCinemaPage);
     connect(cinemaPage,&CinemaSelectionPage::selectedCinema,this,&MainWindow::showSelectedCinemaPage);
     SearchPanel * searchPage = new SearchPanel(this);
+    connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
+    InsertCinemaPage * insertPage = new InsertCinemaPage(this); 
+    connect(insertPage,&InsertCinemaPage::returnCinemaSelectionPage,this,&MainWindow::showCinemaSelectionPage);
     stackedWidget->addWidget(cinemaPage);
     stackedWidget->addWidget(searchPage);
+    stackedWidget->addWidget(insertPage);
     stackedWidget->setCurrentIndex(0);
     stackedWidget->show();
     resize(800, 600); 
@@ -36,12 +41,17 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 void MainWindow::showInsertCinemaPage(){
-    //TO DO
-    qDebug() << "Pagina Inserimento Cinema" ;
+    stackedWidget->setCurrentIndex(2);
 }
 
 void MainWindow::showSelectedCinemaPage(const QString& xmlPath){
     //TO DO
     stackedWidget->setCurrentIndex(1);
     qDebug() << "Cinema al path " << xmlPath ;
+}
+void MainWindow::showCinemaSelectionPage(){
+    if (cinemaPage) {
+        cinemaPage->refresh();
+    }
+    stackedWidget->setCurrentIndex(0);
 }

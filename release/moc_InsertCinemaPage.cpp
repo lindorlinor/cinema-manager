@@ -1,5 +1,5 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'SearchPanel.h'
+** Meta object code from reading C++ file 'InsertCinemaPage.h'
 **
 ** Created by: The Qt Meta Object Compiler version 68 (Qt 6.4.2)
 **
@@ -7,11 +7,11 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../GUI/SearchPanel.h"
+#include "../GUI/InsertCinemaPage.h"
 #include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'SearchPanel.h' doesn't include <QObject>."
+#error "The header file 'InsertCinemaPage.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
 #error "This file was generated using the moc from 6.4.2. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -26,34 +26,31 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
-struct qt_meta_stringdata_SearchPanel_t {
-    uint offsetsAndSizes[10];
-    char stringdata0[12];
-    char stringdata1[15];
+struct qt_meta_stringdata_InsertCinemaPage_t {
+    uint offsetsAndSizes[8];
+    char stringdata0[17];
+    char stringdata1[26];
     char stringdata2[1];
-    char stringdata3[20];
-    char stringdata4[6];
+    char stringdata3[12];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_SearchPanel_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_SearchPanel_t qt_meta_stringdata_SearchPanel = {
+    uint(sizeof(qt_meta_stringdata_InsertCinemaPage_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_InsertCinemaPage_t qt_meta_stringdata_InsertCinemaPage = {
     {
-        QT_MOC_LITERAL(0, 11),  // "SearchPanel"
-        QT_MOC_LITERAL(12, 14),  // "escSearchPanel"
-        QT_MOC_LITERAL(27, 0),  // ""
-        QT_MOC_LITERAL(28, 19),  // "updateModifierPanel"
-        QT_MOC_LITERAL(48, 5)   // "index"
+        QT_MOC_LITERAL(0, 16),  // "InsertCinemaPage"
+        QT_MOC_LITERAL(17, 25),  // "returnCinemaSelectionPage"
+        QT_MOC_LITERAL(43, 0),  // ""
+        QT_MOC_LITERAL(44, 11)   // "chooseImage"
     },
-    "SearchPanel",
-    "escSearchPanel",
+    "InsertCinemaPage",
+    "returnCinemaSelectionPage",
     "",
-    "updateModifierPanel",
-    "index"
+    "chooseImage"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_SearchPanel[] = {
+Q_CONSTINIT static const uint qt_meta_data_InsertCinemaPage[] = {
 
  // content:
       10,       // revision
@@ -70,71 +67,71 @@ Q_CONSTINIT static const uint qt_meta_data_SearchPanel[] = {
        1,    0,   26,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    1,   27,    2, 0x0a,    2 /* Public */,
+       3,    0,   27,    2, 0x0a,    2 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::Int,    4,
+    QMetaType::Void,
 
        0        // eod
 };
 
-Q_CONSTINIT const QMetaObject SearchPanel::staticMetaObject = { {
+Q_CONSTINIT const QMetaObject InsertCinemaPage::staticMetaObject = { {
     QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_SearchPanel.offsetsAndSizes,
-    qt_meta_data_SearchPanel,
+    qt_meta_stringdata_InsertCinemaPage.offsetsAndSizes,
+    qt_meta_data_InsertCinemaPage,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_SearchPanel_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_InsertCinemaPage_t,
         // Q_OBJECT / Q_GADGET
-        QtPrivate::TypeAndForceComplete<SearchPanel, std::true_type>,
-        // method 'escSearchPanel'
+        QtPrivate::TypeAndForceComplete<InsertCinemaPage, std::true_type>,
+        // method 'returnCinemaSelectionPage'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'updateModifierPanel'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>
+        // method 'chooseImage'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
 
-void SearchPanel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void InsertCinemaPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<SearchPanel *>(_o);
+        auto *_t = static_cast<InsertCinemaPage *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->escSearchPanel(); break;
-        case 1: _t->updateModifierPanel((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 0: _t->returnCinemaSelectionPage(); break;
+        case 1: _t->chooseImage(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (SearchPanel::*)();
-            if (_t _q_method = &SearchPanel::escSearchPanel; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+            using _t = void (InsertCinemaPage::*)();
+            if (_t _q_method = &InsertCinemaPage::returnCinemaSelectionPage; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
             }
         }
     }
+    (void)_a;
 }
 
-const QMetaObject *SearchPanel::metaObject() const
+const QMetaObject *InsertCinemaPage::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *SearchPanel::qt_metacast(const char *_clname)
+void *InsertCinemaPage::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_SearchPanel.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_InsertCinemaPage.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
-int SearchPanel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int InsertCinemaPage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -152,7 +149,7 @@ int SearchPanel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void SearchPanel::escSearchPanel()
+void InsertCinemaPage::returnCinemaSelectionPage()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
