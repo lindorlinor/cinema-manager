@@ -102,3 +102,8 @@ void Podcast::aggiornaDate(){
         setDataFineRilascio((*maxPuntata)->getDataFineRilascio());
     }
 }
+
+//visitor
+void Podcast::accept(MediaVisitor* visitor) {
+    visitor->visit(this);
+}

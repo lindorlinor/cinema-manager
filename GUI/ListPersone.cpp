@@ -43,3 +43,13 @@ void ListPersone::removeItem() {
         model->setStringList(currentList);
     }
 }
+
+#include <vector>
+#include <QStringListModel>
+
+std::vector<QString> ListPersone::getListaPersone() {
+    std::vector<QString> result;
+    QStringList list = model->stringList(); 
+    result.assign(list.begin(), list.end()); 
+    return result;
+}

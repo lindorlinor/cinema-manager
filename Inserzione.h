@@ -1,6 +1,7 @@
 #ifndef INSERZIONE_H
 #define INSERZIONE_H
 #include "Pubblicita.h"
+#include "MediaVisitor.h"
 #include <string>
 #include <EnumClasses.h>
 /**
@@ -51,6 +52,9 @@ public:
     double calcolaIncasso() override;
 
     friend vector<FasciaOraria> getFasceOrarie(const Inserzione&); //ha friend perchè è solo per i test! (al momento)
+
+    //visitor
+    void accept(MediaVisitor* visitor)override;
 };
 
 #endif

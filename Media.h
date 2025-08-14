@@ -12,6 +12,8 @@
 using namespace std;
 using namespace std::chrono;
 
+class MediaVisitor;
+
 /**
  * @class Media
  * @brief Rappresenta un media generico della biblioteca del cinema.
@@ -117,6 +119,9 @@ public:
      * @return L'incasso calcolato
      */
     virtual double calcolaIncasso() = 0;
+
+    //visitor
+    virtual void accept(MediaVisitor* visitor) = 0;
 
 };
 

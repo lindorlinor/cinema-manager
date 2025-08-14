@@ -8,6 +8,10 @@
 #include <QVBoxLayout>
 #include <QStringListModel>
 #include <QListView>
+#include <QListWidgetItem>
+#include <iostream>
+
+using namespace std;
 
 class ListPersone:public QWidget{
     Q_OBJECT
@@ -23,9 +27,10 @@ class ListPersone:public QWidget{
     private slots:
     void addItem();
     void removeItem();
-
+    
     public:
     explicit ListPersone(QWidget *parent=nullptr);
+    vector<QString> getListaPersone();
 };
 
 #endif //LISTPERSONE_H

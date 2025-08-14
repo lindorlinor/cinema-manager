@@ -1,5 +1,5 @@
-#ifndef AddMedia_H
-#define AddMedia_H
+#ifndef ADDMEDIA_H
+#define ADDMEDIA_H
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -20,8 +20,9 @@
 #include <QStringListModel>
 #include <QDateEdit>
 #include <QDoubleSpinBox>
+#include <QStackedLayout>
 
-#include "PathButton.h"
+#include "InsertImageFrame.h"
 #include "ListPersone.h"
 
 #include "../Film.h"
@@ -29,16 +30,38 @@
 #include "../Trailer.h"
 #include "../Podcast.h"
 #include "../Puntata.h"
+#include "../DataFiles/Popolate.h"
+#include "../DataFiles/MediaManagerJson.h"
 
 class AddMedia:public QWidget{
     Q_OBJECT
 
     private:
+
+    MediaManagerJson* mediaManagerJson;
     //serve per cambiare il widget di input a seconda della tipologia
     QStackedLayout* stackTipologia;
 
     //per ottenere gli input da passare al json
-    PathButton* widgetPath;
+    QLineEdit* titoloMedia;
+    QLineEdit* autoreMedia;
+    ListPersone* attoriFilm;
+    ListPersone* ospitiPuntata;
+    QLineEdit* CasaProdFilm;
+    QLineEdit* conduttorePodcast;
+    QLineEdit* aziendaInserzInserzione;
+    QSpinBox* durataMinutiMedia;
+    QSpinBox* totPostCreditFilm;
+    QSpinBox* numeroProiezioniTrailer;
+    QSpinBox* numeroProiezioniGioInserzione;
+    QSpinBox* numeroPubblicitaPuntata;
+    QDoubleSpinBox* costoBigliettoFilm;
+    QDoubleSpinBox* costoBaseProiezInserzione;
+    QTextEdit* descrizioneMedia;
+    QString* filmSelezionatoTrailer;
+    QString* podcastSelezionatoPuntata;
+
+    InsertImageFrame* framePath;
     QListWidget* listLingue;
     QListWidget* listSottotitoli;
     QListWidget* listGeneri;
@@ -48,6 +71,7 @@ class AddMedia:public QWidget{
     QComboBox* comboTarget;
     QDateEdit* dataInizio;
     QDateEdit* dataFine;
+    QString imagePath; 
 
     //widget che verranno utilizzati nel tab "tipologia" e intercambiati tramite la selezione
     //della tipologia su un QComboBox. Lo scambio è fatto con l'utilizzo di uno QStackedLayout stackTipologia
@@ -65,6 +89,11 @@ class AddMedia:public QWidget{
     void addTipologiaPuntate(QWidget* TipoPuntata);
     
     Media* media;
+    QPushButton* annulla;
+    QPushButton* salva;
+
+    //salva i campi comuni
+    void saveCommonFields(MediaData &data);
 
     //inserisce i cambi di input della selezoina della copertina e del tab
     void addPagina(QVBoxLayout* mainLayout);
@@ -79,7 +108,10 @@ class AddMedia:public QWidget{
     void updateTabTipologia(int index);
     
     //salva tutti i dati raccolti in un file json
-    void salva();
+    void salvaMedia();
+
+    //aggiunge i pulsanti per annullare e salvare
+    void annullaSalva(QVBoxLayout* mainLayout);
     
     //utilizzando lo stesso pattern più volte, si è preferito costruire un template per aggiungere i seguenti widget:
     // selezione della lingue, seleizone dei sottotitoli, selezione dei generi, selezione delle fasce orarie
@@ -96,15 +128,19 @@ class AddMedia:public QWidget{
 
     //aggiunge i Widget che contengono un LineEdit
     template<class L>
-    void addLineEdit(const QString& testo, L* ly);
+    QLineEdit* addLineEdit(const QString& testo, L* ly);
 
     //aggiunge i Widget che contengono uno spin
     template<class L>
-    void addSpin(const QString& testo, int min, int max, int standard, L* ly);
+    QSpinBox* addSpin(const QString& testo, int min, int max, int standard, L* ly);
 
     //aggiunge i Widget che contengono un Doublespin
     template<class L>
-    void addDoubleSpin(const QString& testo, double min, double max, double standard, L* ly);
+    QDoubleSpinBox* addDoubleSpin(const QString& testo, double min, double max, double standard, L* ly);
+
+    //per ottenere i selezionati di una QListWidget
+    template<class EnumType>
+    vector<EnumType> getSelectedList(QListWidget* list);
 
     //funzioni per aggiungere i tab base, descrizione e tipologia
     void addBase(QWidget* base);
@@ -113,16 +149,17 @@ class AddMedia:public QWidget{
 
     //campi da passare comuni a tutti
     void addTipologiaCombo(QHBoxLayout* baseH);
-    void addDescrizione(QHBoxLayout* baseH);
+    QTextEdit* addDescrizione(QHBoxLayout* baseH);
 
-    //cambi da passare a seconda del tipo
 
-    void addDataInizioRilascio(QHBoxLayout* ly);   //comuni a tutti tranne a podcast
-    void addDataFineRilascio(QHBoxLayout* ly);     //comuni a tutti tranne a podcast
+    //campi da passare a seconda del tipo
+
+    QDateEdit* addDataInizioRilascio(QHBoxLayout* ly);   //comuni a tutti tranne a podcast
+    QDateEdit* addDataFineRilascio(QHBoxLayout* ly);     //comuni a tutti tranne a podcast
     
     //film e Puntate
     
-    void addPersone(QHBoxLayout* filmH);
+    ListPersone* addPersone(QHBoxLayout* filmH);
 
     //trailer
     void addFilm(QHBoxLayout* trailerH);
@@ -130,13 +167,15 @@ class AddMedia:public QWidget{
     //Puntate
     void Podcast();
 
-
     public:
 	explicit AddMedia(QWidget *parent);
 
     signals:
     void tornaIndietro();
 
+    public slots:
+    void chooseImage();
+
 };
 
-#endif //AddMedia_H
+#endif //ADDMEDIA_H

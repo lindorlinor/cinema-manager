@@ -102,6 +102,11 @@ void Film::setValutazione(){
     }
 }
 
+//visitor
+void Film::accept(MediaVisitor* visitor) {
+    visitor->visit(this);
+}
+
 // //metodi set
 // void Film::aggiungiAttore(const string& nomeAttore) {
     //     _attoriPrincipali.push_back(nomeAttore);

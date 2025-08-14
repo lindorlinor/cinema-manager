@@ -68,3 +68,6 @@ Film* Trailer::getFilm() const {
     return t_film;
 }
 
+void Trailer::accept(MediaVisitor* visitor) {
+    visitor->visit(this);
+}

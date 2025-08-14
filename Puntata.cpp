@@ -80,3 +80,8 @@ void Puntata::associaPodcast(Podcast* podcast){
 Podcast* Puntata::getPodcast()const{
     return p_podcast;
 }
+
+//visitor
+void Puntata::accept(MediaVisitor* visitor) {
+    visitor->visit(this);
+}

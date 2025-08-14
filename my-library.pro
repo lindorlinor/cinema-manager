@@ -29,6 +29,7 @@ HEADERS +=  \
             Podcast.h \
             Puntata.h \
             catch.hpp \
+            MediaVisitor.h \
             GUI/CinemaButton.h \
             GUI/MainWindow.h \
             GUI/CinemaSelectionPage.h \
@@ -38,7 +39,8 @@ HEADERS +=  \
             GUI/AddMedia.h \
             GUI/ListPersone.h \
             GUI/InsertImageFrame.h \
-            DataFiles/CinemaXmlRepository.h 
+            DataFiles/CinemaXmlRepository.h \ 
+            DataFiles/MediaManagerJson.h 
 SOURCES +=  \
             main.cpp \
             Inserzione.cpp \
@@ -58,5 +60,6 @@ SOURCES +=  \
             GUI/AddMedia.cpp \
             GUI/ListPersone.cpp \
             GUI/InsertImageFrame.cpp \
-            DataFiles/CinemaXmlRepository.cpp
+            DataFiles/CinemaXmlRepository.cpp \
+            DataFiles/MediaManagerJson.cpp
 RESOURCES += GUI/resources.qrc

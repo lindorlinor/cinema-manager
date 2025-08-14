@@ -34,7 +34,7 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     visualizza->addAction(new QAction("Visualizza Podcast", visualizza));
     //Menu "Altro"
     altro->addAction(new QAction("Cambia Vista", altro));
-    connect(file->actions()[5],&QAction::triggered, this, [=](){emit escSearchPanel();});
+    connect(file->actions()[5],&QAction::triggered, this, [this](){emit escSearchPanel();});
     connect(file->actions()[6], &QAction::triggered, qApp, &QApplication::quit);
     
     mainLayout->addWidget(menuBar);

@@ -65,3 +65,8 @@ double Inserzione::calcolaIncasso()
 {
     return DurataCampagna() * getNProiezioniGiornaliere() * i_costoFissoProiezione * fattoreVariazionePrezzo();
 }
+
+//visitor
+void Inserzione::accept(MediaVisitor* visitor) {
+    visitor->visit(this);
+}

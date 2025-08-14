@@ -8,6 +8,7 @@
 #include "Media.h"
 #include "Trailer.h"
 #include "EnumClasses.h"
+#include "MediaVisitor.h"
 using namespace std;
 #include <chrono>
 using namespace std::chrono;
@@ -23,7 +24,7 @@ using namespace std::chrono;
 class Film : public Media
 {
 private:
-Genere f_genere;
+    Genere f_genere;
     vector<string> f_attoriPrincipali;
     Classificazione f_target;
     vector<Trailer *> trailers;
@@ -107,6 +108,9 @@ public:
     void setValutazione();
 
     ~Film();
+
+    //visitor
+    void accept(MediaVisitor* visitor) override;
 };
 
 #endif
