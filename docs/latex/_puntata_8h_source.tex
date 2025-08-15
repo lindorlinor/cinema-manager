@@ -1,0 +1,48 @@
+\doxysection{Puntata.\+h}
+\hypertarget{_puntata_8h_source}{}\label{_puntata_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PUNTATA\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PUNTATA\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Media.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_podcast}{Podcast}};}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }Puntata\ :\ \textcolor{keyword}{public}\ Media\{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00017\ \ \ \ \ vector<string>\ p\_ospiti;}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_podcast}{Podcast}}\ *p\_podcast;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ p\_numeroPubblicita;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ isOspiteIn(\textcolor{keyword}{const}\ std::string\&\ ospite)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ Puntata(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&titolo,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&descrizione,\ year\_month\_day\ gg\_mm\_aaInizioRilascio,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ year\_month\_day\ gg\_mm\_aaFineRilascio,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ durataMinuti,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_podcast}{Podcast}}\ *podcast,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ numeroPubblicita,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&autore\ =\ \textcolor{stringliteral}{"{}Sconosciuto"{}},}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&path\ =\ \textcolor{stringliteral}{"{}immGrigia"{}});}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ aggiungiOspite(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&);}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ rimuoviOspite(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_puntata_a806af1f704b620f35813086d97acb380}{estendiDataFineRilascio}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_puntata_a6038db976491d0a635259472519abbe6}{calcolaIncasso}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ vector<string>\ getOspiti()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_puntata_a61c96f3fd3392d9f61da1ad8b827223b}{setDataFineRilascio}}(year\_month\_day\ gg\_mm\_aaFineRilascio)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_puntata_a7a716689f5a17be81e797ff577998d6f}{setDataInizioRilascio}}(year\_month\_day\ gg\_mm\_aaFineRilascio)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_puntata_a3b78b39eb440dae6cc8b0402fdb8699c}{associaPodcast}}(\mbox{\hyperlink{class_podcast}{Podcast}}*\ podcast);\ }
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \mbox{\hyperlink{class_podcast}{Podcast}}*\ getPodcast()\textcolor{keyword}{const};}
+\DoxyCodeLine{00087\ \};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PUNTATA\_H}}
+
+\end{DoxyCode}

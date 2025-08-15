@@ -1,0 +1,36 @@
+\doxysection{Trailer.\+h}
+\hypertarget{_trailer_8h_source}{}\label{_trailer_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TRAILER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TRAILER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Pubblicita.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_film}{Film}};\ \textcolor{comment}{//\ forward\ declaration}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }Trailer\ :\ \textcolor{keyword}{public}\ Pubblicita\{}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_film}{Film}}*\ t\_film;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{double}\ calcolaTassoDiStima()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ Trailer(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&titolo,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&descrizione,\ year\_month\_day\ gg\_mm\_aaInizioRilascio,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ year\_month\_day\ gg\_mm\_aaFineRilascio,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ durataMinuti,\ Formato\ formato,\ Risoluzione\ risoluzione,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ nProiezioniGiornaliere,\ \mbox{\hyperlink{class_film}{Film}}\ *film,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&autore\ =\ \textcolor{stringliteral}{"{}Sconosciuto"{}},\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&path\ =\ \textcolor{stringliteral}{"{}immGrigia"{}});}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trailer_a347f0cde69e32f63508f2997fbc44dec}{associaFilm}}(\mbox{\hyperlink{class_film}{Film}}*\ film);\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_film}{Film}}*\ getFilm()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trailer_a4389dd02c6a2727e6c483abab67e4d80}{setDataFineRilascio}}(year\_month\_day\ gg\_mm\_aaFineRilascio)\ \textcolor{keyword}{override};\ }
+\DoxyCodeLine{00048\ \ \ \ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_trailer_a02ed1e6868de35aa937fb5a49a7d2b47}{estendiDataFineRilascio}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_trailer_aeb0aeac66a2f71d240c593bd39019b66}{calcolaIncasso}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00067\ \ \ \ \ }
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
