@@ -99,6 +99,7 @@ class AddMedia:public QWidget{
     Media* media;
     QPushButton* annulla;
     QPushButton* salva;
+    QTabWidget* tab;
 
     //salva i campi comuni
     void saveCommonFields(MediaData &data);

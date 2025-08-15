@@ -46,6 +46,8 @@ void AddMedia::addEnumCombo(L* base, const QString& labelText, const std::vector
         comboBox->addItem(QString::fromUtf8(str), QVariant::fromValue(static_cast<int>(e)));
     }
 
+    comboBox->setCurrentIndex(0);
+
     addInput(label, base, comboBox);
 }
 
@@ -97,7 +99,6 @@ void AddMedia::addTipologiaCombo(QHBoxLayout* baseH){
 }
 
 void AddMedia::updateTabTipologia(int index){
-    stackTipologia->setCurrentIndex(index);
     switch(index){
         case 0:         resetInputInserzione();
                         resetInputPodcast();
@@ -125,6 +126,7 @@ void AddMedia::updateTabTipologia(int index){
                         resetInputTrailer();
                         break;
     }
+    stackTipologia->setCurrentIndex(index);
 }
 //tab Descrizione
 
@@ -162,11 +164,9 @@ QDateEdit* AddMedia::addDataFineRilascio(QHBoxLayout* ly) {
     dataFine->setDisplayFormat("dd/MM/yyyy");
     dataFine->setDate(QDate::currentDate());
 
+    connect(dataInizio, &QDateEdit::dateChanged, dataFine, &QDateEdit::setMinimumDate);
+
     dataFine->setMinimumDate(dataInizio->date());
-    // Aggiorna il minimo ogni volta che dataInizio cambia
-    connect(dataInizio, &QDateEdit::dateChanged, this, [this](const QDate &newDate) {
-        dataFine->setMinimumDate(newDate);
-    });
 
     addInput(label, ly, dataFine);
     return dataFine;
@@ -318,7 +318,7 @@ void AddMedia::addTipologia(QWidget* tipologia){
 }
 
 void AddMedia::addTabs(QHBoxLayout* layout){
-    QTabWidget* tab = new QTabWidget(this);
+    tab = new QTabWidget(this);
     tab->setFixedSize(800,500);
     
     QWidget* base = new QWidget;
@@ -347,7 +347,11 @@ void AddMedia::indietro(QVBoxLayout* mainLayout){
     indietroW->setLayout(bottone);
     mainLayout->addWidget(indietroW);
 
-    connect(indietro, &QPushButton::clicked, this, &AddMedia::tornaIndietro);
+    connect(indietro, &QPushButton::clicked, this, [this](){
+        stackTipologia->setCurrentIndex(0);
+        tab->setCurrentIndex(0);
+        this->resetAllInput();
+        this->tornaIndietro();}); 
 }
 
 template<class EnumType>
@@ -393,6 +397,7 @@ void AddMedia::salvaMedia(){
         film.costoBiglietto = costoBigliettoFilm->value();
         film.dataInizioRilascio = dataInizio->date();
         film.dataFineRilascio = dataFine->date();
+        film.target = static_cast<Classificazione>(comboTarget->currentData().toInt());
 
         mediaManagerJson->saveFilm(film);
     }
@@ -426,6 +431,7 @@ void AddMedia::salvaMedia(){
         inserzione.fasceOrarie = getSelectedList<FasciaOraria>(listFasceOrarie);
         inserzione.dataInizioRilascio = dataInizio->date();
         inserzione.dataFineRilascio = dataFine->date();
+        inserzione.target = static_cast<Classificazione>(comboTarget->currentData().toInt());
 
         mediaManagerJson->saveInserzione(inserzione);
     }   
@@ -484,8 +490,15 @@ void AddMedia::resetInputFilm(){
     }
 
     if(comboTarget) comboTarget->setCurrentIndex(0);
-    if(dataInizio) dataInizio->setDate(QDate::currentDate());
-    if(dataFine) dataFine->setDate(QDate::currentDate());
+    dataInizio->setDate(QDate::currentDate());
+    dataInizio->update();
+    dataInizio->repaint();
+
+    dataFine->setDate(QDate::currentDate());
+    dataFine->update();
+    dataFine->repaint();
+
+
 }
 void AddMedia::resetInputTrailer(){
 
@@ -507,8 +520,15 @@ void AddMedia::resetInputInserzione(){
         item->setCheckState(Qt::Unchecked);
     }
 
-    if(dataInizio) dataInizio->setDate(QDate::currentDate());
-    if(dataFine) dataFine->setDate(QDate::currentDate());
+    dataInizio->setDate(QDate::currentDate());
+    dataInizio->update();
+    dataInizio->repaint();
+
+    dataFine->setDate(QDate::currentDate());
+    dataFine->update();
+    dataFine->repaint();
+
+
 }
 
 void AddMedia::resetAllInput(){
@@ -574,8 +594,9 @@ void AddMedia::annullaSalva(QVBoxLayout* mainLayout){
     mainLayout->addWidget(asWidget);
 
     connect(annulla, &QPushButton::clicked, this, [this](){
-        this->resetAllInput();
         stackTipologia->setCurrentIndex(0);
+        tab->setCurrentIndex(0);
+        this->resetAllInput();
         this->tornaIndietro(); 
     });//poi da modificare facendolo tornare alla pagina della libreria di default
     connect(salva, &QPushButton::clicked, this, [this]() {
