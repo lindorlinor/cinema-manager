@@ -60,7 +60,7 @@ class AddMedia:public QWidget{
     QTextEdit* descrizioneMedia;
     QString* filmSelezionatoTrailer;
     QString* podcastSelezionatoPuntata;
-
+    QComboBox* comboTipologia;
     InsertImageFrame* framePath;
     QListWidget* listLingue;
     QListWidget* listSottotitoli;
@@ -87,6 +87,14 @@ class AddMedia:public QWidget{
     void addTipologiaInserzione(QWidget* TipoInserzione);
     void addTipologiaPodcast(QWidget* TipoPodcast);
     void addTipologiaPuntate(QWidget* TipoPuntata);
+
+    //funzione che elimina i dati di tutti gli input, serve quando si preme il pulsante annulla
+    void resetAllInput();
+    void resetInputFilm();
+    void resetInputTrailer();
+    void resetInputPodcast();
+    void resetInputPuntata();
+    void resetInputInserzione();
     
     Media* media;
     QPushButton* annulla;
@@ -159,7 +167,7 @@ class AddMedia:public QWidget{
     
     //film e Puntate
     
-    ListPersone* addPersone(QHBoxLayout* filmH);
+    ListPersone* addPersone(QVBoxLayout* filmH);
 
     //trailer
     void addFilm(QHBoxLayout* trailerH);

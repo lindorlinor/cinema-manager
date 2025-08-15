@@ -1,12 +1,96 @@
 [
     {
         "attoriPrincipali": [
+            "io",
+            "me medesima",
+            "linor"
+        ],
+        "casaDiProduzione": "casa mia",
+        "costoBiglietto": 14,
+        "dataFineRilascio": "2025-08-15",
+        "dataInizioRilascio": "2025-08-15",
+        "descrizione": "molto divertente",
+        "durataMinuti": 130,
+        "formato": 6,
+        "genere": [
+            0,
+            1,
+            2
+        ],
+        "lingueDisponibili": [
+            0,
+            1
+        ],
+        "nPostCredit": 5,
+        "path": "",
+        "risoluzione": 4,
+        "sottotitoliDisponibili": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+        ],
+        "target": 678333808,
+        "titolo": "filmetto"
+    },
+    {
+        "attoriPrincipali": [
+            "io",
+            "me medesima",
+            "linor"
+        ],
+        "casaDiProduzione": "casa mia",
+        "costoBiglietto": 14,
+        "dataFineRilascio": "2025-08-15",
+        "dataInizioRilascio": "2025-08-15",
+        "descrizione": "molto divertente",
+        "durataMinuti": 130,
+        "formato": 6,
+        "genere": [
+            0,
+            1,
+            2
+        ],
+        "lingueDisponibili": [
+            0,
+            1
+        ],
+        "nPostCredit": 5,
+        "path": "",
+        "risoluzione": 4,
+        "sottotitoliDisponibili": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+        ],
+        "target": 678333808,
+        "titolo": "filmetto"
+    },
+    {
+        "attoriPrincipali": [
         ],
         "casaDiProduzione": "",
         "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-15",
+        "dataInizioRilascio": "2025-08-15",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
         "genere": [
         ],
+        "lingueDisponibili": [
+        ],
         "nPostCredit": 0,
-        "titolo": "caca"
+        "path": "",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "target": -391009408,
+        "titolo": ""
     }
 ]

@@ -23,6 +23,7 @@ ListPersone::ListPersone(QWidget *parent):QWidget(parent){
 
     connect(aggiungi, &QPushButton::clicked, this, &ListPersone::addItem);
     connect(rimuovi, &QPushButton::clicked, this, &ListPersone::removeItem);
+    connect(inputPersone, &QLineEdit::returnPressed, this, &ListPersone::addItem);
 }
 
 void ListPersone::addItem() {
@@ -52,4 +53,10 @@ std::vector<QString> ListPersone::getListaPersone() {
     QStringList list = model->stringList(); 
     result.assign(list.begin(), list.end()); 
     return result;
+}
+
+
+void ListPersone::resetWidget(){
+    inputPersone->clear();            
+    model->setStringList(QStringList()); 
 }
