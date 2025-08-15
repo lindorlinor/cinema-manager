@@ -730,6 +730,7 @@ release/moc_MainWindow.cpp: GUI/MainWindow.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayoutitem.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
+		DataFiles/CinemaXmlRepository.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
@@ -889,6 +890,7 @@ release/moc_CinemaSelectionPage.cpp: GUI/CinemaSelectionPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayoutitem.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
+		DataFiles/CinemaXmlRepository.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
@@ -1241,6 +1243,9 @@ release/moc_InsertCinemaPage.cpp: GUI/InsertCinemaPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextformat.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextoption.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		GUI/InsertImageFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLabel \
@@ -1927,6 +1932,7 @@ release/main.o: main.cpp catch.hpp \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayoutitem.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
+		DataFiles/CinemaXmlRepository.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
 		Media.h \
 		EnumClasses.h
@@ -2291,6 +2297,7 @@ release/MainWindow.o: GUI/MainWindow.cpp GUI/MainWindow.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayoutitem.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
+		DataFiles/CinemaXmlRepository.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
 		GUI/InsertCinemaPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLineEdit \
@@ -2299,6 +2306,9 @@ release/MainWindow.o: GUI/MainWindow.cpp GUI/MainWindow.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextformat.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextoption.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		GUI/InsertImageFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
 		GUI/SearchPanel.h \
@@ -2318,9 +2328,6 @@ release/MainWindow.o: GUI/MainWindow.cpp GUI/MainWindow.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabbar.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qrubberband.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qabstractitemmodel.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMenuBar \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmenubar.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QApplication \
@@ -2510,8 +2517,8 @@ release/CinemaSelectionPage.o: GUI/CinemaSelectionPage.cpp GUI/CinemaSelectionPa
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayoutitem.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
 		DataFiles/CinemaXmlRepository.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDir \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
@@ -2920,6 +2927,9 @@ release/InsertCinemaPage.o: GUI/InsertCinemaPage.cpp GUI/InsertCinemaPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextformat.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextoption.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		GUI/InsertImageFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLabel \
@@ -2934,9 +2944,6 @@ release/InsertCinemaPage.o: GUI/InsertCinemaPage.cpp GUI/InsertCinemaPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayoutitem.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFileDialog \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qfiledialog.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h \
