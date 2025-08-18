@@ -20,7 +20,8 @@ bool CinemaXmlRepository::saveCinema(const Cinema& cinema) {
     root.appendChild(nomeElem);
 
     QDomElement imgElem = doc.createElement("immagine");
-    imgElem.appendChild(doc.createTextNode(cinema.imagePath));
+    QString relativePath = QDir(m_basePath).relativeFilePath(cinema.imagePath);
+    imgElem.appendChild(doc.createTextNode(relativePath));
     root.appendChild(imgElem);
 
     QFile file(filePath);
@@ -54,7 +55,8 @@ QList<Cinema> CinemaXmlRepository::loadAllCinemas() {
                 if (xml.name().toString() == "nome") {
                     c.nome = xml.readElementText();
                 } else if (xml.name().toString() == "immagine") {
-                    c.imagePath = xml.readElementText();
+                    QString relativePath = xml.readElementText();
+                    c.imagePath = QDir(m_basePath).filePath(relativePath);
                     break;
                 }
             }

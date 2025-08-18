@@ -196,7 +196,6 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
                             60, &podcast,3);  
         
         REQUIRE((podcast.getElencoPuntate()).empty()==false);
-        REQUIRE((podcast.getVisualizzazioni())==puntata1->getVisualizzazioni());
         REQUIRE((podcast.getVisualizzazioni())==puntata1->getVisualizzazioni()+puntata2->getVisualizzazioni());
         REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 25d});
         REQUIRE(puntata1->calcolaIncasso()==Approx(puntata1->getVisualizzazioni()*3*0.05));

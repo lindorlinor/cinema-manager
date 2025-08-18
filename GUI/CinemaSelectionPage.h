@@ -17,7 +17,6 @@ private:
 public:
     CinemaSelectionPage(QWidget *parent);
     void refresh();
-    void stampaCinema() const;
 signals:
     void insertCinema();
     void selectedCinema(const QString& xmlPath);
