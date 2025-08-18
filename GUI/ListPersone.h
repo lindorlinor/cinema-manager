@@ -31,6 +31,7 @@ class ListPersone:public QWidget{
     public:
     explicit ListPersone(QWidget *parent=nullptr);
     vector<QString> getListaPersone();
+    void resetWidget();
 };
 
 #endif //LISTPERSONE_H

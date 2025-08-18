@@ -27,23 +27,25 @@ class MediaManagerJson : public QObject, public MediaVisitor{
 
         //load 
         QList<FilmData> loadFilms();
-        /* QList<TrailerData> loadTrailers();
+        /* QList<TrailerData> loadTrailers(); */
         QList<InserzioniData> loadInserzioni();
         QList<PodcastData> loadPodcast();
-        QList<PuntataData> loadPuntata(); */
+        /* QList<PuntataData> loadPuntata(); */
 
         //save
         void saveFilm(const FilmData &film);
-        /* void saveTrailer(const TrailerData &trailer);
+        /* void saveTrailer(const TrailerData &trailer); */
         void saveInserzione(const InserzioniData &inserzione);
         void savePodcast(const PodcastData &podcast);
-        void savePuntata(const PuntataData &puntata);  */
+        /* void savePuntata(const PuntataData &puntata);  */
 
     private:
         QString m_basePath;
 
+        void saveCommonFields(const MediaData &data, QJsonObject &obj);
+        void loadCommonFields(MediaData &data, const QJsonObject &obj);
         void saveJsonFile(const QString &filePath, const QJsonDocument &doc);
         QJsonDocument loadJsonFile(const QString &fileName); 
 };
 
-#endif// MEDIAMANAGERJSON_H */
+#endif// MEDIAMANAGERJSON_H 

@@ -35,7 +35,6 @@ HEADERS +=  \
             GUI/CinemaSelectionPage.h \
             GUI/SearchPanel.h \
             GUI/InsertCinemaPage.h \
-            GUI/PathButton.h \
             GUI/AddMedia.h \
             GUI/ListPersone.h \
             GUI/InsertImageFrame.h \
@@ -56,7 +55,6 @@ SOURCES +=  \
             GUI/CinemaSelectionPage.cpp \
             GUI/SearchPanel.cpp \
             GUI/InsertCinemaPage.cpp \
-            GUI/PathButton.cpp \
             GUI/AddMedia.cpp \
             GUI/ListPersone.cpp \
             GUI/InsertImageFrame.cpp \
