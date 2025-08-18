@@ -1,4 +1,16 @@
 .vscode/
 # Doxygen output
 docs/html/
-docs/latex/
+docs/latex/Makefile
+# File generati da qmake/make
+Makefile
+*.o
+release/
+debug/
+*.so
+*.a
+*.dll
+*.exe
+moc_*.cpp
+qrc_*.cpp
+ui_*.h

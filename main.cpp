@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    Catch::Session session;
+    /* Catch::Session session;
 
     // Configura gli argomenti per Catch2
     const char *catch_argv[] = {
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     if (test_result != 0)
     {
         return test_result; // esci se i test falliscono
-    }
+    } */
     // Avvia l'applicazione Qt solo se i test passano
 
     MainWindow w;

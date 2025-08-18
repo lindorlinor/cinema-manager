@@ -1,0 +1,121 @@
+\doxysection{Riferimenti per il file Enum\+Classes.\+h}
+\hypertarget{_enum_classes_8h}{}\label{_enum_classes_8h}\index{EnumClasses.h@{EnumClasses.h}}
+
+
+Dichiarazioni di tipi enum definiti in metodi e campi dati della gerarchia di media. Definizione di metodi inline di utilità per la conversione in stringa dei tipi enum.  
+
+
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Tipi enumerati (enum)}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_enum_classes_8h_aa9e7e6c3595e3e4fe0114a6b68de89d1}\label{_enum_classes_8h_aa9e7e6c3595e3e4fe0114a6b68de89d1} 
+enum class {\bfseries Formato} \{ \newline
+{\bfseries DCP}
+, {\bfseries Real\+D\+\_\+3D}
+, {\bfseries MOV\+\_\+\+Pro\+Res}
+, {\bfseries MXF}
+, \newline
+{\bfseries WAV\+\_\+5\+\_\+1}
+, {\bfseries WAV\+\_\+7\+\_\+1}
+, {\bfseries MP4}
+, {\bfseries MOV\+\_\+\+H264}
+, \newline
+{\bfseries GIF}
+, {\bfseries PNG}
+, {\bfseries JPG}
+, {\bfseries WEBP}
+, \newline
+{\bfseries PDF}
+, {\bfseries TIFF}
+, {\bfseries AI}
+, {\bfseries EPS}
+, \newline
+{\bfseries HTML}
+, {\bfseries IMAX\+\_\+3D}
+, {\bfseries Unknown}
+ \}
+\item 
+\Hypertarget{_enum_classes_8h_a853193078b780ef4b21b4fdc2c397acd}\label{_enum_classes_8h_a853193078b780ef4b21b4fdc2c397acd} 
+enum class {\bfseries Fascia\+Oraria} \{ {\bfseries Mattina}
+, {\bfseries Pomeriggio}
+, {\bfseries Sera}
+ \}
+\item 
+\Hypertarget{_enum_classes_8h_a8105103911e53c0dd37b1eb12661d83a}\label{_enum_classes_8h_a8105103911e53c0dd37b1eb12661d83a} 
+enum class {\bfseries Lingua} \{ \newline
+{\bfseries Italiano}
+, {\bfseries Inglese}
+, {\bfseries Francese}
+, {\bfseries Spagnolo}
+, \newline
+{\bfseries Tedesco}
+, {\bfseries Giapponese}
+, {\bfseries Cinese}
+ \}
+\item 
+\Hypertarget{_enum_classes_8h_a089c7eb40ded184f1f3aaafd53666353}\label{_enum_classes_8h_a089c7eb40ded184f1f3aaafd53666353} 
+enum class {\bfseries Classificazione} \{ {\bfseries TUTTI} =0
+, {\bfseries SEI\+\_\+\+PIU} =6
+, {\bfseries QUATTORDICI\+\_\+\+PIU} =14
+, {\bfseries DICIOTTO\+\_\+\+PIU} =18
+ \}
+\item 
+\Hypertarget{_enum_classes_8h_a0d9f55159236f1bf954aeb3762c1db68}\label{_enum_classes_8h_a0d9f55159236f1bf954aeb3762c1db68} 
+enum class {\bfseries Genere} \{ \newline
+{\bfseries Azione}
+, {\bfseries Avventura}
+, {\bfseries Commedia}
+, {\bfseries Crime}
+, \newline
+{\bfseries Drama}
+, {\bfseries Fantasy}
+, {\bfseries Horror}
+, {\bfseries Thriller}
+, \newline
+{\bfseries Science\+Fiction}
+, {\bfseries Mistero}
+, {\bfseries Western}
+, {\bfseries Documentario}
+, \newline
+{\bfseries Animazione}
+, {\bfseries Storico}
+, {\bfseries Romantico}
+, {\bfseries Supereroi}
+ \}
+\item 
+\Hypertarget{_enum_classes_8h_aa2d196d38644fe7ea4f2d613d1715edf}\label{_enum_classes_8h_aa2d196d38644fe7ea4f2d613d1715edf} 
+enum class {\bfseries Risoluzione} \{ \newline
+{\bfseries SD\+\_\+480p}
+, {\bfseries HD\+\_\+720p}
+, {\bfseries Full\+HD\+\_\+1080p}
+, {\bfseries QHD\+\_\+1440p}
+, \newline
+{\bfseries UHD\+\_\+4\+K\+\_\+2160p}
+, {\bfseries UHD\+\_\+8\+K\+\_\+4320p}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_enum_classes_8h_aeb9d40aeeafa1242b535c8e6c950efa9}\label{_enum_classes_8h_aeb9d40aeeafa1242b535c8e6c950efa9} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries to\+String} (Fascia\+Oraria fo)
+\item 
+\Hypertarget{_enum_classes_8h_a4efd0ac395a651a51d52b6cadd880683}\label{_enum_classes_8h_a4efd0ac395a651a51d52b6cadd880683} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries to\+String} (Lingua l)
+\item 
+\Hypertarget{_enum_classes_8h_a9b52516f4e0ddbb62fe7039d3d8537ee}\label{_enum_classes_8h_a9b52516f4e0ddbb62fe7039d3d8537ee} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries to\+String} (Classificazione c)
+\item 
+\Hypertarget{_enum_classes_8h_a94d80155c0db4cf55f4ed69c6a1db084}\label{_enum_classes_8h_a94d80155c0db4cf55f4ed69c6a1db084} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries to\+String} (Genere g)
+\item 
+\Hypertarget{_enum_classes_8h_a90dc25bcdf52d057fcf809277e0f9589}\label{_enum_classes_8h_a90dc25bcdf52d057fcf809277e0f9589} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries to\+String} (Risoluzione r)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Dichiarazioni di tipi enum definiti in metodi e campi dati della gerarchia di media. Definizione di metodi inline di utilità per la conversione in stringa dei tipi enum. 
+

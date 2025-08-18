@@ -1,0 +1,155 @@
+\doxysection{Enum\+Classes.\+h}
+\hypertarget{_enum_classes_8h_source}{}\label{_enum_classes_8h_source}\mbox{\hyperlink{_enum_classes_8h}{Vai alla documentazione di questo file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ ENUMCLASSES\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ ENUMCLASSES\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{enum\ class}\ Formato\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ DCP,}
+\DoxyCodeLine{00015\ \ \ \ \ RealD\_3D,}
+\DoxyCodeLine{00016\ \ \ \ \ MOV\_ProRes,}
+\DoxyCodeLine{00017\ \ \ \ \ MXF,}
+\DoxyCodeLine{00018\ \ \ \ \ WAV\_5\_1,}
+\DoxyCodeLine{00019\ \ \ \ \ WAV\_7\_1,}
+\DoxyCodeLine{00020\ \ \ \ \ MP4,}
+\DoxyCodeLine{00021\ \ \ \ \ MOV\_H264,}
+\DoxyCodeLine{00022\ \ \ \ \ GIF,}
+\DoxyCodeLine{00023\ \ \ \ \ PNG,}
+\DoxyCodeLine{00024\ \ \ \ \ JPG,}
+\DoxyCodeLine{00025\ \ \ \ \ WEBP,}
+\DoxyCodeLine{00026\ \ \ \ \ PDF,}
+\DoxyCodeLine{00027\ \ \ \ \ TIFF,}
+\DoxyCodeLine{00028\ \ \ \ \ AI,}
+\DoxyCodeLine{00029\ \ \ \ \ EPS,}
+\DoxyCodeLine{00030\ \ \ \ \ HTML,}
+\DoxyCodeLine{00031\ \ \ \ \ IMAX\_3D,}
+\DoxyCodeLine{00032\ \ \ \ \ Unknown}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{enum\ class}\ FasciaOraria\{}
+\DoxyCodeLine{00037\ \ \ \ \ Mattina,}
+\DoxyCodeLine{00038\ \ \ \ \ Pomeriggio,}
+\DoxyCodeLine{00039\ \ \ \ \ Sera}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ toString(FasciaOraria\ fo)\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{switch}\ (fo)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ FasciaOraria::Mattina:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Mattina"{}};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ FasciaOraria::Pomeriggio:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Pomeriggio"{}};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ FasciaOraria::Sera:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Sera"{}};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Non\ trovato"{}};}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{enum\ class}\ Lingua\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ Italiano,}
+\DoxyCodeLine{00055\ \ \ \ \ Inglese,}
+\DoxyCodeLine{00056\ \ \ \ \ Francese,}
+\DoxyCodeLine{00057\ \ \ \ \ Spagnolo,}
+\DoxyCodeLine{00058\ \ \ \ \ Tedesco,}
+\DoxyCodeLine{00059\ \ \ \ \ Giapponese,}
+\DoxyCodeLine{00060\ \ \ \ \ Cinese}
+\DoxyCodeLine{00061\ \};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ toString(Lingua\ l)\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{switch}\ (l)\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Lingua::Italiano:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Italiano"{}};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Lingua::Inglese:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Inglese"{}};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Lingua::Francese:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Francese"{}};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Lingua::Spagnolo:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Spagnolo"{}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Lingua::Tedesco:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Tedesco"{}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Non\ trovato"{}};}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{keyword}{enum\ class}\ Classificazione\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ TUTTI=0,\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ SEI\_PIU=6,\ \ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ QUATTORDICI\_PIU=14,\ }
+\DoxyCodeLine{00078\ \ \ \ \ DICIOTTO\_PIU=18}
+\DoxyCodeLine{00079\ \};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ toString(Classificazione\ c)\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{switch}\ (c)\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Classificazione::TUTTI:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}T"{}};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Classificazione::SEI\_PIU:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}6+"{}};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Classificazione::QUATTORDICI\_PIU:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}14+"{}};}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Classificazione::DICIOTTO\_PIU:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}18+"{}};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Non\ trovato"{}};}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{enum\ class}\ Genere\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ Azione,\ }
+\DoxyCodeLine{00093\ \ \ \ \ Avventura,}
+\DoxyCodeLine{00094\ \ \ \ \ Commedia,\ }
+\DoxyCodeLine{00095\ \ \ \ \ Crime,}
+\DoxyCodeLine{00096\ \ \ \ \ Drama,}
+\DoxyCodeLine{00097\ \ \ \ \ Fantasy,}
+\DoxyCodeLine{00098\ \ \ \ \ Horror,}
+\DoxyCodeLine{00099\ \ \ \ \ Thriller,}
+\DoxyCodeLine{00100\ \ \ \ \ ScienceFiction,}
+\DoxyCodeLine{00101\ \ \ \ \ Mistero,}
+\DoxyCodeLine{00102\ \ \ \ \ Western,}
+\DoxyCodeLine{00103\ \ \ \ \ Documentario,}
+\DoxyCodeLine{00104\ \ \ \ \ Animazione,}
+\DoxyCodeLine{00105\ \ \ \ \ Storico,}
+\DoxyCodeLine{00106\ \ \ \ \ Romantico,}
+\DoxyCodeLine{00107\ \ \ \ \ Supereroi}
+\DoxyCodeLine{00108\ \};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ toString(Genere\ g)\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{switch}\ (g)\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Azione:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Azione"{}};}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Avventura:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Avventura"{}};}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Commedia:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Commedia"{}};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Crime:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Crime"{}};}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Drama:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Drama"{}};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Fantasy:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Fantasy"{}};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Horror:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Horror"{}};}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Thriller:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Thriller"{}};}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::ScienceFiction:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ScienceFiction"{}};}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Mistero:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Mistero"{}};}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Western:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Western"{}};}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Documentario:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Documentario"{}};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Animazione:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Animazione"{}};}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Storico:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Storico"{}};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Romantico:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Romantico"{}};}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Genere::Supereroi:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Supereroi"{}};}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Non\ trovato"{}};}
+\DoxyCodeLine{00129\ \ \ \ \ \}}
+\DoxyCodeLine{00130\ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \textcolor{keyword}{enum\ class}\ Risoluzione\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ SD\_480p,\ \ \ \ \textcolor{comment}{//\ 720x480}}
+\DoxyCodeLine{00134\ \ \ \ \ HD\_720p,\ \ \ \ \textcolor{comment}{//\ 1280x720}}
+\DoxyCodeLine{00135\ \ \ \ \ FullHD\_1080p,\ \textcolor{comment}{//\ 1920x1080}}
+\DoxyCodeLine{00136\ \ \ \ \ QHD\_1440p,\ \ \textcolor{comment}{//\ 2560x1440}}
+\DoxyCodeLine{00137\ \ \ \ \ UHD\_4K\_2160p,\ \textcolor{comment}{//\ 3840x2160}}
+\DoxyCodeLine{00138\ \ \ \ \ UHD\_8K\_4320p\ \ \textcolor{comment}{//\ 7680x4320}}
+\DoxyCodeLine{00139\ \};}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ toString(Risoluzione\ r)\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordflow}{switch}\ (r)\ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Risoluzione::SD\_480p:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}SD\_480p"{}};}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Risoluzione::HD\_720p:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}HD\_720p"{}};}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Risoluzione::QHD\_1440p:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}QHD\_1440p"{}};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Risoluzione::UHD\_4K\_2160p:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}UHD\_4K\_2160p"{}};}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ Risoluzione::UHD\_8K\_4320p:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}UHD\_8K\_4320p"{}};}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Non\ trovato"{}};}
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ NOME\_DEL\_FILE\_H}}
+\DoxyCodeLine{00153\ }
+
+\end{DoxyCode}
