@@ -41,8 +41,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 void MainWindow::showInsertCinemaPage(){
-     insertPage->reset();   
-    stackedWidget->setCurrentIndex(2);
+    insertPage->reset();   
+    stackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::showSelectedCinemaPage(const QString& xmlPath){

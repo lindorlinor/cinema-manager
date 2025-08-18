@@ -13,11 +13,13 @@ private:
     QLabel * errorLabel;
     QPushButton * escButton;
     QPushButton * saveButton; 
+    QLabel* imageLabel;
     void checkCinemaNameAvailability(const QString& text);
 public:
     explicit InsertCinemaPage(QWidget * parent= nullptr);
     void saveCinemaInXml();
     void reset();
+    void resizeEvent(QResizeEvent* event) override;
 
 public slots:
     void chooseImage();

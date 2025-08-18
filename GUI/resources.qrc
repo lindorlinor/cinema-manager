@@ -4,5 +4,6 @@
         <file>../images/image2.png</file>
         <file>../images/image3.png</file>
         <file>../images/image4.png</file>
+        <file>../images/coverCinema.png</file>
     </qresource>
 </RCC>

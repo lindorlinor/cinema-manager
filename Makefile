@@ -412,6 +412,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release/qrc_resources.cpp
 release/qrc_resources.cpp: GUI/resources.qrc \
 		/usr/lib/qt6/libexec/rcc \
+		images/coverCinema.png \
 		images/image4.png \
 		images/image3.png \
 		images/image2.png \
@@ -738,6 +739,18 @@ release/moc_MainWindow.cpp: GUI/MainWindow.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
 		DataFiles/CinemaXmlRepository.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
+		GUI/InsertCinemaPage.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLineEdit \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlineedit.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextcursor.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextformat.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextoption.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
+		GUI/InsertImageFrame.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
 	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/MainWindow.h -o release/moc_MainWindow.cpp
@@ -2174,6 +2187,18 @@ release/main.o: main.cpp catch.hpp \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
 		DataFiles/CinemaXmlRepository.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
+		GUI/InsertCinemaPage.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLineEdit \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlineedit.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextcursor.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextformat.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextoption.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
+		GUI/InsertImageFrame.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
 		Media.h \
 		EnumClasses.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/main.o main.cpp
