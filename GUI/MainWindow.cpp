@@ -8,23 +8,23 @@
 #include <QDir>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+    : QMainWindow(parent), cinemaPage(new CinemaSelectionPage(this)), insertPage(new InsertCinemaPage(this))
 {
     stackedWidget = new QStackedWidget(this);
     setCentralWidget(stackedWidget);
-    cinemaPage = new CinemaSelectionPage(this);
+   
     connect(cinemaPage,&CinemaSelectionPage::insertCinema,this,&MainWindow::showInsertCinemaPage);
     connect(cinemaPage,&CinemaSelectionPage::selectedCinema,this,&MainWindow::showSelectedCinemaPage);
-    SearchPanel * searchPage = new SearchPanel(this);
-    connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
-    insertPage = new InsertCinemaPage(this); 
+    // SearchPanel * searchPage = new SearchPanel(this);
+    // connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
+  
     connect(insertPage,&InsertCinemaPage::returnCinemaSelectionPage,this,&MainWindow::showCinemaSelectionPage);
     stackedWidget->addWidget(cinemaPage);
-    stackedWidget->addWidget(searchPage);
+    // stackedWidget->addWidget(searchPage);
     stackedWidget->addWidget(insertPage);
     stackedWidget->setCurrentIndex(0);
     stackedWidget->show();
-    resize(800, 600); 
+    resize(630, 600); 
     QDir dir(QCoreApplication::applicationDirPath());
     dir.cdUp();  // Da /release → [PROJECT_ROOT]
 
