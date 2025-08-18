@@ -11,23 +11,45 @@
 #include <QString>
 #include <QFont>
 #include <QScrollArea>
+#include <QGridLayout>
 
-CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(parent),layoutPulsanti(new QHBoxLayout(nullptr)){
-    QVBoxLayout * layout = new QVBoxLayout(this);
+CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(parent),layoutPulsanti(new QHBoxLayout()){
+    
+    QFrame* framePrincipale = new QFrame(this);
+    framePrincipale->setFixedSize(900 , 600);
+    QGridLayout* grid = new QGridLayout(this);
+    grid->addWidget(framePrincipale, 0, 0, Qt::AlignCenter);
+
+    QVBoxLayout * layout = new QVBoxLayout(framePrincipale);
     layout->setSpacing(10);  
     layout->setContentsMargins(20, 20, 20, 20);
 
-    QLabel *label = new QLabel("Seleziona cinema", this);
-    QFont font = label->font();
+
+    QLabel *titolo = new QLabel("Tutti i cinema");
+    QFont font = titolo->font();
     font.setPointSize(21);
     font.setBold(true);
-    label->setFont(font);
-    label->setAlignment(Qt::AlignCenter);
-    layout->addWidget(label, 0, Qt::AlignCenter);
+    titolo->setFont(font);
+
+    QLabel* descrizione = new QLabel("Seleziona un cinema della catena o creane uno nuovo", this);
+
+
+    QWidget* contenitoreLabel = new QWidget;
+    layout->addWidget(contenitoreLabel, 0, Qt::AlignLeft);
+    QVBoxLayout* layoutLabel = new QVBoxLayout(contenitoreLabel);
+    layoutLabel->addWidget(titolo);
+    layoutLabel->addWidget(descrizione);
+    layoutLabel->setContentsMargins(0,0,0,0);
+    titolo->setAlignment(Qt::AlignLeft);
+    descrizione->setAlignment(Qt::AlignLeft);
 
     //Layout orizzontale con i bottoni dei cinema
     QWidget* contenitorePulsanti = new QWidget;
     contenitorePulsanti->setLayout(layoutPulsanti);
+
+    QPushButton* addButton = new QPushButton("+ Aggiungi");
+    addButton->setFixedSize(160, 40); 
+    layout->addWidget(addButton,0, Qt::AlignRight);
 
     //Caricamento e creazione dei Button cinema
     refresh();
@@ -36,29 +58,17 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent = nullptr):QWidget(pare
     QScrollArea* scrollArea = new QScrollArea;
     scrollArea->setWidget(contenitorePulsanti);
     scrollArea->setWidgetResizable(true);
+    scrollArea->setMaximumSize(900,240);
     scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scrollArea->setFixedSize(500,210); 
-
-    //Bottone "Nuovo+" fuori dalla scroll area
-    QPushButton* addButton = new QPushButton("Nuovo+");
-    addButton->setFixedSize(150, 180); 
-
-    //Layout orizzontale che contiene scrollArea + addButton
-    QHBoxLayout* layoutRigaCinema = new QHBoxLayout;
-    layoutRigaCinema->addWidget(scrollArea);
-    layoutRigaCinema->addWidget(addButton);
-    layoutRigaCinema->setAlignment(Qt::AlignCenter);
-    layoutRigaCinema->setSpacing(20);
-
-    //Container per il layout orizzontale
-    QWidget* containerRigaCinema = new QWidget;
-    containerRigaCinema->setLayout(layoutRigaCinema);
+    scrollArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
     //Aggiunta al layout principale (centrato)
-    layout->addWidget(containerRigaCinema, 0, Qt::AlignCenter);
+    layout->addWidget(scrollArea);
+
     
     QPushButton* escButton = new QPushButton("Esci");
+    escButton->setFixedSize(160, 40); 
     connect(escButton,&QPushButton::clicked,qApp,&QApplication::quit);
     connect(addButton,&QPushButton::clicked,this,&CinemaSelectionPage::insertCinema);
     layout->addWidget(escButton,0, Qt::AlignCenter);
