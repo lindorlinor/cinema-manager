@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     QDir dir(QCoreApplication::applicationDirPath());
     dir.cdUp();  // Da /release → [PROJECT_ROOT]
 
-    /* QFile file(dir.filePath("GUI/style.qss"));
+/*     QFile file(dir.filePath("GUI/style.qss"));
     if (file.open(QFile::ReadOnly))
     {
         QString styleSheet = QLatin1String(file.readAll());

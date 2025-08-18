@@ -24,6 +24,7 @@
 
 #include "InsertImageFrame.h"
 #include "ListPersone.h"
+#include "SelectMediaReference.h"
 
 #include "../Film.h"
 #include "../Inserzione.h"
@@ -58,8 +59,6 @@ class AddMedia:public QWidget{
     QDoubleSpinBox* costoBigliettoFilm;
     QDoubleSpinBox* costoBaseProiezInserzione;
     QTextEdit* descrizioneMedia;
-    QString* filmSelezionatoTrailer;
-    QString* podcastSelezionatoPuntata;
     QComboBox* comboTipologia;
     InsertImageFrame* framePath;
     QListWidget* listLingue;
@@ -71,6 +70,10 @@ class AddMedia:public QWidget{
     QComboBox* comboTarget;
     QDateEdit* dataInizio;
     QDateEdit* dataFine;
+    QString titoloFilmRirefimento; 
+    QString autoreFilmRiferimento; 
+    QString titoloPodcastRirefimento; 
+    QString autorePodcastRiferimento; 
     QString imagePath; 
 
     //widget che verranno utilizzati nel tab "tipologia" e intercambiati tramite la selezione
@@ -97,9 +100,10 @@ class AddMedia:public QWidget{
     void resetInputInserzione();
     
     Media* media;
-    QPushButton* annulla;
-    QPushButton* salva;
+    QPushButton* cancelButton;
+    QPushButton* saveButton;
     QTabWidget* tab;
+    QLabel* errorLabel;
 
     //salva i campi comuni
     void saveCommonFields(MediaData &data);
@@ -138,7 +142,7 @@ class AddMedia:public QWidget{
     //aggiunge i Widget che contengono un LineEdit
     template<class L>
     QLineEdit* addLineEdit(const QString& testo, L* ly);
-
+    
     //aggiunge i Widget che contengono uno spin
     template<class L>
     QSpinBox* addSpin(const QString& testo, int min, int max, int standard, L* ly);
@@ -146,7 +150,14 @@ class AddMedia:public QWidget{
     //aggiunge i Widget che contengono un Doublespin
     template<class L>
     QDoubleSpinBox* addDoubleSpin(const QString& testo, double min, double max, double standard, L* ly);
+    
+    //film e Puntate
+    ListPersone* addPersone(const QString& testo, QVBoxLayout* ly);
 
+    //aggiunge il widget delle reference ai film e ai podcast
+    template<class L>
+    void addReference(const QString& testo, const QString& json, L* ly);
+    
     //per ottenere i selezionati di una QListWidget
     template<class EnumType>
     vector<EnumType> getSelectedList(QListWidget* list);
@@ -160,21 +171,12 @@ class AddMedia:public QWidget{
     void addTipologiaCombo(QHBoxLayout* baseH);
     QTextEdit* addDescrizione(QHBoxLayout* baseH);
 
-
     //campi da passare a seconda del tipo
 
-    QDateEdit* addDataInizioRilascio(QHBoxLayout* ly);   //comuni a tutti tranne a podcast
-    QDateEdit* addDataFineRilascio(QHBoxLayout* ly);     //comuni a tutti tranne a podcast
+    QDateEdit* addDataInizioRilascio(QVBoxLayout* ly);   //comuni a tutti tranne a podcast
+    QDateEdit* addDataFineRilascio(QVBoxLayout* ly);     //comuni a tutti tranne a podcast
     
-    //film e Puntate
-    
-    ListPersone* addPersone(QVBoxLayout* filmH);
-
-    //trailer
-    void addFilm(QHBoxLayout* trailerH);
-
-    //Puntate
-    void Podcast();
+    void checkMediaNameAvailability();
 
     public:
 	explicit AddMedia(QWidget *parent);

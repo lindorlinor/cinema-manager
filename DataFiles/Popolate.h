@@ -32,7 +32,9 @@ struct FilmData : public MediaData {
 };
 
 struct TrailerData : public MediaData {
+    unsigned int nProiezioniGiornaliere;
     QString filmAssociato;
+    QString autoreFilmAssociato;
 };
 
 struct PubblicitaData : public MediaData{
@@ -53,6 +55,7 @@ struct PodcastData : public MediaData{
 struct PuntataData : public MediaData{
     vector<QString> ospiti;
     QString podcastAssociato;
+    QString autorePodcastAssociato;
     unsigned int numeroPubblicita;
 };
 

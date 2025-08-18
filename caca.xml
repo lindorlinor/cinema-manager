@@ -1,4 +1,4 @@
 <cinema>
     <nome>caca</nome>
-    <immagine>/mnt/c/Users/LINOR/Desktop/my-library/images/image1.png</immagine>
+    <immagine>:/images/image1.png</immagine>
 </cinema>

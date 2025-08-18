@@ -38,6 +38,8 @@ HEADERS +=  \
             GUI/AddMedia.h \
             GUI/ListPersone.h \
             GUI/InsertImageFrame.h \
+            GUI/MediaFrame.h \
+            GUI/SelectMediaReference.h \
             DataFiles/CinemaXmlRepository.h \ 
             DataFiles/MediaManagerJson.h 
 SOURCES +=  \
@@ -58,6 +60,8 @@ SOURCES +=  \
             GUI/AddMedia.cpp \
             GUI/ListPersone.cpp \
             GUI/InsertImageFrame.cpp \
+            GUI/MediaFrame.cpp \
+            GUI/SelectMediaReference.cpp \
             DataFiles/CinemaXmlRepository.cpp \
             DataFiles/MediaManagerJson.cpp
 RESOURCES += GUI/resources.qrc

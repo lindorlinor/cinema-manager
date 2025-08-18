@@ -48,22 +48,14 @@ void SearchPanel::updateModifierPanel(int index){
 void SearchPanel::addLatoSinistra(QWidget* widgetSinistra){
     //agginta ricerca latoSinistra
     QVBoxLayout* latoSinistra = new QVBoxLayout;
-    QHBoxLayout* selezioneCinema = new QHBoxLayout;
     QVBoxLayout* selezioneMedia = new QVBoxLayout;
-    QWidget* widgetCinema = new QWidget;
     QWidget* widegetMedia = new QWidget;
 
     widegetMedia->setObjectName("widegetMedia");
     
     //selezione Cinema
-    QPushButton* addCinema = new QPushButton("+");
-    addCinema->setObjectName("addCinema");
-    QComboBox* cinema = new QComboBox;
+    QPushButton* cinema = new QPushButton("Cinema nome");
     cinema->setObjectName("cinema");
-    cinema->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    selezioneCinema->addWidget(cinema,4);
-    selezioneCinema->addWidget(addCinema,1);
-    widgetCinema->setLayout(selezioneCinema);
     
     //selezione Media
     tutto = new QPushButton("Tutto");
@@ -87,7 +79,7 @@ void SearchPanel::addLatoSinistra(QWidget* widgetSinistra){
     latoSinistra->addWidget(addMedia);
     latoSinistra->addSpacing(50);
     latoSinistra->addWidget(widegetMedia);
-    latoSinistra->addWidget(widgetCinema);
+    latoSinistra->addWidget(cinema);
     widgetSinistra->setLayout(latoSinistra);
 }
 

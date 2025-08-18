@@ -1,0 +1,33 @@
+[
+    {
+        "attoriPrincipali": [
+            "io",
+            "linor",
+            "me medesima"
+        ],
+        "autore": "angela",
+        "casaDiProduzione": "ciao",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-22",
+        "dataInizioRilascio": "2025-08-18",
+        "descrizione": "dede",
+        "durataMinuti": 0,
+        "formato": 6,
+        "genere": [
+            0,
+            2
+        ],
+        "lingueDisponibili": [
+            0,
+            1,
+            2
+        ],
+        "nPostCredit": 4,
+        "path": "",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "titolo": "film bellissimo"
+    }
+]
