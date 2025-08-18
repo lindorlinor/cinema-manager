@@ -108,3 +108,12 @@ void InsertCinemaPage::saveCinemaInXml() {
     QMessageBox::information(this, tr("Salvato"), tr("Cinema salvato correttamente."));
     emit returnCinemaSelectionPage();
 }
+
+
+void InsertCinemaPage::reset() {
+    textInput->clear();
+    imagePath.clear();
+    imageArea->reset();
+    errorLabel->setVisible(false);
+    saveButton->setEnabled(true);
+}

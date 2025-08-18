@@ -17,6 +17,8 @@ private:
 public:
     explicit InsertCinemaPage(QWidget * parent= nullptr);
     void saveCinemaInXml();
+    void reset();
+
 public slots:
     void chooseImage();
 signals:

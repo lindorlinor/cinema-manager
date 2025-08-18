@@ -4,12 +4,14 @@
 #include <QMainWindow>
 #include <QStackedWidget>
 #include "CinemaSelectionPage.h"
+#include "InsertCinemaPage.h"
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 private:
     QStackedWidget *stackedWidget;
     CinemaSelectionPage * cinemaPage;
+    InsertCinemaPage * insertPage;
 public:
     MainWindow(QWidget *parent = nullptr);
 public slots:

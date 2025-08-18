@@ -17,8 +17,10 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
 
 private:
+    QString defaultText;    
     QLabel *label;
 public:
     void setText(const QString &text);
+    void reset();
 }; 
 #endif//INSERTIMAGEFRAME_h

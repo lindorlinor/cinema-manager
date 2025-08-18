@@ -5,7 +5,7 @@
 
 InsertImageFrame::InsertImageFrame(QWidget *parent)
     //TO DO aggiungere il drag and drop
-    : QFrame(parent), label(new QLabel("Clicca per inserire un'immagine", this))
+    : QFrame(parent), defaultText("Clicca per inserire un'immagine"), label(new QLabel(defaultText, this))
 {
     setFrameStyle(QFrame::Box | QFrame::Plain);
     setLineWidth(2);
@@ -24,4 +24,7 @@ void InsertImageFrame::mousePressEvent(QMouseEvent *event) {
 
 void InsertImageFrame::setText(const QString &text) {
     label->setText(text);
+}
+void InsertImageFrame::reset() {
+    label->setText(defaultText);
 }
