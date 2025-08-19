@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = my-library1.0.0
-DISTDIR = /mnt/c/Users/LINOR/Desktop/my-library/release/my-library1.0.0
+DISTDIR = /mnt/c/Users/angel/Desktop/studi/universita/appunti/II\ anno/ProgrammazioneOggetti/my-library/release/my-library1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath-link,/usr/lib/x86_64-linux-gnu
 LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt6Widgets.so /usr/lib/x86_64-linux-gnu/libQt6Gui.so /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so /usr/lib/x86_64-linux-gnu/libQt6Xml.so /usr/lib/x86_64-linux-gnu/libQt6Core.so -lpthread -lGLX -lOpenGL   
@@ -132,6 +132,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_core_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_designer.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_gbm_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri \
@@ -139,8 +140,12 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_fb_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_help.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_input_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_kms_support_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_linguist.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_multimedia.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_multimediawidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_opengl.pri \
@@ -149,10 +154,15 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_openglwidgets_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_printsupport.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_printsupport_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_spatialaudio.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_sql_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_svg.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_svgwidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uiplugin.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uitools.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_widgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_widgets_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
@@ -251,6 +261,7 @@ Makefile: my-library.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.c
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_core_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_designer.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_gbm_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri \
@@ -258,8 +269,12 @@ Makefile: my-library.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.c
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_fb_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_help.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_input_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_kms_support_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_linguist.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_multimedia.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_multimediawidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_opengl.pri \
@@ -268,10 +283,15 @@ Makefile: my-library.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.c
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_openglwidgets_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_printsupport.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_printsupport_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_spatialaudio.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_sql_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_svg.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_svgwidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uiplugin.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uitools.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_widgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_widgets_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
@@ -323,6 +343,7 @@ Makefile: my-library.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.c
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_core_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_designer.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_devicediscovery_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_gbm_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri:
@@ -330,8 +351,12 @@ Makefile: my-library.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.c
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_fb_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_help.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_input_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_kms_support_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_linguist.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_multimedia.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_multimediawidgets.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_opengl.pri:
@@ -340,10 +365,15 @@ Makefile: my-library.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.c
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_openglwidgets_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_printsupport.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_printsupport_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_spatialaudio.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_sql.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_sql_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_svg.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_svgwidgets.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uiplugin.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uitools.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_widgets.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_widgets_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri:
@@ -591,7 +621,7 @@ release/moc_CinemaButton.cpp: GUI/CinemaButton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/CinemaButton.h -o release/moc_CinemaButton.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/CinemaButton.h -o release/moc_CinemaButton.cpp
 
 release/moc_MainWindow.cpp: GUI/MainWindow.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
@@ -764,9 +794,11 @@ release/moc_MainWindow.cpp: GUI/MainWindow.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		GUI/InsertImageFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QToolButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtoolbutton.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/MainWindow.h -o release/moc_MainWindow.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/MainWindow.h -o release/moc_MainWindow.cpp
 
 release/moc_CinemaSelectionPage.cpp: GUI/CinemaSelectionPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
@@ -926,7 +958,7 @@ release/moc_CinemaSelectionPage.cpp: GUI/CinemaSelectionPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/CinemaSelectionPage.h -o release/moc_CinemaSelectionPage.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/CinemaSelectionPage.h -o release/moc_CinemaSelectionPage.cpp
 
 release/moc_SearchPanel.cpp: GUI/SearchPanel.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
@@ -1129,7 +1161,7 @@ release/moc_SearchPanel.cpp: GUI/SearchPanel.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/SearchPanel.h -o release/moc_SearchPanel.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/SearchPanel.h -o release/moc_SearchPanel.cpp
 
 release/moc_InsertCinemaPage.cpp: GUI/InsertCinemaPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
@@ -1285,183 +1317,13 @@ release/moc_InsertCinemaPage.cpp: GUI/InsertCinemaPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpicture.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QToolButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtoolbutton.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/InsertCinemaPage.h -o release/moc_InsertCinemaPage.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/InsertCinemaPage.h -o release/moc_InsertCinemaPage.cpp
 
-<<<<<<< HEAD
-release/moc_PathButton.cpp: GUI/PathButton.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiglobal.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobal.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig-bootstrapped.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qconfig.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcore-config.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtconfigmacros.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtcoreexports.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsystemdetection.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qprocessordetection.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompilerdetection.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtypeinfo.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerfwd.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsysinfo.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlogging.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qflags.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompare_impl.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbasicatomic.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_bootstrap.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qgenericatomic.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qatomic_cxx11.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qglobalstatic.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnumeric.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qversiontagging.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qforeach.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtgui-config.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtguiexports.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgets-config.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsexports.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qobjectdefs.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnamespace.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtmetamacros.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qobjectdefs_impl.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs_win.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qchar.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringview.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearray.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrefcount.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydata.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpair.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydatapointer.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qarraydataops.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainertools_impl.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayalgorithms.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearrayview.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringfwd.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringliteral.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringalgorithms.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qanystringview.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qutf8stringview.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringtokenizer.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringbuilder.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlist.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qhashfunctions.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qiterator.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbytearraylist.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringlist.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qalgorithms.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringmatcher.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreevent.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qscopedpointer.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qmetatype.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcompare.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qscopeguard.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevicebase.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qiterable.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qmetacontainer.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontainerinfo.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtaggedpointer.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qmath.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qobject_impl.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qbindingstorage.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qmargins.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qaction.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qkeysequence.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qicon.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsize.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpixmap.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpaintdevice.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrect.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpoint.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qcolor.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qrgb.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qrgba64.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsharedpointer.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qshareddata.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qsharedpointer_impl.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qimage.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpixelformat.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpolygon.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qregion.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qline.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qvariant.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtextstream.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qstringconverter_base.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcontiguouscache.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qmap.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qshareddata_impl.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qset.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qhash.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qvarlengtharray.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qfont.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qfontmetrics.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qfontinfo.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qsizepolicy.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qcursor.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qevent.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpointer.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qurl.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qeventpoint.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qvector2d.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qvectornd.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpointingdevice.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qinputdevice.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qscreen.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QRect \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QSize \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QSizeF \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/QTransform \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qnativeinterface.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qframe.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLabel \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlabel.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpicture.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextdocument.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QVBoxLayout \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qboxlayout.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayout.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayoutitem.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStackedLayout \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstackedlayout.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFileDialog \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qfiledialog.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfileinfo.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcalendar.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlocale.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qdialog.h \
-		release/moc_predefs.h \
-		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/PathButton.h -o release/moc_PathButton.cpp
-
-release/moc_AddMedia.cpp: GUI/AddMedia.h \
-=======
 release/moc_InsertMedia.cpp: GUI/InsertMedia.h \
->>>>>>> feature/gui
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -1667,6 +1529,8 @@ release/moc_InsertMedia.cpp: GUI/InsertMedia.h \
 		GUI/InsertImageFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QToolButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtoolbutton.h \
 		GUI/ListPersone.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QListView \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QListWidgetItem \
@@ -1720,11 +1584,7 @@ release/moc_InsertMedia.cpp: GUI/InsertMedia.h \
 		Puntata.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-<<<<<<< HEAD
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/AddMedia.h -o release/moc_AddMedia.cpp
-=======
 	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/InsertMedia.h -o release/moc_InsertMedia.cpp
->>>>>>> feature/gui
 
 release/moc_ListPersone.cpp: GUI/ListPersone.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
@@ -1903,7 +1763,7 @@ release/moc_ListPersone.cpp: GUI/ListPersone.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlistwidget.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/ListPersone.h -o release/moc_ListPersone.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/ListPersone.h -o release/moc_ListPersone.cpp
 
 release/moc_InsertImageFrame.cpp: GUI/InsertImageFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
@@ -2048,9 +1908,12 @@ release/moc_InsertImageFrame.cpp: GUI/InsertImageFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextdocument.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QToolButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtoolbutton.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/InsertImageFrame.h -o release/moc_InsertImageFrame.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/InsertImageFrame.h -o release/moc_InsertImageFrame.cpp
 
 release/moc_MediaFrame.cpp: GUI/MediaFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
@@ -2741,6 +2604,8 @@ release/main.o: main.cpp catch.hpp \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		GUI/InsertImageFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QToolButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtoolbutton.h \
 		Media.h \
 		EnumClasses.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/main.o main.cpp
@@ -3548,6 +3413,8 @@ release/MainWindow.o: GUI/MainWindow.cpp GUI/MainWindow.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		GUI/InsertImageFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QToolButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtoolbutton.h \
 		GUI/SearchPanel.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMenu \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmenu.h \
@@ -4036,6 +3903,8 @@ release/SearchPanel.o: GUI/SearchPanel.cpp GUI/SearchPanel.h \
 		GUI/InsertImageFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QToolButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtoolbutton.h \
 		GUI/ListPersone.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QListView \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QListWidgetItem \
@@ -4225,6 +4094,8 @@ release/InsertCinemaPage.o: GUI/InsertCinemaPage.cpp GUI/InsertCinemaPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpicture.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QToolButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtoolbutton.h \
 		DataFiles/CinemaXmlRepository.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QVBoxLayout \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qboxlayout.h \
@@ -4475,6 +4346,8 @@ release/InsertMedia.o: GUI/InsertMedia.cpp GUI/InsertMedia.h \
 		GUI/InsertImageFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QToolButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtoolbutton.h \
 		GUI/ListPersone.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QListView \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QListWidgetItem \
@@ -4860,11 +4733,15 @@ release/InsertImageFrame.o: GUI/InsertImageFrame.cpp GUI/InsertImageFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextdocument.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QToolButton \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtoolbutton.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QVBoxLayout \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qboxlayout.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayout.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayoutitem.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStyleOption \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyleoption.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qlocale.h \
