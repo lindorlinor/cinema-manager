@@ -18,12 +18,12 @@ class MediaFrame: public QFrame{
     QLabel* imgLabel;
     QPixmap pix;
     QString titoloMedia;
-    QString casaProd;
+    QString autoreMedia;
 
     public:
-    explicit MediaFrame(const QString& titolo, const QString& imagePath, const QString& casaProduzione, QWidget* parent = nullptr);
+    explicit MediaFrame(const QString& titolo, const QString& imagePath, const QString& autore, QWidget* parent = nullptr);
     QString getTitolo() const;
-    QString getCasaProd() const;
+    QString getAutore() const;
     void mousePressEvent(QMouseEvent* event)override;
     void setSelected(bool selected);
 

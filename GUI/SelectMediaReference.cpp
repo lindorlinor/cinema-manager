@@ -44,9 +44,9 @@ SelectMediaReference::SelectMediaReference(const QString& tipo, QWidget *parent)
         QJsonObject obj = m.toObject();
     
         QString titolo = obj["titolo"].toString();
-        QString casaProd = obj["casaDiProduzione"].toString();
+        QString autore = obj["autore"].toString();
         QString imagePath = obj["path"].toString();
-        MediaFrame* mediaframe = new MediaFrame(titolo, imagePath, casaProd, container);
+        MediaFrame* mediaframe = new MediaFrame(titolo, imagePath, autore, container);
     
         layout->addWidget(mediaframe);
 
@@ -55,11 +55,19 @@ SelectMediaReference::SelectMediaReference(const QString& tipo, QWidget *parent)
                 this->currentSelected->setSelected(false);
             this->currentSelected = f;
             this->currentSelected->setSelected(true);
+            emit mediaSelected(f);
         });
 
     }
 
     container->setLayout(layout);
+}
+
+void SelectMediaReference::setSelectFalse() {
+    if (currentSelected) {
+        currentSelected->setSelected(false);
+        currentSelected = nullptr;
+    }
 }
 
     

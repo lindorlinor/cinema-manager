@@ -2,7 +2,7 @@
 
 Inserzione::Inserzione(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
                        year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione, 
-                       unsigned int nProiezioniGiornaliere,const Classificazione& target,const string &aziendaInserzionista, double costoProiezione,
+                       unsigned int nProiezioniGiornaliere,const Classificazione& target, double costoProiezione, const string &aziendaInserzionista,
                        const string &autore, const string &path) :
 
                                     Pubblicita(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,

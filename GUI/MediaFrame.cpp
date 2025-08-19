@@ -1,6 +1,6 @@
 #include "MediaFrame.h"
 
-MediaFrame::MediaFrame(const QString& titolo, const QString& imagePath,const QString& casaProduzione, QWidget* parent):titoloMedia(titolo), casaProd(casaProduzione), QFrame(parent){
+MediaFrame::MediaFrame(const QString& titolo, const QString& imagePath,const QString& autore, QWidget* parent):titoloMedia(titolo), autoreMedia(autore), QFrame(parent){
     imgLabel = new QLabel;
     pix.load(imagePath);
     imgLabel->setPixmap(pix.scaled(100, 150));
@@ -20,8 +20,8 @@ QString MediaFrame::getTitolo() const{
     return titoloMedia;
 }
 
-QString MediaFrame::getCasaProd() const{
-    return casaProd;
+QString MediaFrame::getAutore() const{
+    return autoreMedia;
 }
 
 void MediaFrame::mousePressEvent(QMouseEvent* event){

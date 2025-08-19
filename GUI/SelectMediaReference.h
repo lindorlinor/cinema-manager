@@ -19,11 +19,12 @@ class SelectMediaReference:public QWidget{
     
     private:
     QString titolo;
-    QString casaProd;
+    QString autore;
     MediaFrame* currentSelected;
 
     public:
     explicit SelectMediaReference(const QString& tipo, QWidget *parent = nullptr);
+    void setSelectFalse();
 
     signals:
     void mediaSelected(MediaFrame* frame);

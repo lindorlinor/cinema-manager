@@ -1,23 +1,49 @@
-#include "AddMedia.h"
+#include "InsertMedia.h"
 #include "SearchPanel.h"
+
+InsertMedia::InsertMedia(QWidget *parent): QWidget(parent){
+    mediaManagerJson = new MediaManagerJson("FileJson");
+    QVBoxLayout* mainLayout = new QVBoxLayout;
+    mainLayout->setContentsMargins(0, 0, 0, 0); 
+    mainLayout->setSpacing(0);
+    
+    indietro(mainLayout);
+    addPagina(mainLayout);
+    annullaSalva(mainLayout);
+    
+    setLayout(mainLayout);
+}
+
+
+
+
+
 
 //template
 
 template<class L, class T>
-void AddMedia::addInput(QLabel* label,  L* layout, T* inputWidget){
+void InsertMedia::addInput(QLabel* label,  L* layout, T* inputWidget){
     QWidget* widget = new QWidget; 
     QVBoxLayout* l = new QVBoxLayout;
-    label->setAlignment(Qt::AlignTop);
     l->addWidget(label,1);
     l->addWidget(inputWidget,4);
     widget->setLayout(l);
     layout->addWidget(widget);
+    
+    //style
+    label->setAlignment(Qt::AlignTop);
+    label->setStyleSheet(   "color: #84a0a8;"
+                            "font-size: 14pt;"
+                            "font-weight: bold;");
 }
 
 template<class L, class T>
-void AddMedia::addEnumList(L* base, const QString& labelText, const std::vector<T>& items, QListWidget*& listWidget){
+void InsertMedia::addEnumList(L* base, const QString& labelText, const std::vector<T>& items, QListWidget*& listWidget){
     QLabel* label = new QLabel(labelText);
     listWidget = new QListWidget(this);
+
+    listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
     //lista degli enum
     for (T e : items) {
@@ -32,10 +58,17 @@ void AddMedia::addEnumList(L* base, const QString& labelText, const std::vector<
     }
 
     addInput(label, base, listWidget);
+
+    //style
+    listWidget->setStyleSheet(  "border-radius: 10px; " 
+                                "background-color: #4e7f8b;"
+                                "color: #05313c;"
+                                "padding: 10px;"
+                                "font-size: 12pt;");
 }
 
 template<class L, class T>
-void AddMedia::addEnumCombo(L* base, const QString& labelText, const std::vector<T>& items, QComboBox*& comboBox) {
+void InsertMedia::addEnumCombo(L* base, const QString& labelText, const std::vector<T>& items, QComboBox*& comboBox) {
     QLabel* label = new QLabel(labelText);
     comboBox = new QComboBox(this);
 
@@ -49,19 +82,20 @@ void AddMedia::addEnumCombo(L* base, const QString& labelText, const std::vector
     comboBox->setCurrentIndex(0);
 
     addInput(label, base, comboBox);
-}
 
+}
+                            
 template<class L>
-QLineEdit* AddMedia::addLineEdit(const QString& testo, L* ly){
+QLineEdit* InsertMedia::addLineEdit(const QString& testo, L* ly){
     QLabel* label = new QLabel(testo,this);
     QLineEdit* lineEdit = new QLineEdit(this);
     lineEdit->setPlaceholderText(testo);
     addInput(label, ly, lineEdit);
     return lineEdit;
 }
-
+                            
 template<class L>
-QSpinBox* AddMedia::addSpin(const QString& testo, int min, int max, int standard, L* ly){
+QSpinBox* InsertMedia::addSpin(const QString& testo, int min, int max, int standard, L* ly){
     QLabel* label = new QLabel(testo,this);
     QSpinBox * spin = new QSpinBox (this);
     spin->setRange(min, max);
@@ -69,9 +103,9 @@ QSpinBox* AddMedia::addSpin(const QString& testo, int min, int max, int standard
     addInput(label, ly, spin);
     return spin;
 }
-
+                            
 template<class L>
-QDoubleSpinBox* AddMedia::addDoubleSpin(const QString& testo, double min, double max, double standard, L* ly){
+QDoubleSpinBox* InsertMedia::addDoubleSpin(const QString& testo, double min, double max, double standard, L* ly){
     QLabel* label = new QLabel(testo,this);
     QDoubleSpinBox* doubleSpin = new QDoubleSpinBox (this);
     doubleSpin->setRange(min, max);
@@ -81,36 +115,93 @@ QDoubleSpinBox* AddMedia::addDoubleSpin(const QString& testo, double min, double
 }
 
 template<class L>
-void AddMedia::addReference(const QString& testo, const QString& json, L* ly){
+void InsertMedia::addReference(const QString& testo, const QString& json, L* ly){
     QLabel* label = new QLabel(testo);
     SelectMediaReference* reference = new SelectMediaReference(json, this); 
 
     addInput(label, ly, reference);
-
-    connect(reference, &SelectMediaReference::mediaSelected, this, [this, testo](MediaFrame* f){
-        if(testo == "films"){
+    
+    connect(reference, &SelectMediaReference::mediaSelected, this, [this, json](MediaFrame* f){
+        if(json == "films"){
             titoloFilmRirefimento = f->getTitolo();
-            autoreFilmRiferimento = f->getCasaProd();
+            autoreFilmRiferimento = f->getAutore();
+            saveButton->setEnabled(true);
         }
-        else if(testo=="podcasts"){
-            titoloPodcastRirefimento = f->getTitolo();
-            autorePodcastRiferimento = f->getCasaProd();
+        else if(json == "podcasts"){
+            titoloPodcastRiferimento = f->getTitolo();
+            autorePodcastRiferimento = f->getAutore();
+            saveButton->setEnabled(true);
         }
+    });
+
+    connect(this, &InsertMedia::resetReferenceSelection, reference, [reference](){
+        reference->setSelectFalse();
     });
 }
 
-QTextEdit* AddMedia::addDescrizione(QHBoxLayout* baseH){
+template<class EnumType>
+vector<EnumType> InsertMedia::getSelectedList(QListWidget* list){
+    vector<EnumType> risultato;
+    if(!list) return risultato;
+    for(int i=0; i<list->count(); ++i){
+        QListWidgetItem* item = list->item(i);
+        if(item->checkState() == Qt::Checked){
+            risultato.push_back(static_cast<EnumType>(item->data(Qt::UserRole).toInt()));
+        }
+    }
+
+    return risultato;
+}
+
+
+
+
+
+
+
+
+
+//widget di input da aggiungere
+ListPersone* InsertMedia::addPersone(const QString& testo, QVBoxLayout* ly){
+    QLabel* label = new QLabel(testo);
+    ListPersone* lista = new ListPersone(this); 
+    addInput(label, ly, lista);
+    return lista;
+}
+
+void InsertMedia::addTipologiaCombo(QHBoxLayout* baseH){
+    QLabel* label = new QLabel("Tipologia");
+    comboTipologia = new QComboBox(this);
+    comboTipologia->addItem("Film");
+    comboTipologia->addItem("Trailer");
+    comboTipologia->addItem("Podcast");
+    comboTipologia->addItem("Puntata");
+    comboTipologia->addItem("Inserzione");
+
+    addInput(label, baseH, comboTipologia);
+
+    connect(comboTipologia, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int index){
+        updateTabTipologia(index);
+    });
+
+    comboTipologia->setObjectName("comboTipologia");
+}
+
+QTextEdit* InsertMedia::addDescrizione(QHBoxLayout* baseH){
     QLabel* label = new QLabel("Descrizione");
     QTextEdit* textEdit = new QTextEdit(this);
     textEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     textEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    textEdit->setFixedSize(300,200);
-    textEdit->setStyleSheet("margin-bottom: 10px;");
     addInput(label, baseH, textEdit);
     return textEdit;
+    
+    //style
+    textEdit->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    textEdit->setMaximumSize(650,350);
+    textEdit->setAlignment(Qt::AlignTop);
 }
 
-QDateEdit* AddMedia::addDataInizioRilascio(QVBoxLayout* ly) {
+QDateEdit* InsertMedia::addDataInizioRilascio(QVBoxLayout* ly) {
     QLabel* label = new QLabel("Data di Inizio Proiezione");
 
     dataInizio = new QDateEdit(this);
@@ -122,8 +213,7 @@ QDateEdit* AddMedia::addDataInizioRilascio(QVBoxLayout* ly) {
     return dataInizio;
 }
 
-
-QDateEdit* AddMedia::addDataFineRilascio(QVBoxLayout* ly) {
+QDateEdit* InsertMedia::addDataFineRilascio(QVBoxLayout* ly) {
     QLabel* label = new QLabel("Data di Fine Proiezione");
 
     dataFine = new QDateEdit(this);
@@ -139,30 +229,14 @@ QDateEdit* AddMedia::addDataFineRilascio(QVBoxLayout* ly) {
     return dataFine;
 }
 
-ListPersone* AddMedia::addPersone(const QString& testo, QVBoxLayout* ly){
-    QLabel* label = new QLabel(testo);
-    ListPersone* lista = new ListPersone(this); 
-    addInput(label, ly, lista);
-    return lista;
-}
 
-void AddMedia::addTipologiaCombo(QHBoxLayout* baseH){
-    QLabel* label = new QLabel("Tipologia");
-    comboTipologia = new QComboBox(this);
-    comboTipologia->addItem("Film");
-    comboTipologia->addItem("Trailer");
-    comboTipologia->addItem("Podcast");
-    comboTipologia->addItem("Puntata");
-    comboTipologia->addItem("Inserzione");
 
-    addInput(label, baseH, comboTipologia);
 
-    connect(comboTipologia, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int index){
-        updateTabTipologia(index);
-    });
-}
 
-void AddMedia::updateTabTipologia(int index){
+
+
+//metodi funzionali per il corretto comportamento della pagina
+void InsertMedia::updateTabTipologia(int index){
     
     //per resettare tutto ad eccezione dei campi comuni
     resetInputFilm();
@@ -182,59 +256,95 @@ void AddMedia::updateTabTipologia(int index){
         dataFine->setDate(QDate::currentDate());
     }
 
+    if(index == 1 || index == 3){
+        saveButton->setEnabled(false);
+    }
+    else checkMediaNameAvailability();
+
     stackTipologia->setCurrentIndex(index);
+}
+
+void InsertMedia::checkMediaNameAvailability() {
+    QString titolo = titoloMedia->text().trimmed();
+    QString autore = autoreMedia->text().trimmed();
+
+    // Carico la lista dei cinema esistenti
+    MediaManagerJson manager(QDir(QCoreApplication::applicationDirPath()).filePath("../FileJson/"));
+    QList<MediaData> listInsertMedia = manager.loadAllMediaBasic();
+    
+    bool isAvailable = true;
+
+    if(titolo.isEmpty() || autore.isEmpty()) isAvailable = false;
+
+    for (const MediaData& m: listInsertMedia) {
+        if (m.titolo.compare(titolo, Qt::CaseInsensitive) == 0 && m.autore.compare(autore, Qt::CaseInsensitive) == 0) {
+            isAvailable = false;
+            break;
+        }
+    }
+
+    if (!isAvailable) {
+        if(!titolo.isEmpty()&&!autore.isEmpty()){
+            errorLabel->setText("Titolo già presente per questo autore");
+            errorLabel->setVisible(true);
+        }
+        saveButton->setEnabled(false); // disabilita bottone
+    } else {
+        errorLabel->setVisible(false);
+        saveButton->setEnabled(true);
+    }
 }
 
 
 
-//tipologia Film
 
-void AddMedia::addTipologiaFilm(QWidget* TipoFilm){
-    QHBoxLayout* filmH1 = new QHBoxLayout;
-    QHBoxLayout* filmH2 = new QHBoxLayout;
-    QHBoxLayout* filmH3 = new QHBoxLayout;
-    QHBoxLayout* filmH4 = new QHBoxLayout;
+
+//costruzioni dei diversi widget per la tab "specifiche tipologia"
+
+void InsertMedia::addTipologiaFilm(QWidget* TipoFilm){              //tipologia Film
+    QHBoxLayout* filmH = new QHBoxLayout;
     QVBoxLayout* filmV1 = new QVBoxLayout;
     QVBoxLayout* filmV2 = new QVBoxLayout;
     QWidget* widgetFilm1 = new QWidget;
     QWidget* widgetFilm2 = new QWidget;
-    QWidget* widgetFilm3 = new QWidget;
-    QWidget* widgetFilm4 = new QWidget;
-    QWidget* widgetFilm5 = new QWidget;
 
     attoriFilm = addPersone("Attori",filmV1);
-    addEnumCombo(filmV1,"Target",tutteLeClassificazioni(), comboTarget);
-    widgetFilm1->setLayout(filmV1);
-    addEnumList(filmH2, "Genere", tuttiIGeneri(), listGeneri);
-    CasaProdFilm = addLineEdit("Casa di Produzione",filmH2);
-    totPostCreditFilm = addSpin("Numero di Post Credit", 0, 5, 0, filmH3);
-    costoBigliettoFilm = addDoubleSpin("Costo Biglietto (€)", 0.0, 15.0, 8.0, filmH3);
+    addEnumList(filmV1, "Genere", tuttiIGeneri(), listGeneri);
+    CasaProdFilm = addLineEdit("Casa di Produzione",filmV2);
+    addEnumCombo(filmV2,"Target",tutteLeClassificazioni(), comboTarget);
+    totPostCreditFilm = addSpin("Numero di Post Credit", 0, 5, 0, filmV2);
+    costoBigliettoFilm = addDoubleSpin("Costo Biglietto (€)", 0.0, 15.0, 8.0, filmV2);
 
-    widgetFilm2->setLayout(filmH1);
-    widgetFilm3->setLayout(filmH2);
-    widgetFilm4->setLayout(filmH3);
-    filmV2->addWidget(widgetFilm2);
-    filmV2->addWidget(widgetFilm3);
-    filmV2->addWidget(widgetFilm4);
-    widgetFilm5->setLayout(filmV2);
-    filmH4->addWidget(widgetFilm1);
-    filmH4->addWidget(widgetFilm5);
-    TipoFilm->setLayout(filmH4);
+    
+    widgetFilm1->setLayout(filmV1);
+    widgetFilm2->setLayout(filmV2);
+    
+    filmH->addWidget(widgetFilm1);
+    filmH->addWidget(widgetFilm2);
+    
+    TipoFilm->setLayout(filmH);
+
+    //style    
+    CasaProdFilm->setObjectName("CasaProdFilm");
+    totPostCreditFilm->setObjectName("totPostCreditFilm");
+    costoBigliettoFilm->setObjectName("costoBigliettoFilm");
+    comboTarget->setObjectName("comboTarget");
 }
 
-
-//tipologia Trailer
-void AddMedia::addTipologiaTrailer(QWidget* TipoTrailer){
+void InsertMedia::addTipologiaTrailer(QWidget* TipoTrailer){        //tipologia Trailer
     QHBoxLayout* TrailerH = new QHBoxLayout;
 
     numeroProiezioniTrailer = addSpin("Numero Proiezioni Giornaliere", 0, 20, 0, TrailerH);
     addReference("Film", "films", TrailerH);
 
     TipoTrailer->setLayout(TrailerH);
+
+    //style
+    numeroProiezioniTrailer->setObjectName("numeroProiezioniTrailer");
 }
 
-//tipologia Inserzione
-void AddMedia::addTipologiaInserzione(QWidget* TipoInserzione){
+
+void InsertMedia::addTipologiaInserzione(QWidget* TipoInserzione){  //tipologia Inserzione
     QHBoxLayout* inserzioneH1 = new QHBoxLayout;
     QHBoxLayout* inserzioneH2 = new QHBoxLayout;
     QVBoxLayout* inserzioneV1 = new QVBoxLayout;
@@ -256,22 +366,30 @@ void AddMedia::addTipologiaInserzione(QWidget* TipoInserzione){
     inserzioneV2->addWidget(WidgetInserzione2);
     inserzioneV2->addWidget(WidgetInserzione3);
     TipoInserzione->setLayout(inserzioneV2);
+
+    //style
+    aziendaInserzInserzione->setObjectName("aziendaInserzInserzione");
+    numeroProiezioniGioInserzione->setObjectName("numeroProiezioniGioInserzione");
+    costoBaseProiezInserzione->setObjectName("costoBaseProiezInserzione");
+    comboTarget->setObjectName("comboTarget");
 }
 
-//tipologia Podcast
-void AddMedia::addTipologiaPodcast(QWidget* TipoPodcast){
+void InsertMedia::addTipologiaPodcast(QWidget* TipoPodcast){    //tipologia Podcast
     QHBoxLayout* podcastH = new QHBoxLayout;
     conduttorePodcast = addLineEdit("Conduttore", podcastH);
     TipoPodcast->setLayout(podcastH);
+
+    //style
+    conduttorePodcast->setObjectName("conduttorePodcast");
 }
 
-void AddMedia::addTipologiaPuntate(QWidget* TipoPuntata){
+void InsertMedia::addTipologiaPuntate(QWidget* TipoPuntata){    //tipologia Puntata
     QHBoxLayout* puntataH = new QHBoxLayout();
     QVBoxLayout* puntataV = new QVBoxLayout();
     QWidget* widgetPuntata = new QWidget();
 
     
-    addPersone("Ospiti",puntataV); 
+    ospitiPuntata = addPersone("Ospiti",puntataV); 
     numeroPubblicitaPuntata = addSpin("Numero Pubblicità", 0, 20, 4, puntataV);
     widgetPuntata->setLayout(puntataV);
 
@@ -279,12 +397,135 @@ void AddMedia::addTipologiaPuntate(QWidget* TipoPuntata){
     addReference("Podcast","podcasts",puntataH);
 
     TipoPuntata->setLayout(puntataH);
+
+    //style
+    numeroPubblicitaPuntata->setObjectName("numeroPubblicitaPuntata");
 }
 
 
-//aggiunta dei Tab
 
-void AddMedia::addBase(QWidget* base){
+
+
+
+//aggiunta elementi alla pagina InsertMedia
+
+void InsertMedia::addPagina(QVBoxLayout* mainLayout){
+    QVBoxLayout* paginaV1 = new QVBoxLayout();
+    QVBoxLayout* paginaV2 = new QVBoxLayout();
+    QVBoxLayout* paginaV3 = new QVBoxLayout();
+    QHBoxLayout* paginaH = new QHBoxLayout();
+    QWidget* widgetPagina1 = new QWidget();
+    QWidget* widgetPagina2 = new QWidget();
+    QWidget* widgetPagina3 = new QWidget();
+
+    QLabel* titolo = new QLabel("Aggiungi un elemento alla libreria");
+    framePath = new InsertImageFrame;
+    QPixmap pixmap(":images/image4.png");
+    copertina = new QLabel(this);
+
+    //paginaV3->setAlignment(Qt::AlignCenter);
+    
+    paginaV1->addWidget(copertina);
+    paginaV1->addWidget(framePath);
+
+    paginaV1->setAlignment(Qt::AlignCenter);
+
+    widgetPagina1->setLayout(paginaV1);
+    paginaH->addWidget(widgetPagina1);
+    addTabs(paginaH);
+    widgetPagina2->setLayout(paginaH);
+    paginaV2->addWidget(titolo);
+    paginaV2->addWidget(widgetPagina2);
+    widgetPagina3->setLayout(paginaV2);
+    
+    mainLayout->addWidget(widgetPagina3);
+    
+    connect(framePath,&InsertImageFrame::clicked,this,&InsertMedia::chooseImage);
+    
+    //style
+    titolo->setAlignment(Qt::AlignTop);
+    QFont font = titolo->font();
+    font.setPointSize(24);
+    font.setBold(true);
+    titolo->setFont(font);
+    titolo->setStyleSheet("color: #fed36a;");
+    framePath->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    framePath->setMaximumSize(450, 350);
+    framePath->setMinimumSize(320, 150);
+    copertina->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    copertina->setMaximumSize(450, 500);
+    copertina->setAlignment(Qt::AlignCenter);
+    copertina->setPixmap(pixmap.scaled(430,430, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+}
+
+void InsertMedia::indietro(QVBoxLayout* mainLayout){        //pulsante indietro
+    QHBoxLayout* bottone = new QHBoxLayout;
+    QPushButton* indietro = new QPushButton("← indietro");
+    QWidget* indietroW = new QWidget;
+    bottone->addWidget(indietro);
+    bottone->setAlignment(Qt::AlignLeft);
+    indietroW->setLayout(bottone);
+    mainLayout->addWidget(indietroW);
+
+    connect(indietro, &QPushButton::clicked, this, [this](){
+        this->resetAllInput();
+        this->tornaIndietro();
+    }); 
+}
+
+void InsertMedia::annullaSalva(QVBoxLayout* mainLayout){
+    cancelButton = new QPushButton("annulla",this);
+    saveButton = new QPushButton("salva",this);
+    QWidget* asWidget = new QWidget;
+    QHBoxLayout* asH = new QHBoxLayout;
+    asH->addWidget(cancelButton);
+    asH->addWidget(saveButton);
+    asWidget->setLayout(asH);
+    mainLayout->addWidget(asWidget);
+
+    saveButton->setEnabled(false);
+
+    connect(cancelButton, &QPushButton::clicked, this, [this](){
+        this->resetAllInput();
+        this->tornaIndietro(); 
+    });//poi da modificare facendolo tornare alla pagina della libreria di default
+    connect(saveButton, &QPushButton::clicked, this, [this]() {
+        this->salvaMedia();
+        this->resetAllInput();
+        this->tornaIndietro();
+    });
+
+}
+
+void InsertMedia::addTabs(QHBoxLayout* layout){
+    tab = new QTabWidget(this);
+    
+    QWidget* base = new QWidget;
+    QWidget* descrizione = new QWidget;
+    QWidget* tipologia = new QWidget;
+    
+    addBase(base);
+    addDescrizione(descrizione);
+    addTipologia(tipologia);
+    
+    tab->addTab(base, "Informazioni Base");
+    tab->addTab(descrizione, "Descrizione");
+    tab->addTab(tipologia, "Specifiche Tipologia");
+    
+    layout->addWidget(tab,2);
+    
+    //style
+    tab->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    tab->setMaximumSize(900,850);
+    tab->setContentsMargins(0,20,tab->width()/80,tab->height()/70);
+    tab->setStyleSheet("QTabWidget { background-color: #05313c; }");
+}
+
+
+
+
+
+void InsertMedia::addBase(QWidget* base){
     QVBoxLayout* baseV1 = new QVBoxLayout;
     QVBoxLayout* baseV2 = new QVBoxLayout;
     QHBoxLayout* baseH1 = new QHBoxLayout;
@@ -299,8 +540,8 @@ void AddMedia::addBase(QWidget* base){
     errorLabel->setText("");
     errorLabel->setVisible(false);
     
-    titoloMedia = addLineEdit("Titolo", baseH1);
-    autoreMedia = addLineEdit("Autore", baseH1);
+    titoloMedia = addLineEdit("Titolo*", baseH1);
+    autoreMedia = addLineEdit("Autore*", baseH1);
     addTipologiaCombo(baseH1);
     widget1->setLayout(baseH1);
     
@@ -320,11 +561,18 @@ void AddMedia::addBase(QWidget* base){
     
     base->setLayout(baseV2);
 
-    connect(titoloMedia, &QLineEdit::textChanged, this, &AddMedia::checkMediaNameAvailability);
-    connect(autoreMedia, &QLineEdit::textChanged, this, &AddMedia::checkMediaNameAvailability);
+    connect(titoloMedia, &QLineEdit::textChanged, this, &InsertMedia::checkMediaNameAvailability);
+    connect(autoreMedia, &QLineEdit::textChanged, this, &InsertMedia::checkMediaNameAvailability);
+
+    //style
+    titoloMedia->setObjectName("titoloMedia");
+    autoreMedia->setObjectName("autoreMedia");
+    durataMinutiMedia->setObjectName("durataMinutiMedia");
+    dataInizio->setObjectName("dataInizio");
+    dataFine->setObjectName("dataFine");
 }
 
-void AddMedia::addDescrizione(QWidget* descrizione){
+void InsertMedia::addDescrizione(QWidget* descrizione){
     QVBoxLayout* descrizioneV = new QVBoxLayout;
     QHBoxLayout* descrizioneH = new QHBoxLayout;
     QWidget* widget = new QWidget;
@@ -335,9 +583,13 @@ void AddMedia::addDescrizione(QWidget* descrizione){
     descrizioneH->addWidget(widget);
     descrizioneMedia = addDescrizione(descrizioneH);
     descrizione->setLayout(descrizioneH);
+
+    //style
+    comboFormato->setObjectName("comboFormato");
+    comboRisoluzione->setObjectName("comboRisoluzione");
 }
 
-void AddMedia::addTipologia(QWidget* tipologia){
+void InsertMedia::addTipologia(QWidget* tipologia){
     stackTipologia = new QStackedLayout;
 
     TipoFilm = new QWidget;
@@ -362,61 +614,14 @@ void AddMedia::addTipologia(QWidget* tipologia){
     tipologia->setLayout(stackTipologia);
 }
 
-void AddMedia::addTabs(QHBoxLayout* layout){
-    tab = new QTabWidget(this);
-    tab->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    
-    QWidget* base = new QWidget;
-    QWidget* descrizione = new QWidget;
-    QWidget* tipologia = new QWidget;
-    
-    addBase(base);
-    addDescrizione(descrizione);
-    addTipologia(tipologia);
 
-    tab->addTab(base, "Informazioni Base");
-    tab->addTab(descrizione, "Descrizione");
-    tab->addTab(tipologia, "Specifiche Tipologia");
 
-    layout->addWidget(tab,2);
-}
 
-//pulsante indietro
 
-void AddMedia::indietro(QVBoxLayout* mainLayout){
-    QHBoxLayout* bottone = new QHBoxLayout;
-    QPushButton* indietro = new QPushButton("← indietro");
-    QWidget* indietroW = new QWidget;
-    bottone->addWidget(indietro);
-    bottone->setAlignment(Qt::AlignLeft);
-    indietroW->setLayout(bottone);
-    mainLayout->addWidget(indietroW);
 
-    connect(indietro, &QPushButton::clicked, this, [this](){
-        stackTipologia->setCurrentIndex(0);
-        tab->setCurrentIndex(0);
-        this->resetAllInput();
-        comboTipologia->setCurrentIndex(0);
-        this->tornaIndietro();
-    }); 
-}
+//salvataggio degli input su un file Json
 
-template<class EnumType>
-vector<EnumType> AddMedia::getSelectedList(QListWidget* list){
-    vector<EnumType> risultato;
-    if(!list) return risultato;
-    for(int i=0; i<list->count(); ++i){
-        QListWidgetItem* item = list->item(i);
-        if(item->checkState() == Qt::Checked){
-            risultato.push_back(static_cast<EnumType>(item->data(Qt::UserRole).toInt()));
-        }
-    }
-
-    return risultato;
-}
-
-//funzione per salvare i dati comuni
-void AddMedia::saveCommonFields(MediaData &data) {
+void InsertMedia::saveCommonFields(MediaData &data) {       //funzione per salvare i dati comuni
     data.titolo = titoloMedia->text();
     data.autore = autoreMedia->text();
     data.descrizione = descrizioneMedia->toPlainText();
@@ -428,8 +633,8 @@ void AddMedia::saveCommonFields(MediaData &data) {
     data.path = imagePath;
 }
 
-//funzione per salvare gli input in un json
-void AddMedia::salvaMedia(){
+
+void InsertMedia::salvaMedia(){                         //funzione per salvare gli input in un json
 
     //film
     if(stackTipologia->currentIndex()==0){
@@ -478,7 +683,7 @@ void AddMedia::salvaMedia(){
 
         puntata.ospiti = ospitiPuntata->getListaPersone();
         puntata.numeroPubblicita = numeroPubblicitaPuntata->value();
-        puntata.podcastAssociato = titoloPodcastRirefimento; 
+        puntata.podcastAssociato = titoloPodcastRiferimento; 
         puntata.autorePodcastAssociato = autorePodcastRiferimento; 
 
         mediaManagerJson->savePuntata(puntata);
@@ -503,7 +708,9 @@ void AddMedia::salvaMedia(){
 
 }
 
-void AddMedia::chooseImage(){
+
+//slots
+void InsertMedia::chooseImage(){
     QString fileName = QFileDialog::getOpenFileName(
         this,
         tr("Seleziona un'immagine"),
@@ -513,36 +720,22 @@ void AddMedia::chooseImage(){
 
     if (!fileName.isEmpty()) {
         imagePath = fileName;
+        QPixmap pixmap(imagePath);
+        copertina->setPixmap(pixmap.scaled(325,450, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        copertina->setAlignment(Qt::AlignCenter);
         framePath->setText(QFileInfo(fileName).fileName());
     }
 }
 
-void AddMedia::addPagina(QVBoxLayout* mainLayout){
-    QLabel* titolo = new QLabel("Aggiungi un elemento alla libreria");
-    titolo->setAlignment(Qt::AlignTop);
-    framePath = new InsertImageFrame;
-    QVBoxLayout* sinistra = new QVBoxLayout();
-    QHBoxLayout* layout = new QHBoxLayout();
-    QWidget* widgetSinistra = new QWidget();
-    QWidget* widgetLayout = new QWidget();
 
-    QFont font = titolo->font();
-    font.setPointSize(14);
-    font.setBold(true);
-    titolo->setFont(font);
 
-    sinistra->addWidget(titolo);
-    sinistra->addWidget(framePath);
-    widgetSinistra->setLayout(sinistra);
-    layout->addWidget(widgetSinistra);
-    addTabs(layout);
-    widgetLayout->setLayout(layout);
-    mainLayout->addWidget(widgetLayout);
 
-    connect(framePath,&InsertImageFrame::clicked,this,&AddMedia::chooseImage);
-}
 
-void AddMedia::resetInputFilm(){
+
+//reset dell'input messo sui widget, divisi per tipologia
+
+void InsertMedia::resetInputFilm(){
+
     if(CasaProdFilm) CasaProdFilm->clear();
     if(attoriFilm) attoriFilm->resetWidget();
     if(totPostCreditFilm) totPostCreditFilm->setValue(0);
@@ -558,23 +751,23 @@ void AddMedia::resetInputFilm(){
     
 }
 
-void AddMedia::resetInputTrailer(){
+void InsertMedia::resetInputTrailer(){
     if(numeroProiezioniTrailer) numeroProiezioniTrailer->setValue(0);
     if(titoloFilmRirefimento!="") titoloFilmRirefimento = "";
     if(autoreFilmRiferimento!="") autoreFilmRiferimento = "";
-    
+    emit resetReferenceSelection();
 }
-void AddMedia::resetInputPodcast(){
+void InsertMedia::resetInputPodcast(){
     if(conduttorePodcast) conduttorePodcast->clear();
 }
-void AddMedia::resetInputPuntata(){
+void InsertMedia::resetInputPuntata(){
     if(numeroPubblicitaPuntata) numeroPubblicitaPuntata->setValue(0);
-    if(titoloPodcastRirefimento!="") titoloPodcastRirefimento = "";
+    if(titoloPodcastRiferimento!="") titoloPodcastRiferimento = "";
     if(autorePodcastRiferimento!="") autorePodcastRiferimento = "";
     if(ospitiPuntata) ospitiPuntata->resetWidget();
-    
+    emit resetReferenceSelection();
 }
-void AddMedia::resetInputInserzione(){
+void InsertMedia::resetInputInserzione(){
     if(aziendaInserzInserzione) aziendaInserzInserzione->clear();
     if(costoBaseProiezInserzione) costoBaseProiezInserzione->setValue(30.0);
     if(numeroProiezioniGioInserzione) numeroProiezioniGioInserzione->setValue(0);
@@ -587,7 +780,7 @@ void AddMedia::resetInputInserzione(){
 
 }
 
-void AddMedia::resetAllInput(){
+void InsertMedia::resetAllInput(){
 
     resetInputFilm();
     resetInputInserzione();
@@ -598,9 +791,6 @@ void AddMedia::resetAllInput(){
     // LineEdit
     if(titoloMedia) titoloMedia->clear();
     if(autoreMedia) autoreMedia->clear();
-    
-    // ListPersone
-    if(ospitiPuntata) ospitiPuntata->resetWidget();
     
     // SpinBox
     if(durataMinutiMedia) durataMinutiMedia->setValue(0);
@@ -632,75 +822,13 @@ void AddMedia::resetAllInput(){
     if(dataInizio) dataInizio->setDate(QDate::currentDate());
     if(dataFine) dataFine->setDate(QDate::currentDate());
     
+    checkMediaNameAvailability();
+    stackTipologia->setCurrentIndex(0);
+    tab->setCurrentIndex(0);
+    comboTipologia->setCurrentIndex(0);
+
     // QString
     imagePath.clear();
 }
 
-void AddMedia::checkMediaNameAvailability() {
-    QString titolo = titoloMedia->text().trimmed();
-    QString autore = autoreMedia->text().trimmed();
 
-    // Carico la lista dei cinema esistenti
-    MediaManagerJson manager(QDir(QCoreApplication::applicationDirPath()).filePath("../FileJson/"));
-    QList<MediaData> listInsertMedia = manager.loadAllMediaBasic();
-    
-    bool isAvailable = true;
-    for (const MediaData& m: listInsertMedia) {
-        if (m.titolo.compare(titolo, Qt::CaseInsensitive) == 0 && m.autore.compare(autore, Qt::CaseInsensitive) == 0) {
-            isAvailable = false;
-            break;
-        }
-    }
-
-    if (!isAvailable) {
-        errorLabel->setText("Titolo già presente per questo autore");
-        errorLabel->setVisible(true);
-        saveButton->setEnabled(false); // disabilita bottone
-    } else {
-        errorLabel->setVisible(false);
-        saveButton->setEnabled(true);
-    }
-}
-
-
-void AddMedia::annullaSalva(QVBoxLayout* mainLayout){
-    cancelButton = new QPushButton("annulla",this);
-    saveButton = new QPushButton("salva",this);
-    QWidget* asWidget = new QWidget;
-    QHBoxLayout* asH = new QHBoxLayout;
-    asH->addWidget(cancelButton);
-    asH->addWidget(saveButton);
-    asWidget->setLayout(asH);
-    mainLayout->addWidget(asWidget);
-
-    connect(cancelButton, &QPushButton::clicked, this, [this](){
-        stackTipologia->setCurrentIndex(0);
-        tab->setCurrentIndex(0);
-        comboTipologia->setCurrentIndex(0);
-        this->resetAllInput();
-        this->tornaIndietro(); 
-    });//poi da modificare facendolo tornare alla pagina della libreria di default
-    connect(saveButton, &QPushButton::clicked, this, [this]() {
-        this->salvaMedia();
-        tab->setCurrentIndex(0);
-        this->resetAllInput();
-        comboTipologia->setCurrentIndex(0);
-        this->tornaIndietro();
-    });
-
-    saveButton->setEnabled(false);
-
-}
-
-AddMedia::AddMedia(QWidget *parent): QWidget(parent){
-    mediaManagerJson = new MediaManagerJson("FileJson");
-    QVBoxLayout* mainLayout = new QVBoxLayout;
-    mainLayout->setContentsMargins(0, 0, 0, 0); 
-    mainLayout->setSpacing(0);
-    
-    indietro(mainLayout);
-    addPagina(mainLayout);
-    annullaSalva(mainLayout);
-    
-    setLayout(mainLayout);
-}

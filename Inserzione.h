@@ -15,8 +15,8 @@
  */
 class Inserzione : public Pubblicita{
     Classificazione i_target;
-    string i_aziendaInserzionista;
     const double i_costoFissoProiezione;
+    string i_aziendaInserzionista;
     vector<FasciaOraria> i_fasceOrarie;
     double fattoreVariazionePrezzo() const;
     int isFasciaOrariaIn(FasciaOraria fasciaO) const;
@@ -24,7 +24,7 @@ class Inserzione : public Pubblicita{
 public:
     Inserzione(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
                year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
-               unsigned int nProiezioniGiornaliere, const Classificazione& target, const string &aziendaInserzionista, double costoProiezione,
+               unsigned int nProiezioniGiornaliere, const Classificazione& target, double costoProiezione,const string &aziendaInserzionista = "Sconosciuto", 
                const string &autore = "Sconosciuto", const string &path = "immGrigia");
 
     

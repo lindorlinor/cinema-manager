@@ -66,7 +66,7 @@ SOURCES       = main.cpp \
 		GUI/CinemaSelectionPage.cpp \
 		GUI/SearchPanel.cpp \
 		GUI/InsertCinemaPage.cpp \
-		GUI/AddMedia.cpp \
+		GUI/InsertMedia.cpp \
 		GUI/ListPersone.cpp \
 		GUI/InsertImageFrame.cpp \
 		GUI/MediaFrame.cpp \
@@ -78,7 +78,7 @@ SOURCES       = main.cpp \
 		release/moc_CinemaSelectionPage.cpp \
 		release/moc_SearchPanel.cpp \
 		release/moc_InsertCinemaPage.cpp \
-		release/moc_AddMedia.cpp \
+		release/moc_InsertMedia.cpp \
 		release/moc_ListPersone.cpp \
 		release/moc_InsertImageFrame.cpp \
 		release/moc_MediaFrame.cpp \
@@ -98,7 +98,7 @@ OBJECTS       = release/main.o \
 		release/CinemaSelectionPage.o \
 		release/SearchPanel.o \
 		release/InsertCinemaPage.o \
-		release/AddMedia.o \
+		release/InsertMedia.o \
 		release/ListPersone.o \
 		release/InsertImageFrame.o \
 		release/MediaFrame.o \
@@ -111,7 +111,7 @@ OBJECTS       = release/main.o \
 		release/moc_CinemaSelectionPage.o \
 		release/moc_SearchPanel.o \
 		release/moc_InsertCinemaPage.o \
-		release/moc_AddMedia.o \
+		release/moc_InsertMedia.o \
 		release/moc_ListPersone.o \
 		release/moc_InsertImageFrame.o \
 		release/moc_MediaFrame.o \
@@ -207,7 +207,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		GUI/CinemaSelectionPage.h \
 		GUI/SearchPanel.h \
 		GUI/InsertCinemaPage.h \
-		GUI/AddMedia.h \
+		GUI/InsertMedia.h \
 		GUI/ListPersone.h \
 		GUI/InsertImageFrame.h \
 		GUI/MediaFrame.h \
@@ -227,7 +227,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		GUI/CinemaSelectionPage.cpp \
 		GUI/SearchPanel.cpp \
 		GUI/InsertCinemaPage.cpp \
-		GUI/AddMedia.cpp \
+		GUI/InsertMedia.cpp \
 		GUI/ListPersone.cpp \
 		GUI/InsertImageFrame.cpp \
 		GUI/MediaFrame.cpp \
@@ -425,8 +425,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents GUI/resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents EnumClasses.h Inserzione.h Media.h Pubblicita.h Trailer.h Film.h Podcast.h Puntata.h catch.hpp MediaVisitor.h GUI/CinemaButton.h GUI/MainWindow.h GUI/CinemaSelectionPage.h GUI/SearchPanel.h GUI/InsertCinemaPage.h GUI/AddMedia.h GUI/ListPersone.h GUI/InsertImageFrame.h GUI/MediaFrame.h GUI/SelectMediaReference.h DataFiles/CinemaXmlRepository.h DataFiles/MediaManagerJson.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp Inserzione.cpp Media.cpp Pubblicita.cpp Trailer.cpp Film.cpp Podcast.cpp Puntata.cpp test/test.cpp GUI/CinemaButton.cpp GUI/MainWindow.cpp GUI/CinemaSelectionPage.cpp GUI/SearchPanel.cpp GUI/InsertCinemaPage.cpp GUI/AddMedia.cpp GUI/ListPersone.cpp GUI/InsertImageFrame.cpp GUI/MediaFrame.cpp GUI/SelectMediaReference.cpp DataFiles/CinemaXmlRepository.cpp DataFiles/MediaManagerJson.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents EnumClasses.h Inserzione.h Media.h Pubblicita.h Trailer.h Film.h Podcast.h Puntata.h catch.hpp MediaVisitor.h GUI/CinemaButton.h GUI/MainWindow.h GUI/CinemaSelectionPage.h GUI/SearchPanel.h GUI/InsertCinemaPage.h GUI/InsertMedia.h GUI/ListPersone.h GUI/InsertImageFrame.h GUI/MediaFrame.h GUI/SelectMediaReference.h DataFiles/CinemaXmlRepository.h DataFiles/MediaManagerJson.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp Inserzione.cpp Media.cpp Pubblicita.cpp Trailer.cpp Film.cpp Podcast.cpp Puntata.cpp test/test.cpp GUI/CinemaButton.cpp GUI/MainWindow.cpp GUI/CinemaSelectionPage.cpp GUI/SearchPanel.cpp GUI/InsertCinemaPage.cpp GUI/InsertMedia.cpp GUI/ListPersone.cpp GUI/InsertImageFrame.cpp GUI/MediaFrame.cpp GUI/SelectMediaReference.cpp DataFiles/CinemaXmlRepository.cpp DataFiles/MediaManagerJson.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -467,9 +467,9 @@ compiler_moc_predefs_clean:
 release/moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -O0 -g -std=gnu++2a -Wall -Wextra -fPIC -dM -E -o release/moc_predefs.h /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: release/moc_CinemaButton.cpp release/moc_MainWindow.cpp release/moc_CinemaSelectionPage.cpp release/moc_SearchPanel.cpp release/moc_InsertCinemaPage.cpp release/moc_AddMedia.cpp release/moc_ListPersone.cpp release/moc_InsertImageFrame.cpp release/moc_MediaFrame.cpp release/moc_SelectMediaReference.cpp release/moc_MediaManagerJson.cpp
+compiler_moc_header_make_all: release/moc_CinemaButton.cpp release/moc_MainWindow.cpp release/moc_CinemaSelectionPage.cpp release/moc_SearchPanel.cpp release/moc_InsertCinemaPage.cpp release/moc_InsertMedia.cpp release/moc_ListPersone.cpp release/moc_InsertImageFrame.cpp release/moc_MediaFrame.cpp release/moc_SelectMediaReference.cpp release/moc_MediaManagerJson.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release/moc_CinemaButton.cpp release/moc_MainWindow.cpp release/moc_CinemaSelectionPage.cpp release/moc_SearchPanel.cpp release/moc_InsertCinemaPage.cpp release/moc_AddMedia.cpp release/moc_ListPersone.cpp release/moc_InsertImageFrame.cpp release/moc_MediaFrame.cpp release/moc_SelectMediaReference.cpp release/moc_MediaManagerJson.cpp
+	-$(DEL_FILE) release/moc_CinemaButton.cpp release/moc_MainWindow.cpp release/moc_CinemaSelectionPage.cpp release/moc_SearchPanel.cpp release/moc_InsertCinemaPage.cpp release/moc_InsertMedia.cpp release/moc_ListPersone.cpp release/moc_InsertImageFrame.cpp release/moc_MediaFrame.cpp release/moc_SelectMediaReference.cpp release/moc_MediaManagerJson.cpp
 release/moc_CinemaButton.cpp: GUI/CinemaButton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
@@ -1306,7 +1306,7 @@ release/moc_InsertCinemaPage.cpp: GUI/InsertCinemaPage.h \
 		/usr/lib/qt6/libexec/moc
 	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/InsertCinemaPage.h -o release/moc_InsertCinemaPage.cpp
 
-release/moc_AddMedia.cpp: GUI/AddMedia.h \
+release/moc_InsertMedia.cpp: GUI/InsertMedia.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -1529,25 +1529,43 @@ release/moc_AddMedia.cpp: GUI/AddMedia.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qscrollarea.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonObject \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qjsonobject.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QCoreApplication \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qeventloop.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qjnitypes.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfuture.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfutureinterface.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qmutex.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtsan_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qresultstore.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfuture_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qthreadpool.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qthread.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdeadlinetimer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qelapsedtimer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrunnable.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qexception.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpromise.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDir \
 		GUI/MediaFrame.h \
 		Media.h \
 		EnumClasses.h \
+		DataFiles/MediaManagerJson.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonValue \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QFileInfo \
+		DataFiles/Popolate.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDate \
+		MediaVisitor.h \
 		Film.h \
 		Trailer.h \
 		Pubblicita.h \
-		MediaVisitor.h \
 		Inserzione.h \
 		Podcast.h \
 		Puntata.h \
-		DataFiles/Popolate.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDate \
-		DataFiles/MediaManagerJson.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonValue \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDir \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QFileInfo \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/AddMedia.h -o release/moc_AddMedia.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/InsertMedia.h -o release/moc_InsertMedia.cpp
 
 release/moc_ListPersone.cpp: GUI/ListPersone.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
@@ -2189,6 +2207,27 @@ release/moc_SelectMediaReference.cpp: GUI/SelectMediaReference.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qframe.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonObject \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qjsonobject.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QCoreApplication \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qeventloop.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qjnitypes.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfuture.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfutureinterface.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qmutex.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtsan_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qresultstore.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfuture_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qthreadpool.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qthread.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdeadlinetimer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qelapsedtimer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrunnable.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qexception.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpromise.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDir \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfileinfo.h \
 		GUI/MediaFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLabel \
@@ -2205,6 +2244,12 @@ release/moc_SelectMediaReference.cpp: GUI/SelectMediaReference.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
 		Media.h \
 		EnumClasses.h \
+		DataFiles/MediaManagerJson.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonValue \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QFileInfo \
+		DataFiles/Popolate.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDate \
+		MediaVisitor.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
 	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/SelectMediaReference.h -o release/moc_SelectMediaReference.cpp
@@ -3782,7 +3827,7 @@ release/SearchPanel.o: GUI/SearchPanel.cpp GUI/SearchPanel.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QFile \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h \
-		GUI/AddMedia.h \
+		GUI/InsertMedia.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLabel \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlabel.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qpicture.h \
@@ -3835,22 +3880,23 @@ release/SearchPanel.o: GUI/SearchPanel.cpp GUI/SearchPanel.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qscrollarea.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonObject \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qjsonobject.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QCoreApplication \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDir \
 		GUI/MediaFrame.h \
 		Media.h \
 		EnumClasses.h \
+		DataFiles/MediaManagerJson.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonValue \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QFileInfo \
+		DataFiles/Popolate.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDate \
+		MediaVisitor.h \
 		Film.h \
 		Trailer.h \
 		Pubblicita.h \
-		MediaVisitor.h \
 		Inserzione.h \
 		Podcast.h \
-		Puntata.h \
-		DataFiles/Popolate.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDate \
-		DataFiles/MediaManagerJson.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonValue \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDir \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QFileInfo
+		Puntata.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/SearchPanel.o GUI/SearchPanel.cpp
 
 release/InsertCinemaPage.o: GUI/InsertCinemaPage.cpp GUI/InsertCinemaPage.h \
@@ -4051,7 +4097,7 @@ release/InsertCinemaPage.o: GUI/InsertCinemaPage.cpp GUI/InsertCinemaPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpromise.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/InsertCinemaPage.o GUI/InsertCinemaPage.cpp
 
-release/AddMedia.o: GUI/AddMedia.cpp GUI/AddMedia.h \
+release/InsertMedia.o: GUI/InsertMedia.cpp GUI/InsertMedia.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -4274,31 +4320,7 @@ release/AddMedia.o: GUI/AddMedia.cpp GUI/AddMedia.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qscrollarea.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonObject \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qjsonobject.h \
-		GUI/MediaFrame.h \
-		Media.h \
-		EnumClasses.h \
-		Film.h \
-		Trailer.h \
-		Pubblicita.h \
-		MediaVisitor.h \
-		Inserzione.h \
-		Podcast.h \
-		Puntata.h \
-		DataFiles/Popolate.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDate \
-		DataFiles/MediaManagerJson.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonValue \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDir \
-		/usr/include/x86_64-linux-gnu/qt6/QtCore/QFileInfo \
-		GUI/SearchPanel.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMenu \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmenu.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStackedWidget \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstackedwidget.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMenuBar \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmenubar.h \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QApplication \
-		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qapplication.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QCoreApplication \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qeventloop.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h \
@@ -4316,10 +4338,35 @@ release/AddMedia.o: GUI/AddMedia.cpp GUI/AddMedia.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrunnable.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qexception.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpromise.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDir \
+		GUI/MediaFrame.h \
+		Media.h \
+		EnumClasses.h \
+		DataFiles/MediaManagerJson.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonValue \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QFileInfo \
+		DataFiles/Popolate.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDate \
+		MediaVisitor.h \
+		Film.h \
+		Trailer.h \
+		Pubblicita.h \
+		Inserzione.h \
+		Podcast.h \
+		Puntata.h \
+		GUI/SearchPanel.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMenu \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmenu.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QStackedWidget \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstackedwidget.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMenuBar \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmenubar.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QApplication \
+		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qapplication.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qinputmethod.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication_platform.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/AddMedia.o GUI/AddMedia.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/InsertMedia.o GUI/InsertMedia.cpp
 
 release/ListPersone.o: GUI/ListPersone.cpp GUI/ListPersone.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
@@ -4977,6 +5024,27 @@ release/SelectMediaReference.o: GUI/SelectMediaReference.cpp GUI/SelectMediaRefe
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qframe.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonObject \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qjsonobject.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QCoreApplication \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qeventloop.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qjnitypes.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfuture.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfutureinterface.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qmutex.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qtsan_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qresultstore.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfuture_impl.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qthreadpool.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qthread.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdeadlinetimer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qelapsedtimer.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qrunnable.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qexception.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qpromise.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDir \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfileinfo.h \
 		GUI/MediaFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLabel \
@@ -4992,7 +5060,13 @@ release/SelectMediaReference.o: GUI/SelectMediaReference.cpp GUI/SelectMediaRefe
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
 		Media.h \
-		EnumClasses.h
+		EnumClasses.h \
+		DataFiles/MediaManagerJson.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QJsonValue \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QFileInfo \
+		DataFiles/Popolate.h \
+		/usr/include/x86_64-linux-gnu/qt6/QtCore/QDate \
+		MediaVisitor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/SelectMediaReference.o GUI/SelectMediaReference.cpp
 
 release/CinemaXmlRepository.o: DataFiles/CinemaXmlRepository.cpp DataFiles/CinemaXmlRepository.h \
@@ -5234,8 +5308,8 @@ release/moc_SearchPanel.o: release/moc_SearchPanel.cpp
 release/moc_InsertCinemaPage.o: release/moc_InsertCinemaPage.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/moc_InsertCinemaPage.o release/moc_InsertCinemaPage.cpp
 
-release/moc_AddMedia.o: release/moc_AddMedia.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/moc_AddMedia.o release/moc_AddMedia.cpp
+release/moc_InsertMedia.o: release/moc_InsertMedia.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/moc_InsertMedia.o release/moc_InsertMedia.cpp
 
 release/moc_ListPersone.o: release/moc_ListPersone.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release/moc_ListPersone.o release/moc_ListPersone.cpp
