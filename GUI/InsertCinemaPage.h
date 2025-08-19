@@ -15,6 +15,8 @@ private:
     QPushButton * saveButton; 
     QLabel* imageLabel;
     void checkCinemaNameAvailability(const QString& text);
+    bool hasCustomImage;
+    bool isAvailable;
 public:
     explicit InsertCinemaPage(QWidget * parent= nullptr);
     void saveCinemaInXml();
@@ -23,6 +25,7 @@ public:
 
 public slots:
     void chooseImage();
+    void removeImage();
 signals:
     void returnCinemaSelectionPage();
     

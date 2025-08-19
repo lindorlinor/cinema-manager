@@ -8,7 +8,7 @@
 #include <QDomDocument>
 #include <QCoreApplication>
 
-InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),textInput(new QLineEdit(this)),imageArea(new InsertImageFrame(this)),imageLabel(new QLabel){
+InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),isAvailable(false),textInput(new QLineEdit(this)),imageArea(new InsertImageFrame(this)),imageLabel(new QLabel),imagePath(":/../images/image4.png"){
     
     QFrame* framePrincipale = new QFrame();
     framePrincipale->setMinimumSize(630, 600);
@@ -21,7 +21,7 @@ InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),textInput(n
     fontTitolo.setPointSize(21);
     fontTitolo.setBold(true);
     titolo->setFont(fontTitolo);
-
+    
     QLabel* descrizione = new QLabel("Scegli un nome e un'immagine per un nuovo cinema");
     QFont fontDescrizione = descrizione->font();
     fontDescrizione.setPointSize(10);
@@ -36,25 +36,31 @@ InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),textInput(n
     layoutLabels->addWidget(titolo);
     layoutLabels->addWidget(descrizione);
     layoutLabels->setAlignment(Qt::AlignLeft);
-    layoutLabels->setContentsMargins(0,20,0,70);
+    // layoutLabels->setContentsMargins(0,20,0,70);
     contenitoreLabels->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed); //permette il margine, altrimenti non sarebbe esattamente 70
     //aggiunge il contenitore per le due label al frame e le allinea a sinistra
     layoutFrame->addWidget(contenitoreLabels);
+    layoutFrame->addStretch();
     layoutFrame->setAlignment( Qt::AlignLeft);
 
     contenitoreLabels->setObjectName("caca");
 
     QHBoxLayout * splitter = new QHBoxLayout;
     splitter->setSpacing(30);
+    QWidget* contenitoredx = new QWidget;
+    QVBoxLayout * layoutdx = new QVBoxLayout(contenitoredx);
     QWidget * contenitoreInput = new QWidget;
     QVBoxLayout * layoutInput = new QVBoxLayout(contenitoreInput);
 
-    QHBoxLayout *layoutNome = new QHBoxLayout;
+    layoutdx->addWidget(contenitoreInput);
+
+    QVBoxLayout *layoutNome = new QVBoxLayout;
     QLabel *nameLabel = new QLabel("Nome cinema:");
+    nameLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     layoutNome->addWidget(nameLabel);
     layoutNome->addWidget(textInput);
 
-    //Messaggio di errore
+    
     errorLabel = new QLabel;
     errorLabel->setStyleSheet("color: red; font-size: 11px;");
     errorLabel->setText("");
@@ -63,25 +69,30 @@ InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),textInput(n
 
     layoutInput->addLayout(layoutNome);
     layoutInput->addWidget(errorLabel);
+    layoutInput->addStretch();
+    imageArea->setMinimumSize(365,240);
+    imageArea->setMaximumSize(7435,240);
+
+
     layoutInput->addWidget(imageArea);
+    layoutInput->setAlignment(Qt::AlignCenter);
     connect(textInput, &QLineEdit::textChanged, this, &InsertCinemaPage::checkCinemaNameAvailability);
     connect(imageArea,&InsertImageFrame::clicked,this,&InsertCinemaPage::chooseImage);
-    contenitoreInput->setMinimumSize(330,360);
-    // contenitoreInput->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    contenitoreInput->setObjectName("pupu");
+    connect(imageArea,&InsertImageFrame::removeImage,this,&InsertCinemaPage::removeImage);
 
-    // imageLabel->setMinimumSize(200,400);
+    contenitoredx->setMinimumHeight(400); //ricordati di cambiare valore se cambi risoluzione e dimensioni dell'immagine
+    contenitoreInput->setObjectName("pupu");
+    contenitoredx->setObjectName("gaga");
     imageLabel->setMaximumSize(330,400);
     QPixmap pixmap(":/images/coverCinema.png");
     imageLabel->setPixmap(pixmap);
     imageLabel->setAlignment(Qt::AlignCenter);
-    pixmap = pixmap.scaled(200, 200, Qt::KeepAspectRatio, Qt::SmoothTransformation); // ridimensiona se vuoi
-    // Aggiungi l'immagine a sinistra nel layout splitter
-    splitter->insertWidget(0, imageLabel); // 0 = prima posizione
-    splitter->addWidget(contenitoreInput);
+    pixmap = pixmap.scaled(200, 200, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+   
+    splitter->insertWidget(0, imageLabel);
+    splitter->addWidget(contenitoredx);
 
     layoutFrame->addLayout(splitter);
-
     QWidget * contenitorePulsanti = new QWidget;
     QHBoxLayout * layoutPulsanti = new QHBoxLayout(contenitorePulsanti);
     escButton = new QPushButton("Annulla");
@@ -89,27 +100,41 @@ InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),textInput(n
     escButton->setFixedSize(160, 40); 
     saveButton->setFixedSize(160, 40); 
     connect(escButton,&QPushButton::clicked,this,&InsertCinemaPage::returnCinemaSelectionPage);
-    connect(saveButton,&QPushButton::clicked,this,&InsertCinemaPage::saveCinemaInXml);
-    layoutPulsanti->setSpacing(150);
-    layoutPulsanti->addWidget(escButton,0, Qt::AlignCenter);
-    layoutPulsanti->addWidget(saveButton,0, Qt::AlignCenter);
-    layoutInput->addWidget(contenitorePulsanti, 0, Qt::AlignHCenter);
+    connect(saveButton,&QPushButton::clicked,this,[this](){
+        if(!hasCustomImage)
+        QMessageBox::information(this, tr("Immagine non selezionata"), tr("Verrà impostata un'immagine di default"));
+        emit saveCinemaInXml();
+    });
     
+    layoutPulsanti->addWidget(escButton);
+    layoutPulsanti->addStretch();
+    layoutPulsanti->addWidget(saveButton);
+    
+    layoutdx->addWidget(contenitorePulsanti);
+    contenitorePulsanti->setObjectName("gugu");
+
+    layoutPulsanti->setContentsMargins(0,0,0,0); //attacca a filo i pulsanti al contenitorePulsanti
+    layoutInput->setContentsMargins(20,20,20,20);
+    layoutdx->setContentsMargins(0,0,0,0); //attacca a filo il contenitorePulsanti al layoutdx
     QVBoxLayout * layoutPrincipale = new QVBoxLayout(this);
     layoutPrincipale->addWidget(framePrincipale);
     layoutPrincipale->setAlignment(Qt::AlignCenter);
     setLayout(layoutPrincipale);
-    setStyleSheet("QScrollArea { border: none; } QFrame { background-color: pink} QLabel { background-color: yellow} #caca{background-color: red} #pupu{background-color:blue}");
+    // setStyleSheet("QScrollArea { border: none; } QFrame { background-color: pink} QLabel { background-color: yellow} #caca{background-color: red} #pupu{background-color:blue} #gugu{background-color:purple} #gaga{background-color: green}");
 }
 
 void InsertCinemaPage::checkCinemaNameAvailability(const QString& text) {
+    if (text.isEmpty()) {
+        errorLabel->setVisible(false);
+        saveButton->setEnabled(false);
+        return;
+    }
     QString nome = text.trimmed();
 
     // Carico la lista dei cinema esistenti
     CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
     QList<Cinema> cinemaList = repo.loadAllCinemas();
-    
-    bool isAvailable = true;
+    isAvailable=true;
     for (const Cinema& c: cinemaList) {
         if (c.nome.compare(nome, Qt::CaseInsensitive) == 0) {
             isAvailable = false;
@@ -125,6 +150,7 @@ void InsertCinemaPage::checkCinemaNameAvailability(const QString& text) {
         errorLabel->setVisible(false);
         saveButton->setEnabled(true);
     }
+    
 }
 
 
@@ -138,10 +164,17 @@ void InsertCinemaPage::chooseImage(){
 
     if (!fileName.isEmpty()) {
         imagePath = fileName;
-        imageArea->setText(QFileInfo(fileName).fileName());
+        hasCustomImage = true;
+        imageArea->insertImage(QFileInfo(fileName).fileName());
     }
 }
 
+void InsertCinemaPage::removeImage(){
+    imagePath=":/../images/image4.png";  //qui bisogna mettere l'immagine di default che vogliamo mettere 
+    hasCustomImage = false;
+}
+
+//crea il file xml del cinema e appare un messaggio che conferma il successo dell'operazione
 void InsertCinemaPage::saveCinemaInXml() {
     Cinema cinema;
     cinema.nome = textInput->text().trimmed();
@@ -157,15 +190,16 @@ void InsertCinemaPage::saveCinemaInXml() {
     emit returnCinemaSelectionPage();
 }
 
-
+//per togliere ciò che è stato precedentemente inserito quando la pagina viene richiamata (l'utente ritorna sulla pagina)
 void InsertCinemaPage::reset() {
     textInput->clear();
-    imagePath.clear();
+    imagePath=":/../images/image4.png";
     imageArea->reset();
     errorLabel->setVisible(false);
-    saveButton->setEnabled(true);
+    saveButton->setEnabled(false);
 }
 
+//appare l'immagine solo quando la finestra ha dimensione minima di 800x600
 void InsertCinemaPage::resizeEvent(QResizeEvent* event) {
     QWidget::resizeEvent(event);
 

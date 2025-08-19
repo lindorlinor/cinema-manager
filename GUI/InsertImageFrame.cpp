@@ -1,18 +1,48 @@
 #include "InsertImageFrame.h"
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QStyleOption>
 #include <QPainter>
+#include <QToolButton>
 
 InsertImageFrame::InsertImageFrame(QWidget *parent)
-    //TO DO aggiungere il drag and drop
-    : QFrame(parent), defaultText("Clicca per inserire un'immagine"), label(new QLabel(defaultText, this))
-{
-    setFrameStyle(QFrame::Box | QFrame::Plain);
-    setLineWidth(2);
-    setStyleSheet("QFrame { border: 2px dashed gray; } QLabel { qproperty-alignment: AlignCenter; }");
+    : QFrame(parent), 
+      defaultText("<span style='color:white; font-size:16px;'>+ <u>Aggiungi copertina</u></span>"
+                  "<span style='color:gray; font-size:16px;'> oppure rilasciala</span>"), 
+      label(new QLabel(defaultText.text(), this)),
+      closeButton(new QToolButton(this))
+{   
+    setObjectName("frame");
+    defaultText.setTextFormat(Qt::RichText);
+    setStyleSheet(
+        "#frame { border: 2px dashed #4E7F8B; border-radius: 12px; } "
+        "QLabel { qproperty-alignment: AlignCenter; } "
+        "QToolButton { border: none; color: #708084; font-weight: bold; } "
+        "QToolButton:hover { color: #4E7F8B; }"
+    );
 
-    QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->addWidget(label);
+    closeButton->setText("x");
+    closeButton->setVisible(false);
+    closeButton->setFixedSize(16,16);
+    label->setContentsMargins(20,0,20,0);
+    label->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+  
+
+    QVBoxLayout *layoutPrincipale = new QVBoxLayout(this);
+    QWidget * contenitoreDettagli = new QWidget;
+    QVBoxLayout * layoutDettagli = new QVBoxLayout(contenitoreDettagli);
+    layoutDettagli->addWidget(closeButton, 0, Qt::AlignRight);
+    layoutDettagli->addWidget(label,0,Qt::AlignCenter);
+    contenitoreDettagli->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    layoutDettagli->setSpacing(0);
+
+    layoutPrincipale->addWidget(contenitoreDettagli,0, Qt::AlignCenter);
+    
+    connect(closeButton, &QToolButton::clicked, this, [this](){
+                                    emit removeImage();
+                                    reset();
+    });
+
 }
 
 void InsertImageFrame::mousePressEvent(QMouseEvent *event) {
@@ -25,6 +55,13 @@ void InsertImageFrame::mousePressEvent(QMouseEvent *event) {
 void InsertImageFrame::setText(const QString &text) {
     label->setText(text);
 }
+
 void InsertImageFrame::reset() {
-    label->setText(defaultText);
+    label->setText(defaultText.text());
+    closeButton->setVisible(false); 
+}
+
+void InsertImageFrame::insertImage(const QString &text){
+    setText(text);            
+    closeButton->setVisible(true); 
 }

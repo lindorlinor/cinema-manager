@@ -12,7 +12,7 @@ class CinemaButton : public QFrame
     Q_OBJECT
 
 public:
-    explicit CinemaButton(const QString& cinemaName, const QPixmap& cinemaImage=QPixmap(":images/image1.png"),const QString& cinemaXmlFile="default.xml",QWidget *parent=nullptr);
+    explicit CinemaButton(const QString& cinemaName, const QPixmap& cinemaImage=QPixmap(":/../images/image4.png"),const QString& cinemaXmlFile="default.xml",QWidget *parent=nullptr);
     QString getXmlFilePath() const;
 signals:
     void selected();
