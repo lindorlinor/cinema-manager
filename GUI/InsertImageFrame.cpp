@@ -9,11 +9,11 @@ InsertImageFrame::InsertImageFrame(QWidget *parent)
     : QFrame(parent), 
       defaultText("<span style='color:white; font-size:16px;'>+ <u>Aggiungi copertina</u></span>"
                   "<span style='color:gray; font-size:16px;'> oppure rilasciala</span>"), 
-      label(new QLabel(defaultText.text(), this)),
+      label(new QLabel(defaultText, this)),
       closeButton(new QToolButton(this))
 {   
     setObjectName("frame");
-    defaultText.setTextFormat(Qt::RichText);
+    label->setTextFormat(Qt::RichText);
     setStyleSheet(
         "#frame { border: 2px dashed #4E7F8B; border-radius: 12px; } "
         "QLabel { qproperty-alignment: AlignCenter; } "
@@ -57,9 +57,10 @@ void InsertImageFrame::setText(const QString &text) {
 }
 
 void InsertImageFrame::reset() {
-    label->setText(defaultText.text());
+    label->setText(defaultText);
     closeButton->setVisible(false); 
 }
+
 
 void InsertImageFrame::insertImage(const QString &text){
     setText(text);            
