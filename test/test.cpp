@@ -12,11 +12,11 @@ using namespace std::chrono;
 
 // Test 1
 TEST_CASE("1. Estensione Film attivo") {
-    year_month_day inizio{2025y, August, 1d};
-    year_month_day fine{2025y, August, 15d};
+    year_month_day inizio{2025y, December, 1d};
+    year_month_day fine{2025y, December, 15d};
 
     Film film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
-              "CasaProd", 3, 9.3, "Autore");
+              3, 9.3, "azienda", "Autore");
 
     film.estendiDataFineRilascio();
 
@@ -27,11 +27,11 @@ TEST_CASE("1. Estensione Film attivo") {
 // Test 2: Trailer aggiornati solo se data coincide
 TEST_CASE("2. Estensione Trailer associati condizionale") {
     year_month_day inizio{2025y, April, 1d};
-    year_month_day fine{2025y, August, 15d};
-    year_month_day fine2{2025y, August, 22d};
+    year_month_day fine{2025y, December, 15d};
+    year_month_day fine2{2025y, December, 22d};
 
     Film film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
-              "CasaProd", 3, 9.3, "Autore");
+              3, 9.3, "azienda", "Autore");
 
     Trailer* t1 = new Trailer(  "Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
                                 3, &film, "Autore");
@@ -62,7 +62,7 @@ TEST_CASE("3. Trailer fuori produzione non aggiornato") {
     year_month_day fine{2025y, April, 15d};
 
     Film film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
-              "CasaProd", 3, 9.3, "Autore");
+              3, 9.3, "azienda", "Autore");
 
     Trailer* t1 = new Trailer(  "Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
                                 3, &film, "Autore");
@@ -76,13 +76,13 @@ TEST_CASE("3. Trailer fuori produzione non aggiornato") {
 
 TEST_CASE("4. Inserzione.estendiDataFineRilascio()"){
     year_month_day inizio{2025y,July,30d};
-    year_month_day fine{2025y,August,15d};
+    year_month_day fine{2025y,December,15d};
     year_month_day fine2{2025y,July,29d};
 
     Inserzione i1( "Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
-                    3, Classificazione::TUTTI, "azienda", 20.0);
+                    3, Classificazione::TUTTI, 20.0, "azienda");
     Inserzione i2(  "Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
-                    3, Classificazione::TUTTI, "azienda", 20.0);    i1.estendiDataFineRilascio();
+                    3, Classificazione::TUTTI, 20.0, "azienda");    i1.estendiDataFineRilascio();
     SECTION("4.1 Inserzione attiva"){
         REQUIRE(i1.getDataFineRilascio() == fine+months{1});
     }
@@ -93,7 +93,7 @@ TEST_CASE("4. Inserzione.estendiDataFineRilascio()"){
 
 TEST_CASE("5. Inserzione.calcolaIncasso()"){
     Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
-                    Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, Classificazione::TUTTI,  "azienda", 30.0);    
+                    Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, Classificazione::TUTTI, 30.0, "azienda");    
 
     REQUIRE(i1.calcolaIncasso()==30*15*i1.DurataCampagna());
 }
@@ -105,7 +105,7 @@ vector<FasciaOraria> getFasceOrarie(const Inserzione& i){
 TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
     SECTION("6.1 verifica aggiunta della stessa fascia oraria"){
         Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
-                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, Classificazione::TUTTI, "azienda", 15.0);          
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, Classificazione::TUTTI, 15.0, "azienda");          
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         REQUIRE(getFasceOrarie(i1)[0]==FasciaOraria::Mattina);
@@ -114,7 +114,7 @@ TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
 
     SECTION("6.2 Inserzione.calcoloIncasso()"){
         Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
-                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15,Classificazione::TUTTI, "azienda", 15.0);          
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15,Classificazione::TUTTI, 15.0, "azienda");          
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         REQUIRE(i1.calcolaIncasso()==15*15*i1.DurataCampagna());
         i1.aggiungiFasciaOraria(FasciaOraria::Sera);
@@ -127,7 +127,7 @@ TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
 TEST_CASE("7. Inserzione.rimuoviFasciaOraria(FasciaOraria)"){
     SECTION("7.1 verifica rimozione di una fascia oraria aggiunta"){
         Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
-                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, Classificazione::TUTTI, "azienda", 15.0);  
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, Classificazione::TUTTI, 15.0, "azienda");  
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         REQUIRE(getFasceOrarie(i1)[0]==FasciaOraria::Mattina);
         REQUIRE(getFasceOrarie(i1).size() == 1);
@@ -137,7 +137,7 @@ TEST_CASE("7. Inserzione.rimuoviFasciaOraria(FasciaOraria)"){
     }
      SECTION("7.2 verifica rimozione di una fascia oraria non aggiunta"){
         Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
-                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 3, Classificazione::TUTTI, "azienda", 20.0);          
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 3, Classificazione::TUTTI, 20.0, "azienda");          
         i1.rimuoviFasciaOraria(FasciaOraria::Sera);
         REQUIRE(getFasceOrarie(i1).size() == 1); //presente mattina
 
@@ -145,7 +145,7 @@ TEST_CASE("7. Inserzione.rimuoviFasciaOraria(FasciaOraria)"){
 
     SECTION("7.3 verifica calcoloIncasso"){
         Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
-                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15,Classificazione::TUTTI, "azienda",15.0);          
+                        Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15,Classificazione::TUTTI, 15.0, "azienda");          
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         i1.aggiungiFasciaOraria(FasciaOraria::Sera);
         i1.aggiungiFasciaOraria(FasciaOraria::Pomeriggio);
@@ -161,8 +161,8 @@ TEST_CASE("7. Inserzione.rimuoviFasciaOraria(FasciaOraria)"){
 
 TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
     SECTION("8.1 verifica aggiunta della puntata"){
-        year_month_day inizio{2025y, August, 1d};
-        year_month_day fine{2025y, August, 15d};
+        year_month_day inizio{2025y, December, 1d};
+        year_month_day fine{2025y, December, 15d};
 
         Podcast podcast("Titolo", "Descrizione", 
                         Formato::IMAX_3D, Risoluzione::FullHD_1080p);
@@ -170,13 +170,13 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
         //podcast.estendiDataFineRilascio(); non lo faccio perché non ha senso farlo, in quanto non accadrà mai
         puntata1->estendiDataFineRilascio();
         
-        REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 16d});
-        REQUIRE(puntata1->getDataFineRilascio()==year_month_day{2025y, August, 16d});
+        REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, December, 16d});
+        REQUIRE(puntata1->getDataFineRilascio()==year_month_day{2025y, December, 16d});
         REQUIRE(podcast.getDurataMinuti()==60);
 
-        Puntata* puntata2 = new Puntata("Titolo", "Descrizione", year_month_day {2025y, August, 15d},year_month_day {2025y, August, 25d},
+        Puntata* puntata2 = new Puntata("Titolo", "Descrizione", year_month_day {2025y, December, 15d},year_month_day {2025y, December, 25d},
                             60, &podcast,3);        
-        REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 25d});
+        REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, December, 25d});
         REQUIRE(podcast.getDurataMinuti()==120);
         REQUIRE(puntata2->getPodcast()==&podcast);
     }
@@ -189,21 +189,21 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
                         Formato::IMAX_3D, Risoluzione::FullHD_1080p);
 
         Puntata* puntata1 = new Puntata("Titolo", "Descrizione", 
-                            year_month_day {2025y, August, 15d},year_month_day {2025y, August, 19d},
+                            year_month_day {2025y, December, 15d},year_month_day {2025y, December, 19d},
                             60, &podcast,3);  
         Puntata* puntata2 = new Puntata("Titolo", "Descrizione", 
-                            year_month_day {2025y, August, 15d},year_month_day {2025y, August, 25d},
+                            year_month_day {2025y, December, 15d},year_month_day {2025y, December, 25d},
                             60, &podcast,3);  
         
         REQUIRE((podcast.getElencoPuntate()).empty()==false);
         REQUIRE((podcast.getVisualizzazioni())==puntata1->getVisualizzazioni()+puntata2->getVisualizzazioni());
-        REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 25d});
+        REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, December, 25d});
         REQUIRE(puntata1->calcolaIncasso()==Approx(puntata1->getVisualizzazioni()*3*0.05));
         REQUIRE(podcast.calcolaIncasso()==Approx(puntata1->getVisualizzazioni()*3*0.05 + puntata2->getVisualizzazioni()*3*0.05));
         podcast.rimuoviPuntata(puntata2);
         REQUIRE((podcast.getVisualizzazioni())==puntata1->getVisualizzazioni());
         REQUIRE((podcast.calcolaIncasso())==Approx(puntata1->getVisualizzazioni()*3*0.05));
-        REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, August, 19d});
+        REQUIRE(podcast.getDataFineRilascio()==year_month_day{2025y, December, 19d});
         REQUIRE(podcast.getDurataMinuti()==60);
     }
 
@@ -215,7 +215,7 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
         Podcast podcast2("Titolo", "Descrizione", 
                         Formato::IMAX_3D, Risoluzione::FullHD_1080p);
         Puntata* puntata1 = new Puntata("Titolo", "Descrizione", 
-                            year_month_day {2025y, August, 15d},year_month_day {2025y, August, 19d},
+                            year_month_day {2025y, December, 15d},year_month_day {2025y, December, 19d},
                             60, &podcast1,3);  
         REQUIRE(podcast1.getElencoPuntate() == vector<Puntata*>{puntata1});
         puntata1->associaPodcast(&podcast2);
@@ -228,7 +228,7 @@ TEST_CASE("9. Verifica aggiunta ospite e rimozione"){
 
     Podcast podcast("Titolo", "Descrizione", 
                         Formato::IMAX_3D, Risoluzione::FullHD_1080p);
-    Puntata* puntata = new Puntata("Titolo", "Descrizione", year_month_day {2025y, August, 15d},year_month_day {2025y, August, 19d},
+    Puntata* puntata = new Puntata("Titolo", "Descrizione", year_month_day {2025y, December, 15d},year_month_day {2025y, December, 19d},
                     60, &podcast,3);
     puntata->aggiungiOspite("Minnie");
     puntata->aggiungiOspite("Topolino");
@@ -242,7 +242,7 @@ TEST_CASE("9. Verifica aggiunta ospite e rimozione"){
         
     REQUIRE(puntata->calcolaIncasso() == Approx(puntata->getVisualizzazioni()*3*0.05)); 
     puntata->estendiDataFineRilascio();
-    REQUIRE(puntata->getDataFineRilascio() == year_month_day {2025y, August, 20d});    
+    REQUIRE(puntata->getDataFineRilascio() == year_month_day {2025y, December, 20d});    
 }
 
 TEST_CASE("10. Film::getVisualizzazioni() e Film::IncrementaVisualizzazioni()"){
@@ -250,9 +250,9 @@ TEST_CASE("10. Film::getVisualizzazioni() e Film::IncrementaVisualizzazioni()"){
     year_month_day fine{2025y, July, 15d};
 
     Film film1("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
-              "CasaProd", 3, 9.3, "Autore");
+               3, 9.3, "CasaProd", "Autore");
     Film film2("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
-              "CasaProd", 3, 9.3, "Autore");
+                3, 9.3,"CasaProd", "Autore");
     film1.IncrementaVisualizzazioni();
     REQUIRE(film1.getVisualizzazioni()!=0);
     REQUIRE(film1.getDataLastViewUpdate()!=inizio);
@@ -270,34 +270,34 @@ TEST_CASE("11. Verifica Puntata::setDataFineRilascio()"){
     SECTION("11.1 verifico che la modifica di una dataFineRilascio influisca sulle successive"){
         Podcast podcast("Titolo", "Descrizione", 
                             Formato::IMAX_3D, Risoluzione::FullHD_1080p);
-        Puntata* puntata1 = new Puntata("Titolo", "Descrizione", year_month_day {2025y, August, 15d},year_month_day {2025y, August, 19d},
+        Puntata* puntata1 = new Puntata("Titolo", "Descrizione", year_month_day {2025y, December, 15d},year_month_day {2025y, December, 19d},
                         60, &podcast,3);
-        Puntata* puntata2= new Puntata("Titolo", "Descrizione", year_month_day {2025y, August, 15d},year_month_day {2025y, August, 26d},
+        Puntata* puntata2= new Puntata("Titolo", "Descrizione", year_month_day {2025y, December, 15d},year_month_day {2025y, December, 26d},
                         60, &podcast,3);
 
-        puntata1->setDataFineRilascio({2025y, August, 30d});
-        REQUIRE(puntata1->getDataFineRilascio() == year_month_day {2025y, August, 30d});
-        REQUIRE(puntata2->getDataFineRilascio() == year_month_day {2025y, August, 26d});
-        REQUIRE(podcast.getDataFineRilascio() == year_month_day {2025y, August, 30d});
+        puntata1->setDataFineRilascio({2025y, December, 30d});
+        REQUIRE(puntata1->getDataFineRilascio() == year_month_day {2025y, December, 30d});
+        REQUIRE(puntata2->getDataFineRilascio() == year_month_day {2025y, December, 26d});
+        REQUIRE(podcast.getDataFineRilascio() == year_month_day {2025y, December, 30d});
 
-        puntata1->setDataFineRilascio({2025y, August, 19d});
-        REQUIRE(podcast.getDataFineRilascio() == year_month_day {2025y, August, 26d});
-        REQUIRE(puntata1->getDataFineRilascio() == year_month_day {2025y, August, 19d});
-        REQUIRE(puntata2->getDataFineRilascio() == year_month_day {2025y, August, 26d});
+        puntata1->setDataFineRilascio({2025y, December, 19d});
+        REQUIRE(podcast.getDataFineRilascio() == year_month_day {2025y, December, 26d});
+        REQUIRE(puntata1->getDataFineRilascio() == year_month_day {2025y, December, 19d});
+        REQUIRE(puntata2->getDataFineRilascio() == year_month_day {2025y, December, 26d});
     }
 
     SECTION("11.2 verifico che se si immette una data di fine inferiore della data di inizio, questa venga sostituita con quella di inizio"){
         Podcast podcast("Titolo", "Descrizione",
                             Formato::IMAX_3D, Risoluzione::FullHD_1080p);
-        Puntata* puntata= new Puntata("Titolo", "Descrizione", year_month_day {2025y, August, 19d},year_month_day {2025y, August, 15d},60, &podcast,3);
+        Puntata* puntata= new Puntata("Titolo", "Descrizione", year_month_day {2025y, December, 19d},year_month_day {2025y, December, 15d},60, &podcast,3);
 
-        REQUIRE(puntata->getDataFineRilascio() == year_month_day {2025y, August, 19d});
+        REQUIRE(puntata->getDataFineRilascio() == year_month_day {2025y, December, 19d});
     }
     
 }
 TEST_CASE("12. Film::rimuoviTrailer verifica liberazione memoria") {
     Film film("Remov", "desc", year_month_day{2025y, May, 1d}, year_month_day{2025y, May, 31d},
-              110, Formato::DCP, Risoluzione::FullHD_1080p, Genere::Drama, "Studio", 0, 7.5);
+              110, Formato::DCP, Risoluzione::FullHD_1080p, Genere::Drama, 0, 7.5, "Studio");
 
     Trailer* t = new Trailer("ToDelete", "desc", year_month_day{2025y, May, 1d}, year_month_day{2025y, May, 25d},
                               2, Formato::DCP, Risoluzione::HD_720p, 2, &film);
@@ -307,15 +307,15 @@ TEST_CASE("12. Film::rimuoviTrailer verifica liberazione memoria") {
 }
 
 TEST_CASE("13. setDataFineRilascio Film -> trailer aggiornati") {
-    Film film("Prolungato", "desc", year_month_day{2025y, August, 1d}, year_month_day{2025y, August, 20d},
-              130, Formato::DCP, Risoluzione::FullHD_1080p, Genere::Azione, "Studio", 2, 11.0);
+    Film film("Prolungato", "desc", year_month_day{2025y, December, 1d}, year_month_day{2025y, December, 20d},
+              130, Formato::DCP, Risoluzione::FullHD_1080p, Genere::Azione, 2, 11.0, "Studio");
 
-    Trailer* t = new Trailer("T", "desc", year_month_day{2025y, August, 1d}, year_month_day{2025y, August, 20d},
+    Trailer* t = new Trailer("T", "desc", year_month_day{2025y, December, 1d}, year_month_day{2025y, December, 20d},
                               2, Formato::DCP, Risoluzione::HD_720p, 2, &film);
 
     film.aggiungiTrailer(t);
 
-    year_month_day nuovaFine = year_month_day{2025y, August, 27d};
+    year_month_day nuovaFine = year_month_day{2025y, December, 27d};
     film.setDataFineRilascio(nuovaFine);
 
     REQUIRE(t->getDataFineRilascio() == nuovaFine);
@@ -324,7 +324,7 @@ TEST_CASE("13. setDataFineRilascio Film -> trailer aggiornati") {
 
 TEST_CASE("14. disaccoppiaTrailer") {
     Film film("Film", "desc", year_month_day{2025y, July, 1d}, year_month_day{2025y, July, 31d},
-              100, Formato::DCP, Risoluzione::HD_720p, Genere::Thriller, "Studio", 1, 9.0);
+              100, Formato::DCP, Risoluzione::HD_720p, Genere::Thriller, 1, 9.0, "Studio");
 
     Trailer* t = new Trailer("T1", "desc", year_month_day{2025y, July, 1d}, year_month_day{2025y, July, 15d},
                               3, Formato::DCP, Risoluzione::HD_720p, 2, &film);

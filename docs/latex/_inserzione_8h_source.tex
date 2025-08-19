@@ -1,0 +1,40 @@
+\doxysection{Inserzione.\+h}
+\hypertarget{_inserzione_8h_source}{}\label{_inserzione_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ INSERZIONE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ INSERZIONE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}Pubblicita.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{_enum_classes_8h}{EnumClasses.h}}>}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }Inserzione\ :\ \textcolor{keyword}{public}\ Pubblicita\{}
+\DoxyCodeLine{00016\ \ \ \ \ Classificazione\ i\_target;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{string}\ i\_aziendaInserzionista;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ i\_costoFissoProiezione;}
+\DoxyCodeLine{00019\ \ \ \ \ vector<FasciaOraria>\ i\_fasceOrarie;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{double}\ fattoreVariazionePrezzo()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ isFasciaOrariaIn(FasciaOraria\ fasciaO)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ Inserzione(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&titolo,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&descrizione,\ year\_month\_day\ gg\_mm\_aaInizioRilascio,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ year\_month\_day\ gg\_mm\_aaFineRilascio,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ durataMinuti,\ Formato\ formato,\ Risoluzione\ risoluzione,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ nProiezioniGiornaliere,\ \textcolor{keyword}{const}\ Classificazione\&\ target,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&aziendaInserzionista,\ \textcolor{keywordtype}{double}\ costoProiezione,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&autore\ =\ \textcolor{stringliteral}{"{}Sconosciuto"{}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&path\ =\ \textcolor{stringliteral}{"{}immGrigia"{}});}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ aggiungiFasciaOraria(FasciaOraria\ fasciaO);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ rimuoviFasciaOraria(FasciaOraria\ fasciaO);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Classificazione\ getTarget()\ const;}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//void\ setTarget(Classificazione\ target);}}
+\DoxyCodeLine{00036\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_inserzione_ac21c85015bddc4dd881cf5cc47f15a41}{estendiDataFineRilascio}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_inserzione_a33a821ae28447f76356d8ee67db86f7f}{calcolaIncasso}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{friend}\ vector<FasciaOraria>\ getFasceOrarie(\textcolor{keyword}{const}\ Inserzione\&);\ \textcolor{comment}{//ha\ friend\ perchè\ è\ solo\ per\ i\ test!\ (al\ momento)}}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -8,6 +8,7 @@
 #include "Media.h"
 #include "Trailer.h"
 #include "EnumClasses.h"
+#include "MediaVisitor.h"
 using namespace std;
 #include <chrono>
 using namespace std::chrono;
@@ -23,20 +24,20 @@ using namespace std::chrono;
 class Film : public Media
 {
 private:
-Genere f_genere;
+    Genere f_genere;
     vector<string> f_attoriPrincipali;
     Classificazione f_target;
     vector<Trailer *> trailers;
-    string f_casaDiProduzione;
     unsigned int f_nPostCredit;
     double f_costoBiglietto;
+    string f_casaDiProduzione;
     double f_valutazione;
     int isTrailerIn(Trailer *trailer) const;
 
 public:
     Film(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
          year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
-         Genere genere, const string &casaDiProduzione, unsigned int nPostCredit, double costoBiglietto, 
+         Genere genere, unsigned int nPostCredit, double costoBiglietto, const string &casaDiProduzione = "Sconosciuto",
          const string &autore = "Sconosciuto", const string &path = "immGrigia", Classificazione target = Classificazione::TUTTI);
     
     
@@ -107,6 +108,9 @@ public:
     void setValutazione();
 
     ~Film();
+
+    //visitor
+    void accept(MediaVisitor* visitor) override;
 };
 
 #endif

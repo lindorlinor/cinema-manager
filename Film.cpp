@@ -4,7 +4,7 @@
 // Costruttore
 Film::Film( const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
             year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
-            Genere genere, const string &casaDiProduzione, unsigned int nPostCredit, double costoBiglietto, 
+            Genere genere, unsigned int nPostCredit, double costoBiglietto, const string &casaDiProduzione,
             const string &autore, const string &path, Classificazione target):
 
                     Media(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
@@ -100,6 +100,11 @@ void Film::setValutazione(){
         double proporzione = getVisualizzazioni()/(giorni*1200.0); 
         f_valutazione = std::round((proporzione*5)>5? 5 : (proporzione*5)*10)/10.0;
     }
+}
+
+//visitor
+void Film::accept(MediaVisitor* visitor) {
+    visitor->visit(this);
 }
 
 // //metodi set

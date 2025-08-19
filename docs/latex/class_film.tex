@@ -1,0 +1,199 @@
+\doxysection{Riferimenti per la classe Film}
+\hypertarget{class_film}{}\label{class_film}\index{Film@{Film}}
+
+
+Rappresenta un film distribuito al cinema.  
+
+
+
+
+{\ttfamily \#include $<$Film.\+h$>$}
+
+Diagramma delle classi per Film\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_film}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_film_afa84c920d8e493450cb03d8b36f3a041}\label{class_film_afa84c920d8e493450cb03d8b36f3a041} 
+{\bfseries Film} (const string \&titolo, const string \&descrizione, year\+\_\+month\+\_\+day gg\+\_\+mm\+\_\+aa\+Inizio\+Rilascio, year\+\_\+month\+\_\+day gg\+\_\+mm\+\_\+aa\+Fine\+Rilascio, unsigned int durata\+Minuti, Formato formato, Risoluzione risoluzione, Genere genere, const string \&casa\+Di\+Produzione, unsigned int n\+Post\+Credit, double costo\+Biglietto, const string \&autore="{}Sconosciuto"{}, const string \&path="{}imm\+Grigia"{}, Classificazione target=Classificazione\+::\+TUTTI)
+\item 
+void \mbox{\hyperlink{class_film_aefbbd20e9554d424f553fe5cb9fd6a4f}{set\+Data\+Fine\+Rilascio}} (year\+\_\+month\+\_\+day gg\+\_\+mm\+\_\+aa\+Fine\+Rilascio) override
+\begin{DoxyCompactList}\small\item\em Imposta una specifica data di fine rilascio del film e aggiorna quella dei trailer associati. \end{DoxyCompactList}\item 
+\Hypertarget{class_film_a29272b290b328832be0fb6f8bae83ce2}\label{class_film_a29272b290b328832be0fb6f8bae83ce2} 
+Genere {\bfseries get\+Genere} () const
+\item 
+\Hypertarget{class_film_a59c3019509c261e73c6bc8d5192e2431}\label{class_film_a59c3019509c261e73c6bc8d5192e2431} 
+double {\bfseries get\+Valutazione} () const
+\item 
+\Hypertarget{class_film_a15a87e3986d864a56f240bf606a21e54}\label{class_film_a15a87e3986d864a56f240bf606a21e54} 
+Classificazione {\bfseries get\+Classificazione} () const
+\item 
+\Hypertarget{class_film_a7444529c310dcc6b57e049894a12d762}\label{class_film_a7444529c310dcc6b57e049894a12d762} 
+double {\bfseries get\+Costo\+Biglietto} () const
+\item 
+\Hypertarget{class_film_a821028c94436dfca979b6ea595439549}\label{class_film_a821028c94436dfca979b6ea595439549} 
+void {\bfseries aggiungi\+Trailer} (\mbox{\hyperlink{class_trailer}{Trailer}} \texorpdfstring{$\ast$}{*}trailer)
+\item 
+void \mbox{\hyperlink{class_film_a804f4e60c7f804ca9934ec81d8cd761a}{rimuovi\+Trailer}} (\mbox{\hyperlink{class_trailer}{Trailer}} \texorpdfstring{$\ast$}{*}trailer)
+\begin{DoxyCompactList}\small\item\em Disaccoppia un trailer dal film ed elimina definitivamennte il trailer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_film_a6e741e83e292cb8f85712dfd4196d925}{disaccoppia\+Trailer}} (\mbox{\hyperlink{class_trailer}{Trailer}} \texorpdfstring{$\ast$}{*}trailer)
+\begin{DoxyCompactList}\small\item\em Disaccoppia un trailer dal film. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_film_acfe82dd1cf9eeecc645ba5159b2ce698}{estendi\+Data\+Fine\+Rilascio}} () override
+\begin{DoxyCompactList}\small\item\em Estende di 7 giorni la data di fine rilascio del film, se non è ancora fuori produzione. Modifica la data dei trailer associati che non sono fuori produzione. Estende la data dei trailer associati richiamando il metodo \doxylink{class_film_aefbbd20e9554d424f553fe5cb9fd6a4f}{set\+Data\+Fine\+Rilascio}. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_film_abac6c22c8fc6413169d235cae01defe7}{calcola\+Incasso}} () override
+\begin{DoxyCompactList}\small\item\em Calcola l\textquotesingle{}incasso della distribuzione del film al cinema. \end{DoxyCompactList}\item 
+\Hypertarget{class_film_a2649e23e1fd653278b72e8ac96c7ecd1}\label{class_film_a2649e23e1fd653278b72e8ac96c7ecd1} 
+void {\bfseries set\+Valutazione} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Membri pubblici ereditati da \mbox{\hyperlink{class_media}{Media}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Media} (const string \&titolo, const string \&descrizione, year\+\_\+month\+\_\+day gg\+\_\+mm\+\_\+aa\+Inizio\+Rilascio, year\+\_\+month\+\_\+day gg\+\_\+mm\+\_\+aa\+Fine\+Rilascio, unsigned int durata\+Minuti, Formato formato, Risoluzione risoluzione, const string \&autore="{}Sconosciuto"{}, const string \&path="{}imm\+Grigia"{})
+\item 
+void {\bfseries aggiungi\+Lingua} (Lingua lingua)
+\item 
+void {\bfseries aggiungi\+Sottotitolo} (Lingua lingua)
+\item 
+void {\bfseries rimuovi\+Lingua} (Lingua lingua)
+\item 
+void {\bfseries rimuovi\+Sottotitolo} (Lingua lingua)
+\item 
+bool \mbox{\hyperlink{class_media_a0f090c2c4806f7f6c2650415edeb81bf}{Fuori\+Produzione}} () const
+\begin{DoxyCompactList}\small\item\em Verifca se il media è correntemente distribuito nei canali del cinema. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_media_a0dcb4941c952295b53e3ff31af1e367b}{Durata\+Campagna}} () const
+\begin{DoxyCompactList}\small\item\em Indica il numero di giorni in cui il media è distribuito nei canali del cinema. \end{DoxyCompactList}\item 
+unsigned int {\bfseries get\+Visualizzazioni} () const
+\item 
+year\+\_\+month\+\_\+day {\bfseries get\+Data\+Inizio\+Rilascio} () const
+\item 
+year\+\_\+month\+\_\+day {\bfseries get\+Data\+Fine\+Rilascio} () const
+\item 
+year\+\_\+month\+\_\+day {\bfseries get\+Data\+Last\+View\+Update} () const
+\item 
+unsigned int {\bfseries get\+Durata\+Minuti} () const
+\item 
+Formato {\bfseries get\+Formato} () const
+\item 
+Risoluzione {\bfseries get\+Risoluzione} () const
+\item 
+void {\bfseries set\+Visualizzazioni} (unsigned int visualizzazioni)
+\item 
+void {\bfseries set\+Durata\+Minuti} (unsigned int durata)
+\item 
+virtual void \mbox{\hyperlink{class_media_a07cd9902b89e0e20dc2c105d5ad6ef15}{set\+Data\+Inizio\+Rilascio}} (year\+\_\+month\+\_\+day gg\+\_\+mm\+\_\+aa\+Inizio\+Rilascio)
+\item 
+void \mbox{\hyperlink{class_media_a08632b3d774a3f41b2e0ec881130579c}{Incrementa\+Visualizzazioni}} ()
+\begin{DoxyCompactList}\small\item\em assegna in automatico il numero di visualizzazioni \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+Rappresenta un film distribuito al cinema. 
+
+Un film possiede un vettore di trailer. L\textquotesingle{}associazione tra film e trailer è sempre bidirezionale\+: il trailer è collegato al film e il film al trailer. L\textquotesingle{}invariante deve essere soddistatta per tutta l\textquotesingle{}esecuzione del programma. \begin{DoxySeeAlso}{Si veda anche}
+\doxylink{class_trailer}{Trailer} 
+\end{DoxySeeAlso}
+
+
+\label{doc-func-members}
+\Hypertarget{class_film_doc-func-members}
+\doxysubsection{Documentazione delle funzioni membro}
+\Hypertarget{class_film_abac6c22c8fc6413169d235cae01defe7}\index{Film@{Film}!calcolaIncasso@{calcolaIncasso}}
+\index{calcolaIncasso@{calcolaIncasso}!Film@{Film}}
+\doxysubsubsection{\texorpdfstring{calcolaIncasso()}{calcolaIncasso()}}
+{\footnotesize\ttfamily \label{class_film_abac6c22c8fc6413169d235cae01defe7} 
+double Film\+::calcola\+Incasso (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calcola l\textquotesingle{}incasso della distribuzione del film al cinema. 
+
+L\textquotesingle{}incasso del film si calcola moltiplicando le visualizzazioni per il costo del biglietto del film.
+
+\begin{DoxyReturn}{Restituisce}
+L\textquotesingle{}incasso calcolato. 
+\end{DoxyReturn}
+
+
+Implementa \mbox{\hyperlink{class_media_a43348466aebdbe988ad55473b9732c41}{Media}}.
+
+\Hypertarget{class_film_a6e741e83e292cb8f85712dfd4196d925}\index{Film@{Film}!disaccoppiaTrailer@{disaccoppiaTrailer}}
+\index{disaccoppiaTrailer@{disaccoppiaTrailer}!Film@{Film}}
+\doxysubsubsection{\texorpdfstring{disaccoppiaTrailer()}{disaccoppiaTrailer()}}
+{\footnotesize\ttfamily \label{class_film_a6e741e83e292cb8f85712dfd4196d925} 
+void Film\+::disaccoppia\+Trailer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_trailer}{Trailer}} \texorpdfstring{$\ast$}{*}}]{trailer}{}\end{DoxyParamCaption})}
+
+
+
+Disaccoppia un trailer dal film. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em trailer} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_film_acfe82dd1cf9eeecc645ba5159b2ce698}\index{Film@{Film}!estendiDataFineRilascio@{estendiDataFineRilascio}}
+\index{estendiDataFineRilascio@{estendiDataFineRilascio}!Film@{Film}}
+\doxysubsubsection{\texorpdfstring{estendiDataFineRilascio()}{estendiDataFineRilascio()}}
+{\footnotesize\ttfamily \label{class_film_acfe82dd1cf9eeecc645ba5159b2ce698} 
+void Film\+::estendi\+Data\+Fine\+Rilascio (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Estende di 7 giorni la data di fine rilascio del film, se non è ancora fuori produzione. Modifica la data dei trailer associati che non sono fuori produzione. Estende la data dei trailer associati richiamando il metodo \doxylink{class_film_aefbbd20e9554d424f553fe5cb9fd6a4f}{set\+Data\+Fine\+Rilascio}. 
+
+
+
+Implementa \mbox{\hyperlink{class_media_a957bf71135599ba62d4a2b3e41a50a8d}{Media}}.
+
+\Hypertarget{class_film_a804f4e60c7f804ca9934ec81d8cd761a}\index{Film@{Film}!rimuoviTrailer@{rimuoviTrailer}}
+\index{rimuoviTrailer@{rimuoviTrailer}!Film@{Film}}
+\doxysubsubsection{\texorpdfstring{rimuoviTrailer()}{rimuoviTrailer()}}
+{\footnotesize\ttfamily \label{class_film_a804f4e60c7f804ca9934ec81d8cd761a} 
+void Film\+::rimuovi\+Trailer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_trailer}{Trailer}} \texorpdfstring{$\ast$}{*}}]{trailer}{}\end{DoxyParamCaption})}
+
+
+
+Disaccoppia un trailer dal film ed elimina definitivamennte il trailer. 
+
+\begin{DoxySeeAlso}{Si veda anche}
+\doxylink{class_film_a6e741e83e292cb8f85712dfd4196d925}{disaccoppia\+Trailer}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parametri}
+{\em trailer} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Nota}
+Duplicazione di codice tra \doxylink{class_film_a804f4e60c7f804ca9934ec81d8cd761a}{rimuovi\+Trailer} e \doxylink{class_film_a6e741e83e292cb8f85712dfd4196d925}{disaccoppia\+Trailer} perchè è minimo 
+\end{DoxyNote}
+\Hypertarget{class_film_aefbbd20e9554d424f553fe5cb9fd6a4f}\index{Film@{Film}!setDataFineRilascio@{setDataFineRilascio}}
+\index{setDataFineRilascio@{setDataFineRilascio}!Film@{Film}}
+\doxysubsubsection{\texorpdfstring{setDataFineRilascio()}{setDataFineRilascio()}}
+{\footnotesize\ttfamily \label{class_film_aefbbd20e9554d424f553fe5cb9fd6a4f} 
+void Film\+::set\+Data\+Fine\+Rilascio (\begin{DoxyParamCaption}\item[{year\+\_\+month\+\_\+day}]{gg\+\_\+mm\+\_\+aa\+Fine\+Rilascio}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Imposta una specifica data di fine rilascio del film e aggiorna quella dei trailer associati. 
+
+Imposta una nuova data di fine rilascio per il film e assegna la stessa data a tutti i trailer associati che non sono fuori produzione.
+
+
+\begin{DoxyParams}{Parametri}
+{\em gg\+\_\+mm\+\_\+aa\+Fine\+Rilascio} & La nuova data di fine rilascio del film. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplementa \mbox{\hyperlink{class_media}{Media}}.
+
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\+:\begin{DoxyCompactItemize}
+\item 
+Film.\+h\item 
+Film.\+cpp\end{DoxyCompactItemize}

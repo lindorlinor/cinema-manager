@@ -9,7 +9,7 @@
 } 
 
 QPushButton:hover{
-    background-color: #1A2D31;
+    background-color: #073c47;
     color: #e9fed46a;
 }
 
@@ -25,7 +25,7 @@ QPushButton:pressed{
 QMenu,QMenuBar{
     color: #D9D9D9;
     font-size: 14pt;
-    background-color:#243F46;
+    background-color:#05313c;
 }
 
 QMenu{
@@ -42,7 +42,7 @@ QMenu::item{
 }
 
 QMenuBar{
-    background-color:#243F46;
+    background-color:#05313c;
 }
 
 QMenuBar::item,
@@ -55,11 +55,11 @@ QMenuBar::item:hover,
 QMenuBar::item:selected,
 QMenu::item:selected
 {
-    background-color:#1A2D31;
+    background-color:#05313c;
 }
 
 QLineEdit{
-    background-color:#243F46;
+    background-color:#05313c;
     border-radius: 20px;
     padding:5px 10px;
     color: #708084;
@@ -69,7 +69,7 @@ QLineEdit{
 }
 
 QComboBox{
-    background-color:#243F46;
+    background-color:#0e4551;
     color: #708084;
     padding: 5px;
     min-width:100px;
@@ -82,7 +82,7 @@ QComboBox{
 }
 
 #addMedia{
-    background-color:#1A2D31;
+    background-color:#05313c;
     color: #708084;
     border-radius: 8px;
     font-size: 25pt;
@@ -91,17 +91,17 @@ QComboBox{
 }
 
 #addMedia:pressed{
-    color: #243F46;
+    color: #0e4551;
 }
 
 #latoSinistraSP{
-    background-color:#243F46;
-    border-top:2px solid #1A2D31;
+    background-color:#0e4551;
+    border-top:2px solid #073c47;
 }
 
 #stackModifiche{
-    background-color: #1A2D31;
-    border-top:2px solid #1A2D31;
+    background-color: #073c47;
+    border-top:2px solid #073c47;
 }
 
 #widegetMedia QPushButton {
@@ -137,21 +137,13 @@ QComboBox{
     color: #e9fed46a;
 }
 
-#addCinema{
-    border-radius:20px;
-    color:#e9fed46a;
-    background-color:#1A2D31;
+#cinema{
+    color:#afc5cc;
     text-align: center;
 }
 
-#addCinema:hover{
-    color:#708084;
-}
-
-#cinema{
-    background-color:#1A2D31;
-    min-height:30px;
-    max-height:40px;
+#cinema:hover{
+    color:#e9fed46a;
 }
 
 #widgetPath{
@@ -163,4 +155,157 @@ QComboBox{
     border: 30px dashed #fed46a;
 }
 
-*/
+ */
+
+/* LineEdit + ComboBox (parte visibile) */
+#titoloMedia,
+#autoreMedia,
+#CasaProdFilm,
+#conduttorePodcast,
+#aziendaInserzInserzione,
+#comboFormato,
+#comboRisoluzione,
+#comboTarget,
+#comboTipologia,
+#dataFine,
+#dataInizio {
+    border: none;   
+    border-radius: 10px;
+    background-color: #4e7f8b;
+    color: #05313c;
+    padding: 8px 12px;
+    font-size: 12pt;
+}
+
+#dataInizio:disabled,
+#dataFine:disabled,
+#dataInizio QLineEdit:disabled,
+#dataFine QLineEdit:disabled {
+    background-color: #4e7f8b;
+    color: #05313c;
+}
+
+
+/* Lista a tendina delle combo */
+#comboFormato QAbstractItemView,
+#comboRisoluzione QAbstractItemView,
+#comboTarget QAbstractItemView,
+#comboTipologia QAbstractItemView{
+    border: none;
+    background-color: #4e7f8b;
+    color: #05313c;
+    padding: 5px;
+    outline:0;
+}
+
+#comboFormato QAbstractItemView::item:hover,
+#comboRisoluzione QAbstractItemView::item:hover,
+#comboTarget QAbstractItemView::item:hover,
+#comboTipologia QAbstractItemView::item:hover
+{
+    background-color: #4e7f8b; 
+    color: #bdced3;
+}
+
+#comboFormato QAbstractItemView::item:selected,
+#comboRisoluzione QAbstractItemView::item:selected,
+#comboTarget QAbstractItemView::item:selected,
+#comboTipologia QAbstractItemView::item:selected
+{
+    background-color: #4e7f8b; 
+    color: #bdced3;
+}
+
+#comboFormato::down-arrow,
+#comboRisoluzione::down-arrow,
+#comboTarget::down-arrow,
+#comboTipologia::down-arrow,
+#dataInizio::down-arrow,
+#dataFine::down-arrow{
+    image: url(icons/arrow_down.png);
+}
+
+/* SpinBox (campo testo) */
+#durataMinutiMedia,
+#totPostCreditFilm,
+#numeroProiezioniTrailer,
+#numeroProiezioniGioInserzione,
+#numeroPubblicitaPuntata,
+#costoBigliettoFilm,
+#costoBaseProiezInserzione {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #4e7f8b;
+    color: #05313c;
+    padding: 6px 10px;
+    font-size: 14pt;
+}
+
+/* SpinBox */
+#durataMinutiMedia::up-button,
+#totPostCreditFilm::up-button,
+#numeroProiezioniTrailer::up-button,
+#numeroProiezioniGioInserzione::up-button,
+#numeroPubblicitaPuntata::up-button,
+#costoBigliettoFilm::up-button,
+#costoBaseProiezInserzione::up-button {
+    subcontrol-origin: border;
+    subcontrol-position: top right;
+    width: 16px;
+    background-color: #4e7f8b;
+    border: none;
+}
+
+#durataMinutiMedia::down-button,
+#totPostCreditFilm::down-button,
+#numeroProiezioniTrailer::down-button,
+#numeroProiezioniGioInserzione::down-button,
+#numeroPubblicitaPuntata::down-button,
+#costoBigliettoFilm::down-button,
+#costoBaseProiezInserzione::down-button {
+    subcontrol-origin: border;
+    subcontrol-position: bottom right;
+    width: 16px;
+    background-color: #4e7f8b;
+    border: none;
+}
+
+#durataMinutiMedia::up-arrow,
+#totPostCreditFilm::up-arrow,
+#numeroProiezioniTrailer::up-arrow,
+#numeroProiezioniGioInserzione::up-arrow,
+#numeroPubblicitaPuntata::up-arrow,
+#costoBigliettoFilm::up-arrow,
+#costoBaseProiezInserzione::up-arrow,
+#durataMinutiMedia::down-arrow,
+#totPostCreditFilm::down-arrow,
+#numeroProiezioniTrailer::down-arrow,
+#numeroProiezioniGioInserzione::down-arrow,
+#numeroPubblicitaPuntata::down-arrow,
+#costoBigliettoFilm::down-arrow,
+#costoBaseProiezInserzione::down-arrow {
+    width: 10px;
+    height: 10px;
+}
+
+#durataMinutiMedia::up-arrow,
+#totPostCreditFilm::up-arrow,
+#numeroProiezioniTrailer::up-arrow,
+#numeroProiezioniGioInserzione::up-arrow,
+#numeroPubblicitaPuntata::up-arrow,
+#costoBigliettoFilm::up-arrow,
+#costoBaseProiezInserzione::up-arrow
+{
+    image: url(icons/arrow_up.png);
+}
+
+#durataMinutiMedia::down-arrow,
+#totPostCreditFilm::down-arrow,
+#numeroProiezioniTrailer::down-arrow,
+#numeroProiezioniGioInserzione::down-arrow,
+#numeroPubblicitaPuntata::down-arrow,
+#costoBigliettoFilm::down-arrow,
+#costoBaseProiezInserzione::down-arrow 
+{
+    image: url(icons/arrow_down.png);
+}

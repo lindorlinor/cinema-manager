@@ -1,5 +1,5 @@
 #include "SearchPanel.h"
-#include "AddMedia.h"
+#include "InsertMedia.h"
 
 void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     QMenuBar* menuBar = new QMenuBar(this);
@@ -34,7 +34,7 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     visualizza->addAction(new QAction("Visualizza Podcast", visualizza));
     //Menu "Altro"
     altro->addAction(new QAction("Cambia Vista", altro));
-    connect(file->actions()[5],&QAction::triggered, this, [=](){emit escSearchPanel();});
+    connect(file->actions()[5],&QAction::triggered, this, [this](){emit escSearchPanel();});
     connect(file->actions()[6], &QAction::triggered, qApp, &QApplication::quit);
     
     mainLayout->addWidget(menuBar);
@@ -48,22 +48,14 @@ void SearchPanel::updateModifierPanel(int index){
 void SearchPanel::addLatoSinistra(QWidget* widgetSinistra){
     //agginta ricerca latoSinistra
     QVBoxLayout* latoSinistra = new QVBoxLayout;
-    QHBoxLayout* selezioneCinema = new QHBoxLayout;
     QVBoxLayout* selezioneMedia = new QVBoxLayout;
-    QWidget* widgetCinema = new QWidget;
     QWidget* widegetMedia = new QWidget;
 
     widegetMedia->setObjectName("widegetMedia");
     
     //selezione Cinema
-    QPushButton* addCinema = new QPushButton("+");
-    addCinema->setObjectName("addCinema");
-    QComboBox* cinema = new QComboBox;
+    QPushButton* cinema = new QPushButton("Cinema nome");
     cinema->setObjectName("cinema");
-    cinema->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    selezioneCinema->addWidget(cinema,4);
-    selezioneCinema->addWidget(addCinema,1);
-    widgetCinema->setLayout(selezioneCinema);
     
     //selezione Media
     tutto = new QPushButton("Tutto");
@@ -87,7 +79,7 @@ void SearchPanel::addLatoSinistra(QWidget* widgetSinistra){
     latoSinistra->addWidget(addMedia);
     latoSinistra->addSpacing(50);
     latoSinistra->addWidget(widegetMedia);
-    latoSinistra->addWidget(widgetCinema);
+    latoSinistra->addWidget(cinema);
     widgetSinistra->setLayout(latoSinistra);
 }
 
@@ -155,12 +147,12 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     stackModifiche->setCurrentIndex(0);
 
     //pannello di aggiunta media
-    AddMedia* nuovoMedia = new AddMedia(this);
+    InsertMedia* nuovoMedia = new InsertMedia(this);
     stackModifiche->addWidget(nuovoMedia);
     nuovoMedia->setObjectName("nuovoMedia");
 
     connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
-    connect(nuovoMedia, &AddMedia::tornaIndietro, this, [this](){
+    connect(nuovoMedia, &InsertMedia::tornaIndietro, this, [this](){
         updateModifierPanel(previousIndex);
     });
 }
@@ -186,6 +178,13 @@ void SearchPanel::addRicerca(QVBoxLayout* mainLayout){
     ricerca->addWidget(widgetSinistra,2);
     ricerca->addWidget(stackModifiche,8);
     mainLayout->addLayout(ricerca);
+
+    //style
+    widgetSinistra->setMinimumWidth(300);
+    widgetSinistra->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    stackModifiche->setMinimumWidth(1050);
+    stackModifiche->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
 } 
 
 SearchPanel::SearchPanel(QWidget *parent): QWidget(parent){

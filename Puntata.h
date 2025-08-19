@@ -2,6 +2,7 @@
 #define PUNTATA_H
 
 #include "Media.h"
+#include "MediaVisitor.h"
 
 class Podcast;
 /**
@@ -84,6 +85,9 @@ public:
      void associaPodcast(Podcast* podcast); 
 
      Podcast* getPodcast()const;
+
+    //visitor
+    void accept(MediaVisitor* visitor)override;
 };
 
 #endif // PUNTATA_H

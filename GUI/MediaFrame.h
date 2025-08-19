@@ -4,9 +4,10 @@
 #include <QWidget>
 #include <QFrame>
 #include <QLabel>
-#include <QPixMap>
+#include <QPixmap>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QMouseEvent>
 
 #include "../Media.h"
 
@@ -15,11 +16,19 @@ class MediaFrame: public QFrame{
     
     private:
     QLabel* imgLabel;
-    QPixmap* pix;
-
+    QPixmap pix;
+    QString titoloMedia;
+    QString autoreMedia;
 
     public:
-    explicit MediaFrame(const QString& titolo, const QString& imagePath, QWidget* parent = nullptr);
+    explicit MediaFrame(const QString& titolo, const QString& imagePath, const QString& autore, QWidget* parent = nullptr);
+    QString getTitolo() const;
+    QString getAutore() const;
+    void mousePressEvent(QMouseEvent* event)override;
+    void setSelected(bool selected);
+
+    signals:
+    void selected(MediaFrame* frame);
 
 };
 

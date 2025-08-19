@@ -2,6 +2,7 @@
 #define PODCAST_H
 
 #include "Media.h"
+#include "MediaVisitor.h"
 
 class Puntata; // dichiarazione incompleta
 
@@ -86,6 +87,9 @@ public:
      * 
      */
     void aggiornaDate();
+
+    //visitor
+    void accept(MediaVisitor* visitor)override;
 };
 
 #endif // PODCAST_H

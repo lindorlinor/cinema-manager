@@ -2,6 +2,7 @@
 #define TRAILER_H
 
 #include "Pubblicita.h"
+#include "MediaVisitor.h"
 class Film; // forward declaration
 
 
@@ -69,6 +70,8 @@ public:
      */
     double calcolaIncasso() override;
     
+    //visitor
+    void accept(MediaVisitor* visitor)override;
 };
 
 #endif
