@@ -20,7 +20,7 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
 
 private:
-    QLabel defaultText;    
+    QString defaultText;    
     QLabel *label;
     QToolButton *closeButton;   // bottone "x"
 
