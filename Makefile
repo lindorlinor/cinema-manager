@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = my-library1.0.0
-DISTDIR = /mnt/c/Users/LINOR/Desktop/my-library/release/my-library1.0.0
+DISTDIR = /mnt/c/Users/angel/Desktop/studi/universita/appunti/II\ anno/ProgrammazioneOggetti/my-library/release/my-library1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath-link,/usr/lib/x86_64-linux-gnu
 LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt6Widgets.so /usr/lib/x86_64-linux-gnu/libQt6Gui.so /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so /usr/lib/x86_64-linux-gnu/libQt6Xml.so /usr/lib/x86_64-linux-gnu/libQt6Core.so -lpthread -lGLX -lOpenGL   
@@ -132,6 +132,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_core_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_designer.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_gbm_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri \
@@ -139,8 +140,12 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_fb_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_help.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_input_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_kms_support_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_linguist.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_multimedia.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_multimediawidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_opengl.pri \
@@ -149,10 +154,15 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_openglwidgets_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_printsupport.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_printsupport_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_spatialaudio.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_sql_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_svg.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_svgwidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uiplugin.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uitools.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_widgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_widgets_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
@@ -251,6 +261,7 @@ Makefile: my-library.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.c
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_core_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_designer.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_gbm_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri \
@@ -258,8 +269,12 @@ Makefile: my-library.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.c
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_fb_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_help.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_input_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_kms_support_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_linguist.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_multimedia.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_multimediawidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_opengl.pri \
@@ -268,10 +283,15 @@ Makefile: my-library.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.c
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_openglwidgets_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_printsupport.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_printsupport_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_spatialaudio.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_sql_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_svg.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_svgwidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uiplugin.pri \
+		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uitools.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_widgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_widgets_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
@@ -323,6 +343,7 @@ Makefile: my-library.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.c
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_core_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_designer.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_devicediscovery_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_gbm_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri:
@@ -330,8 +351,12 @@ Makefile: my-library.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.c
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_fb_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_help.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_input_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_kms_support_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_linguist.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_multimedia.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_multimediawidgets.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_opengl.pri:
@@ -340,10 +365,15 @@ Makefile: my-library.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.c
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_openglwidgets_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_printsupport.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_printsupport_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_spatialaudio.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_sql.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_sql_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_svg.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_svgwidgets.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib_private.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uiplugin.pri:
+/usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_uitools.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_widgets.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_widgets_private.pri:
 /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri:
@@ -591,7 +621,7 @@ release/moc_CinemaButton.cpp: GUI/CinemaButton.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtGui/QMouseEvent \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/CinemaButton.h -o release/moc_CinemaButton.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/CinemaButton.h -o release/moc_CinemaButton.cpp
 
 release/moc_MainWindow.cpp: GUI/MainWindow.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
@@ -768,7 +798,7 @@ release/moc_MainWindow.cpp: GUI/MainWindow.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtoolbutton.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/MainWindow.h -o release/moc_MainWindow.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/MainWindow.h -o release/moc_MainWindow.cpp
 
 release/moc_CinemaSelectionPage.cpp: GUI/CinemaSelectionPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
@@ -928,7 +958,7 @@ release/moc_CinemaSelectionPage.cpp: GUI/CinemaSelectionPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/CinemaSelectionPage.h -o release/moc_CinemaSelectionPage.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/CinemaSelectionPage.h -o release/moc_CinemaSelectionPage.cpp
 
 release/moc_SearchPanel.cpp: GUI/SearchPanel.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
@@ -1131,7 +1161,7 @@ release/moc_SearchPanel.cpp: GUI/SearchPanel.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/SearchPanel.h -o release/moc_SearchPanel.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/SearchPanel.h -o release/moc_SearchPanel.cpp
 
 release/moc_InsertCinemaPage.cpp: GUI/InsertCinemaPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
@@ -1291,7 +1321,7 @@ release/moc_InsertCinemaPage.cpp: GUI/InsertCinemaPage.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtoolbutton.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/InsertCinemaPage.h -o release/moc_InsertCinemaPage.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/InsertCinemaPage.h -o release/moc_InsertCinemaPage.cpp
 
 release/moc_InsertMedia.cpp: GUI/InsertMedia.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
@@ -1554,7 +1584,7 @@ release/moc_InsertMedia.cpp: GUI/InsertMedia.h \
 		Puntata.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/InsertMedia.h -o release/moc_InsertMedia.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/InsertMedia.h -o release/moc_InsertMedia.cpp
 
 release/moc_ListPersone.cpp: GUI/ListPersone.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
@@ -1733,7 +1763,7 @@ release/moc_ListPersone.cpp: GUI/ListPersone.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlistwidget.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/ListPersone.h -o release/moc_ListPersone.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/ListPersone.h -o release/moc_ListPersone.cpp
 
 release/moc_InsertImageFrame.cpp: GUI/InsertImageFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QFrame \
@@ -1883,7 +1913,7 @@ release/moc_InsertImageFrame.cpp: GUI/InsertImageFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/InsertImageFrame.h -o release/moc_InsertImageFrame.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/InsertImageFrame.h -o release/moc_InsertImageFrame.cpp
 
 release/moc_MediaFrame.cpp: GUI/MediaFrame.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
@@ -2039,7 +2069,7 @@ release/moc_MediaFrame.cpp: GUI/MediaFrame.h \
 		EnumClasses.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/MediaFrame.h -o release/moc_MediaFrame.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/MediaFrame.h -o release/moc_MediaFrame.cpp
 
 release/moc_SelectMediaReference.cpp: GUI/SelectMediaReference.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
@@ -2244,7 +2274,7 @@ release/moc_SelectMediaReference.cpp: GUI/SelectMediaReference.h \
 		MediaVisitor.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/SelectMediaReference.h -o release/moc_SelectMediaReference.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed GUI/SelectMediaReference.h -o release/moc_SelectMediaReference.cpp
 
 release/moc_MediaManagerJson.cpp: DataFiles/MediaManagerJson.h \
 		/usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
@@ -2361,7 +2391,7 @@ release/moc_MediaManagerJson.cpp: DataFiles/MediaManagerJson.h \
 		MediaVisitor.h \
 		release/moc_predefs.h \
 		/usr/lib/qt6/libexec/moc
-	/usr/lib/qt6/libexec/moc $(DEFINES) --include /mnt/c/Users/LINOR/Desktop/my-library/release/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I/mnt/c/Users/LINOR/Desktop/my-library -I/mnt/c/Users/LINOR/Desktop/my-library -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed DataFiles/MediaManagerJson.h -o release/moc_MediaManagerJson.cpp
+	/usr/lib/qt6/libexec/moc $(DEFINES) --include '/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/release/moc_predefs.h' -I/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I'/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library' -I/usr/include/x86_64-linux-gnu/qt6 -I/usr/include/x86_64-linux-gnu/qt6/QtWidgets -I/usr/include/x86_64-linux-gnu/qt6/QtGui -I/usr/include/x86_64-linux-gnu/qt6/QtXml -I/usr/include/x86_64-linux-gnu/qt6/QtCore -IC:/msys64/mingw64/include/c++/15.1.0 -IC:/msys64/mingw64/include/c++/15.1.0/x86_64-w64-mingw32 -IC:/msys64/mingw64/include/c++/15.1.0/backward -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include -IC:/msys64/mingw64/include -IC:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include-fixed DataFiles/MediaManagerJson.h -o release/moc_MediaManagerJson.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
