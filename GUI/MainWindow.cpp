@@ -52,7 +52,7 @@ void MainWindow::showSelectedCinemaPage(const QString& xmlPath){
 }
 void MainWindow::showCinemaSelectionPage(){
     if (cinemaPage) {
-        cinemaPage->refresh();
+        cinemaPage->refreshCinemaButtons();
     }
     stackedWidget->setCurrentIndex(0);
 }
