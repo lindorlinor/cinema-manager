@@ -115,9 +115,9 @@ QDoubleSpinBox* InsertMedia::addDoubleSpin(const QString& testo, double min, dou
 }
 
 template<class L>
-void InsertMedia::addReference(const QString& testo, const QString& json, L* ly){
+void InsertMedia::addReference(const QString& testo, const QString& json, L* ly, SelectMediaReference*& reference){
     QLabel* label = new QLabel(testo);
-    SelectMediaReference* reference = new SelectMediaReference(json, this); 
+    reference = new SelectMediaReference(json, this); 
 
     addInput(label, ly, reference);
     
@@ -281,14 +281,14 @@ void InsertMedia::checkMediaNameAvailability() {
 
     // Carico la lista dei cinema esistenti
     MediaManagerJson manager(QDir(QCoreApplication::applicationDirPath()).filePath("../FileJson/"));
-    QList<MediaData> listInsertMedia = manager.loadAllMediaBasic();
+    QList<MediaData*> listInsertMedia = manager.loadAll();
     
     bool isAvailable = true;
 
     if(titolo.isEmpty() || autore.isEmpty()) isAvailable = false;
 
-    for (const MediaData& m: listInsertMedia) {
-        if (m.titolo.compare(titolo, Qt::CaseInsensitive) == 0 && m.autore.compare(autore, Qt::CaseInsensitive) == 0) {
+    for (const MediaData* m: listInsertMedia) {
+        if (m->titolo.compare(titolo, Qt::CaseInsensitive) == 0 && m->autore.compare(autore, Qt::CaseInsensitive) == 0) {
             isAvailable = false;
             break;
         }
@@ -346,7 +346,7 @@ void InsertMedia::addTipologiaTrailer(QWidget* TipoTrailer){        //tipologia 
     QHBoxLayout* TrailerH = new QHBoxLayout;
 
     numeroProiezioniTrailer = addSpin("Numero Proiezioni Giornaliere", 0, 20, 0, TrailerH);
-    addReference("Film", "films", TrailerH);
+    addReference("Film", "film", TrailerH, referenceTrailer);
 
     TipoTrailer->setLayout(TrailerH);
 
@@ -405,7 +405,7 @@ void InsertMedia::addTipologiaPuntate(QWidget* TipoPuntata){    //tipologia Punt
     widgetPuntata->setLayout(puntataV);
 
     puntataH->addWidget(widgetPuntata);
-    addReference("Podcast","podcasts",puntataH);
+    addReference("Podcast","podcast",puntataH, referencePuntate);
 
     TipoPuntata->setLayout(puntataH);
 
@@ -431,7 +431,7 @@ void InsertMedia::addPagina(QVBoxLayout* mainLayout){
 
     QLabel* titolo = new QLabel("Aggiungi un elemento alla libreria");
     framePath = new InsertImageFrame;
-    QPixmap pixmap(":images/image4.png");
+    QPixmap pixmap(":images/default.png");
     copertina = new QLabel(this);
 
     //paginaV3->setAlignment(Qt::AlignCenter);
@@ -504,6 +504,8 @@ void InsertMedia::annullaSalva(QVBoxLayout* mainLayout){
         this->salvaMedia();
         this->resetAllInput();
         this->tornaIndietro();
+        if(referencePuntate)referencePuntate->reloadMedia();
+        if(referenceTrailer)referenceTrailer->reloadMedia();
     });
 
 }
@@ -641,7 +643,7 @@ void InsertMedia::saveCommonFields(MediaData &data) {       //funzione per salva
     data.sottotitoliDisponibili = getSelectedList<Lingua>(listSottotitoli);
     data.formato = static_cast<Formato>(comboFormato->currentData().toInt());
     data.risoluzione = static_cast<Risoluzione>(comboRisoluzione->currentData().toInt());
-    data.path = imagePath;
+    data.path = imagePath==""?"images/default.png":imagePath;
 }
 
 
@@ -661,8 +663,9 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         film.dataInizioRilascio = dataInizio->date();
         film.dataFineRilascio = dataFine->date();
         film.target = static_cast<Classificazione>(comboTarget->currentData().toInt());
+        film.tipologia = "film";
         
-        mediaManagerJson->saveFilm(film);
+        mediaManagerJson->saveFilm(&film);
     }
     //trailer
     else if(stackTipologia->currentIndex()==1){
@@ -673,8 +676,9 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         trailer.nProiezioniGiornaliere = numeroProiezioniTrailer->value();
         trailer.filmAssociato = titoloFilmRirefimento;
         trailer.autoreFilmAssociato = autoreFilmRiferimento;
+        trailer.tipologia = "trailer";
     
-        mediaManagerJson->saveTrailer(trailer);
+        mediaManagerJson->saveTrailer(&trailer);
     }
     //podcast
     else if(stackTipologia->currentIndex()==2){
@@ -683,8 +687,9 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         saveCommonFields(podcast);
 
         podcast.conduttore = conduttorePodcast->text();
+        podcast.tipologia = "podcast";
 
-        mediaManagerJson->savePodcast(podcast);
+        mediaManagerJson->savePodcast(&podcast);
     }   
     //puntata
     else if(stackTipologia->currentIndex()==3){
@@ -696,8 +701,9 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         puntata.numeroPubblicita = numeroPubblicitaPuntata->value();
         puntata.podcastAssociato = titoloPodcastRiferimento; 
         puntata.autorePodcastAssociato = autorePodcastRiferimento; 
+        puntata.tipologia = "puntata";
 
-        mediaManagerJson->savePuntata(puntata);
+        mediaManagerJson->savePuntata(&puntata);
 
     }   
     //inserzione
@@ -714,7 +720,7 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         inserzione.dataFineRilascio = dataFine->date();
         inserzione.target = static_cast<Classificazione>(comboTarget->currentData().toInt());
 
-        mediaManagerJson->saveInserzione(inserzione);
+        mediaManagerJson->saveInserzione(&inserzione);
     }   
 
 }
@@ -833,6 +839,8 @@ void InsertMedia::resetAllInput(){
     if(dataInizio) dataInizio->setDate(QDate::currentDate());
     if(dataFine) dataFine->setDate(QDate::currentDate());
     
+    QPixmap pixmap(":images/default.png"); 
+    copertina->setPixmap(pixmap.scaled(430,430, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     checkMediaNameAvailability();
     stackTipologia->setCurrentIndex(0);
     tab->setCurrentIndex(0);

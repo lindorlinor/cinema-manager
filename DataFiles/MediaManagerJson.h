@@ -34,11 +34,13 @@ class MediaManagerJson : public QObject, public MediaVisitor{
          * 
          * @return QList<FilmData> Lista dei film caricati.
          */
-        QList<FilmData> loadFilms();
-        QList<TrailerData> loadTrailers();
-        QList<InserzioniData> loadInserzioni();
-        QList<PodcastData> loadPodcast();
-        QList<PuntataData> loadPuntate();
+
+        QList<FilmData*> loadFilms();
+        QList<TrailerData*> loadTrailers();
+        QList<InserzioniData*> loadInserzioni();
+        QList<PodcastData*> loadPodcast();
+        QList<PuntataData*> loadPuntate();
+        QList<MediaData*> loadAll();
 
         //save
         /**
@@ -48,21 +50,12 @@ class MediaManagerJson : public QObject, public MediaVisitor{
          * 
          * @param film Dati del film da salvare.
          */
-        void saveFilm(const FilmData &film);
-        void saveTrailer(const TrailerData &trailer);
-        void saveInserzione(const InserzioniData &inserzione);
-        void savePodcast(const PodcastData &podcast);
-        void savePuntata(const PuntataData &puntata); 
-
-        /**
-         * @brief Carica informazioni basilari (titolo, autore) da tutti i media.
-         * 
-         * Legge film, trailer, podcast, puntate e inserzioni e ne restituisce
-         * solo i campi base.
-         * 
-         * @return QList<MediaData> Lista di media con dati essenziali.
-         */
-        QList<MediaData> loadAllMediaBasic();
+        
+        void saveFilm(FilmData* film);
+        void saveTrailer(TrailerData* trailer);
+        void saveInserzione(InserzioniData* inserzione);
+        void savePodcast(PodcastData* podcast);
+        void savePuntata(PuntataData* puntata); 
 
     private:
         QString m_basePath;

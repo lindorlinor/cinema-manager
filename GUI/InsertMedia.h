@@ -103,6 +103,8 @@ class InsertMedia:public QWidget{
     QTabWidget* tab;
     QLabel* errorLabel;
     QLabel* copertina;
+    SelectMediaReference* referenceTrailer;
+    SelectMediaReference* referencePuntate;
 
    //aggiunta elementi della pagina InsertMedia
     void addPagina(QVBoxLayout* mainLayout);        //pagine principale: viene aggiunta la parte del tab e della "selezione compertina"
@@ -147,7 +149,7 @@ class InsertMedia:public QWidget{
     QDoubleSpinBox* addDoubleSpin(const QString& testo, double min, double max, double standard, L* ly);        //aggiunge i Widget che contengono un Doublespin
     
     template<class L>
-    void addReference(const QString& testo, const QString& json, L* ly);                                        //aggiunge il widget delle reference a trailer e puntata, per associare film e podcast
+    void addReference(const QString& testo, const QString& json, L* ly, SelectMediaReference*& reference);       //aggiunge il widget delle reference a trailer e puntata, per associare film e podcast
     
     template<class EnumType>
     vector<EnumType> getSelectedList(QListWidget* list);                                                        //ottiene i selezionati di una QListWidget

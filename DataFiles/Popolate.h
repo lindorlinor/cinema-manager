@@ -20,6 +20,7 @@ struct MediaData {
     QString  path;
     vector<Lingua> lingueDisponibili;
     vector<Lingua> sottotitoliDisponibili;
+    QString tipologia;
 };
 
 struct FilmData : public MediaData {
