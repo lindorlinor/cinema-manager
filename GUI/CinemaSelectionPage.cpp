@@ -29,7 +29,7 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent) : QWidget(parent), cin
 
     //aggiunge i pulsanti del cinema al cinemaButtonsLayout scansionando le risorse attuali
     refreshCinemaButtons();
-    
+    createCinemaScroll();
     //mette i pulsanti vicini tra loro, allineati a sinistra con uno spacing di 10
     cinemaButtonsLayout->setAlignment(Qt::AlignLeft);
     cinemaButtonsLayout->setSpacing(10);
