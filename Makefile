@@ -455,9 +455,12 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release/qrc_resources.cpp
 release/qrc_resources.cpp: GUI/resources.qrc \
 		/usr/lib/qt6/libexec/rcc \
+		images/film1.png \
 		images/coverCinema.png \
-		images/image4.png \
+		images/film2.png \
 		images/image3.png \
+		images/default.png \
+		images/film3.png \
 		images/image2.png \
 		images/image1.png
 	/usr/lib/qt6/libexec/rcc -name resources GUI/resources.qrc -o release/qrc_resources.cpp
