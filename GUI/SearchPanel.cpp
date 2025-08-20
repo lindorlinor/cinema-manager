@@ -45,7 +45,7 @@ void SearchPanel::updateModifierPanel(int index){
     stackModifiche->setCurrentIndex(index);
 }
 
-void SearchPanel::addLatoSinistra(QWidget* widgetSinistra){
+void SearchPanel::addLatoFiltri(QWidget* widgetSinistra){
     //agginta ricerca latoSinistra
     QVBoxLayout* latoSinistra = new QVBoxLayout;
     QVBoxLayout* selezioneMedia = new QVBoxLayout;
@@ -161,27 +161,27 @@ void SearchPanel::updateCerca(const QString& filtro){
     cerca->setPlaceholderText("Cerca in "+filtro+"...");
 }
 
-void SearchPanel::addRicerca(QVBoxLayout* mainLayout){
-    QWidget* widgetSinistra = new QWidget;
+void SearchPanel::addPagina(QVBoxLayout* mainLayout){
+    QWidget* widgetFiltri = new QWidget;
     stackModifiche = new QStackedWidget;
 
-    widgetSinistra->setObjectName("latoSinistraSP");
+    widgetFiltri->setObjectName("latoSinistraSP");
     stackModifiche->setObjectName("stackModifiche");
     
     QHBoxLayout* ricerca = new QHBoxLayout;
     ricerca->setContentsMargins(0, 0, 0, 0); 
     ricerca->setSpacing(0);
 
-    addLatoSinistra(widgetSinistra); 
+    addLatoFiltri(widgetFiltri); 
     addLatoDestra(stackModifiche); 
     
-    ricerca->addWidget(widgetSinistra,2);
+    ricerca->addWidget(widgetFiltri,2);
     ricerca->addWidget(stackModifiche,8);
     mainLayout->addLayout(ricerca);
 
     //style
-    widgetSinistra->setMinimumWidth(300);
-    widgetSinistra->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    widgetFiltri->setMinimumWidth(300);
+    widgetFiltri->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     stackModifiche->setMinimumWidth(1050);
     stackModifiche->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
@@ -193,7 +193,7 @@ SearchPanel::SearchPanel(QWidget *parent): QWidget(parent){
     mainLayout->setSpacing(0);
 
     addMenus(mainLayout);
-    addRicerca(mainLayout);
+    addPagina(mainLayout);
     
     setLayout(mainLayout);
 }

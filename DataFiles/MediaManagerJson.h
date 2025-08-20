@@ -57,6 +57,8 @@ class MediaManagerJson : public QObject, public MediaVisitor{
         void savePodcast(PodcastData* podcast);
         void savePuntata(PuntataData* puntata); 
 
+        
+
     private:
         QString m_basePath;
         /**
