@@ -3,10 +3,12 @@
 #include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QVBoxLayout>
 #include "InsertImageFrame.h"
 class InsertCinemaPage : public QWidget{
     Q_OBJECT
 private:
+    QVBoxLayout* frameLayout;
     QLineEdit *textInput;
     InsertImageFrame *imageArea;
     QString imagePath;
@@ -17,6 +19,10 @@ private:
     void checkCinemaNameAvailability(const QString& text);
     bool hasCustomImage;
     bool isAvailable;
+    void createHeader();
+    void createSplitView();
+    void createLayoutInput(QVBoxLayout* layoutdx);
+    void createButtonLayout(QVBoxLayout* layoutdx);
 public:
     explicit InsertCinemaPage(QWidget * parent= nullptr);
     void saveCinemaInXml();

@@ -15,12 +15,12 @@ MainWindow::MainWindow(QWidget *parent)
    
     connect(cinemaPage,&CinemaSelectionPage::insertCinema,this,&MainWindow::showInsertCinemaPage);
     connect(cinemaPage,&CinemaSelectionPage::selectedCinema,this,&MainWindow::showSelectedCinemaPage);
-    SearchPanel * searchPage = new SearchPanel(this);
-    connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
+    // SearchPanel * searchPage = new SearchPanel(this);
+    // connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
   
     connect(insertPage,&InsertCinemaPage::returnCinemaSelectionPage,this,&MainWindow::showCinemaSelectionPage);
     stackedWidget->addWidget(cinemaPage);
-    stackedWidget->addWidget(searchPage);
+    // stackedWidget->addWidget(searchPage);
     stackedWidget->addWidget(insertPage);
     stackedWidget->setCurrentIndex(0);
     stackedWidget->show();
@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::showInsertCinemaPage(){
     insertPage->reset();   
-    stackedWidget->setCurrentIndex(2);
+    stackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::showSelectedCinemaPage(const QString& xmlPath){
