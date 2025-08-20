@@ -172,6 +172,16 @@ ListPersone* InsertMedia::addPersone(const QString& testo, QVBoxLayout* ly){
 void InsertMedia::addTipologiaCombo(QHBoxLayout* baseH){
     QLabel* label = new QLabel("Tipologia");
     comboTipologia = new QComboBox(this);
+
+    comboTipologia->setView(new QListView());
+    comboTipologia->view()->setContentsMargins(0,0,0,0);
+    comboTipologia->view()->setFrameShape(QFrame::NoFrame);
+    comboTipologia->view()->setAttribute(Qt::WA_Hover, true);
+    QFont font;
+    font.setPointSize(12); 
+    comboTipologia->setFont(font);
+    comboTipologia->view()->setFont(font);
+
     comboTipologia->addItem("Film");
     comboTipologia->addItem("Trailer");
     comboTipologia->addItem("Podcast");
@@ -185,6 +195,7 @@ void InsertMedia::addTipologiaCombo(QHBoxLayout* baseH){
     });
 
     comboTipologia->setObjectName("comboTipologia");
+
 }
 
 QTextEdit* InsertMedia::addDescrizione(QHBoxLayout* baseH){

@@ -167,8 +167,8 @@ QComboBox{
 #comboRisoluzione,
 #comboTarget,
 #comboTipologia,
-#dataFine,
-#dataInizio {
+QDateEdit#dataFine:enabled,
+QDateEdit#dataInizio:enabled {
     border: none;   
     border-radius: 10px;
     background-color: #4e7f8b;
@@ -177,43 +177,46 @@ QComboBox{
     font-size: 12pt;
 }
 
-#dataInizio:disabled,
-#dataFine:disabled,
-#dataInizio QLineEdit:disabled,
-#dataFine QLineEdit:disabled {
-    background-color: #4e7f8b;
+QDateEdit#dataInizio:disabled,
+QDateEdit#dataFine:disabled,
+QDateEdit#dataInizio:disabled QLineEdit,
+QDateEdit#dataFine:disabled QLineEdit {
+    background-color: #365961;
     color: #05313c;
+    border-radius: 10px;
 }
-
 
 /* Lista a tendina delle combo */
 #comboFormato QAbstractItemView,
 #comboRisoluzione QAbstractItemView,
 #comboTarget QAbstractItemView,
-#comboTipologia QAbstractItemView{
+#comboTipologia QAbstractItemView {
     border: none;
-    background-color: #4e7f8b;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #4e7f8b; 
+    border-radius: 10px;
     color: #05313c;
-    padding: 5px;
-    outline:0;
+}
+
+#comboFormato QAbstractItemView::item,
+#comboRisoluzione QAbstractItemView::item,
+#comboTarget QAbstractItemView::item,
+#comboTipologia QAbstractItemView::item {
+    padding: 8px 12px;
+    margin: 0;
+    border: none;
+    background-color: #4e7f8b; 
+    color: #05313c;
 }
 
 #comboFormato QAbstractItemView::item:hover,
 #comboRisoluzione QAbstractItemView::item:hover,
 #comboTarget QAbstractItemView::item:hover,
-#comboTipologia QAbstractItemView::item:hover
-{
-    background-color: #4e7f8b; 
-    color: #bdced3;
-}
-
-#comboFormato QAbstractItemView::item:selected,
-#comboRisoluzione QAbstractItemView::item:selected,
-#comboTarget QAbstractItemView::item:selected,
-#comboTipologia QAbstractItemView::item:selected
-{
-    background-color: #4e7f8b; 
-    color: #bdced3;
+#comboTipologia QAbstractItemView::item:hover {
+    background-color: #365961 !important;
+    color: #bdced3 !important;
 }
 
 #comboFormato::down-arrow,

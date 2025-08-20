@@ -1,11 +1,7 @@
 .vscode/
 # Doxygen output
 docs/html/
-<<<<<<< HEAD
-docs/latex/Makefile
-=======
 docs/latex/
->>>>>>> a384d304b62ee4d77feeb13b027d9c012e74c47d
 # File generati da qmake/make
 Makefile
 *.o
