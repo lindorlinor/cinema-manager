@@ -167,6 +167,11 @@ QComboBox{
 #comboRisoluzione,
 #comboTarget,
 #comboTipologia,
+#inputPersone,
+#aggiungi,
+#descrizioneMedia,
+#rimuovi,
+#listapersone,
 QDateEdit#dataFine:enabled,
 QDateEdit#dataInizio:enabled {
     border: none;   
@@ -311,4 +316,35 @@ QDateEdit#dataFine:disabled QLineEdit {
 #costoBaseProiezInserzione::down-arrow 
 {
     image: url(icons/arrow_down.png);
+}
+
+/
+/* descrizione (QTextEdit) */
+#descrizioneMedia QScrollBar:vertical {
+    background: #04303b;
+    width: 12px;
+    margin: 0px 0px 0px 0px;
+    border: 1px solid #04303b;
+    border-radius: 5px;
+}
+
+#descrizioneMedia QScrollBar::handle:vertical {
+    background: #18424d;
+    min-height: 20px;
+    border-radius: 3px;
+}
+
+#descrizioneMedia QScrollBar::add-line:vertical,
+#descrizioneMedia QScrollBar::sub-line:vertical {
+    background: #04303b;
+    border: 1px solid #04303b;
+    height: 12px;
+    border-radius: 5px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+#descrizioneMedia QScrollBar::add-line:vertical:hover,
+#descrizioneMedia QScrollBar::sub-line:vertical:hover {
+    background: #04303b;
 }

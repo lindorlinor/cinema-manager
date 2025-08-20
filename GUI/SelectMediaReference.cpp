@@ -41,7 +41,7 @@ void SelectMediaReference::reloadMedia() {
         delete child;
     }
 
-    QFile file(QDir(QCoreApplication::applicationDirPath()).filePath("../FileJson/media.json"));
+    QFile file(QDir(QCoreApplication::applicationDirPath()).filePath("../media.json"));
     if (!file.open(QIODevice::ReadOnly)) {
         qWarning() << "File JSON non trovato:" << file.fileName();
         return;
@@ -64,6 +64,8 @@ void SelectMediaReference::reloadMedia() {
 
         MediaFrame* mediaframe = new MediaFrame(titolo, imagePath, autore, container);
         layoutContainer->addWidget(mediaframe);
+
+        mediaframe->setCursor(Qt::PointingHandCursor);
 
         connect(mediaframe, &MediaFrame::selected, this, [this](MediaFrame* f){
             if (currentSelected)

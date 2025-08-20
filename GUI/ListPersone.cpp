@@ -2,6 +2,7 @@
 
 ListPersone::ListPersone(QWidget *parent):QWidget(parent){
     inputPersone = new QLineEdit(this);
+    inputPersone->setPlaceholderText("Nome");
     aggiungi = new QPushButton("+",this); 
     rimuovi = new QPushButton("rimuovi",this);
     listapersone = new QListView(this);
@@ -24,6 +25,18 @@ ListPersone::ListPersone(QWidget *parent):QWidget(parent){
     connect(aggiungi, &QPushButton::clicked, this, &ListPersone::addItem);
     connect(rimuovi, &QPushButton::clicked, this, &ListPersone::removeItem);
     connect(inputPersone, &QLineEdit::returnPressed, this, &ListPersone::addItem);
+
+    //style
+    inputPersone->setObjectName("inputPersone");
+    aggiungi->setObjectName("aggiungi");
+    rimuovi->setObjectName("rimuovi");
+    listapersone->setObjectName("listapersone");
+    listapersone->setStyleSheet(    "QListView::item:selected{"
+                                    "background-color: #315057}");
+    rimuovi->setStyleSheet("QPushButton:hover{color: #fed36a; font-weight: bold; background-color: #285965}");
+    aggiungi->setStyleSheet("QPushButton:hover{color: #fed36a; font-weight: bold; background-color: #285965}");
+    aggiungi->setCursor(Qt::PointingHandCursor);
+    rimuovi->setCursor(Qt::PointingHandCursor);
 }
 
 void ListPersone::addItem() {

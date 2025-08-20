@@ -2,7 +2,7 @@
 #include "SearchPanel.h"
 
 InsertMedia::InsertMedia(QWidget *parent): QWidget(parent){
-    mediaManagerJson = new MediaManagerJson("FileJson");
+    mediaManagerJson = new MediaManagerJson("");
     QVBoxLayout* mainLayout = new QVBoxLayout;
     mainLayout->setContentsMargins(0, 0, 0, 0); 
     mainLayout->setSpacing(0);
@@ -35,6 +35,8 @@ void InsertMedia::addInput(QLabel* label,  L* layout, T* inputWidget){
     label->setStyleSheet(   "color: #84a0a8;"
                             "font-size: 14pt;"
                             "font-weight: bold;");
+    label->setMaximumHeight(30);
+    l->setAlignment(Qt::AlignTop);
 }
 
 template<class L, class T>
@@ -59,12 +61,45 @@ void InsertMedia::addEnumList(L* base, const QString& labelText, const std::vect
 
     addInput(label, base, listWidget);
 
+    connect(listWidget, &QListWidget::itemClicked, this, [=](QListWidgetItem* item){
+        if (item->checkState() == Qt::Unchecked)
+            item->setCheckState(Qt::Checked);
+        else
+            item->setCheckState(Qt::Unchecked);
+    });
+
+
     //style
-    listWidget->setStyleSheet(  "border-radius: 10px; " 
+    listWidget->setStyleSheet( "QListWidget{ border-radius: 10px; " 
                                 "background-color: #4e7f8b;"
-                                "color: #05313c;"
+                                "color: #18424d;"
                                 "padding: 10px;"
-                                "font-size: 12pt;");
+                                "font-size: 12pt;}"
+                                
+                                "QScrollBar:vertical { background: #04303b;"       
+                                "width: 12px;"              
+                                "margin: 0px 0px 0px 0px;"
+                                "border: 1px solid #04303b;"
+                                "border-radius: 5px; }"
+
+                                "QScrollBar::handle:vertical {background: #285965;"       
+                                "min-height: 20px;"
+                                "border-radius: 3px;}"
+
+                                "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
+                                "background: #04303b;"         
+                                "border: 1px solid #04303b;" 
+                                "height: 12px;"
+                                "border-radius: 5px;"
+                                "subcontrol-position: top;"  
+                                "subcontrol-origin: margin;}"
+
+                                "QScrollBar::add-line:vertical:hover, QScrollBar::sub-line:vertical:hover {"
+                                "background: #04303b;}");
+
+    listWidget->setSelectionMode(QAbstractItemView::NoSelection); 
+    listWidget->setFocusPolicy(Qt::NoFocus); 
+
 }
 
 template<class L, class T>
@@ -82,7 +117,6 @@ void InsertMedia::addEnumCombo(L* base, const QString& labelText, const std::vec
     comboBox->setCurrentIndex(0);
 
     addInput(label, base, comboBox);
-
 }
                             
 template<class L>
@@ -92,6 +126,9 @@ QLineEdit* InsertMedia::addLineEdit(const QString& testo, L* ly){
     lineEdit->setPlaceholderText(testo);
     addInput(label, ly, lineEdit);
     return lineEdit;
+
+    //style
+    lineEdit->setMaximumHeight(70);
 }
                             
 template<class L>
@@ -208,8 +245,9 @@ QTextEdit* InsertMedia::addDescrizione(QHBoxLayout* baseH){
     
     //style
     textEdit->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    textEdit->setMaximumSize(650,350);
+    textEdit->setMaximumHeight(350);
     textEdit->setAlignment(Qt::AlignTop);
+
 }
 
 QDateEdit* InsertMedia::addDataInizioRilascio(QVBoxLayout* ly) {
@@ -280,7 +318,7 @@ void InsertMedia::checkMediaNameAvailability() {
     QString autore = autoreMedia->text().trimmed();
 
     // Carico la lista dei cinema esistenti
-    MediaManagerJson manager(QDir(QCoreApplication::applicationDirPath()).filePath("../FileJson/"));
+    MediaManagerJson manager(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
     QList<MediaData*> listInsertMedia = manager.loadAll();
     
     bool isAvailable = true;
@@ -336,6 +374,7 @@ void InsertMedia::addTipologiaFilm(QWidget* TipoFilm){              //tipologia 
     TipoFilm->setLayout(filmH);
 
     //style    
+    TipoFilm->setContentsMargins(0,50,0,50);
     CasaProdFilm->setObjectName("CasaProdFilm");
     totPostCreditFilm->setObjectName("totPostCreditFilm");
     costoBigliettoFilm->setObjectName("costoBigliettoFilm");
@@ -351,6 +390,7 @@ void InsertMedia::addTipologiaTrailer(QWidget* TipoTrailer){        //tipologia 
     TipoTrailer->setLayout(TrailerH);
 
     //style
+    TipoTrailer->setContentsMargins(0,50,0,50);
     numeroProiezioniTrailer->setObjectName("numeroProiezioniTrailer");
 }
 
@@ -379,6 +419,7 @@ void InsertMedia::addTipologiaInserzione(QWidget* TipoInserzione){  //tipologia 
     TipoInserzione->setLayout(inserzioneV2);
 
     //style
+    TipoInserzione->setContentsMargins(0,50,0,50);
     aziendaInserzInserzione->setObjectName("aziendaInserzInserzione");
     numeroProiezioniGioInserzione->setObjectName("numeroProiezioniGioInserzione");
     costoBaseProiezInserzione->setObjectName("costoBaseProiezInserzione");
@@ -391,6 +432,7 @@ void InsertMedia::addTipologiaPodcast(QWidget* TipoPodcast){    //tipologia Podc
     TipoPodcast->setLayout(podcastH);
 
     //style
+    TipoPodcast->setContentsMargins(0,50,0,50);
     conduttorePodcast->setObjectName("conduttorePodcast");
 }
 
@@ -410,6 +452,7 @@ void InsertMedia::addTipologiaPuntate(QWidget* TipoPuntata){    //tipologia Punt
     TipoPuntata->setLayout(puntataH);
 
     //style
+    TipoPuntata->setContentsMargins(0,50,0,50);
     numeroPubblicitaPuntata->setObjectName("numeroPubblicitaPuntata");
 }
 
@@ -462,7 +505,7 @@ void InsertMedia::addPagina(QVBoxLayout* mainLayout){
     titolo->setStyleSheet("color: #fed36a;");
     framePath->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     framePath->setMaximumSize(450, 350);
-    framePath->setMinimumSize(320, 150);
+    framePath->setMinimumSize(200, 150);
     copertina->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     copertina->setMaximumSize(450, 500);
     copertina->setAlignment(Qt::AlignCenter);
@@ -477,6 +520,8 @@ void InsertMedia::indietro(QVBoxLayout* mainLayout){        //pulsante indietro
     bottone->setAlignment(Qt::AlignLeft);
     indietroW->setLayout(bottone);
     mainLayout->addWidget(indietroW);
+
+    indietro->setCursor(Qt::PointingHandCursor);
 
     connect(indietro, &QPushButton::clicked, this, [this](){
         this->resetAllInput();
@@ -508,6 +553,9 @@ void InsertMedia::annullaSalva(QVBoxLayout* mainLayout){
         if(referenceTrailer)referenceTrailer->reloadMedia();
     });
 
+    //style
+    cancelButton->setCursor(Qt::PointingHandCursor);
+    saveButton->setCursor(Qt::PointingHandCursor);
 }
 
 void InsertMedia::addTabs(QHBoxLayout* layout){
@@ -583,6 +631,7 @@ void InsertMedia::addBase(QWidget* base){
     durataMinutiMedia->setObjectName("durataMinutiMedia");
     dataInizio->setObjectName("dataInizio");
     dataFine->setObjectName("dataFine");
+    base->setContentsMargins(0,50,0,50);
 }
 
 void InsertMedia::addDescrizione(QWidget* descrizione){
@@ -598,8 +647,33 @@ void InsertMedia::addDescrizione(QWidget* descrizione){
     descrizione->setLayout(descrizioneH);
 
     //style
+    descrizione->setContentsMargins(0,50,0,50);
     comboFormato->setObjectName("comboFormato");
     comboRisoluzione->setObjectName("comboRisoluzione");
+    descrizioneMedia->setObjectName("descrizioneMedia");
+    descrizioneMedia->setStyleSheet( 
+                                "QScrollBar:vertical { background: #04303b;"       
+                                "width: 12px;"              
+                                "margin: 0px 0px 0px 0px;"
+                                "border: 1px solid #04303b;"
+                                "border-radius: 5px; }"
+
+                                "QScrollBar::handle:vertical {background: #285965;"       
+                                "min-height: 20px;"
+                                "border-radius: 3px;}"
+
+                                "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
+                                "background: #04303b;"         
+                                "border: 1px solid #04303b;" 
+                                "height: 12px;"
+                                "border-radius: 5px;"
+                                "subcontrol-position: top;"  
+                                "subcontrol-origin: margin;}"
+
+                                "QScrollBar::add-line:vertical:hover, QScrollBar::sub-line:vertical:hover {"
+                                "background: #04303b;}");
+    descrizione->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    descrizione->setMaximumHeight(650);
 }
 
 void InsertMedia::addTipologia(QWidget* tipologia){

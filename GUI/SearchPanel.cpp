@@ -3,7 +3,6 @@
 
 void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     QMenuBar* menuBar = new QMenuBar(this);
-    menuBar->setContentsMargins(0, 0, 0, 0); 
     
     QMenu* file = new QMenu("File", menuBar);
     QMenu* modifica = new QMenu("Modifica", menuBar);
@@ -23,7 +22,7 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     file->addAction(new QAction("Esporta Sessione", file));
     file->addAction(new QAction("Torna a seleziona Cinema", file));
     file->addAction(new QAction("Esci Senza Salvare", file));
-
+    
     //Menu "Modifica"
     modifica->addAction(new QAction("Modifica Media", modifica));
     modifica->addAction(new QAction("Rimuovi Media", modifica));
@@ -38,6 +37,9 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     connect(file->actions()[6], &QAction::triggered, qApp, &QApplication::quit);
     
     mainLayout->addWidget(menuBar);
+    
+    //style
+    menuBar->setContentsMargins(0, 0, 0, 0); 
 }
 
 void SearchPanel::updateModifierPanel(int index){
@@ -46,8 +48,8 @@ void SearchPanel::updateModifierPanel(int index){
 }
 
 void SearchPanel::addLatoFiltri(QWidget* widgetSinistra){
-    //agginta ricerca latoSinistra
-    QVBoxLayout* latoSinistra = new QVBoxLayout;
+    //agginta ricerca LatoFiltri
+    QVBoxLayout* latoFiltri = new QVBoxLayout;
     QVBoxLayout* selezioneMedia = new QVBoxLayout;
     QWidget* widegetMedia = new QWidget;
 
@@ -74,13 +76,22 @@ void SearchPanel::addLatoFiltri(QWidget* widgetSinistra){
     addMedia = new QPushButton("+ Aggiungi");
     addMedia->setObjectName("addMedia");
     
-    //pannello latoSinistra completo
-    latoSinistra->addSpacing(100);
-    latoSinistra->addWidget(addMedia);
-    latoSinistra->addSpacing(50);
-    latoSinistra->addWidget(widegetMedia);
-    latoSinistra->addWidget(cinema);
-    widgetSinistra->setLayout(latoSinistra);
+    //pannello latoFiltri completo
+    latoFiltri->addSpacing(100);
+    latoFiltri->addWidget(addMedia);
+    latoFiltri->addSpacing(50);
+    latoFiltri->addWidget(widegetMedia);
+    latoFiltri->addWidget(cinema);
+    widgetSinistra->setLayout(latoFiltri);
+
+    //style
+    cinema->setCursor(Qt::PointingHandCursor);
+    addMedia->setCursor(Qt::PointingHandCursor);
+    tutto->setCursor(Qt::PointingHandCursor);
+    film->setCursor(Qt::PointingHandCursor);
+    trailer->setCursor(Qt::PointingHandCursor);
+    inserzione->setCursor(Qt::PointingHandCursor);
+    podcast->setCursor(Qt::PointingHandCursor);
 }
 
 void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
@@ -95,9 +106,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     QPushButton* invioCerca = new QPushButton("icona cerca");
     invioCerca->setObjectName("invioCerca");
     barraCerca->addWidget(cerca);
-    barraCerca->setContentsMargins(50, 10, 100, 0);
     barraCerca->addWidget(invioCerca);
-    
     
     //barra dei filtri
     QComboBox* attivita = new QComboBox;
@@ -105,18 +114,11 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     QComboBox* recenti = new QComboBox;
     QWidget* widgetDestra = new QWidget;
     
-    attivita->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    popolarita->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    recenti->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    
     QPushButton* filtri = new QPushButton("icona Filtri");
     QPushButton* vista = new QPushButton("icona vista");
     
     filtri->setObjectName("filtri");
     vista->setObjectName("vista");
-    
-    filtri->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    vista->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     
     barraFiltri->addWidget(attivita,3);
     barraFiltri->addSpacing(10);
@@ -125,7 +127,6 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     barraFiltri->addWidget(recenti,3);
     barraFiltri->addSpacing(10);
     barraFiltri->addWidget(filtri,1);
-    barraFiltri->setContentsMargins(50, 10, 50, 0);
     barraFiltri->addWidget(vista,1,Qt::AlignRight);
     
     stackLibreria = new QStackedWidget;
@@ -142,20 +143,33 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     widgetDestra->setLayout(latoDestra);
     
     stackModifiche->addWidget(widgetDestra);
-
+    
     //pannello per la libreria
     stackModifiche->setCurrentIndex(0);
-
+    
     //pannello di aggiunta media
     InsertMedia* nuovoMedia = new InsertMedia(this);
     stackModifiche->addWidget(nuovoMedia);
     nuovoMedia->setObjectName("nuovoMedia");
-
+    
     connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
     connect(nuovoMedia, &InsertMedia::tornaIndietro, this, [this](){
         updateModifierPanel(previousIndex);
     });
+    
+    //style
+    attivita->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    popolarita->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    recenti->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    filtri->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    vista->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    barraCerca->setContentsMargins(50, 10, 100, 0);
+    barraFiltri->setContentsMargins(50, 10, 50, 0);
+    invioCerca->setCursor(Qt::PointingHandCursor);
+    filtri->setCursor(Qt::PointingHandCursor);
+    vista->setCursor(Qt::PointingHandCursor);
 }
+
 
 void SearchPanel::updateCerca(const QString& filtro){
     cerca->setPlaceholderText("Cerca in "+filtro+"...");
@@ -169,31 +183,33 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
     stackModifiche->setObjectName("stackModifiche");
     
     QHBoxLayout* ricerca = new QHBoxLayout;
-    ricerca->setContentsMargins(0, 0, 0, 0); 
-    ricerca->setSpacing(0);
-
+    
     addLatoFiltri(widgetFiltri); 
     addLatoDestra(stackModifiche); 
     
     ricerca->addWidget(widgetFiltri,2);
     ricerca->addWidget(stackModifiche,8);
     mainLayout->addLayout(ricerca);
-
+    
     //style
-    widgetFiltri->setMinimumWidth(300);
+    ricerca->setSpacing(0);
+    ricerca->setContentsMargins(0, 0, 0, 0); 
+    widgetFiltri->setMinimumWidth(200);
     widgetFiltri->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    stackModifiche->setMinimumWidth(1050);
+    stackModifiche->setMinimumWidth(800);
     stackModifiche->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
 } 
 
 SearchPanel::SearchPanel(QWidget *parent): QWidget(parent){
     QVBoxLayout* mainLayout = new QVBoxLayout;
-    mainLayout->setContentsMargins(0, 0, 0, 0); 
-    mainLayout->setSpacing(0);
-
+    
     addMenus(mainLayout);
     addPagina(mainLayout);
     
     setLayout(mainLayout);
+    
+    //style
+    mainLayout->setContentsMargins(0, 0, 0, 0); 
+    mainLayout->setSpacing(0);
 }
