@@ -4,6 +4,8 @@ docs/html/
 docs/latex/
 # File generati da qmake/make
 Makefile
+Makefile.Debug
+Makefile.Release
 *.o
 release/
 debug/
