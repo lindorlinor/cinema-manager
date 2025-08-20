@@ -11,24 +11,28 @@
 InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),
                                             frameLayout(new QVBoxLayout),
                                             isAvailable(false),
+                                            hasCustomImage(false),
                                             textInput(new QLineEdit(this)),
                                             imageArea(new InsertImageFrame(this)),
-                                            imageLabel(new QLabel),imagePath(":/../images/image4.png")
+                                            imageLabel(new QLabel),imagePath(":/../images/default.png"),
+                                            escButton(new QPushButton("Annulla")),
+                                            saveButton(new QPushButton("Salva"))
 {
     
-    QFrame* framePrincipale = new QFrame();
-    framePrincipale->setMinimumSize(630, 600);
-    framePrincipale->setMaximumSize(1000, 750);
-    framePrincipale->setLayout(frameLayout);
+    QFrame* frameCentrale = new QFrame(this);
+    frameCentrale->setMinimumSize(630, 600);
+    frameCentrale->setMaximumSize(1000, 750);
+    frameCentrale->setLayout(frameLayout);
     
     createHeader();
 
     createSplitView();
     
     QVBoxLayout * layoutPrincipale = new QVBoxLayout(this);
-    layoutPrincipale->addWidget(framePrincipale);
+    layoutPrincipale->addWidget(frameCentrale);
     layoutPrincipale->setAlignment(Qt::AlignCenter);
     setLayout(layoutPrincipale);
+
     // setStyleSheet("QScrollArea { border: none; } QFrame { background-color: pink} QLabel { background-color: yellow} #caca{background-color: red} #pupu{background-color:blue} #gugu{background-color:purple} #gaga{background-color: green}");
 }
 
@@ -99,16 +103,33 @@ void InsertCinemaPage::saveCinemaInXml() {
     emit returnCinemaSelectionPage();
 }
 
-//per togliere ciò che è stato precedentemente inserito quando la pagina viene richiamata (l'utente ritorna sulla pagina)
+/**
+ * @brief per togliere quello che era stato precedentemente inserito nei campi di input e nella imageArea. 
+ * 
+ * In particolare per farlo: cancella l'input text, setta l'immagine di default, richima @ref InsertImageFrame::reset, setta la label
+ * di errore invisibile, setta il pulsante di salvataggio disabilitato (perchè la input text è vuota)
+ *  
+ * @note reset() viene richiamato sempre dallo slot @ref MainWindow::showInsertCinemaPage che mostra la pagina di inserimento cinema.
+ * Generalmente @ref MainWindow::showInsertCinemaPage è collegato a tutti i pulsanti/oggetti che mandano un segnale per andare alla pagina 
+ * di inserimento di un cinema.
+ * 
+ * @see MainWindow::MainWindow @see CinemaSelectionPage::insertCinema
+ * 
+ */
+
+//@to do e se mettessi che se textInput è clear allora saveButton è disabilitato, con un trigger connect?
 void InsertCinemaPage::reset() {
     textInput->clear();
-    imagePath=":/../images/image4.png";
+    imagePath=":/../images/default.png";
     imageArea->reset();
     errorLabel->setVisible(false);
     saveButton->setEnabled(false);
 }
 
-//appare l'immagine solo quando la finestra ha dimensione minima di 800x600
+/**
+ * @brief imposta l'immagine visibile solo quando la finestra ha dimensione minima 800x600, altrimenti rimane nascosta
+ * 
+ */
 void InsertCinemaPage::resizeEvent(QResizeEvent* event) {
     QWidget::resizeEvent(event);
 
@@ -166,9 +187,8 @@ void InsertCinemaPage::createSplitView(){
     // contenitoredx->setObjectName("gaga");
     imageLabel->setMaximumSize(330,400);
     QPixmap pixmap(":/images/coverCinema.png");
-    imageLabel->setPixmap(pixmap);
     imageLabel->setAlignment(Qt::AlignCenter);
-    pixmap = pixmap.scaled(200, 200, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    imageLabel->setPixmap(pixmap);
 
     splitter->insertWidget(0, imageLabel);
     splitter->addWidget(contenitoredx);
@@ -219,8 +239,7 @@ void InsertCinemaPage::createButtonLayout(QVBoxLayout* layoutdx) {
     QWidget * contenitorePulsanti = new QWidget;
     QHBoxLayout * layoutPulsanti = new QHBoxLayout(contenitorePulsanti);
 
-    escButton = new QPushButton("Annulla");
-    saveButton = new QPushButton("Salva");
+   
     escButton->setFixedSize(160, 40); 
     saveButton->setFixedSize(160, 40); 
 
@@ -228,7 +247,7 @@ void InsertCinemaPage::createButtonLayout(QVBoxLayout* layoutdx) {
     connect(saveButton,&QPushButton::clicked,this,[this](){
         if(!hasCustomImage)
             QMessageBox::information(this, tr("Immagine non selezionata"), tr("Verrà impostata un'immagine di default"));
-        emit saveCinemaInXml();
+        saveCinemaInXml();
     });
 
     layoutPulsanti->addWidget(escButton);

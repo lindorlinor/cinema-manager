@@ -9,14 +9,18 @@ class InsertCinemaPage : public QWidget{
     Q_OBJECT
 private:
     QVBoxLayout* frameLayout;
-    QLineEdit *textInput;
-    InsertImageFrame *imageArea;
-    QString imagePath;
-    QLabel * errorLabel;
+    QLineEdit *textInput; //per il nome del cinema
+    InsertImageFrame *imageArea; //per inserire l'immagine
+    QString imagePath; //path dell'immagine che viene inserito nell'xml quando si clicca su salva
+
+    QLabel * errorLabel; //messaggio nome non disponibile
+
+    //due pulsanti per uscire e salvare rispettivamente
     QPushButton * escButton;
     QPushButton * saveButton; 
     QLabel* imageLabel;
-    void checkCinemaNameAvailability(const QString& text);
+
+    void checkCinemaNameAvailability(const QString& text); //controlla
     bool hasCustomImage;
     bool isAvailable;
     void createHeader();
