@@ -6,17 +6,20 @@
 #include "CinemaButton.h"
 #include "../DataFiles/CinemaXmlRepository.h"
 #include <QHBoxLayout>
+
 class CinemaSelectionPage : public QWidget
 {
     Q_OBJECT
 private:
-    QHBoxLayout* layoutPulsanti;
-    QVector<CinemaButton*> cinemaButtons;
+    QHBoxLayout* cinemaButtonsLayout;
+    QVBoxLayout *frameLayout;
     QList<Cinema> cinemas;
-    void creaBottoneCinema(const QString& nomeC, const QString& imPath, const QString& xmlPath);
+    void createCinemaButton(const QString& nomeC, const QString& imPath, const QString& xmlPath);
+    void createHeader();
+    void createCinemaScroll();
 public:
     CinemaSelectionPage(QWidget *parent);
-    void refresh();
+    void refreshCinemaButtons();
 signals:
     void insertCinema();
     void selectedCinema(const QString& xmlPath);
