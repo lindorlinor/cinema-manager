@@ -167,6 +167,7 @@ class InsertMedia:public QWidget{
 	explicit InsertMedia(QWidget *parent);
 
     signals:
+    void tornaAllaLibreria();
     void tornaIndietro();
     void resetReferenceSelection();
 

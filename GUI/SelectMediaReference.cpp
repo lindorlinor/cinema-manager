@@ -14,23 +14,51 @@ SelectMediaReference::SelectMediaReference(const QString& tipo, QWidget *parent)
     // Container interno per gli item
     container = new QWidget;
     layoutContainer = new QVBoxLayout(container);
-    layoutContainer->addSpacerItem(new QSpacerItem(20, 400, QSizePolicy::Minimum, QSizePolicy::Expanding));
     container->setLayout(layoutContainer);
-
+    
     // Scroll area
     QScrollArea* scrollArea = new QScrollArea(this);
-    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scrollArea->setWidgetResizable(true);
-    scrollArea->setMinimumSize(300, 400);
     scrollArea->setWidget(container);
-
+    
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(scrollArea);
     setLayout(mainLayout);
-
+    
     // Carica inizialmente i media
     reloadMedia();
+    
+    //style
+    layoutContainer->addSpacerItem(new QSpacerItem(20, 400, QSizePolicy::Minimum, QSizePolicy::Expanding));
+    scrollArea->setStyleSheet(
+                                "QScrollArea QWidget{"
+                                    "border-radius: 10px;"
+                                    "background-color: #05313c;"
+                                    "border: none}"
+                                    "QScrollArea{"
+                                    "background: transparent;}"
+                                "QScrollBar:vertical {"
+                                    "background: #4e7f8b;"
+                                    "width: 12px;"
+                                    "margin: 0px;"
+                                    "border: 1px solid #4e7f8b;}"
+                                "QScrollBar::handle:vertical {"
+                                    "background: #d9d9d9;"
+                                    "min-height: 20px;"
+                                    "border-radius: 3px;}"
+                                "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
+                                    "background: #4e7f8b;"
+                                    "border: 1px solid #4e7f8b;"
+                                    "height: 12px;"
+                                    "border-radius: 5px;"
+                                    "subcontrol-position: top;"
+                                    "subcontrol-origin: margin;}"
+                                "QScrollBar::add-line:vertical:hover, QScrollBar::sub-line:vertical:hover {"
+                                    "background: #4e7f8b;}"
+                            );
+    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    mainLayout->setAlignment(Qt::AlignRight);
 }
 
 void SelectMediaReference::reloadMedia() {
@@ -75,6 +103,9 @@ void SelectMediaReference::reloadMedia() {
             emit mediaSelected(f);
         });
     }
+
+    //style
+    layoutContainer->setAlignment(Qt::AlignCenter);
 }
 
 void SelectMediaReference::setSelectFalse() {

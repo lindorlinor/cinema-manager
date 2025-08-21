@@ -4,16 +4,26 @@ MediaFrame::MediaFrame(const QString& titolo, const QString& imagePath,const QSt
     imgLabel = new QLabel;
     pix.load(imagePath);
     imgLabel->setPixmap(pix.scaled(100, 150));
-    imgLabel->setAlignment(Qt::AlignCenter);
     
     QLabel* titoloLabel = new QLabel(titolo);
-    titoloLabel->setAlignment(Qt::AlignCenter);
-
+    
     QVBoxLayout* layout = new QVBoxLayout;
     layout->addWidget(imgLabel);
     layout->addWidget(titoloLabel);
-
+    
     setLayout(layout);
+    
+    //style
+    imgLabel->setAlignment(Qt::AlignCenter);
+    titoloLabel->setAlignment(Qt::AlignCenter);
+    setMaximumSize(250,200);
+    titoloLabel->setMaximumHeight(60);
+    imgLabel->setMaximumHeight(140);
+    imgLabel->setStyleSheet("border:none");
+    titoloLabel->setStyleSheet("color: #bdced3; background-color: #4e7f8b; border:none; font-size: 12pt;");
+    setStyleSheet("background-color: #4e7f8b;");
+    layout->setAlignment(Qt::AlignCenter);
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 }
 
 QString MediaFrame::getTitolo() const{
@@ -30,6 +40,6 @@ void MediaFrame::mousePressEvent(QMouseEvent* event){
 }
 
 void MediaFrame::setSelected(bool selected){
-    if (selected)   this->setStyleSheet("border: 2px solid black;");
-    else            this->setStyleSheet("");
+    if (selected)   setStyleSheet("border: 3px solid #d9d9d9; padding: 0px;  background-color: #4e7f8b");
+    else            setStyleSheet("");
 }

@@ -22,5 +22,53 @@
         "target": 0,
         "tipologia": "film",
         "titolo": "titolooo"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "kermit",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-20",
+        "dataInizioRilascio": "2025-08-20",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
+        "genere": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "path": "images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "altro tiolo"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "a te",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-20",
+        "dataInizioRilascio": "2025-08-20",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
+        "genere": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "path": "images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "mannaggia"
     }
 ]

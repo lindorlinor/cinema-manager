@@ -9,7 +9,7 @@
 } 
 
 QPushButton:hover{
-    background-color: #073c47;
+    background-color: #05313c;
     color: #e9fed46a;
 }
 
@@ -96,12 +96,12 @@ QComboBox{
 
 #latoSinistraSP{
     background-color:#0e4551;
-    border-top:2px solid #073c47;
+    border-top:2px solid #05313c;
 }
 
 #stackModifiche{
-    background-color: #073c47;
-    border-top:2px solid #073c47;
+    background-color: #05313c;
+    border-top:2px solid #05313c;
 }
 
 #widegetMedia QPushButton {
@@ -163,10 +163,6 @@ QComboBox{
 #CasaProdFilm,
 #conduttorePodcast,
 #aziendaInserzInserzione,
-#comboFormato,
-#comboRisoluzione,
-#comboTarget,
-#comboTipologia,
 #inputPersone,
 #aggiungi,
 #descrizioneMedia,
@@ -179,7 +175,7 @@ QDateEdit#dataInizio:enabled {
     background-color: #4e7f8b;
     color: #05313c;
     padding: 8px 12px;
-    font-size: 12pt;
+    font-size: 14pt;
 }
 
 QDateEdit#dataInizio:disabled,
@@ -189,48 +185,6 @@ QDateEdit#dataFine:disabled QLineEdit {
     background-color: #365961;
     color: #05313c;
     border-radius: 10px;
-}
-
-/* Lista a tendina delle combo */
-#comboFormato QAbstractItemView,
-#comboRisoluzione QAbstractItemView,
-#comboTarget QAbstractItemView,
-#comboTipologia QAbstractItemView {
-    border: none;
-    outline: 0;
-    margin: 0;
-    padding: 0;
-    background-color: #4e7f8b; 
-    border-radius: 10px;
-    color: #05313c;
-}
-
-#comboFormato QAbstractItemView::item,
-#comboRisoluzione QAbstractItemView::item,
-#comboTarget QAbstractItemView::item,
-#comboTipologia QAbstractItemView::item {
-    padding: 8px 12px;
-    margin: 0;
-    border: none;
-    background-color: #4e7f8b; 
-    color: #05313c;
-}
-
-#comboFormato QAbstractItemView::item:hover,
-#comboRisoluzione QAbstractItemView::item:hover,
-#comboTarget QAbstractItemView::item:hover,
-#comboTipologia QAbstractItemView::item:hover {
-    background-color: #365961 !important;
-    color: #bdced3 !important;
-}
-
-#comboFormato::down-arrow,
-#comboRisoluzione::down-arrow,
-#comboTarget::down-arrow,
-#comboTipologia::down-arrow,
-#dataInizio::down-arrow,
-#dataFine::down-arrow{
-    image: url(icons/arrow_down.png);
 }
 
 /* SpinBox (campo testo) */
@@ -276,7 +230,7 @@ QDateEdit#dataFine:disabled QLineEdit {
     width: 16px;
     background-color: #4e7f8b;
     border: none;
-}
+} 
 
 #durataMinutiMedia::up-arrow,
 #totPostCreditFilm::up-arrow,
@@ -318,33 +272,103 @@ QDateEdit#dataFine:disabled QLineEdit {
     image: url(icons/arrow_down.png);
 }
 
-/
-/* descrizione (QTextEdit) */
-#descrizioneMedia QScrollBar:vertical {
-    background: #04303b;
-    width: 12px;
-    margin: 0px 0px 0px 0px;
-    border: 1px solid #04303b;
-    border-radius: 5px;
+/* Lista a tendina delle combo */
+#comboFormato,
+#comboRisoluzione,
+#comboTarget,
+#comboTipologia{
+    border: none;   
+    border-radius: 10px;
+    background-color: #4e7f8b;
+    color: #05313c;
+    padding: 0px 12px;
+    font-size: 14pt;
+    min-height: 37px; 
 }
 
-#descrizioneMedia QScrollBar::handle:vertical {
-    background: #18424d;
-    min-height: 20px;
-    border-radius: 3px;
+#comboFormato QAbstractItemView,
+#comboRisoluzione QAbstractItemView,
+#comboTarget QAbstractItemView,
+#comboTipologia QAbstractItemView {
+    border: none;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #4e7f8b; 
+    color: #05313c;
 }
 
-#descrizioneMedia QScrollBar::add-line:vertical,
-#descrizioneMedia QScrollBar::sub-line:vertical {
-    background: #04303b;
-    border: 1px solid #04303b;
-    height: 12px;
-    border-radius: 5px;
-    subcontrol-position: top;
-    subcontrol-origin: margin;
+#comboFormato QAbstractItemView::item,
+#comboRisoluzione QAbstractItemView::item,
+#comboTarget QAbstractItemView::item,
+#comboTipologia QAbstractItemView::item {
+    padding: 8px 12px;
+    margin: 0;
+    border: none;
+    background-color: #4e7f8b; 
+    color: #05313c;
 }
 
-#descrizioneMedia QScrollBar::add-line:vertical:hover,
-#descrizioneMedia QScrollBar::sub-line:vertical:hover {
-    background: #04303b;
+#comboFormato QAbstractItemView::item:hover,
+#comboRisoluzione QAbstractItemView::item:hover,
+#comboTarget QAbstractItemView::item:hover,
+#comboTipologia QAbstractItemView::item:hover {
+    background-color: #365961;
+    color: #bdced3;
+}
+
+#comboFormato::down-arrow,
+#comboRisoluzione::down-arrow,
+#comboTarget::down-arrow,
+#comboTipologia::down-arrow,
+#dataInizio::down-arrow,
+#dataFine::down-arrow{
+    image: url(icons/arrow_down.png);
+}
+
+/* bottoni salva e annulla */
+#indietro,
+#saveButton,
+#cancelButton
+{
+    font-size:18pt;
+    border-radius:10px;
+    padding: 15px 18px
+}
+
+#saveButton:pressed,
+#saveButton{
+    color: #243f46;
+    background-color: #fed36a;
+}
+
+#saveButton:hover{
+    background-color: #b1934a;
+}
+
+QPushButton#saveButton:disabled {
+    background-color: #777777;
+}
+
+#cancelButton:hover{
+    background-color: #0e4551;
+}
+
+#cancelButton:pressed,
+#cancelButton{
+    color: #bdced3;
+    background-color: #285965;
+}
+
+#indietro{
+    color: #bdced3;
+}
+
+#anteprima{
+    background-color: #4e7f8b;
+}
+
+/* stackWidget */
+#stackModifiche{
+    background-color: #073c47;
 }

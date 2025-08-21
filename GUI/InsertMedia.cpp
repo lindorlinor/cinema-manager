@@ -33,7 +33,7 @@ void InsertMedia::addInput(QLabel* label,  L* layout, T* inputWidget){
     //style
     label->setAlignment(Qt::AlignTop);
     label->setStyleSheet(   "color: #84a0a8;"
-                            "font-size: 14pt;"
+                            "font-size: 16pt;"
                             "font-weight: bold;");
     label->setMaximumHeight(30);
     l->setAlignment(Qt::AlignTop);
@@ -72,9 +72,9 @@ void InsertMedia::addEnumList(L* base, const QString& labelText, const std::vect
     //style
     listWidget->setStyleSheet( "QListWidget{ border-radius: 10px; " 
                                 "background-color: #4e7f8b;"
-                                "color: #18424d;"
+                                "color: #05313c;"
                                 "padding: 10px;"
-                                "font-size: 12pt;}"
+                                "font-size: 14pt;}"
                                 
                                 "QScrollBar:vertical { background: #04303b;"       
                                 "width: 12px;"              
@@ -117,6 +117,16 @@ void InsertMedia::addEnumCombo(L* base, const QString& labelText, const std::vec
     comboBox->setCurrentIndex(0);
 
     addInput(label, base, comboBox);
+
+    //style
+    comboBox->setView(new QListView());
+    comboBox->view()->setFrameShape(QFrame::NoFrame);
+    comboBox->view()->setAttribute(Qt::WA_Hover, true);
+
+    QFont font;
+    font.setPointSize(14); 
+    comboBox->setFont(font);
+    comboBox->view()->setFont(font);
 }
                             
 template<class L>
@@ -174,6 +184,9 @@ void InsertMedia::addReference(const QString& testo, const QString& json, L* ly,
     connect(this, &InsertMedia::resetReferenceSelection, reference, [reference](){
         reference->setSelectFalse();
     });
+
+    //style
+    label->setAlignment(Qt::AlignCenter);
 }
 
 template<class EnumType>
@@ -211,11 +224,10 @@ void InsertMedia::addTipologiaCombo(QHBoxLayout* baseH){
     comboTipologia = new QComboBox(this);
 
     comboTipologia->setView(new QListView());
-    comboTipologia->view()->setContentsMargins(0,0,0,0);
     comboTipologia->view()->setFrameShape(QFrame::NoFrame);
     comboTipologia->view()->setAttribute(Qt::WA_Hover, true);
     QFont font;
-    font.setPointSize(12); 
+    font.setPointSize(14); 
     comboTipologia->setFont(font);
     comboTipologia->view()->setFont(font);
 
@@ -374,7 +386,7 @@ void InsertMedia::addTipologiaFilm(QWidget* TipoFilm){              //tipologia 
     TipoFilm->setLayout(filmH);
 
     //style    
-    TipoFilm->setContentsMargins(0,50,0,50);
+    TipoFilm->setContentsMargins(20,50,20,50);
     CasaProdFilm->setObjectName("CasaProdFilm");
     totPostCreditFilm->setObjectName("totPostCreditFilm");
     costoBigliettoFilm->setObjectName("costoBigliettoFilm");
@@ -390,7 +402,7 @@ void InsertMedia::addTipologiaTrailer(QWidget* TipoTrailer){        //tipologia 
     TipoTrailer->setLayout(TrailerH);
 
     //style
-    TipoTrailer->setContentsMargins(0,50,0,50);
+    TipoTrailer->setContentsMargins(20,50,20,50);
     numeroProiezioniTrailer->setObjectName("numeroProiezioniTrailer");
 }
 
@@ -419,7 +431,7 @@ void InsertMedia::addTipologiaInserzione(QWidget* TipoInserzione){  //tipologia 
     TipoInserzione->setLayout(inserzioneV2);
 
     //style
-    TipoInserzione->setContentsMargins(0,50,0,50);
+    TipoInserzione->setContentsMargins(20,50,20,50);
     aziendaInserzInserzione->setObjectName("aziendaInserzInserzione");
     numeroProiezioniGioInserzione->setObjectName("numeroProiezioniGioInserzione");
     costoBaseProiezInserzione->setObjectName("costoBaseProiezInserzione");
@@ -432,7 +444,7 @@ void InsertMedia::addTipologiaPodcast(QWidget* TipoPodcast){    //tipologia Podc
     TipoPodcast->setLayout(podcastH);
 
     //style
-    TipoPodcast->setContentsMargins(0,50,0,50);
+    TipoPodcast->setContentsMargins(20,50,20,50);
     conduttorePodcast->setObjectName("conduttorePodcast");
 }
 
@@ -452,7 +464,7 @@ void InsertMedia::addTipologiaPuntate(QWidget* TipoPuntata){    //tipologia Punt
     TipoPuntata->setLayout(puntataH);
 
     //style
-    TipoPuntata->setContentsMargins(0,50,0,50);
+    TipoPuntata->setContentsMargins(20,50,20,50);
     numeroPubblicitaPuntata->setObjectName("numeroPubblicitaPuntata");
 }
 
@@ -467,45 +479,69 @@ void InsertMedia::addPagina(QVBoxLayout* mainLayout){
     QVBoxLayout* paginaV1 = new QVBoxLayout();
     QVBoxLayout* paginaV2 = new QVBoxLayout();
     QVBoxLayout* paginaV3 = new QVBoxLayout();
+    QVBoxLayout* paginaV4 = new QVBoxLayout();
     QHBoxLayout* paginaH = new QHBoxLayout();
     QWidget* widgetPagina1 = new QWidget();
     QWidget* widgetPagina2 = new QWidget();
     QWidget* widgetPagina3 = new QWidget();
+    QWidget* widgetPagina4 = new QWidget();
 
     QLabel* titolo = new QLabel("Aggiungi un elemento alla libreria");
     framePath = new InsertImageFrame;
     QPixmap pixmap(":images/default.png");
     copertina = new QLabel(this);
-
-    //paginaV3->setAlignment(Qt::AlignCenter);
+    QLabel* anteprima = new QLabel("Anteprima immagine",this);
     
+    paginaV1->addSpacing(25);
     paginaV1->addWidget(copertina);
+    paginaV1->addSpacing(25);
     paginaV1->addWidget(framePath);
-
-    paginaV1->setAlignment(Qt::AlignCenter);
-
     widgetPagina1->setLayout(paginaV1);
-    paginaH->addWidget(widgetPagina1);
+    paginaV2->addWidget(anteprima);
+    paginaV2->addWidget(widgetPagina1);
+
+    widgetPagina2->setLayout(paginaV2);
+    paginaH->addWidget(widgetPagina2);
     addTabs(paginaH);
-    widgetPagina2->setLayout(paginaH);
-    paginaV2->addWidget(titolo);
-    paginaV2->addWidget(widgetPagina2);
-    widgetPagina3->setLayout(paginaV2);
+    widgetPagina3->setLayout(paginaH);
+    paginaV3->addWidget(titolo);
+    paginaV3->addWidget(widgetPagina3);
+    widgetPagina4->setLayout(paginaV3);
     
-    mainLayout->addWidget(widgetPagina3);
+    mainLayout->addWidget(widgetPagina4);
     
     connect(framePath,&InsertImageFrame::clicked,this,&InsertMedia::chooseImage);
     
     //style
+    widgetPagina1->setObjectName("anteprima");
+    paginaV2->setAlignment(Qt::AlignCenter);
     titolo->setAlignment(Qt::AlignTop);
-    QFont font = titolo->font();
-    font.setPointSize(24);
-    font.setBold(true);
-    titolo->setFont(font);
+    titolo->setContentsMargins(0,0,0,80);
+    anteprima->setAlignment(Qt::AlignLeft);
+    titolo->setContentsMargins(0,0,0,10);
+    anteprima->setStyleSheet("color: #bdced3");
+
+    QFont fontAnteprima = anteprima->font();
+    fontAnteprima.setPointSize(12);
+    fontAnteprima.setBold(true);
+    anteprima->setFont(fontAnteprima);
+
+    QFont fontTitolo = titolo->font();
+    fontTitolo.setPointSize(28);
+    fontTitolo.setBold(true);
+    titolo->setFont(fontTitolo);
+
     titolo->setStyleSheet("color: #fed36a;");
     framePath->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    framePath->setMaximumSize(450, 350);
+    framePath->setMaximumSize(450, 250);
     framePath->setMinimumSize(200, 150);
+    
+    framePath->setText("<span style='color:#05313c; font-size:16px;'><b> +<u>Aggiungi copertina</u></b></span><br>"
+                  "<span style='color:#05313c;; font-size:16px;'> oppure rilasciala</span>");
+    framePath->setStyleSheet(   "#frame { border: 3px dashed #05313c; border-radius: 12px; } "
+                                "QLabel { qproperty-alignment: AlignCenter; } ");
+    framePath->setCursor(Qt::PointingHandCursor);
+    
     copertina->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     copertina->setMaximumSize(450, 500);
     copertina->setAlignment(Qt::AlignCenter);
@@ -514,7 +550,7 @@ void InsertMedia::addPagina(QVBoxLayout* mainLayout){
 
 void InsertMedia::indietro(QVBoxLayout* mainLayout){        //pulsante indietro
     QHBoxLayout* bottone = new QHBoxLayout;
-    QPushButton* indietro = new QPushButton("← indietro");
+    QPushButton* indietro = new QPushButton("← indietro",this);
     QWidget* indietroW = new QWidget;
     bottone->addWidget(indietro);
     bottone->setAlignment(Qt::AlignLeft);
@@ -527,6 +563,9 @@ void InsertMedia::indietro(QVBoxLayout* mainLayout){        //pulsante indietro
         this->resetAllInput();
         this->tornaIndietro();
     }); 
+
+    //style
+    indietro->setObjectName("indietro");
 }
 
 void InsertMedia::annullaSalva(QVBoxLayout* mainLayout){
@@ -535,6 +574,7 @@ void InsertMedia::annullaSalva(QVBoxLayout* mainLayout){
     QWidget* asWidget = new QWidget;
     QHBoxLayout* asH = new QHBoxLayout;
     asH->addWidget(cancelButton);
+    asH->addSpacing(100);
     asH->addWidget(saveButton);
     asWidget->setLayout(asH);
     mainLayout->addWidget(asWidget);
@@ -543,12 +583,12 @@ void InsertMedia::annullaSalva(QVBoxLayout* mainLayout){
 
     connect(cancelButton, &QPushButton::clicked, this, [this](){
         this->resetAllInput();
-        this->tornaIndietro(); 
+        this->tornaAllaLibreria(); 
     });//poi da modificare facendolo tornare alla pagina della libreria di default
     connect(saveButton, &QPushButton::clicked, this, [this]() {
         this->salvaMedia();
         this->resetAllInput();
-        this->tornaIndietro();
+        this->tornaAllaLibreria();
         if(referencePuntate)referencePuntate->reloadMedia();
         if(referenceTrailer)referenceTrailer->reloadMedia();
     });
@@ -556,6 +596,8 @@ void InsertMedia::annullaSalva(QVBoxLayout* mainLayout){
     //style
     cancelButton->setCursor(Qt::PointingHandCursor);
     saveButton->setCursor(Qt::PointingHandCursor);
+    cancelButton->setObjectName("cancelButton");
+    saveButton->setObjectName("saveButton");
 }
 
 void InsertMedia::addTabs(QHBoxLayout* layout){
@@ -576,10 +618,32 @@ void InsertMedia::addTabs(QHBoxLayout* layout){
     layout->addWidget(tab,2);
     
     //style
+    tab->tabBar()->setCursor(Qt::PointingHandCursor);
     tab->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    tab->setMaximumSize(900,850);
+    tab->setMaximumSize(1050,850);
+    tab->setMinimumWidth(500);
     tab->setContentsMargins(0,20,tab->width()/80,tab->height()/70);
-    tab->setStyleSheet("QTabWidget { background-color: #05313c; }");
+    tab->setStyleSheet(
+                        "QTabWidget::pane {border: none; background-color: #05313c;}"
+                        "QTabBar::tab {"
+                        "    background-color: #073c47;"
+                        "    color: #4e7f8b;"
+                        "    border-right: 5px solid #05313c;"
+                        "    border-top: 5px solid #05313c;"
+                        "    border-top-left-radius: 10px; "
+                        "    border-top-right-radius: 10px; "
+                        "    min-width: 100px;"
+                        "    padding: 5px 12px;"
+                        "    font-size: 14pt;"
+                        "}"
+                        "QTabBar::tab:selected {"
+                        "    background-color: #05313c;"
+                        "    color: #afc5cc;"
+                        "}"
+                        "QTabBar::tab:first{"
+                        "margin-left: 20px;}"
+                    );
+
 }
 
 
@@ -631,7 +695,8 @@ void InsertMedia::addBase(QWidget* base){
     durataMinutiMedia->setObjectName("durataMinutiMedia");
     dataInizio->setObjectName("dataInizio");
     dataFine->setObjectName("dataFine");
-    base->setContentsMargins(0,50,0,50);
+    base->setContentsMargins(20,50,20,50);
+    baseV1->setAlignment(Qt::AlignTop);
 }
 
 void InsertMedia::addDescrizione(QWidget* descrizione){
@@ -647,7 +712,7 @@ void InsertMedia::addDescrizione(QWidget* descrizione){
     descrizione->setLayout(descrizioneH);
 
     //style
-    descrizione->setContentsMargins(0,50,0,50);
+    descrizione->setContentsMargins(20,50,20,50);
     comboFormato->setObjectName("comboFormato");
     comboRisoluzione->setObjectName("comboRisoluzione");
     descrizioneMedia->setObjectName("descrizioneMedia");
@@ -890,7 +955,12 @@ void InsertMedia::resetAllInput(){
     if(descrizioneMedia) descrizioneMedia->clear();
 
     // InsertImageFrame
-    if(framePath) framePath->setText("Clicca per inserire un'immagine"); 
+    if(framePath){
+        framePath->setText("<span style='color:#05313c; font-size:16px;'><b> +<u>Aggiungi copertina</u></b></span><br>"
+                      "<span style='color:#05313c;; font-size:16px;'> oppure rilasciala</span>");
+        framePath->setStyleSheet(   "#frame { border: 3px dashed #05313c; border-radius: 12px; } "
+                                    "QLabel { qproperty-alignment: AlignCenter; } "); 
+    }     
 
     // QListWidget
     if(listLingue) 

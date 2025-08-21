@@ -43,8 +43,10 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
 }
 
 void SearchPanel::updateModifierPanel(int index){
-    previousIndex=stackModifiche->currentIndex();
-    stackModifiche->setCurrentIndex(index);
+    if(stackModifiche->currentIndex()!=index){
+        previousIndex = stackModifiche->currentIndex();
+        stackModifiche->setCurrentIndex(index);
+    } 
 }
 
 void SearchPanel::addLatoFiltri(QWidget* widgetSinistra){
@@ -146,6 +148,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     
     //pannello per la libreria
     stackModifiche->setCurrentIndex(0);
+    previousIndex=0;
     
     //pannello di aggiunta media
     InsertMedia* nuovoMedia = new InsertMedia(this);
@@ -155,6 +158,9 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
     connect(nuovoMedia, &InsertMedia::tornaIndietro, this, [this](){
         updateModifierPanel(previousIndex);
+    });
+    connect(nuovoMedia, &InsertMedia::tornaAllaLibreria, this, [this](){
+        updateModifierPanel(0);
     });
     
     //style
@@ -179,8 +185,6 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
     QWidget* widgetFiltri = new QWidget;
     stackModifiche = new QStackedWidget;
 
-    widgetFiltri->setObjectName("latoSinistraSP");
-    stackModifiche->setObjectName("stackModifiche");
     
     QHBoxLayout* ricerca = new QHBoxLayout;
     
@@ -192,6 +196,8 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
     mainLayout->addLayout(ricerca);
     
     //style
+    widgetFiltri->setObjectName("latoSinistraSP");
+    stackModifiche->setObjectName("stackModifiche");
     ricerca->setSpacing(0);
     ricerca->setContentsMargins(0, 0, 0, 0); 
     widgetFiltri->setMinimumWidth(200);
