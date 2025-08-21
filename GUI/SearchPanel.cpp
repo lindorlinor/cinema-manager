@@ -1,5 +1,6 @@
 #include "SearchPanel.h"
 #include "InsertMedia.h"
+#include "DetailPageVisitor.h"
 
 void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     QMenuBar* menuBar = new QMenuBar(this);
@@ -147,7 +148,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     stackModifiche->addWidget(widgetDestra);
     
     //pannello per la libreria
-    stackModifiche->setCurrentIndex(0);
+    // stackModifiche->setCurrentIndex(0);
     previousIndex=0;
     
     //pannello di aggiunta media
@@ -162,6 +163,29 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     connect(nuovoMedia, &InsertMedia::tornaAllaLibreria, this, [this](){
         updateModifierPanel(0);
     });
+
+    /*ROBA DA MODIFICARE, LA METTO QUI PER FARE LA PAGINA DI VISUALIZZAZIONE*/
+    DetailPageVisitor* visitor = new DetailPageVisitor(); 
+    Film* film = new Film(
+                            "Il mio vicino Totoro (RE-RELEASE 2025)",
+                            "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
+                            year_month_day{2025y/June/1d},
+                            year_month_day{2025y/June/30d},
+                            86,
+                            Formato::DCP,
+                            Risoluzione::UHD_4K_2160p,
+                            Genere::Animazione,
+                            1,      
+                            12.50,
+                            "Studio Ghibli",
+                            "Hayao Miyazaki",
+                            "path/totoro_poster.jpg",
+                            Classificazione::TUTTI
+                        );
+    film->accept(visitor);
+    QWidget * detailPage = visitor->getWidget();
+    stackModifiche->addWidget(detailPage);
+    stackModifiche->setCurrentIndex(2);
     
     //style
     attivita->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);

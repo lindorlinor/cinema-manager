@@ -155,21 +155,21 @@ void Media::setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio) {
 
 
 // // Metodi get
-// string Media::getAutore() const{
-//     return m_autore;
-// }
-// string Media::getTitolo() const {
-//     return m_titolo;
-// }
+string Media::getAutore() const{
+    return m_autore;
+}
+string Media::getTitolo() const {
+    return m_titolo;
+}
 
-// string Media::getDescrizione() const {
-//     return m_descrizione;
-// }
+string Media::getDescrizione() const {
+    return m_descrizione;
+}
 
-// vector<Lingua> Media::getLingue() const {
-//     return m_lingueDisponibili;
-// }
+vector<Lingua> Media::getLingue() const {
+    return m_lingueDisponibili;
+}
 
-// vector<Lingua> Media::getSottotitoli() const {
-//     return m_sottotitoliDisponibili;
-// }
+vector<Lingua> Media::getSottotitoli() const {
+    return m_sottotitoliDisponibili;
+}

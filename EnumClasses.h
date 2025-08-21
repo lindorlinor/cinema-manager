@@ -146,6 +146,7 @@ inline std::vector<Classificazione> tutteLeClassificazioni() {
 
 enum class Genere {
     Azione, 
+    Animazione,
     Avventura,
     Commedia, 
     Crime,
@@ -157,7 +158,6 @@ enum class Genere {
     Mistero,
     Western,
     Documentario,
-    Animazione,
     Storico,
     Romantico,
     Supereroi
@@ -166,6 +166,7 @@ enum class Genere {
 inline const char* toString(Genere g) {
     switch (g) {
         case Genere::Azione: return "Azione";
+        case Genere::Animazione: return "Animazione";
         case Genere::Avventura: return "Avventura";
         case Genere::Commedia: return "Commedia";
         case Genere::Crime: return "Crime";
@@ -177,7 +178,6 @@ inline const char* toString(Genere g) {
         case Genere::Mistero: return "Mistero";
         case Genere::Western: return "Western";
         case Genere::Documentario: return "Documentario";
-        case Genere::Animazione: return "Animazione";
         case Genere::Storico: return "Storico";
         case Genere::Romantico: return "Romantico";
         case Genere::Supereroi: return "Supereroi";

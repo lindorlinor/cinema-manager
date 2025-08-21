@@ -30,6 +30,7 @@ HEADERS +=  \
             Puntata.h \
             catch.hpp \
             MediaVisitor.h \
+            DetailPageVisitor.h \
             GUI/CinemaButton.h \
             GUI/MainWindow.h \
             GUI/CinemaSelectionPage.h \
@@ -51,6 +52,7 @@ SOURCES +=  \
             Film.cpp \
             Podcast.cpp \
             Puntata.cpp \
+            DetailPageVisitor.cpp \
             test/test.cpp \
             GUI/CinemaButton.cpp \
             GUI/MainWindow.cpp \

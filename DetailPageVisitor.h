@@ -1,0 +1,24 @@
+#ifndef DETAILPAGEVISITOR_H
+#define DETAILPAGEVISITOR_H
+
+#include <QWidget>
+#include "MediaVisitor.h" 
+
+class DetailPageVisitor : public MediaVisitor {
+private:
+    QWidget* detailPage; 
+
+public:
+    DetailPageVisitor();
+    ~DetailPageVisitor() override = default;
+
+    QWidget* getWidget() const;
+
+    void visit(Film* film) override;
+    void visit(Trailer* trailer) override;
+    void visit(Inserzione* inserzione) override;
+    void visit(Podcast* podcast) override;
+    void visit(Puntata* puntata) override;
+};
+
+#endif // DETAILPAGEVISITOR_H

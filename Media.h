@@ -49,11 +49,11 @@ public:
     // //metodi getescrizione(const string& descrizione);
     
     // //metodi get
-    // string getAutore() const;
-    // string getTitolo() const;
-    // string getDescrizione() const;
-    // vector<Lingua> getLingue() const;
-    // vector<Lingua> getSottotitoli() const;
+    string getAutore() const;
+    string getTitolo() const;
+    string getDescrizione() const;
+    vector<Lingua> getLingue() const;
+    vector<Lingua> getSottotitoli() const;
     
     void aggiungiLingua(Lingua lingua);
     void aggiungiSottotitolo(Lingua lingua);
