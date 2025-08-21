@@ -7,7 +7,6 @@
 class DetailPageVisitor : public MediaVisitor {
 private:
     QWidget* detailPage; 
-
 public:
     DetailPageVisitor();
     ~DetailPageVisitor() override = default;

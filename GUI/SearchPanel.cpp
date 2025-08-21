@@ -179,9 +179,12 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
                             12.50,
                             "Studio Ghibli",
                             "Hayao Miyazaki",
-                            "path/totoro_poster.jpg",
+                            ":/images/image9.png",
                             Classificazione::TUTTI
                         );
+    film->aggiungiLingua(Lingua::Italiano);
+    film->aggiungiLingua(Lingua::Inglese);
+    film->aggiungiSottotitolo(Lingua::Italiano);
     film->accept(visitor);
     QWidget * detailPage = visitor->getWidget();
     stackModifiche->addWidget(detailPage);

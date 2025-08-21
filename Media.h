@@ -31,7 +31,7 @@ private:
     Formato m_formato;
     Risoluzione m_risoluzione;
     string m_autore;
-    string m_path;
+    string m_imPath;
     year_month_day m_dataLastViewUpdate;
     unsigned int m_visualizzazioni;
     
@@ -40,7 +40,7 @@ private:
 public:
     Media(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
           year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
-          const string &autore = "Sconosciuto", const string &path = "immGrigia");
+          const string &autore = "Sconosciuto", const string &imPath = "immGrigia");
 
     // //metodi set
     // void setAutore(const string& autore);
@@ -54,6 +54,7 @@ public:
     string getDescrizione() const;
     vector<Lingua> getLingue() const;
     vector<Lingua> getSottotitoli() const;
+    string getImPath() const;
     
     void aggiungiLingua(Lingua lingua);
     void aggiungiSottotitolo(Lingua lingua);

@@ -10,7 +10,7 @@ Media::Media(const string &titolo, const string &descrizione, year_month_day gg_
              const string &autore, const string &path) : m_titolo(titolo), m_descrizione(descrizione), m_dataInizioRilascio(gg_mm_aaInizioRilascio),
                                                          m_dataFineRilascio(gg_mm_aaFineRilascio<gg_mm_aaInizioRilascio?gg_mm_aaInizioRilascio:gg_mm_aaFineRilascio), 
                                                          m_durataMinuti(durataMinuti), m_formato(formato),
-                                                         m_risoluzione(risoluzione), m_autore(autore), m_path(path),
+                                                         m_risoluzione(risoluzione), m_autore(autore), m_imPath(path),
                                                          m_dataLastViewUpdate(gg_mm_aaInizioRilascio), m_visualizzazioni(0) {}
 
 bool Media::FuoriProduzione() const
@@ -113,6 +113,12 @@ Risoluzione Media::getRisoluzione() const
 {
     return m_risoluzione;
 }
+
+string Media::getImPath() const
+{
+    return m_imPath;
+}
+
 
 void Media::IncrementaVisualizzazioni()
 {
