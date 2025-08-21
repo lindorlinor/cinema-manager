@@ -33,7 +33,9 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     visualizza->addAction(new QAction("Visualizza Podcast", visualizza));
     //Menu "Altro"
     altro->addAction(new QAction("Cambia Vista", altro));
-    connect(file->actions()[5],&QAction::triggered, this, [this](){emit escSearchPanel();});
+    connect(file->actions()[5],&QAction::triggered, this, [this](){ emit escSearchPanel(); 
+                                                                    if(stackModifiche->currentIndex()==1) emit resetPages();
+                                                                    stackModifiche->setCurrentIndex(0);});
     connect(file->actions()[6], &QAction::triggered, qApp, &QApplication::quit);
     
     mainLayout->addWidget(menuBar);
@@ -155,6 +157,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     stackModifiche->addWidget(nuovoMedia);
     nuovoMedia->setObjectName("nuovoMedia");
     
+    connect(this, &SearchPanel::resetPages, nuovoMedia, &InsertMedia::resetAllInput);
     connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
     connect(nuovoMedia, &InsertMedia::tornaIndietro, this, [this](){
         updateModifierPanel(previousIndex);

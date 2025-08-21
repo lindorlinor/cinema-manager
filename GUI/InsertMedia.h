@@ -22,6 +22,7 @@
 #include <QDoubleSpinBox>
 #include <QStackedLayout>
 #include <QScrollBar>
+#include <QCalendarWidget>
 
 #include "InsertImageFrame.h"
 #include "ListPersone.h"
@@ -92,7 +93,6 @@ class InsertMedia:public QWidget{
     QString imagePath; 
 
     //reset dell'input messo sui widget, divisi per tipologia. Sono necessari quando si premono i pulsanti: salva, annulla, indietro o quando si cambia tipologia
-    void resetAllInput();
     void resetInputFilm();
     void resetInputTrailer();
     void resetInputPodcast();
@@ -106,23 +106,23 @@ class InsertMedia:public QWidget{
     QLabel* copertina;
     SelectMediaReference* referenceTrailer;
     SelectMediaReference* referencePuntate;
-
-   //aggiunta elementi della pagina InsertMedia
+    
+    //aggiunta elementi della pagina InsertMedia
     void addPagina(QVBoxLayout* mainLayout);        //pagine principale: viene aggiunta la parte del tab e della "selezione compertina"
     void indietro(QVBoxLayout* mainLayout);         //aggiunge il pulsante per tornare alla scehrmata precedente
     void annullaSalva(QVBoxLayout* mainLayout);     //aggiunge i pulsanti per annullare e salvare
-
+    
     void addTabs(QHBoxLayout* mainLayout);          //inserisce i tab di: base, descrizione e specifiche tipologia
-        void addBase(QWidget* base);
-        void addDescrizione(QWidget* descrizione);
+    void addBase(QWidget* base);
+    void addDescrizione(QWidget* descrizione);
         void addTipologia(QWidget* tipologia);
         
         
     //metodi funzionali per il corretto comportamento della pagina
     void updateTabTipologia(int index);     //cambia il contenuto del tab "selezione tipologia" quando viene selezionata una tipologia diversa
     void checkMediaNameAvailability();
-   
-   
+    
+    
     //salvataggio degli input su un file Json
     void salvaMedia();                       //salva tutti i dati raccolti in un file json
     void saveCommonFields(MediaData &data);  //salva i campi comuni alle varie tipologie (richiamato da salvaMedia)
@@ -131,11 +131,11 @@ class InsertMedia:public QWidget{
     
     template<class L, class T>
     void addInput(QLabel* label,  L* layout, T* inputWidget);                                                   /* dato che tutti gli input sono nella forma: "label, widget di input" si è preferito utilizzare 
-                                                                                                                un template per pulizia del codice */
+    un template per pulizia del codice */
     template<class L, class T>
     void addEnumList(L* base, const QString& labelText, const std::vector<T>& items, QListWidget*& listWidget); /* utilizzando lo stesso pattern più volte, si è preferito costruire un template per aggiungere i 
-                                                                                                                seguenti widget:selezione della lingue, seleizone dei sottotitoli, selezione dei generi, selezione 
-                                                                                                                delle fasce orarie */
+    seguenti widget:selezione della lingue, seleizone dei sottotitoli, selezione dei generi, selezione 
+    delle fasce orarie */
     template<class L, class T>
     void addEnumCombo(L* base, const QString& labelText, const std::vector<T>& items, QComboBox*& comboBox);    //lo stesso principio ma per le singole selezioni: selezione dei formati, selezione delle risoluzioni
     
@@ -154,7 +154,7 @@ class InsertMedia:public QWidget{
     template<class EnumType>
     vector<EnumType> getSelectedList(QListWidget* list);                                                        //ottiene i selezionati di una QListWidget
     
-
+    
     //widget di input da aggiungere, sono stati fatti dei metodi perché utilizzati più volte o per pulizia del codice
     ListPersone* addPersone(const QString& testo, QVBoxLayout* ly);                                             //aggiungono il widget di ListPersone, utilizzato in Film e Podcast
     void addTipologiaCombo(QHBoxLayout* baseH);
@@ -165,6 +165,7 @@ class InsertMedia:public QWidget{
     
     public:
 	explicit InsertMedia(QWidget *parent);
+    void resetAllInput();
     
     signals:
     void tornaAllaLibreria();
@@ -172,7 +173,7 @@ class InsertMedia:public QWidget{
     void resetReferenceSelection();
     
     public slots:
-    void chooseImage();                      //assegna l'immagine
+    void chooseImage();                      //rimuove l'immagine precedentemente selezionata
     void removeImage();                      //rimuove l'immagine precedentemente selezionata
     
 };

@@ -79,7 +79,7 @@ void InsertCinemaPage::chooseImage(){
 }
 
 void InsertCinemaPage::removeImage(){
-    imagePath=":/../images/image4.png";  //qui bisogna mettere l'immagine di default che vogliamo mettere 
+    imagePath=":/images/default.png";  //qui bisogna mettere l'immagine di default che vogliamo mettere 
     hasCustomImage = false;
 }
 
@@ -116,7 +116,7 @@ void InsertCinemaPage::saveCinemaInXml() {
 //@to do e se mettessi che se textInput è clear allora saveButton è disabilitato, con un trigger connect?
 void InsertCinemaPage::reset() {
     textInput->clear();
-    imagePath=":/../images/default.png";
+    imagePath=":/images/default.png";
     imageArea->reset();
     errorLabel->setVisible(false);
     saveButton->setEnabled(false);

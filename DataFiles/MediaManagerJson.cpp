@@ -43,9 +43,7 @@ void MediaManagerJson::saveCommonFields(const MediaData &data, QJsonObject &obj)
     obj["formato"] = static_cast<int>(data.formato);
     obj["risoluzione"] = static_cast<int>(data.risoluzione);
 
-    QDir dir(QDir::currentPath());
-    QString relativePath = dir.relativeFilePath(data.path);
-    obj["path"] = relativePath;
+    obj["path"] = data.path;
 
     QJsonArray arrayLingue;
     for (Lingua l : data.lingueDisponibili) {

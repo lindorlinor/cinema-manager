@@ -169,12 +169,12 @@ void InsertMedia::addReference(const QString& testo, const QString& json, L* ly,
     addInput(label, ly, reference);
     
     connect(reference, &SelectMediaReference::mediaSelected, this, [this, json](MediaFrame* f){
-        if(json == "films"){
+        if(json == "film"){
             titoloFilmRirefimento = f->getTitolo();
             autoreFilmRiferimento = f->getAutore();
             saveButton->setEnabled(true);
         }
-        else if(json == "podcasts"){
+        else if(json == "podcast"){
             titoloPodcastRiferimento = f->getTitolo();
             autorePodcastRiferimento = f->getAutore();
             saveButton->setEnabled(true);
@@ -269,6 +269,9 @@ QDateEdit* InsertMedia::addDataInizioRilascio(QVBoxLayout* ly) {
     dataInizio->setCalendarPopup(true);
     dataInizio->setDisplayFormat("dd/MM/yyyy");
     dataInizio->setDate(QDate::currentDate());
+    QCalendarWidget* calendar = new QCalendarWidget;
+    calendar->setMinimumSize(280,180); 
+    dataInizio->setCalendarWidget(calendar);
 
     addInput(label, ly, dataInizio);  
     return dataInizio;
@@ -281,6 +284,9 @@ QDateEdit* InsertMedia::addDataFineRilascio(QVBoxLayout* ly) {
     dataFine->setCalendarPopup(true);
     dataFine->setDisplayFormat("dd/MM/yyyy");
     dataFine->setDate(QDate::currentDate());
+    QCalendarWidget* calendar = new QCalendarWidget;
+    calendar->setMinimumSize(280,180); 
+    dataFine->setCalendarWidget(calendar);
 
     connect(dataInizio, &QDateEdit::dateChanged, dataFine, &QDateEdit::setMinimumDate);
 
@@ -350,7 +356,9 @@ void InsertMedia::checkMediaNameAvailability() {
             errorLabel->setVisible(true);
         }
         saveButton->setEnabled(false); // disabilita bottone
-    } else {
+    } else if(  (stackTipologia->currentIndex()==1 && autoreFilmRiferimento!="" && titoloFilmRirefimento !="")||
+                (stackTipologia->currentIndex()==3 && autorePodcastRiferimento != "" && titoloPodcastRiferimento !="")||
+                (stackTipologia->currentIndex()!=3 && stackTipologia->currentIndex()!=1)){
         errorLabel->setVisible(false);
         saveButton->setEnabled(true);
     }
@@ -493,7 +501,7 @@ void InsertMedia::addPagina(QVBoxLayout* mainLayout){
                                         "QLabel { qproperty-alignment: AlignCenter; }" 
                                         "QToolButton { border: none; color: #073c47; font-weight: bold; } "
                                         "QToolButton:hover { color: #ffffffff; }", this);
-    QPixmap pixmap(":images/default.png");
+    QPixmap pixmap(":/images/default.png");
     copertina = new QLabel(this);
     QLabel* anteprima = new QLabel("Anteprima immagine",this);
     
@@ -637,6 +645,9 @@ void InsertMedia::addTabs(QHBoxLayout* layout){
                         "    padding: 5px 12px;"
                         "    font-size: 14pt;"
                         "}"
+                        "QTabBar QToolButton{"
+                        "background-color: #4e7f8b; border:2px solid #05313c; border-top-left-radius: 5px; border-top-right-radius: 5px;}"
+                        "QTabBar QToolButton::left-arrow {image: url(:/icons/arrow_left.png);} QTabBar QToolButton::right-arrow{image: url(:/icons/arrow_right.png);}"
                         "QTabBar::tab:selected {"
                         "    background-color: #05313c;"
                         "    color: #afc5cc;"
@@ -672,7 +683,7 @@ void InsertMedia::addBase(QWidget* base){
     addTipologiaCombo(baseH1);
     widget1->setLayout(baseH1);
     
-    durataMinutiMedia = addSpin("Durata",0,500,0,baseH2);
+    durataMinutiMedia = addSpin("Durata (min)",0,500,0,baseH2);
     addEnumList(baseH2, "Lingue", tutteLeLingue(), listLingue);
     addEnumList(baseH2, "Sottotitoli", tutteLeLingue(), listSottotitoli);
     dataInizio = addDataInizioRilascio(baseV1);
@@ -784,7 +795,7 @@ void InsertMedia::saveCommonFields(MediaData &data) {       //funzione per salva
     data.sottotitoliDisponibili = getSelectedList<Lingua>(listSottotitoli);
     data.formato = static_cast<Formato>(comboFormato->currentData().toInt());
     data.risoluzione = static_cast<Risoluzione>(comboRisoluzione->currentData().toInt());
-    data.path = imagePath==""?"images/default.png":imagePath;
+    data.path = imagePath==""?":/images/default.png":imagePath;
 }
 
 
@@ -877,7 +888,7 @@ void InsertMedia::chooseImage(){
     );
 
     if (!fileName.isEmpty()) {
-        imagePath = fileName;
+        imagePath = ":/images/" + QFileInfo(fileName).fileName();
         QPixmap pixmap(imagePath);
         copertina->setPixmap(pixmap.scaled(325,450, Qt::KeepAspectRatio, Qt::SmoothTransformation));
         copertina->setAlignment(Qt::AlignCenter);
@@ -886,9 +897,9 @@ void InsertMedia::chooseImage(){
 }
 
 void InsertMedia::removeImage(){
-    QPixmap pixmap(":images/default.png"); 
+    QPixmap pixmap(":/images/default.png"); 
     copertina->setPixmap(pixmap.scaled(430,430, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-    imagePath = "";
+    imagePath.clear();
 }
 
 
@@ -963,14 +974,7 @@ void InsertMedia::resetAllInput(){
     if(descrizioneMedia) descrizioneMedia->clear();
 
     // InsertImageFrame
-    if(framePath){
-        framePath->setText("<span style='color:#05313c; font-size:16px;'><b> +<u>Aggiungi copertina</u></b></span><br>"
-                      "<span style='color:#05313c;; font-size:16px;'> oppure rilasciala</span>");
-        framePath->setStyleSheet(   "#frame { border: 3px dashed #05313c; border-radius: 12px; } "
-                                    "QLabel { qproperty-alignment: AlignCenter; }" 
-                                    "QToolButton { border: none; color: #BDCED3; font-weight: bold; } "
-                                    "QToolButton:hover { color: #ffffffff; }"); 
-    }     
+    if(framePath)        framePath->reset();
 
     // QListWidget
     if(listLingue) 
@@ -993,7 +997,7 @@ void InsertMedia::resetAllInput(){
     if(dataInizio) dataInizio->setDate(QDate::currentDate());
     if(dataFine) dataFine->setDate(QDate::currentDate());
     
-    QPixmap pixmap(":images/default.png"); 
+    QPixmap pixmap(":/images/default.png"); 
     copertina->setPixmap(pixmap.scaled(430,430, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     checkMediaNameAvailability();
     stackTipologia->setCurrentIndex(0);

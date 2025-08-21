@@ -258,7 +258,7 @@ QDateEdit#dataFine:disabled QLineEdit {
 #costoBigliettoFilm::up-arrow,
 #costoBaseProiezInserzione::up-arrow
 {
-    image: url(icons/arrow_up.png);
+    image: url(:/icons/arrow_up.png);
 }
 
 #durataMinutiMedia::down-arrow,
@@ -269,7 +269,7 @@ QDateEdit#dataFine:disabled QLineEdit {
 #costoBigliettoFilm::down-arrow,
 #costoBaseProiezInserzione::down-arrow 
 {
-    image: url(icons/arrow_down.png);
+    image: url(:/icons/arrow_down.png);
 }
 
 /* Lista a tendina delle combo */
@@ -323,7 +323,7 @@ QDateEdit#dataFine:disabled QLineEdit {
 #comboTipologia::down-arrow,
 #dataInizio::down-arrow,
 #dataFine::down-arrow{
-    image: url(icons/arrow_down.png);
+    image: url(:/icons/arrow_down.png);
 }
 
 /* bottoni salva e annulla */

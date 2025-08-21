@@ -1,74 +1,36 @@
 [
     {
         "attoriPrincipali": [
+            "kermit",
+            "kermit 2",
+            "kermit clone"
         ],
-        "autore": "autoreeee",
-        "casaDiProduzione": "",
+        "autore": "autore antipatico",
+        "casaDiProduzione": "mia",
         "costoBiglietto": 8,
-        "dataFineRilascio": "2025-08-20",
-        "dataInizioRilascio": "2025-08-20",
-        "descrizione": "",
-        "durataMinuti": 0,
-        "formato": 0,
+        "dataFineRilascio": "2025-08-24",
+        "dataInizioRilascio": "2025-08-21",
+        "descrizione": "descrizioncina",
+        "durataMinuti": 80,
+        "formato": 6,
         "genere": [
+            1,
+            2
         ],
         "lingueDisponibili": [
+            1,
+            2,
+            3
         ],
-        "nPostCredit": 0,
-        "path": "images/default.png",
-        "risoluzione": 0,
+        "nPostCredit": 5,
+        "path": ":/images/film2.png",
+        "risoluzione": 3,
         "sottotitoliDisponibili": [
+            0,
+            1
         ],
         "target": 0,
         "tipologia": "film",
-        "titolo": "titolooo"
-    },
-    {
-        "attoriPrincipali": [
-        ],
-        "autore": "kermit",
-        "casaDiProduzione": "",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-08-20",
-        "dataInizioRilascio": "2025-08-20",
-        "descrizione": "",
-        "durataMinuti": 0,
-        "formato": 0,
-        "genere": [
-        ],
-        "lingueDisponibili": [
-        ],
-        "nPostCredit": 0,
-        "path": "images/default.png",
-        "risoluzione": 0,
-        "sottotitoliDisponibili": [
-        ],
-        "target": 0,
-        "tipologia": "film",
-        "titolo": "altro tiolo"
-    },
-    {
-        "attoriPrincipali": [
-        ],
-        "autore": "a te",
-        "casaDiProduzione": "",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-08-20",
-        "dataInizioRilascio": "2025-08-20",
-        "descrizione": "",
-        "durataMinuti": 0,
-        "formato": 0,
-        "genere": [
-        ],
-        "lingueDisponibili": [
-        ],
-        "nPostCredit": 0,
-        "path": "images/default.png",
-        "risoluzione": 0,
-        "sottotitoliDisponibili": [
-        ],
-        "target": 0,
-        "tipologia": "film",
-        "titolo": "mannaggia"
+        "titolo": "film carino"
     }
 ]

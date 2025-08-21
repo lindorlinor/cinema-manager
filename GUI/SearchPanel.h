@@ -92,6 +92,7 @@ class SearchPanel:public QWidget{
 
     signals:
     void escSearchPanel();
+    void resetPages();
 };
 
 #endif //SEARCHPANEL_H
