@@ -21,6 +21,7 @@
 #include <QDateEdit>
 #include <QDoubleSpinBox>
 #include <QStackedLayout>
+#include <QScrollBar>
 
 #include "InsertImageFrame.h"
 #include "ListPersone.h"

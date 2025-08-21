@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     stackedWidget->addWidget(insertPage);
     stackedWidget->setCurrentIndex(0);
     stackedWidget->show();
-    resize(630, 600); 
+    resize(1300, 900); 
     QDir dir(QCoreApplication::applicationDirPath());
     dir.cdUp();  // Da /release → [PROJECT_ROOT]
 

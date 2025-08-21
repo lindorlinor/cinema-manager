@@ -33,7 +33,7 @@ SelectMediaReference::SelectMediaReference(const QString& tipo, QWidget *parent)
     scrollArea->setStyleSheet(
                                 "QScrollArea QWidget{"
                                     "border-radius: 10px;"
-                                    "background-color: #05313c;"
+                                    "background-color: #073c47;"
                                     "border: none}"
                                     "QScrollArea{"
                                     "background: transparent;}"

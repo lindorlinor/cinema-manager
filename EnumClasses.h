@@ -20,15 +20,7 @@ enum class Formato {
     WAV_7_1,
     MP4,
     MOV_H264,
-    GIF,
-    PNG,
-    JPG,
-    WEBP,
-    PDF,
     TIFF,
-    AI,
-    EPS,
-    HTML,
     IMAX_3D
 };
 
@@ -42,15 +34,7 @@ inline const char* toString(Formato f) {
         case Formato::WAV_7_1: return "WAV 7.1";
         case Formato::MP4: return "MP4";
         case Formato::MOV_H264: return "MOV H264";
-        case Formato::GIF: return "GIF";
-        case Formato::PNG: return "PNG";
-        case Formato::JPG: return "JPG";
-        case Formato::WEBP: return "WEBP";
-        case Formato::PDF: return "PDF";
         case Formato::TIFF: return "TIFF";
-        case Formato::AI: return "AI";
-        case Formato::EPS: return "EPS";
-        case Formato::HTML: return "HTML";
         case Formato::IMAX_3D: return "IMAX 3D";
         default: return "Non trovato";
     }
@@ -66,15 +50,7 @@ inline std::vector<Formato> tuttiIFormati() {
         Formato::WAV_7_1,
         Formato::MP4,
         Formato::MOV_H264,
-        Formato::GIF,
-        Formato::PNG,
-        Formato::JPG,
-        Formato::WEBP,
-        Formato::PDF,
         Formato::TIFF,
-        Formato::AI,
-        Formato::EPS,
-        Formato::HTML,
         Formato::IMAX_3D
     };
 }

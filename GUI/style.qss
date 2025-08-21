@@ -290,7 +290,7 @@ QDateEdit#dataFine:disabled QLineEdit {
 #comboRisoluzione QAbstractItemView,
 #comboTarget QAbstractItemView,
 #comboTipologia QAbstractItemView {
-    border: none;
+    border: 3px solid #05313c;
     outline: 0;
     margin: 0;
     padding: 0;

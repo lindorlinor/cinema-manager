@@ -10,6 +10,7 @@ InsertMedia::InsertMedia(QWidget *parent): QWidget(parent){
     indietro(mainLayout);
     addPagina(mainLayout);
     annullaSalva(mainLayout);
+    mainLayout->setContentsMargins(100,0,0,0);
     
     setLayout(mainLayout);
 }
@@ -54,6 +55,7 @@ void InsertMedia::addEnumList(L* base, const QString& labelText, const std::vect
             continue; // salto quelli con stringa "Non trovato"
         }
         QListWidgetItem* item = new QListWidgetItem(QString::fromUtf8(str), listWidget);
+
         item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
         item->setCheckState(Qt::Unchecked);
         item->setData(Qt::UserRole, static_cast<int>(e));
@@ -62,10 +64,7 @@ void InsertMedia::addEnumList(L* base, const QString& labelText, const std::vect
     addInput(label, base, listWidget);
 
     connect(listWidget, &QListWidget::itemClicked, this, [=](QListWidgetItem* item){
-        if (item->checkState() == Qt::Unchecked)
-            item->setCheckState(Qt::Checked);
-        else
-            item->setCheckState(Qt::Unchecked);
+        item->setCheckState(item->checkState() == Qt::Checked ? Qt::Unchecked : Qt::Checked);
     });
 
 
@@ -122,6 +121,7 @@ void InsertMedia::addEnumCombo(L* base, const QString& labelText, const std::vec
     comboBox->setView(new QListView());
     comboBox->view()->setFrameShape(QFrame::NoFrame);
     comboBox->view()->setAttribute(Qt::WA_Hover, true);
+    comboBox->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
     QFont font;
     font.setPointSize(14); 
@@ -661,9 +661,10 @@ void InsertMedia::addBase(QWidget* base){
 
     //Messaggio di errore
     errorLabel = new QLabel(this);
-    errorLabel->setStyleSheet("color: red; font-size: 11px;");
+    errorLabel->setStyleSheet("color: red; font-size: 12pt;");
     errorLabel->setText("");
     errorLabel->setVisible(false);
+    errorLabel->setAlignment(Qt::AlignCenter);
     
     titoloMedia = addLineEdit("Titolo*", baseH1);
     autoreMedia = addLineEdit("Autore*", baseH1);
@@ -680,8 +681,8 @@ void InsertMedia::addBase(QWidget* base){
     widget3->setLayout(baseH2);
     
     baseV2->addWidget(widget1,2);
-    baseV2->addWidget(widget3,2);
     baseV2->addWidget(errorLabel);
+    baseV2->addWidget(widget3,2);
     baseV2->setContentsMargins(30,20,30,150);
     
     base->setLayout(baseV2);
