@@ -157,6 +157,127 @@ QComboBox{
 
  */
 
+/* PAGINA SEARCHPANEL */
+
+/* lato filtri */
+#widgetFiltri{
+    background-color: #0e4551;
+}
+
+/* bottone aggiungi */
+#addMedia{
+    background-color:#05323c;
+    color: #bdced3;
+    border-radius: 35px;
+    font-size: 20pt;
+    padding: 30px 50px; 
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+#addMedia:hover{
+    color: #fed36a;
+}
+
+#tutto,
+#film,
+#trailer,
+#inserzione,
+#podcast,
+#cinema{
+    background-color: #0e4551;
+    font-size: 18pt;
+    color: #afc5cc;
+    margin-left: 35px;
+    margin-right: 40px;
+    width: 280px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+#tutto:hover,
+#film:hover,
+#trailer:hover,
+#inserzione:hover,
+#podcast:hover,
+#cinema:hover{
+    color: #fed36a;
+}
+
+#tutto:checked,
+#film:checked,
+#trailer:checked,
+#inserzione:checked,
+#podcast:checked,
+#cinema:checked{
+    color: #fed36a;
+    text-decoration: underline;
+}
+
+#cinema{
+    margin-bottom: 50px;
+}
+
+/* pulsanti dei filtri e vista (solo icone) */
+#filtri,
+#vista{
+    background-color: #073c47;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#filtri:hover,
+#vista:hover{
+    background-color: #05323c;
+}
+
+/* barra di ricerca */
+#cerca{
+    background-color: #05313c;
+    border-radius: 25px;
+    padding-left: 40;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    color: #bdced3;
+    font-size: 14pt;
+    margin-right: 220px;
+}
+
+/* Menu Bar */
+#menuBar,
+#file,
+#modifica,
+#visualizza,
+#altro{
+    background-color: #05313c;
+    color: #bec4c5;
+    font-size: 14pt;
+    padding: 5px 12px;
+}
+
+#file,
+#modifica,
+#visualizza,
+#altro{
+    border: 1px solid #be708084;
+    border-radius:8px;
+}
+
+#file::item:selected,
+#modifica::item:selected,
+#visualizza::item:selected,
+#altro::item:selected,
+#menuBar::item:selected{
+    color: #05313c;
+    background-color: #4e7f8b;
+}
+
+
+
+
+
+
+/* PAGINA INSERTMEDIA */
 /* LineEdit + ComboBox (parte visibile) */
 #titoloMedia,
 #autoreMedia,
@@ -272,7 +393,11 @@ QDateEdit#dataFine:disabled QLineEdit {
     image: url(:/icons/arrow_down.png);
 }
 
+
 /* Lista a tendina delle combo */
+#attivita,      /*di searchpanel */
+#popolarita,    /*di searchpanel */
+#recenti,       /*di searchpanel */
 #comboFormato,
 #comboRisoluzione,
 #comboTarget,
@@ -286,11 +411,16 @@ QDateEdit#dataFine:disabled QLineEdit {
     min-height: 37px; 
 }
 
+#attivita QAbstractItemView,      /*di searchpanel */
+#popolarita QAbstractItemView,    /*di searchpanel */
+#recenti QAbstractItemView,       /*di searchpanel */
 #comboFormato QAbstractItemView,
 #comboRisoluzione QAbstractItemView,
 #comboTarget QAbstractItemView,
 #comboTipologia QAbstractItemView {
-    border: 3px solid #05313c;
+    border-bottom: 3px solid #05313c;
+    border-left: 3px solid #05313c;
+    border-right: 3px solid #05313c;
     outline: 0;
     margin: 0;
     padding: 0;
@@ -298,6 +428,9 @@ QDateEdit#dataFine:disabled QLineEdit {
     color: #05313c;
 }
 
+#attivita QAbstractItemView::item,      /*di searchpanel */
+#popolarita QAbstractItemView::item,    /*di searchpanel */
+#recenti QAbstractItemView::item,       /*di searchpanel */
 #comboFormato QAbstractItemView::item,
 #comboRisoluzione QAbstractItemView::item,
 #comboTarget QAbstractItemView::item,
@@ -309,6 +442,9 @@ QDateEdit#dataFine:disabled QLineEdit {
     color: #05313c;
 }
 
+#attivita QAbstractItemView::item:hover,      /*di searchpanel */
+#popolarita QAbstractItemView::item:hover,    /*di searchpanel */
+#recenti QAbstractItemView::item:hover,       /*di searchpanel */
 #comboFormato QAbstractItemView::item:hover,
 #comboRisoluzione QAbstractItemView::item:hover,
 #comboTarget QAbstractItemView::item:hover,
@@ -317,6 +453,9 @@ QDateEdit#dataFine:disabled QLineEdit {
     color: #bdced3;
 }
 
+#attivita::down-arrow,      /*di searchpanel */
+#popolarita::down-arrow,    /*di searchpanel */
+#recenti::down-arrow,       /*di searchpanel */
 #comboFormato::down-arrow,
 #comboRisoluzione::down-arrow,
 #comboTarget::down-arrow,

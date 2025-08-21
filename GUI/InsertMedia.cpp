@@ -172,13 +172,12 @@ void InsertMedia::addReference(const QString& testo, const QString& json, L* ly,
         if(json == "film"){
             titoloFilmRirefimento = f->getTitolo();
             autoreFilmRiferimento = f->getAutore();
-            saveButton->setEnabled(true);
         }
         else if(json == "podcast"){
             titoloPodcastRiferimento = f->getTitolo();
             autorePodcastRiferimento = f->getAutore();
-            saveButton->setEnabled(true);
         }
+        checkMediaNameAvailability();
     });
 
     connect(this, &InsertMedia::resetReferenceSelection, reference, [reference](){

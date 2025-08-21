@@ -33,15 +33,24 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     visualizza->addAction(new QAction("Visualizza Podcast", visualizza));
     //Menu "Altro"
     altro->addAction(new QAction("Cambia Vista", altro));
+    altro->addAction(new QAction("Full Screen", altro));
+    altro->addAction(new QAction("Exit Full Screen", altro));
     connect(file->actions()[5],&QAction::triggered, this, [this](){ emit escSearchPanel(); 
                                                                     if(stackModifiche->currentIndex()==1) emit resetPages();
                                                                     stackModifiche->setCurrentIndex(0);});
     connect(file->actions()[6], &QAction::triggered, qApp, &QApplication::quit);
+    connect(altro->actions()[1], &QAction::triggered, this, &SearchPanel::setFullScreen);
+    connect(altro->actions()[2], &QAction::triggered, this, &SearchPanel::escFullScreen);
     
     mainLayout->addWidget(menuBar);
     
     //style
     menuBar->setContentsMargins(0, 0, 0, 0); 
+    menuBar->setObjectName("menuBar");
+    file->setObjectName("file");
+    modifica->setObjectName("modifica");
+    visualizza->setObjectName("visualizza");
+    altro->setObjectName("altro");
 }
 
 void SearchPanel::updateModifierPanel(int index){
@@ -51,24 +60,24 @@ void SearchPanel::updateModifierPanel(int index){
     } 
 }
 
-void SearchPanel::addLatoFiltri(QWidget* widgetSinistra){
+void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     //agginta ricerca LatoFiltri
     QVBoxLayout* latoFiltri = new QVBoxLayout;
     QVBoxLayout* selezioneMedia = new QVBoxLayout;
     QWidget* widegetMedia = new QWidget;
-
-    widegetMedia->setObjectName("widegetMedia");
-    
-    //selezione Cinema
-    QPushButton* cinema = new QPushButton("Cinema nome");
-    cinema->setObjectName("cinema");
     
     //selezione Media
-    tutto = new QPushButton("Tutto");
-    film = new QPushButton("Film");
-    trailer = new QPushButton("Trailer");
-    inserzione = new QPushButton("Inserzione");
-    podcast = new QPushButton("Podcast");
+    tutto = new QToolButton(this);
+    film = new QToolButton(this);
+    trailer = new QToolButton(this);
+    inserzione = new QToolButton(this);
+    podcast = new QToolButton(this);
+    tutto->setText("Tutto");
+    film->setText("Film");
+    trailer->setText("Trailer");
+    inserzione->setText("Inserzione");
+    podcast->setText("Podcast");
+    
     selezioneMedia->addWidget(tutto);
     selezioneMedia->addWidget(film);
     selezioneMedia->addWidget(trailer);
@@ -78,17 +87,34 @@ void SearchPanel::addLatoFiltri(QWidget* widgetSinistra){
     
     //aggiungi Media
     addMedia = new QPushButton("+ Aggiungi");
-    addMedia->setObjectName("addMedia");
+    
+    //aggiungi pulsante cinema
+    cinema = new QToolButton(this);
     
     //pannello latoFiltri completo
-    latoFiltri->addSpacing(100);
+    latoFiltri->addSpacing(60);
     latoFiltri->addWidget(addMedia);
-    latoFiltri->addSpacing(50);
+    latoFiltri->addSpacing(60);
     latoFiltri->addWidget(widegetMedia);
+    latoFiltri->addSpacing(370);
     latoFiltri->addWidget(cinema);
-    widgetSinistra->setLayout(latoFiltri);
+    widgetFiltri->setLayout(latoFiltri);
+    
+
+    connect(cinema, &QToolButton::clicked, this, [this](){ emit escSearchPanel(); 
+                                                                    if(stackModifiche->currentIndex()==1) emit resetPages();
+                                                                    stackModifiche->setCurrentIndex(0);});
 
     //style
+
+    addMedia->setObjectName("addMedia");
+    widegetMedia->setObjectName("widegetMedia");
+    cinema->setObjectName("cinema");
+    tutto->setObjectName("tutto");
+    film->setObjectName("film");
+    trailer->setObjectName("trailer");
+    inserzione->setObjectName("inserzione");
+    podcast->setObjectName("podcast");
     cinema->setCursor(Qt::PointingHandCursor);
     addMedia->setCursor(Qt::PointingHandCursor);
     tutto->setCursor(Qt::PointingHandCursor);
@@ -96,21 +122,50 @@ void SearchPanel::addLatoFiltri(QWidget* widgetSinistra){
     trailer->setCursor(Qt::PointingHandCursor);
     inserzione->setCursor(Qt::PointingHandCursor);
     podcast->setCursor(Qt::PointingHandCursor);
+    tutto->setCheckable(true);
+    film->setCheckable(true);
+    trailer->setCheckable(true);
+    inserzione->setCheckable(true);
+    podcast->setCheckable(true);
+    tutto->setChecked(true);
+    
+    //set icone
+    QIcon iconaCinema(":/icons/exit.png");
+    QIcon iconaFilm(":/icons/Film.png");
+    QIcon iconaTrailer(":/icons/trailer.png");
+    QIcon iconaPodcast(":/icons/podcast.png");
+    QIcon iconaInserzione(":/icons/inserzione.png");
+    QIcon iconaTutto(":/icons/tutto.png");
+    cinema->setIcon(iconaCinema);
+    film->setIcon(iconaFilm);
+    trailer->setIcon(iconaTrailer);
+    inserzione->setIcon(iconaInserzione);
+    podcast->setIcon(iconaPodcast);
+    tutto->setIcon(iconaTutto);
+    
+    cinema->setIconSize(QSize(35,35));
+    film->setIconSize(QSize(45,35));
+    trailer->setIconSize(QSize(45,25));
+    inserzione->setIconSize(QSize(45,35));
+    podcast->setIconSize(QSize(45,35));
+    tutto->setIconSize(QSize(45,35));
+    cinema->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    film->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    trailer->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    inserzione->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    podcast->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    tutto->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 }
 
 void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     //aggiunta ricerca superiore
     QVBoxLayout* latoDestra = new QVBoxLayout;
-    QHBoxLayout* barraCerca = new QHBoxLayout;
     QHBoxLayout* barraFiltri = new QHBoxLayout;
+    QWidget* widgetFiltri = new QWidget;
     
     //barra di ricerca
     cerca = new QLineEdit;
     cerca->setPlaceholderText("Cerca in Tutto...");
-    QPushButton* invioCerca = new QPushButton("icona cerca");
-    invioCerca->setObjectName("invioCerca");
-    barraCerca->addWidget(cerca);
-    barraCerca->addWidget(invioCerca);
     
     //barra dei filtri
     QComboBox* attivita = new QComboBox;
@@ -118,11 +173,15 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     QComboBox* recenti = new QComboBox;
     QWidget* widgetDestra = new QWidget;
     
-    QPushButton* filtri = new QPushButton("icona Filtri");
-    QPushButton* vista = new QPushButton("icona vista");
-    
-    filtri->setObjectName("filtri");
-    vista->setObjectName("vista");
+    QToolButton* filtri = new QToolButton(this);
+    QToolButton* vista = new QToolButton(this);
+
+    attivita->addItem("Attivi");
+    attivita->addItem("Non Attivi");
+    popolarita->addItem("Popolari");
+    popolarita->addItem("Non Popolari");
+    recenti->addItem("Recenti");
+    recenti->addItem("Non Recenti");
     
     barraFiltri->addWidget(attivita,3);
     barraFiltri->addSpacing(10);
@@ -132,18 +191,19 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     barraFiltri->addSpacing(10);
     barraFiltri->addWidget(filtri,1);
     barraFiltri->addWidget(vista,1,Qt::AlignRight);
+    widgetFiltri->setLayout(barraFiltri);
     
     stackLibreria = new QStackedWidget;
     
-    connect(tutto, &QPushButton::clicked, this, [this](){SearchPanel::updateCerca("Tutto");}); //uso una lambda per passare la stringa "Tutto" poiché non è possibile chiamare la funzione
-    connect(film, &QPushButton::clicked, this, [this](){SearchPanel::updateCerca("Film");});
-    connect(trailer, &QPushButton::clicked, this, [this](){SearchPanel::updateCerca("Trailer");});
-    connect(inserzione, &QPushButton::clicked, this, [this](){SearchPanel::updateCerca("Inserzioni");});
-    connect(podcast, &QPushButton::clicked, this, [this](){SearchPanel::updateCerca("Podcast");});
+    connect(tutto, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Tutto");}); //uso una lambda per passare la stringa "Tutto" poiché non è possibile chiamare la funzione
+    connect(film, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Film");});
+    connect(trailer, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Trailer");});
+    connect(inserzione, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Inserzioni");});
+    connect(podcast, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Podcast");});
     
-    latoDestra->addLayout(barraCerca,2);
-    latoDestra->addLayout(barraFiltri,1);
-    latoDestra->addWidget(stackLibreria,5);
+    latoDestra->addWidget(cerca);
+    latoDestra->addWidget(widgetFiltri);
+    latoDestra->addWidget(stackLibreria);
     widgetDestra->setLayout(latoDestra);
     
     stackModifiche->addWidget(widgetDestra);
@@ -155,7 +215,6 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     //pannello di aggiunta media
     InsertMedia* nuovoMedia = new InsertMedia(this);
     stackModifiche->addWidget(nuovoMedia);
-    nuovoMedia->setObjectName("nuovoMedia");
     
     connect(this, &SearchPanel::resetPages, nuovoMedia, &InsertMedia::resetAllInput);
     connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
@@ -167,21 +226,50 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     });
     
     //style
+    attivita->setView(new QListView());
+    attivita->view()->setFrameShape(QFrame::NoFrame);
+    attivita->view()->setAttribute(Qt::WA_Hover, true);
+    popolarita->setView(new QListView());
+    popolarita->view()->setFrameShape(QFrame::NoFrame);
+    popolarita->view()->setAttribute(Qt::WA_Hover, true);
+    recenti->setView(new QListView());
+    recenti->view()->setFrameShape(QFrame::NoFrame);
+    recenti->view()->setAttribute(Qt::WA_Hover, true);
+
+    filtri->setObjectName("filtri");
+    vista->setObjectName("vista");
+    cerca->setObjectName("cerca");
+    attivita->setObjectName("attivita");
+    popolarita->setObjectName("popolarita");
+    recenti->setObjectName("recenti");
     attivita->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     popolarita->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     recenti->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     filtri->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     vista->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    barraCerca->setContentsMargins(50, 10, 100, 0);
+    cerca->setContentsMargins(50, 10, 100, 0);
     barraFiltri->setContentsMargins(50, 10, 50, 0);
-    invioCerca->setCursor(Qt::PointingHandCursor);
     filtri->setCursor(Qt::PointingHandCursor);
     vista->setCursor(Qt::PointingHandCursor);
+
+    //icone
+    QIcon iconaVista(":/icons/vista.png");
+    QIcon iconaFiltri(":/icons/filtri.png");
+    vista->setIcon(iconaVista);
+    filtri->setIcon(iconaFiltri);
+    vista->setIconSize(QSize(40,40));
+    filtri->setIconSize(QSize(35,35));
 }
 
 
 void SearchPanel::updateCerca(const QString& filtro){
     cerca->setPlaceholderText("Cerca in "+filtro+"...");
+
+    tutto->setChecked(filtro == "Tutto");
+    film->setChecked(filtro == "Film");
+    trailer->setChecked(filtro == "Trailer");
+    inserzione->setChecked(filtro == "Inserzioni");
+    podcast->setChecked(filtro == "Podcast");
 }
 
 void SearchPanel::addPagina(QVBoxLayout* mainLayout){
@@ -199,7 +287,7 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
     mainLayout->addLayout(ricerca);
     
     //style
-    widgetFiltri->setObjectName("latoSinistraSP");
+    widgetFiltri->setObjectName("widgetFiltri");
     stackModifiche->setObjectName("stackModifiche");
     ricerca->setSpacing(0);
     ricerca->setContentsMargins(0, 0, 0, 0); 
@@ -221,4 +309,28 @@ SearchPanel::SearchPanel(QWidget *parent): QWidget(parent){
     //style
     mainLayout->setContentsMargins(0, 0, 0, 0); 
     mainLayout->setSpacing(0);
+}
+
+void SearchPanel::updateNomeCinema(const QString& nome){
+    //selezione Cinema
+    
+    QFile file(nome);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "Impossibile aprire il file!";
+        return;
+    }
+    
+    QString contenuto = file.readAll();
+    file.close();
+    
+    QRegularExpression regex("<nome>(.*)</nome>");
+    QRegularExpressionMatch match = regex.match(contenuto);
+
+    if (match.hasMatch()) {
+        QString testo = match.captured(1);
+        cinema->setText("Cinema "+testo);
+    } else {
+        qDebug() << "Tag <nome> non trovato!";
+    }
+
 }

@@ -11,7 +11,11 @@
 #include <QHBoxLayout>
 #include <QMenuBar>
 #include <QApplication>
+#include <QIcon>
 #include <QFile>
+#include <QToolButton>
+
+#include "CinemaSelectionPage.h"
 
 class SearchPanel:public QWidget{
     Q_OBJECT
@@ -26,12 +30,18 @@ class SearchPanel:public QWidget{
     * filtrano i Media tra: tutto, film, trailer, inserzione, podcast
     */
     
-    QPushButton* tutto;
-    QPushButton* film;
-    QPushButton* trailer;
-    QPushButton* inserzione;
-    QPushButton* podcast;
-   
+    QToolButton* tutto;
+    QToolButton* film;
+    QToolButton* trailer;
+    QToolButton* inserzione;
+    QToolButton* podcast;
+    
+    //torna alla selezione del cinema
+    /**
+    * @brief Pulsante per tornare alla selezione del cinema
+    */
+    QToolButton* cinema;
+    
     //aggiunta media
     /**
     * @brief Pulsante per aggiungere un Media
@@ -88,9 +98,12 @@ class SearchPanel:public QWidget{
     */
     public slots:
     void updateModifierPanel(int index);
-
-
+    void updateNomeCinema(const QString& nome);
+    
+    
     signals:
+    void setFullScreen();
+    void escFullScreen();
     void escSearchPanel();
     void resetPages();
 };
