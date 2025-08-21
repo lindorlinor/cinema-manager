@@ -14,7 +14,7 @@ public:
 
 signals:
     void clicked();
-    void removeImage();   // nuovo segnale
+    void removeImage();
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -22,7 +22,7 @@ protected:
 private:
     QString defaultText;    
     QLabel *label;
-    QToolButton *closeButton;   // bottone "x"
+    QToolButton *closeButton;
 
 public:
     void setText(const QString &text);

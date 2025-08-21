@@ -8,17 +8,18 @@
 InsertImageFrame::InsertImageFrame(QWidget *parent)
     : QFrame(parent), 
       defaultText("<span style='color:white; font-size:16px;'>+ <u>Aggiungi copertina</u></span>"
-                  "<span style='color:gray; font-size:16px;'> oppure rilasciala</span>"), 
+                  "<span style='color: #708084; font-size:16px;'> oppure rilasciala</span>"), 
       label(new QLabel(defaultText, this)),
       closeButton(new QToolButton(this))
 {   
     setObjectName("frame");
     label->setTextFormat(Qt::RichText);
+    label->setAlignment(Qt::AlignCenter);
+
     setStyleSheet(
         "#frame { border: 2px dashed #4E7F8B; border-radius: 12px; } "
-        "QLabel { qproperty-alignment: AlignCenter; } "
-        "QToolButton { border: none; color: #708084; font-weight: bold; } "
-        "QToolButton:hover { color: #4E7F8B; }"
+        "QToolButton { border: none; color: #BDCED3; font-weight: bold; } "
+        "QToolButton:hover { color: #ffffffff; }"
     );
 
     closeButton->setText("x");
@@ -54,10 +55,13 @@ void InsertImageFrame::mousePressEvent(QMouseEvent *event) {
 
 void InsertImageFrame::setText(const QString &text) {
     label->setText(text);
+    if (text != defaultText) {
+        label->setStyleSheet("color: #BDCED3; font-size:16px;");
+    }
 }
 
 void InsertImageFrame::reset() {
-    label->setText(defaultText);
+    setText(defaultText);
     closeButton->setVisible(false); 
 }
 

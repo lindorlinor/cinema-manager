@@ -536,10 +536,9 @@ void InsertMedia::addPagina(QVBoxLayout* mainLayout){
     framePath->setMaximumSize(450, 250);
     framePath->setMinimumSize(200, 150);
     
-    framePath->setText("<span style='color:#05313c; font-size:16px;'><b> +<u>Aggiungi copertina</u></b></span><br>"
-                  "<span style='color:#05313c;; font-size:16px;'> oppure rilasciala</span>");
     framePath->setStyleSheet(   "#frame { border: 3px dashed #05313c; border-radius: 12px; } "
-                                "QLabel { qproperty-alignment: AlignCenter; } ");
+                                "QToolButton { border: none; color: #BDCED3; font-weight: bold; } "
+                                "QToolButton:hover { color: #ffffffff; }" );
     framePath->setCursor(Qt::PointingHandCursor);
     
     copertina->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -880,7 +879,7 @@ void InsertMedia::chooseImage(){
         QPixmap pixmap(imagePath);
         copertina->setPixmap(pixmap.scaled(325,450, Qt::KeepAspectRatio, Qt::SmoothTransformation));
         copertina->setAlignment(Qt::AlignCenter);
-        framePath->setText(QFileInfo(fileName).fileName());
+        framePath->insertImage(QFileInfo(fileName).fileName());
     }
 }
 
