@@ -63,7 +63,7 @@ public:
 
     // // metodi get
     string getCasaDiProduzione() const;
-    // unsigned int getNPostCredit() const;
+    unsigned int getNPostCredit() const;
     Genere getGenere() const;
     double getValutazione() const;
     Classificazione getClassificazione() const;

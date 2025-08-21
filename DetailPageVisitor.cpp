@@ -49,18 +49,18 @@ void DetailPageVisitor::visit(Film* film) {
     layoutHeader->setAlignment(Qt::AlignLeft);
 
     layoutPage->addWidget(contenitoreHeader);
-    layoutPage->addStretch();
 
     QWidget * splitter = new QWidget(page);
     QHBoxLayout * splitterLayout = new QHBoxLayout(splitter);
 
-    layoutPage->addWidget(splitter);
+    layoutPage->addWidget(splitter,0,Qt::AlignHCenter);
     
     QWidget * partesx = new QWidget();
     partesx->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     partesx->setObjectName("pupu");
     QHBoxLayout * layoutsx = new QHBoxLayout(partesx);
     partesx->setContentsMargins(0,0,0,0);
+    layoutsx->setSpacing(0);
     layoutsx->setContentsMargins(0,0,0,0);
     QWidget * card = new QWidget();
     QVBoxLayout * cardLayout = new QVBoxLayout(card);
@@ -69,7 +69,8 @@ void DetailPageVisitor::visit(Film* film) {
     QPixmap image(QString::fromStdString(film->getImPath()));
     QLabel * copertina = new QLabel();
     // cardLayout->setAlignment(Qt::AlignBottom);//così almeno è attaccato alla box anche se non è scalato come si vorrebbe
-    copertina->setPixmap(image.scaled(300,445,Qt::KeepAspectRatio,Qt::SmoothTransformation));
+    QPixmap scaled = image.scaled(300,445,Qt::KeepAspectRatio,Qt::SmoothTransformation);
+    copertina->setPixmap(scaled);
     cardLayout->addWidget(copertina);
 
     cardLayout->setSpacing(0);
@@ -81,7 +82,7 @@ void DetailPageVisitor::visit(Film* film) {
     layout->setSpacing(10);
 
     QLabel* regista = new QLabel("Regista: "+QString::fromStdString(film->getAutore()));
-    QLabel* durata = new QLabel("Durata: "+QString::number(film->getDurataMinuti()));
+    QLabel* durata = new QLabel("Durata: "+QString::number(film->getDurataMinuti()) + " min");
 
     //creazione label lingue
     std::vector<Lingua> lingueDisponibili = film->getLingue();
@@ -117,9 +118,10 @@ void DetailPageVisitor::visit(Film* film) {
 
     QFrame * details = new QFrame();
     QVBoxLayout * detailsLayout = new QVBoxLayout(details);
-    detailsLayout->setContentsMargins(10, 10, 10, 10);
-    details->setFixedHeight(655);
+    detailsLayout->setContentsMargins(0, 0, 0, 0);
+    details->setFixedHeight(scaled.height()+210);
     details->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
+    details->setContentsMargins(0,0,0,0);
     details->setObjectName("details");
     layoutsx->addWidget(details);
 
@@ -129,9 +131,9 @@ void DetailPageVisitor::visit(Film* film) {
     QLabel * labelProgrammazione = new QLabel("Informazioni di programmazione");
     layoutProgrammazione->addWidget(labelProgrammazione);
 
-    QWidget * sezioneInternaProgrammazione = new QWidget();
-    QGridLayout * layoutInternoProgrammazione = new QGridLayout(sezioneInternaProgrammazione);
-    sezioneInternaProgrammazione->setContentsMargins(10,10,10,10);
+    QWidget * dettagliProgrammazione = new QWidget();
+    QGridLayout * layoutInternoProgrammazione = new QGridLayout(dettagliProgrammazione);
+    dettagliProgrammazione->setContentsMargins(10,10,10,10);
     sezioneProgrammazione->setObjectName("sp");
     
     // Programmazione (date inizio/fine)
@@ -158,12 +160,48 @@ void DetailPageVisitor::visit(Film* film) {
     layoutInternoProgrammazione->addWidget(inizioP,0,0);
     layoutInternoProgrammazione->addWidget(fineP,0,1);
     layoutInternoProgrammazione->addWidget(costoBiglietto,1,0);
-    layoutProgrammazione->addWidget(sezioneInternaProgrammazione);
-    /* // Visualizzazioni e incasso
+    layoutProgrammazione->addWidget(dettagliProgrammazione);
+
+
+    QWidget * sezionePerformance = new QWidget();
+    QVBoxLayout * layoutPerformance = new QVBoxLayout(sezionePerformance);
+    
+    QLabel * labelPerformance = new QLabel("Performance e statistiche");
+    layoutPerformance->addWidget(labelPerformance);
+
+    QWidget * dettagliPerformance = new QWidget();
+    QVBoxLayout * layoutDettagliPerformance = new QVBoxLayout(dettagliPerformance);
+    dettagliPerformance->setContentsMargins(10,10,10,10);
+    dettagliPerformance->setObjectName("sp2");
+    
+    // Visualizzazioni e incasso
     QLabel* incasso = new QLabel("Incasso totale: " + QString::number(film->calcolaIncasso()) + " €");
     QLabel* visualizzazioni = new QLabel("Visualizzazioni: " + QString::number(film->getVisualizzazioni()));
-    QLabel* valutazioni = new QLabel("Valutazione: " + QString::number(film->getValutazione())+ "/10");
+    QLabel* valutazione = new QLabel("Valutazione: " + QString::number(film->getValutazione())+ "/10");
 
+    layoutDettagliPerformance->addWidget(incasso);
+    layoutDettagliPerformance->addWidget(visualizzazioni);
+    layoutDettagliPerformance->addWidget(valutazione);
+    layoutPerformance->addWidget(dettagliPerformance);
+
+    QWidget * sezioneTecnica = new QWidget();
+    QVBoxLayout * layoutTecnica = new QVBoxLayout(sezioneTecnica);
+    
+    QLabel * labelTecnica = new QLabel("Caratteristiche tecniche");
+    layoutTecnica->addWidget(labelTecnica);
+
+    QWidget * dettagliTecnici = new QWidget();
+    QVBoxLayout * layoutDettagliTecnici = new QVBoxLayout(dettagliTecnici);
+    dettagliTecnici->setContentsMargins(10,10,10,10);
+
+    QLabel* risoluzione = new QLabel("Risoluzione: " + QString::fromUtf8(toString(film->getRisoluzione())));
+    QLabel* formato = new QLabel("Formato: " + QString::fromUtf8(toString(film->getFormato())));
+    QLabel* postCredit = new QLabel("Post credit: " +QString::number(film->getNPostCredit()));
+    layoutDettagliTecnici->addWidget(risoluzione);
+    layoutDettagliTecnici->addWidget(formato);
+    layoutDettagliTecnici->addWidget(postCredit);
+    layoutTecnica->addWidget(dettagliTecnici);
+    /*
     // Casa di produzione
     QLabel* casaProduzione = new QLabel("Casa di produzione: " + QString::fromStdString(film->getCasaDiProduzione()));
     QLabel* descrizione = new QLabel(QString::fromStdString(film->getDescrizione()));
@@ -181,10 +219,13 @@ void DetailPageVisitor::visit(Film* film) {
     detailsLayout->addWidget(descrizione);
     detailsLayout->addStretch(); */
 
-    detailsLayout->addWidget(sezioneProgrammazione);
 
+    detailsLayout->addWidget(sezioneProgrammazione);
+    detailsLayout->addWidget(sezionePerformance);
+    detailsLayout->addWidget(sezioneTecnica);
+    detailsLayout->addStretch();
     splitterLayout->addWidget(partesx);
-    splitterLayout->setAlignment(Qt::AlignHCenter);
+
     detailPage = page;
     page->setStyleSheet("QLabel { background-color: red} #sp { background-color: orange} #details { background-color: purple} #gugu { background-color: pink} #gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
 

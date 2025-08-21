@@ -185,6 +185,8 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     film->aggiungiLingua(Lingua::Italiano);
     film->aggiungiLingua(Lingua::Inglese);
     film->aggiungiSottotitolo(Lingua::Italiano);
+    film->IncrementaVisualizzazioni();
+    film->setValutazione();
     film->accept(visitor);
     QWidget * detailPage = visitor->getWidget();
     stackModifiche->addWidget(detailPage);

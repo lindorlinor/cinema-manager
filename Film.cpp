@@ -109,36 +109,36 @@ void Film::accept(MediaVisitor* visitor) {
 
 // //metodi set
 // void Film::aggiungiAttore(const string& nomeAttore) {
-    //     _attoriPrincipali.push_back(nomeAttore);
+    //     f_attoriPrincipali.push_back(nomeAttore);
     // }
     
     // void Film::rimuoviAttore(const string& nomeAttore) {
 //     if (!_attoriPrincipali.empty()) {
 //         auto it = std::find(_attoriPrincipali.begin(), _attoriPrincipali.end(), nomeAttore);
 //         if (it != _attoriPrincipali.end()) {
-//             _attoriPrincipali.erase(it);
+//            f _attoriPrincipali.erase(it);
 //         }
 //     }
 // }
 
 // void Film::setGenere(const string& genere) {
-//     _genere = genere;
+//     f_genere = genere;
 // }
 
 // void Film::setClassificazione(Classificazione classificazione) {
-//     _classificazione = classificazione;
+//     f_classificazione = classificazione;
 // }
 
 // void Film::setCasaDiProduzione(const string& casaDiProduzione) {
-//     _casaDiProduzione = casaDiProduzione;
+//     f_casaDiProduzione = casaDiProduzione;
 // }
 
 // void Film::setNPostCredit(unsigned int nPostCredit) {
-//     _nPostCredit = nPostCredit;
+//    f _nPostCredit = nPostCredit;
 // }
 
 // void Film::setCostoBiglietto(double costoBiglietto) {
-//     _costoBiglietto = costoBiglietto;
+//     f_costoBiglietto = costoBiglietto;
 // }
 
 // // metodi get
@@ -147,7 +147,7 @@ string Film::getCasaDiProduzione() const {
     return f_casaDiProduzione;
 }
 
-// unsigned int Film::getNPostCredit() const {
-//     return _nPostCredit;
-// }
+unsigned int Film::getNPostCredit() const {
+    return f_nPostCredit;
+}
 
