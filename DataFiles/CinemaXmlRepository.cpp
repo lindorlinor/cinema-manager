@@ -34,7 +34,7 @@ bool CinemaXmlRepository::saveCinema(const Cinema& cinema) {
     return true;
 }
 
-QList<Cinema> CinemaXmlRepository::loadAllCinemas() {
+QList<Cinema> CinemaXmlRepository::loadAllCinemas()  const{
     QList<Cinema> cinemas;
     QDir dir(m_basePath);
     QStringList xmlFiles = dir.entryList(QStringList() << "*.xml", QDir::Files);
@@ -65,4 +65,19 @@ QList<Cinema> CinemaXmlRepository::loadAllCinemas() {
             cinemas.append(c);
     }
     return cinemas;
+}
+
+
+bool CinemaXmlRepository::isNameAvailable(const QString& nome) const {
+    if (nome.trimmed().isEmpty()) return false;
+
+    QString nomeTrimmed = nome.trimmed();
+    QList<Cinema> cinemaList = loadAllCinemas();
+
+    for (const Cinema& c : cinemaList) {
+        if (c.nome.compare(nomeTrimmed, Qt::CaseInsensitive) == 0) {
+            return false;
+        }
+    }
+    return true;
 }

@@ -13,9 +13,11 @@ struct Cinema {
 class CinemaXmlRepository {
 public:
     explicit CinemaXmlRepository(const QString& basePath);
+    QList<Cinema> loadAllCinemas() const;
 
     bool saveCinema(const Cinema& cinema);
-    QList<Cinema> loadAllCinemas();
+    bool isNameAvailable(const QString& name) const;
+
 
 private:
     QString m_basePath;

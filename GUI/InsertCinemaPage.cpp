@@ -44,21 +44,13 @@ void InsertCinemaPage::checkCinemaNameAvailability(const QString& text) {
     }
     QString nome = text.trimmed();
 
-    // Carico la lista dei cinema esistenti
     CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
-    QList<Cinema> cinemaList = repo.loadAllCinemas();
-    isAvailable=true;
-    for (const Cinema& c: cinemaList) {
-        if (c.nome.compare(nome, Qt::CaseInsensitive) == 0) {
-            isAvailable = false;
-            break;
-        }
-    }
+    isAvailable = repo.isNameAvailable(text);
 
     if (!isAvailable) {
         errorLabel->setText("Nome non disponibile. Scegliere un altro nome per il cinema");
         errorLabel->setVisible(true);
-        saveButton->setEnabled(false); // disabilita bottone
+        saveButton->setEnabled(false);
     } else {
         errorLabel->setVisible(false);
         saveButton->setEnabled(true);
@@ -142,13 +134,13 @@ void InsertCinemaPage::resizeEvent(QResizeEvent* event) {
 
 
 void InsertCinemaPage::createHeader(){
-    QLabel *titolo = new QLabel("Inserisci nuovo cinema");
+    QLabel *titolo = new QLabel("Inserisci nuovo cinema",this);
     QFont fontTitolo = titolo->font();
     fontTitolo.setPointSize(21);
     fontTitolo.setBold(true);
     titolo->setFont(fontTitolo);
     
-    QLabel* descrizione = new QLabel("Scegli un nome e un'immagine per un nuovo cinema");
+    QLabel* descrizione = new QLabel("Scegli un nome e un'immagine per un nuovo cinema",this);
     QFont fontDescrizione = descrizione->font();
     fontDescrizione.setPointSize(10);
     descrizione->setFont(fontDescrizione);
@@ -157,7 +149,7 @@ void InsertCinemaPage::createHeader(){
     descrizione->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
     //crea il contenitore per le due label titolo e descrizione e lo distanzia in verticale dal resto che verrà inserito nel frame
-    QWidget* contenitoreLabels = new QWidget;
+    QWidget* contenitoreLabels = new QWidget(this);
     QVBoxLayout* layoutLabels = new QVBoxLayout(contenitoreLabels);
     layoutLabels->addWidget(titolo);
     layoutLabels->addWidget(descrizione);
@@ -201,23 +193,22 @@ void InsertCinemaPage::createSplitView(){
 }
 
 void InsertCinemaPage::createLayoutInput(QVBoxLayout* layoutdx) {
-    QWidget * contenitoreInput = new QWidget;
+    QWidget * contenitoreInput = new QWidget();
     QVBoxLayout * layoutInput = new QVBoxLayout(contenitoreInput);
 
-    layoutdx->addWidget(contenitoreInput);
-
+    
     QVBoxLayout *layoutNome = new QVBoxLayout;
     QLabel *nameLabel = new QLabel("Nome cinema:");
     nameLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     layoutNome->addWidget(nameLabel);
     layoutNome->addWidget(textInput);
-
+    
     errorLabel = new QLabel;
     errorLabel->setStyleSheet("color: red; font-size: 11px;");
     errorLabel->setText("");
     errorLabel->setVisible(false);
     errorLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-
+    
     layoutInput->addLayout(layoutNome);
     layoutInput->addWidget(errorLabel);
     layoutInput->addStretch();
@@ -226,12 +217,13 @@ void InsertCinemaPage::createLayoutInput(QVBoxLayout* layoutdx) {
     imageArea->setMaximumSize(7435,240);
     layoutInput->addWidget(imageArea);
     layoutInput->setAlignment(Qt::AlignCenter);
-
+    
     connect(textInput, &QLineEdit::textChanged, this, &InsertCinemaPage::checkCinemaNameAvailability);
     connect(imageArea,&InsertImageFrame::clicked,this,&InsertCinemaPage::chooseImage);
     connect(imageArea,&InsertImageFrame::removeImage,this,&InsertCinemaPage::removeImage);
-
+    
     layoutInput->setContentsMargins(20,20,20,20);
+    layoutdx->addWidget(contenitoreInput);
     // contenitoreInput->setObjectName("pupu");
 }
 

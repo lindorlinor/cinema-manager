@@ -14,7 +14,7 @@
  * - textInput per inserire il nome del cinema, 
  * - imageArea di tipo @ref InsertImageFrame::InsertImageFrame per inserire l'immagine,
  * - imagePath che memorizza il percorso scelto dall'utente per inserire l'immagine (il path viene inserito nell'xml quindi se ci si passa i
- * file xml i percorsi dell'immagine devonoe essere gli stessi)
+ * file xml i percorsi dell'immagine devonoe essere gli stessi). Ha un path per l'immagine di default all'inizio
  * - imageLabel che contiene l'immagine e viene mostrata solo quando c'è abbastanza spazio nella finestra
  * - errorLabel che appare solo se il nome per il cinema non è disponibile
  * - escButton
