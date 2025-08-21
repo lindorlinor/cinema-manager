@@ -30,9 +30,6 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent) : QWidget(parent), cin
     //aggiunge i pulsanti del cinema al cinemaButtonsLayout scansionando le risorse attuali
     refreshCinemaButtons();
     createCinemaScroll();
-    //mette i pulsanti vicini tra loro, allineati a sinistra con uno spacing di 10
-    cinemaButtonsLayout->setAlignment(Qt::AlignLeft);
-    cinemaButtonsLayout->setSpacing(10);
    
     // Pulsante esci
     QPushButton* escButton = new QPushButton("Esci");
@@ -59,12 +56,6 @@ void CinemaSelectionPage::createCinemaButton(const QString& nomeC, const QString
     });
 }
 
-/**
- * @brief toglie e ricrea i pulsanti del cinema. 
- * 
- * Utilizza @ref CinemaXmlRepository per scaricare in una lista di struct Cinema tutti i cinema, 
- * poi scorre la lista e crea per ciascuno il button.
- */
 void CinemaSelectionPage::refreshCinemaButtons() {
     QLayoutItem* child;
     while ((child = cinemaButtonsLayout->takeAt(0)) != nullptr) {
@@ -79,12 +70,6 @@ void CinemaSelectionPage::refreshCinemaButtons() {
     }
 }
 
-/**
- * @brief Crea l'intestazione della pagina
- * 
- * @note qui sono stati impostate delle grandezze per i font che poi dovranno essere messe nel qss così possiamo 
- * toglierle da qui
- */
 void CinemaSelectionPage::createHeader(){
     QLabel *titolo = new QLabel("Tutti i cinema");
     QFont fontTitolo = titolo->font();
@@ -113,12 +98,6 @@ void CinemaSelectionPage::createHeader(){
     frameLayout->setAlignment( Qt::AlignLeft);
 }
 
-/**
- * @brief Crea la scroll per la sezione dei pulsanti. 
- * 
- * La scroll è visibile solo quando i pulsanti non hanno abbastanza spazio per essere visualizzati.
- * 
- */
 void CinemaSelectionPage::createCinemaScroll(){
      //setta la scrollArea per i pulsanti del cinema
     QScrollArea* scrollArea = new QScrollArea;
@@ -132,6 +111,11 @@ void CinemaSelectionPage::createCinemaScroll(){
     //cambia il comportamento di default della scrollArea che si espanderebbe
     scrollArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     
+    //mette i pulsanti vicini tra loro, allineati a sinistra con uno spacing di 10
+    cinemaButtonsLayout->setAlignment(Qt::AlignLeft);
+    cinemaButtonsLayout->setSpacing(10);
+
     //aggiunge al frame la scrollArea del cinema
     frameLayout->addWidget(scrollArea);
+
 }
