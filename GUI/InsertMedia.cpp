@@ -487,7 +487,12 @@ void InsertMedia::addPagina(QVBoxLayout* mainLayout){
     QWidget* widgetPagina4 = new QWidget();
 
     QLabel* titolo = new QLabel("Aggiungi un elemento alla libreria");
-    framePath = new InsertImageFrame;
+    framePath = new InsertImageFrame(   "<span style='color:#05313c; font-size:16px;'><b> +<u>Aggiungi copertina</u></b></span><br>"
+                                        "<span style='color:#05313c;; font-size:16px;'> oppure rilasciala</span>",
+                                        "#frame { border: 3px dashed #05313c; border-radius: 12px; } "
+                                        "QLabel { qproperty-alignment: AlignCenter; }" 
+                                        "QToolButton { border: none; color: #073c47; font-weight: bold; } "
+                                        "QToolButton:hover { color: #ffffffff; }", this);
     QPixmap pixmap(":images/default.png");
     copertina = new QLabel(this);
     QLabel* anteprima = new QLabel("Anteprima immagine",this);
@@ -511,6 +516,7 @@ void InsertMedia::addPagina(QVBoxLayout* mainLayout){
     mainLayout->addWidget(widgetPagina4);
     
     connect(framePath,&InsertImageFrame::clicked,this,&InsertMedia::chooseImage);
+    connect(framePath, &InsertImageFrame::removeImage, this, &InsertMedia::removeImage);
     
     //style
     widgetPagina1->setObjectName("anteprima");
@@ -533,16 +539,12 @@ void InsertMedia::addPagina(QVBoxLayout* mainLayout){
 
     titolo->setStyleSheet("color: #fed36a;");
     framePath->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    framePath->setMaximumSize(450, 250);
+    framePath->setMaximumSize(450, 155);
     framePath->setMinimumSize(200, 150);
-    
-    framePath->setStyleSheet(   "#frame { border: 3px dashed #05313c; border-radius: 12px; } "
-                                "QToolButton { border: none; color: #BDCED3; font-weight: bold; } "
-                                "QToolButton:hover { color: #ffffffff; }" );
     framePath->setCursor(Qt::PointingHandCursor);
     
     copertina->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    copertina->setMaximumSize(450, 500);
+    copertina->setMaximumSize(300, 430);
     copertina->setAlignment(Qt::AlignCenter);
     copertina->setPixmap(pixmap.scaled(430,430, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 }
@@ -883,6 +885,12 @@ void InsertMedia::chooseImage(){
     }
 }
 
+void InsertMedia::removeImage(){
+    QPixmap pixmap(":images/default.png"); 
+    copertina->setPixmap(pixmap.scaled(430,430, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    imagePath = "";
+}
+
 
 
 
@@ -959,7 +967,9 @@ void InsertMedia::resetAllInput(){
         framePath->setText("<span style='color:#05313c; font-size:16px;'><b> +<u>Aggiungi copertina</u></b></span><br>"
                       "<span style='color:#05313c;; font-size:16px;'> oppure rilasciala</span>");
         framePath->setStyleSheet(   "#frame { border: 3px dashed #05313c; border-radius: 12px; } "
-                                    "QLabel { qproperty-alignment: AlignCenter; } "); 
+                                    "QLabel { qproperty-alignment: AlignCenter; }" 
+                                    "QToolButton { border: none; color: #BDCED3; font-weight: bold; } "
+                                    "QToolButton:hover { color: #ffffffff; }"); 
     }     
 
     // QListWidget

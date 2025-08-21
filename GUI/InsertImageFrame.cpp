@@ -5,10 +5,8 @@
 #include <QPainter>
 #include <QToolButton>
 
-InsertImageFrame::InsertImageFrame(QWidget *parent)
-    : QFrame(parent), 
-      defaultText("<span style='color:white; font-size:16px;'>+ <u>Aggiungi copertina</u></span>"
-                  "<span style='color: #708084; font-size:16px;'> oppure rilasciala</span>"), 
+InsertImageFrame::InsertImageFrame(const QString& testo, const QString& style, QWidget *parent)
+    : QFrame(parent), defaultText(testo),
       label(new QLabel(defaultText, this)),
       closeButton(new QToolButton(this))
 {   
@@ -16,12 +14,7 @@ InsertImageFrame::InsertImageFrame(QWidget *parent)
     label->setTextFormat(Qt::RichText);
     label->setAlignment(Qt::AlignCenter);
 
-    setStyleSheet(
-        "#frame { border: 2px dashed #4E7F8B; border-radius: 12px; } "
-        "QToolButton { border: none; color: #BDCED3; font-weight: bold; } "
-        "QToolButton:hover { color: #ffffffff; }"
-    );
-
+    setStyleSheet(style);
     closeButton->setText("x");
     closeButton->setVisible(false);
     closeButton->setFixedSize(16,16);

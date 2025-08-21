@@ -13,7 +13,11 @@ InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),
                                             isAvailable(false),
                                             hasCustomImage(false),
                                             textInput(new QLineEdit(this)),
-                                            imageArea(new InsertImageFrame(this)),
+                                            imageArea(new InsertImageFrame( "<span style='color:white; font-size:16px;'>+ <u>Aggiungi copertina</u></span>"
+                                                                            "<span style='color: #708084; font-size:16px;'> oppure rilasciala</span>",
+                                                                            "#frame { border: 2px dashed #4E7F8B; border-radius: 12px; } "
+                                                                            "QToolButton { border: none; color: #BDCED3; font-weight: bold; } "
+                                                                            "QToolButton:hover { color: #ffffffff; }", this)),
                                             imageLabel(new QLabel),imagePath(":/../images/default.png"),
                                             escButton(new QPushButton("Annulla")),
                                             saveButton(new QPushButton("Salva"))

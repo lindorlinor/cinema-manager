@@ -9,13 +9,11 @@
 
 class InsertImageFrame : public QFrame {
     Q_OBJECT
-public:
-    explicit InsertImageFrame(QWidget *parent = nullptr);
 
 signals:
     void clicked();
     void removeImage();
-
+    
 protected:
     void mousePressEvent(QMouseEvent *event) override;
 
@@ -25,6 +23,7 @@ private:
     QToolButton *closeButton;
 
 public:
+    explicit InsertImageFrame(const QString& testo, const QString& style, QWidget *parent = nullptr);
     void setText(const QString &text);
     void reset();
     void insertImage(const QString &text);

@@ -126,8 +126,7 @@ class InsertMedia:public QWidget{
     //salvataggio degli input su un file Json
     void salvaMedia();                       //salva tutti i dati raccolti in un file json
     void saveCommonFields(MediaData &data);  //salva i campi comuni alle varie tipologie (richiamato da salvaMedia)
-   
-   
+    
     //template
     
     template<class L, class T>
@@ -145,7 +144,7 @@ class InsertMedia:public QWidget{
     
     template<class L>
     QSpinBox* addSpin(const QString& testo, int min, int max, int standard, L* ly);                             //aggiunge i Widget che contengono uno spin
-
+    
     template<class L>
     QDoubleSpinBox* addDoubleSpin(const QString& testo, double min, double max, double standard, L* ly);        //aggiunge i Widget che contengono un Doublespin
     
@@ -163,18 +162,19 @@ class InsertMedia:public QWidget{
     QDateEdit* addDataInizioRilascio(QVBoxLayout* ly);   //comuni a tutti tranne a podcast
     QDateEdit* addDataFineRilascio(QVBoxLayout* ly);     //comuni a tutti tranne a podcast
     
-
+    
     public:
 	explicit InsertMedia(QWidget *parent);
-
+    
     signals:
     void tornaAllaLibreria();
     void tornaIndietro();
     void resetReferenceSelection();
-
+    
     public slots:
-    void chooseImage();
-
+    void chooseImage();                      //assegna l'immagine
+    void removeImage();                      //rimuove l'immagine precedentemente selezionata
+    
 };
 
 #endif //INSERTMEDIA_H
