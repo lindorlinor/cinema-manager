@@ -4,6 +4,7 @@
 #include <QString>
 #include <QPushButton>
 #include <QPixmap>
+#include <QGridLayout>
 #include "../Film.h"
 
 DetailPageVisitor::DetailPageVisitor()
@@ -116,15 +117,76 @@ void DetailPageVisitor::visit(Film* film) {
 
     QFrame * details = new QFrame();
     QVBoxLayout * detailsLayout = new QVBoxLayout(details);
+    detailsLayout->setContentsMargins(10, 10, 10, 10);
     details->setFixedHeight(655);
     details->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    details->setObjectName("gagagaag");
+    details->setObjectName("details");
     layoutsx->addWidget(details);
+
+    QWidget * sezioneProgrammazione = new QWidget();
+    QVBoxLayout * layoutProgrammazione = new QVBoxLayout(sezioneProgrammazione);
+    
+    QLabel * labelProgrammazione = new QLabel("Informazioni di programmazione");
+    layoutProgrammazione->addWidget(labelProgrammazione);
+
+    QWidget * sezioneInternaProgrammazione = new QWidget();
+    QGridLayout * layoutInternoProgrammazione = new QGridLayout(sezioneInternaProgrammazione);
+    sezioneInternaProgrammazione->setContentsMargins(10,10,10,10);
+    sezioneProgrammazione->setObjectName("sp");
+    
+    // Programmazione (date inizio/fine)
+    auto inizio = film->getDataInizioRilascio();
+    auto fine = film->getDataFineRilascio();
+    std::ostringstream oss1;
+    oss1 << static_cast<int>(unsigned(inizio.day())) << "/"
+    << unsigned(inizio.month()) << "/"
+    << int(inizio.year()) ;
+    
+    std::ostringstream oss2;
+    oss2 << static_cast<int>(unsigned(fine.day())) << "/"
+    << unsigned(fine.month()) << "/"
+    << int(fine.year());
+    
+    QLabel* inizioP = new QLabel("Inizio proiezione: " + QString::fromStdString(oss1.str()));
+    QLabel* fineP = new QLabel("Fine proiezione: " + QString::fromStdString(oss2.str()));
+    inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    fineP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    QLabel* costoBiglietto = new QLabel("Costo biglietto: " + QString::number(film->getCostoBiglietto()) + " €");
+    costoBiglietto->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    
+    layoutInternoProgrammazione->addWidget(inizioP,0,0);
+    layoutInternoProgrammazione->addWidget(fineP,0,1);
+    layoutInternoProgrammazione->addWidget(costoBiglietto,1,0);
+    layoutProgrammazione->addWidget(sezioneInternaProgrammazione);
+    /* // Visualizzazioni e incasso
+    QLabel* incasso = new QLabel("Incasso totale: " + QString::number(film->calcolaIncasso()) + " €");
+    QLabel* visualizzazioni = new QLabel("Visualizzazioni: " + QString::number(film->getVisualizzazioni()));
+    QLabel* valutazioni = new QLabel("Valutazione: " + QString::number(film->getValutazione())+ "/10");
+
+    // Casa di produzione
+    QLabel* casaProduzione = new QLabel("Casa di produzione: " + QString::fromStdString(film->getCasaDiProduzione()));
+    QLabel* descrizione = new QLabel(QString::fromStdString(film->getDescrizione()));
+    descrizione->setWordWrap(true);
+
+    // --- aggiunta al layout ---
+    detailsLayout->addWidget(inizioP);
+    detailsLayout->addWidget(fineP);
+    detailsLayout->addWidget(costoBiglietto);
+    detailsLayout->addSpacing(10);
+    detailsLayout->addWidget(incasso);
+    detailsLayout->addWidget(visualizzazioni);
+    detailsLayout->addWidget(valutazioni);
+    detailsLayout->addSpacing(10);
+    detailsLayout->addWidget(descrizione);
+    detailsLayout->addStretch(); */
+
+    detailsLayout->addWidget(sezioneProgrammazione);
 
     splitterLayout->addWidget(partesx);
     splitterLayout->setAlignment(Qt::AlignHCenter);
     detailPage = page;
-    page->setStyleSheet("#gagagaag { background-color: purple} #gugu { background-color: pink} #gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
+    page->setStyleSheet("QLabel { background-color: red} #sp { background-color: orange} #details { background-color: purple} #gugu { background-color: pink} #gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
 
 }
 void DetailPageVisitor::visit(Trailer*) {}

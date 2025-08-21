@@ -62,7 +62,7 @@ public:
     // void setCostoBiglietto(double costoBiglietto);
 
     // // metodi get
-    // string getCasaDiProduzione() const;
+    string getCasaDiProduzione() const;
     // unsigned int getNPostCredit() const;
     Genere getGenere() const;
     double getValutazione() const;

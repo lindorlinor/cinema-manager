@@ -141,11 +141,11 @@ void Film::accept(MediaVisitor* visitor) {
 //     _costoBiglietto = costoBiglietto;
 // }
 
-// // mtodi get
+// // metodi get
 
-// string Film::getCasaDiProduzione() const {
-//     return _casaDiProduzione;
-// }
+string Film::getCasaDiProduzione() const {
+    return f_casaDiProduzione;
+}
 
 // unsigned int Film::getNPostCredit() const {
 //     return _nPostCredit;
