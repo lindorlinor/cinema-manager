@@ -20,7 +20,7 @@ MediaFrame::MediaFrame(const QString& titolo, const QString& imagePath,const QSt
     titoloLabel->setMaximumHeight(60);
     imgLabel->setMaximumHeight(140);
     imgLabel->setStyleSheet("border:none");
-    titoloLabel->setStyleSheet("color: #bdced3; background-color: #4e7f8b; border:none; font-size: 12pt;");
+    titoloLabel->setStyleSheet("color: #05313c; background-color: #4e7f8b; border:none; font-size: 12pt;");
     setStyleSheet("background-color: #4e7f8b;");
     layout->setAlignment(Qt::AlignCenter);
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);

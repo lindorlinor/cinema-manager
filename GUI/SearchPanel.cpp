@@ -144,11 +144,11 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     tutto->setIcon(iconaTutto);
     
     cinema->setIconSize(QSize(35,35));
-    film->setIconSize(QSize(45,35));
-    trailer->setIconSize(QSize(45,25));
-    inserzione->setIconSize(QSize(45,35));
-    podcast->setIconSize(QSize(45,35));
-    tutto->setIconSize(QSize(45,35));
+    film->setIconSize(QSize(40,30));
+    trailer->setIconSize(QSize(40,20));
+    inserzione->setIconSize(QSize(40,30));
+    podcast->setIconSize(QSize(40,30));
+    tutto->setIconSize(QSize(40,30));
     cinema->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     film->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     trailer->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
@@ -161,7 +161,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     //aggiunta ricerca superiore
     QVBoxLayout* latoDestra = new QVBoxLayout;
     QHBoxLayout* barraFiltri = new QHBoxLayout;
-    QWidget* widgetFiltri = new QWidget;
+    QWidget* widgetSelezioneFiltri = new QWidget;
     
     //barra di ricerca
     cerca = new QLineEdit;
@@ -183,15 +183,16 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     recenti->addItem("Recenti");
     recenti->addItem("Non Recenti");
     
-    barraFiltri->addWidget(attivita,3);
+    barraFiltri->addWidget(attivita);
     barraFiltri->addSpacing(10);
-    barraFiltri->addWidget(popolarita,3);
+    barraFiltri->addWidget(popolarita);
     barraFiltri->addSpacing(10);
-    barraFiltri->addWidget(recenti,3);
+    barraFiltri->addWidget(recenti);
     barraFiltri->addSpacing(10);
-    barraFiltri->addWidget(filtri,1);
-    barraFiltri->addWidget(vista,1,Qt::AlignRight);
-    widgetFiltri->setLayout(barraFiltri);
+    barraFiltri->addWidget(filtri);
+    barraFiltri->addSpacing(750);
+    barraFiltri->addWidget(vista,Qt::AlignRight);
+    widgetSelezioneFiltri->setLayout(barraFiltri);
     
     stackLibreria = new QStackedWidget;
     
@@ -202,7 +203,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     connect(podcast, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Podcast");});
     
     latoDestra->addWidget(cerca);
-    latoDestra->addWidget(widgetFiltri);
+    latoDestra->addWidget(widgetSelezioneFiltri);
     latoDestra->addWidget(stackLibreria);
     widgetDestra->setLayout(latoDestra);
     
@@ -251,6 +252,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     barraFiltri->setContentsMargins(50, 10, 50, 0);
     filtri->setCursor(Qt::PointingHandCursor);
     vista->setCursor(Qt::PointingHandCursor);
+    widgetSelezioneFiltri->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
     //icone
     QIcon iconaVista(":/icons/vista.png");
@@ -282,8 +284,8 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
     addLatoFiltri(widgetFiltri); 
     addLatoDestra(stackModifiche); 
     
-    ricerca->addWidget(widgetFiltri,2);
-    ricerca->addWidget(stackModifiche,8);
+    ricerca->addWidget(widgetFiltri);
+    ricerca->addWidget(stackModifiche);
     mainLayout->addLayout(ricerca);
     
     //style
@@ -292,6 +294,7 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
     ricerca->setSpacing(0);
     ricerca->setContentsMargins(0, 0, 0, 0); 
     widgetFiltri->setMinimumWidth(200);
+    widgetFiltri->setMaximumWidth(350);
     widgetFiltri->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     stackModifiche->setMinimumWidth(800);
     stackModifiche->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);

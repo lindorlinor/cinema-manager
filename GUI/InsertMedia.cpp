@@ -10,7 +10,7 @@ InsertMedia::InsertMedia(QWidget *parent): QWidget(parent){
     indietro(mainLayout);
     addPagina(mainLayout);
     annullaSalva(mainLayout);
-    mainLayout->setContentsMargins(100,0,0,0);
+    mainLayout->setContentsMargins(100,0,100,40);
     
     setLayout(mainLayout);
 }
@@ -34,7 +34,7 @@ void InsertMedia::addInput(QLabel* label,  L* layout, T* inputWidget){
     //style
     label->setAlignment(Qt::AlignTop);
     label->setStyleSheet(   "color: #84a0a8;"
-                            "font-size: 16pt;"
+                            "font-size: 14pt;"
                             "font-weight: bold;");
     label->setMaximumHeight(30);
     l->setAlignment(Qt::AlignTop);
@@ -73,7 +73,7 @@ void InsertMedia::addEnumList(L* base, const QString& labelText, const std::vect
                                 "background-color: #4e7f8b;"
                                 "color: #05313c;"
                                 "padding: 10px;"
-                                "font-size: 14pt;}"
+                                "font-size: 12pt;}"
                                 
                                 "QScrollBar:vertical { background: #04303b;"       
                                 "width: 12px;"              
@@ -393,7 +393,6 @@ void InsertMedia::addTipologiaFilm(QWidget* TipoFilm){              //tipologia 
     TipoFilm->setLayout(filmH);
 
     //style    
-    TipoFilm->setContentsMargins(20,50,20,50);
     CasaProdFilm->setObjectName("CasaProdFilm");
     totPostCreditFilm->setObjectName("totPostCreditFilm");
     costoBigliettoFilm->setObjectName("costoBigliettoFilm");
@@ -409,7 +408,6 @@ void InsertMedia::addTipologiaTrailer(QWidget* TipoTrailer){        //tipologia 
     TipoTrailer->setLayout(TrailerH);
 
     //style
-    TipoTrailer->setContentsMargins(20,50,20,50);
     numeroProiezioniTrailer->setObjectName("numeroProiezioniTrailer");
 }
 
@@ -438,7 +436,6 @@ void InsertMedia::addTipologiaInserzione(QWidget* TipoInserzione){  //tipologia 
     TipoInserzione->setLayout(inserzioneV2);
 
     //style
-    TipoInserzione->setContentsMargins(20,50,20,50);
     aziendaInserzInserzione->setObjectName("aziendaInserzInserzione");
     numeroProiezioniGioInserzione->setObjectName("numeroProiezioniGioInserzione");
     costoBaseProiezInserzione->setObjectName("costoBaseProiezInserzione");
@@ -451,7 +448,6 @@ void InsertMedia::addTipologiaPodcast(QWidget* TipoPodcast){    //tipologia Podc
     TipoPodcast->setLayout(podcastH);
 
     //style
-    TipoPodcast->setContentsMargins(20,50,20,50);
     conduttorePodcast->setObjectName("conduttorePodcast");
 }
 
@@ -471,7 +467,6 @@ void InsertMedia::addTipologiaPuntate(QWidget* TipoPuntata){    //tipologia Punt
     TipoPuntata->setLayout(puntataH);
 
     //style
-    TipoPuntata->setContentsMargins(20,50,20,50);
     numeroPubblicitaPuntata->setObjectName("numeroPubblicitaPuntata");
 }
 
@@ -526,7 +521,9 @@ void InsertMedia::addPagina(QVBoxLayout* mainLayout){
     connect(framePath, &InsertImageFrame::removeImage, this, &InsertMedia::removeImage);
     
     //style
+    widgetPagina2->setContentsMargins(0,0,30,0);
     widgetPagina1->setObjectName("anteprima");
+    widgetPagina1->setMaximumWidth(370);
     paginaV2->setAlignment(Qt::AlignCenter);
     titolo->setAlignment(Qt::AlignTop);
     titolo->setContentsMargins(0,0,0,80);
@@ -540,7 +537,7 @@ void InsertMedia::addPagina(QVBoxLayout* mainLayout){
     anteprima->setFont(fontAnteprima);
 
     QFont fontTitolo = titolo->font();
-    fontTitolo.setPointSize(28);
+    fontTitolo.setPointSize(20);
     fontTitolo.setBold(true);
     titolo->setFont(fontTitolo);
 
@@ -553,7 +550,7 @@ void InsertMedia::addPagina(QVBoxLayout* mainLayout){
     copertina->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     copertina->setMaximumSize(300, 430);
     copertina->setAlignment(Qt::AlignCenter);
-    copertina->setPixmap(pixmap.scaled(430,430, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    copertina->setPixmap(pixmap.scaled(280,330, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 }
 
 void InsertMedia::indietro(QVBoxLayout* mainLayout){        //pulsante indietro
@@ -628,9 +625,8 @@ void InsertMedia::addTabs(QHBoxLayout* layout){
     //style
     tab->tabBar()->setCursor(Qt::PointingHandCursor);
     tab->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    tab->setMaximumSize(1050,850);
+    tab->setMaximumSize(950,850);
     tab->setMinimumWidth(500);
-    tab->setContentsMargins(0,20,tab->width()/80,tab->height()/70);
     tab->setStyleSheet(
                         "QTabWidget::pane {border: none; background-color: #05313c;}"
                         "QTabBar::tab {"
@@ -691,10 +687,9 @@ void InsertMedia::addBase(QWidget* base){
     baseH2->addWidget(widget2);
     widget3->setLayout(baseH2);
     
-    baseV2->addWidget(widget1,2);
+    baseV2->addWidget(widget1);
     baseV2->addWidget(errorLabel);
-    baseV2->addWidget(widget3,2);
-    baseV2->setContentsMargins(30,20,30,150);
+    baseV2->addWidget(widget3);
     
     base->setLayout(baseV2);
 
@@ -707,7 +702,7 @@ void InsertMedia::addBase(QWidget* base){
     durataMinutiMedia->setObjectName("durataMinutiMedia");
     dataInizio->setObjectName("dataInizio");
     dataFine->setObjectName("dataFine");
-    base->setContentsMargins(20,50,20,50);
+    base->setContentsMargins(20,50,20,100);
     baseV1->setAlignment(Qt::AlignTop);
 }
 
@@ -776,6 +771,9 @@ void InsertMedia::addTipologia(QWidget* tipologia){
 
     stackTipologia->setCurrentIndex(0);
     tipologia->setLayout(stackTipologia);
+
+    //style
+    tipologia->setContentsMargins(20,50,20,50);
 }
 
 
@@ -889,15 +887,15 @@ void InsertMedia::chooseImage(){
     if (!fileName.isEmpty()) {
         imagePath = ":/images/" + QFileInfo(fileName).fileName();
         QPixmap pixmap(imagePath);
-        copertina->setPixmap(pixmap.scaled(325,450, Qt::KeepAspectRatio, Qt::SmoothTransformation));
         copertina->setAlignment(Qt::AlignCenter);
+        copertina->setPixmap(pixmap.scaled(280,330, Qt::KeepAspectRatio, Qt::SmoothTransformation));
         framePath->insertImage(QFileInfo(fileName).fileName());
     }
 }
 
 void InsertMedia::removeImage(){
     QPixmap pixmap(":/images/default.png"); 
-    copertina->setPixmap(pixmap.scaled(430,430, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    copertina->setPixmap(pixmap.scaled(280,330, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     imagePath.clear();
 }
 
@@ -997,7 +995,7 @@ void InsertMedia::resetAllInput(){
     if(dataFine) dataFine->setDate(QDate::currentDate());
     
     QPixmap pixmap(":/images/default.png"); 
-    copertina->setPixmap(pixmap.scaled(430,430, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    copertina->setPixmap(pixmap.scaled(280,330, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     checkMediaNameAvailability();
     stackTipologia->setCurrentIndex(0);
     tab->setCurrentIndex(0);
