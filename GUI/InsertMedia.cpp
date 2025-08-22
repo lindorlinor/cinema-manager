@@ -174,7 +174,7 @@ void InsertMedia::addReference(const QString& testo, const QString& json, L* ly,
     
     connect(reference, &SelectMediaReference::mediaSelected, this, [this, json](MediaFrame* f){
         if(json == "film"){
-            titoloFilmRirefimento = f->getTitolo();
+            titoloFilmRiferimento = f->getTitolo();
             autoreFilmRiferimento = f->getAutore();
         }
         else if(json == "podcast"){
@@ -388,6 +388,10 @@ void InsertMedia::checkMediaNameAvailability() {
         errorLabel->setVisible(false);
         saveButton->setEnabled(true);
     }
+
+    qDeleteAll(listInsertMedia); // cancella tutti gli oggetti puntati
+    listInsertMedia.clear();     // svuota la lista
+
 }
 
 
