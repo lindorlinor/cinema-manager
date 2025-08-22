@@ -53,8 +53,8 @@ public:
      *
      */
     void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) override;
-    // void aggiungiAttore(const string& nomeAttore);
-    // void rimuoviAttore(const string& nomeAttore);
+    void aggiungiAttore(const string& nomeAttore);
+    void rimuoviAttore(const string& nomeAttore);
     // void setGenere(const string& genere);
     // void setClassificazione(Classificazione classificazione);
     // void setCasaDiProduzione(const string& casaDiProduzione);
@@ -68,6 +68,7 @@ public:
     double getValutazione() const;
     Classificazione getClassificazione() const;
     double getCostoBiglietto() const;
+    const vector<string>& getAttoriPrincipali() const;
     // metodi per aggiungere e togliere i trailer
     void aggiungiTrailer(Trailer *trailer);
 

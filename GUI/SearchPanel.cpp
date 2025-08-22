@@ -184,6 +184,12 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
                         );
     film->aggiungiLingua(Lingua::Italiano);
     film->aggiungiLingua(Lingua::Inglese);
+    film->aggiungiAttore("Noriko Hidaka");
+    film->aggiungiAttore("Chika Sakamoto");
+    film->aggiungiAttore("Shigesato Itoi");
+    film->aggiungiAttore("Hitoshi Takagi");
+    film->aggiungiAttore("Takashi Nagasako");
+
     film->aggiungiSottotitolo(Lingua::Italiano);
     film->IncrementaVisualizzazioni();
     film->setValutazione();

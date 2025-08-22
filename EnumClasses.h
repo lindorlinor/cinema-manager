@@ -127,7 +127,7 @@ enum class Classificazione {
 
 inline const char* toString(Classificazione c) {
     switch (c) {
-        case Classificazione::TUTTI: return "T";
+        case Classificazione::TUTTI: return "TUTTI";
         case Classificazione::SEI_PIU: return "6+";
         case Classificazione::QUATTORDICI_PIU: return "14+";
         case Classificazione::DICIOTTO_PIU: return "18+";

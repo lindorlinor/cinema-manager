@@ -41,7 +41,8 @@ HEADERS +=  \
             GUI/InsertImageFrame.h \
             GUI/MediaFrame.h \
             GUI/SelectMediaReference.h \
-            DataFiles/CinemaXmlRepository.h \ 
+            GUI/ExpandableLabel.h \
+            DataFiles/CinemaXmlRepository.h \
             DataFiles/MediaManagerJson.h 
 SOURCES +=  \
             main.cpp \
@@ -64,6 +65,7 @@ SOURCES +=  \
             GUI/InsertImageFrame.cpp \
             GUI/MediaFrame.cpp \
             GUI/SelectMediaReference.cpp \
+            GUI/ExpandableLabel.cpp \
             DataFiles/CinemaXmlRepository.cpp \
             DataFiles/MediaManagerJson.cpp
 RESOURCES += GUI/resources.qrc
