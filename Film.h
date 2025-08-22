@@ -72,6 +72,7 @@ public:
     // metodi per aggiungere e togliere i trailer
     void aggiungiTrailer(Trailer *trailer);
 
+    const vector<Trailer *>& getTrailers() const;
     /**
      * @brief Disaccoppia un trailer dal film ed elimina definitivamennte il trailer
      * 

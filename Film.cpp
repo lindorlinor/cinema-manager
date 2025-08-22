@@ -154,3 +154,7 @@ unsigned int Film::getNPostCredit() const {
 const std::vector<std::string>& Film::getAttoriPrincipali() const {
     return f_attoriPrincipali;
 }
+const vector<Trailer*>& Film::getTrailers() const {
+    return trailers;
+}
+

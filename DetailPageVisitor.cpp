@@ -8,6 +8,7 @@
 #include <QScrollArea>
 #include "../Film.h"
 #include "GUI/ExpandableLabel.h"
+#include "GUI/CardTrailer.h"
 
 DetailPageVisitor::DetailPageVisitor()
     : detailPage(nullptr)
@@ -79,9 +80,9 @@ void DetailPageVisitor::visit(Film* film) {
     QWidget* box = new QWidget();
     box->setFixedSize(300, 210);
     box->setObjectName("caca");
-    QVBoxLayout* layout = new QVBoxLayout(box);
-    layout->setContentsMargins(20, 20, 20, 20);
-    layout->setSpacing(10);
+    QVBoxLayout* layoutBox = new QVBoxLayout(box);
+    layoutBox->setContentsMargins(20, 20, 20, 20);
+    layoutBox->setSpacing(10);
 
     QLabel* regista = new QLabel(
         "<span style='color:white; font-weight:bold;'>Regista: </span>"
@@ -119,11 +120,11 @@ void DetailPageVisitor::visit(Film* film) {
         "<span style='color:black;'>" + sottotitoliText + "</span>");
     sottotitoli->setTextFormat(Qt::RichText);
 
-    layout->addWidget(regista);
-    layout->addWidget(durata);
-    layout->addWidget(lingue);
-    layout->addWidget(sottotitoli);
-    layout->setAlignment(Qt::AlignLeft);
+    layoutBox->addWidget(regista);
+    layoutBox->addWidget(durata);
+    layoutBox->addWidget(lingue);
+    layoutBox->addWidget(sottotitoli);
+    layoutBox->setAlignment(Qt::AlignLeft);
 
     cardLayout->addWidget(box);
     cardLayout->setAlignment(Qt::AlignLeft);
@@ -172,16 +173,16 @@ void DetailPageVisitor::visit(Film* film) {
     QLabel* inizioP = new QLabel(
         "<span style='color:white; font-weight:bold;'>Inizio proiezione: </span>"
         "<span style='color:black;'>" + QString::fromStdString(oss1.str()) + "</span>");
-        inizioP->setTextFormat(Qt::RichText);
-        QLabel* fineP = new QLabel(
-            "<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
+    inizioP->setTextFormat(Qt::RichText);
+    QLabel* fineP = new QLabel(
+        "<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
         "<span style='color:black;'>" + QString::fromStdString(oss2.str()) + "</span>");
-        fineP->setTextFormat(Qt::RichText);
-        inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-        fineP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-        inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-        QLabel* costoBiglietto = new QLabel(
-            "<span style='color:white; font-weight:bold;'>Costo biglietto: </span>"
+    fineP->setTextFormat(Qt::RichText);
+    inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    fineP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    QLabel* costoBiglietto = new QLabel(
+        "<span style='color:white; font-weight:bold;'>Costo biglietto: </span>"
         "<span style='color:black;'>" + QString::number(film->getCostoBiglietto()) + " €</span>");
     costoBiglietto->setTextFormat(Qt::RichText);
     costoBiglietto->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
@@ -264,8 +265,7 @@ void DetailPageVisitor::visit(Film* film) {
     
     
     ExpandableLabel* descrizione = new ExpandableLabel(
-         "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(film->getDescrizione())
-        );
+         "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(film->getDescrizione()));
    
     // Creazione label attori principali
     std::vector<std::string> attoriPrincipali = film->getAttoriPrincipali();
@@ -312,16 +312,42 @@ void DetailPageVisitor::visit(Film* film) {
     
     QWidget* partedx = new QWidget();
     partedx->setObjectName("sp");
+    partedx->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     QVBoxLayout * layoutdx = new QVBoxLayout(partedx);
+    
+    QLabel *labelTrailer = new QLabel("Trailer");
+    QFont fontTrailer = labelTrailer->font();
+    fontTrailer.setPointSize(17);
+    fontTrailer.setBold(true);
+    labelTrailer->setFont(fontTrailer);
+    labelTrailer->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+    
+    layoutdx->addWidget(labelTrailer);
 
     QWidget * sezioneTrailer = new QWidget();
     QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
-    
-    layoutdx->addWidget(sezioneTrailer);
+    sezioneTrailer->setObjectName("sp");
 
+    for (const Trailer* t : film->getTrailers()) {
+        CardTrailer* card = new CardTrailer(t);
+        layoutTrailer->addWidget(card);
+    }
+    layoutTrailer->setSpacing(20);  
+    sezioneTrailer->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
+    sezioneTrailer->setContentsMargins(20,20,20,20);
+
+    QScrollArea* scrollTrailer = new QScrollArea;
+    scrollTrailer->setWidget(sezioneTrailer);
+    scrollTrailer->setWidgetResizable(false);
+    scrollTrailer->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollTrailer->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    scrollTrailer->setMinimumHeight(400);
+    layoutdx->addWidget(scrollTrailer);
+
+    splitterLayout->setSpacing(30);
     splitterLayout->addWidget(partesx);
     splitterLayout->addWidget(partedx);
-
+    
   
     detailPage = page;
     page->setStyleSheet("QLabel { background-color: red} #sp { background-color: orange} #details { background-color: purple} #gugu { background-color: pink} #gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");

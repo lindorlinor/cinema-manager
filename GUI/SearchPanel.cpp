@@ -193,6 +193,36 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     film->aggiungiSottotitolo(Lingua::Italiano);
     film->IncrementaVisualizzazioni();
     film->setValutazione();
+    // Primo trailer
+    Trailer* trailer1 = new Trailer(
+        "Trailer ufficiale - Il mio vicino Totoro (2025)",
+        "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
+        year_month_day{2025y/April/15d},   // data inizio rilascio
+        year_month_day{2025y/May/31d},     // data fine rilascio
+        2,                                 // durata in minuti
+        Formato::DCP,
+        Risoluzione::UHD_4K_2160p,
+        5,                                 // n° proiezioni giornaliere
+        film,
+        "Studio Ghibli",
+        ":/images/image10.png"
+    );
+
+    // Secondo trailer
+    Trailer* trailer2 = new Trailer(
+        "Trailer speciale anniversario - Il mio vicino Totoro (2025)",
+        "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
+        year_month_day{2025y/May/1d},      // data inizio rilascio
+        year_month_day{2025y/June/15d},    // data fine rilascio
+        3,                                 // durata in minuti
+        Formato::DCP,
+        Risoluzione::UHD_4K_2160p,
+        3,                                 // n° proiezioni giornaliere
+        film,
+        "Hayao Miyazaki",
+        ":/images/image10.png"
+    );
+
     film->accept(visitor);
     QWidget * detailPage = visitor->getWidget();
     stackModifiche->addWidget(detailPage);
