@@ -64,7 +64,7 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     //agginta ricerca LatoFiltri
     QVBoxLayout* latoFiltri = new QVBoxLayout;
     QVBoxLayout* selezioneMedia = new QVBoxLayout;
-    QWidget* widegetMedia = new QWidget;
+    QWidget* widegetMedia = new QWidget(this);
     
     //selezione Media
     tutto = new QToolButton(this);
@@ -86,7 +86,7 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     widegetMedia->setLayout(selezioneMedia);
     
     //aggiungi Media
-    addMedia = new QPushButton("+ Aggiungi");
+    addMedia = new QPushButton("+ Aggiungi",this);
     
     //aggiungi pulsante cinema
     cinema = new QToolButton(this);
@@ -161,17 +161,17 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     //aggiunta ricerca superiore
     QVBoxLayout* latoDestra = new QVBoxLayout;
     QHBoxLayout* barraFiltri = new QHBoxLayout;
-    QWidget* widgetSelezioneFiltri = new QWidget;
+    QWidget* widgetSelezioneFiltri = new QWidget(this);
     
     //barra di ricerca
-    cerca = new QLineEdit;
+    cerca = new QLineEdit(this);
     cerca->setPlaceholderText("Cerca in Tutto...");
     
     //barra dei filtri
-    QComboBox* attivita = new QComboBox;
-    QComboBox* popolarita = new QComboBox;
-    QComboBox* recenti = new QComboBox;
-    QWidget* widgetDestra = new QWidget;
+    QComboBox* attivita = new QComboBox(this);
+    QComboBox* popolarita = new QComboBox(this);
+    QComboBox* recenti = new QComboBox(this);
+    QWidget* widgetDestra = new QWidget(this);
     
     QToolButton* filtri = new QToolButton(this);
     QToolButton* vista = new QToolButton(this);
@@ -194,7 +194,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     barraFiltri->addWidget(vista,Qt::AlignRight);
     widgetSelezioneFiltri->setLayout(barraFiltri);
     
-    stackLibreria = new QStackedWidget;
+    stackLibreria = new QStackedWidget(this);
     
     connect(tutto, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Tutto");}); //uso una lambda per passare la stringa "Tutto" poiché non è possibile chiamare la funzione
     connect(film, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Film");});
@@ -227,13 +227,13 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     });
     
     //style
-    attivita->setView(new QListView());
+    attivita->setView(new QListView(attivita));
     attivita->view()->setFrameShape(QFrame::NoFrame);
     attivita->view()->setAttribute(Qt::WA_Hover, true);
-    popolarita->setView(new QListView());
+    popolarita->setView(new QListView(popolarita));
     popolarita->view()->setFrameShape(QFrame::NoFrame);
     popolarita->view()->setAttribute(Qt::WA_Hover, true);
-    recenti->setView(new QListView());
+    recenti->setView(new QListView(recenti));
     recenti->view()->setFrameShape(QFrame::NoFrame);
     recenti->view()->setAttribute(Qt::WA_Hover, true);
 
@@ -275,8 +275,8 @@ void SearchPanel::updateCerca(const QString& filtro){
 }
 
 void SearchPanel::addPagina(QVBoxLayout* mainLayout){
-    QWidget* widgetFiltri = new QWidget;
-    stackModifiche = new QStackedWidget;
+    QWidget* widgetFiltri = new QWidget(this);
+    stackModifiche = new QStackedWidget(this);
 
     
     QHBoxLayout* ricerca = new QHBoxLayout;

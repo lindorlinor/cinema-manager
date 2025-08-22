@@ -39,7 +39,7 @@ private:
     vector<Lingua> m_sottotitoliDisponibili;
 public:
     Media(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
-          year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
+          year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione, 
           const string &autore = "Sconosciuto", const string &path = "immGrigia");
 
     // //metodi set
@@ -49,16 +49,11 @@ public:
     // //metodi getescrizione(const string& descrizione);
     
     // //metodi get
-    // string getAutore() const;
-    // string getTitolo() const;
-    // string getDescrizione() const;
-    // vector<Lingua> getLingue() const;
-    // vector<Lingua> getSottotitoli() const;
     
-    void aggiungiLingua(Lingua lingua);
-    void aggiungiSottotitolo(Lingua lingua);
-    void rimuoviLingua(Lingua lingua);
-    void rimuoviSottotitolo(Lingua lingua);
+    virtual void aggiungiLingua(Lingua lingua);
+    virtual void aggiungiSottotitolo(Lingua lingua);
+    virtual void rimuoviLingua(Lingua lingua);
+    virtual void rimuoviSottotitolo(Lingua lingua);
     
     /**
      * @brief Verifca se il media è correntemente distribuito nei canali del cinema.
@@ -77,7 +72,7 @@ public:
      * @return Il numero di giorni in cui il media è attivo nei canali.
      */
     unsigned int DurataCampagna() const;
-
+    
     // metodi get e set
     unsigned int getVisualizzazioni() const;
     year_month_day getDataInizioRilascio() const;
@@ -86,6 +81,11 @@ public:
     unsigned int getDurataMinuti() const;
     Formato getFormato()const;
     Risoluzione getRisoluzione()const;
+    string getAutore() const;
+    string getTitolo() const;
+    string getDescrizione() const;
+    vector<Lingua> getLingue() const;
+    vector<Lingua> getSottotitoli() const;
     
     void setVisualizzazioni(unsigned int visualizzazioni);
     void setDurataMinuti(unsigned int durata);

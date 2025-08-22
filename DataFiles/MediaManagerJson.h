@@ -13,6 +13,11 @@
 
 #include "Popolate.h"
 #include "../MediaVisitor.h"
+#include "../Film.h"
+#include "../Trailer.h"
+#include "../Inserzione.h"
+#include "../Podcast.h"
+#include "../Puntata.h"
 /**
  * @brief Costruttore della classe MediaManagerJson.
  * @param basePath percorso base dove leggere/salvare i file JSON.
@@ -20,7 +25,7 @@
 class MediaManagerJson : public QObject, public MediaVisitor{
     Q_OBJECT
     public:
-        explicit MediaManagerJson(const QString& basePath);
+        explicit MediaManagerJson(const QString& basePath, QObject *parent = nullptr);
 
         void visit(Film* film) override{};
         void visit(Trailer* trailer) override{};
@@ -28,19 +33,94 @@ class MediaManagerJson : public QObject, public MediaVisitor{
         void visit(Podcast* podcast) override{};
         void visit(Puntata* puntata) override{};
 
-        //load 
         /**
-         * @brief Carica tutti i film dal file films.json.
+         * @brief Cancella tutti gli oggetti puntati dai puntatori nella lista e svuota la lista.
+         * 
+         * @param list Lista di puntatori a MediaData (o sue sottoclassi) da cancellare
+         */
+        void clearMediaList(QList<MediaData*>& list);
+
+
+        //load Data
+        /**
+         * @brief Carica tutti i film dal file films.json come dati grezzi
          * 
          * @return QList<FilmData> Lista dei film caricati.
          */
+        
+        QList<FilmData*> loadFilmsData();
+        QList<TrailerData*> loadTrailersData();
+        QList<InserzioniData*> loadInserzioniData();
+        QList<PodcastData*> loadPodcastData();
+        QList<PuntataData*> loadPuntateData();
+        QList<MediaData*> loadAllData();
+        
+        
+        //load Media
+        /**
+         * @brief Caricano i media con i dati ottenuti dalle struct Data
+         * 
+         * creano gli oggetti Media con i dati ottenuti dalle struct e li aggiungono alla lista m_mediaList
+         */
+        void loadFilms();
+        void loadTrailers();
+        void loadInserzioni();
+        void loadPodcast();
+        void loadPuntate();
+        void loadAll();
 
-        QList<FilmData*> loadFilms();
-        QList<TrailerData*> loadTrailers();
-        QList<InserzioniData*> loadInserzioni();
-        QList<PodcastData*> loadPodcast();
-        QList<PuntataData*> loadPuntate();
-        QList<MediaData*> loadAll();
+        /**
+         * @brief lista degli oggetti Media creatiù
+         */
+        QList<Media*>m_mediaList;
+
+
+        //createMedia
+        /**
+         * @brief creano l'oggetto media
+         * 
+         * @return restituiscono l'oggetto media creato, per pooi metterlo nella QList m_mediaList
+         */
+        Film* createFilmFromData(const FilmData& data);
+        Trailer* createTrailerFromData(const TrailerData& data);
+        Inserzione* createInserzioneFromData(const InserzioniData& data);
+        Podcast* createPodcastFromData(const PodcastData& data);
+        Puntata* createPuntataFromData(const PuntataData& data);
+        
+        //findMedia
+        /**
+         * @brief Trova il film o il podcast di riferimento
+         * 
+         * Titolo e autore costituiscono un identificativo, vengono quindi passati alla funzione e viene fatta una ricerca sugli stessi
+         * tra tutti gli oggetti Media presenti nella QList m_MediaList, l'oggetto corrispondente viene ritornato e sarà il media di riferimento
+         * per trailer o puntata
+         * 
+         * @return Restituisce l'oggetto corrispondente alla ricerca effettuata
+         */
+        Media* findMedia(const QString& titolo, const QString& autore, const QString& tipo);
+
+
+        //convertDate
+        /**
+         * @brief converte la data da QDate a year_month_day (chrono)
+         * 
+         * @return Restituisce la data in year_month_day
+         */
+        year_month_day convertDate(const QDate& data);
+
+        //remove
+        /**
+         * @brief Elimina un oggetto passatogli
+         * 
+         */
+        void remove(Media* media);
+
+        //clearMediaList
+        /**
+         * @brief Libera la memoria di tutti gli oggetti Media* nella lista m_mediList e la svuota
+         * 
+         */
+        void clearMediaList();
 
         //save
         /**
@@ -51,12 +131,14 @@ class MediaManagerJson : public QObject, public MediaVisitor{
          * @param film Dati del film da salvare.
          */
         
+        void saveAll(MediaData* media);
         void saveFilm(FilmData* film);
         void saveTrailer(TrailerData* trailer);
-        void saveInserzione(InserzioniData* inserzione);
+        void saveInserzione(InserzioniData * inserzione);
         void savePodcast(PodcastData* podcast);
         void savePuntata(PuntataData* puntata); 
 
+        ~MediaManagerJson();
         
 
     private:

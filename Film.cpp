@@ -3,13 +3,13 @@
 
 // Costruttore
 Film::Film( const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
-            year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
-            Genere genere, unsigned int nPostCredit, double costoBiglietto, const string &casaDiProduzione,
+            year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione, 
+            unsigned int nPostCredit, double costoBiglietto, const string &casaDiProduzione,
             const string &autore, const string &path, Classificazione target):
 
                     Media(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
-                    durataMinuti, formato, risoluzione, autore, path), f_genere(genere), 
-                    f_target(target),f_casaDiProduzione(casaDiProduzione), f_nPostCredit(nPostCredit), 
+                    durataMinuti, formato, risoluzione, autore, path),
+                    f_casaDiProduzione(casaDiProduzione), f_nPostCredit(nPostCredit), 
                     f_costoBiglietto(costoBiglietto),f_valutazione(0){}
 
 
@@ -76,7 +76,7 @@ double Film::getCostoBiglietto() const {
     return f_costoBiglietto;
 }
 
-Genere Film::getGenere() const {
+vector <Genere> Film::getGenere() const {
     return f_genere;
 }
 
@@ -99,6 +99,23 @@ void Film::setValutazione(){
     else{
         double proporzione = getVisualizzazioni()/(giorni*1200.0); 
         f_valutazione = std::round((proporzione*5)>5? 5 : (proporzione*5)*10)/10.0;
+    }
+}
+
+//metodi set
+/* void Film::setAttoriPrincipali(vector<string> attori){
+    f_attoriPrincipali = attori;
+} */
+
+void Film::aggiungiAttore(const string& nomeAttore){
+    f_attoriPrincipali.push_back(nomeAttore);
+}
+
+void Film::rimuoviAttore(const string& nomeAttore){
+    auto it = find(f_attoriPrincipali.begin(), f_attoriPrincipali.end(), nomeAttore);
+    if (it != f_attoriPrincipali.end())
+    {
+        f_attoriPrincipali.erase(it);
     }
 }
 

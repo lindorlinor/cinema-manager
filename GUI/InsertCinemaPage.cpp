@@ -18,9 +18,9 @@ InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),
                                                                             "#frame { border: 2px dashed #4E7F8B; border-radius: 12px; } "
                                                                             "QToolButton { border: none; color: #BDCED3; font-weight: bold; } "
                                                                             "QToolButton:hover { color: #ffffffff; }", this)),
-                                            imageLabel(new QLabel),imagePath(":/../images/default.png"),
-                                            escButton(new QPushButton("Annulla")),
-                                            saveButton(new QPushButton("Salva"))
+                                            imageLabel(new QLabel(this)),imagePath(":/../images/default.png"),
+                                            escButton(new QPushButton("Annulla",this)),
+                                            saveButton(new QPushButton("Salva",this))
 {
     
     QFrame* frameCentrale = new QFrame(this);
@@ -171,7 +171,7 @@ void InsertCinemaPage::createSplitView(){
     QHBoxLayout * splitter = new QHBoxLayout;
     splitter->setSpacing(30);
 
-    QWidget* contenitoredx = new QWidget;
+    QWidget* contenitoredx = new QWidget(this);
     QVBoxLayout * layoutdx = new QVBoxLayout(contenitoredx);
 
 
@@ -197,17 +197,17 @@ void InsertCinemaPage::createSplitView(){
 }
 
 void InsertCinemaPage::createLayoutInput(QVBoxLayout* layoutdx) {
-    QWidget * contenitoreInput = new QWidget();
+    QWidget * contenitoreInput = new QWidget(this);
     QVBoxLayout * layoutInput = new QVBoxLayout(contenitoreInput);
 
     
     QVBoxLayout *layoutNome = new QVBoxLayout;
-    QLabel *nameLabel = new QLabel("Nome cinema:");
+    QLabel *nameLabel = new QLabel("Nome cinema:",this);
     nameLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     layoutNome->addWidget(nameLabel);
     layoutNome->addWidget(textInput);
     
-    errorLabel = new QLabel;
+    errorLabel = new QLabel(this);
     errorLabel->setStyleSheet("color: red; font-size: 11px;");
     errorLabel->setText("");
     errorLabel->setVisible(false);
@@ -232,7 +232,7 @@ void InsertCinemaPage::createLayoutInput(QVBoxLayout* layoutdx) {
 }
 
 void InsertCinemaPage::createButtonLayout(QVBoxLayout* layoutdx) {
-    QWidget * contenitorePulsanti = new QWidget;
+    QWidget * contenitorePulsanti = new QWidget(this);
     QHBoxLayout * layoutPulsanti = new QHBoxLayout(contenitorePulsanti);
 
    

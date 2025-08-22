@@ -137,8 +137,28 @@ void Media::IncrementaVisualizzazioni()
 
 void Media::setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio) {
     if(m_dataInizioRilascio>m_dataFineRilascio)
-        m_dataInizioRilascio = m_dataFineRilascio;
+    m_dataInizioRilascio = m_dataFineRilascio;
     m_dataInizioRilascio = gg_mm_aaInizioRilascio;
+}
+
+// Metodi get
+string Media::getAutore() const{
+    return m_autore;
+}
+string Media::getTitolo() const {
+    return m_titolo;
+}
+
+string Media::getDescrizione() const {
+    return m_descrizione;
+}
+
+vector<Lingua> Media::getLingue() const {
+    return m_lingueDisponibili;
+}
+
+vector<Lingua> Media::getSottotitoli() const {
+    return m_sottotitoliDisponibili;
 }
 
 // // Metodi set
@@ -151,25 +171,4 @@ void Media::setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio) {
 
 // void Media::setDescrizione(const string& descrizione) {
 //     m_descrizione = descrizione;
-// }
-
-
-// // Metodi get
-// string Media::getAutore() const{
-//     return m_autore;
-// }
-// string Media::getTitolo() const {
-//     return m_titolo;
-// }
-
-// string Media::getDescrizione() const {
-//     return m_descrizione;
-// }
-
-// vector<Lingua> Media::getLingue() const {
-//     return m_lingueDisponibili;
-// }
-
-// vector<Lingua> Media::getSottotitoli() const {
-//     return m_sottotitoliDisponibili;
 // }

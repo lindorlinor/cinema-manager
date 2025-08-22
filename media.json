@@ -1,36 +1,172 @@
 [
     {
-        "attoriPrincipali": [
-            "kermit",
-            "kermit 2",
-            "kermit clone"
-        ],
         "autore": "autore antipatico",
-        "casaDiProduzione": "mia",
-        "costoBiglietto": 8,
+        "autoreFilmAssociato": "",
         "dataFineRilascio": "2025-08-24",
         "dataInizioRilascio": "2025-08-21",
         "descrizione": "descrizioncina",
         "durataMinuti": 80,
+        "filmAssociato": "",
         "formato": 6,
-        "genere": [
-            1,
-            2
-        ],
         "lingueDisponibili": [
             1,
             2,
             3
         ],
-        "nPostCredit": 5,
+        "nProiezioniGiornaliere": 0,
         "path": ":/images/film2.png",
         "risoluzione": 3,
         "sottotitoliDisponibili": [
             0,
             1
         ],
-        "target": 0,
         "tipologia": "film",
         "titolo": "film carino"
+    },
+    {
+        "autore": "autoreeee",
+        "autoreFilmAssociato": "",
+        "dataFineRilascio": "",
+        "dataInizioRilascio": "",
+        "descrizione": "hyhyhy",
+        "durataMinuti": 80,
+        "filmAssociato": "",
+        "formato": 5,
+        "lingueDisponibili": [
+            0,
+            1
+        ],
+        "nProiezioniGiornaliere": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 3,
+        "sottotitoliDisponibili": [
+            0,
+            2,
+            3
+        ],
+        "tipologia": "trailer",
+        "titolo": "titoletto"
+    },
+    {
+        "autore": "autorello",
+        "autoreFilmAssociato": "",
+        "dataFineRilascio": "",
+        "dataInizioRilascio": "",
+        "descrizione": "ddededede",
+        "durataMinuti": 6,
+        "filmAssociato": "",
+        "formato": 5,
+        "lingueDisponibili": [
+            2,
+            3
+        ],
+        "nProiezioniGiornaliere": 0,
+        "path": ":/images/image2.png",
+        "risoluzione": 4,
+        "sottotitoliDisponibili": [
+            1,
+            4
+        ],
+        "tipologia": "podcast",
+        "titolo": "titolino"
+    },
+    {
+        "autore": "autore del podcast",
+        "autoreFilmAssociato": "",
+        "dataFineRilascio": "",
+        "dataInizioRilascio": "",
+        "descrizione": "podcast provavavavaa",
+        "durataMinuti": 80,
+        "filmAssociato": "",
+        "formato": 6,
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 3,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "titolo podcast"
+    },
+    {
+        "autore": "m",
+        "autoreFilmAssociato": "",
+        "dataFineRilascio": "2025-08-22",
+        "dataInizioRilascio": "2025-08-22",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "filmAssociato": "",
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "film",
+        "titolo": "k"
+    },
+    {
+        "autore": "y",
+        "autoreFilmAssociato": "",
+        "dataFineRilascio": "2025-08-22",
+        "dataInizioRilascio": "2025-08-22",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "filmAssociato": "",
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "film",
+        "titolo": "y"
+    },
+    {
+        "autore": "t",
+        "autoreFilmAssociato": "",
+        "dataFineRilascio": "2025-08-22",
+        "dataInizioRilascio": "2025-08-22",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "filmAssociato": "",
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "film",
+        "titolo": "y"
+    },
+    {
+        "autore": "lala",
+        "autoreFilmAssociato": "autore antipatico",
+        "dataFineRilascio": "",
+        "dataInizioRilascio": "",
+        "descrizione": "4444",
+        "durataMinuti": 4,
+        "filmAssociato": "film carino",
+        "formato": 4,
+        "lingueDisponibili": [
+            2,
+            4
+        ],
+        "nProiezioniGiornaliere": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 3,
+        "sottotitoliDisponibili": [
+            1,
+            4
+        ],
+        "tipologia": "trailer",
+        "titolo": "titoloooooso"
     }
 ]

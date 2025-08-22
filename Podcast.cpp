@@ -26,6 +26,12 @@ void Podcast::aggiungiPuntata(Puntata* puntata){
         p_elencoPuntate.push_back(puntata);
 
         aggiornaDate();
+        for(Lingua l: puntata->getLingue()){
+            aggiungiLingua(l);
+        }
+        for(Lingua l: puntata->getSottotitoli()){
+            aggiungiSottotitolo(l);
+        }
     }
 }
 
@@ -81,6 +87,12 @@ void Podcast::disaccoppiaPuntata(Puntata* puntata){
     if (i_puntata != -1) {
         p_elencoPuntate.erase(p_elencoPuntate.begin() + i_puntata);
         aggiornaDate();
+        for(Lingua l : puntata->getLingue()){
+            rimuoviLingua(l);
+        }
+        for(Lingua l : puntata->getSottotitoli()){
+            rimuoviSottotitolo(l);
+        }
     }
 }
 
@@ -100,6 +112,46 @@ void Podcast::aggiornaDate(){
         });
 
         setDataFineRilascio((*maxPuntata)->getDataFineRilascio());
+    }
+}
+
+void Podcast::aggiungiLingua(Lingua lingua) {
+    for(Puntata* p: p_elencoPuntate){
+        if(std::find(p->getLingue().begin(), p->getLingue().end(), lingua) != p->getLingue().end()){
+            Media::aggiungiLingua(lingua);
+            return;
+        }
+    }
+}
+
+void Podcast::aggiungiSottotitolo(Lingua lingua) {
+    for(Puntata* p: p_elencoPuntate){
+        if(std::find(p->getSottotitoli().begin(), p->getSottotitoli().end(), lingua) != p->getSottotitoli().end()){
+            Media::aggiungiLingua(lingua);
+            return;
+        }
+    }
+}
+
+void Podcast::rimuoviLingua(Lingua lingua) {
+    for(Puntata* p: p_elencoPuntate){
+        if(std::find(p->getLingue().begin(), p->getLingue().end(), lingua) != p->getLingue().end()){
+            return;
+        }
+        else{
+            Media::rimuoviLingua(lingua);
+        }
+    }
+}
+
+void Podcast::rimuoviSottotitolo(Lingua lingua) {
+    for(Puntata* p: p_elencoPuntate){
+        if(std::find(p->getSottotitoli().begin(), p->getSottotitoli().end(), lingua) != p->getSottotitoli().end()){
+            return;
+        }
+        else{
+            Media::rimuoviSottotitolo(lingua);
+        }
     }
 }
 

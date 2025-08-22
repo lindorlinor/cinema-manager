@@ -83,10 +83,11 @@ class InsertMedia:public QWidget{
     QListWidget* listFasceOrarie;
     QComboBox* comboFormato;
     QComboBox* comboRisoluzione;
-    QComboBox* comboTarget;
+    QComboBox* comboTargetFilm;
+    QComboBox* comboTargetInserzioni;
     QDateEdit* dataInizio;
     QDateEdit* dataFine;
-    QString titoloFilmRirefimento; 
+    QString titoloFilmRiferimento; 
     QString autoreFilmRiferimento; 
     QString titoloPodcastRiferimento; 
     QString autorePodcastRiferimento; 
@@ -158,7 +159,7 @@ class InsertMedia:public QWidget{
     //widget di input da aggiungere, sono stati fatti dei metodi perché utilizzati più volte o per pulizia del codice
     ListPersone* addPersone(const QString& testo, QVBoxLayout* ly);                                             //aggiungono il widget di ListPersone, utilizzato in Film e Podcast
     void addTipologiaCombo(QHBoxLayout* baseH);
-    QTextEdit* addDescrizione(QHBoxLayout* baseH);
+    QTextEdit* addDescrizioneWidget(QHBoxLayout* baseH);
     QDateEdit* addDataInizioRilascio(QVBoxLayout* ly);   //comuni a tutti tranne a podcast
     QDateEdit* addDataFineRilascio(QVBoxLayout* ly);     //comuni a tutti tranne a podcast
     

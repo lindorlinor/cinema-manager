@@ -1,8 +1,8 @@
 #include "MediaFrame.h"
 
-MediaFrame::MediaFrame(const QString& titolo, const QString& imagePath,const QString& autore, QWidget* parent):titoloMedia(titolo), autoreMedia(autore), QFrame(parent){
-    imgLabel = new QLabel;
-    pix.load(imagePath);
+MediaFrame::MediaFrame( const QString& titolo, const QString& imagePath,const QString& autore, QWidget* parent):QFrame(parent), titoloMedia(titolo), 
+                        autoreMedia(autore), imgLabel(new QLabel(this)), pix(imagePath){
+
     imgLabel->setPixmap(pix.scaled(100, 150));
     
     QLabel* titoloLabel = new QLabel(titolo);

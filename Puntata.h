@@ -51,6 +51,12 @@ public:
 
     double calcolaIncasso() override;
 
+    /**
+     * @brief oltre ad aggiungere una lingua o un sottotitolo a puntata, lo aggiunge anche a podcast
+     *
+     */
+    void aggiungiLingua(Lingua lingua) override;
+    void aggiungiSottotitolo(Lingua lingua) override;
 
     vector<string> getOspiti() const;
 

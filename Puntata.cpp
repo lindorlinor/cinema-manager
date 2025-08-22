@@ -81,6 +81,15 @@ Podcast* Puntata::getPodcast()const{
     return p_podcast;
 }
 
+void Puntata::aggiungiLingua(Lingua lingua){
+    Media::aggiungiLingua(lingua);
+    p_podcast->aggiungiLingua(lingua);
+}
+void Puntata::aggiungiSottotitolo(Lingua lingua){
+    Media::aggiungiSottotitolo(lingua);
+    p_podcast->aggiungiSottotitolo(lingua);
+}
+
 //visitor
 void Puntata::accept(MediaVisitor* visitor) {
     visitor->visit(this);

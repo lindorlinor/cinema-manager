@@ -15,10 +15,10 @@ class MediaFrame: public QFrame{
     Q_OBJECT 
     
     private:
-    QLabel* imgLabel;
-    QPixmap pix;
     QString titoloMedia;
     QString autoreMedia;
+    QLabel* imgLabel;
+    QPixmap pix;
 
     public:
     explicit MediaFrame(const QString& titolo, const QString& imagePath, const QString& autore, QWidget* parent = nullptr);
