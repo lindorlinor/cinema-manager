@@ -48,13 +48,17 @@ class MediaManagerJson : public QObject, public MediaVisitor{
          * @return QList<FilmData> Lista dei film caricati.
          */
         
-        QList<FilmData*> loadFilmsData();
-        QList<TrailerData*> loadTrailersData();
-        QList<InserzioniData*> loadInserzioniData();
-        QList<PodcastData*> loadPodcastData();
-        QList<PuntataData*> loadPuntateData();
-        QList<MediaData*> loadAllData();
+        void loadFilmsData(QList<FilmData*>& films);
+        void loadTrailersData(QList<TrailerData*>& trailers);
+        void loadInserzioniData(QList<InserzioniData*>& inserzioni);
+        void loadPodcastData(QList<PodcastData*>& podcasts);
+        void loadPuntateData(QList<PuntataData*>& puntata);
         
+        /**
+        * @brief Carica tutti i media e li aggiunge alla lista.
+        * @note La lista risultante contiene puntatori che DEVONO essere distrutti dal chiamante
+        */
+        void loadAllData(QList<MediaData*>& media);
         
         //load Media
         /**
@@ -130,13 +134,13 @@ class MediaManagerJson : public QObject, public MediaVisitor{
          * 
          * @param film Dati del film da salvare.
          */
-        
-        void saveAll(MediaData* media);
-        void saveFilm(FilmData* film);
-        void saveTrailer(TrailerData* trailer);
-        void saveInserzione(InserzioniData * inserzione);
-        void savePodcast(PodcastData* podcast);
-        void savePuntata(PuntataData* puntata); 
+        void saveMedia(MediaData* media);
+        void saveList(QList<MediaData*>& mediaList);
+        void saveFilm(FilmData* film, QJsonObject& obj);
+        void saveTrailer(TrailerData* trailer, QJsonObject& obj);
+        void saveInserzione(InserzioniData * inserzione, QJsonObject& obj);
+        void savePodcast(PodcastData* podcast, QJsonObject& obj);
+        void savePuntata(PuntataData* puntata, QJsonObject& obj); 
 
         ~MediaManagerJson();
         

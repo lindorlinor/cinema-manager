@@ -12,7 +12,9 @@ MediaManagerJson::~MediaManagerJson() {
 }
 
 void MediaManagerJson::clearMediaList() {
-    qDeleteAll(m_mediaList);  // cancella tutti gli oggetti puntati dai puntatori
+    for(Media* m : m_mediaList){
+        delete m;       // cancella tutti gli oggetti puntati dai puntatori
+    }
     m_mediaList.clear();      // svuota la lista
 }
 
@@ -21,8 +23,9 @@ void MediaManagerJson::clearMediaList() {
 
 void MediaManagerJson::loadFilms() {
     if (!m_mediaList.empty()) return; 
-    QList<FilmData*> filmsData = loadFilmsData();
-    for (FilmData* data : filmsData) {
+    QList<FilmData*> films;
+    loadFilmsData(films);
+    for (FilmData* data : films) {
         m_mediaList.append(createFilmFromData(*data));
         delete data;
     }
@@ -30,8 +33,9 @@ void MediaManagerJson::loadFilms() {
 
 void MediaManagerJson::loadTrailers() {
     if (!m_mediaList.empty()) return; 
-    QList<TrailerData*> trailersData = loadTrailersData();
-    for (TrailerData* data : trailersData) {
+    QList<TrailerData*> trailers;
+    loadTrailersData(trailers);
+    for (TrailerData* data : trailers) {
         m_mediaList.append(createTrailerFromData(*data));
         delete data;
     }
@@ -39,8 +43,9 @@ void MediaManagerJson::loadTrailers() {
 
 void MediaManagerJson::loadInserzioni() {
     if (!m_mediaList.empty()) return; 
-    QList<InserzioniData*> inserzioniData = loadInserzioniData();
-    for (InserzioniData* data : inserzioniData) {
+    QList<InserzioniData*> inserzioni;
+    loadInserzioniData(inserzioni);
+    for (InserzioniData* data : inserzioni) {
         m_mediaList.append(createInserzioneFromData(*data));
         delete data;
     }
@@ -48,8 +53,9 @@ void MediaManagerJson::loadInserzioni() {
 
 void MediaManagerJson::loadPodcast() {
     if (!m_mediaList.empty()) return; 
-    QList<PodcastData*> podcasdata = loadPodcastData();
-    for (PodcastData* data : podcasdata) {
+    QList<PodcastData*> podcast;
+    loadPodcastData(podcast);
+    for (PodcastData* data : podcast) {
         m_mediaList.append(createPodcastFromData(*data));
         delete data;
     }
@@ -57,8 +63,9 @@ void MediaManagerJson::loadPodcast() {
 
 void MediaManagerJson::loadPuntate() {
     if (!m_mediaList.empty()) return; 
-    QList<PuntataData*> puntataData = loadPuntateData();
-    for (PuntataData* data : puntataData) {
+    QList<PuntataData*> puntata;
+    loadPuntateData(puntata);
+    for (PuntataData* data : puntata) {
         m_mediaList.append(createPuntataFromData(*data));
         delete data;
     }
@@ -79,10 +86,12 @@ void MediaManagerJson::remove(Media* media) {
     m_mediaList.removeOne(media);
     delete media; // libera memoria
 
-    QList<MediaData*> mediaData = loadAllData();
+    QList<MediaData*> mediaData;
+    loadAllData(mediaData);
     for(auto it = mediaData.begin(); it != mediaData.end(); ) {
         if((*it)->titolo == QString::fromStdString(media->getTitolo()) &&
            (*it)->autore == QString::fromStdString(media->getAutore())) {
+            delete *it;
             it = mediaData.erase(it); // cancella solo questo elemento
         } else {
             ++it;
@@ -90,10 +99,13 @@ void MediaManagerJson::remove(Media* media) {
     }
 
     // salva tutta la lista aggiornata
+    saveList(mediaData);
+
     for(MediaData* m : mediaData) {
-        saveAll(m);
         delete m; 
     }
+
+    media = nullptr;
 }
 
 // TROVA MEDIA PER RIFERIMENTO A PODCAST O FILM //
@@ -308,291 +320,277 @@ void MediaManagerJson::saveCommonFields(const MediaData &data, QJsonObject &obj)
 
 }
 
-void MediaManagerJson::saveAll(MediaData* media){
-    if(!media) return;
 
-    if(media->tipologia=="film") saveFilm(static_cast<FilmData*>(media));
-    else if(media->tipologia=="trailer") saveTrailer(static_cast<TrailerData*>(media));
-    else if(media->tipologia=="inserzione") saveInserzione(static_cast<InserzioniData*>(media));
-    else if(media->tipologia=="podcast") savePodcast(static_cast<PodcastData*>(media));
-    else if(media->tipologia=="puntata") savePuntata(static_cast<PuntataData*>(media));
+void MediaManagerJson::saveList(QList<MediaData*>& mediaList){
+    if(mediaList.isEmpty()) return;
+    QJsonArray array;
+
+    for (MediaData* media : mediaList) {
+        QJsonObject obj;
+
+        if(media->tipologia=="film") saveFilm(static_cast<FilmData*>(media), obj);
+        else if(media->tipologia=="trailer") saveTrailer(static_cast<TrailerData*>(media), obj);
+        else if(media->tipologia=="inserzione") saveInserzione(static_cast<InserzioniData*>(media), obj);
+        else if(media->tipologia=="podcast") savePodcast(static_cast<PodcastData*>(media), obj);
+        else if(media->tipologia=="puntata") savePuntata(static_cast<PuntataData*>(media), obj);
+
+        array.append(obj);
+    }
+
+    saveJsonFile("media.json", QJsonDocument(array));
+}
+
+void MediaManagerJson::saveMedia(MediaData* media) {
+    if (!media) return;
+    
+    QList<MediaData*> mediaList;
+    loadAllData(mediaList); // carica quello che c'è
+    mediaList.append(media);
+
+    saveList(mediaList);
+
+    for(MediaData* m : mediaList)
+        if(m!=media) delete m;
 }
 
 // FILM
-QList<FilmData*> MediaManagerJson::loadFilmsData() {
-    QList<FilmData*> films;
+void MediaManagerJson::loadFilmsData(QList<FilmData*>& films) {
+    
     QJsonDocument doc = loadJsonFile("media.json");
-    if (!doc.isArray()) return films;
+    if (!doc.isArray()) return;
 
     
     for (const auto &val : doc.array()) {
         
         QJsonObject obj = val.toObject();
-        FilmData* film = new FilmData;
 
-        loadCommonFields(*film, obj);
+        if(obj["tipologia"].toString() == "film"){
 
-        // generi (vector<Genere>)
-        QJsonArray arrayGeneri = obj["genere"].toArray();
-        for (const auto &g : arrayGeneri) {
-            film->genere.push_back(static_cast<Genere>(g.toInt()));
+            FilmData* film = new FilmData();
+    
+            loadCommonFields(*film, obj);
+    
+            // generi (vector<Genere>)
+            QJsonArray arrayGeneri = obj["genere"].toArray();
+            for (const auto &g : arrayGeneri) {
+                film->genere.push_back(static_cast<Genere>(g.toInt()));
+            }
+    
+            film->casaDiProduzione = obj["casaDiProduzione"].toString();
+            film->nPostCredit = obj["nPostCredit"].toInt();
+            film->costoBiglietto = obj["costoBiglietto"].toDouble();
+    
+            film->target = static_cast<Classificazione>(obj["target"].toInt());
+            for (const QJsonValue &v : obj["attoriPrincipali"].toArray())
+            film->attoriPrincipali.push_back(v.toString());
+    
+            films.append(film);
         }
-
-        film->casaDiProduzione = obj["casaDiProduzione"].toString();
-        film->nPostCredit = obj["nPostCredit"].toInt();
-        film->costoBiglietto = obj["costoBiglietto"].toDouble();
-
-        film->target = static_cast<Classificazione>(obj["target"].toInt());
-        for (const QJsonValue &v : obj["attoriPrincipali"].toArray())
-        film->attoriPrincipali.push_back(v.toString());
-
-        films.append(film);
     }
-    return films;
 }
 
-void MediaManagerJson::saveFilm(FilmData* film) {
+void MediaManagerJson::saveFilm(FilmData* film, QJsonObject& obj) {
     if(!film) return;
 
-    QList<FilmData*> films = loadFilmsData(); // carica quello che c'è
-    films.append(film);
+    saveCommonFields(*film, obj);
 
-    QJsonArray array;
-    for (const FilmData* f : films) {
-        QJsonObject obj;
-        saveCommonFields(*f, obj);
-
-        QJsonArray arrayGeneri;
-        for (Genere g : f->genere) {
-            arrayGeneri.append(static_cast<int>(g));
-        }
-        obj["genere"] = arrayGeneri;
-
-        obj["casaDiProduzione"] = f->casaDiProduzione;
-        obj["nPostCredit"] = static_cast<int>(f->nPostCredit);
-        obj["costoBiglietto"] = f->costoBiglietto;
-
-        obj["target"] = static_cast<int>(f->target);
-
-        QJsonArray arrayAttori;
-        for (const QString& a : f->attoriPrincipali)
-            arrayAttori.append(a);
-        obj["attoriPrincipali"] = arrayAttori;
-
-        array.append(obj);
+    QJsonArray arrayGeneri;
+    for (Genere g : film->genere) {
+        arrayGeneri.append(static_cast<int>(g));
     }
+    obj["genere"] = arrayGeneri;
 
-    saveJsonFile("media.json", QJsonDocument(array));
+    obj["casaDiProduzione"] = film->casaDiProduzione;
+    obj["nPostCredit"] = static_cast<int>(film->nPostCredit);
+    obj["costoBiglietto"] = film->costoBiglietto;
+
+    obj["target"] = static_cast<int>(film->target);
+
+    QJsonArray arrayAttori;
+    for (const QString& a : film->attoriPrincipali)
+        arrayAttori.append(a);
+    obj["attoriPrincipali"] = arrayAttori;
 }
 
 // TRAILER
-QList<TrailerData*>MediaManagerJson::loadTrailersData() {
-    QList<TrailerData*> trailers;
+void MediaManagerJson::loadTrailersData(QList<TrailerData*>& trailers) {
     QJsonDocument doc = loadJsonFile("media.json");
-    if (!doc.isArray()) return trailers;
+    if (!doc.isArray()) return;
 
-    
     for (const auto &val : doc.array()) {
         
         QJsonObject obj = val.toObject();
-        TrailerData* trailer = new TrailerData;
 
-        loadCommonFields(*trailer, obj);
+        if(obj["tipologia"] == "trailer"){
 
-        trailer->nProiezioniGiornaliere = obj["nProiezioniGiornaliere"].toInt();
-        trailer->filmAssociato = obj["filmAssociato"].toString();
-        trailer->autoreFilmAssociato = obj["autoreFilmAssociato"].toString();
-        
-        trailers.append(trailer);
+            TrailerData* trailer = new TrailerData();
+    
+            loadCommonFields(*trailer, obj);
+    
+            trailer->nProiezioniGiornaliere = obj["nProiezioniGiornaliere"].toInt();
+            trailer->filmAssociato = obj["filmAssociato"].toString();
+            trailer->autoreFilmAssociato = obj["autoreFilmAssociato"].toString();
+            
+            trailers.append(trailer);
+        }
     }
-    return trailers;
 }
 
-void MediaManagerJson::saveTrailer(TrailerData* trailer) {
+void MediaManagerJson::saveTrailer(TrailerData* trailer, QJsonObject& obj) {
     if(!trailer) return;
-    QList<TrailerData*> trailers = loadTrailersData(); 
-    trailers.append(trailer);
 
-    QJsonArray array;
-    for (const TrailerData* t : trailers) {
-        QJsonObject obj;
-        saveCommonFields(*t, obj);
+    saveCommonFields(*trailer, obj);
 
-        obj["nProiezioniGiornaliere"] = static_cast<int>(t->nProiezioniGiornaliere);
-        obj["filmAssociato"] = t->filmAssociato;
-        obj["autoreFilmAssociato"] = t->autoreFilmAssociato;
+    obj["nProiezioniGiornaliere"] = static_cast<int>(trailer->nProiezioniGiornaliere);
+    obj["filmAssociato"] = trailer->filmAssociato;
+    obj["autoreFilmAssociato"] = trailer->autoreFilmAssociato;
 
-        array.append(obj);
-    }
-
-    saveJsonFile("media.json", QJsonDocument(array));
 }
 
 //PODCAST
-QList<PodcastData*> MediaManagerJson::loadPodcastData() {
-    QList<PodcastData*> podcasts;
+void MediaManagerJson::loadPodcastData(QList<PodcastData*>& podcasts) {
     QJsonDocument doc = loadJsonFile("media.json");
-    if (!doc.isArray()) return podcasts;
+    if (!doc.isArray()) return;
 
     
     for (const auto &val : doc.array()) {
         
         QJsonObject obj = val.toObject();
-        PodcastData* podcast = new PodcastData;
 
-        loadCommonFields(*podcast, obj);
-
-        podcast->conduttore = obj["conduttore"].toString();
-
-        podcasts.append(podcast);
+        if(obj["tipologia"]=="podcast"){
+            
+            PodcastData* podcast = new PodcastData();
+    
+            loadCommonFields(*podcast, obj);
+    
+            podcast->conduttore = obj["conduttore"].toString();
+    
+            podcasts.append(podcast);
+        }
     }
-    return podcasts;
 }
 
-void MediaManagerJson::savePodcast(PodcastData* podcast) {
+void MediaManagerJson::savePodcast(PodcastData* podcast, QJsonObject& obj) {
     if(!podcast) return;
 
-    QList<PodcastData*> podcasts = loadPodcastData(); 
-    podcasts.append(podcast);
+    saveCommonFields(*podcast, obj);
 
-    QJsonArray array;
-    for (const PodcastData* p : podcasts) {
-        QJsonObject obj;
-        saveCommonFields(*p, obj);
-
-        obj["conduttore"] = p->conduttore;
-
-        array.append(obj);
-    }
-
-    saveJsonFile("media.json", QJsonDocument(array));
+    obj["conduttore"] = podcast->conduttore;
 }
 
 //PUNTATA
-QList<PuntataData*> MediaManagerJson::loadPuntateData() {
-    QList<PuntataData*> puntate;
+void MediaManagerJson::loadPuntateData(QList<PuntataData*>& puntate) {
     QJsonDocument doc = loadJsonFile("media.json");
-    if (!doc.isArray()) return puntate;
+    if (!doc.isArray()) return;
 
     
     for (const auto &val : doc.array()) {
         
         QJsonObject obj = val.toObject();
-        PuntataData* puntata = new PuntataData;
 
-        loadCommonFields(*puntata, obj);
+        if(obj["tipologia"] == "puntata"){
+            PuntataData* puntata = new PuntataData();
+    
+            loadCommonFields(*puntata, obj);
+    
+            puntata->numeroPubblicita = obj["numeroPubblicita"].toInt();
+            puntata->autorePodcastAssociato = obj["autorePodcastAssociato"].toString();
+            puntata->podcastAssociato = obj["podcastAssociato"].toString();
+            
+            for (const QJsonValue &v : obj["ospiti"].toArray())
+            puntata->ospiti.push_back(v.toString());
+    
+            puntate.append(puntata);
+        } 
 
-        puntata->numeroPubblicita = obj["numeroPubblicita"].toInt();
-        puntata->autorePodcastAssociato = obj["autorePodcastAssociato"].toString();
-        puntata->podcastAssociato = obj["podcastAssociato"].toString();
-        
-        for (const QJsonValue &v : obj["ospiti"].toArray())
-        puntata->ospiti.push_back(v.toString());
-
-        puntate.append(puntata);
     }
-    return puntate;
 }
 
-void MediaManagerJson::savePuntata(PuntataData* puntata) {
+void MediaManagerJson::savePuntata(PuntataData* puntata, QJsonObject& obj) {
     if(!puntata) return;
 
-    QList<PuntataData*> puntate = loadPuntateData(); 
-    puntate.append(puntata);
+    saveCommonFields(*puntata, obj);
 
-    QJsonArray array;
-    for (const PuntataData* p : puntate) {
-        QJsonObject obj;
-        saveCommonFields(*p, obj);
+    obj["numeroPubblicita"] = static_cast<int>(puntata->numeroPubblicita);
+    obj["autorePodcastAssociato"] = puntata->autorePodcastAssociato;
+    obj["podcastAssociato"] = puntata->podcastAssociato;
 
-        obj["numeroPubblicita"] = static_cast<int>(p->numeroPubblicita);
-        obj["autorePodcastAssociato"] = p->autorePodcastAssociato;
-        obj["podcastAssociato"] = p->podcastAssociato;
+    QJsonArray arrayOspiti;
+    for (const QString& o : puntata->ospiti)
+        arrayOspiti.append(o);
+    obj["ospiti"] = arrayOspiti;
 
-        QJsonArray arrayOspiti;
-        for (const QString& o : p->ospiti)
-            arrayOspiti.append(o);
-        obj["ospiti"] = arrayOspiti;
-
-        array.append(obj);
-    }
-
-    saveJsonFile("media.json", QJsonDocument(array));
 }
 
 //INSERZIONE
-QList<InserzioniData*> MediaManagerJson::loadInserzioniData() {
-    QList<InserzioniData*> inserzioni;
+void MediaManagerJson::loadInserzioniData(QList<InserzioniData*>& inserzioni) {
     QJsonDocument doc = loadJsonFile("media.json");
-    if (!doc.isArray()) return inserzioni;
+    if (!doc.isArray()) return;
 
     for (const auto &val : doc.array()) {
         
         QJsonObject obj = val.toObject();
-        InserzioniData* inserzione = new InserzioniData;
 
-        loadCommonFields(*inserzione, obj);
-
-        inserzione->target = static_cast<Classificazione>(obj["target"].toInt());
-        inserzione->aziendaInserzionista = obj["aziendaInserzionista"].toString();
-        inserzione->costoFissoProiezione = obj["costoFissoProiezione"].toDouble();
-
-        QJsonArray arrayFasceOrarie = obj["fasceOrarie"].toArray();
-        for (const auto &f : arrayFasceOrarie) {
-            inserzione->fasceOrarie.push_back(static_cast<FasciaOraria>(f.toInt()));
+        if(obj["tipologia"] == "inserzione"){
+            InserzioniData* inserzione = new InserzioniData();
+    
+            loadCommonFields(*inserzione, obj);
+    
+            inserzione->target = static_cast<Classificazione>(obj["target"].toInt());
+            inserzione->aziendaInserzionista = obj["aziendaInserzionista"].toString();
+            inserzione->costoFissoProiezione = obj["costoFissoProiezione"].toDouble();
+    
+            QJsonArray arrayFasceOrarie = obj["fasceOrarie"].toArray();
+            for (const auto &f : arrayFasceOrarie) {
+                inserzione->fasceOrarie.push_back(static_cast<FasciaOraria>(f.toInt()));
+            }
+    
+            inserzioni.append(inserzione);
         }
-
-        inserzioni.append(inserzione);
     }
-    return inserzioni;
 }
 
-void MediaManagerJson::saveInserzione(InserzioniData* inserzione) {
+void MediaManagerJson::saveInserzione(InserzioniData* inserzione, QJsonObject& obj) {
     if(!inserzione) return;
 
-    QList<InserzioniData*> inserzioni = loadInserzioniData(); 
-    inserzioni.append(inserzione);
+    saveCommonFields(*inserzione, obj);
 
-    QJsonArray array;
-    for (const InserzioniData* i : inserzioni) {
-        QJsonObject obj;
-        saveCommonFields(*i, obj);
+    obj["target"] = static_cast<int>(inserzione->target);
+    obj["aziendaInserzionista"] = inserzione->aziendaInserzionista;
+    obj["costoFissoProiezione"] = static_cast<double>(inserzione->costoFissoProiezione);
 
-        obj["target"] = static_cast<int>(i->target);
-        obj["aziendaInserzionista"] = i->aziendaInserzionista;
-        obj["costoFissoProiezione"] = static_cast<double>(i->costoFissoProiezione);
-
-        QJsonArray arrayFasceOrarie;
-        for (FasciaOraria f : i->fasceOrarie) {
-            arrayFasceOrarie.append(static_cast<int>(f));
-        }
-        obj["fasceOrarie"] = arrayFasceOrarie;
-
-        array.append(obj);
+    QJsonArray arrayFasceOrarie;
+    for (FasciaOraria f : inserzione->fasceOrarie) {
+        arrayFasceOrarie.append(static_cast<int>(f));
     }
-
-    saveJsonFile("media.json", QJsonDocument(array));
+    obj["fasceOrarie"] = arrayFasceOrarie;
 }
 
-QList<MediaData*> MediaManagerJson::loadAllData() {
-    QList<MediaData*> all;
-
-    for (FilmData* f : loadFilmsData())
-        all.append(f);
-
-    for (TrailerData* t : loadTrailersData())
-        all.append(t);
-
-    for (PodcastData* p : loadPodcastData())
-        all.append(p);
-
-    for (PuntataData* pt : loadPuntateData())
-        all.append(pt);
-
-    for (InserzioniData* i : loadInserzioniData())
-        all.append(i);
-
-    return all;
+void MediaManagerJson::loadAllData(QList<MediaData*>& media) {
+    QList<FilmData*> films;
+    loadFilmsData(films);
+    for (FilmData* f : films)
+    media.append(f);
+    
+    QList<TrailerData*> trailers;
+    loadTrailersData(trailers);
+    for (TrailerData* t : trailers)
+    media.append(t);
+    
+    QList<PodcastData*> podcast;
+    loadPodcastData(podcast);
+    for (PodcastData* p : podcast)
+    media.append(p);
+    
+    QList<PuntataData*> puntate;
+    loadPuntateData(puntate);
+    for (PuntataData* pt : puntate)
+    media.append(pt);
+    
+    QList<InserzioniData*> inserzioni;
+    loadInserzioniData(inserzioni);
+    for (InserzioniData* i : inserzioni)
+    media.append(i);
 }
 
 
@@ -607,6 +605,8 @@ void MediaManagerJson::saveJsonFile(const QString &fileName, const QJsonDocument
         qWarning() << "Impossibile scrivere" << filePath;
         return;
     }
+
+
 
     file.write(doc.toJson());
     file.close();

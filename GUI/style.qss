@@ -142,6 +142,15 @@ QDateEdit#dataInizio:enabled {
     font-size: 14pt;
 }
 
+#rimuovi{
+    border: none;   
+    border-radius: 10px;
+    background-color: #4e7f8b;
+    color: #05313c;
+    padding: 8px 12px;
+    font-size: 14pt;
+}
+
 #durataMinutiMedia::up-button:disabled,
 #durataMinutiMedia::down-button:disabled,
 #durataMinutiMedia:disabled,
@@ -248,7 +257,8 @@ QDateEdit#dataFine:disabled QLineEdit {
 #recenti,       /*di searchpanel */
 #comboFormato,
 #comboRisoluzione,
-#comboTarget,
+#comboTargetInserzioni,
+#comboTargetFilm,
 #comboTipologia{
     border: none;   
     border-radius: 10px;
@@ -265,7 +275,8 @@ QDateEdit#dataFine:disabled QLineEdit {
 #recenti QAbstractItemView,       /*di searchpanel */
 #comboFormato QAbstractItemView,
 #comboRisoluzione QAbstractItemView,
-#comboTarget QAbstractItemView,
+#comboTargetFilm QAbstractItemView,
+#comboTargetInserzioni QAbstractItemView,
 #comboTipologia QAbstractItemView {
     border-bottom: 3px solid #05313c;
     border-left: 3px solid #05313c;
@@ -282,7 +293,8 @@ QDateEdit#dataFine:disabled QLineEdit {
 #recenti QAbstractItemView::item,       /*di searchpanel */
 #comboFormato QAbstractItemView::item,
 #comboRisoluzione QAbstractItemView::item,
-#comboTarget QAbstractItemView::item,
+#comboTargetInserzioni QAbstractItemView::item,
+#comboTargetFilm QAbstractItemView::item,
 #comboTipologia QAbstractItemView::item {
     padding: 8px 12px;
     margin: 0;
@@ -296,7 +308,8 @@ QDateEdit#dataFine:disabled QLineEdit {
 #recenti QAbstractItemView::item:hover,       /*di searchpanel */
 #comboFormato QAbstractItemView::item:hover,
 #comboRisoluzione QAbstractItemView::item:hover,
-#comboTarget QAbstractItemView::item:hover,
+#comboTargetInserzioni QAbstractItemView::item:hover,
+#comboTargetFilm QAbstractItemView::item:hover,
 #comboTipologia QAbstractItemView::item:hover {
     background-color: #365961;
     color: #bdced3;
@@ -307,7 +320,8 @@ QDateEdit#dataFine:disabled QLineEdit {
 #recenti::down-arrow,       /*di searchpanel */
 #comboFormato::down-arrow,
 #comboRisoluzione::down-arrow,
-#comboTarget::down-arrow,
+#comboTargetInserzioni::down-arrow,
+#comboTargetFilm::down-arrow,
 #comboTipologia::down-arrow,
 #dataInizio::down-arrow,
 #dataFine::down-arrow{

@@ -14,6 +14,9 @@ InsertMedia::InsertMedia(QWidget *parent): QWidget(parent){
     setLayout(mainLayout);
 }
 
+InsertMedia::~InsertMedia() {
+    delete mediaManagerJson;
+}
 
 
 
@@ -139,10 +142,8 @@ QLineEdit* InsertMedia::addLineEdit(const QString& testo, L* ly){
     QLineEdit* lineEdit = new QLineEdit(this);
     lineEdit->setPlaceholderText(testo);
     addInput(label, ly, lineEdit);
+    
     return lineEdit;
-
-    //style
-    lineEdit->setMaximumHeight(70);
 }
                             
 template<class L>
@@ -363,7 +364,8 @@ void InsertMedia::checkMediaNameAvailability() {
 
     // Carico la lista dei cinema esistenti
     MediaManagerJson manager(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
-    QList<MediaData*> listInsertMedia = manager.loadAllData();
+    QList<MediaData*> listInsertMedia;
+    manager.loadAllData(listInsertMedia);
     
     bool isAvailable = true;
 
@@ -389,9 +391,8 @@ void InsertMedia::checkMediaNameAvailability() {
         saveButton->setEnabled(true);
     }
 
-    qDeleteAll(listInsertMedia); // cancella tutti gli oggetti puntati
-    listInsertMedia.clear();     // svuota la lista
-
+    for(MediaData* m : listInsertMedia) delete m;
+    listInsertMedia.clear();
 }
 
 
@@ -851,7 +852,7 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         film.target = static_cast<Classificazione>(comboTargetFilm->currentData().toInt());
         film.tipologia = "film";
         
-        mediaManagerJson->saveFilm(&film);
+        mediaManagerJson->saveMedia(&film);
     }
     //trailer
     else if(stackTipologia->currentIndex()==1){
@@ -864,7 +865,7 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         trailer.autoreFilmAssociato = autoreFilmRiferimento;
         trailer.tipologia = "trailer";
     
-        mediaManagerJson->saveTrailer(&trailer);
+        mediaManagerJson->saveMedia(&trailer);
     }
     //podcast
     else if(stackTipologia->currentIndex()==2){
@@ -875,7 +876,7 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         podcast.conduttore = conduttorePodcast->text();
         podcast.tipologia = "podcast";
 
-        mediaManagerJson->savePodcast(&podcast);
+        mediaManagerJson->saveMedia(&podcast);
     }   
     //puntata
     else if(stackTipologia->currentIndex()==3){
@@ -889,7 +890,7 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         puntata.autorePodcastAssociato = autorePodcastRiferimento; 
         puntata.tipologia = "puntata";
 
-        mediaManagerJson->savePuntata(&puntata);
+        mediaManagerJson->saveMedia(&puntata);
 
     }   
     //inserzione
@@ -907,7 +908,7 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         inserzione.target = static_cast<Classificazione>(comboTargetInserzioni->currentData().toInt());
         inserzione.tipologia = "inserzione";
 
-        mediaManagerJson->saveInserzione(&inserzione);
+        mediaManagerJson->saveMedia(&inserzione);
     }   
 
 }

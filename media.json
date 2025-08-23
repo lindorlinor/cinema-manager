@@ -1,172 +1,294 @@
 [
     {
-        "autore": "autore antipatico",
-        "autoreFilmAssociato": "",
-        "dataFineRilascio": "2025-08-24",
-        "dataInizioRilascio": "2025-08-21",
-        "descrizione": "descrizioncina",
-        "durataMinuti": 80,
-        "filmAssociato": "",
-        "formato": 6,
-        "lingueDisponibili": [
-            1,
-            2,
-            3
+        "attoriPrincipali": [
         ],
-        "nProiezioniGiornaliere": 0,
-        "path": ":/images/film2.png",
-        "risoluzione": 3,
-        "sottotitoliDisponibili": [
-            0,
-            1
-        ],
-        "tipologia": "film",
-        "titolo": "film carino"
-    },
-    {
-        "autore": "autoreeee",
-        "autoreFilmAssociato": "",
-        "dataFineRilascio": "",
-        "dataInizioRilascio": "",
-        "descrizione": "hyhyhy",
-        "durataMinuti": 80,
-        "filmAssociato": "",
-        "formato": 5,
-        "lingueDisponibili": [
-            0,
-            1
-        ],
-        "nProiezioniGiornaliere": 0,
-        "path": ":/images/default.png",
-        "risoluzione": 3,
-        "sottotitoliDisponibili": [
-            0,
-            2,
-            3
-        ],
-        "tipologia": "trailer",
-        "titolo": "titoletto"
-    },
-    {
-        "autore": "autorello",
-        "autoreFilmAssociato": "",
-        "dataFineRilascio": "",
-        "dataInizioRilascio": "",
-        "descrizione": "ddededede",
-        "durataMinuti": 6,
-        "filmAssociato": "",
-        "formato": 5,
-        "lingueDisponibili": [
-            2,
-            3
-        ],
-        "nProiezioniGiornaliere": 0,
-        "path": ":/images/image2.png",
-        "risoluzione": 4,
-        "sottotitoliDisponibili": [
-            1,
-            4
-        ],
-        "tipologia": "podcast",
-        "titolo": "titolino"
-    },
-    {
-        "autore": "autore del podcast",
-        "autoreFilmAssociato": "",
-        "dataFineRilascio": "",
-        "dataInizioRilascio": "",
-        "descrizione": "podcast provavavavaa",
-        "durataMinuti": 80,
-        "filmAssociato": "",
-        "formato": 6,
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 0,
-        "path": ":/images/default.png",
-        "risoluzione": 3,
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "podcast",
-        "titolo": "titolo podcast"
-    },
-    {
-        "autore": "m",
-        "autoreFilmAssociato": "",
-        "dataFineRilascio": "2025-08-22",
-        "dataInizioRilascio": "2025-08-22",
+        "autore": "aaaaa",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-23",
+        "dataInizioRilascio": "2025-08-23",
         "descrizione": "",
         "durataMinuti": 0,
-        "filmAssociato": "",
         "formato": 0,
+        "genere": [
+        ],
         "lingueDisponibili": [
         ],
-        "nProiezioniGiornaliere": 0,
+        "nPostCredit": 0,
         "path": ":/images/default.png",
         "risoluzione": 0,
         "sottotitoliDisponibili": [
         ],
+        "target": 0,
         "tipologia": "film",
-        "titolo": "k"
+        "titolo": "frfrfr"
     },
     {
+        "attoriPrincipali": [
+        ],
+        "autore": "e",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-23",
+        "dataInizioRilascio": "2025-08-23",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
+        "genere": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "eee"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "rrr",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-23",
+        "dataInizioRilascio": "2025-08-23",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
+        "genere": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "rrr"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "o",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-23",
+        "dataInizioRilascio": "2025-08-23",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
+        "genere": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "oo"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "u",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-23",
+        "dataInizioRilascio": "2025-08-23",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
+        "genere": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "u"
+    },
+    {
+        "attoriPrincipali": [
+        ],
         "autore": "y",
-        "autoreFilmAssociato": "",
-        "dataFineRilascio": "2025-08-22",
-        "dataInizioRilascio": "2025-08-22",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-23",
+        "dataInizioRilascio": "2025-08-23",
         "descrizione": "",
         "durataMinuti": 0,
-        "filmAssociato": "",
         "formato": 0,
+        "genere": [
+        ],
         "lingueDisponibili": [
         ],
-        "nProiezioniGiornaliere": 0,
+        "nPostCredit": 0,
         "path": ":/images/default.png",
         "risoluzione": 0,
         "sottotitoliDisponibili": [
         ],
+        "target": 0,
         "tipologia": "film",
         "titolo": "y"
     },
     {
-        "autore": "t",
-        "autoreFilmAssociato": "",
-        "dataFineRilascio": "2025-08-22",
-        "dataInizioRilascio": "2025-08-22",
-        "descrizione": "",
-        "durataMinuti": 0,
-        "filmAssociato": "",
-        "formato": 0,
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 0,
-        "path": ":/images/default.png",
-        "risoluzione": 0,
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "film",
-        "titolo": "y"
-    },
-    {
-        "autore": "lala",
-        "autoreFilmAssociato": "autore antipatico",
+        "autore": "e",
+        "autoreFilmAssociato": "aaaaa",
         "dataFineRilascio": "",
         "dataInizioRilascio": "",
-        "descrizione": "4444",
-        "durataMinuti": 4,
-        "filmAssociato": "film carino",
-        "formato": 4,
+        "descrizione": "",
+        "durataMinuti": 0,
+        "filmAssociato": "frfrfr",
+        "formato": 0,
         "lingueDisponibili": [
-            2,
-            4
         ],
         "nProiezioniGiornaliere": 0,
         "path": ":/images/default.png",
-        "risoluzione": 3,
+        "risoluzione": 0,
         "sottotitoliDisponibili": [
-            1,
-            4
         ],
         "tipologia": "trailer",
-        "titolo": "titoloooooso"
+        "titolo": "e"
+    },
+    {
+        "autore": "dd",
+        "autoreFilmAssociato": "aaaaa",
+        "dataFineRilascio": "",
+        "dataInizioRilascio": "",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "filmAssociato": "frfrfr",
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "ee"
+    },
+    {
+        "autore": "o",
+        "autoreFilmAssociato": "aaaaa",
+        "dataFineRilascio": "",
+        "dataInizioRilascio": "",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "filmAssociato": "frfrfr",
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "o"
+    },
+    {
+        "autore": "eee",
+        "conduttore": "",
+        "dataFineRilascio": "",
+        "dataInizioRilascio": "",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "eee"
+    },
+    {
+        "autore": "eee",
+        "conduttore": "",
+        "dataFineRilascio": "",
+        "dataInizioRilascio": "",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "ee"
+    },
+    {
+        "autore": "q",
+        "conduttore": "",
+        "dataFineRilascio": "",
+        "dataInizioRilascio": "",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "r"
+    },
+    {
+        "autore": "dede",
+        "autorePodcastAssociato": "eee",
+        "dataFineRilascio": "",
+        "dataInizioRilascio": "",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "numeroPubblicita": 0,
+        "ospiti": [
+        ],
+        "path": ":/images/default.png",
+        "podcastAssociato": "eee",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "ded"
+    },
+    {
+        "autore": "r",
+        "autoreFilmAssociato": "aaaaa",
+        "dataFineRilascio": "",
+        "dataInizioRilascio": "",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "filmAssociato": "frfrfr",
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "r"
     }
 ]

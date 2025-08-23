@@ -166,6 +166,7 @@ class InsertMedia:public QWidget{
     
     public:
 	explicit InsertMedia(QWidget *parent);
+    ~InsertMedia();
     void resetAllInput();
     
     signals:
