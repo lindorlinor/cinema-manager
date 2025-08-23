@@ -9,6 +9,7 @@
 #include "../Film.h"
 #include "GUI/ExpandableLabel.h"
 #include "GUI/CardTrailer.h"
+#include "GUI/DetailsPageButtons.h"
 
 DetailPageVisitor::DetailPageVisitor()
     : detailPage(nullptr)
@@ -26,7 +27,7 @@ void DetailPageVisitor::visit(Film* film) {
 
     QWidget * contenitoreHeader = new QWidget;
     contenitoreHeader->setObjectName("gaga");
-    contenitoreHeader->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    contenitoreHeader->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
     QVBoxLayout * layoutHeader = new QVBoxLayout(contenitoreHeader);
 
@@ -46,7 +47,6 @@ void DetailPageVisitor::visit(Film* film) {
     fontTitolo.setPointSize(21);
     fontTitolo.setBold(true);
     titolo->setFont(fontTitolo);
-    titolo->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
     layoutHeader->addWidget(titolo);
     layoutHeader->setAlignment(Qt::AlignLeft);
@@ -71,17 +71,16 @@ void DetailPageVisitor::visit(Film* film) {
     cardLayout->setContentsMargins(0,0,0,0);
     QPixmap image(QString::fromStdString(film->getImPath()));
     QLabel * copertina = new QLabel();
-    // cardLayout->setAlignment(Qt::AlignBottom);//così almeno è attaccato alla box anche se non è scalato come si vorrebbe
-    QPixmap scaled = image.scaled(300,445,Qt::KeepAspectRatio,Qt::SmoothTransformation);
+    QPixmap scaled = image.scaled(330,489,Qt::KeepAspectRatio,Qt::SmoothTransformation);
     copertina->setPixmap(scaled);
     cardLayout->addWidget(copertina);
 
     cardLayout->setSpacing(0);
     QWidget* box = new QWidget();
-    box->setFixedSize(300, 210);
+    box->setFixedSize(330, 231);
     box->setObjectName("caca");
     QVBoxLayout* layoutBox = new QVBoxLayout(box);
-    layoutBox->setContentsMargins(20, 20, 20, 20);
+    layoutBox->setContentsMargins(35, 35, 35, 35);
     layoutBox->setSpacing(10);
 
     QLabel* regista = new QLabel(
@@ -127,23 +126,21 @@ void DetailPageVisitor::visit(Film* film) {
     layoutBox->setAlignment(Qt::AlignLeft);
 
     cardLayout->addWidget(box);
-    cardLayout->setAlignment(Qt::AlignLeft);
     layoutsx->addWidget(card);
 
     QFrame * details = new QFrame();
     QVBoxLayout * detailsLayout = new QVBoxLayout(details);
     detailsLayout->setContentsMargins(0, 0, 0, 0);
     // details->setFixedHeight(scaled.height()+210);
-    details->setMaximumWidth(570);
-    details->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
-    details->setContentsMargins(0,0,0,0);
+    details->setMaximumWidth(600);
+    details->setContentsMargins(0,0,13,0);
     details->setObjectName("details");
-    QScrollArea* scrollArea = new QScrollArea;
-    scrollArea->setWidget(details);
-    scrollArea->setWidgetResizable(true);
-    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    layoutsx->addWidget(scrollArea);
+    QScrollArea* scrollDetails = new QScrollArea;
+    scrollDetails->setWidget(details);
+    scrollDetails->setWidgetResizable(true);
+    scrollDetails->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollDetails->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    layoutsx->addWidget(scrollDetails);
     detailsLayout->setSpacing(10);
     QWidget * sezioneProgrammazione = new QWidget();
     sezioneProgrammazione->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
@@ -267,7 +264,6 @@ void DetailPageVisitor::visit(Film* film) {
     ExpandableLabel* descrizione = new ExpandableLabel(
          "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(film->getDescrizione()));
    
-    // Creazione label attori principali
     std::vector<std::string> attoriPrincipali = film->getAttoriPrincipali();
     QString attoriText;
     for (size_t i = 0; i < attoriPrincipali.size(); ++i) {
@@ -275,12 +271,11 @@ void DetailPageVisitor::visit(Film* film) {
         if (i != attoriPrincipali.size() - 1) attoriText += ", ";
     }
 
-    descrizione->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    descrizione->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
     ExpandableLabel* attoriLabel = new ExpandableLabel(
          "<span style='color:white; font-weight:bold;'>Attori principali: </span>" + attoriText
     );
-
-    attoriLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    attoriLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
     QLabel* genere = new QLabel(
         "<span style='color:white; font-weight:bold;'>Genere: </span>"
@@ -291,15 +286,18 @@ void DetailPageVisitor::visit(Film* film) {
         "<span style='color:black;'>" + QString::fromUtf8(toString(film->getClassificazione())) + "</span>");
     classificazione->setTextFormat(Qt::RichText);
     
-     QLabel* casaProduzione = new QLabel(
+    QLabel* casaProduzione = new QLabel(
         "<span style='color:white; font-weight:bold;'>Casa di produzione: </span>"
         "<span style='color:black;'>" + QString::fromStdString(film->getCasaDiProduzione()) + "</span>");
     casaProduzione->setTextFormat(Qt::RichText);
 
     layoutDettagliDettagli->addWidget(descrizione);
     layoutDettagliDettagli->addWidget(attoriLabel);
+    genere->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     layoutDettagliDettagli->addWidget(genere);
+    classificazione->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     layoutDettagliDettagli->addWidget(classificazione);
+    casaProduzione->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     layoutDettagliDettagli->addWidget(casaProduzione);
 
     layoutDettagli->addWidget(dettagliDettagli);
@@ -320,7 +318,6 @@ void DetailPageVisitor::visit(Film* film) {
     fontTrailer.setPointSize(17);
     fontTrailer.setBold(true);
     labelTrailer->setFont(fontTrailer);
-    labelTrailer->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
     
     layoutdx->addWidget(labelTrailer);
 
@@ -333,18 +330,20 @@ void DetailPageVisitor::visit(Film* film) {
         layoutTrailer->addWidget(card);
     }
     layoutTrailer->setSpacing(20);  
-    sezioneTrailer->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
-    sezioneTrailer->setContentsMargins(20,20,20,20);
+    sezioneTrailer->setContentsMargins(20,20,20,33);
 
     QScrollArea* scrollTrailer = new QScrollArea;
     scrollTrailer->setWidget(sezioneTrailer);
-    scrollTrailer->setWidgetResizable(false);
+    scrollTrailer->setWidgetResizable(true);
     scrollTrailer->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollTrailer->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scrollTrailer->setMinimumHeight(400);
     layoutdx->addWidget(scrollTrailer);
 
-    splitterLayout->setSpacing(30);
+    DetailsPageButtons * buttons = new DetailsPageButtons(partedx);
+    layoutdx->addWidget(buttons);
+
+    splitterLayout->setSpacing(55);
     splitterLayout->addWidget(partesx);
     splitterLayout->addWidget(partedx);
     

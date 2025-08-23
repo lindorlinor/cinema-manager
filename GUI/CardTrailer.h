@@ -1,13 +1,15 @@
 #ifndef CARDTRAILER_H
 #define CARDTRAILER_H
 
-#include <QWidget>
+#include <QFrame>
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QString>
-
-#include "Trailer.h"  // assumo che esista la classe Trailer con i metodi richiesti
+#include <QMouseEvent>
+#include <QEvent>
+#include <QEnterEvent>
+#include "Trailer.h"
 
 class CardTrailer : public QFrame {
     Q_OBJECT
@@ -15,6 +17,11 @@ class CardTrailer : public QFrame {
 public:
     explicit CardTrailer(const Trailer* trailer, QWidget* parent = nullptr);
 
+signals:
+    void clicked();
+
+protected:
+    void mousePressEvent(QMouseEvent* event) override;
 private:
     QLabel* imageLabel;
     QLabel* titleLabel;

@@ -43,6 +43,7 @@ HEADERS +=  \
             GUI/SelectMediaReference.h \
             GUI/ExpandableLabel.h \
             GUI/CardTrailer.h \
+            GUI/DetailsPageButtons.h \
             DataFiles/CinemaXmlRepository.h \
             DataFiles/MediaManagerJson.h 
 SOURCES +=  \
@@ -68,6 +69,7 @@ SOURCES +=  \
             GUI/SelectMediaReference.cpp \
             GUI/ExpandableLabel.cpp \
             GUI/CardTrailer.cpp \
+            GUI/DetailsPageButtons.cpp \
             DataFiles/CinemaXmlRepository.cpp \
             DataFiles/MediaManagerJson.cpp
 RESOURCES += GUI/resources.qrc
