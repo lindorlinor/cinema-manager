@@ -20,7 +20,7 @@ bool CinemaXmlRepository::saveCinema(const Cinema& cinema) {
     root.appendChild(nomeElem);
 
     QDomElement imgElem = doc.createElement("immagine");
-    QString relativePath = QDir(m_basePath).relativeFilePath(cinema.imagePath);
+    QString relativePath = cinema.imagePath;
     imgElem.appendChild(doc.createTextNode(relativePath));
     root.appendChild(imgElem);
 

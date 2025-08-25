@@ -18,7 +18,7 @@ InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),
                                                                             "#frame { border: 2px dashed #4E7F8B; border-radius: 12px; } "
                                                                             "QToolButton { border: none; color: #BDCED3; font-weight: bold; } "
                                                                             "QToolButton:hover { color: #ffffffff; }", this)),
-                                            imageLabel(new QLabel),imagePath(":/../images/default.png"),
+                                            imageLabel(new QLabel),imagePath(":/images/default.png"),
                                             escButton(new QPushButton("Annulla")),
                                             saveButton(new QPushButton("Salva"))
 {
@@ -79,7 +79,7 @@ void InsertCinemaPage::chooseImage(){
 }
 
 void InsertCinemaPage::removeImage(){
-    imagePath=":/../images/default.png";
+    imagePath=":/images/default.png";
     hasCustomImage = false;
 }
 
@@ -116,7 +116,7 @@ void InsertCinemaPage::saveCinemaInXml() {
 //@to do e se mettessi che se textInput è clear allora saveButton è disabilitato, con un trigger connect?
 void InsertCinemaPage::reset() {
     textInput->clear();
-    imagePath=":/../images/default.png";
+    imagePath=":images/default.png";
     imageArea->reset();
     errorLabel->setVisible(false);
     saveButton->setEnabled(false);
@@ -182,7 +182,7 @@ void InsertCinemaPage::createSplitView(){
  
     // contenitoredx->setObjectName("gaga");
     imageLabel->setMaximumSize(330,400);
-    QPixmap pixmap(":/../images/coverCinema.png");
+    QPixmap pixmap(":/images/coverCinema.png");
     imageLabel->setAlignment(Qt::AlignCenter);
     imageLabel->setPixmap(pixmap);
 
