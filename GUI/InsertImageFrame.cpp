@@ -23,7 +23,7 @@ InsertImageFrame::InsertImageFrame(const QString& testo, const QString& style, Q
   
 
     QVBoxLayout *layoutPrincipale = new QVBoxLayout(this);
-    QWidget * contenitoreDettagli = new QWidget;
+    QWidget * contenitoreDettagli = new QWidget(this);
     QVBoxLayout * layoutDettagli = new QVBoxLayout(contenitoreDettagli);
     layoutDettagli->addWidget(closeButton, 0, Qt::AlignRight);
     layoutDettagli->addWidget(label,0,Qt::AlignCenter);

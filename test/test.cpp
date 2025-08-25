@@ -15,7 +15,7 @@ TEST_CASE("1. Estensione Film attivo") {
     year_month_day inizio{2025y, December, 1d};
     year_month_day fine{2025y, December, 15d};
 
-    Film film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
+    Film film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
               3, 9.3, "azienda", "Autore");
 
     film.estendiDataFineRilascio();
@@ -30,7 +30,7 @@ TEST_CASE("2. Estensione Trailer associati condizionale") {
     year_month_day fine{2025y, December, 15d};
     year_month_day fine2{2025y, December, 22d};
 
-    Film film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
+    Film film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
               3, 9.3, "azienda", "Autore");
 
     Trailer* t1 = new Trailer(  "Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
@@ -61,7 +61,7 @@ TEST_CASE("3. Trailer fuori produzione non aggiornato") {
     year_month_day inizio{2025y, April, 1d};
     year_month_day fine{2025y, April, 15d};
 
-    Film film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
+    Film film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, 
               3, 9.3, "azienda", "Autore");
 
     Trailer* t1 = new Trailer(  "Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
@@ -190,10 +190,10 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)"){
 
         Puntata* puntata1 = new Puntata("Titolo", "Descrizione", 
                             year_month_day {2025y, December, 15d},year_month_day {2025y, December, 19d},
-                            60, &podcast,3);  
+                            60,&podcast,3);  
         Puntata* puntata2 = new Puntata("Titolo", "Descrizione", 
                             year_month_day {2025y, December, 15d},year_month_day {2025y, December, 25d},
-                            60, &podcast,3);  
+                            60,&podcast,3);  
         
         REQUIRE((podcast.getElencoPuntate()).empty()==false);
         REQUIRE((podcast.getVisualizzazioni())==puntata1->getVisualizzazioni()+puntata2->getVisualizzazioni());
@@ -229,7 +229,7 @@ TEST_CASE("9. Verifica aggiunta ospite e rimozione"){
     Podcast podcast("Titolo", "Descrizione", 
                         Formato::IMAX_3D, Risoluzione::FullHD_1080p);
     Puntata* puntata = new Puntata("Titolo", "Descrizione", year_month_day {2025y, December, 15d},year_month_day {2025y, December, 19d},
-                    60, &podcast,3);
+                    60,&podcast,3);
     puntata->aggiungiOspite("Minnie");
     puntata->aggiungiOspite("Topolino");
     puntata->aggiungiOspite("Paperino");
@@ -249,9 +249,9 @@ TEST_CASE("10. Film::getVisualizzazioni() e Film::IncrementaVisualizzazioni()"){
     year_month_day inizio{2025y, July, 1d};
     year_month_day fine{2025y, July, 15d};
 
-    Film film1("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
+    Film film1("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, 
                3, 9.3, "CasaProd", "Autore");
-    Film film2("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, Genere::Azione,
+    Film film2("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p, 
                 3, 9.3,"CasaProd", "Autore");
     film1.IncrementaVisualizzazioni();
     REQUIRE(film1.getVisualizzazioni()!=0);
@@ -287,9 +287,8 @@ TEST_CASE("11. Verifica Puntata::setDataFineRilascio()"){
     }
 
     SECTION("11.2 verifico che se si immette una data di fine inferiore della data di inizio, questa venga sostituita con quella di inizio"){
-        Podcast podcast("Titolo", "Descrizione",
-                            Formato::IMAX_3D, Risoluzione::FullHD_1080p);
-        Puntata* puntata= new Puntata("Titolo", "Descrizione", year_month_day {2025y, December, 19d},year_month_day {2025y, December, 15d},60, &podcast,3);
+        Podcast podcast("Titolo", "Descrizione", Formato::IMAX_3D, Risoluzione::FullHD_1080p);
+        Puntata* puntata= new Puntata("Titolo", "Descrizione",  year_month_day {2025y, December, 19d},year_month_day {2025y, December, 15d},60, &podcast,3);
 
         REQUIRE(puntata->getDataFineRilascio() == year_month_day {2025y, December, 19d});
     }
@@ -297,7 +296,7 @@ TEST_CASE("11. Verifica Puntata::setDataFineRilascio()"){
 }
 TEST_CASE("12. Film::rimuoviTrailer verifica liberazione memoria") {
     Film film("Remov", "desc", year_month_day{2025y, May, 1d}, year_month_day{2025y, May, 31d},
-              110, Formato::DCP, Risoluzione::FullHD_1080p, Genere::Drama, 0, 7.5, "Studio");
+              110, Formato::DCP, Risoluzione::FullHD_1080p, 0, 7.5, "Studio");
 
     Trailer* t = new Trailer("ToDelete", "desc", year_month_day{2025y, May, 1d}, year_month_day{2025y, May, 25d},
                               2, Formato::DCP, Risoluzione::HD_720p, 2, &film);
@@ -308,7 +307,7 @@ TEST_CASE("12. Film::rimuoviTrailer verifica liberazione memoria") {
 
 TEST_CASE("13. setDataFineRilascio Film -> trailer aggiornati") {
     Film film("Prolungato", "desc", year_month_day{2025y, December, 1d}, year_month_day{2025y, December, 20d},
-              130, Formato::DCP, Risoluzione::FullHD_1080p, Genere::Azione, 2, 11.0, "Studio");
+              130, Formato::DCP, Risoluzione::FullHD_1080p, 2, 11.0, "Studio");
 
     Trailer* t = new Trailer("T", "desc", year_month_day{2025y, December, 1d}, year_month_day{2025y, December, 20d},
                               2, Formato::DCP, Risoluzione::HD_720p, 2, &film);
@@ -324,7 +323,7 @@ TEST_CASE("13. setDataFineRilascio Film -> trailer aggiornati") {
 
 TEST_CASE("14. disaccoppiaTrailer") {
     Film film("Film", "desc", year_month_day{2025y, July, 1d}, year_month_day{2025y, July, 31d},
-              100, Formato::DCP, Risoluzione::HD_720p, Genere::Thriller, 1, 9.0, "Studio");
+              100, Formato::DCP, Risoluzione::HD_720p, 1, 9.0, "Studio");
 
     Trailer* t = new Trailer("T1", "desc", year_month_day{2025y, July, 1d}, year_month_day{2025y, July, 15d},
                               3, Formato::DCP, Risoluzione::HD_720p, 2, &film);

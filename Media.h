@@ -56,10 +56,11 @@ public:
     vector<Lingua> getSottotitoli() const;
     string getImPath() const;
     
-    void aggiungiLingua(Lingua lingua);
-    void aggiungiSottotitolo(Lingua lingua);
-    void rimuoviLingua(Lingua lingua);
-    void rimuoviSottotitolo(Lingua lingua);
+    // modifica lingua e sottotitoli
+    virtual void aggiungiLingua(Lingua lingua);
+    virtual void aggiungiSottotitolo(Lingua lingua);
+    virtual void rimuoviLingua(Lingua lingua);
+    virtual void rimuoviSottotitolo(Lingua lingua);
     
     /**
      * @brief Verifca se il media è correntemente distribuito nei canali del cinema.
@@ -78,7 +79,7 @@ public:
      * @return Il numero di giorni in cui il media è attivo nei canali.
      */
     unsigned int DurataCampagna() const;
-
+    
     // metodi get e set
     unsigned int getVisualizzazioni() const;
     year_month_day getDataInizioRilascio() const;
@@ -87,6 +88,7 @@ public:
     unsigned int getDurataMinuti() const;
     Formato getFormato()const;
     Risoluzione getRisoluzione()const;
+    string getPath() const;
     
     void setVisualizzazioni(unsigned int visualizzazioni);
     void setDurataMinuti(unsigned int durata);

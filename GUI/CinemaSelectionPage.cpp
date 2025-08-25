@@ -23,7 +23,7 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent) : QWidget(parent), cin
     createHeader();
     
     //aggiunge al frame il pulsante per aggiungere i cinema a destra
-    QPushButton* addButton = new QPushButton("+ Aggiungi");
+    QPushButton* addButton = new QPushButton("+ Aggiungi",this);
     addButton->setFixedSize(160, 40); 
     frameLayout->addWidget(addButton, 0, Qt::AlignRight);
 
@@ -32,7 +32,7 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent) : QWidget(parent), cin
     createCinemaScroll();
    
     // Pulsante esci
-    QPushButton* escButton = new QPushButton("Esci");
+    QPushButton* escButton = new QPushButton("Esci",this);
     escButton->setFixedSize(160, 40); 
     connect(escButton, &QPushButton::clicked, qApp, &QApplication::quit);
     connect(addButton, &QPushButton::clicked, this, &CinemaSelectionPage::insertCinema);
@@ -48,7 +48,7 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent) : QWidget(parent), cin
 
 void CinemaSelectionPage::createCinemaButton(const QString& nomeC, const QString& imPath, const QString& xmlPath) {
     
-    CinemaButton *cinemaBtn = new CinemaButton(nomeC, QPixmap(imPath), xmlPath);
+    CinemaButton *cinemaBtn = new CinemaButton(nomeC, QPixmap(imPath), xmlPath, this);
     cinemaButtonsLayout->addWidget(cinemaBtn);
 
     connect(cinemaBtn, &CinemaButton::selected, this, [this,xmlPath](){
@@ -71,13 +71,13 @@ void CinemaSelectionPage::refreshCinemaButtons() {
 }
 
 void CinemaSelectionPage::createHeader(){
-    QLabel *titolo = new QLabel("Tutti i cinema");
+    QLabel *titolo = new QLabel("Tutti i cinema",this);
     QFont fontTitolo = titolo->font();
     fontTitolo.setPointSize(21);
     fontTitolo.setBold(true);
     titolo->setFont(fontTitolo);
 
-    QLabel* descrizione = new QLabel("Seleziona un cinema della catena o creane uno nuovo");
+    QLabel* descrizione = new QLabel("Seleziona un cinema della catena o creane uno nuovo",this);
     QFont fontDescrizione = descrizione->font();
     fontDescrizione.setPointSize(10);
     descrizione->setFont(fontDescrizione);
@@ -86,7 +86,7 @@ void CinemaSelectionPage::createHeader(){
     descrizione->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
     //crea il contenitore per le due label titolo e descrizione e lo distanzia in verticale dal resto che verrà inserito nel frame
-    QWidget* contenitoreTesto = new QWidget;
+    QWidget* contenitoreTesto = new QWidget(this);
     QVBoxLayout* layoutTesto = new QVBoxLayout(contenitoreTesto);
     layoutTesto->addWidget(titolo);
     layoutTesto->addWidget(descrizione);
@@ -100,8 +100,8 @@ void CinemaSelectionPage::createHeader(){
 
 void CinemaSelectionPage::createCinemaScroll(){
      //setta la scrollArea per i pulsanti del cinema
-    QScrollArea* scrollArea = new QScrollArea;
-    QWidget* contenitorePulsanti = new QWidget;
+    QScrollArea* scrollArea = new QScrollArea(this);
+    QWidget* contenitorePulsanti = new QWidget(this);
     contenitorePulsanti->setLayout(cinemaButtonsLayout);
     scrollArea->setWidget(contenitorePulsanti);
     scrollArea->setWidgetResizable(true);

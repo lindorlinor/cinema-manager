@@ -11,6 +11,18 @@ Inserzione::Inserzione(const string &titolo, const string &descrizione, year_mon
                                         aggiungiFasciaOraria(FasciaOraria::Mattina);
                                     }
 
+Classificazione Inserzione::getTarget() const{
+    return i_target;
+}
+
+string Inserzione::getAziendaInserzionistica() const{
+    return i_aziendaInserzionista;
+}
+
+double Inserzione::getCostoFissoProiezione() const{
+    return i_costoFissoProiezione;
+}
+
 int Inserzione::isFasciaOrariaIn(FasciaOraria fasciaO) const
 {
     vector<FasciaOraria>::const_iterator cit = std::find(i_fasceOrarie.begin(), i_fasceOrarie.end(), fasciaO);

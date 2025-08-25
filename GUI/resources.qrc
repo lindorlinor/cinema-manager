@@ -14,6 +14,18 @@
         <file>../images/film3.png</file>
         <file>../images/default.png</file>
         <file>../images/coverCinema.png</file>
+        <file>../icons/arrow_left.png</file>
+        <file>../icons/arrow_up.png</file>
+        <file>../icons/arrow_down.png</file>
+        <file>../icons/arrow_right.png</file>
+        <file>../icons/exit.png</file>
+        <file>../icons/Film.png</file>
+        <file>../icons/tutto.png</file>
+        <file>../icons/inserzione.png</file>
+        <file>../icons/trailer.png</file>
+        <file>../icons/podcast.png</file>
+        <file>../icons/vista.png</file>
+        <file>../icons/filtri.png</file>
     </qresource>
 
     <!-- Icone -->

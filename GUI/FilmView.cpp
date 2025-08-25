@@ -206,10 +206,22 @@ void FilmView::createFilmDetails(){
     );
     attoriLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
+
+    std::vector<Genere> generi = film->getGenere();
+    QString generiText;
+    for (size_t i = 0; i < generi.size(); ++i) {
+        generiText += QString::fromUtf8(toString(generi[i]));
+        if (i != generi.size() - 1) {
+            generiText += ", ";
+        }
+    }
+
     QLabel* genere = new QLabel(
         "<span style='color:white; font-weight:bold;'>Genere: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(film->getGenere())) + "</span>");
+        "<span style='color:black;'>" + generiText + "</span>"
+    );
     genere->setTextFormat(Qt::RichText);
+
     QLabel* classificazione = new QLabel(
         "<span style='color:white; font-weight:bold;'>Classificazione: </span>"
         "<span style='color:black;'>" + QString::fromUtf8(toString(film->getClassificazione())) + "</span>");

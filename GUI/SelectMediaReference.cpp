@@ -12,7 +12,7 @@ SelectMediaReference::SelectMediaReference(const QString& tipo, QWidget *parent)
     : QWidget(parent), tipo(tipo), currentSelected(nullptr)
 {
     // Container interno per gli item
-    container = new QWidget;
+    container = new QWidget(this);
     layoutContainer = new QVBoxLayout(container);
     container->setLayout(layoutContainer);
     

@@ -28,8 +28,12 @@ int main(int argc, char *argv[])
     } */
     // Avvia l'applicazione Qt solo se i test passano
 
+    qputenv("QT_QPA_PLATFORM", QByteArray("xcb"));
+
     MainWindow w;
     w.show();
 
     return a.exec();
+
+    QCoreApplication::processEvents();
 }

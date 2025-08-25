@@ -48,7 +48,7 @@ void InsertCinemaPage::checkCinemaNameAvailability(const QString& text) {
     }
     QString nome = text.trimmed();
 
-    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
+    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
     isAvailable = repo.isNameAvailable(text);
 
     if (!isAvailable) {
@@ -89,7 +89,7 @@ void InsertCinemaPage::saveCinemaInXml() {
     cinema.nome = textInput->text().trimmed();
     cinema.imagePath = imagePath;
 
-    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
+    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
     if (!repo.saveCinema(cinema)) {
         QMessageBox::critical(this, tr("Errore"), tr("Impossibile salvare il file XML."));
         return;
@@ -116,7 +116,7 @@ void InsertCinemaPage::saveCinemaInXml() {
 //@to do e se mettessi che se textInput è clear allora saveButton è disabilitato, con un trigger connect?
 void InsertCinemaPage::reset() {
     textInput->clear();
-    imagePath=":images/default.png";
+    imagePath=":/images/default.png";
     imageArea->reset();
     errorLabel->setVisible(false);
     saveButton->setEnabled(false);
@@ -171,7 +171,7 @@ void InsertCinemaPage::createSplitView(){
     QHBoxLayout * splitter = new QHBoxLayout;
     splitter->setSpacing(30);
 
-    QWidget* contenitoredx = new QWidget;
+    QWidget* contenitoredx = new QWidget(this);
     QVBoxLayout * layoutdx = new QVBoxLayout(contenitoredx);
 
 
@@ -197,17 +197,17 @@ void InsertCinemaPage::createSplitView(){
 }
 
 void InsertCinemaPage::createLayoutInput(QVBoxLayout* layoutdx) {
-    QWidget * contenitoreInput = new QWidget();
+    QWidget * contenitoreInput = new QWidget(this);
     QVBoxLayout * layoutInput = new QVBoxLayout(contenitoreInput);
 
     
     QVBoxLayout *layoutNome = new QVBoxLayout;
-    QLabel *nameLabel = new QLabel("Nome cinema:");
+    QLabel *nameLabel = new QLabel("Nome cinema:",this);
     nameLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     layoutNome->addWidget(nameLabel);
     layoutNome->addWidget(textInput);
     
-    errorLabel = new QLabel;
+    errorLabel = new QLabel(this);
     errorLabel->setStyleSheet("color: red; font-size: 11px;");
     errorLabel->setText("");
     errorLabel->setVisible(false);
@@ -232,7 +232,7 @@ void InsertCinemaPage::createLayoutInput(QVBoxLayout* layoutdx) {
 }
 
 void InsertCinemaPage::createButtonLayout(QVBoxLayout* layoutdx) {
-    QWidget * contenitorePulsanti = new QWidget;
+    QWidget * contenitorePulsanti = new QWidget(this);
     QHBoxLayout * layoutPulsanti = new QHBoxLayout(contenitorePulsanti);
 
    

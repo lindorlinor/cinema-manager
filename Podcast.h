@@ -57,6 +57,21 @@ public:
 
 
     /**
+     * @brief Metodi override per gestire i sottotitoli e le lingue del podcast
+     * 
+     * Le lingue e i sottotitoli del podcast sono relative a quelli presenti nelle puntate, quindi
+     * deve essere impossibile aggiungere lingue o sottotitoli non presenti in quest'ultime. Si è deciso di overridare
+     * aggiungiSottotitolo, aggiungiLingua, rimuoriSottotiolo e rimuoriLingua per mantenere le corrispondenze con le puntate:
+     * una lingua può essere aggiunta solo se presente in almeno una puntata, mentre può essere rimossa solo se non appartiene a nessuna,
+     * lo stesso vale per i sottotitoli. 
+     */
+
+    void aggiungiLingua(Lingua lingua) override;
+    void aggiungiSottotitolo(Lingua lingua) override;
+    void rimuoviLingua(Lingua lingua) override;
+    void rimuoviSottotitolo(Lingua lingua) override;
+
+    /**
      * @brief Estende di 1 giorno la data di fine rilascio del podcast, se non è ancora fuori produzione.
      *
      * estende di un giorno tutte le puntate che non sono fuori produzione, infine richiama il metodo
@@ -87,6 +102,11 @@ public:
      * 
      */
     void aggiornaDate();
+
+    /**
+     * @brief Restituisce il conduttore del Podcast
+     */
+    string getConduttore() const;
 
     //visitor
     void accept(MediaVisitor* visitor)override;
