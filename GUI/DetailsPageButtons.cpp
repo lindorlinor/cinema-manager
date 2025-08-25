@@ -9,7 +9,6 @@
 DetailsPageButtons::DetailsPageButtons(QWidget* parent)
     : QWidget(parent)
 {
-    qDebug() << QFile::exists(":/icons/enabled.png");  // deve stampare true
 
     auto* mainLayout = new QVBoxLayout(this);
 

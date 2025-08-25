@@ -10,6 +10,18 @@
 #include <map>
 #include <string>
 #include <QList>
+#include <chrono>
+using namespace std::chrono;
+
+
+inline std::string dateToString(const year_month_day& d) {
+    std::ostringstream oss;
+    oss << unsigned(d.day()) << "/"
+        << unsigned(d.month()) << "/"
+        << int(d.year());
+    return oss.str();
+}
+
 
 enum class Formato {
     DCP,

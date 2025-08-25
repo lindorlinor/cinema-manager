@@ -1,5 +1,6 @@
 #include "FilmView.h"
 #include <QVBoxLayout>
+#include <QMessageBox>
 #include <QLabel>
 #include <QString>
 #include <QPixmap>
@@ -13,14 +14,27 @@
 
 #include <QDebug>
 
-FilmView::FilmView(Film* film, QWidget* parent)
-    : QWidget(parent)
+FilmView::FilmView(Film* filmPtr, QWidget* parent)
+    : QWidget(parent), film(filmPtr),layoutPage( new QVBoxLayout(this)),splitter(new QWidget(this)),splitterLayout(new QHBoxLayout(splitter)),leftSide(new QWidget(splitter)),
+     rightSide(new QWidget(splitter)),leftLayout(new QHBoxLayout(leftSide)),endDateLabel(nullptr),rightLayout(new QVBoxLayout(rightSide))
 {
-    // QWidget* page = new QWidget;
     this->setObjectName("gugu");
-    QVBoxLayout* layoutPage = new QVBoxLayout(this);
+    
+    createHeader();
+    
+    splitterLayout->setSpacing(55);
+    layoutPage->addWidget(splitter,0,Qt::AlignHCenter);
 
-    QWidget * contenitoreHeader = new QWidget;
+    createFilmDetails();
+    createTrailersSection();
+    createButtons();
+
+    setLayout(layoutPage); 
+}
+
+
+void FilmView::createHeader(){
+    QWidget * contenitoreHeader = new QWidget(this);
     contenitoreHeader->setObjectName("gaga");
     contenitoreHeader->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
@@ -31,11 +45,8 @@ FilmView::FilmView(Film* film, QWidget* parent)
 
     returnButton->setCursor(Qt::PointingHandCursor);
     returnButton->setFixedSize(96,26);
-    /* @TODO
-    connect(returnButton, &QPushButton::clicked, this, [this](){
-        this->resetAllInput();
-        this->tornaIndietro();
-    });  */
+
+    connect(returnButton, &QPushButton::clicked, this, &FilmView::returnButton);
 
     QLabel *titolo = new QLabel(QString::fromStdString(film->getTitolo()));
     QFont fontTitolo = titolo->font();
@@ -47,81 +58,17 @@ FilmView::FilmView(Film* film, QWidget* parent)
     layoutHeader->setAlignment(Qt::AlignLeft);
 
     layoutPage->addWidget(contenitoreHeader);
+}
 
-    QWidget * splitter = new QWidget(this);
-    QHBoxLayout * splitterLayout = new QHBoxLayout(splitter);
 
-    layoutPage->addWidget(splitter,0,Qt::AlignHCenter);
+void FilmView::createFilmDetails(){
+    leftSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    leftSide->setObjectName("pupu");
+    leftSide->setContentsMargins(0,0,0,0);
+    leftLayout->setSpacing(0);
+    leftLayout->setContentsMargins(0,0,0,0);
     
-    QWidget * partesx = new QWidget();
-    partesx->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    partesx->setObjectName("pupu");
-    QHBoxLayout * layoutsx = new QHBoxLayout(partesx);
-    partesx->setContentsMargins(0,0,0,0);
-    layoutsx->setSpacing(0);
-    layoutsx->setContentsMargins(0,0,0,0);
-    QWidget * card = new QWidget();
-    QVBoxLayout * cardLayout = new QVBoxLayout(card);
-    card->setContentsMargins(0,0,0,0);
-    cardLayout->setContentsMargins(0,0,0,0);
-    QPixmap image(QString::fromStdString(film->getImPath()));
-    QLabel * copertina = new QLabel();
-    QPixmap scaled = image.scaled(330,489,Qt::KeepAspectRatio,Qt::SmoothTransformation);
-    copertina->setPixmap(scaled);
-    cardLayout->addWidget(copertina);
-
-    cardLayout->setSpacing(0);
-    QWidget* box = new QWidget();
-    box->setFixedSize(330, 231);
-    box->setObjectName("caca");
-    QVBoxLayout* layoutBox = new QVBoxLayout(box);
-    layoutBox->setContentsMargins(35, 35, 35, 35);
-    layoutBox->setSpacing(10);
-
-    QLabel* regista = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Regista: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(film->getAutore()) + "</span>");
-    regista->setTextFormat(Qt::RichText);
-
-    QLabel* durata = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Durata: </span>"
-        "<span style='color:black;'>" + QString::number(film->getDurataMinuti()) + " min</span>");
-    durata->setTextFormat(Qt::RichText);
-
-    //creazione label lingue
-    std::vector<Lingua> lingueDisponibili = film->getLingue();
-    QString lingueText;
-    for (size_t i = 0; i < lingueDisponibili.size(); ++i) {
-        lingueText += QString::fromUtf8(toString(lingueDisponibili[i]));
-        if (i != lingueDisponibili.size() - 1) {
-            lingueText += ", ";
-        }
-    }
-    QLabel* lingue = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Lingue: </span>"
-        "<span style='color:black;'>" + lingueText + "</span>");
-    lingue->setTextFormat(Qt::RichText);
-
-    //creazione label sottotitoli
-    std::vector<Lingua> sottotitoliDisponibili = film->getSottotitoli();
-    QString sottotitoliText;
-    for (size_t i = 0; i < sottotitoliDisponibili.size(); ++i) {
-        sottotitoliText += QString::fromUtf8(toString(sottotitoliDisponibili[i]));
-        if (i != sottotitoliDisponibili.size() - 1) sottotitoliText += ", ";
-    }
-    QLabel* sottotitoli = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Sottotitoli: </span>"
-        "<span style='color:black;'>" + sottotitoliText + "</span>");
-    sottotitoli->setTextFormat(Qt::RichText);
-
-    layoutBox->addWidget(regista);
-    layoutBox->addWidget(durata);
-    layoutBox->addWidget(lingue);
-    layoutBox->addWidget(sottotitoli);
-    layoutBox->setAlignment(Qt::AlignLeft);
-
-    cardLayout->addWidget(box);
-    layoutsx->addWidget(card);
+    createFilmCard();
 
     QFrame * details = new QFrame();
     QVBoxLayout * detailsLayout = new QVBoxLayout(details);
@@ -135,7 +82,7 @@ FilmView::FilmView(Film* film, QWidget* parent)
     scrollDetails->setWidgetResizable(true);
     scrollDetails->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollDetails->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    layoutsx->addWidget(scrollDetails);
+    leftLayout->addWidget(scrollDetails);
     detailsLayout->setSpacing(10);
     QWidget * sezioneProgrammazione = new QWidget();
     sezioneProgrammazione->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
@@ -149,29 +96,16 @@ FilmView::FilmView(Film* film, QWidget* parent)
     dettagliProgrammazione->setContentsMargins(10,10,10,10);
     sezioneProgrammazione->setObjectName("sp");
     
-    // Programmazione (date inizio/fine)
-    auto inizio = film->getDataInizioRilascio();
-    auto fine = film->getDataFineRilascio();
-    std::ostringstream oss1;
-    oss1 << static_cast<int>(unsigned(inizio.day())) << "/"
-    << unsigned(inizio.month()) << "/"
-    << int(inizio.year()) ;
-    
-    std::ostringstream oss2;
-    oss2 << static_cast<int>(unsigned(fine.day())) << "/"
-    << unsigned(fine.month()) << "/"
-    << int(fine.year());
-    
     QLabel* inizioP = new QLabel(
         "<span style='color:white; font-weight:bold;'>Inizio proiezione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(oss1.str()) + "</span>");
+        "<span style='color:black;'>" + QString::fromStdString(dateToString(film->getDataInizioRilascio())) + "</span>");
     inizioP->setTextFormat(Qt::RichText);
-    QLabel* fineP = new QLabel(
+    endDateLabel = new QLabel(
         "<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(oss2.str()) + "</span>");
-    fineP->setTextFormat(Qt::RichText);
+        "<span style='color:black;'>" + QString::fromStdString(dateToString(film->getDataFineRilascio())) + "</span>");
+    endDateLabel->setTextFormat(Qt::RichText);
     inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    fineP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    endDateLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     QLabel* costoBiglietto = new QLabel(
         "<span style='color:white; font-weight:bold;'>Costo biglietto: </span>"
@@ -180,7 +114,7 @@ FilmView::FilmView(Film* film, QWidget* parent)
     costoBiglietto->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
     layoutInternoProgrammazione->addWidget(inizioP,0,0);
-    layoutInternoProgrammazione->addWidget(fineP,0,1);
+    layoutInternoProgrammazione->addWidget(endDateLabel,0,1);
     layoutInternoProgrammazione->addWidget(costoBiglietto,1,0);
     layoutProgrammazione->addWidget(dettagliProgrammazione);
     
@@ -302,11 +236,79 @@ FilmView::FilmView(Film* film, QWidget* parent)
     detailsLayout->addWidget(sezioneTecnica);
     detailsLayout->addWidget(sezioneDettagli);
 
-    
-    QWidget* partedx = new QWidget();
-    partedx->setObjectName("gaga");
-    partedx->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    QVBoxLayout * layoutdx = new QVBoxLayout(partedx);
+    splitterLayout->addWidget(leftSide);
+
+}
+
+
+void FilmView::createFilmCard(){
+    QWidget * card = new QWidget(leftSide);
+    QVBoxLayout * cardLayout = new QVBoxLayout(card);
+    card->setContentsMargins(0,0,0,0);
+    cardLayout->setContentsMargins(0,0,0,0);
+    QPixmap image(QString::fromStdString(film->getImPath()));
+    QLabel * copertina = new QLabel();
+    QPixmap scaled = image.scaled(330,489,Qt::KeepAspectRatio,Qt::SmoothTransformation);
+    copertina->setPixmap(scaled);
+    cardLayout->addWidget(copertina);
+
+    cardLayout->setSpacing(0);
+    QWidget* box = new QWidget();
+    box->setFixedSize(330, 231);
+    box->setObjectName("caca");
+    QVBoxLayout* layoutBox = new QVBoxLayout(box);
+    layoutBox->setContentsMargins(35, 35, 35, 35);
+    layoutBox->setSpacing(10);
+
+    QLabel* regista = new QLabel(
+        "<span style='color:white; font-weight:bold;'>Regista: </span>"
+        "<span style='color:black;'>" + QString::fromStdString(film->getAutore()) + "</span>");
+    regista->setTextFormat(Qt::RichText);
+
+    QLabel* durata = new QLabel(
+        "<span style='color:white; font-weight:bold;'>Durata: </span>"
+        "<span style='color:black;'>" + QString::number(film->getDurataMinuti()) + " min</span>");
+    durata->setTextFormat(Qt::RichText);
+
+    //creazione label lingue
+    std::vector<Lingua> lingueDisponibili = film->getLingue();
+    QString lingueText;
+    for (size_t i = 0; i < lingueDisponibili.size(); ++i) {
+        lingueText += QString::fromUtf8(toString(lingueDisponibili[i]));
+        if (i != lingueDisponibili.size() - 1) {
+            lingueText += ", ";
+        }
+    }
+    QLabel* lingue = new QLabel(
+        "<span style='color:white; font-weight:bold;'>Lingue: </span>"
+        "<span style='color:black;'>" + lingueText + "</span>");
+    lingue->setTextFormat(Qt::RichText);
+
+    //creazione label sottotitoli
+    std::vector<Lingua> sottotitoliDisponibili = film->getSottotitoli();
+    QString sottotitoliText;
+    for (size_t i = 0; i < sottotitoliDisponibili.size(); ++i) {
+        sottotitoliText += QString::fromUtf8(toString(sottotitoliDisponibili[i]));
+        if (i != sottotitoliDisponibili.size() - 1) sottotitoliText += ", ";
+    }
+    QLabel* sottotitoli = new QLabel(
+        "<span style='color:white; font-weight:bold;'>Sottotitoli: </span>"
+        "<span style='color:black;'>" + sottotitoliText + "</span>");
+    sottotitoli->setTextFormat(Qt::RichText);
+
+    layoutBox->addWidget(regista);
+    layoutBox->addWidget(durata);
+    layoutBox->addWidget(lingue);
+    layoutBox->addWidget(sottotitoli);
+    layoutBox->setAlignment(Qt::AlignLeft);
+
+    cardLayout->addWidget(box);
+    leftLayout->addWidget(card);
+}
+
+void FilmView::createTrailersSection(){
+    rightSide->setObjectName("gaga");
+    rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
     QLabel *labelTrailer = new QLabel("Trailer");
     QFont fontTrailer = labelTrailer->font();
@@ -314,7 +316,7 @@ FilmView::FilmView(Film* film, QWidget* parent)
     fontTrailer.setBold(true);
     labelTrailer->setFont(fontTrailer);
     
-    layoutdx->addWidget(labelTrailer);
+    rightLayout->addWidget(labelTrailer);
 
     QWidget * sezioneTrailer = new QWidget();
     QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
@@ -337,18 +339,56 @@ FilmView::FilmView(Film* film, QWidget* parent)
     scrollTrailer->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollTrailer->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scrollTrailer->setMinimumHeight(400);
-    layoutdx->addWidget(scrollTrailer,0,Qt::AlignTop);
+    rightLayout->addWidget(scrollTrailer,0,Qt::AlignTop);
 
-    DetailsPageButtons * buttons = new DetailsPageButtons(partedx);
-    buttons->setDeleteButtonText("Elimina film");
-    connect(buttons,&DetailsPageButtons::extendMedia,this,[this,film](){film->estendiDataFineRilascio();});
-    connect(buttons,&DetailsPageButtons::deleteMedia,this,[this,film](){qDebug()<<"TO DO elimina media";});
-    layoutdx->addSpacing(60);
-    layoutdx->addWidget(buttons);
-    splitterLayout->setSpacing(55);
-    splitterLayout->addWidget(partesx);
-    splitterLayout->addWidget(partedx);
-    
-    setLayout(layoutPage); 
+    splitterLayout->addWidget(rightSide);
 }
+void FilmView::createButtons(){
+    DetailsPageButtons * buttons = new DetailsPageButtons(rightSide);
+    buttons->setDeleteButtonText("Elimina film");
+    connect(buttons,&DetailsPageButtons::extendMedia,this,[this](){
+        
+            QMessageBox msgBox(this);
+            msgBox.setWindowTitle("Conferma estensione data");
 
+            auto fine = film->getDataFineRilascio();
+            auto nuovaFine = sys_days(fine) + days{7}; 
+
+            msgBox.setText(QString::fromStdString(
+                "La data di fine proiezione cambierà in\n" + dateToString(fine) + " → " + dateToString(year_month_day{nuovaFine})));
+
+            msgBox.setInformativeText(QString::fromStdString("I trailer associati in sala termineranno la proiezione il " + dateToString(year_month_day{nuovaFine}) +
+                                      "\n\nPremi conferma per continuare, annulla per non modificare."));
+            msgBox.setStandardButtons(QMessageBox::Cancel | QMessageBox::Ok);
+            msgBox.button(QMessageBox::Ok)->setText("Conferma");
+            msgBox.button(QMessageBox::Cancel)->setText("Annulla");
+
+            int ret = msgBox.exec();
+            if (ret == QMessageBox::Ok) {
+                qDebug() << "Confermato";
+                //logica observer???? o solo un set????
+                endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
+                "<span style='color:black;'>" + QString::fromStdString(dateToString(year_month_day(nuovaFine))) + "</span>");
+
+                emit extendMediaClicked();
+            }
+        });
+    
+    connect(buttons,&DetailsPageButtons::deleteMedia,this,[this](){
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Conferma eliminazione");
+        msgBox.setText("Sei sicuro di voler eliminare il film? "
+                    "Avrà l'effetto di eliminare tutti i trailer ad esso associati");
+
+
+        QPushButton *btnAnnulla = msgBox.addButton("Annulla", QMessageBox::RejectRole);
+        QPushButton *btnConferma = msgBox.addButton("Conferma", QMessageBox::AcceptRole);
+        int ret = msgBox.exec();
+        if (ret == QMessageBox::Ok) {
+            qDebug() << "Confermato";
+            emit deleteMediaClicked();
+        }
+        });
+    rightLayout->addSpacing(60);
+    rightLayout->addWidget(buttons);
+}
