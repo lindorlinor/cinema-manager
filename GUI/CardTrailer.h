@@ -11,6 +11,7 @@
 #include <QEnterEvent>
 #include "Trailer.h"
 
+//prima o poi diventera un cardMedia idk
 class CardTrailer : public QFrame {
     Q_OBJECT
 

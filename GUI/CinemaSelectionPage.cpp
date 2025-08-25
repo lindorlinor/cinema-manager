@@ -63,7 +63,7 @@ void CinemaSelectionPage::refreshCinemaButtons() {
         delete child;
     }
 
-    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
+    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
     cinemas = repo.loadAllCinemas();
     for (const auto& c : cinemas) {
         createCinemaButton(c.nome, c.imagePath, c.xmlPath);
