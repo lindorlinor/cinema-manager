@@ -144,6 +144,30 @@
         "titolo": "y"
     },
     {
+        "attoriPrincipali": [
+        ],
+        "autore": "edede",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-25",
+        "dataInizioRilascio": "2025-08-25",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
+        "genere": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "ded"
+    },
+    {
         "autore": "e",
         "autoreFilmAssociato": "aaaaa",
         "dataFineRilascio": "",
@@ -199,6 +223,25 @@
         ],
         "tipologia": "trailer",
         "titolo": "o"
+    },
+    {
+        "autore": "r",
+        "autoreFilmAssociato": "aaaaa",
+        "dataFineRilascio": "",
+        "dataInizioRilascio": "",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "filmAssociato": "frfrfr",
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "r"
     },
     {
         "autore": "eee",
@@ -273,13 +316,13 @@
         "titolo": "ded"
     },
     {
-        "autore": "r",
-        "autoreFilmAssociato": "aaaaa",
+        "autore": "w",
+        "autoreFilmAssociato": "edede",
         "dataFineRilascio": "",
         "dataInizioRilascio": "",
         "descrizione": "",
         "durataMinuti": 0,
-        "filmAssociato": "frfrfr",
+        "filmAssociato": "ded",
         "formato": 0,
         "lingueDisponibili": [
         ],
@@ -289,6 +332,6 @@
         "sottotitoliDisponibili": [
         ],
         "tipologia": "trailer",
-        "titolo": "r"
+        "titolo": "d"
     }
 ]

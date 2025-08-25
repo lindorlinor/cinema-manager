@@ -119,6 +119,31 @@ class MediaManagerJson : public QObject, public MediaVisitor{
          */
         void remove(Media* media);
 
+        //modified
+        /**
+         * @brief Modifica un oggetto passatogli
+         * 
+         */
+        void modified(Media* media);
+        
+        //toMediaData
+        /**
+         * @brief converte un oggetto Media in un Data (struct)
+         * 
+         */
+        void toMediaDataFilm(const Film* media, FilmData& data);
+        void toMediaDataTrailer(const Trailer* media, TrailerData& data);
+        void toMediaDataInserzione(const Inserzione* media, InserzioniData& data);
+        void toMediaDataPodcast(const Podcast* media, PodcastData& data);
+        void toMediaDataPuntata(const Puntata* media, PuntataData& data);
+        
+        //MediaDataCommonField
+        /**
+         * @brief converte i campi comuni degli oggetti da Media a Data (struct)
+         * 
+         */
+        void MediaDataCommonField(const Media* media, MediaData &mediaData);
+
         //clearMediaList
         /**
          * @brief Libera la memoria di tutti gli oggetti Media* nella lista m_mediList e la svuota

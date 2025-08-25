@@ -161,6 +161,10 @@ vector<Lingua> Media::getSottotitoli() const {
     return m_sottotitoliDisponibili;
 }
 
+string Media::getPath() const{
+    return m_path;
+}
+
 // // Metodi set
 // void Media::setAutore(const string& autore){
 //     m_autore = autore;

@@ -17,6 +17,10 @@ Podcast::~Podcast()
     }
 }
 
+string Podcast::getConduttore() const{
+    return p_conduttore;
+}
+
 void Podcast::aggiungiPuntata(Puntata* puntata){
     if(puntata && isPuntataIn(puntata)==-1 && puntata->getPodcast() == this){
 

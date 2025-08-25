@@ -48,8 +48,7 @@ public:
     // void setD
     // //metodi getescrizione(const string& descrizione);
     
-    // //metodi get
-    
+    // modifica lingua e sottotitoli
     virtual void aggiungiLingua(Lingua lingua);
     virtual void aggiungiSottotitolo(Lingua lingua);
     virtual void rimuoviLingua(Lingua lingua);
@@ -86,6 +85,7 @@ public:
     string getDescrizione() const;
     vector<Lingua> getLingue() const;
     vector<Lingua> getSottotitoli() const;
+    string getPath() const;
     
     void setVisualizzazioni(unsigned int visualizzazioni);
     void setDurataMinuti(unsigned int durata);

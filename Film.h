@@ -60,12 +60,13 @@ public:
     // void setCostoBiglietto(double costoBiglietto);
     
     // // metodi get
-    // string getCasaDiProduzione() const;
-    // unsigned int getNPostCredit() const;
+    unsigned int getNPostCredit() const;
     vector <Genere> getGenere() const;
     double getValutazione() const;
     Classificazione getClassificazione() const;
     double getCostoBiglietto() const;
+    string getCasaDiProduzione() const;
+    vector<string> getAttoriPrincipali() const;
     
     /* void setAttoriPrincipali(vector<string> attori); */
     void aggiungiAttore(const string& nomeAttore);

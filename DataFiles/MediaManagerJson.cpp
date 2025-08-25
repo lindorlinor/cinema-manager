@@ -104,9 +104,126 @@ void MediaManagerJson::remove(Media* media) {
     for(MediaData* m : mediaData) {
         delete m; 
     }
-
-    media = nullptr;
 }
+
+//modifica un oggetto
+void MediaManagerJson::modified(Media* media) {
+    if (!media) return;
+
+    QList<MediaData*> mediaData;
+    loadAllData(mediaData);
+
+    for (int i = 0; i < mediaData.size(); ++i) {
+        if (mediaData[i]->titolo == QString::fromStdString(media->getTitolo()) &&
+            mediaData[i]->autore == QString::fromStdString(media->getAutore())) {
+
+            // lo sostituisco con quello aggiornato
+            if(dynamic_cast<Film*>(media)) toMediaDataFilm(static_cast<Film*>(media), *static_cast<FilmData*>(mediaData[i]));
+            else if(dynamic_cast<Trailer*>(media)) toMediaDataTrailer(static_cast<Trailer*>(media), *static_cast<TrailerData*>(mediaData[i]));
+            else if(dynamic_cast<Inserzione*>(media)) toMediaDataInserzione(static_cast<Inserzione*>(media), *static_cast<InserzioniData*>(mediaData[i]));
+            else if(dynamic_cast<Podcast*>(media)) toMediaDataPodcast(static_cast<Podcast*>(media), *static_cast<PodcastData*>(mediaData[i]));
+            else if(dynamic_cast<Puntata*>(media)) toMediaDataPuntata(static_cast<Puntata*>(media), *static_cast<PuntataData*>(mediaData[i]));
+        }
+    }
+
+    saveList(mediaData);
+
+    for (MediaData* m : mediaData)
+        delete m;
+}
+
+void MediaManagerJson::MediaDataCommonField(const Media* media, MediaData &mediaData){
+    mediaData.titolo = QString::fromStdString(media->getTitolo());
+    mediaData.autore = QString::fromStdString(media->getAutore());
+    mediaData.descrizione = QString::fromStdString(media->getDescrizione());
+    mediaData.durataMinuti = media->getDurataMinuti();
+    mediaData.formato = media->getFormato();
+    mediaData.risoluzione = media->getRisoluzione();
+
+    mediaData.path = QString::fromStdString(media->getPath());
+
+    mediaData.lingueDisponibili.clear();
+    mediaData.lingueDisponibili = media->getLingue();
+
+    mediaData.sottotitoliDisponibili.clear();
+    mediaData.sottotitoliDisponibili = media->getSottotitoli();
+
+    year_month_day ymdInizio = media->getDataInizioRilascio();
+    year_month_day ymdFine = media->getDataFineRilascio();
+
+    unsigned int  yearInizio = (int) ymdInizio.year();
+    unsigned int monthInizio = (unsigned) ymdInizio.month();
+    unsigned int  dayInizio = (unsigned) ymdInizio.day();
+
+    unsigned int  yearFine = (int) ymdFine.year();
+    unsigned int monthFine = (unsigned) ymdFine.month();
+    unsigned int  dayFine = (unsigned) ymdFine.day();
+    
+    mediaData.dataInizioRilascio = QDate(yearInizio, monthInizio, dayInizio);
+    mediaData.dataFineRilascio = QDate(yearFine, monthFine, dayFine);
+}
+
+// toMediData CONVERTE DA OGGETTO MEDIA A DATA (struct)
+void MediaManagerJson::toMediaDataFilm(const Film* media, FilmData& data){
+    if(!media) return;
+
+    MediaDataCommonField(media, data);
+    data.tipologia = "film";
+    data.genere.clear();
+    data.genere = media->getGenere();
+    data.casaDiProduzione = QString::fromStdString(media->getCasaDiProduzione());
+    data.nPostCredit = media->getNPostCredit();
+    data.costoBiglietto = media->getCostoBiglietto();
+    data.target = media->getClassificazione();
+    data.attoriPrincipali.clear();
+    for (const std::string& s : media->getAttoriPrincipali()) {
+       data.attoriPrincipali.push_back(QString::fromStdString(s));
+    }
+}
+
+void MediaManagerJson::toMediaDataTrailer(const Trailer* media, TrailerData& data){
+    if(!media) return;
+
+    MediaDataCommonField(media, data);
+    data.tipologia = "trailer";
+    data.nProiezioniGiornaliere = media->getNProiezioniGiornaliere();
+    data.filmAssociato = QString::fromStdString(media->getFilm()->getTitolo());
+    data.autoreFilmAssociato = QString::fromStdString(media->getFilm()->getAutore());
+}
+
+void MediaManagerJson::toMediaDataInserzione(const Inserzione* media, InserzioniData& data){
+    if(!media) return;
+
+    MediaDataCommonField(media, data);
+    data.tipologia = "inserzione";
+    data.target = media->getTarget();
+    data.aziendaInserzionista = QString::fromStdString(media->getAziendaInserzionistica());
+    data.costoFissoProiezione = media->getCostoFissoProiezione();
+}
+
+void MediaManagerJson::toMediaDataPodcast(const Podcast* media, PodcastData& data){
+    if(!media) return;
+
+    MediaDataCommonField(media, data);
+    data.tipologia = "podcast";
+    data.conduttore = QString::fromStdString(media->getConduttore());
+}
+
+void MediaManagerJson::toMediaDataPuntata(const Puntata* media, PuntataData& data){
+    if(!media) return;
+
+    MediaDataCommonField(media, data);
+    data.tipologia = "puntata";
+    data.numeroPubblicita = media->getNumeroPubblicita();
+    data.podcastAssociato = QString::fromStdString(media->getPodcast()->getTitolo());
+    data.autorePodcastAssociato = QString::fromStdString(media->getPodcast()->getAutore());
+    data.ospiti.clear();
+    for (const std::string& s : media->getOspiti()) {
+       data.ospiti.push_back(QString::fromStdString(s));
+    }
+}
+
+
 
 // TROVA MEDIA PER RIFERIMENTO A PODCAST O FILM //
 Media* MediaManagerJson::findMedia(const QString& titolo, const QString& autore, const QString& tipo){
@@ -165,7 +282,7 @@ Trailer* MediaManagerJson::createTrailerFromData (const TrailerData& data) {
                           data.formato,
                           data.risoluzione,
                           data.nProiezioniGiornaliere,
-                          static_cast<Film*>(findMedia(data.titolo, data.autore,data.tipologia)),
+                          static_cast<Film*>(findMedia(data.filmAssociato, data.autoreFilmAssociato, data.tipologia)),
                           data.autore.toStdString(),
                           data.path.toStdString());
 
@@ -238,7 +355,7 @@ Puntata* MediaManagerJson::createPuntataFromData(const PuntataData& data) {
                           convertDate(data.dataInizioRilascio),
                           convertDate(data.dataFineRilascio),
                           data.durataMinuti,
-                          static_cast<Podcast*>(findMedia(data.titolo, data.autore,data.tipologia)),
+                          static_cast<Podcast*>(findMedia(data.podcastAssociato, data.autorePodcastAssociato, data.tipologia)),
                           data.numeroPubblicita,
                           data.autore.toStdString(),
                           data.path.toStdString());
@@ -345,6 +462,9 @@ void MediaManagerJson::saveMedia(MediaData* media) {
     
     QList<MediaData*> mediaList;
     loadAllData(mediaList); // carica quello che c'è
+    for(MediaData* m : mediaList)
+        if(m->autore == media->autore && m->titolo == media->titolo) return;
+    
     mediaList.append(media);
 
     saveList(mediaList);

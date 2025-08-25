@@ -15,8 +15,8 @@
  */
 class Inserzione : public Pubblicita{
     Classificazione i_target;
-    const double i_costoFissoProiezione;
     string i_aziendaInserzionista;
+    const double i_costoFissoProiezione;
     vector<FasciaOraria> i_fasceOrarie;
     double fattoreVariazionePrezzo() const;
     int isFasciaOrariaIn(FasciaOraria fasciaO) const;
@@ -31,8 +31,10 @@ public:
     
     void aggiungiFasciaOraria(FasciaOraria fasciaO);
     void rimuoviFasciaOraria(FasciaOraria fasciaO);
+    Classificazione getTarget() const;
+    string getAziendaInserzionistica() const;
+    double getCostoFissoProiezione() const;
 
-    // Classificazione getTarget() const;
     //void setTarget(Classificazione target);
     
     /**

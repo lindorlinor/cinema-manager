@@ -72,6 +72,10 @@ void Film::disaccoppiaTrailer(Trailer* trailer){
 
 
 //metodi get
+string Film::getCasaDiProduzione() const {
+    return f_casaDiProduzione;
+}
+
 double Film::getCostoBiglietto() const {
     return f_costoBiglietto;
 }
@@ -88,6 +92,20 @@ double Film::getValutazione() const {
     return f_valutazione;
 }
 
+unsigned int Film::getNPostCredit() const {
+    return f_nPostCredit;
+}
+
+vector<string> Film::getAttoriPrincipali() const {
+    return f_attoriPrincipali;
+}
+
+
+//metodi set
+/* void Film::setAttoriPrincipali(vector<string> attori){
+    f_attoriPrincipali = attori;
+    } */
+
 void Film::setValutazione(){
     sys_days inizio = getDataInizioRilascio();
     sys_days fine = getDataLastViewUpdate();
@@ -102,11 +120,6 @@ void Film::setValutazione(){
     }
 }
 
-//metodi set
-/* void Film::setAttoriPrincipali(vector<string> attori){
-    f_attoriPrincipali = attori;
-} */
-
 void Film::aggiungiAttore(const string& nomeAttore){
     f_attoriPrincipali.push_back(nomeAttore);
 }
@@ -118,6 +131,7 @@ void Film::rimuoviAttore(const string& nomeAttore){
         f_attoriPrincipali.erase(it);
     }
 }
+
 
 //visitor
 void Film::accept(MediaVisitor* visitor) {
@@ -158,13 +172,4 @@ void Film::accept(MediaVisitor* visitor) {
 //     _costoBiglietto = costoBiglietto;
 // }
 
-// // mtodi get
-
-// string Film::getCasaDiProduzione() const {
-//     return _casaDiProduzione;
-// }
-
-// unsigned int Film::getNPostCredit() const {
-//     return _nPostCredit;
-// }
 
