@@ -1,4 +1,5 @@
 <RCC>
+    <!-- Immagini -->
     <qresource>
         <file>../images/image1.png</file>
         <file>../images/image2.png</file>
@@ -13,7 +14,11 @@
         <file>../images/film3.png</file>
         <file>../images/default.png</file>
         <file>../images/coverCinema.png</file>
-        <file>../icons/disabled.svg</file>
-        <file>../icons/enabled.svg</file>
+    </qresource>
+
+    <!-- Icone -->
+    <qresource>
+        <file>../icons/disabled.png</file>
+        <file>../icons/enabled.png</file>
     </qresource>
 </RCC>

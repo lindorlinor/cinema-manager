@@ -16,9 +16,10 @@ class CardTrailer : public QFrame {
 
 public:
     explicit CardTrailer(const Trailer* trailer, QWidget* parent = nullptr);
-
+    const Trailer* trailerPtr; 
 signals:
-    void clicked();
+    void viewTrailer(const Trailer* trailer);
+
 
 protected:
     void mousePressEvent(QMouseEvent* event) override;

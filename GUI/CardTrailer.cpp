@@ -5,7 +5,7 @@
 #include <QMouseEvent>
 
 CardTrailer::CardTrailer(const Trailer* trailer, QWidget* parent)
-    : QFrame(parent)
+    : QFrame(parent),trailerPtr(trailer)
 {
     setFixedSize(270,200);
     cardLayout = new QVBoxLayout(this);
@@ -49,6 +49,6 @@ CardTrailer::CardTrailer(const Trailer* trailer, QWidget* parent)
 void CardTrailer::mousePressEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton) {
-        emit clicked();
+        emit viewTrailer(trailerPtr);
     }
 }

@@ -9,55 +9,64 @@
 DetailsPageButtons::DetailsPageButtons(QWidget* parent)
     : QWidget(parent)
 {
-    qDebug() << QFile::exists(":/../icons/enabled.svg");  // deve stampare true
+    qDebug() << QFile::exists(":/icons/enabled.png");  // deve stampare true
 
     auto* mainLayout = new QVBoxLayout(this);
 
-    btnEstendi = new QPushButton("Estendi data");
-    btnEstendi->setCursor(Qt::PointingHandCursor);
-
-    toolEstendi = new QToolButton();
-    toolEstendi->setCheckable(true);
-    toolEstendi->setAutoRaise(true);
-    toolEstendi->setFixedSize(24, 24);
-    toolEstendi->setToolTip("Attiva/Disattiva pulsante");
-
-    btnEstendi->setEnabled(true);
-    toolEstendi->setChecked(true);
-    toolEstendi->setIcon(QIcon(":/icons/enabled.svg"));
+    extendButton = new QPushButton("Estendi data");
+    extendButton->setCursor(Qt::PointingHandCursor);
+    extendButton->setMinimumHeight(53);
+    extendTool = new QToolButton();
+    extendTool->setCheckable(true);
+    extendTool->setAutoRaise(true);
+    extendTool->setFixedSize(24, 24);
+    extendTool->setToolTip("Attiva/Disattiva pulsante");
+    
+    extendButton->setEnabled(true);
+    extendTool->setChecked(true);
+    extendTool->setIcon(QIcon(":/icons/enabled.png"));
     
     auto* row1 = new QHBoxLayout();
-    row1->addWidget(btnEstendi);
-    row1->addWidget(toolEstendi);
+    row1->addWidget(extendButton);
+    row1->addWidget(extendTool);
     mainLayout->addLayout(row1);
     
     
-    btnElimina = new QPushButton("Elimina film");
-    btnElimina->setCursor(Qt::PointingHandCursor);
-
-    toolElimina = new QToolButton();
-    toolElimina->setCheckable(true);
-    toolElimina->setAutoRaise(true);
-    toolElimina->setFixedSize(24, 24);
-    toolElimina->setToolTip("Attiva/Disattiva pulsante");
+    deleteButton = new QPushButton("Elimina media");
+    deleteButton->setCursor(Qt::PointingHandCursor);
+    deleteButton->setMinimumHeight(53);
     
-    btnElimina->setEnabled(false);
-    toolElimina->setChecked(false);
-    toolElimina->setIcon(QIcon(":/icons/disabled.svg"));
+    deleteTool = new QToolButton();
+    deleteTool->setCheckable(true);
+    deleteTool->setAutoRaise(true);
+    deleteTool->setFixedSize(24, 24);
+    deleteTool->setToolTip("Attiva/Disattiva pulsante");
+    
+    deleteButton->setEnabled(false);
+    deleteTool->setChecked(false);
+    deleteTool->setIcon(QIcon(":/icons/disabled.png"));
 
 
     auto* row2 = new QHBoxLayout();
-    row2->addWidget(btnElimina);
-    row2->addWidget(toolElimina);
+    row2->addWidget(deleteButton);
+    row2->addWidget(deleteTool);
     mainLayout->addLayout(row2);
 
-    connect(toolEstendi, &QToolButton::toggled, this, [this](bool checked) {
-        btnEstendi->setEnabled(checked);
-        toolEstendi->setIcon(QIcon(checked ? ":/icons/enabled.svg" : ":/icons/disabled.svg"));
+    connect(extendTool, &QToolButton::toggled, this, [this](bool checked) {
+        extendButton->setEnabled(checked);
+        extendTool->setIcon(QIcon(checked ? ":/icons/enabled.png" : ":/icons/disabled.png"));
     });
 
-    connect(toolElimina, &QToolButton::toggled, this, [this](bool checked) {
-        btnElimina->setEnabled(checked);
-        toolElimina->setIcon(QIcon(checked ? ":/icons/enabled.svg" : ":/icons/disabled.svg"));
+    connect(deleteTool, &QToolButton::toggled, this, [this](bool checked) {
+        deleteButton->setEnabled(checked);
+        deleteTool->setIcon(QIcon(checked ? ":/icons/enabled.png" : ":/icons/disabled.png"));
     });
+
+    connect(extendButton, &QPushButton::clicked, this, &DetailsPageButtons::extendMedia);
+    connect(deleteButton, &QPushButton::clicked, this, &DetailsPageButtons::deleteMedia);
 }
+
+void DetailsPageButtons::setDeleteButtonText(const QString& text) {
+    deleteButton->setText(text);
+}
+

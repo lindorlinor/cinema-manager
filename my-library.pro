@@ -7,8 +7,7 @@ MOC_DIR = release
 RCC_DIR = release
 UI_DIR = release
 
-QT += widgets
-QT += xml
+QT += widgets xml
 QMAKE_CXXFLAGS += -g -O0
 
 
@@ -41,6 +40,7 @@ HEADERS +=  \
             GUI/InsertImageFrame.h \
             GUI/MediaFrame.h \
             GUI/SelectMediaReference.h \
+            GUI/FilmView.h \
             GUI/ExpandableLabel.h \
             GUI/CardTrailer.h \
             GUI/DetailsPageButtons.h \
@@ -67,6 +67,7 @@ SOURCES +=  \
             GUI/InsertImageFrame.cpp \
             GUI/MediaFrame.cpp \
             GUI/SelectMediaReference.cpp \
+            GUI/FilmView.cpp \
             GUI/ExpandableLabel.cpp \
             GUI/CardTrailer.cpp \
             GUI/DetailsPageButtons.cpp \
