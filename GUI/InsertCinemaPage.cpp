@@ -79,7 +79,7 @@ void InsertCinemaPage::chooseImage(){
 }
 
 void InsertCinemaPage::removeImage(){
-    imagePath=":/../images/image4.png";  //qui bisogna mettere l'immagine di default che vogliamo mettere 
+    imagePath=":/../images/default.png";
     hasCustomImage = false;
 }
 
@@ -182,7 +182,7 @@ void InsertCinemaPage::createSplitView(){
  
     // contenitoredx->setObjectName("gaga");
     imageLabel->setMaximumSize(330,400);
-    QPixmap pixmap(":/images/coverCinema.png");
+    QPixmap pixmap(":/../images/coverCinema.png");
     imageLabel->setAlignment(Qt::AlignCenter);
     imageLabel->setPixmap(pixmap);
 
