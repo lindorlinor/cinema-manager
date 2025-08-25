@@ -29,12 +29,19 @@ class SearchPanel:public QWidget{
     * 
     * filtrano i Media tra: tutto, film, trailer, inserzione, podcast
     */
-    
-    QToolButton* tutto;
-    QToolButton* film;
-    QToolButton* trailer;
-    QToolButton* inserzione;
-    QToolButton* podcast;
+   
+   QToolButton* tutto;
+   QToolButton* film;
+   QToolButton* trailer;
+   QToolButton* inserzione;
+   QToolButton* podcast;
+   
+   
+   //salva il nome del cinema
+   /**
+   * @brief nome del cinema selezionato
+   */
+    QString p_nomeCinema;
     
     //torna alla selezione del cinema
     /**

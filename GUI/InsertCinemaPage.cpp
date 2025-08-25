@@ -48,7 +48,7 @@ void InsertCinemaPage::checkCinemaNameAvailability(const QString& text) {
     }
     QString nome = text.trimmed();
 
-    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
+    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
     isAvailable = repo.isNameAvailable(text);
 
     if (!isAvailable) {
@@ -89,7 +89,7 @@ void InsertCinemaPage::saveCinemaInXml() {
     cinema.nome = textInput->text().trimmed();
     cinema.imagePath = imagePath;
 
-    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
+    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
     if (!repo.saveCinema(cinema)) {
         QMessageBox::critical(this, tr("Errore"), tr("Impossibile salvare il file XML."));
         return;

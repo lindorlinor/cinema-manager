@@ -2,7 +2,7 @@
 #include "SearchPanel.h"
 
 InsertMedia::InsertMedia(QWidget *parent): QWidget(parent){
-    mediaManagerJson = new MediaManagerJson("",this);
+    mediaManagerJson = new MediaManagerJson(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"),this);
     QVBoxLayout* mainLayout = new QVBoxLayout;
     mainLayout->setContentsMargins(0, 0, 0, 0); 
     mainLayout->setSpacing(0);
@@ -363,9 +363,8 @@ void InsertMedia::checkMediaNameAvailability() {
     QString autore = autoreMedia->text().trimmed();
 
     // Carico la lista dei cinema esistenti
-    MediaManagerJson manager(QDir(QCoreApplication::applicationDirPath()).filePath(".."));
     QList<MediaData*> listInsertMedia;
-    manager.loadAllData(listInsertMedia);
+    mediaManagerJson->loadAllData(listInsertMedia);
     
     bool isAvailable = true;
 
@@ -1043,6 +1042,11 @@ void InsertMedia::resetAllInput(){
 
     // QString
     imagePath.clear();
+
+    errorLabel->setVisible(false);
 }
 
-
+//IMPOSTA IL NOME DEL CINEMA
+void InsertMedia::setNomeCinemaForJson(const QString& nome){
+    mediaManagerJson->setNomeCinema(nome);
+}

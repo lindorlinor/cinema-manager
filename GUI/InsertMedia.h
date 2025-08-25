@@ -168,6 +168,7 @@ class InsertMedia:public QWidget{
 	explicit InsertMedia(QWidget *parent);
     ~InsertMedia();
     void resetAllInput();
+    void setNomeCinemaForJson(const QString& nome);
     
     signals:
     void tornaAllaLibreria();

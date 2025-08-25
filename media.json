@@ -244,6 +244,25 @@
         "titolo": "r"
     },
     {
+        "autore": "w",
+        "autoreFilmAssociato": "edede",
+        "dataFineRilascio": "",
+        "dataInizioRilascio": "",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "filmAssociato": "ded",
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "d"
+    },
+    {
         "autore": "eee",
         "conduttore": "",
         "dataFineRilascio": "",
@@ -316,22 +335,27 @@
         "titolo": "ded"
     },
     {
-        "autore": "w",
-        "autoreFilmAssociato": "edede",
-        "dataFineRilascio": "",
-        "dataInizioRilascio": "",
+        "attoriPrincipali": [
+        ],
+        "autore": "caca",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-25",
+        "dataInizioRilascio": "2025-08-25",
         "descrizione": "",
         "durataMinuti": 0,
-        "filmAssociato": "ded",
         "formato": 0,
+        "genere": [
+        ],
         "lingueDisponibili": [
         ],
-        "nProiezioniGiornaliere": 0,
+        "nPostCredit": 0,
         "path": ":/images/default.png",
         "risoluzione": 0,
         "sottotitoliDisponibili": [
         ],
-        "tipologia": "trailer",
-        "titolo": "d"
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "provina"
     }
 ]

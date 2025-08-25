@@ -454,7 +454,7 @@ void MediaManagerJson::saveList(QList<MediaData*>& mediaList){
         array.append(obj);
     }
 
-    saveJsonFile("media.json", QJsonDocument(array));
+    saveJsonFile(m_nomeCinema+".json", QJsonDocument(array));
 }
 
 void MediaManagerJson::saveMedia(MediaData* media) {
@@ -475,8 +475,7 @@ void MediaManagerJson::saveMedia(MediaData* media) {
 
 // FILM
 void MediaManagerJson::loadFilmsData(QList<FilmData*>& films) {
-    
-    QJsonDocument doc = loadJsonFile("media.json");
+    QJsonDocument doc = loadJsonFile(m_nomeCinema+".json");
     if (!doc.isArray()) return;
 
     
@@ -534,7 +533,7 @@ void MediaManagerJson::saveFilm(FilmData* film, QJsonObject& obj) {
 
 // TRAILER
 void MediaManagerJson::loadTrailersData(QList<TrailerData*>& trailers) {
-    QJsonDocument doc = loadJsonFile("media.json");
+    QJsonDocument doc = loadJsonFile(m_nomeCinema+".json");
     if (!doc.isArray()) return;
 
     for (const auto &val : doc.array()) {
@@ -569,7 +568,7 @@ void MediaManagerJson::saveTrailer(TrailerData* trailer, QJsonObject& obj) {
 
 //PODCAST
 void MediaManagerJson::loadPodcastData(QList<PodcastData*>& podcasts) {
-    QJsonDocument doc = loadJsonFile("media.json");
+    QJsonDocument doc = loadJsonFile(m_nomeCinema+".json");
     if (!doc.isArray()) return;
 
     
@@ -600,7 +599,7 @@ void MediaManagerJson::savePodcast(PodcastData* podcast, QJsonObject& obj) {
 
 //PUNTATA
 void MediaManagerJson::loadPuntateData(QList<PuntataData*>& puntate) {
-    QJsonDocument doc = loadJsonFile("media.json");
+    QJsonDocument doc = loadJsonFile(m_nomeCinema+".json");
     if (!doc.isArray()) return;
 
     
@@ -644,7 +643,7 @@ void MediaManagerJson::savePuntata(PuntataData* puntata, QJsonObject& obj) {
 
 //INSERZIONE
 void MediaManagerJson::loadInserzioniData(QList<InserzioniData*>& inserzioni) {
-    QJsonDocument doc = loadJsonFile("media.json");
+    QJsonDocument doc = loadJsonFile(m_nomeCinema+".json");
     if (!doc.isArray()) return;
 
     for (const auto &val : doc.array()) {
@@ -747,4 +746,8 @@ QJsonDocument MediaManagerJson::loadJsonFile(const QString &fileName) {
     QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
     file.close();
     return doc;
+}
+
+void MediaManagerJson::setNomeCinema(const QString& nome){
+    m_nomeCinema = nome;
 }

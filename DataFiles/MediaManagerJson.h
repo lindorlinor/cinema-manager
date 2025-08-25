@@ -167,11 +167,19 @@ class MediaManagerJson : public QObject, public MediaVisitor{
         void savePodcast(PodcastData* podcast, QJsonObject& obj);
         void savePuntata(PuntataData* puntata, QJsonObject& obj); 
 
+        /**
+         * @brief ottiene il nome del cinema
+         * 
+         * il nome del cinema verrà utilizzato per importare solo i media relativi al cinema selezionato
+         */
+        void setNomeCinema(const QString& nome);
+
         ~MediaManagerJson();
         
 
     private:
         QString m_basePath;
+        QString m_nomeCinema;
         /**
          * @brief Salva i campi comuni di un contenuto multimediale in un oggetto JSON.
          * 

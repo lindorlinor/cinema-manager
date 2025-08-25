@@ -41,5 +41,6 @@ void MediaFrame::mousePressEvent(QMouseEvent* event){
 
 void MediaFrame::setSelected(bool selected){
     if (selected)   setStyleSheet("border: 3px solid #d9d9d9; padding: 0px;  background-color: #4e7f8b");
-    else            setStyleSheet("");
+    else            setStyleSheet("background-color: #4e7f8b;");
+             
 }

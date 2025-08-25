@@ -21,7 +21,7 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     file->addAction(new QAction("Importa Sessione", file));
     file->addAction(new QAction("Esporta Sessione", file));
     file->addAction(new QAction("Torna a seleziona Cinema", file));
-    file->addAction(new QAction("Esci Senza Salvare", file));
+    file->addAction(new QAction("Esci", file));
     
     //Menu "Modifica"
     modifica->addAction(new QAction("Modifica Media", modifica));
@@ -218,7 +218,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     stackModifiche->addWidget(nuovoMedia);
     
     connect(this, &SearchPanel::resetPages, nuovoMedia, &InsertMedia::resetAllInput);
-    connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
+    connect(addMedia, &QPushButton::clicked, this, [this,nuovoMedia](){updateModifierPanel(1);emit nuovoMedia->setNomeCinemaForJson(p_nomeCinema);});
     connect(nuovoMedia, &InsertMedia::tornaIndietro, this, [this](){
         updateModifierPanel(previousIndex);
     });
@@ -331,7 +331,8 @@ void SearchPanel::updateNomeCinema(const QString& nome){
 
     if (match.hasMatch()) {
         QString testo = match.captured(1);
-        cinema->setText("Cinema "+testo);
+        p_nomeCinema = testo;
+        cinema->setText("Cinema "+p_nomeCinema);
     } else {
         qDebug() << "Tag <nome> non trovato!";
     }

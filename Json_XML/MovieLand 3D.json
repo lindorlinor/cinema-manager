@@ -1,0 +1,26 @@
+[
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "ddd",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-25",
+        "dataInizioRilascio": "2025-08-25",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
+        "genere": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "eee"
+    }
+]
