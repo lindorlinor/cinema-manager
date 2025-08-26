@@ -1,5 +1,6 @@
 #include "SearchPanel.h"
 #include "InsertMedia.h"
+#include "FilmView.h"
 #include "DetailPageVisitor.h"
 
 void SearchPanel::addMenus(QVBoxLayout* mainLayout){
@@ -227,68 +228,8 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
         updateModifierPanel(0);
     });
 
-    /*ROBA DA MODIFICARE, LA METTO QUI PER FARE LA PAGINA DI VISUALIZZAZIONE*/
-    DetailPageVisitor* visitor = new DetailPageVisitor(); 
-    Film* film = new Film(
-                            "Il mio vicino Totoro (RE-RELEASE 2025)",
-                            "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
-                            year_month_day{2025y/June/1d},
-                            year_month_day{2025y/June/30d},
-                            86,
-                            Formato::DCP,
-                            Risoluzione::UHD_4K_2160p,
-                            1,      
-                            12.50,
-                            "Studio Ghibli",
-                            "Hayao Miyazaki",
-                            ":/images/image9.png",
-                            Classificazione::TUTTI
-                        );
-    film->aggiungiLingua(Lingua::Italiano);
-    film->aggiungiLingua(Lingua::Inglese);
-    film->aggiungiAttore("Noriko Hidaka");
-    film->aggiungiAttore("Chika Sakamoto");
-    film->aggiungiAttore("Shigesato Itoi");
-    film->aggiungiAttore("Hitoshi Takagi");
-    film->aggiungiAttore("Takashi Nagasako");
-
-    film->aggiungiSottotitolo(Lingua::Italiano);
-    film->IncrementaVisualizzazioni();
-    film->setValutazione();
-    // Primo trailer
-    Trailer* trailer1 = new Trailer(
-        "Trailer ufficiale - Il mio vicino Totoro (2025)",
-        "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
-        year_month_day{2025y/April/15d},   // data inizio rilascio
-        year_month_day{2025y/May/31d},     // data fine rilascio
-        2,                                 // durata in minuti
-        Formato::DCP,
-        Risoluzione::UHD_4K_2160p,
-        5,                                 // n° proiezioni giornaliere
-        film,
-        "Studio Ghibli",
-        ":/images/image10.png"
-    );
-
-    // Secondo trailer
-    Trailer* trailer2 = new Trailer(
-        "Trailer speciale anniversario - Il mio vicino Totoro (2025)",
-        "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
-        year_month_day{2025y/May/1d},      // data inizio rilascio
-        year_month_day{2025y/June/15d},    // data fine rilascio
-        3,                                 // durata in minuti
-        Formato::DCP,
-        Risoluzione::UHD_4K_2160p,
-        3,                                 // n° proiezioni giornaliere
-        film,
-        "Hayao Miyazaki",
-        ":/images/image10.png"
-    );
-
-    film->accept(visitor);
-    QWidget * detailPage = visitor->getWidget();
-    stackModifiche->addWidget(detailPage);
-    stackModifiche->setCurrentIndex(2);
+    metodoTemporaneoPerPagineDiVisualizzazione();
+    
     
     //style
     attivita->setView(new QListView(attivita));
@@ -401,4 +342,76 @@ void SearchPanel::updateNomeCinema(const QString& nome){
         qDebug() << "Tag <nome> non trovato!";
     }
 
+}
+
+
+void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
+    /*ROBA DA MODIFICARE, LA METTO QUI PER FARE LA PAGINA DI VISUALIZZAZIONE*/
+    DetailPageVisitor* visitor = new DetailPageVisitor(); 
+    Film* film = new Film(
+                            "Il mio vicino Totoro (RE-RELEASE 2025)",
+                            "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
+                            year_month_day{2025y/June/1d},
+                            year_month_day{2025y/June/30d},
+                            86,
+                            Formato::DCP,
+                            Risoluzione::UHD_4K_2160p,
+                            1,      
+                            12.50,
+                            "Studio Ghibli",
+                            "Hayao Miyazaki",
+                            ":/images/image9.png",
+                            Classificazione::TUTTI
+                        );
+    film->aggiungiLingua(Lingua::Italiano);
+    film->aggiungiLingua(Lingua::Inglese);
+    film->aggiungiAttore("Noriko Hidaka");
+    film->aggiungiAttore("Chika Sakamoto");
+    film->aggiungiAttore("Shigesato Itoi");
+    film->aggiungiAttore("Hitoshi Takagi");
+    film->aggiungiAttore("Takashi Nagasako");
+
+    film->aggiungiSottotitolo(Lingua::Italiano);
+    film->IncrementaVisualizzazioni();
+    film->setValutazione();
+    // Primo trailer
+    Trailer* trailer1 = new Trailer(
+        "Trailer ufficiale - Il mio vicino Totoro (2025)",
+        "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
+        year_month_day{2025y/April/15d},   // data inizio rilascio
+        year_month_day{2025y/May/31d},     // data fine rilascio
+        2,                                 // durata in minuti
+        Formato::DCP,
+        Risoluzione::UHD_4K_2160p,
+        5,                                 // n° proiezioni giornaliere
+        film,
+        "Studio Ghibli",
+        ":/images/image10.png"
+    );
+
+    // Secondo trailer
+    Trailer* trailer2 = new Trailer(
+        "Trailer speciale anniversario - Il mio vicino Totoro (2025)",
+        "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
+        year_month_day{2025y/May/1d},      // data inizio rilascio
+        year_month_day{2025y/June/15d},    // data fine rilascio
+        3,                                 // durata in minuti
+        Formato::DCP,
+        Risoluzione::UHD_4K_2160p,
+        3,                                 // n° proiezioni giornaliere
+        film,
+        "Hayao Miyazaki",
+        ":/images/image10.png"
+    );
+
+    film->accept(visitor);
+    QWidget * detailPage = visitor->getWidget();
+    stackModifiche->addWidget(detailPage);
+    stackModifiche->setCurrentIndex(2);
+
+    connect(static_cast<FilmView*>(detailPage), &FilmView::returnButton, this, [this,detailPage](){
+        updateModifierPanel(previousIndex);
+        stackModifiche->removeWidget(detailPage);
+        delete detailPage;
+    });
 }
