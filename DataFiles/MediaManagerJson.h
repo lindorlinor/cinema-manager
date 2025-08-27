@@ -50,7 +50,7 @@ class MediaManagerJson : public QObject, public MediaVisitor{
         
         void loadFilmsData(QList<FilmData*>& films);
         void loadTrailersData(QList<TrailerData*>& trailers);
-        void loadInserzioniData(QList<InserzioniData*>& inserzioni);
+        void loadInserzioneData(QList<InserzioneData*>& inserzioni);
         void loadPodcastData(QList<PodcastData*>& podcasts);
         void loadPuntateData(QList<PuntataData*>& puntata);
         
@@ -87,7 +87,7 @@ class MediaManagerJson : public QObject, public MediaVisitor{
          */
         Film* createFilmFromData(const FilmData& data);
         Trailer* createTrailerFromData(const TrailerData& data);
-        Inserzione* createInserzioneFromData(const InserzioniData& data);
+        Inserzione* createInserzioneFromData(const InserzioneData& data);
         Podcast* createPodcastFromData(const PodcastData& data);
         Puntata* createPuntataFromData(const PuntataData& data);
         
@@ -133,7 +133,7 @@ class MediaManagerJson : public QObject, public MediaVisitor{
          */
         void toMediaDataFilm(const Film* media, FilmData& data);
         void toMediaDataTrailer(const Trailer* media, TrailerData& data);
-        void toMediaDataInserzione(const Inserzione* media, InserzioniData& data);
+        void toMediaDataInserzione(const Inserzione* media, InserzioneData& data);
         void toMediaDataPodcast(const Podcast* media, PodcastData& data);
         void toMediaDataPuntata(const Puntata* media, PuntataData& data);
         
@@ -163,7 +163,7 @@ class MediaManagerJson : public QObject, public MediaVisitor{
         void saveList(QList<MediaData*>& mediaList);
         void saveFilm(FilmData* film, QJsonObject& obj);
         void saveTrailer(TrailerData* trailer, QJsonObject& obj);
-        void saveInserzione(InserzioniData * inserzione, QJsonObject& obj);
+        void saveInserzione(InserzioneData * inserzione, QJsonObject& obj);
         void savePodcast(PodcastData* podcast, QJsonObject& obj);
         void savePuntata(PuntataData* puntata, QJsonObject& obj); 
 

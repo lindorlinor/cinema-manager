@@ -8,7 +8,13 @@
 
 using namespace std;
 
-struct MediaData {
+struct CinemaData{
+    QString nomeCinema;
+    QString copertinaCinema;
+    virtual ~CinemaData() = default;
+};
+
+struct MediaData : public CinemaData {
     QString  titolo;
     QString  descrizione;
     QDate dataInizioRilascio;
@@ -32,17 +38,16 @@ struct FilmData : public MediaData {
     double costoBiglietto;
 };
 
-struct TrailerData : public MediaData {
-    unsigned int nProiezioniGiornaliere;
-    QString filmAssociato;
-    QString autoreFilmAssociato;
-};
-
 struct PubblicitaData : public MediaData{
     unsigned int nProiezioniGiornaliere;
 };
 
-struct InserzioniData : public PubblicitaData{
+struct TrailerData : public PubblicitaData {
+    QString filmAssociato;
+    QString autoreFilmAssociato;
+};
+
+struct InserzioneData : public PubblicitaData{
     Classificazione target;
     QString aziendaInserzionista;
     double costoFissoProiezione;
@@ -59,5 +64,4 @@ struct PuntataData : public MediaData{
     QString autorePodcastAssociato;
     unsigned int numeroPubblicita;
 };
-
 #endif// POPOLATE_H

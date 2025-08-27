@@ -43,9 +43,9 @@ void MediaManagerJson::loadTrailers() {
 
 void MediaManagerJson::loadInserzioni() {
     if (!m_mediaList.empty()) return; 
-    QList<InserzioniData*> inserzioni;
-    loadInserzioniData(inserzioni);
-    for (InserzioniData* data : inserzioni) {
+    QList<InserzioneData*> inserzioni;
+    loadInserzioneData(inserzioni);
+    for (InserzioneData* data : inserzioni) {
         m_mediaList.append(createInserzioneFromData(*data));
         delete data;
     }
@@ -120,7 +120,7 @@ void MediaManagerJson::modified(Media* media) {
             // lo sostituisco con quello aggiornato
             if(dynamic_cast<Film*>(media)) toMediaDataFilm(static_cast<Film*>(media), *static_cast<FilmData*>(mediaData[i]));
             else if(dynamic_cast<Trailer*>(media)) toMediaDataTrailer(static_cast<Trailer*>(media), *static_cast<TrailerData*>(mediaData[i]));
-            else if(dynamic_cast<Inserzione*>(media)) toMediaDataInserzione(static_cast<Inserzione*>(media), *static_cast<InserzioniData*>(mediaData[i]));
+            else if(dynamic_cast<Inserzione*>(media)) toMediaDataInserzione(static_cast<Inserzione*>(media), *static_cast<InserzioneData*>(mediaData[i]));
             else if(dynamic_cast<Podcast*>(media)) toMediaDataPodcast(static_cast<Podcast*>(media), *static_cast<PodcastData*>(mediaData[i]));
             else if(dynamic_cast<Puntata*>(media)) toMediaDataPuntata(static_cast<Puntata*>(media), *static_cast<PuntataData*>(mediaData[i]));
         }
@@ -191,7 +191,7 @@ void MediaManagerJson::toMediaDataTrailer(const Trailer* media, TrailerData& dat
     data.autoreFilmAssociato = QString::fromStdString(media->getFilm()->getAutore());
 }
 
-void MediaManagerJson::toMediaDataInserzione(const Inserzione* media, InserzioniData& data){
+void MediaManagerJson::toMediaDataInserzione(const Inserzione* media, InserzioneData& data){
     if(!media) return;
 
     MediaDataCommonField(media, data);
@@ -297,7 +297,7 @@ Trailer* MediaManagerJson::createTrailerFromData (const TrailerData& data) {
     return trailer;
 }
 
-Inserzione* MediaManagerJson::createInserzioneFromData(const InserzioniData& data) {
+Inserzione* MediaManagerJson::createInserzioneFromData(const InserzioneData& data) {
 
     Inserzione* inserzione =    new Inserzione(data.titolo.toStdString(),
                                 data.descrizione.toStdString(),
@@ -447,7 +447,7 @@ void MediaManagerJson::saveList(QList<MediaData*>& mediaList){
 
         if(media->tipologia=="film") saveFilm(static_cast<FilmData*>(media), obj);
         else if(media->tipologia=="trailer") saveTrailer(static_cast<TrailerData*>(media), obj);
-        else if(media->tipologia=="inserzione") saveInserzione(static_cast<InserzioniData*>(media), obj);
+        else if(media->tipologia=="inserzione") saveInserzione(static_cast<InserzioneData*>(media), obj);
         else if(media->tipologia=="podcast") savePodcast(static_cast<PodcastData*>(media), obj);
         else if(media->tipologia=="puntata") savePuntata(static_cast<PuntataData*>(media), obj);
 
@@ -642,7 +642,7 @@ void MediaManagerJson::savePuntata(PuntataData* puntata, QJsonObject& obj) {
 }
 
 //INSERZIONE
-void MediaManagerJson::loadInserzioniData(QList<InserzioniData*>& inserzioni) {
+void MediaManagerJson::loadInserzioneData(QList<InserzioneData*>& inserzioni) {
     QJsonDocument doc = loadJsonFile(m_nomeCinema+".json");
     if (!doc.isArray()) return;
 
@@ -651,7 +651,7 @@ void MediaManagerJson::loadInserzioniData(QList<InserzioniData*>& inserzioni) {
         QJsonObject obj = val.toObject();
 
         if(obj["tipologia"] == "inserzione"){
-            InserzioniData* inserzione = new InserzioniData();
+            InserzioneData* inserzione = new InserzioneData();
     
             loadCommonFields(*inserzione, obj);
     
@@ -669,7 +669,7 @@ void MediaManagerJson::loadInserzioniData(QList<InserzioniData*>& inserzioni) {
     }
 }
 
-void MediaManagerJson::saveInserzione(InserzioniData* inserzione, QJsonObject& obj) {
+void MediaManagerJson::saveInserzione(InserzioneData* inserzione, QJsonObject& obj) {
     if(!inserzione) return;
 
     saveCommonFields(*inserzione, obj);
@@ -706,9 +706,9 @@ void MediaManagerJson::loadAllData(QList<MediaData*>& media) {
     for (PuntataData* pt : puntate)
     media.append(pt);
     
-    QList<InserzioniData*> inserzioni;
-    loadInserzioniData(inserzioni);
-    for (InserzioniData* i : inserzioni)
+    QList<InserzioneData*> inserzioni;
+    loadInserzioneData(inserzioni);
+    for (InserzioneData* i : inserzioni)
     media.append(i);
 }
 

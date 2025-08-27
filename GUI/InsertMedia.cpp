@@ -895,7 +895,7 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
     //inserzione
     else if(stackTipologia->currentIndex()==4){
 
-        InserzioniData inserzione;
+        InserzioneData inserzione;
         saveCommonFields(inserzione);
 
         inserzione.nProiezioniGiornaliere = numeroProiezioniGioInserzione->value();

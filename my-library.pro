@@ -45,7 +45,10 @@ HEADERS +=  \
             GUI/CardTrailer.h \
             GUI/DetailsPageButtons.h \
             DataFiles/CinemaXmlRepository.h \
-            DataFiles/MediaManagerJson.h 
+            DataFiles/MediaManagerJson.h \
+            DataFiles/Converter.h \
+            DataFiles/ConverterXml.h \
+            DataFiles/MediaManagerXml.h
 SOURCES +=  \
             main.cpp \
             Inserzione.cpp \
@@ -72,5 +75,8 @@ SOURCES +=  \
             GUI/CardTrailer.cpp \
             GUI/DetailsPageButtons.cpp \
             DataFiles/CinemaXmlRepository.cpp \
-            DataFiles/MediaManagerJson.cpp
+            DataFiles/MediaManagerJson.cpp \
+            DataFiles/Converter.cpp \
+            DataFiles/ConverterXml.cpp \
+            DataFiles/MediaManagerXml.cpp
 RESOURCES += GUI/resources.qrc

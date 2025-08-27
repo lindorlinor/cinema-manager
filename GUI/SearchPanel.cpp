@@ -2,6 +2,7 @@
 #include "InsertMedia.h"
 #include "FilmView.h"
 #include "DetailPageVisitor.h"
+#include "../DataFiles/MediaManagerXml.h"
 
 void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     QMenuBar* menuBar = new QMenuBar(this);
@@ -414,4 +415,12 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
         stackModifiche->removeWidget(detailPage);
         delete detailPage;
     });
+
+    QList<Media*> mediaList;
+    mediaList.push_back(film);
+    MediaManagerXml manager;
+    manager.setCinemaName("Cinema Aurora");
+    manager.setCinemaCover(":/images/default.png");
+    manager.setCinemaMediaList(mediaList);
+    manager.exportSessionToXml();
 }
