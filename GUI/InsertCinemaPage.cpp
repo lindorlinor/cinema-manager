@@ -1,5 +1,5 @@
 #include "InsertCinemaPage.h"
-#include "../DataFiles/CinemaXmlRepository.h"
+#include "../DataFiles/MediaManagerJson.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -10,19 +10,18 @@
 
 InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),
                                             frameLayout(new QVBoxLayout),
-                                            isAvailable(false),
-                                            hasCustomImage(false),
                                             textInput(new QLineEdit(this)),
                                             imageArea(new InsertImageFrame( "<span style='color:white; font-size:16px;'>+ <u>Aggiungi copertina</u></span>"
                                                                             "<span style='color: #708084; font-size:16px;'> oppure rilasciala</span>",
                                                                             "#frame { border: 2px dashed #4E7F8B; border-radius: 12px; } "
                                                                             "QToolButton { border: none; color: #BDCED3; font-weight: bold; } "
                                                                             "QToolButton:hover { color: #ffffffff; }", this)),
-                                            imageLabel(new QLabel),imagePath(":/images/default.png"),
-                                            escButton(new QPushButton("Annulla")),
-                                            saveButton(new QPushButton("Salva"))
+                                            imagePath(":/images/default.png"),imageLabel(new QLabel(this)),
+                                            escButton(new QPushButton("Annulla",this)),
+                                            saveButton(new QPushButton("Salva",this)),
+                                            hasCustomImage(false),
+                                            isAvailable(false)
 {
-    
     QFrame* frameCentrale = new QFrame(this);
     frameCentrale->setMinimumSize(630, 600);
     frameCentrale->setMaximumSize(1000, 750);
@@ -48,8 +47,18 @@ void InsertCinemaPage::checkCinemaNameAvailability(const QString& text) {
     }
     QString nome = text.trimmed();
 
-    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
-    isAvailable = repo.isNameAvailable(text);
+    MediaManagerJson repo(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
+    QList<CinemaData*> listCinema;
+    repo.loadCinemaData(listCinema);
+
+    isAvailable = true;
+
+    for (const CinemaData* c: listCinema) {
+        if (c->nomeCinema.compare(text, Qt::CaseInsensitive) == 0) {
+            isAvailable = false;
+        }
+    }
+
 
     if (!isAvailable) {
         errorLabel->setText("Nome non disponibile. Scegliere un altro nome per il cinema");
@@ -72,7 +81,7 @@ void InsertCinemaPage::chooseImage(){
     );
 
     if (!fileName.isEmpty()) {
-        imagePath = fileName;
+        imagePath = ":/images/" + QFileInfo(fileName).fileName();
         hasCustomImage = true;
         imageArea->insertImage(QFileInfo(fileName).fileName());
     }
@@ -84,16 +93,13 @@ void InsertCinemaPage::removeImage(){
 }
 
 //crea il file xml del cinema e appare un messaggio che conferma il successo dell'operazione
-void InsertCinemaPage::saveCinemaInXml() {
-    Cinema cinema;
-    cinema.nome = textInput->text().trimmed();
-    cinema.imagePath = imagePath;
+void InsertCinemaPage::saveCinemaInJson() {
+    CinemaData data;
+    data.nomeCinema = textInput->text().trimmed();
+    data.copertinaCinema = imagePath;
 
-    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
-    if (!repo.saveCinema(cinema)) {
-        QMessageBox::critical(this, tr("Errore"), tr("Impossibile salvare il file XML."));
-        return;
-    }
+    MediaManagerJson repo(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
+    repo.saveCinema(&data);
 
     QMessageBox::information(this, tr("Salvato"), tr("Cinema salvato correttamente."));
     emit returnCinemaSelectionPage();
@@ -243,7 +249,7 @@ void InsertCinemaPage::createButtonLayout(QVBoxLayout* layoutdx) {
     connect(saveButton,&QPushButton::clicked,this,[this](){
         if(!hasCustomImage)
             QMessageBox::information(this, tr("Immagine non selezionata"), tr("Verrà impostata un'immagine di default"));
-        saveCinemaInXml();
+        saveCinemaInJson();
     });
 
     layoutPulsanti->addWidget(escButton);
@@ -251,7 +257,6 @@ void InsertCinemaPage::createButtonLayout(QVBoxLayout* layoutdx) {
     layoutPulsanti->addWidget(saveButton);
 
     layoutdx->addWidget(contenitorePulsanti);
-    // contenitorePulsanti->setObjectName("gugu");
 
     layoutPulsanti->setContentsMargins(0,0,0,0);
 }

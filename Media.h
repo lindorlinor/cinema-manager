@@ -42,11 +42,6 @@ public:
           year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
           const string &autore = "Sconosciuto", const string &imPath = "immGrigia");
 
-    // //metodi set
-    // void setAutore(const string& autore);
-    // void setTitolo(const string& titolo);
-    // void setD
-    // //metodi getescrizione(const string& descrizione);
     
     // //metodi get
     string getAutore() const;
@@ -81,6 +76,12 @@ public:
     unsigned int DurataCampagna() const;
     
     // metodi get e set
+    void setPath(const string& path);
+    void setFormato(const Formato& formato);
+    void setRisoluzione(const Risoluzione& risoluzione);
+    void setDescrizione(const string& descrizione);
+    void setAutore(const string& autore);
+    void setTitolo(const string& titolo);
     unsigned int getVisualizzazioni() const;
     year_month_day getDataInizioRilascio() const;
     year_month_day getDataFineRilascio() const;

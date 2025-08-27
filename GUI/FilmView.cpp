@@ -223,7 +223,7 @@ void FilmView::createFilmDetails(){
 
     QLabel* classificazione = new QLabel(
         "<span style='color:white; font-weight:bold;'>Classificazione: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(film->getClassificazione())) + "</span>",dettagliDettagli);
+        "<span style='color:black;'>" + QString::fromUtf8(toString(film->getTarget())) + "</span>");
     classificazione->setTextFormat(Qt::RichText);
     
     QLabel* casaProduzione = new QLabel(

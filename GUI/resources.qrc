@@ -14,6 +14,10 @@
         <file>../images/film3.png</file>
         <file>../images/default.png</file>
         <file>../images/coverCinema.png</file>
+    </qresource>
+
+    <!-- Icone -->
+    <qresource>
         <file>../icons/arrow_left.png</file>
         <file>../icons/arrow_up.png</file>
         <file>../icons/arrow_down.png</file>
@@ -26,10 +30,6 @@
         <file>../icons/podcast.png</file>
         <file>../icons/vista.png</file>
         <file>../icons/filtri.png</file>
-    </qresource>
-
-    <!-- Icone -->
-    <qresource>
         <file>../icons/disabled.png</file>
         <file>../icons/enabled.png</file>
     </qresource>

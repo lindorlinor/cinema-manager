@@ -1,7 +1,7 @@
 #include "CinemaButton.h"
 
-CinemaButton::CinemaButton(const QString& cinemaName="Untitled", const QPixmap& cinemaImage, const QString& cinemaXmlFile,QWidget *parent)
-    : QFrame(parent), xmlFilePath(cinemaXmlFile)
+CinemaButton::CinemaButton(const QString& cinemaName="Untitled", const QPixmap& cinemaImage, QWidget *parent)
+    : QFrame(parent)
 {
     setFixedSize(150, 180);  // larghezza x altezza
     setObjectName("CinemaButton");
@@ -27,9 +27,5 @@ void CinemaButton::mousePressEvent(QMouseEvent *event)
     if (event->button() == Qt::LeftButton) {
         emit selected();
     }
-}
-
-QString CinemaButton::getXmlFilePath() const {
-    return xmlFilePath;
 }
 

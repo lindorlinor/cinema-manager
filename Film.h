@@ -53,20 +53,20 @@ public:
      *
      */
     void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) override;
+    void setGenere(const vector <Genere>& genere);
+    void setTarget(Classificazione target);
+    void setCasaDiProduzione(const string& casaDiProduzione);
+    void setNPostCredit(unsigned int nPostCredit);
+    void setCostoBiglietto(double costoBiglietto);
     void aggiungiAttore(const string& nomeAttore);
     void rimuoviAttore(const string& nomeAttore);
-    // void setGenere(const string& genere);
-    // void setClassificazione(Classificazione classificazione);
-    // void setCasaDiProduzione(const string& casaDiProduzione);
-    // void setNPostCredit(unsigned int nPostCredit);
-    // void setCostoBiglietto(double costoBiglietto);
     
     // // metodi get
+    Classificazione getTarget() const;
     string getCasaDiProduzione() const;
     unsigned int getNPostCredit() const;
     vector<Genere> getGenere() const;
     double getValutazione() const;
-    Classificazione getClassificazione() const;
     double getCostoBiglietto() const;
     const vector<string>& getAttoriPrincipali() const;
     // metodi per aggiungere e togliere i trailer

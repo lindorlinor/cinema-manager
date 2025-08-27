@@ -90,8 +90,12 @@ void Puntata::aggiungiSottotitolo(Lingua lingua){
     p_podcast->aggiungiSottotitolo(lingua);
 }
 
-unsigned int Puntata::getNumeroPubblicita() const{
+/* unsigned int Puntata::getNumeroPubblicita() const{
     return p_numeroPubblicita;
+} */
+
+void Puntata::setNumeroPubblicita(const int& num){
+    p_numeroPubblicita = num;
 }
 
 //visitor

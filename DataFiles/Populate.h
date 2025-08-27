@@ -1,5 +1,5 @@
-#ifndef POPOLATE_H
-#define POPOLATE_H
+#ifndef POPULATE_H
+#define POPULATE_H
 
 #include <QString>
 #include <QDate>
@@ -8,7 +8,12 @@
 
 using namespace std;
 
-struct MediaData {
+struct CinemaData{
+    QString nomeCinema;
+    QString copertinaCinema;
+};
+
+struct MediaData : public CinemaData {
     QString  titolo;
     QString  descrizione;
     QDate dataInizioRilascio;
@@ -24,7 +29,7 @@ struct MediaData {
 };
 
 struct FilmData : public MediaData {
-    vector<Genere> genere;
+    vector<Genere> generi;
     vector<QString> attoriPrincipali;
     Classificazione target;
     QString  casaDiProduzione;
@@ -32,14 +37,13 @@ struct FilmData : public MediaData {
     double costoBiglietto;
 };
 
-struct TrailerData : public MediaData {
-    unsigned int nProiezioniGiornaliere;
-    QString filmAssociato;
-    QString autoreFilmAssociato;
-};
-
 struct PubblicitaData : public MediaData{
     unsigned int nProiezioniGiornaliere;
+};
+
+struct TrailerData : public PubblicitaData {
+    QString filmAssociato;
+    QString autoreFilmAssociato;
 };
 
 struct InserzioniData : public PubblicitaData{
@@ -60,4 +64,4 @@ struct PuntataData : public MediaData{
     unsigned int numeroPubblicita;
 };
 
-#endif// POPOLATE_H
+#endif// POPULATE_H
