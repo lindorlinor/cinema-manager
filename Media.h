@@ -89,7 +89,6 @@ public:
     unsigned int getDurataMinuti() const;
     Formato getFormato()const;
     Risoluzione getRisoluzione()const;
-    string getPath() const;
     
     void setVisualizzazioni(unsigned int visualizzazioni);
     void setDurataMinuti(unsigned int durata);

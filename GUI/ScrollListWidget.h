@@ -10,11 +10,11 @@
 class ScrollListWidget: public QWidget{
 
     private:
-    QList<Media*> listMedia;
+    const QList<const Media*>& listMedia;
     QString tipoFiltro;
     
     public:
-    explicit ScrollListWidget(const QList<Media*> media, const QString& filtro, QWidget* parent = nullptr);
+    explicit ScrollListWidget(const QList<const Media*>& media, const QString& filtro, QWidget* parent = nullptr);
 
 };
 

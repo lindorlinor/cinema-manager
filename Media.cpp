@@ -60,66 +60,6 @@ void Media::rimuoviSottotitolo(Lingua lingua)
     }
 }
 
-// metodi get
-year_month_day Media::getDataInizioRilascio() const
-{
-    return m_dataInizioRilascio;
-}
-
-year_month_day Media::getDataFineRilascio() const
-{
-    return m_dataFineRilascio;
-}
-
-year_month_day Media::getDataLastViewUpdate() const
-{
-    return m_dataLastViewUpdate;
-}
-
-void Media::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio)
-{
-    if(gg_mm_aaFineRilascio<getDataInizioRilascio())
-        m_dataFineRilascio = m_dataInizioRilascio;
-    else
-        m_dataFineRilascio = gg_mm_aaFineRilascio;
-}
-
-unsigned int Media::getVisualizzazioni() const
-{
-    return m_visualizzazioni;
-}
-
-void Media::setDurataMinuti(unsigned int durata)
-{
-    m_durataMinuti = durata;
-}
-
-unsigned int Media::getDurataMinuti() const
-{
-    return m_durataMinuti;
-}
-
-void Media::setVisualizzazioni(unsigned int visualizzazioni)
-{
-    m_visualizzazioni = visualizzazioni;
-}
-
-Formato Media::getFormato() const
-{
-    return m_formato;
-}
-
-Risoluzione Media::getRisoluzione() const
-{
-    return m_risoluzione;
-}
-
-string Media::getImPath() const
-{
-    return m_imPath;
-}
-
-
 void Media::IncrementaVisualizzazioni()
 {
     // per poter facilitare i calcoli sulla data
@@ -152,6 +92,48 @@ void Media::setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio) {
 
 
 // // Metodi set
+
+void Media::setAutore(const string& autore){
+    m_autore = autore;
+}
+void Media::setTitolo(const string& titolo) {
+    m_titolo = titolo;
+}
+
+void Media::setFormato(const Formato& formato) {
+    m_formato = formato;
+}
+
+void Media::setRisoluzione(const Risoluzione& risoluzione) {
+    m_risoluzione = risoluzione;
+}
+
+void Media::setDescrizione(const string& descrizione) {
+    m_descrizione = descrizione;
+}
+
+void Media::setPath(const string& path) {
+    m_imPath = path;
+}
+
+void Media::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio)
+{
+    if(gg_mm_aaFineRilascio<getDataInizioRilascio())
+        m_dataFineRilascio = m_dataInizioRilascio;
+    else
+        m_dataFineRilascio = gg_mm_aaFineRilascio;
+}
+
+void Media::setDurataMinuti(unsigned int durata)
+{
+    m_durataMinuti = durata;
+}
+
+void Media::setVisualizzazioni(unsigned int visualizzazioni)
+{
+    m_visualizzazioni = visualizzazioni;
+}
+
 // void Media::setAutore(const string& autore){
 //     m_autore = autore;
 // }
@@ -183,30 +165,44 @@ vector<Lingua> Media::getLingue() const {
 vector<Lingua> Media::getSottotitoli() const {
     return m_sottotitoliDisponibili;
 }
-string Media::getPath() const{
+
+year_month_day Media::getDataInizioRilascio() const
+{
+    return m_dataInizioRilascio;
+}
+
+year_month_day Media::getDataFineRilascio() const
+{
+    return m_dataFineRilascio;
+}
+
+year_month_day Media::getDataLastViewUpdate() const
+{
+    return m_dataLastViewUpdate;
+}
+
+unsigned int Media::getVisualizzazioni() const
+{
+    return m_visualizzazioni;
+}
+
+
+unsigned int Media::getDurataMinuti() const
+{
+    return m_durataMinuti;
+}
+
+Formato Media::getFormato() const
+{
+    return m_formato;
+}
+
+Risoluzione Media::getRisoluzione() const
+{
+    return m_risoluzione;
+}
+
+string Media::getImPath() const
+{
     return m_imPath;
-}
-
-// Metodi set
-void Media::setAutore(const string& autore){
-    m_autore = autore;
-}
-void Media::setTitolo(const string& titolo) {
-    m_titolo = titolo;
-}
-
-void Media::setFormato(const Formato& formato) {
-    m_formato = formato;
-}
-
-void Media::setRisoluzione(const Risoluzione& risoluzione) {
-    m_risoluzione = risoluzione;
-}
-
-void Media::setDescrizione(const string& descrizione) {
-    m_descrizione = descrizione;
-}
-
-void Media::setPath(const string& path) {
-    m_imPath = path;
 }

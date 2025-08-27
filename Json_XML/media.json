@@ -4,7 +4,7 @@
         ],
         "autore": "autore",
         "casaDiProduzione": "",
-        "copertinaCinema": "/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/images/image1.png",
+        "copertinaCinema": ":/images/image1.png",
         "costoBiglietto": 8,
         "dataFineRilascio": "2025-08-27",
         "dataInizioRilascio": "2025-08-27",
@@ -30,7 +30,7 @@
         ],
         "autore": "autore",
         "casaDiProduzione": "",
-        "copertinaCinema": "/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/images/image1.png",
+        "copertinaCinema": ":/images/image1.png",
         "costoBiglietto": 8,
         "dataFineRilascio": "2025-08-27",
         "dataInizioRilascio": "2025-08-27",
@@ -54,7 +54,7 @@
     {
         "autore": "autore",
         "autoreFilmAssociato": "autore",
-        "copertinaCinema": "/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/images/image1.png",
+        "copertinaCinema": ":/images/image1.png",
         "dataFineRilascio": "",
         "dataInizioRilascio": "",
         "descrizione": "",
@@ -73,7 +73,7 @@
         "titolo": "trailer film 1"
     },
     {
-        "copertinaCinema": "/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/images/image1.png",
+        "copertinaCinema": ":/images/image1.png",
         "nomeCinema": "cinema1"
     },
     {

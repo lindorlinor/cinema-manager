@@ -17,12 +17,18 @@
 
 #include "CinemaSelectionPage.h"
 #include "InsertMedia.h"
-/* #include "MediaLibrary/MediaLibraryTutto.h"
-#include "MediaLibrary/MediaLibraryGenerale.h" */
+
+/* #include "MediaLibraryTutto.h" */
+#include "MediaLibraryGenerale.h"
 
 class SearchPanel:public QWidget{
     Q_OBJECT
     private:
+
+
+    //TEMPORANEO
+    QList<const Media*> listMedia;
+
     //menu
     void addMenus(QVBoxLayout* mainLayout);
 
@@ -38,6 +44,7 @@ class SearchPanel:public QWidget{
    QToolButton* trailer;
    QToolButton* inserzione;
    QToolButton* podcast;
+   QToolButton* puntata;
    
    //salva il nome del cinema
    /**

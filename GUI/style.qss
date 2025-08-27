@@ -25,6 +25,7 @@
 #trailer,
 #inserzione,
 #podcast,
+#puntata,
 #cinema{
     background-color: #0e4551;
     font-size: 16pt;
@@ -41,6 +42,7 @@
 #trailer:hover,
 #inserzione:hover,
 #podcast:hover,
+#puntata:hover,
 #cinema:hover{
     color: #fed36a;
 }
@@ -50,6 +52,7 @@
 #trailer:checked,
 #inserzione:checked,
 #podcast:checked,
+#puntata:checked,
 #cinema:checked{
     color: #fed36a;
     text-decoration: underline;
