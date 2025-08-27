@@ -8,7 +8,7 @@ Film::Film( const string &titolo, const string &descrizione, year_month_day gg_m
             const string &autore, const string &path, Classificazione target):
 
                     Media(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
-                    durataMinuti, formato, risoluzione, autore, path),
+                    durataMinuti, formato, risoluzione, autore, path),f_target(target),
                     f_casaDiProduzione(casaDiProduzione), f_nPostCredit(nPostCredit), 
                     f_costoBiglietto(costoBiglietto),f_valutazione(0){}
 

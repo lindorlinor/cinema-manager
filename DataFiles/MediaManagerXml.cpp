@@ -4,7 +4,7 @@
 #include <QDomElement>
 #include <QMessageBox>
 
-MediaManagerXml::MediaManagerXml(){xmlDocument = QDomDocument("Cinema");}
+MediaManagerXml::MediaManagerXml(){}
 
 void MediaManagerXml::setCinemaName(const QString& name) {cinemaName = name;}
 
@@ -13,15 +13,25 @@ void MediaManagerXml::setCinemaCover(const QString& cover) {cinemaCover = cover;
 void MediaManagerXml::setCinemaMediaList(const QList<Media*>& list) {mediaList = list;}
 
 void MediaManagerXml::exportSessionToXml() {
-    createDocument();
+    QDomDocument doc;
+    QDomElement root = doc.createElement("Cinema");
+    doc.appendChild(root);
+    createSessionDocument(doc,root);
+    xmlDocument = doc;
     saveDocument();
 }
 
-QDomDocument MediaManagerXml::createDocument() {
-    QDomDocument doc("Cinema");
+void MediaManagerXml::exportMediaListToXml(){
+    QDomDocument doc;
+    QDomElement mediaListElem = doc.createElement("MediaList");
+    doc.appendChild(mediaListElem);
+    createMediaListDocument(doc,mediaListElem);
+    xmlDocument= doc;
+    saveDocument();
 
-    QDomElement root = doc.createElement("Cinema");
-    doc.appendChild(root);
+}
+
+void MediaManagerXml::createSessionDocument(QDomDocument& doc,QDomElement& root) {
 
     QDomElement nome = doc.createElement("Nome");
     nome.appendChild(doc.createTextNode(cinemaName));
@@ -33,6 +43,11 @@ QDomDocument MediaManagerXml::createDocument() {
 
     QDomElement mediaListElem = doc.createElement("MediaList");
     root.appendChild(mediaListElem);
+
+    createMediaListDocument(doc,mediaListElem);
+}
+
+void MediaManagerXml::createMediaListDocument(QDomDocument& doc,QDomElement& root){
 
     for (Media* media : mediaList) {
         if (!media) continue;
@@ -53,19 +68,18 @@ QDomDocument MediaManagerXml::createDocument() {
             mediaElem = ConverterXml::toXmlElement(media, doc);
         }
 
-        mediaListElem.appendChild(mediaElem);
+        root.appendChild(mediaElem);
     }
-
-    xmlDocument = doc;
-    return xmlDocument;
 }
-
 void MediaManagerXml::saveDocument() {
 
-    QString filePath = QFileDialog::getSaveFileName(nullptr,
-        "Salva sessione XML", "", "XML Files (*.xml)");
+    QString filePath = QFileDialog::getSaveFileName(nullptr,"Salva sessione XML", "", "XML Files (*.xml)");
     if (filePath.isEmpty()) return;
 
+    if (!filePath.endsWith(".xml", Qt::CaseInsensitive)) {
+        filePath += ".xml";
+    }
+    
     QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly)) {
         QMessageBox::warning(nullptr, "Errore", "Impossibile aprire il file per la scrittura");
@@ -73,7 +87,7 @@ void MediaManagerXml::saveDocument() {
     }
 
     QTextStream stream(&file);
-    xmlDocument.save(stream, 4); // 4 spazi di indentazione
+    xmlDocument.save(stream, 4); 
     file.close();
 }
 

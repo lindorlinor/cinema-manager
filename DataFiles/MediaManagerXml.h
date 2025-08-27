@@ -18,10 +18,12 @@ public:
     void setCinemaMediaList(const QList<Media*>& mediaList);
 
     void exportSessionToXml();
+    void exportMediaListToXml();
 
 private:
-    QDomDocument createDocument(); //to do
-    void saveDocument(); //to do
+    void createSessionDocument(QDomDocument& doc,QDomElement& root);
+    void createMediaListDocument(QDomDocument& doc,QDomElement& root);
+    void saveDocument();
     QDomDocument xmlDocument;
     QString cinemaName;
     QString cinemaCover;

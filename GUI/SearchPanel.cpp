@@ -423,4 +423,5 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     manager.setCinemaCover(":/images/default.png");
     manager.setCinemaMediaList(mediaList);
     manager.exportSessionToXml();
+    manager.exportMediaListToXml();
 }
