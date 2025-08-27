@@ -6,6 +6,7 @@
 
 int main(int argc, char *argv[])
 {
+    qputenv("QT_QPA_PLATFORM", QByteArray("xcb"));
     QApplication a(argc, argv);
 
     /* Catch::Session session;

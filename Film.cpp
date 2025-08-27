@@ -71,36 +71,6 @@ void Film::disaccoppiaTrailer(Trailer* trailer){
 }
 
 
-//metodi get
-string Film::getCasaDiProduzione() const {
-    return f_casaDiProduzione;
-}
-
-double Film::getCostoBiglietto() const {
-    return f_costoBiglietto;
-}
-
-vector <Genere> Film::getGenere() const {
-    return f_genere;
-}
-
-Classificazione Film::getTarget() const {
-    return f_target;
-}
-
-double Film::getValutazione() const {
-    return f_valutazione;
-}
-
-unsigned int Film::getNPostCredit() const {
-    return f_nPostCredit;
-}
-
-vector<string> Film::getAttoriPrincipali() const {
-    return f_attoriPrincipali;
-}
-
-
 //metodi set
 /* void Film::setAttoriPrincipali(vector<string> attori){
     f_attoriPrincipali = attori;
@@ -126,8 +96,7 @@ void Film::aggiungiAttore(const string& nomeAttore){
 
 void Film::rimuoviAttore(const string& nomeAttore){
     auto it = find(f_attoriPrincipali.begin(), f_attoriPrincipali.end(), nomeAttore);
-    if (it != f_attoriPrincipali.end())
-    {
+    if (it != f_attoriPrincipali.end()){
         f_attoriPrincipali.erase(it);
     }
 }
@@ -156,4 +125,38 @@ void Film::setCostoBiglietto(double costoBiglietto) {
 //visitor
 void Film::accept(MediaVisitor* visitor) {
     visitor->visit(this);
+}
+
+
+// // metodi get
+
+string Film::getCasaDiProduzione() const {
+    return f_casaDiProduzione;
+}
+
+Classificazione Film::getTarget() const {
+    return f_target;
+}
+
+unsigned int Film::getNPostCredit() const {
+    return f_nPostCredit;
+}
+
+const std::vector<std::string>& Film::getAttoriPrincipali() const {
+    return f_attoriPrincipali;
+}
+const vector<Trailer*>& Film::getTrailers() const {
+    return trailers;
+}
+
+double Film::getCostoBiglietto() const {
+    return f_costoBiglietto;
+}
+
+vector<Genere> Film::getGenere() const {
+    return f_genere;
+}
+
+double Film::getValutazione() const {
+    return f_valutazione;
 }

@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
         file.close();
         qDebug() << "Style sheet applicato correttamente.";
     }
-    else qDebug() << "Impossibile aprire il file style.qss";
+    else qDebug() << "Impossibile aprire il file style.qss"; 
 }
 
 

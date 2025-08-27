@@ -846,7 +846,7 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         FilmData film;
         saveCommonFields(film);
         
-        film.genere = getSelectedList<Genere>(listGeneri);
+        film.generi = getSelectedList<Genere>(listGeneri);
         film.casaDiProduzione = CasaProdFilm->text();
         film.attoriPrincipali = attoriFilm->getListaPersone();
         film.nPostCredit = totPostCreditFilm->value();

@@ -7,8 +7,7 @@ MOC_DIR = release
 RCC_DIR = release
 UI_DIR = release
 
-QT += widgets
-QT += xml
+QT += widgets xml
 QMAKE_CXXFLAGS += -g -O0
 
 
@@ -30,6 +29,7 @@ HEADERS +=  \
             Puntata.h \
             catch.hpp \
             MediaVisitor.h \
+            DetailPageVisitor.h \
             GUI/CinemaButton.h \
             GUI/MainWindow.h \
             GUI/CinemaSelectionPage.h \
@@ -40,7 +40,11 @@ HEADERS +=  \
             GUI/InsertImageFrame.h \
             GUI/MediaFrame.h \
             GUI/SelectMediaReference.h \
-            DataFiles/CinemaXmlRepository.h \ 
+            GUI/FilmView.h \
+            GUI/ExpandableLabel.h \
+            GUI/CardTrailer.h \
+            GUI/DetailsPageButtons.h \
+            DataFiles/CinemaXmlRepository.h \
             DataFiles/MediaManagerJson.h 
 SOURCES +=  \
             main.cpp \
@@ -51,6 +55,7 @@ SOURCES +=  \
             Film.cpp \
             Podcast.cpp \
             Puntata.cpp \
+            DetailPageVisitor.cpp \
             test/test.cpp \
             GUI/CinemaButton.cpp \
             GUI/MainWindow.cpp \
@@ -62,6 +67,10 @@ SOURCES +=  \
             GUI/InsertImageFrame.cpp \
             GUI/MediaFrame.cpp \
             GUI/SelectMediaReference.cpp \
+            GUI/FilmView.cpp \
+            GUI/ExpandableLabel.cpp \
+            GUI/CardTrailer.cpp \
+            GUI/DetailsPageButtons.cpp \
             DataFiles/CinemaXmlRepository.cpp \
             DataFiles/MediaManagerJson.cpp
 RESOURCES += GUI/resources.qrc

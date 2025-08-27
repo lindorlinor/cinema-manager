@@ -31,7 +31,7 @@ private:
     Formato m_formato;
     Risoluzione m_risoluzione;
     string m_autore;
-    string m_path;
+    string m_imPath;
     year_month_day m_dataLastViewUpdate;
     unsigned int m_visualizzazioni;
     
@@ -39,9 +39,17 @@ private:
     vector<Lingua> m_sottotitoliDisponibili;
 public:
     Media(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
-          year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione, 
-          const string &autore = "Sconosciuto", const string &path = "immGrigia");
+          year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
+          const string &autore = "Sconosciuto", const string &imPath = "immGrigia");
 
+    
+    // //metodi get
+    string getAutore() const;
+    string getTitolo() const;
+    string getDescrizione() const;
+    vector<Lingua> getLingue() const;
+    vector<Lingua> getSottotitoli() const;
+    string getImPath() const;
     
     // modifica lingua e sottotitoli
     virtual void aggiungiLingua(Lingua lingua);
@@ -81,11 +89,6 @@ public:
     unsigned int getDurataMinuti() const;
     Formato getFormato()const;
     Risoluzione getRisoluzione()const;
-    string getAutore() const;
-    string getTitolo() const;
-    string getDescrizione() const;
-    vector<Lingua> getLingue() const;
-    vector<Lingua> getSottotitoli() const;
     string getPath() const;
     
     void setVisualizzazioni(unsigned int visualizzazioni);

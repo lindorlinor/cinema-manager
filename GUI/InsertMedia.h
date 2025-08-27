@@ -33,7 +33,7 @@
 #include "../Trailer.h"
 #include "../Podcast.h"
 #include "../Puntata.h"
-#include "../DataFiles/Popolate.h"
+#include "../DataFiles/Populate.h"
 #include "../DataFiles/MediaManagerJson.h"
 
 class InsertMedia:public QWidget{

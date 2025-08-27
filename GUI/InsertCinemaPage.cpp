@@ -16,7 +16,7 @@ InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),
                                                                             "#frame { border: 2px dashed #4E7F8B; border-radius: 12px; } "
                                                                             "QToolButton { border: none; color: #BDCED3; font-weight: bold; } "
                                                                             "QToolButton:hover { color: #ffffffff; }", this)),
-                                            imagePath(":/../images/default.png"),imageLabel(new QLabel(this)),
+                                            imagePath(":/images/default.png"),imageLabel(new QLabel(this)),
                                             escButton(new QPushButton("Annulla",this)),
                                             saveButton(new QPushButton("Salva",this)),
                                             hasCustomImage(false),
@@ -81,14 +81,14 @@ void InsertCinemaPage::chooseImage(){
     );
 
     if (!fileName.isEmpty()) {
-        imagePath = fileName;
+        imagePath = ":/images/" + QFileInfo(fileName).fileName();
         hasCustomImage = true;
         imageArea->insertImage(QFileInfo(fileName).fileName());
     }
 }
 
 void InsertCinemaPage::removeImage(){
-    imagePath=":/images/default.png";  //qui bisogna mettere l'immagine di default che vogliamo mettere 
+    imagePath=":/images/default.png";
     hasCustomImage = false;
 }
 

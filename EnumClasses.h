@@ -10,6 +10,18 @@
 #include <map>
 #include <string>
 #include <QList>
+#include <chrono>
+using namespace std::chrono;
+
+
+inline std::string dateToString(const year_month_day& d) {
+    std::ostringstream oss;
+    oss << unsigned(d.day()) << "/"
+        << unsigned(d.month()) << "/"
+        << int(d.year());
+    return oss.str();
+}
+
 
 enum class Formato {
     DCP,
@@ -127,7 +139,7 @@ enum class Classificazione {
 
 inline const char* toString(Classificazione c) {
     switch (c) {
-        case Classificazione::TUTTI: return "T";
+        case Classificazione::TUTTI: return "TUTTI";
         case Classificazione::SEI_PIU: return "6+";
         case Classificazione::QUATTORDICI_PIU: return "14+";
         case Classificazione::DICIOTTO_PIU: return "18+";
@@ -146,6 +158,7 @@ inline std::vector<Classificazione> tutteLeClassificazioni() {
 
 enum class Genere {
     Azione, 
+    Animazione,
     Avventura,
     Commedia, 
     Crime,
@@ -157,7 +170,6 @@ enum class Genere {
     Mistero,
     Western,
     Documentario,
-    Animazione,
     Storico,
     Romantico,
     Supereroi
@@ -166,6 +178,7 @@ enum class Genere {
 inline const char* toString(Genere g) {
     switch (g) {
         case Genere::Azione: return "Azione";
+        case Genere::Animazione: return "Animazione";
         case Genere::Avventura: return "Avventura";
         case Genere::Commedia: return "Commedia";
         case Genere::Crime: return "Crime";
@@ -177,7 +190,6 @@ inline const char* toString(Genere g) {
         case Genere::Mistero: return "Mistero";
         case Genere::Western: return "Western";
         case Genere::Documentario: return "Documentario";
-        case Genere::Animazione: return "Animazione";
         case Genere::Storico: return "Storico";
         case Genere::Romantico: return "Romantico";
         case Genere::Supereroi: return "Supereroi";

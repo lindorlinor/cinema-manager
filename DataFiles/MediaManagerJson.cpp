@@ -196,7 +196,7 @@ void MediaManagerJson::updateFilm(Film& media, const FilmData* data){
 
     updateCommonField(media, data);
 
-    media.setGenere(data->genere);
+    media.setGenere(data->generi);
     media.setCasaDiProduzione(data->casaDiProduzione.toStdString());
     media.setNPostCredit(data->nPostCredit);
     media.setCostoBiglietto(data->costoBiglietto);
@@ -545,9 +545,9 @@ void MediaManagerJson::loadFilmsData(QList<FilmData*>& films) {
             loadCommonFields(*film, obj);
     
             // generi (vector<Genere>)
-            QJsonArray arrayGeneri = obj["genere"].toArray();
+            QJsonArray arrayGeneri = obj["generi"].toArray();
             for (const auto &g : arrayGeneri) {
-                film->genere.push_back(static_cast<Genere>(g.toInt()));
+                film->generi.push_back(static_cast<Genere>(g.toInt()));
             }
     
             film->casaDiProduzione = obj["casaDiProduzione"].toString();
@@ -569,10 +569,10 @@ void MediaManagerJson::saveFilm(FilmData* film, QJsonObject& obj) {
     saveCommonFields(*film, obj);
 
     QJsonArray arrayGeneri;
-    for (Genere g : film->genere) {
+    for (Genere g : film->generi) {
         arrayGeneri.append(static_cast<int>(g));
     }
-    obj["genere"] = arrayGeneri;
+    obj["generi"] = arrayGeneri;
 
     obj["casaDiProduzione"] = film->casaDiProduzione;
     obj["nPostCredit"] = static_cast<int>(film->nPostCredit);

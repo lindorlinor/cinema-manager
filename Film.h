@@ -58,23 +58,21 @@ public:
     void setCasaDiProduzione(const string& casaDiProduzione);
     void setNPostCredit(unsigned int nPostCredit);
     void setCostoBiglietto(double costoBiglietto);
-    
-    // // metodi get
-    unsigned int getNPostCredit() const;
-    vector <Genere> getGenere() const;
-    double getValutazione() const;
-    Classificazione getTarget() const;
-    double getCostoBiglietto() const;
-    string getCasaDiProduzione() const;
-    vector<string> getAttoriPrincipali() const;
-    
-    /* void setAttoriPrincipali(vector<string> attori); */
     void aggiungiAttore(const string& nomeAttore);
     void rimuoviAttore(const string& nomeAttore);
     
+    // // metodi get
+    Classificazione getTarget() const;
+    string getCasaDiProduzione() const;
+    unsigned int getNPostCredit() const;
+    vector<Genere> getGenere() const;
+    double getValutazione() const;
+    double getCostoBiglietto() const;
+    const vector<string>& getAttoriPrincipali() const;
     // metodi per aggiungere e togliere i trailer
     void aggiungiTrailer(Trailer *trailer);
 
+    const vector<Trailer *>& getTrailers() const;
     /**
      * @brief Disaccoppia un trailer dal film ed elimina definitivamennte il trailer
      * 

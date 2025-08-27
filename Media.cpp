@@ -10,7 +10,7 @@ Media::Media(const string &titolo, const string &descrizione, year_month_day gg_
              const string &autore, const string &path) : m_titolo(titolo), m_descrizione(descrizione), m_dataInizioRilascio(gg_mm_aaInizioRilascio),
                                                          m_dataFineRilascio(gg_mm_aaFineRilascio<gg_mm_aaInizioRilascio?gg_mm_aaInizioRilascio:gg_mm_aaFineRilascio), 
                                                          m_durataMinuti(durataMinuti), m_formato(formato),
-                                                         m_risoluzione(risoluzione), m_autore(autore), m_path(path),
+                                                         m_risoluzione(risoluzione), m_autore(autore), m_imPath(path),
                                                          m_dataLastViewUpdate(gg_mm_aaInizioRilascio), m_visualizzazioni(0) {}
 
 bool Media::FuoriProduzione() const
@@ -114,6 +114,12 @@ Risoluzione Media::getRisoluzione() const
     return m_risoluzione;
 }
 
+string Media::getImPath() const
+{
+    return m_imPath;
+}
+
+
 void Media::IncrementaVisualizzazioni()
 {
     // per poter facilitare i calcoli sulla data
@@ -141,7 +147,24 @@ void Media::setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio) {
     m_dataInizioRilascio = gg_mm_aaInizioRilascio;
 }
 
-// Metodi get
+
+
+
+
+// // Metodi set
+// void Media::setAutore(const string& autore){
+//     m_autore = autore;
+// }
+// void Media::setTitolo(const string& titolo) {
+//     m_titolo = titolo;
+// }
+
+// void Media::setDescrizione(const string& descrizione) {
+//     m_descrizione = descrizione;
+// }
+
+
+// // Metodi get
 string Media::getAutore() const{
     return m_autore;
 }
@@ -160,12 +183,11 @@ vector<Lingua> Media::getLingue() const {
 vector<Lingua> Media::getSottotitoli() const {
     return m_sottotitoliDisponibili;
 }
-
 string Media::getPath() const{
-    return m_path;
+    return m_imPath;
 }
 
-// // Metodi set
+// Metodi set
 void Media::setAutore(const string& autore){
     m_autore = autore;
 }
@@ -186,5 +208,5 @@ void Media::setDescrizione(const string& descrizione) {
 }
 
 void Media::setPath(const string& path) {
-    m_path = path;
+    m_imPath = path;
 }

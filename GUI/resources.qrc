@@ -1,13 +1,23 @@
 <RCC>
+    <!-- Immagini -->
     <qresource>
         <file>../images/image1.png</file>
         <file>../images/image2.png</file>
         <file>../images/image3.png</file>
+        <file>../images/image4.png</file>
+        <file>../images/image5.png</file>
+        <file>../images/image6.png</file>
+        <file>../images/image9.png</file>
+        <file>../images/image10.png</file>
         <file>../images/film1.png</file>
         <file>../images/film2.png</file>
         <file>../images/film3.png</file>
         <file>../images/default.png</file>
         <file>../images/coverCinema.png</file>
+    </qresource>
+
+    <!-- Icone -->
+    <qresource>
         <file>../icons/arrow_left.png</file>
         <file>../icons/arrow_up.png</file>
         <file>../icons/arrow_down.png</file>
@@ -20,5 +30,7 @@
         <file>../icons/podcast.png</file>
         <file>../icons/vista.png</file>
         <file>../icons/filtri.png</file>
+        <file>../icons/disabled.png</file>
+        <file>../icons/enabled.png</file>
     </qresource>
 </RCC>
