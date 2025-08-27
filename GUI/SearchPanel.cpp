@@ -216,12 +216,27 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     previousIndex=0;
     
     //pannello di aggiunta media
-    nuovoMedia = new InsertMedia(this);
+    InsertMedia* nuovoMedia = new InsertMedia(this);
     stackModifiche->addWidget(nuovoMedia);
+
+    //pannello per la libreria dei media
+/*     MediaLibraryTutto* libreriaMediaTutto = new MediaLibraryTutto(this);
+    MediaLibraryGenerale* libreriaMediaGenerale = new MediaLibraryGenerale(this);
+    stackLibreria->addWidget(libreriaMediaTutto);
+    stackLibreria->addWidget(libreriaMediaGenerale);
+    stackLibreria->setCurrentIndex(0); */
     
+    //GESTIONE PULSANTI
+    connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
+/*     connect(tutto, &QToolButton::clicked, this, [this](){stackLibreria->setCurrentIndex(0);});
+    connect(film, &QToolButton::clicked, this, [this,libreriaMediaGenerale](){stackLibreria->setCurrentIndex(1); libreriaMediaGenerale->getFiltro(film->objectName());});
+    connect(trailer, &QToolButton::clicked, this, [this,libreriaMediaGenerale](){stackLibreria->setCurrentIndex(1); libreriaMediaGenerale->getFiltro(trailer->objectName());});
+    connect(inserzione, &QToolButton::clicked, this, [this,libreriaMediaGenerale](){stackLibreria->setCurrentIndex(1); libreriaMediaGenerale->getFiltro(inserzione->objectName());});
+    connect(podcast, &QToolButton::clicked, this, [this,libreriaMediaGenerale](){stackLibreria->setCurrentIndex(1); libreriaMediaGenerale->getFiltro(podcast->objectName());}); */
+
+
     connect(this, &SearchPanel::giveCinemaInfoToIP, nuovoMedia, &InsertMedia::getCinemaInfo);
     connect(this, &SearchPanel::resetPages, nuovoMedia, &InsertMedia::resetAllInput);
-    connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
     connect(nuovoMedia, &InsertMedia::tornaIndietro, this, [this](){
         updateModifierPanel(previousIndex);
     });

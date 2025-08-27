@@ -12,7 +12,6 @@
 #include <QFileInfo>
 
 #include "Populate.h"
-#include "../MediaVisitor.h"
 #include "../Film.h"
 #include "../Trailer.h"
 #include "../Inserzione.h"
@@ -22,16 +21,10 @@
  * @brief Costruttore della classe MediaManagerJson.
  * @param basePath percorso base dove leggere/salvare i file JSON.
  */
-class MediaManagerJson : public QObject, public MediaVisitor{
+class MediaManagerJson : public QObject{
     Q_OBJECT
     public:
         explicit MediaManagerJson(const QString& basePath, QObject *parent = nullptr);
-
-        void visit(Film* film) override{};
-        void visit(Trailer* trailer) override{};
-        void visit(Inserzione* inserzione) override{};
-        void visit(Podcast* podcast) override{};
-        void visit(Puntata* puntata) override{};
 
         /**
          * @brief Cancella tutti gli oggetti puntati dai puntatori nella lista e svuota la lista.

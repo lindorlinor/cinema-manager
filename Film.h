@@ -24,14 +24,14 @@ using namespace std::chrono;
 class Film : public Media
 {
 private:
-    vector<Genere>  f_genere;
-    vector<string> f_attoriPrincipali;
-    Classificazione f_target;
-    vector<Trailer *> trailers;
     unsigned int f_nPostCredit;
     double f_costoBiglietto;
     string f_casaDiProduzione;
+    Classificazione f_target;
     double f_valutazione;
+    vector<Genere>  f_genere;
+    vector<string> f_attoriPrincipali;
+    vector<Trailer *> trailers;
     int isTrailerIn(Trailer *trailer) const;
 
 public:

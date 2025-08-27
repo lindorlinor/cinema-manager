@@ -1,4 +1,5 @@
 #include "MediaManagerJson.h"
+#include "MediaUpdateVisitor.h"
 #include <QDebug>
 #include <QFile>
 #include <QJsonArray>
@@ -126,26 +127,8 @@ void MediaManagerJson::modified(Media& media, MediaData* data) {
             c->autore == QString::fromStdString(media.getAutore())) {
 
             // lo sostituisco con quello aggiornato
-            if(dynamic_cast<Film*>(&media)){
-                *static_cast<FilmData*>(c) = * static_cast<FilmData*>(data);
-                updateFilm(*static_cast<Film*>(&media),static_cast<FilmData*>(c));
-            }
-            else if(dynamic_cast<Trailer*>(&media)){
-                *static_cast<TrailerData*>(c) = * static_cast<TrailerData*>(data);
-                updateTrailer(*static_cast<Trailer*>(&media),static_cast<TrailerData*>(c));
-            }
-            else if(dynamic_cast<Inserzione*>(&media)){
-                *static_cast<InserzioniData*>(c) = * static_cast<InserzioniData*>(data);
-                updateInserzione(*static_cast<Inserzione*>(&media),static_cast<InserzioniData*>(c));
-            }
-            else if(dynamic_cast<Podcast*>(&media)){
-                *static_cast<PodcastData*>(c) = * static_cast<PodcastData*>(data);
-                updatePodcast(*static_cast<Podcast*>(&media),static_cast<PodcastData*>(c));
-            }
-            else if(dynamic_cast<Puntata*>(&media)){
-                *static_cast<PuntataData*>(c) = * static_cast<PuntataData*>(data);
-                updatePuntata(*static_cast<Puntata*>(&media),static_cast<PuntataData*>(c));
-            }
+            MediaUpdateVisitor visitor(data, c, this);
+            media.accept(&visitor);
         }
     }
 

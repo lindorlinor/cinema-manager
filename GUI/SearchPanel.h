@@ -17,6 +17,8 @@
 
 #include "CinemaSelectionPage.h"
 #include "InsertMedia.h"
+/* #include "MediaLibrary/MediaLibraryTutto.h"
+#include "MediaLibrary/MediaLibraryGenerale.h" */
 
 class SearchPanel:public QWidget{
     Q_OBJECT
@@ -36,11 +38,6 @@ class SearchPanel:public QWidget{
    QToolButton* trailer;
    QToolButton* inserzione;
    QToolButton* podcast;
-   
-   //widget per l'inserimento di un media
-   /**
-   */
-   InsertMedia* nuovoMedia;
    
    //salva il nome del cinema
    /**
@@ -124,6 +121,7 @@ class SearchPanel:public QWidget{
     void escSearchPanel();
     void resetPages();
     void giveCinemaInfoToIP(const CinemaData& data);
+    void selectedFilterButton(const QString& filtro);
 };
 
 #endif //SEARCHPANEL_H
