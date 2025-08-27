@@ -11,7 +11,7 @@
 #include <QDir>
 #include <QFileInfo>
 
-#include "Popolate.h"
+#include "Populate.h"
 #include "../MediaVisitor.h"
 #include "../Film.h"
 #include "../Trailer.h"

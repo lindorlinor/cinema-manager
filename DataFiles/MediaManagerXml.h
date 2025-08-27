@@ -6,7 +6,7 @@
 #include <QDomDocument>
 
 #include "Media.h"    
-#include "Popolate.h"  
+#include "Populate.h"  
 #include "ConverterXml.h" 
 
 class MediaManagerXml {

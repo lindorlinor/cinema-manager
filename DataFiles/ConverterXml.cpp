@@ -115,7 +115,9 @@ QDomElement ConverterXml::toXmlElement(const Film* film, QDomDocument& doc) {
 }
 
 
-QDomElement ConverterXml::toXmlElement(const Trailer* trailer, QDomDocument& doc){}
+QDomElement ConverterXml::toXmlElement(const Trailer* trailer, QDomDocument& doc){
+    
+}
 QDomElement ConverterXml::toXmlElement(const Inserzione* trailer, QDomDocument& doc){}
 QDomElement ConverterXml::toXmlElement(const Podcast* trailer, QDomDocument& doc){}
 QDomElement ConverterXml::toXmlElement(const Puntata* trailer, QDomDocument& doc){}

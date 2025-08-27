@@ -44,6 +44,7 @@ HEADERS +=  \
             GUI/ExpandableLabel.h \
             GUI/CardTrailer.h \
             GUI/DetailsPageButtons.h \
+            DataFiles/Populate.h \
             DataFiles/CinemaXmlRepository.h \
             DataFiles/MediaManagerJson.h \
             DataFiles/Converter.h \

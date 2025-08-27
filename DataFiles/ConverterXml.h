@@ -4,7 +4,7 @@
 #include <QDomDocument>
 #include <QDomElement>
 #include "Converter.h"
-#include "Popolate.h"
+#include "Populate.h"
 #include "../Podcast.h"
 #include "../Puntata.h"
 #include "../Inserzione.h"
