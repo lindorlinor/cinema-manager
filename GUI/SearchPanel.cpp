@@ -417,7 +417,76 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     });
 
     QList<Media*> mediaList;
+
     mediaList.push_back(film);
+    mediaList.push_back(trailer1);
+    mediaList.push_back(trailer2);
+
+    // 5 Film
+    mediaList.push_back(new Film("Odissea nello Spazio", "Avventura fantascientifica epica.",
+                             year_month_day{2025y, June, 10d}, year_month_day{2025y, July, 5d},
+                             140, Formato::DCP, Risoluzione::FullHD_1080p,
+                             5, 9.1, "Cosmo Studios", "Stanley Nova"));
+    mediaList.push_back(new Film("Il Segreto della Laguna", "Thriller ambientato in un villaggio italiano.",
+                             year_month_day{2025y, August, 1d}, year_month_day{2025y, August, 20d},
+                             110, Formato::IMAX_3D, Risoluzione::HD_720p,
+                             3, 7.8, "Mediterranea Film", "Laura Rossi"));
+    mediaList.push_back(new Film("Cuore di Acciaio", "Dramma su un robot che scopre l’umanità.",
+                             year_month_day{2025y, September, 12d}, year_month_day{2025y, October, 2d},
+                             125, Formato::DCP, Risoluzione::FullHD_1080p,
+                             4, 8.6, "Future Pictures", "Kenji Yamato"));
+    mediaList.push_back(new Film("Risveglio", "Un viaggio introspettivo tra sogno e realtà.",
+                             year_month_day{2025y, March, 5d}, year_month_day{2025y, March, 25d},
+                             98, Formato::DCP, Risoluzione::HD_720p,
+                             2, 7.2, "Arthouse Films", "Marta Verdi"));
+    mediaList.push_back(new Film("L’Ombra del Drago", "Fantasy epico con battaglie tra regni.",
+                             year_month_day{2025y, November, 20d}, year_month_day{2025y, December, 20d},
+                             160, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
+                             6, 8.9, "Dragon Studios", "Hao Zhang"));
+
+    // 2 Inserzioni
+    mediaList.push_back(new Inserzione("Promo Smartphone X15", "Campagna pubblicitaria nuovo modello X15.",
+                                   year_month_day{2025y, May, 1d}, year_month_day{2025y, May, 30d},
+                                   30, Formato::DCP, Risoluzione::HD_720p,
+                                   20, Classificazione::TUTTI, 50.0, "TechCorp"));
+    mediaList.push_back(new Inserzione("Bevanda Frizzante Zeta", "Spot per la nuova linea estiva.",
+                                   year_month_day{2025y, June, 15d}, year_month_day{2025y, July, 15d},
+                                   25, Formato::DCP, Risoluzione::FullHD_1080p,
+                                   18, Classificazione::TUTTI, 35.0, "DrinkIt"));
+
+    // 2 Podcast con 3 Puntate ciascuno
+    Podcast* p1 = new Podcast("Storie dal Futuro", "Racconti di fantascienza e tecnologia.",
+                              Formato::DCP, Risoluzione::FullHD_1080p);
+    Puntata* p1_1 = new Puntata("Robot e Umanità", "Discussione su AI e coscienza.",
+                                year_month_day{2025y, January, 10d}, year_month_day{2025y, January, 20d},
+                                50, p1, 5000);
+    Puntata* p1_2 = new Puntata("Città del Domani", "Urbanistica futuristica.",
+                                year_month_day{2025y, February, 5d}, year_month_day{2025y, February, 15d},
+                                45, p1, 4200);
+    Puntata* p1_3 = new Puntata("Viaggi Interstellari", "Le sfide della colonizzazione spaziale.",
+                                year_month_day{2025y, March, 1d}, year_month_day{2025y, March, 12d},
+                                55, p1, 6100);
+    mediaList.push_back(p1);
+    mediaList.push_back(p1_1);
+    mediaList.push_back(p1_2);
+    mediaList.push_back(p1_3);
+
+    Podcast* p2 = new Podcast("Cronache Storiche", "Analisi di eventi e figure storiche.",
+                              Formato::DCP, Risoluzione::HD_720p);
+    Puntata* p2_1 = new Puntata("La Roma Antica", "La nascita dell’Impero.",
+                                year_month_day{2025y, April, 1d}, year_month_day{2025y, April, 10d},
+                                40, p2, 3500);
+    Puntata* p2_2 = new Puntata("Il Medioevo", "Un viaggio tra castelli e cavalieri.",
+                                year_month_day{2025y, April, 20d}, year_month_day{2025y, April, 28d},
+                                42, p2, 3700);
+    Puntata* p2_3 = new Puntata("La Rivoluzione Industriale", "Come è cambiato il mondo.",
+                                year_month_day{2025y, May, 5d}, year_month_day{2025y, May, 15d},
+                                48, p2, 4100);
+    mediaList.push_back(p2);
+    mediaList.push_back(p2_3);
+    mediaList.push_back(p2_3);
+    mediaList.push_back(p2_3);
+
     MediaManagerXml manager;
     manager.setCinemaName("Cinema Aurora");
     manager.setCinemaCover(":/images/default.png");

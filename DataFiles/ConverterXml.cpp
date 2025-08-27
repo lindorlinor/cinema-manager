@@ -3,11 +3,10 @@
 #include <QDomElement>
 #include <QDomText>
 
-
+//@TO DO controllo puntatori nulli ? che facc
 QDomElement ConverterXml::toXmlElement(const Media* media, QDomDocument& doc) {
     MediaData data = mediaToData(media);
 
-    // Creo un elemento generico "MediaFields" o "Media" temporaneo valido
     QDomElement mediaElem = doc.createElement("MediaFields"); 
 
     QDomElement elem = doc.createElement("Titolo");
@@ -116,10 +115,104 @@ QDomElement ConverterXml::toXmlElement(const Film* film, QDomDocument& doc) {
 
 
 QDomElement ConverterXml::toXmlElement(const Trailer* trailer, QDomDocument& doc){
-    
+    TrailerData data = mediaToData(trailer);
+    QDomElement trailerElem = doc.createElement("Trailer");
+
+    QDomElement commonMediaFields = toXmlElement(static_cast<const Media*>(trailer), doc); 
+    QDomNode child = commonMediaFields.firstChild();
+    while(!child.isNull()) {
+        trailerElem.appendChild(child.cloneNode());
+        child = child.nextSibling();
+    }
+
+    QDomElement nProiezElem = doc.createElement("NProiezioniGiornaliere");
+    nProiezElem.appendChild(doc.createTextNode(QString::number(data.nProiezioniGiornaliere)));
+    trailerElem.appendChild(nProiezElem);
+
+    QDomElement tFilmAssElem = doc.createElement("TitoloFilmAssociato");
+    tFilmAssElem.appendChild(doc.createTextNode(data.filmAssociato));
+    trailerElem.appendChild(tFilmAssElem);
+
+    QDomElement aFilmAssElem = doc.createElement("AutoreFilmAssociato");
+    aFilmAssElem.appendChild(doc.createTextNode(data.autoreFilmAssociato));
+    trailerElem.appendChild(aFilmAssElem);
+
+    return trailerElem;
 }
-QDomElement ConverterXml::toXmlElement(const Inserzione* trailer, QDomDocument& doc){}
-QDomElement ConverterXml::toXmlElement(const Podcast* trailer, QDomDocument& doc){}
-QDomElement ConverterXml::toXmlElement(const Puntata* trailer, QDomDocument& doc){}
+QDomElement ConverterXml::toXmlElement(const Inserzione* inserzione, QDomDocument& doc){
+    InserzioneData data = mediaToData(inserzione);
+    QDomElement insElem = doc.createElement("Inserzione");
+
+    QDomElement commonMediaFields = toXmlElement(static_cast<const Media*>(inserzione), doc); 
+    QDomNode child = commonMediaFields.firstChild();
+    while(!child.isNull()) {
+        insElem.appendChild(child.cloneNode());
+        child = child.nextSibling();
+    }
+
+    QDomElement nProiezElem = doc.createElement("NProiezioniGiornaliere");
+    nProiezElem.appendChild(doc.createTextNode(QString::number(data.nProiezioniGiornaliere)));
+    insElem.appendChild(nProiezElem);
+    
+    QDomElement targetElem = doc.createElement("Target");
+    targetElem.appendChild(doc.createTextNode(QString::fromStdString(toString(data.target))));
+    insElem.appendChild(targetElem);
+
+    QDomElement aziendaElem = doc.createElement("AziendaInserzionista");
+    aziendaElem.appendChild(doc.createTextNode(data.aziendaInserzionista));
+    insElem.appendChild(aziendaElem);
+
+    QDomElement costoElem = doc.createElement("CostoFissoProiezione");
+    costoElem.appendChild(doc.createTextNode(QString::number(data.costoFissoProiezione)));
+    insElem.appendChild(costoElem);
+
+    return insElem;
+
+}
+QDomElement ConverterXml::toXmlElement(const Podcast* podcast, QDomDocument& doc){
+    PodcastData data = mediaToData(podcast);
+    QDomElement podElem = doc.createElement("Podcast");
+
+    QDomElement commonMediaFields = toXmlElement(static_cast<const Media*>(podcast), doc); 
+    QDomNode child = commonMediaFields.firstChild();
+    while(!child.isNull()) {
+        podElem.appendChild(child.cloneNode());
+        child = child.nextSibling();
+    }
+
+    QDomElement conduttElem = doc.createElement("Conduttore");
+    conduttElem.appendChild(doc.createTextNode(data.conduttore));
+    podElem.appendChild(conduttElem);
+
+    return podElem;
+}
+
+
+QDomElement ConverterXml::toXmlElement(const Puntata* puntata, QDomDocument& doc){
+    PuntataData data = mediaToData(puntata);
+
+    QDomElement puntElem = doc.createElement("Puntata");
+
+    QDomElement commonMediaFields = toXmlElement(static_cast<const Media*>(puntata), doc); 
+    QDomNode child = commonMediaFields.firstChild();
+    while(!child.isNull()) {
+        puntElem.appendChild(child.cloneNode());
+        child = child.nextSibling();
+    }
+
+    QDomElement tPodElem = doc.createElement("TitoloPodcastAssociato");
+    tPodElem.appendChild(doc.createTextNode(data.podcastAssociato));
+    puntElem.appendChild(tPodElem);
+
+    QDomElement aPodElem = doc.createElement("AutorePodcastAssociato");
+    aPodElem.appendChild(doc.createTextNode(data.autorePodcastAssociato));
+    puntElem.appendChild(aPodElem);
+
+    QDomElement nPubbElem = doc.createElement("NPubblicita");
+    nPubbElem.appendChild(doc.createTextNode(QString::number(data.numeroPubblicita)));
+    puntElem.appendChild(nPubbElem);
+
+    return puntElem;
+}
 
 

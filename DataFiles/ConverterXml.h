@@ -20,9 +20,9 @@ public:
     static QDomElement toXmlElement(const Media* media, QDomDocument& doc);
     static QDomElement toXmlElement(const Film* film, QDomDocument& doc);
     static QDomElement toXmlElement(const Trailer* trailer, QDomDocument& doc);
-    static QDomElement toXmlElement(const Inserzione* trailer, QDomDocument& doc);
-    static QDomElement toXmlElement(const Podcast* trailer, QDomDocument& doc);
-    static QDomElement toXmlElement(const Puntata* trailer, QDomDocument& doc);
+    static QDomElement toXmlElement(const Inserzione* inserzione, QDomDocument& doc);
+    static QDomElement toXmlElement(const Podcast* podcast, QDomDocument& doc);
+    static QDomElement toXmlElement(const Puntata* puntata, QDomDocument& doc);
 
 };
 
