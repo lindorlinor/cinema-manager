@@ -53,17 +53,17 @@ public:
      *
      */
     void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) override;
-    // void setGenere(const string& genere);
-    // void setClassificazione(Classificazione classificazione);
-    // void setCasaDiProduzione(const string& casaDiProduzione);
-    // void setNPostCredit(unsigned int nPostCredit);
-    // void setCostoBiglietto(double costoBiglietto);
+    void setGenere(const vector <Genere>& genere);
+    void setTarget(Classificazione target);
+    void setCasaDiProduzione(const string& casaDiProduzione);
+    void setNPostCredit(unsigned int nPostCredit);
+    void setCostoBiglietto(double costoBiglietto);
     
     // // metodi get
     unsigned int getNPostCredit() const;
     vector <Genere> getGenere() const;
     double getValutazione() const;
-    Classificazione getClassificazione() const;
+    Classificazione getTarget() const;
     double getCostoBiglietto() const;
     string getCasaDiProduzione() const;
     vector<string> getAttoriPrincipali() const;

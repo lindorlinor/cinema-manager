@@ -166,13 +166,25 @@ string Media::getPath() const{
 }
 
 // // Metodi set
-// void Media::setAutore(const string& autore){
-//     m_autore = autore;
-// }
-// void Media::setTitolo(const string& titolo) {
-//     m_titolo = titolo;
-// }
+void Media::setAutore(const string& autore){
+    m_autore = autore;
+}
+void Media::setTitolo(const string& titolo) {
+    m_titolo = titolo;
+}
 
-// void Media::setDescrizione(const string& descrizione) {
-//     m_descrizione = descrizione;
-// }
+void Media::setFormato(const Formato& formato) {
+    m_formato = formato;
+}
+
+void Media::setRisoluzione(const Risoluzione& risoluzione) {
+    m_risoluzione = risoluzione;
+}
+
+void Media::setDescrizione(const string& descrizione) {
+    m_descrizione = descrizione;
+}
+
+void Media::setPath(const string& path) {
+    m_path = path;
+}

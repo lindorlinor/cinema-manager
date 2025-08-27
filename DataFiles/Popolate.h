@@ -8,7 +8,12 @@
 
 using namespace std;
 
-struct MediaData {
+struct CinemaData{
+    QString nomeCinema;
+    QString copertinaCinema;
+};
+
+struct MediaData : public CinemaData {
     QString  titolo;
     QString  descrizione;
     QDate dataInizioRilascio;

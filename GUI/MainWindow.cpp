@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
   
     connect(insertPage,&InsertCinemaPage::returnCinemaSelectionPage,this,&MainWindow::showCinemaSelectionPage);
-    connect(cinemaPage, &CinemaSelectionPage::selectedCinema, searchPage, &SearchPanel::updateNomeCinema);
+    connect(cinemaPage, &CinemaSelectionPage::selectedCinema, searchPage, &SearchPanel::updateInfoCinema);
     connect(cinemaPage, &CinemaSelectionPage::selectedCinema, this, &MainWindow::showMaximized);
     connect(searchPage, &SearchPanel::setFullScreen, this, &MainWindow::showFullScreen);
     connect(searchPage, &SearchPanel::escFullScreen, this, &MainWindow::showMaximized);
@@ -49,10 +49,10 @@ void MainWindow::showInsertCinemaPage(){
     stackedWidget->setCurrentIndex(1);
 }
 
-void MainWindow::showSelectedCinemaPage(const QString& xmlPath){
+void MainWindow::showSelectedCinemaPage(const CinemaData& cinema){
     //TO DO
     stackedWidget->setCurrentIndex(2);
-    qDebug() << "Cinema al path " << xmlPath ;
+    qDebug() << "Selezionato il cinema: " << cinema.nomeCinema ;
 }
 void MainWindow::showCinemaSelectionPage(){
     if (cinemaPage) {

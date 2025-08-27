@@ -60,6 +60,8 @@ class InsertMedia:public QWidget{
     void addTipologiaPuntate(QWidget* TipoPuntata);
 
     //variabili necessarie per raccogliere i dati di input
+    QString copertinaCinema; 
+    QString nomeCinema; 
     QLineEdit* titoloMedia;
     QLineEdit* autoreMedia;
     ListPersone* attoriFilm;
@@ -150,7 +152,7 @@ class InsertMedia:public QWidget{
     QDoubleSpinBox* addDoubleSpin(const QString& testo, double min, double max, double standard, L* ly);        //aggiunge i Widget che contengono un Doublespin
     
     template<class L>
-    void addReference(const QString& testo, const QString& json, L* ly, SelectMediaReference*& reference);       //aggiunge il widget delle reference a trailer e puntata, per associare film e podcast
+    void addReference(const QString& testo, const QString& tipo, L* ly, SelectMediaReference*& reference);       //aggiunge il widget delle reference a trailer e puntata, per associare film e podcast
     
     template<class EnumType>
     vector<EnumType> getSelectedList(QListWidget* list);                                                        //ottiene i selezionati di una QListWidget
@@ -168,7 +170,6 @@ class InsertMedia:public QWidget{
 	explicit InsertMedia(QWidget *parent);
     ~InsertMedia();
     void resetAllInput();
-    void setNomeCinemaForJson(const QString& nome);
     
     signals:
     void tornaAllaLibreria();
@@ -178,6 +179,7 @@ class InsertMedia:public QWidget{
     public slots:
     void chooseImage();                      //rimuove l'immagine precedentemente selezionata
     void removeImage();                      //rimuove l'immagine precedentemente selezionata
+    void getCinemaInfo(const CinemaData& data);
     
 };
 

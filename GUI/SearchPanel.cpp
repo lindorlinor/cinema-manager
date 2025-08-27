@@ -1,5 +1,4 @@
 #include "SearchPanel.h"
-#include "InsertMedia.h"
 
 void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     QMenuBar* menuBar = new QMenuBar(this);
@@ -214,11 +213,12 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     previousIndex=0;
     
     //pannello di aggiunta media
-    InsertMedia* nuovoMedia = new InsertMedia(this);
+    nuovoMedia = new InsertMedia(this);
     stackModifiche->addWidget(nuovoMedia);
     
+    connect(this, &SearchPanel::giveCinemaInfoToIP, nuovoMedia, &InsertMedia::getCinemaInfo);
     connect(this, &SearchPanel::resetPages, nuovoMedia, &InsertMedia::resetAllInput);
-    connect(addMedia, &QPushButton::clicked, this, [this,nuovoMedia](){updateModifierPanel(1);emit nuovoMedia->setNomeCinemaForJson(p_nomeCinema);});
+    connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
     connect(nuovoMedia, &InsertMedia::tornaIndietro, this, [this](){
         updateModifierPanel(previousIndex);
     });
@@ -314,27 +314,8 @@ SearchPanel::SearchPanel(QWidget *parent): QWidget(parent){
     mainLayout->setSpacing(0);
 }
 
-void SearchPanel::updateNomeCinema(const QString& nome){
+void SearchPanel::updateInfoCinema(const CinemaData& data){
     //selezione Cinema
-    
-    QFile file(nome);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "Impossibile aprire il file!";
-        return;
-    }
-    
-    QString contenuto = file.readAll();
-    file.close();
-    
-    QRegularExpression regex("<nome>(.*)</nome>");
-    QRegularExpressionMatch match = regex.match(contenuto);
-
-    if (match.hasMatch()) {
-        QString testo = match.captured(1);
-        p_nomeCinema = testo;
-        cinema->setText("Cinema "+p_nomeCinema);
-    } else {
-        qDebug() << "Tag <nome> non trovato!";
-    }
-
+    cinema->setText("Cinema "+data.nomeCinema);
+    emit giveCinemaInfoToIP(data);
 }

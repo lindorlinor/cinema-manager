@@ -8,8 +8,8 @@
 #include <QJsonObject>
 #include <QDebug>
 
-SelectMediaReference::SelectMediaReference(const QString& tipo, QWidget *parent)
-    : QWidget(parent), tipo(tipo), currentSelected(nullptr)
+SelectMediaReference::SelectMediaReference(const QString& tipo, const QString* cinema, QWidget *parent)
+    : QWidget(parent), tipoMedia(tipo),  cinemaNomeRiferimento(cinema), currentSelected(nullptr)
 {
     // Container interno per gli item
     container = new QWidget(this);
@@ -24,10 +24,9 @@ SelectMediaReference::SelectMediaReference(const QString& tipo, QWidget *parent)
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(scrollArea);
     setLayout(mainLayout);
-    
-    // Carica inizialmente i media
+
     reloadMedia();
-    
+
     //style
     layoutContainer->addSpacerItem(new QSpacerItem(20, 400, QSizePolicy::Minimum, QSizePolicy::Expanding));
     scrollArea->setStyleSheet(
@@ -69,7 +68,7 @@ void SelectMediaReference::reloadMedia() {
         delete child;
     }
 
-    QFile file(QDir(QCoreApplication::applicationDirPath()).filePath("../media.json"));
+    QFile file(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML/media.json"));
     if (!file.open(QIODevice::ReadOnly)) {
         qWarning() << "File JSON non trovato:" << file.fileName();
         return;
@@ -84,25 +83,28 @@ void SelectMediaReference::reloadMedia() {
     for (const auto& m : media) {
         QJsonObject obj = m.toObject();
         QString tip = obj["tipologia"].toString();
-        if (tip != tipo) continue;
+        QString cinema = obj["nomeCinema"].toString();
+        if (tip == tipoMedia && cinema == *cinemaNomeRiferimento){
+            QString titolo = obj["titolo"].toString();
+            QString autore = obj["autore"].toString();
+            QString imagePath = obj["path"].toString();
+    
+            MediaFrame* mediaframe = new MediaFrame(titolo, imagePath, autore, container);
+            mediaframe->setMinimumSize(140,200);
+            layoutContainer->addWidget(mediaframe);
 
-        QString titolo = obj["titolo"].toString();
-        QString autore = obj["autore"].toString();
-        QString imagePath = obj["path"].toString();
-
-        MediaFrame* mediaframe = new MediaFrame(titolo, imagePath, autore, container);
-        layoutContainer->addWidget(mediaframe);
-
-        mediaframe->setCursor(Qt::PointingHandCursor);
-
-        connect(mediaframe, &MediaFrame::selected, this, [this](MediaFrame* f){
-            if (currentSelected)
-                currentSelected->setSelected(false);
-            currentSelected = f;
-            currentSelected->setSelected(true);
-            emit mediaSelected(f);
-        });
+            mediaframe->setCursor(Qt::PointingHandCursor);
+            
+            connect(mediaframe, &MediaFrame::selected, this, [this](MediaFrame* f){
+                if (currentSelected)
+                    currentSelected->setSelected(false);
+                currentSelected = f;
+                currentSelected->setSelected(true);
+                emit mediaSelected(f);
+            });
+        }
     }
+
 
     //style
     layoutContainer->setAlignment(Qt::AlignCenter);

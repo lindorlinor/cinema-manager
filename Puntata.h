@@ -28,7 +28,8 @@ public:
 
     void aggiungiOspite(const string &);
     void rimuoviOspite(const string &);
-    unsigned int getNumeroPubblicita() const;
+    // unsigned int getNumeroPubblicita() const;
+    void setNumeroPubblicita(const int& num);
 
     /**
      * @brief Estende di un giorno la data di fine rilascio dalla puntata corrente

@@ -13,3 +13,7 @@ unsigned int Pubblicita::getNProiezioniGiornaliere() const
 {
     return p_nProiezioniGiornaliere;
 }
+
+void Pubblicita::setNProiezioniGiornaliere(const int& num){
+    p_nProiezioniGiornaliere = num;
+}

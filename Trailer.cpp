@@ -25,8 +25,6 @@ void Trailer::associaFilm(Film* film) {
     film->aggiungiTrailer(this);
 }   
 
-
-
 void Trailer::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio){ 
     if(gg_mm_aaFineRilascio>t_film->getDataFineRilascio())
         t_film->getDataFineRilascio();
@@ -52,7 +50,7 @@ double Trailer::calcolaTassoDiStima() const
         std::find(t_film->getGenere().begin(), t_film->getGenere().end(), Genere::Supereroi) != t_film->getGenere().end()) {
         tasso += 0.02;
     }
-    if (t_film->getClassificazione() == Classificazione::DICIOTTO_PIU)
+    if (t_film->getTarget() == Classificazione::DICIOTTO_PIU)
         tasso -= 0.02;
 
     return std::clamp(tasso, 0.05, 0.15); // Limita il valore tra 0.05 e 0.15
