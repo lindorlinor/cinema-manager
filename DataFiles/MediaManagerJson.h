@@ -12,7 +12,6 @@
 #include <QFileInfo>
 
 #include "Populate.h"
-#include "../MediaVisitor.h"
 #include "../Film.h"
 #include "../Trailer.h"
 #include "../Inserzione.h"
@@ -22,16 +21,10 @@
  * @brief Costruttore della classe MediaManagerJson.
  * @param basePath percorso base dove leggere/salvare i file JSON.
  */
-class MediaManagerJson : public QObject, public MediaVisitor{
+class MediaManagerJson : public QObject{
     Q_OBJECT
     public:
         explicit MediaManagerJson(const QString& basePath, QObject *parent = nullptr);
-
-        void visit(Film* film) override{};
-        void visit(Trailer* trailer) override{};
-        void visit(Inserzione* inserzione) override{};
-        void visit(Podcast* podcast) override{};
-        void visit(Puntata* puntata) override{};
 
         /**
          * @brief Cancella tutti gli oggetti puntati dai puntatori nella lista e svuota la lista.
@@ -50,12 +43,14 @@ class MediaManagerJson : public QObject, public MediaVisitor{
         
         void loadFilmsData(QList<FilmData*>& films);
         void loadTrailersData(QList<TrailerData*>& trailers);
-        void loadInserzioneData(QList<InserzioneData*>& inserzioni);
+        void loadInserzioniData(QList<InserzioneData*>& inserzioni);
         void loadPodcastData(QList<PodcastData*>& podcasts);
         void loadPuntateData(QList<PuntataData*>& puntata);
+        void loadCinemaData(QList<CinemaData*>& puntata);
+        /* void loadAllDataAndCinema(QList<CinemaData*>& listMedia); */
         
         /**
-        * @brief Carica tutti i media e li aggiunge alla lista.
+        * @brief Carica tutti i media 
         * @note La lista risultante contiene puntatori che DEVONO essere distrutti dal chiamante
         */
         void loadAllData(QList<MediaData*>& media);
@@ -123,26 +118,31 @@ class MediaManagerJson : public QObject, public MediaVisitor{
         /**
          * @brief Modifica un oggetto passatogli
          * 
+         * riceve in input il riferimento all'oggetto da modificare il puntatore all'oggetto struct modificato
+         * 
          */
-        void modified(Media* media);
+        void modified(Media& media, MediaData* data);
         
         //toMediaData
         /**
          * @brief converte un oggetto Media in un Data (struct)
          * 
-         */
-        void toMediaDataFilm(const Film* media, FilmData& data);
-        void toMediaDataTrailer(const Trailer* media, TrailerData& data);
-        void toMediaDataInserzione(const Inserzione* media, InserzioneData& data);
-        void toMediaDataPodcast(const Podcast* media, PodcastData& data);
-        void toMediaDataPuntata(const Puntata* media, PuntataData& data);
-        
-        //MediaDataCommonField
-        /**
-         * @brief converte i campi comuni degli oggetti da Media a Data (struct)
+         * riceve in input il riferimento all'oggetto da modificare, il riferimento all'oggetto da modificare nell'array ottenuto 
+         * con il load del Json e il puntatore all'oggetto struct ottenuto dalle modifiche inserite
          * 
          */
-        void MediaDataCommonField(const Media* media, MediaData &mediaData);
+        void updateFilm( Film& media, const FilmData* data);
+        void updateTrailer( Trailer& media, const TrailerData* data);
+        void updateInserzione( Inserzione& media, const InserzioneData* data);
+        void updatePodcast( Podcast& media, const PodcastData* data);
+        void updatePuntata( Puntata& media, const PuntataData* data);
+
+        //updateCommonField
+        /**
+         * @brief aggiorna l'oggetto Media e il Json con le modifiche
+         * 
+         */
+        void updateCommonField(Media& media, const MediaData *data);
 
         //clearMediaList
         /**
@@ -166,6 +166,7 @@ class MediaManagerJson : public QObject, public MediaVisitor{
         void saveInserzione(InserzioneData * inserzione, QJsonObject& obj);
         void savePodcast(PodcastData* podcast, QJsonObject& obj);
         void savePuntata(PuntataData* puntata, QJsonObject& obj); 
+        void saveCinema(CinemaData* cinema); 
 
         /**
          * @brief ottiene il nome del cinema
@@ -179,7 +180,6 @@ class MediaManagerJson : public QObject, public MediaVisitor{
 
     private:
         QString m_basePath;
-        QString m_nomeCinema;
         /**
          * @brief Salva i campi comuni di un contenuto multimediale in un oggetto JSON.
          * 

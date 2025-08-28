@@ -21,6 +21,10 @@ string Podcast::getConduttore() const{
     return p_conduttore;
 }
 
+void Podcast::setConduttore(const string& nome){
+    p_conduttore = nome;
+}
+
 void Podcast::aggiungiPuntata(Puntata* puntata){
     if(puntata && isPuntataIn(puntata)==-1 && puntata->getPodcast() == this){
 

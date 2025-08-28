@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QVector>
 #include "CinemaButton.h"
-#include "../DataFiles/CinemaXmlRepository.h"
+#include "../DataFiles/MediaManagerJson.h"
 #include <QHBoxLayout>
 /**
  * @brief Pagina per la selezione del cinema
@@ -27,8 +27,8 @@ class CinemaSelectionPage : public QWidget
 private:
     QHBoxLayout* cinemaButtonsLayout;
     QVBoxLayout *frameLayout;
-    QList<Cinema> cinemas;
-    void createCinemaButton(const QString& nomeC, const QString& imPath, const QString& xmlPath);
+    QList<CinemaData*> cinemas;
+    void createCinemaButton(const CinemaData& c);
 
     /**
      * @brief Crea l'intestazione della pagina
@@ -60,7 +60,7 @@ public:
     void refreshCinemaButtons();
 signals:
     void insertCinema();
-    void selectedCinema(const QString& xmlPath);
+    void selectedCinema(const CinemaData& nomeC);
 
 };
 

@@ -24,14 +24,14 @@ using namespace std::chrono;
 class Film : public Media
 {
 private:
-    vector<Genere>  f_genere;
-    vector<string> f_attoriPrincipali;
-    Classificazione f_target;
-    vector<Trailer *> trailers;
     unsigned int f_nPostCredit;
     double f_costoBiglietto;
     string f_casaDiProduzione;
+    Classificazione f_target;
     double f_valutazione;
+    vector<Genere>  f_genere;
+    vector<string> f_attoriPrincipali;
+    vector<Trailer *> trailers;
     int isTrailerIn(Trailer *trailer) const;
 
 public:
@@ -53,20 +53,20 @@ public:
      *
      */
     void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) override;
+    void setGenere(const vector <Genere>& genere);
+    void setTarget(Classificazione target);
+    void setCasaDiProduzione(const string& casaDiProduzione);
+    void setNPostCredit(unsigned int nPostCredit);
+    void setCostoBiglietto(double costoBiglietto);
     void aggiungiAttore(const string& nomeAttore);
     void rimuoviAttore(const string& nomeAttore);
-    // void setGenere(const string& genere);
-    // void setClassificazione(Classificazione classificazione);
-    // void setCasaDiProduzione(const string& casaDiProduzione);
-    // void setNPostCredit(unsigned int nPostCredit);
-    // void setCostoBiglietto(double costoBiglietto);
     
     // // metodi get
+    Classificazione getTarget() const;
     string getCasaDiProduzione() const;
     unsigned int getNPostCredit() const;
     vector<Genere> getGenere() const;
     double getValutazione() const;
-    Classificazione getClassificazione() const;
     double getCostoBiglietto() const;
     const vector<string>& getAttoriPrincipali() const;
     // metodi per aggiungere e togliere i trailer

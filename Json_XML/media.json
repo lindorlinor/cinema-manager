@@ -1,0 +1,83 @@
+[
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "autore",
+        "casaDiProduzione": "",
+        "copertinaCinema": ":/images/image1.png",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-27",
+        "dataInizioRilascio": "2025-08-27",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
+        "genere": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "cinema1",
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "titolo film"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "autore",
+        "casaDiProduzione": "",
+        "copertinaCinema": ":/images/image1.png",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-27",
+        "dataInizioRilascio": "2025-08-27",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": 0,
+        "genere": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "cinema1",
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "titolo film 2"
+    },
+    {
+        "autore": "autore",
+        "autoreFilmAssociato": "autore",
+        "copertinaCinema": ":/images/image1.png",
+        "dataFineRilascio": "",
+        "dataInizioRilascio": "",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "filmAssociato": "titolo film",
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 0,
+        "nomeCinema": "cinema1",
+        "path": ":/images/default.png",
+        "risoluzione": 0,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "trailer film 1"
+    },
+    {
+        "copertinaCinema": ":/images/image1.png",
+        "nomeCinema": "cinema1"
+    },
+    {
+        "copertinaCinema": ":/images/default.png",
+        "nomeCinema": "cinema vuoto"
+    }
+]

@@ -23,6 +23,7 @@ public:
 
     
     unsigned int getNProiezioniGiornaliere() const;
+    void setNProiezioniGiornaliere(const int& num);
     
 };
 

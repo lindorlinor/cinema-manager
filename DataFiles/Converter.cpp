@@ -7,7 +7,7 @@ void Converter::populateCommonFields(const Media* media, MediaData& data) {
     data.durataMinuti = media->getDurataMinuti();
     data.formato = media->getFormato();
     data.risoluzione = media->getRisoluzione();
-    data.path = QString::fromStdString(media->getPath());
+    data.path = QString::fromStdString(media->getImPath());
     auto ymd = media->getDataInizioRilascio();
     data.dataInizioRilascio = QDate(
         int(ymd.year()),
@@ -31,12 +31,12 @@ void Converter::populateCommonFields(const Media* media, MediaData& data) {
 void Converter::populateFilmFields(const Film* film, FilmData& data) {
     if(!film) return;
     data.tipologia="film";
-    data.genere.clear();
-    data.genere = film->getGenere();
+    data.generi.clear();
+    data.generi = film->getGenere();
     data.casaDiProduzione= QString::fromStdString(film->getCasaDiProduzione());
     data.nPostCredit=film->getNPostCredit();
     data.costoBiglietto = film->getCostoBiglietto();
-    data.target = film->getClassificazione();
+    data.target = film->getTarget();
     data.attoriPrincipali.clear();
     for (const std::string& s : film->getAttoriPrincipali()) {
        data.attoriPrincipali.push_back(QString::fromStdString(s));

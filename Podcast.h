@@ -103,10 +103,8 @@ public:
      */
     void aggiornaDate();
 
-    /**
-     * @brief Restituisce il conduttore del Podcast
-     */
     string getConduttore() const;
+    void setConduttore(const string& nome);
 
     //visitor
     void accept(MediaVisitor* visitor)override;

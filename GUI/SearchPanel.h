@@ -16,10 +16,19 @@
 #include <QToolButton>
 
 #include "CinemaSelectionPage.h"
+#include "InsertMedia.h"
+
+/* #include "MediaLibraryTutto.h" */
+#include "MediaLibraryGenerale.h"
 
 class SearchPanel:public QWidget{
     Q_OBJECT
     private:
+
+
+    //TEMPORANEO
+    QList<const Media*> listMedia;
+
     //menu
     void addMenus(QVBoxLayout* mainLayout);
 
@@ -35,7 +44,7 @@ class SearchPanel:public QWidget{
    QToolButton* trailer;
    QToolButton* inserzione;
    QToolButton* podcast;
-   
+   QToolButton* puntata;
    
    //salva il nome del cinema
    /**
@@ -110,7 +119,7 @@ class SearchPanel:public QWidget{
     */
     public slots:
     void updateModifierPanel(int index);
-    void updateNomeCinema(const QString& nome);
+    void updateInfoCinema(const CinemaData& data);
     
     
     signals:
@@ -118,6 +127,8 @@ class SearchPanel:public QWidget{
     void escFullScreen();
     void escSearchPanel();
     void resetPages();
+    void giveCinemaInfoToIP(const CinemaData& data);
+    void selectedFilterButton(const QString& filtro);
 };
 
 #endif //SEARCHPANEL_H

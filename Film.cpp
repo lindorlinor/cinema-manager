@@ -7,9 +7,9 @@ Film::Film( const string &titolo, const string &descrizione, year_month_day gg_m
             unsigned int nPostCredit, double costoBiglietto, const string &casaDiProduzione,
             const string &autore, const string &path, Classificazione target):
             Media(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
-            durataMinuti, formato, risoluzione, autore, path),f_target(target),
-            f_nPostCredit(nPostCredit),f_costoBiglietto(costoBiglietto),
-            f_casaDiProduzione(casaDiProduzione),f_valutazione(0){}
+            durataMinuti, formato, risoluzione, autore, path),f_nPostCredit(nPostCredit),
+            f_costoBiglietto(costoBiglietto),f_casaDiProduzione(casaDiProduzione),
+            f_target(target), f_valutazione(0){}
 
 
 Film::~Film(){
@@ -70,30 +70,10 @@ void Film::disaccoppiaTrailer(Trailer* trailer){
 }
 
 
-//metodi get
-
-double Film::getCostoBiglietto() const {
-    return f_costoBiglietto;
-}
-
-vector<Genere> Film::getGenere() const {
-    return f_genere;
-}
-
-Classificazione Film::getClassificazione() const {
-    return f_target;
-}
-
-double Film::getValutazione() const {
-    return f_valutazione;
-}
-
-
-
 //metodi set
 /* void Film::setAttoriPrincipali(vector<string> attori){
     f_attoriPrincipali = attori;
-    } */
+} */
 
 void Film::setValutazione(){
     sys_days inizio = getDataInizioRilascio();
@@ -105,7 +85,7 @@ void Film::setValutazione(){
     }
     else{
         double proporzione = getVisualizzazioni()/(giorni*1200.0); 
-        f_valutazione = std::round((proporzione*5)>5? 5 : (proporzione*5)*10)/10.0;
+        f_valutazione = std::round((proporzione*5+1.55)>5? 5 : (proporzione*5+1.55)*10)/10.0;
     }
 }
 
@@ -120,50 +100,41 @@ void Film::rimuoviAttore(const string& nomeAttore){
     }
 }
 
+void Film::setGenere(const vector <Genere>& genere) {
+    f_genere = genere;
+}
+
+void Film::setTarget(Classificazione target) {
+    f_target = target;
+}
+
+void Film::setCasaDiProduzione(const string& casaDiProduzione) {
+    f_casaDiProduzione = casaDiProduzione;
+}
+
+void Film::setNPostCredit(unsigned int nPostCredit) {
+    f_nPostCredit = nPostCredit;
+}
+
+void Film::setCostoBiglietto(double costoBiglietto) {
+    f_costoBiglietto = costoBiglietto;
+}
+
 
 //visitor
 void Film::accept(MediaVisitor* visitor) {
     visitor->visit(this);
 }
 
-//metodi set
-// void Film::aggiungiAttore(const string& nomeAttore) {
-//         f_attoriPrincipali.push_back(nomeAttore);
-// }
-    
-// void Film::rimuoviAttore(const string& nomeAttore) {
-//     if (!f_attoriPrincipali.empty()) {
-//         auto it = std::find(f_attoriPrincipali.begin(), f_attoriPrincipali.end(), nomeAttore);
-//         if (it != f_attoriPrincipali.end()) {
-//             f_attoriPrincipali.erase(it);
-//         }
-//     }
-// }
-
-// void Film::setGenere(const string& genere) {
-//     f_genere = genere;
-// }
-
-// void Film::setClassificazione(Classificazione classificazione) {
-//     f_classificazione = classificazione;
-// }
-
-// void Film::setCasaDiProduzione(const string& casaDiProduzione) {
-//     f_casaDiProduzione = casaDiProduzione;
-// }
-
-// void Film::setNPostCredit(unsigned int nPostCredit) {
-//    f _nPostCredit = nPostCredit;
-// }
-
-// void Film::setCostoBiglietto(double costoBiglietto) {
-//     f_costoBiglietto = costoBiglietto;
-// }
 
 // // metodi get
 
 string Film::getCasaDiProduzione() const {
     return f_casaDiProduzione;
+}
+
+Classificazione Film::getTarget() const {
+    return f_target;
 }
 
 unsigned int Film::getNPostCredit() const {
@@ -177,3 +148,14 @@ const vector<Trailer*>& Film::getTrailers() const {
     return trailers;
 }
 
+double Film::getCostoBiglietto() const {
+    return f_costoBiglietto;
+}
+
+vector<Genere> Film::getGenere() const {
+    return f_genere;
+}
+
+double Film::getValutazione() const {
+    return f_valutazione;
+}

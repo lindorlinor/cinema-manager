@@ -12,12 +12,12 @@ public:
 private:
     Film* film;
     QVBoxLayout * layoutPage; //tutto il layout
-    QLabel* endDateLabel; //questa si trova qui per permettere la visualizzazione del cambiamento della data quando si clicca su "Estendi data"
     QWidget * splitter; //crea le due parti della schemata: sinistra e destra
     QHBoxLayout * splitterLayout;
     QWidget * leftSide; //parte sinistra che contiene la copertina del film e i dettagli
     QWidget * rightSide; //parte destra che contiene la sezione dei trailer (scrollable) e i pulsanti Estendi e Elimina
     QHBoxLayout * leftLayout;
+    QLabel* endDateLabel; //questa si trova qui per permettere la visualizzazione del cambiamento della data quando si clicca su "Estendi data"
     QVBoxLayout * rightLayout;
     void createHeader();
     void createFilmDetails();

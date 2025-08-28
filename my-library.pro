@@ -45,12 +45,16 @@ HEADERS +=  \
             GUI/CardTrailer.h \
             GUI/DetailsPageButtons.h \
             DataFiles/Populate.h \
-            DataFiles/CinemaXmlRepository.h \
-            DataFiles/MediaManagerJson.h \
             DataFiles/Converter.h \
             DataFiles/ConverterXml.h \
             DataFiles/MediaManagerXml.h \
-            DataFiles/XmlVisitor.h
+            DataFiles/XmlVisitor.h \
+            GUI/MediaLibraryGenerale.h \
+            GUI/FlowLayout.h \
+            GUI/FlowVisitor.h \
+            DataFiles/CinemaXmlRepository.h \
+            DataFiles/MediaManagerJson.h \
+            DataFiles/MediaUpdateVisitor.h
 SOURCES +=  \
             main.cpp \
             Inserzione.cpp \
@@ -75,11 +79,15 @@ SOURCES +=  \
             GUI/FilmView.cpp \
             GUI/ExpandableLabel.cpp \
             GUI/CardTrailer.cpp \
+            GUI/MediaLibraryGenerale.cpp \
             GUI/DetailsPageButtons.cpp \
+            GUI/FlowLayout.cpp \
+            GUI/FlowVisitor.cpp \
             DataFiles/CinemaXmlRepository.cpp \
             DataFiles/MediaManagerJson.cpp \
             DataFiles/Converter.cpp \
             DataFiles/ConverterXml.cpp \
             DataFiles/MediaManagerXml.cpp \
-            DataFiles/XmlVisitor.cpp
+            DataFiles/XmlVisitor.cpp \
+            DataFiles/MediaUpdateVisitor.cpp
 RESOURCES += GUI/resources.qrc

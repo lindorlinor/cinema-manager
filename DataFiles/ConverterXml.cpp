@@ -79,7 +79,7 @@ QDomElement ConverterXml::toXmlElement(const Film* film, QDomDocument& doc) {
     }
 
     QDomElement genElem = doc.createElement("Generi");
-    for (const Genere& g : data.genere) {
+    for (const Genere& g : data.generi) {
         QDomElement gElem = doc.createElement("Genere");
         gElem.appendChild(doc.createTextNode(toString(g)));
         genElem.appendChild(gElem);

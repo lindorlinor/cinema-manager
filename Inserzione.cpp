@@ -11,17 +11,6 @@ Inserzione::Inserzione(const string &titolo, const string &descrizione, year_mon
                                         aggiungiFasciaOraria(FasciaOraria::Mattina);
                                     }
 
-Classificazione Inserzione::getTarget() const{
-    return i_target;
-}
-
-string Inserzione::getAziendaInserzionistica() const{
-    return i_aziendaInserzionista;
-}
-
-double Inserzione::getCostoFissoProiezione() const{
-    return i_costoFissoProiezione;
-}
 
 int Inserzione::isFasciaOrariaIn(FasciaOraria fasciaO) const
 {
@@ -77,6 +66,33 @@ double Inserzione::calcolaIncasso()
 {
     return DurataCampagna() * getNProiezioniGiornaliere() * i_costoFissoProiezione * fattoreVariazionePrezzo();
 }
+
+//metodi get
+Classificazione Inserzione::getTarget() const{
+    return i_target;
+}
+
+string Inserzione::getAziendaInserzionistica() const{
+    return i_aziendaInserzionista;
+}
+
+double Inserzione::getCostoFissoProiezione() const{
+    return i_costoFissoProiezione;
+}
+
+//metodi set
+void Inserzione::setTarget(const Classificazione& target){
+    i_target = target;
+}
+
+void Inserzione::setAziendaInserzionistica(const string& nome){
+    i_aziendaInserzionista = nome;
+}
+
+void Inserzione::setCostoFissoProiezione(const double& costo){
+    i_costoFissoProiezione = costo;
+}
+
 
 //visitor
 void Inserzione::accept(MediaVisitor* visitor) {

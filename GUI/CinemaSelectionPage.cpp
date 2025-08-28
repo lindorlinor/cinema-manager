@@ -46,13 +46,13 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent) : QWidget(parent), cin
 
 }
 
-void CinemaSelectionPage::createCinemaButton(const QString& nomeC, const QString& imPath, const QString& xmlPath) {
+void CinemaSelectionPage::createCinemaButton(const CinemaData& c) {
     
-    CinemaButton *cinemaBtn = new CinemaButton(nomeC, QPixmap(imPath), xmlPath, this);
+    CinemaButton *cinemaBtn = new CinemaButton(c.nomeCinema, QPixmap(c.copertinaCinema), this);
     cinemaButtonsLayout->addWidget(cinemaBtn);
 
-    connect(cinemaBtn, &CinemaButton::selected, this, [this,xmlPath](){
-        emit selectedCinema(xmlPath);
+    connect(cinemaBtn, &CinemaButton::selected, this, [this,c](){
+        emit selectedCinema(c);
     });
 }
 
@@ -63,10 +63,13 @@ void CinemaSelectionPage::refreshCinemaButtons() {
         delete child;
     }
 
-    CinemaXmlRepository repo(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
-    cinemas = repo.loadAllCinemas();
-    for (const auto& c : cinemas) {
-        createCinemaButton(c.nome, c.imagePath, c.xmlPath);
+    for(CinemaData* c : cinemas) delete c;
+    cinemas.clear();
+
+    MediaManagerJson repo(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
+    repo.loadCinemaData(cinemas);
+    for (CinemaData* c : cinemas) {
+        createCinemaButton(*c);
     }
 }
 
@@ -107,6 +110,7 @@ void CinemaSelectionPage::createCinemaScroll(){
     scrollArea->setWidgetResizable(true);
     scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollArea->setMinimumHeight(300);
 
     //cambia il comportamento di default della scrollArea che si espanderebbe
     scrollArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);

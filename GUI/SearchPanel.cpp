@@ -75,17 +75,20 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     trailer = new QToolButton(this);
     inserzione = new QToolButton(this);
     podcast = new QToolButton(this);
+    puntata = new QToolButton(this);
     tutto->setText("Tutto");
     film->setText("Film");
     trailer->setText("Trailer");
-    inserzione->setText("Inserzione");
+    inserzione->setText("Inserzioni");
     podcast->setText("Podcast");
+    puntata->setText("Puntate");
     
     selezioneMedia->addWidget(tutto);
     selezioneMedia->addWidget(film);
     selezioneMedia->addWidget(trailer);
     selezioneMedia->addWidget(inserzione);
     selezioneMedia->addWidget(podcast);
+    selezioneMedia->addWidget(puntata);
     widegetMedia->setLayout(selezioneMedia);
     
     //aggiungi Media
@@ -118,6 +121,7 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     trailer->setObjectName("trailer");
     inserzione->setObjectName("inserzione");
     podcast->setObjectName("podcast");
+    puntata->setObjectName("puntata");
     cinema->setCursor(Qt::PointingHandCursor);
     addMedia->setCursor(Qt::PointingHandCursor);
     tutto->setCursor(Qt::PointingHandCursor);
@@ -125,11 +129,13 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     trailer->setCursor(Qt::PointingHandCursor);
     inserzione->setCursor(Qt::PointingHandCursor);
     podcast->setCursor(Qt::PointingHandCursor);
+    puntata->setCursor(Qt::PointingHandCursor);
     tutto->setCheckable(true);
     film->setCheckable(true);
     trailer->setCheckable(true);
     inserzione->setCheckable(true);
     podcast->setCheckable(true);
+    puntata->setCheckable(true);
     tutto->setChecked(true);
     
     //set icone
@@ -137,6 +143,7 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     QIcon iconaFilm(":/icons/Film.png");
     QIcon iconaTrailer(":/icons/trailer.png");
     QIcon iconaPodcast(":/icons/podcast.png");
+    QIcon iconaPuntata(":/icons/puntata.png");
     QIcon iconaInserzione(":/icons/inserzione.png");
     QIcon iconaTutto(":/icons/tutto.png");
     cinema->setIcon(iconaCinema);
@@ -144,6 +151,7 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     trailer->setIcon(iconaTrailer);
     inserzione->setIcon(iconaInserzione);
     podcast->setIcon(iconaPodcast);
+    puntata->setIcon(iconaPuntata);
     tutto->setIcon(iconaTutto);
     
     cinema->setIconSize(QSize(35,35));
@@ -151,12 +159,14 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     trailer->setIconSize(QSize(40,20));
     inserzione->setIconSize(QSize(40,30));
     podcast->setIconSize(QSize(40,30));
+    puntata->setIconSize(QSize(40,30));
     tutto->setIconSize(QSize(40,30));
     cinema->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     film->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     trailer->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     inserzione->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     podcast->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    puntata->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     tutto->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 }
 
@@ -204,6 +214,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     connect(trailer, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Trailer");});
     connect(inserzione, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Inserzioni");});
     connect(podcast, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Podcast");});
+    connect(puntata, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Puntata");});
     
     latoDestra->addWidget(cerca);
     latoDestra->addWidget(widgetSelezioneFiltri);
@@ -212,16 +223,37 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     
     stackModifiche->addWidget(widgetDestra);
     
+    
     //pannello per la libreria
     // stackModifiche->setCurrentIndex(0);
     previousIndex=0;
+    
     
     //pannello di aggiunta media
     InsertMedia* nuovoMedia = new InsertMedia(this);
     stackModifiche->addWidget(nuovoMedia);
     
+    metodoTemporaneoPerPagineDiVisualizzazione();
+
+    //pannello per la libreria dei media
+/*     MediaLibraryTutto* libreriaMediaTutto = new MediaLibraryTutto(this); */
+    MediaLibraryGenerale* libreriaMediaGenerale = new MediaLibraryGenerale(listMedia, film->objectName() ,this);
+/*     stackLibreria->addWidget(libreriaMediaTutto); */
+    stackLibreria->addWidget(libreriaMediaGenerale);
+    stackLibreria->setCurrentIndex(0);
+    
+    //GESTIONE PULSANTI
+    connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
+/*     connect(tutto, &QToolButton::clicked, this, [this](){stackLibreria->setCurrentIndex(0);}); */
+    connect(film, &QToolButton::clicked, this, [this,libreriaMediaGenerale](){stackLibreria->setCurrentIndex(0); libreriaMediaGenerale->getFiltro("Film");});
+    connect(trailer, &QToolButton::clicked, this, [this,libreriaMediaGenerale](){stackLibreria->setCurrentIndex(0); libreriaMediaGenerale->getFiltro("Trailer");});
+    connect(inserzione, &QToolButton::clicked, this, [this,libreriaMediaGenerale](){stackLibreria->setCurrentIndex(0); libreriaMediaGenerale->getFiltro("Inserzione");});
+    connect(podcast, &QToolButton::clicked, this, [this,libreriaMediaGenerale](){stackLibreria->setCurrentIndex(0); libreriaMediaGenerale->getFiltro("Podcast");});
+    connect(puntata, &QToolButton::clicked, this, [this,libreriaMediaGenerale](){stackLibreria->setCurrentIndex(0); libreriaMediaGenerale->getFiltro("Puntata");});
+
+
+    connect(this, &SearchPanel::giveCinemaInfoToIP, nuovoMedia, &InsertMedia::getCinemaInfo);
     connect(this, &SearchPanel::resetPages, nuovoMedia, &InsertMedia::resetAllInput);
-    connect(addMedia, &QPushButton::clicked, this, [this,nuovoMedia](){updateModifierPanel(1);emit nuovoMedia->setNomeCinemaForJson(p_nomeCinema);});
     connect(nuovoMedia, &InsertMedia::tornaIndietro, this, [this](){
         updateModifierPanel(previousIndex);
     });
@@ -229,7 +261,6 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
         updateModifierPanel(0);
     });
 
-    metodoTemporaneoPerPagineDiVisualizzazione();
     
     
     //style
@@ -278,6 +309,7 @@ void SearchPanel::updateCerca(const QString& filtro){
     trailer->setChecked(filtro == "Trailer");
     inserzione->setChecked(filtro == "Inserzioni");
     podcast->setChecked(filtro == "Podcast");
+    puntata->setChecked(filtro == "Puntata");
 }
 
 void SearchPanel::addPagina(QVBoxLayout* mainLayout){
@@ -320,35 +352,19 @@ SearchPanel::SearchPanel(QWidget *parent): QWidget(parent){
     mainLayout->setSpacing(0);
 }
 
-void SearchPanel::updateNomeCinema(const QString& nome){
+void SearchPanel::updateInfoCinema(const CinemaData& data){
     //selezione Cinema
-    
-    QFile file(nome);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "Impossibile aprire il file!";
-        return;
-    }
-    
-    QString contenuto = file.readAll();
-    file.close();
-    
-    QRegularExpression regex("<nome>(.*)</nome>");
-    QRegularExpressionMatch match = regex.match(contenuto);
-
-    if (match.hasMatch()) {
-        QString testo = match.captured(1);
-        p_nomeCinema = testo;
-        cinema->setText("Cinema "+p_nomeCinema);
-    } else {
-        qDebug() << "Tag <nome> non trovato!";
-    }
-
+    cinema->setText("Cinema "+data.nomeCinema);
+    emit giveCinemaInfoToIP(data);
 }
 
 
 void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     /*ROBA DA MODIFICARE, LA METTO QUI PER FARE LA PAGINA DI VISUALIZZAZIONE*/
     DetailPageVisitor* visitor = new DetailPageVisitor(); 
+
+    
+
     Film* film = new Film(
                             "Il mio vicino Totoro (RE-RELEASE 2025)",
                             "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
@@ -404,6 +420,10 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
         "Hayao Miyazaki",
         ":/images/image10.png"
     );
+
+    listMedia.append(film);
+    listMedia.append(trailer1);
+    listMedia.append(trailer2);
 
     film->accept(visitor);
     QWidget * detailPage = visitor->getWidget();
@@ -491,6 +511,6 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     manager.setCinemaName("Cinema Aurora");
     manager.setCinemaCover(":/images/default.png");
     manager.setCinemaMediaList(mediaList);
-    manager.exportSessionToXml();
-    manager.exportMediaListToXml();
+    // manager.exportSessionToXml();
+    // manager.exportMediaListToXml();
 }

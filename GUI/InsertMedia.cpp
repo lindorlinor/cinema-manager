@@ -1,8 +1,7 @@
 #include "InsertMedia.h"
 #include "SearchPanel.h"
 
-InsertMedia::InsertMedia(QWidget *parent): QWidget(parent){
-    mediaManagerJson = new MediaManagerJson(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"),this);
+InsertMedia::InsertMedia(QWidget *parent): QWidget(parent), mediaManagerJson(new MediaManagerJson(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"),this)){
     QVBoxLayout* mainLayout = new QVBoxLayout;
     mainLayout->setContentsMargins(0, 0, 0, 0); 
     mainLayout->setSpacing(0);
@@ -167,18 +166,18 @@ QDoubleSpinBox* InsertMedia::addDoubleSpin(const QString& testo, double min, dou
 }
 
 template<class L>
-void InsertMedia::addReference(const QString& testo, const QString& json, L* ly, SelectMediaReference*& reference){
+void InsertMedia::addReference(const QString& testo, const QString& tipo, L* ly, SelectMediaReference*& reference){
     QLabel* label = new QLabel(testo,this);
-    reference = new SelectMediaReference(json, this); 
+    reference = new SelectMediaReference(tipo, &nomeCinema, this);
 
     addInput(label, ly, reference);
     
-    connect(reference, &SelectMediaReference::mediaSelected, this, [this, json](MediaFrame* f){
-        if(json == "film"){
+    connect(reference, &SelectMediaReference::mediaSelected, this, [this, tipo](MediaFrame* f){
+        if(tipo == "film"){
             titoloFilmRiferimento = f->getTitolo();
             autoreFilmRiferimento = f->getAutore();
         }
-        else if(json == "podcast"){
+        else if(tipo == "podcast"){
             titoloPodcastRiferimento = f->getTitolo();
             autorePodcastRiferimento = f->getAutore();
         }
@@ -350,12 +349,13 @@ void InsertMedia::updateTabTipologia(int index){
 
     }
 
-    if(index == 1 || index == 3){
+/*     if(index == 1 || index == 3){
         saveButton->setEnabled(false);
     }
-    else checkMediaNameAvailability();
+    else checkMediaNameAvailability(); */
 
     stackTipologia->setCurrentIndex(index);
+    checkMediaNameAvailability();
 }
 
 void InsertMedia::checkMediaNameAvailability() {
@@ -367,13 +367,13 @@ void InsertMedia::checkMediaNameAvailability() {
     mediaManagerJson->loadAllData(listInsertMedia);
     
     bool isAvailable = true;
+    errorLabel->setVisible(false);
 
     if(titolo.isEmpty() || autore.isEmpty()) isAvailable = false;
 
     for (const MediaData* m: listInsertMedia) {
         if (m->titolo.compare(titolo, Qt::CaseInsensitive) == 0 && m->autore.compare(autore, Qt::CaseInsensitive) == 0) {
-            isAvailable = false;
-            break;
+            isAvailable = false; 
         }
     }
 
@@ -388,6 +388,9 @@ void InsertMedia::checkMediaNameAvailability() {
                 (stackTipologia->currentIndex()!=3 && stackTipologia->currentIndex()!=1)){
         errorLabel->setVisible(false);
         saveButton->setEnabled(true);
+    } else {
+        errorLabel->setVisible(false);
+        saveButton->setEnabled(false);
     }
 
     for(MediaData* m : listInsertMedia) delete m;
@@ -830,6 +833,8 @@ void InsertMedia::saveCommonFields(MediaData &data) {       //funzione per salva
     data.formato = static_cast<Formato>(comboFormato->currentData().toInt());
     data.risoluzione = static_cast<Risoluzione>(comboRisoluzione->currentData().toInt());
     data.path = imagePath==""?":/images/default.png":imagePath;
+    data.nomeCinema = nomeCinema;
+    data.copertinaCinema = copertinaCinema;
 }
 
 
@@ -841,7 +846,7 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         FilmData film;
         saveCommonFields(film);
         
-        film.genere = getSelectedList<Genere>(listGeneri);
+        film.generi = getSelectedList<Genere>(listGeneri);
         film.casaDiProduzione = CasaProdFilm->text();
         film.attoriPrincipali = attoriFilm->getListaPersone();
         film.nPostCredit = totPostCreditFilm->value();
@@ -1035,18 +1040,20 @@ void InsertMedia::resetAllInput(){
     
     QPixmap pixmap(":/images/default.png"); 
     copertina->setPixmap(pixmap.scaled(280,330, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-    checkMediaNameAvailability();
     stackTipologia->setCurrentIndex(0);
     tab->setCurrentIndex(0);
     comboTipologia->setCurrentIndex(0);
-
+    
     // QString
     imagePath.clear();
-
-    errorLabel->setVisible(false);
+    
+    checkMediaNameAvailability();
 }
 
 //IMPOSTA IL NOME DEL CINEMA
-void InsertMedia::setNomeCinemaForJson(const QString& nome){
-    mediaManagerJson->setNomeCinema(nome);
+void InsertMedia::getCinemaInfo(const CinemaData& data){
+    copertinaCinema = data.copertinaCinema;
+    nomeCinema = data.nomeCinema;
+    if(referenceTrailer) referenceTrailer->reloadMedia();
+    if(referencePuntate) referencePuntate->reloadMedia();
 }
