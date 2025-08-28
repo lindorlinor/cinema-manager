@@ -1,4 +1,5 @@
 #include "MediaManagerXml.h"
+#include "XmlVisitor.h"
 #include <QFile>
 #include <QFileDialog>
 #include <QDomElement>
@@ -48,13 +49,16 @@ void MediaManagerXml::createSessionDocument(QDomDocument& doc,QDomElement& root)
 }
 
 void MediaManagerXml::createMediaListDocument(QDomDocument& doc,QDomElement& root){
+    
+    XmlVisitor visitor(doc);
 
     for (Media* media : mediaList) {
         if (!media) continue;
-
+        media->accept(&visitor);
         QDomElement mediaElem;
 
-        if (Film* f = dynamic_cast<Film*>(media)) {
+        mediaElem = visitor.getXmlElement();
+        /* if (Film* f = dynamic_cast<Film*>(media)) {
             mediaElem = ConverterXml::toXmlElement(f, doc);
         } else if (Trailer* t = dynamic_cast<Trailer*>(media)) {
             mediaElem = ConverterXml::toXmlElement(t, doc);
@@ -67,7 +71,7 @@ void MediaManagerXml::createMediaListDocument(QDomDocument& doc,QDomElement& roo
         } else {
             mediaElem = ConverterXml::toXmlElement(media, doc);
         }
-
+ */
         root.appendChild(mediaElem);
     }
 }

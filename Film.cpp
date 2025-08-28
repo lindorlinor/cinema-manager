@@ -6,11 +6,10 @@ Film::Film( const string &titolo, const string &descrizione, year_month_day gg_m
             year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione, 
             unsigned int nPostCredit, double costoBiglietto, const string &casaDiProduzione,
             const string &autore, const string &path, Classificazione target):
-
-                    Media(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
-                    durataMinuti, formato, risoluzione, autore, path),f_target(target),
-                    f_casaDiProduzione(casaDiProduzione), f_nPostCredit(nPostCredit), 
-                    f_costoBiglietto(costoBiglietto),f_valutazione(0){}
+            Media(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
+            durataMinuti, formato, risoluzione, autore, path),f_target(target),
+            f_nPostCredit(nPostCredit),f_costoBiglietto(costoBiglietto),
+            f_casaDiProduzione(casaDiProduzione),f_valutazione(0){}
 
 
 Film::~Film(){

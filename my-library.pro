@@ -49,7 +49,8 @@ HEADERS +=  \
             DataFiles/MediaManagerJson.h \
             DataFiles/Converter.h \
             DataFiles/ConverterXml.h \
-            DataFiles/MediaManagerXml.h
+            DataFiles/MediaManagerXml.h \
+            DataFiles/XmlVisitor.h
 SOURCES +=  \
             main.cpp \
             Inserzione.cpp \
@@ -79,5 +80,6 @@ SOURCES +=  \
             DataFiles/MediaManagerJson.cpp \
             DataFiles/Converter.cpp \
             DataFiles/ConverterXml.cpp \
-            DataFiles/MediaManagerXml.cpp
+            DataFiles/MediaManagerXml.cpp \
+            DataFiles/XmlVisitor.cpp
 RESOURCES += GUI/resources.qrc

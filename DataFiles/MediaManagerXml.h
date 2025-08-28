@@ -7,7 +7,6 @@
 
 #include "Media.h"    
 #include "Populate.h"  
-#include "ConverterXml.h" 
 
 class MediaManagerXml {
 public:
@@ -19,6 +18,9 @@ public:
 
     void exportSessionToXml();
     void exportMediaListToXml();
+
+    void importSessionFromXml();
+    void importMediaListFromXml();
 
 private:
     void createSessionDocument(QDomDocument& doc,QDomElement& root);

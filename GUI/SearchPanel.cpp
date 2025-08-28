@@ -483,8 +483,8 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
                                 year_month_day{2025y, May, 5d}, year_month_day{2025y, May, 15d},
                                 48, p2, 4100);
     mediaList.push_back(p2);
-    mediaList.push_back(p2_3);
-    mediaList.push_back(p2_3);
+    mediaList.push_back(p2_1);
+    mediaList.push_back(p2_2);
     mediaList.push_back(p2_3);
 
     MediaManagerXml manager;
