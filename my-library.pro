@@ -52,7 +52,6 @@ HEADERS +=  \
             GUI/MediaLibraryGenerale.h \
             GUI/FlowLayout.h \
             GUI/FlowVisitor.h \
-            DataFiles/CinemaXmlRepository.h \
             DataFiles/MediaManagerJson.h \
             DataFiles/MediaUpdateVisitor.h
 SOURCES +=  \
@@ -83,7 +82,6 @@ SOURCES +=  \
             GUI/DetailsPageButtons.cpp \
             GUI/FlowLayout.cpp \
             GUI/FlowVisitor.cpp \
-            DataFiles/CinemaXmlRepository.cpp \
             DataFiles/MediaManagerJson.cpp \
             DataFiles/Converter.cpp \
             DataFiles/ConverterXml.cpp \

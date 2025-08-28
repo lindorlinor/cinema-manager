@@ -52,7 +52,7 @@ public:
      * @brief toglie e ricrea i pulsanti del cinema. 
      * 
      * @details elimina tutti i cinemaButtons del layout cinemaButtonsLayout poi 
-     * utilizza @ref CinemaXmlRepository per scaricare nella lista cinemas di struct Cinema tutti i cinema, 
+     * utilizza @ref MediaManagerJson per scaricare nella lista cinemas di struct Cinema tutti i cinema, 
      * poi scorre la lista e crea per ciascuno il button.
      * 
      * @note il modo in cui vengono cancellati è da rivedere...
