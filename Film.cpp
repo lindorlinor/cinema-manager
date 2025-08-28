@@ -85,8 +85,8 @@ void Film::setValutazione(){
         f_valutazione = 0.0;
     }
     else{
-        double proporzione = getVisualizzazioni()/(giorni*1200.0)+0.5; 
-        f_valutazione = std::round((proporzione*5)>5? 5 : (proporzione*5)*10)/10.0;
+        double proporzione = getVisualizzazioni()/(giorni*1200.0); 
+        f_valutazione = std::round((proporzione*5+1.55)>5? 5 : (proporzione*5+1.55)*10)/10.0;
     }
 }
 
