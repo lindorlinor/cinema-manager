@@ -339,9 +339,9 @@ PuntataData ConverterXml::fromXmlPuntataElement(const QDomElement& elem) {
 
     data.tipologia = "puntata";
 
-    QDomElement numPubElem = elem.firstChildElement("NumeroPubblicita");
+    QDomElement numPubElem = elem.firstChildElement("NPubblicita");
     if(!numPubElem.isNull()) {
-        data.numeroPubblicita = numPubElem.text().toInt();
+        data.numeroPubblicita = numPubElem.text().trimmed().toInt();
     }
 
     QDomElement podcastElem = elem.firstChildElement("PodcastAssociato");

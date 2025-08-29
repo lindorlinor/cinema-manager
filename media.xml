@@ -218,7 +218,7 @@
         <SottotitoliDisponibili/>
         <TitoloPodcastAssociato>Storie dal Futuro</TitoloPodcastAssociato>
         <AutorePodcastAssociato>Sconosciuto</AutorePodcastAssociato>
-        <NPubblicita>5000</NPubblicita>
+        <NPubblicita>2</NPubblicita>
     </Puntata>
     <Puntata>
         <Titolo>Città del Domani</Titolo>
@@ -234,7 +234,7 @@
         <SottotitoliDisponibili/>
         <TitoloPodcastAssociato>Storie dal Futuro</TitoloPodcastAssociato>
         <AutorePodcastAssociato>Sconosciuto</AutorePodcastAssociato>
-        <NPubblicita>4200</NPubblicita>
+        <NPubblicita>2</NPubblicita>
     </Puntata>
     <Puntata>
         <Titolo>Viaggi Interstellari</Titolo>
@@ -250,7 +250,7 @@
         <SottotitoliDisponibili/>
         <TitoloPodcastAssociato>Storie dal Futuro</TitoloPodcastAssociato>
         <AutorePodcastAssociato>Sconosciuto</AutorePodcastAssociato>
-        <NPubblicita>6100</NPubblicita>
+        <NPubblicita>2</NPubblicita>
     </Puntata>
     <Podcast>
         <Titolo>Cronache Storiche</Titolo>
@@ -280,7 +280,7 @@
         <SottotitoliDisponibili/>
         <TitoloPodcastAssociato>Cronache Storiche</TitoloPodcastAssociato>
         <AutorePodcastAssociato>Sconosciuto</AutorePodcastAssociato>
-        <NPubblicita>3500</NPubblicita>
+        <NPubblicita>4</NPubblicita>
     </Puntata>
     <Puntata>
         <Titolo>Il Medioevo</Titolo>
@@ -296,7 +296,7 @@
         <SottotitoliDisponibili/>
         <TitoloPodcastAssociato>Cronache Storiche</TitoloPodcastAssociato>
         <AutorePodcastAssociato>Sconosciuto</AutorePodcastAssociato>
-        <NPubblicita>3700</NPubblicita>
+        <NPubblicita>3</NPubblicita>
     </Puntata>
     <Puntata>
         <Titolo>La Rivoluzione Industriale</Titolo>
@@ -312,6 +312,6 @@
         <SottotitoliDisponibili/>
         <TitoloPodcastAssociato>Cronache Storiche</TitoloPodcastAssociato>
         <AutorePodcastAssociato>Sconosciuto</AutorePodcastAssociato>
-        <NPubblicita>4100</NPubblicita>
+        <NPubblicita>1</NPubblicita>
     </Puntata>
 </MediaList>

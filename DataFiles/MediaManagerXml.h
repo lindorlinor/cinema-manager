@@ -17,13 +17,18 @@ public:
     void setCinemaCover(const QString& cover);
     void setCinemaMediaList(const QList<Media*>& mediaList);
 
+    const QString& getCinemaName() const; //to do
+    const QString& getCinemaCover() const; //to do
+    const QList<Media*>& getCinemaMediaList() const; //to do
+
     void exportSessionToXml();
     void exportMediaListToXml();
 
     bool importSessionFromXml(MediaManagerJson& jsonManager);
-    void importMediaListFromXml(MediaManagerJson& jsonManager);
+    bool importMediaListFromXml(MediaManagerJson& jsonManager);
 
 private:
+    void importMediaListFromXml(QDomElement& mediaElem, MediaManagerJson& jsonManager,const QString& cinemaName, const QString& cinemaCover);
     void createSessionDocument(QDomDocument& doc,QDomElement& root);
     void createMediaListDocument(QDomDocument& doc,QDomElement& root);
     void saveDocument();

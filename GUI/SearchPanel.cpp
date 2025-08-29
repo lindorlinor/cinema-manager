@@ -473,13 +473,13 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
                               Formato::DCP, Risoluzione::FullHD_1080p);
     Puntata* p1_1 = new Puntata("Robot e Umanità", "Discussione su AI e coscienza.",
                                 year_month_day{2025y, January, 10d}, year_month_day{2025y, January, 20d},
-                                50, p1, 5000);
+                                50, p1, 2);
     Puntata* p1_2 = new Puntata("Città del Domani", "Urbanistica futuristica.",
                                 year_month_day{2025y, February, 5d}, year_month_day{2025y, February, 15d},
-                                45, p1, 4200);
+                                45, p1, 2);
     Puntata* p1_3 = new Puntata("Viaggi Interstellari", "Le sfide della colonizzazione spaziale.",
                                 year_month_day{2025y, March, 1d}, year_month_day{2025y, March, 12d},
-                                55, p1, 6100);
+                                55, p1, 2);
     mediaList.push_back(p1);
     mediaList.push_back(p1_1);
     mediaList.push_back(p1_2);
@@ -489,13 +489,13 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
                               Formato::DCP, Risoluzione::HD_720p);
     Puntata* p2_1 = new Puntata("La Roma Antica", "La nascita dell’Impero.",
                                 year_month_day{2025y, April, 1d}, year_month_day{2025y, April, 10d},
-                                40, p2, 3500);
+                                40, p2, 4);
     Puntata* p2_2 = new Puntata("Il Medioevo", "Un viaggio tra castelli e cavalieri.",
                                 year_month_day{2025y, April, 20d}, year_month_day{2025y, April, 28d},
-                                42, p2, 3700);
+                                42, p2, 3);
     Puntata* p2_3 = new Puntata("La Rivoluzione Industriale", "Come è cambiato il mondo.",
                                 year_month_day{2025y, May, 5d}, year_month_day{2025y, May, 15d},
-                                48, p2, 4100);
+                                48, p2, 1);
     mediaList.push_back(p2);
     mediaList.push_back(p2_1);
     mediaList.push_back(p2_2);
@@ -509,7 +509,8 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     Ci sono un bel po di qDebug che vengono stampati che provengono da MediaManagerJson...sembrano tanti
     non so se è COSÌ CORRETTO che siano così tanti...è normale? viene sovrascritto tutto ogni volta mi fa paura */
     // manager.exportSessionToXml();
-    // manager.exportMediaListToXml();
+    manager.exportMediaListToXml();
     MediaManagerJson jsonManager(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML")); 
     // manager.importSessionFromXml(jsonManager);
+    manager.importMediaListFromXml(jsonManager);
 }

@@ -140,52 +140,81 @@ void MediaManagerXml::saveDocument() {
     }
 
     QDomElement mediaElem = mediaListElem.firstChildElement();
+
+    importMediaListFromXml(mediaElem,jsonManager,cinema.nomeCinema,cinema.copertinaCinema);
+    return true;
+}
+
+
+void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,MediaManagerJson& jsonManager,const QString& cinemaName, const QString& cinemaCover){
     unsigned int errors =0;
     while (!mediaElem.isNull()) {
         QString tipo = mediaElem.tagName();
         if (tipo=="Film") {
             FilmData* fd = new FilmData(ConverterXml::fromXmlFilmElement(mediaElem));
-            fd->nomeCinema=cinema.nomeCinema;
-            fd->copertinaCinema=cinema.copertinaCinema;
+            fd->nomeCinema=cinemaName;
+            fd->copertinaCinema=cinemaCover;
             jsonManager.saveMedia(fd);
-        }
-        else if (tipo=="Trailer") {
+        }else if (tipo=="Trailer") {
             TrailerData* td = new TrailerData(ConverterXml::fromXmlTrailerElement(mediaElem));
-            td->nomeCinema=cinema.nomeCinema;
-            td->copertinaCinema=cinema.copertinaCinema;
+            td->nomeCinema=cinemaName;
+            td->copertinaCinema=cinemaCover;
             jsonManager.saveMedia(td);
-        }
-        else if (tipo=="Inserzione") {
+        }else if (tipo=="Inserzione") {
             InserzioneData* id = new InserzioneData(ConverterXml::fromXmlInserzioneElement(mediaElem));
-            id->nomeCinema=cinema.nomeCinema;
-            id->copertinaCinema=cinema.copertinaCinema;
+            id->nomeCinema=cinemaName;
+            id->copertinaCinema=cinemaCover;
             jsonManager.saveMedia(id);
-        }
-        else if (tipo=="Podcast") {
+        }else if (tipo=="Podcast") {
             PodcastData* pdd = new PodcastData(ConverterXml::fromXmlPodcastElement(mediaElem));
-            pdd->nomeCinema=cinema.nomeCinema;
-            pdd->copertinaCinema=cinema.copertinaCinema;
+            pdd->nomeCinema=cinemaName;
+            pdd->copertinaCinema=cinemaCover;
             jsonManager.saveMedia(pdd);
-        }
-        else if (tipo=="Puntata") {
+        } else if (tipo=="Puntata") {
             PuntataData* pd = new PuntataData(ConverterXml::fromXmlPuntataElement(mediaElem));
-            pd->nomeCinema=cinema.nomeCinema;
-            pd->copertinaCinema=cinema.copertinaCinema;
+            pd->nomeCinema=cinemaName;
+            pd->copertinaCinema=cinemaCover;
             jsonManager.saveMedia(pd);
-        }
-        else {
+        }else {
             errors++;
         }
-    mediaElem = mediaElem.nextSiblingElement();
+        mediaElem = mediaElem.nextSiblingElement();
     }
 
     if(errors)
          QMessageBox::information(nullptr, "Info", errors+" media non sono stati importati.");
-    return true;
+
 }
+bool MediaManagerXml::importMediaListFromXml(MediaManagerJson& jsonManager){
+    QString filePath = QFileDialog::getOpenFileName(
+    nullptr, "Apri sessione XML", "", "XML Files (*.xml)");
+    if (filePath.isEmpty()) return false;
 
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        QMessageBox::warning(nullptr, "Errore", "Impossibile aprire il file XML");
+        return false;
+    }
 
+    QDomDocument doc;
+    if (!doc.setContent(&file)) {
+        QMessageBox::warning(nullptr, "Errore", "Il file non è valido: errore di formattazione XML. Correggere e riprovare.");
+        return false;
+    }
+    file.close();
 
-void MediaManagerXml::importMediaListFromXml(MediaManagerJson& jsonManager){
-    
+    QDomElement mediaListElem = doc.documentElement();
+    if (mediaListElem.tagName() != "MediaList") {
+        QMessageBox::warning(nullptr, "Errore", "Struttura del file non valida: nodo <MediaList> mancante.");
+        return false;
+    }
+
+    if (mediaListElem.isNull()) {
+        QMessageBox::information(nullptr, "Info", "Nessun contenturo multimediale importato");
+        return true;
+    }
+
+    QDomElement mediaElem = mediaListElem.firstChildElement();
+    importMediaListFromXml(mediaElem,jsonManager,cinemaName,cinemaCover);
+    return true;
 } 
