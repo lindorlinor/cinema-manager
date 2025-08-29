@@ -237,7 +237,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
 
     //pannello per la libreria dei media
 /*     MediaLibraryTutto* libreriaMediaTutto = new MediaLibraryTutto(this); */
-    MediaLibraryGenerale* libreriaMediaGenerale = new MediaLibraryGenerale(listMedia, film->objectName() ,this);
+    MediaLibraryGenerale* libreriaMediaGenerale = new MediaLibraryGenerale(mediaList, film->objectName() ,this);
 /*     stackLibreria->addWidget(libreriaMediaTutto); */
     stackLibreria->addWidget(libreriaMediaGenerale);
     stackLibreria->setCurrentIndex(0);
@@ -421,9 +421,9 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
         ":/images/image10.png"
     );
 
-    listMedia.append(film);
-    listMedia.append(trailer1);
-    listMedia.append(trailer2);
+    mediaList.append(film);
+    mediaList.append(trailer1);
+    mediaList.append(trailer2);
 
     film->accept(visitor);
     QWidget * detailPage = visitor->getWidget();
@@ -436,7 +436,7 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
         delete detailPage;
     });
 
-    QList<Media*> mediaList;
+    /* QList<Media*> mediaList;
 
     mediaList.push_back(film);
     mediaList.push_back(trailer1);
@@ -505,12 +505,14 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     mediaList.push_back(p2);
     mediaList.push_back(p2_1);
     mediaList.push_back(p2_2);
-    mediaList.push_back(p2_3);
+    mediaList.push_back(p2_3); */
 
     MediaManagerXml manager;
     manager.setCinemaName("Cinema Aurora");
     manager.setCinemaCover(":/images/default.png");
     manager.setCinemaMediaList(mediaList);
-    // manager.exportSessionToXml();
-    // manager.exportMediaListToXml();
+    manager.exportSessionToXml();
+    manager.exportMediaListToXml();
+    MediaManagerJson jsonManager(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML")); 
+    manager.importSessionFromXml(jsonManager);
 }

@@ -27,7 +27,7 @@ class SearchPanel:public QWidget{
 
 
     //TEMPORANEO
-    QList<const Media*> listMedia;
+    QList<Media*> mediaList;
 
     //menu
     void addMenus(QVBoxLayout* mainLayout);

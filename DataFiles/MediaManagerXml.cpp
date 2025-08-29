@@ -1,5 +1,6 @@
 #include "MediaManagerXml.h"
 #include "XmlVisitor.h"
+#include "ConverterXml.h"
 #include <QFile>
 #include <QFileDialog>
 #include <QDomElement>
@@ -95,3 +96,87 @@ void MediaManagerXml::saveDocument() {
     file.close();
 }
 
+ bool MediaManagerXml::importSessionFromXml(MediaManagerJson& jsonManager) {
+    QString filePath = QFileDialog::getOpenFileName(
+        nullptr, "Apri sessione XML", "", "XML Files (*.xml)");
+    if (filePath.isEmpty()) return false;
+
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        QMessageBox::warning(nullptr, "Errore", "Impossibile aprire il file XML");
+        return false;
+    }
+
+    QDomDocument doc;
+    if (!doc.setContent(&file)) {
+        QMessageBox::warning(nullptr, "Errore", "Il file non è valido: errore di formattazione XML. Correggere e riprovare.");
+        return false;
+    }
+    file.close();
+
+    QDomElement root = doc.documentElement();
+    if (root.tagName() != "Cinema") {
+        QMessageBox::warning(nullptr, "Errore", "Struttura del file non valida: nodo <Cinema> mancante.");
+        return false;
+    }
+
+    QDomElement nome = root.firstChildElement("Nome");
+    QDomElement copertina = root.firstChildElement("Copertina");
+    QDomElement mediaListElem = root.firstChildElement("MediaList");
+    if (nome.isNull() || copertina.isNull()|| mediaListElem.isNull()) {
+        QMessageBox::warning(nullptr, "Errore", "Il cinema non è valido: campo obbligatorio <Nome>/<Copertina>/<MediaList> assente.");
+        return false;
+    }
+
+    CinemaData cinema;
+    cinema.nomeCinema = nome.text();
+    cinema.copertinaCinema = copertina.text();
+    
+    jsonManager.saveCinema(&cinema);
+
+    if (mediaListElem.isNull()) {
+        QMessageBox::information(nullptr, "Info", "Cinema importato senza contenuti multimediali.");
+        return true;
+    }
+
+    QDomElement mediaElem = mediaListElem.firstChildElement();
+    unsigned int errors =0;
+    while (!mediaElem.isNull()) {
+        QString tipo = mediaElem.tagName();
+        if (tipo=="Film") {
+            FilmData* fm = new FilmData(ConverterXml::fromXmlFilmElement(mediaElem));
+            fm->nomeCinema=cinema.nomeCinema;
+            fm->copertinaCinema=cinema.copertinaCinema;
+            jsonManager.saveMedia(fm);
+        }
+        else if (tipo=="Trailer") {
+            TrailerData* tm = new TrailerData(ConverterXml::fromXmlTrailerElement(mediaElem));
+            tm->nomeCinema=cinema.nomeCinema;
+            tm->copertinaCinema=cinema.copertinaCinema;
+            jsonManager.saveMedia(tm);
+        }
+        else if (tipo=="Inserzione") {
+            // jsonManager.saveMedia(&(ConverterXml::fromXmlInserzioneElement(mediaElem)));
+        }
+        else if (tipo=="Podcast") {
+            // jsonManager.saveMedia(&(ConverterXml::fromXmlPodcastElement(mediaElem)));
+        }
+        else if (tipo=="Podcast") {
+            // jsonManager.saveMedia(&(ConverterXml::fromXmlPuntataElement(mediaElem)));
+        }
+        else {
+            errors++;
+        }
+    mediaElem = mediaElem.nextSiblingElement();
+    }
+
+    if(errors)
+         QMessageBox::information(nullptr, "Info", errors+" media non sono stati importati.");
+    return true;
+}
+
+
+
+void MediaManagerXml::importMediaListFromXml(MediaManagerJson& jsonManager){
+    
+} 

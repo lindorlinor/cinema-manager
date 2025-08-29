@@ -14,14 +14,14 @@ class MediaLibraryGenerale: public QWidget{
 
     private:
 
-    const QList<const Media*>& listMedia;
+    const QList<Media*>& listMedia;
     QString tipoFiltro;
     QLabel* titolo;
     FlowLayout* flow;
     QWidget* widgetSupporto;
     
     public:
-    explicit MediaLibraryGenerale(const QList<const Media*>& media, const QString& filtro, QWidget* parent = nullptr);
+    explicit MediaLibraryGenerale(const QList<Media*>& media, const QString& filtro, QWidget* parent = nullptr);
     void getFiltro(const QString& filtro);
     void refresh();
 

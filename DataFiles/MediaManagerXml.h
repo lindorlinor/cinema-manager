@@ -7,6 +7,7 @@
 
 #include "Media.h"    
 #include "Populate.h"  
+#include "MediaManagerJson.h"
 
 class MediaManagerXml {
 public:
@@ -19,8 +20,8 @@ public:
     void exportSessionToXml();
     void exportMediaListToXml();
 
-    void importSessionFromXml();
-    void importMediaListFromXml();
+    bool importSessionFromXml(MediaManagerJson& jsonManager);
+    void importMediaListFromXml(MediaManagerJson& jsonManager);
 
 private:
     void createSessionDocument(QDomDocument& doc,QDomElement& root);

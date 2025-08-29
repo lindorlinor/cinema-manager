@@ -1,6 +1,6 @@
 #include "MediaLibraryGenerale.h"
 
-MediaLibraryGenerale::MediaLibraryGenerale(const QList<const Media*>& media, const QString& filtro, QWidget* parent): QWidget(parent),listMedia(media), tipoFiltro(filtro){
+MediaLibraryGenerale::MediaLibraryGenerale(const QList<Media*>& media, const QString& filtro, QWidget* parent): QWidget(parent),listMedia(media), tipoFiltro(filtro){
 
     titolo = new QLabel(tipoFiltro+" in Sala",this);
     QVBoxLayout* mainLayout = new QVBoxLayout;

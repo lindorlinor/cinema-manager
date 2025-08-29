@@ -215,4 +215,80 @@ QDomElement ConverterXml::toXmlElement(const Puntata* puntata, QDomDocument& doc
     return puntElem;
 }
 
+void ConverterXml::populateCommonFields(const QDomElement& elem, MediaData & data){
+    data.titolo = elem.firstChildElement("Titolo").text();
+    data.autore = elem.firstChildElement("Autore").text();
+    data.descrizione = elem.firstChildElement("Descrizione").text();
+    data.durataMinuti = elem.firstChildElement("DurataMinuti").text().toInt();
+    data.formato = toFormato(elem.firstChildElement("Formato").text().toStdString());
+    data.risoluzione = toRisoluzione(elem.firstChildElement("Risoluzione").text().toStdString());
+    data.path = elem.firstChildElement("Path").text();
+    data.dataInizioRilascio = QDate::fromString(elem.firstChildElement("DataInizioRilascio").text(), "yyyy-MM-dd");
+    data.dataFineRilascio = QDate::fromString(elem.firstChildElement("DataFineRilascio").text(), "yyyy-MM-dd");
 
+    QDomElement lingElem = elem.firstChildElement("LingueDisponibili");
+    QDomElement l = lingElem.firstChildElement("Lingua");
+    while(!l.isNull()) {
+        data.lingueDisponibili.push_back(toLingua(l.text().toStdString()));
+        l = l.nextSiblingElement("Lingua");
+    }
+
+    QDomElement subElem = elem.firstChildElement("SottotitoliDisponibili");
+    l = subElem.firstChildElement("Lingua");
+    while(!l.isNull()) {
+        data.sottotitoliDisponibili.push_back(toLingua(l.text().toStdString()));
+        l = l.nextSiblingElement("Lingua");
+    }
+}
+
+
+FilmData ConverterXml::fromXmlFilmElement(const QDomElement& elem) {
+    FilmData data;
+
+    populateCommonFields(elem,data);
+
+    data.tipologia="film";
+
+    QDomElement generiElem = elem.firstChildElement("Generi");
+    for(QDomElement g = generiElem.firstChildElement("Genere"); !g.isNull(); g = g.nextSiblingElement("Genere")) {
+        data.generi.push_back(toGenere(g.text().toStdString()));
+    }
+
+    QDomElement attoriElem = elem.firstChildElement("AttoriPrincipali");
+    for(QDomElement a = attoriElem.firstChildElement("Attore"); !a.isNull(); a = a.nextSiblingElement("Attore")) {
+        data.attoriPrincipali.push_back(a.text());
+    }
+
+    data.target = toClassificazione(elem.firstChildElement("Target").text().toStdString());
+    data.costoBiglietto = elem.firstChildElement("CostoBiglietto").text().toDouble();
+    data.casaDiProduzione = elem.firstChildElement("CasaDiProduzione").text();
+    data.nPostCredit = elem.firstChildElement("NPostCredit").text().toInt();
+   
+    return data;
+}
+
+TrailerData ConverterXml::fromXmlTrailerElement(const QDomElement& elem){
+    TrailerData data;
+    populateCommonFields(elem,data);
+    data.tipologia = "trailer";
+
+    QDomElement nProiezioniElem = elem.firstChildElement("NProiezioniGiornaliere");
+    if(!nProiezioniElem.isNull()) {
+        data.nProiezioniGiornaliere = nProiezioniElem.text().toInt();
+    }
+
+    QDomElement filmElem = elem.firstChildElement("FilmAssociato");
+    if(!filmElem.isNull()) {
+        data.filmAssociato = filmElem.text();
+    }
+
+    QDomElement autoreElem = elem.firstChildElement("AutoreFilmAssociato");
+    if(!autoreElem.isNull()) {
+        data.autoreFilmAssociato = autoreElem.text();
+    }
+
+    return data;
+}
+InserzioneData ConverterXml::fromXmlInserzioneElement(const QDomElement& elem){}
+PodcastData ConverterXml::fromXmlPodcastElement(const QDomElement& elem){}
+PuntataData ConverterXml::fromXmlPuntataElement(const QDomElement& elem){}
