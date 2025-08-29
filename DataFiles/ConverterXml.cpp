@@ -276,7 +276,7 @@ TrailerData ConverterXml::fromXmlTrailerElement(const QDomElement& elem){
         data.nProiezioniGiornaliere = nProiezioniElem.text().toInt();
     }
 
-    QDomElement filmElem = elem.firstChildElement("FilmAssociato");
+    QDomElement filmElem = elem.firstChildElement("TitoloFilmAssociato");
     if(!filmElem.isNull()) {
         data.filmAssociato = filmElem.text();
     }

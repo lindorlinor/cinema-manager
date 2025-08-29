@@ -3,32 +3,19 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QLabel>
+#include "MediaView.h"
 #include "../Film.h"
-class FilmView : public QWidget
-{
+class FilmView : public MediaView{
     Q_OBJECT
 public:
-    explicit FilmView(Film* filmPtr, QWidget* parent = nullptr);
+    explicit FilmView(Film* fPtr, QWidget* parent = nullptr);
 private:
-    Film* film;
-    QVBoxLayout * layoutPage; //tutto il layout
-    QWidget * splitter; //crea le due parti della schemata: sinistra e destra
-    QHBoxLayout * splitterLayout;
-    QWidget * leftSide; //parte sinistra che contiene la copertina del film e i dettagli
-    QWidget * rightSide; //parte destra che contiene la sezione dei trailer (scrollable) e i pulsanti Estendi e Elimina
-    QHBoxLayout * leftLayout;
-    QLabel* endDateLabel; //questa si trova qui per permettere la visualizzazione del cambiamento della data quando si clicca su "Estendi data"
-    QVBoxLayout * rightLayout;
-    void createHeader();
-    void createFilmDetails();
-    void createFilmCard();
-    void createTrailersSection();
-    void createButtons();
+    Film* filmPtr;
+    void createMediaDetails() override;
+    void createScrollableSection() override;
+    void createButtons() override;
 signals:
     void trailerSelected(const Trailer* trailer); //segnale emesso quando cliccato su un trailer del film, trailer è il puntatore al trailer cliccato
-    void extendMediaClicked(); //segnale emesso quando cliccato su "estendi film"
-    void deleteMediaClicked(); //sengale emesso quando cliccato su "elimina film"
-    void returnButton(); //segnale emesso quando cliccato il pulsante "Torna indietro"
 
 };
 #endif

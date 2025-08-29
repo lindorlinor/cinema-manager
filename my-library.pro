@@ -40,7 +40,9 @@ HEADERS +=  \
             GUI/InsertImageFrame.h \
             GUI/MediaFrame.h \
             GUI/SelectMediaReference.h \
+            GUI/MediaView.h \
             GUI/FilmView.h \
+            GUI/TrailerView.h \
             GUI/ExpandableLabel.h \
             GUI/CardTrailer.h \
             GUI/DetailsPageButtons.h \
@@ -75,7 +77,9 @@ SOURCES +=  \
             GUI/InsertImageFrame.cpp \
             GUI/MediaFrame.cpp \
             GUI/SelectMediaReference.cpp \
+            GUI/MediaView.cpp \
             GUI/FilmView.cpp \
+            GUI/TrailerView.cpp \
             GUI/ExpandableLabel.cpp \
             GUI/CardTrailer.cpp \
             GUI/MediaLibraryGenerale.cpp \

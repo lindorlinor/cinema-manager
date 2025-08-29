@@ -40,7 +40,7 @@ private:
 public:
     Media(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
           year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
-          const string &autore = "Sconosciuto", const string &imPath = "immGrigia");
+          const string &autore = "Sconosciuto", const string &imPath = ":/images/default.png");
 
     
     // //metodi get

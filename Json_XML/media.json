@@ -77,7 +77,7 @@
         ],
         "nPostCredit": 5,
         "nomeCinema": "Cinema Aurora",
-        "path": "immGrigia",
+        "path": ":/images/default.png",
         "risoluzione": 2,
         "sottotitoliDisponibili": [
         ],
@@ -103,7 +103,7 @@
         ],
         "nPostCredit": 3,
         "nomeCinema": "Cinema Aurora",
-        "path": "immGrigia",
+        "path": ":/images/default.png",
         "risoluzione": 1,
         "sottotitoliDisponibili": [
         ],
@@ -129,7 +129,7 @@
         ],
         "nPostCredit": 4,
         "nomeCinema": "Cinema Aurora",
-        "path": "immGrigia",
+        "path": ":/images/default.png",
         "risoluzione": 2,
         "sottotitoliDisponibili": [
         ],
@@ -155,7 +155,7 @@
         ],
         "nPostCredit": 2,
         "nomeCinema": "Cinema Aurora",
-        "path": "immGrigia",
+        "path": ":/images/default.png",
         "risoluzione": 1,
         "sottotitoliDisponibili": [
         ],
@@ -181,7 +181,7 @@
         ],
         "nPostCredit": 6,
         "nomeCinema": "Cinema Aurora",
-        "path": "immGrigia",
+        "path": ":/images/default.png",
         "risoluzione": 2,
         "sottotitoliDisponibili": [
         ],
@@ -243,7 +243,7 @@
         "lingueDisponibili": [
         ],
         "nomeCinema": "Cinema Aurora",
-        "path": "immGrigia",
+        "path": ":/images/default.png",
         "risoluzione": 2,
         "sottotitoliDisponibili": [
         ],
@@ -262,7 +262,7 @@
         "lingueDisponibili": [
         ],
         "nomeCinema": "Cinema Aurora",
-        "path": "immGrigia",
+        "path": ":/images/default.png",
         "risoluzione": 1,
         "sottotitoliDisponibili": [
         ],
@@ -284,7 +284,7 @@
         "numeroPubblicita": -4464641,
         "ospiti": [
         ],
-        "path": "immGrigia",
+        "path": ":/images/default.png",
         "podcastAssociato": "",
         "risoluzione": 2,
         "sottotitoliDisponibili": [
@@ -307,7 +307,7 @@
         "numeroPubblicita": 12,
         "ospiti": [
         ],
-        "path": "immGrigia",
+        "path": ":/images/default.png",
         "podcastAssociato": "",
         "risoluzione": 2,
         "sottotitoliDisponibili": [
@@ -330,7 +330,7 @@
         "numeroPubblicita": 2,
         "ospiti": [
         ],
-        "path": "immGrigia",
+        "path": ":/images/default.png",
         "podcastAssociato": "",
         "risoluzione": 2,
         "sottotitoliDisponibili": [
@@ -353,7 +353,7 @@
         "numeroPubblicita": 4,
         "ospiti": [
         ],
-        "path": "immGrigia",
+        "path": ":/images/default.png",
         "podcastAssociato": "",
         "risoluzione": 1,
         "sottotitoliDisponibili": [
@@ -376,13 +376,36 @@
         "numeroPubblicita": 3,
         "ospiti": [
         ],
-        "path": "immGrigia",
+        "path": ":/images/default.png",
         "podcastAssociato": "",
         "risoluzione": 1,
         "sottotitoliDisponibili": [
         ],
         "tipologia": "puntata",
         "titolo": "Il Medioevo"
+    },
+    {
+        "autore": "Sconosciuto",
+        "autorePodcastAssociato": "Sconosciuto",
+        "copertinaCinema": ":/images/default.png",
+        "dataFineRilascio": "2025-05-15",
+        "dataInizioRilascio": "2025-05-05",
+        "descrizione": "Come è cambiato il mondo.",
+        "durataMinuti": 48,
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 1,
+        "ospiti": [
+        ],
+        "path": ":/images/default.png",
+        "podcastAssociato": "",
+        "risoluzione": 1,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "La Rivoluzione Industriale"
     },
     {
         "autore": "Sconosciuto",
@@ -399,7 +422,7 @@
         "lingueDisponibili": [
         ],
         "nomeCinema": "Cinema Aurora",
-        "path": "immGrigia",
+        "path": ":/images/default.png",
         "risoluzione": 1,
         "sottotitoliDisponibili": [
         ],
@@ -422,7 +445,7 @@
         "lingueDisponibili": [
         ],
         "nomeCinema": "Cinema Aurora",
-        "path": "immGrigia",
+        "path": ":/images/default.png",
         "risoluzione": 2,
         "sottotitoliDisponibili": [
         ],
@@ -431,27 +454,30 @@
         "titolo": "Bevanda Frizzante Zeta"
     },
     {
-        "autore": "Sconosciuto",
-        "autorePodcastAssociato": "Sconosciuto",
+        "attoriPrincipali": [
+        ],
+        "autore": "Stanley Nova",
+        "casaDiProduzione": "Cosmo Studios",
         "copertinaCinema": ":/images/default.png",
-        "dataFineRilascio": "2025-05-15",
-        "dataInizioRilascio": "2025-05-05",
-        "descrizione": "Come è cambiato il mondo.",
-        "durataMinuti": 48,
+        "costoBiglietto": 9.1,
+        "dataFineRilascio": "2025-07-05",
+        "dataInizioRilascio": "2025-06-10",
+        "descrizione": "Avventura fantascientifica epica.",
+        "durataMinuti": 140,
         "formato": 0,
+        "generi": [
+        ],
         "lingueDisponibili": [
         ],
+        "nPostCredit": 5,
         "nomeCinema": "Cinema Aurora",
-        "numeroPubblicita": 1,
-        "ospiti": [
-        ],
-        "path": "immGrigia",
-        "podcastAssociato": "",
-        "risoluzione": 1,
+        "path": ":/images/default.png",
+        "risoluzione": 2,
         "sottotitoliDisponibili": [
         ],
-        "tipologia": "puntata",
-        "titolo": "La Rivoluzione Industriale"
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "2001: Odissea nello Spazio"
     },
     {
         "copertinaCinema": ":/images/image1.png",
@@ -464,5 +490,9 @@
     {
         "copertinaCinema": ":/images/default.png",
         "nomeCinema": "Cinema Aurora"
+    },
+    {
+        "copertinaCinema": ":/images/default.png",
+        "nomeCinema": "Cinema Angela"
     }
 ]

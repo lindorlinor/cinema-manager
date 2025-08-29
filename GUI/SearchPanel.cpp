@@ -1,6 +1,7 @@
 #include "SearchPanel.h"
 #include "InsertMedia.h"
 #include "FilmView.h"
+#include "TrailerView.h"
 #include "DetailPageVisitor.h"
 #include "../DataFiles/MediaManagerXml.h"
 
@@ -405,7 +406,7 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
         "Studio Ghibli",
         ":/images/image10.png"
     );
-
+    trailer1->IncrementaVisualizzazioni();
     // Secondo trailer
     Trailer* trailer2 = new Trailer(
         "Trailer speciale anniversario - Il mio vicino Totoro (2025)",
@@ -420,24 +421,30 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
         "Hayao Miyazaki",
         ":/images/image10.png"
     );
+    trailer2->IncrementaVisualizzazioni();
 
     mediaList.append(film);
     mediaList.append(trailer1);
     mediaList.append(trailer2);
 
-    film->accept(visitor);
+    trailer1->accept(visitor);
     QWidget * detailPage = visitor->getWidget();
     stackModifiche->addWidget(detailPage);
     stackModifiche->setCurrentIndex(2);
 
-    connect(static_cast<FilmView*>(detailPage), &FilmView::returnButton, this, [this,detailPage](){
+    connect(static_cast<FilmView*>(detailPage), &MediaView::returnButton, this, [this,detailPage](){
         updateModifierPanel(previousIndex);
         stackModifiche->removeWidget(detailPage);
         delete detailPage;
     });
-
+    /* connect(static_cast<TrailerView*>(detailPage), &TrailerView::returnButton, this, [this,detailPage](){
+        updateModifierPanel(previousIndex);
+        stackModifiche->removeWidget(detailPage);
+        delete detailPage;
+    });
+ */
     // 5 Film
-    mediaList.push_back(new Film("Odissea nello Spazio", "Avventura fantascientifica epica.",
+    mediaList.push_back(new Film("2001: Odissea nello Spazio", "Avventura fantascientifica epica.",
                              year_month_day{2025y, June, 10d}, year_month_day{2025y, July, 5d},
                              140, Formato::DCP, Risoluzione::FullHD_1080p,
                              5, 9.1, "Cosmo Studios", "Stanley Nova"));

@@ -14,61 +14,21 @@
 
 #include <QDebug>
 
-FilmView::FilmView(Film* filmPtr, QWidget* parent)
-    : QWidget(parent), film(filmPtr),layoutPage( new QVBoxLayout(this)),splitter(new QWidget(this)),splitterLayout(new QHBoxLayout(splitter)),leftSide(new QWidget(splitter)),
-     rightSide(new QWidget(splitter)),leftLayout(new QHBoxLayout(leftSide)),endDateLabel(nullptr),rightLayout(new QVBoxLayout(rightSide))
-{
-    this->setObjectName("gugu");
-    
-    createHeader();
-    
-    splitterLayout->setSpacing(55);
-    layoutPage->addWidget(splitter,0,Qt::AlignHCenter);
-
-    createFilmDetails();
-    createTrailersSection();
+FilmView::FilmView(Film* fPtr, QWidget* parent):MediaView(fPtr,parent),filmPtr(fPtr){
+    createMediaDetails();
+    createScrollableSection();
     createButtons();
-
-    setLayout(layoutPage); 
 }
 
 
-void FilmView::createHeader(){
-    QWidget * contenitoreHeader = new QWidget(this);
-    contenitoreHeader->setObjectName("gaga");
-    contenitoreHeader->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-
-    QVBoxLayout * layoutHeader = new QVBoxLayout(contenitoreHeader);
-
-    QPushButton* returnButton = new QPushButton("← indietro",contenitoreHeader);
-    layoutHeader->addWidget(returnButton);
-
-    returnButton->setCursor(Qt::PointingHandCursor);
-    returnButton->setFixedSize(96,26);
-
-    connect(returnButton, &QPushButton::clicked, this, &FilmView::returnButton);
-
-    QLabel *titolo = new QLabel(QString::fromStdString(film->getTitolo()));
-    QFont fontTitolo = titolo->font();
-    fontTitolo.setPointSize(21);
-    fontTitolo.setBold(true);
-    titolo->setFont(fontTitolo);
-
-    layoutHeader->addWidget(titolo);
-    layoutHeader->setAlignment(Qt::AlignLeft);
-
-    layoutPage->addWidget(contenitoreHeader);
-}
-
-
-void FilmView::createFilmDetails(){
+void FilmView::createMediaDetails(){
     leftSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     leftSide->setObjectName("pupu");
     leftSide->setContentsMargins(0,0,0,0);
     leftLayout->setSpacing(0);
     leftLayout->setContentsMargins(0,0,0,0);
     
-    createFilmCard();
+    createMediaCard();
 
     QScrollArea* scrollDetails = new QScrollArea(leftSide);
     QFrame * details = new QFrame(scrollDetails);
@@ -99,18 +59,18 @@ void FilmView::createFilmDetails(){
     
     QLabel* inizioP = new QLabel(
         "<span style='color:white; font-weight:bold;'>Inizio proiezione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(dateToString(film->getDataInizioRilascio())) + "</span>",dettagliProgrammazione);
+        "<span style='color:black;'>" + QString::fromStdString(dateToString(filmPtr->getDataInizioRilascio())) + "</span>",dettagliProgrammazione);
     inizioP->setTextFormat(Qt::RichText);
     endDateLabel = new QLabel(
         "<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(dateToString(film->getDataFineRilascio())) + "</span>",dettagliProgrammazione);
+        "<span style='color:black;'>" + QString::fromStdString(dateToString(filmPtr->getDataFineRilascio())) + "</span>",dettagliProgrammazione);
     endDateLabel->setTextFormat(Qt::RichText);
     inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     endDateLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     QLabel* costoBiglietto = new QLabel(
         "<span style='color:white; font-weight:bold;'>Costo biglietto: </span>"
-        "<span style='color:black;'>" + QString::number(film->getCostoBiglietto()) + " €</span>",dettagliProgrammazione);
+        "<span style='color:black;'>" + QString::number(filmPtr->getCostoBiglietto()) + " €</span>",dettagliProgrammazione);
     costoBiglietto->setTextFormat(Qt::RichText);
     costoBiglietto->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
@@ -135,15 +95,15 @@ void FilmView::createFilmDetails(){
     // Visualizzazioni e incasso
     QLabel* incasso = new QLabel(
         "<span style='color:white; font-weight:bold;'>Incasso totale: </span>"
-        "<span style='color:black;'>" + QString::number(film->calcolaIncasso()) + " €</span>",dettagliPerformance);
+        "<span style='color:black;'>" + QString::number(filmPtr->calcolaIncasso()) + " €</span>",dettagliPerformance);
     incasso->setTextFormat(Qt::RichText);
     QLabel* visualizzazioni = new QLabel(
         "<span style='color:white; font-weight:bold;'>Visualizzazioni: </span>"
-        "<span style='color:black;'>" + QString::number(film->getVisualizzazioni()) + "</span>",dettagliPerformance);
+        "<span style='color:black;'>" + QString::number(filmPtr->getVisualizzazioni()) + "</span>",dettagliPerformance);
     visualizzazioni->setTextFormat(Qt::RichText);
     QLabel* valutazione = new QLabel(
         "<span style='color:white; font-weight:bold;'>Valutazione: </span>"
-    "<span style='color:black;'>" + QString::number(film->getValutazione()) + "/5</span>",dettagliPerformance);
+    "<span style='color:black;'>" + QString::number(filmPtr->getValutazione()) + "/5</span>",dettagliPerformance);
     valutazione->setTextFormat(Qt::RichText);
 
     layoutDettagliPerformance->addWidget(incasso);
@@ -164,15 +124,15 @@ void FilmView::createFilmDetails(){
     
     QLabel* risoluzione = new QLabel(
         "<span style='color:white; font-weight:bold;'>Risoluzione: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(film->getRisoluzione())) + "</span>",dettagliTecnici);
+        "<span style='color:black;'>" + QString::fromUtf8(toString(filmPtr->getRisoluzione())) + "</span>",dettagliTecnici);
     risoluzione->setTextFormat(Qt::RichText);
     QLabel* formato = new QLabel(
         "<span style='color:white; font-weight:bold;'>Formato: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(film->getFormato())) + "</span>",dettagliTecnici);
+        "<span style='color:black;'>" + QString::fromUtf8(toString(filmPtr->getFormato())) + "</span>",dettagliTecnici);
     formato->setTextFormat(Qt::RichText);
     QLabel* postCredit = new QLabel(
         "<span style='color:white; font-weight:bold;'>Post credit: </span>"
-        "<span style='color:black;'>" + QString::number(film->getNPostCredit()) + "</span>",dettagliTecnici);
+        "<span style='color:black;'>" + QString::number(filmPtr->getNPostCredit()) + "</span>",dettagliTecnici);
     postCredit->setTextFormat(Qt::RichText);
     layoutDettagliTecnici->addWidget(risoluzione);
     layoutDettagliTecnici->addWidget(formato);
@@ -192,9 +152,9 @@ void FilmView::createFilmDetails(){
     
     
     ExpandableLabel* descrizione = new ExpandableLabel(
-         "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(film->getDescrizione()),dettagliDettagli);
+         "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(filmPtr->getDescrizione()),dettagliDettagli);
    
-    std::vector<std::string> attoriPrincipali = film->getAttoriPrincipali();
+    std::vector<std::string> attoriPrincipali = filmPtr->getAttoriPrincipali();
     QString attoriText;
     for (size_t i = 0; i < attoriPrincipali.size(); ++i) {
         attoriText += QString::fromStdString(attoriPrincipali[i]);
@@ -207,7 +167,7 @@ void FilmView::createFilmDetails(){
     attoriLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
 
-    std::vector<Genere> generi = film->getGenere();
+    std::vector<Genere> generi = filmPtr->getGenere();
     QString generiText;
     for (size_t i = 0; i < generi.size(); ++i) {
         generiText += QString::fromUtf8(toString(generi[i]));
@@ -223,12 +183,12 @@ void FilmView::createFilmDetails(){
 
     QLabel* classificazione = new QLabel(
         "<span style='color:white; font-weight:bold;'>Classificazione: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(film->getTarget())) + "</span>");
+        "<span style='color:black;'>" + QString::fromUtf8(toString(filmPtr->getTarget())) + "</span>");
     classificazione->setTextFormat(Qt::RichText);
     
     QLabel* casaProduzione = new QLabel(
         "<span style='color:white; font-weight:bold;'>Casa di produzione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(film->getCasaDiProduzione()) + "</span>",dettagliDettagli);
+        "<span style='color:black;'>" + QString::fromStdString(filmPtr->getCasaDiProduzione()) + "</span>",dettagliDettagli);
     casaProduzione->setTextFormat(Qt::RichText);
 
     layoutDettagliDettagli->addWidget(descrizione);
@@ -251,73 +211,7 @@ void FilmView::createFilmDetails(){
 
 }
 
-
-void FilmView::createFilmCard(){
-    QWidget * card = new QWidget(leftSide);
-    QVBoxLayout * cardLayout = new QVBoxLayout(card);
-    card->setContentsMargins(0,0,0,0);
-    cardLayout->setContentsMargins(0,0,0,0);
-    QPixmap image(QString::fromStdString(film->getImPath()));
-    QLabel * copertina = new QLabel(card);
-    QPixmap scaled = image.scaled(330,489,Qt::KeepAspectRatio,Qt::SmoothTransformation);
-    copertina->setPixmap(scaled);
-    cardLayout->addWidget(copertina);
-
-    cardLayout->setSpacing(0);
-    QWidget* box = new QWidget(card);
-    box->setFixedSize(330, 231);
-    box->setObjectName("caca");
-    QVBoxLayout* layoutBox = new QVBoxLayout(box);
-    layoutBox->setContentsMargins(35, 35, 35, 35);
-    layoutBox->setSpacing(10);
-
-    QLabel* regista = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Regista: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(film->getAutore()) + "</span>",box);
-    regista->setTextFormat(Qt::RichText);
-
-    QLabel* durata = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Durata: </span>"
-        "<span style='color:black;'>" + QString::number(film->getDurataMinuti()) + " min</span>",box);
-    durata->setTextFormat(Qt::RichText);
-
-    //creazione label lingue
-    std::vector<Lingua> lingueDisponibili = film->getLingue();
-    QString lingueText;
-    for (size_t i = 0; i < lingueDisponibili.size(); ++i) {
-        lingueText += QString::fromUtf8(toString(lingueDisponibili[i]));
-        if (i != lingueDisponibili.size() - 1) {
-            lingueText += ", ";
-        }
-    }
-    QLabel* lingue = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Lingue: </span>"
-        "<span style='color:black;'>" + lingueText + "</span>",box);
-    lingue->setTextFormat(Qt::RichText);
-
-    //creazione label sottotitoli
-    std::vector<Lingua> sottotitoliDisponibili = film->getSottotitoli();
-    QString sottotitoliText;
-    for (size_t i = 0; i < sottotitoliDisponibili.size(); ++i) {
-        sottotitoliText += QString::fromUtf8(toString(sottotitoliDisponibili[i]));
-        if (i != sottotitoliDisponibili.size() - 1) sottotitoliText += ", ";
-    }
-    QLabel* sottotitoli = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Sottotitoli: </span>"
-        "<span style='color:black;'>" + sottotitoliText + "</span>",box);
-    sottotitoli->setTextFormat(Qt::RichText);
-
-    layoutBox->addWidget(regista);
-    layoutBox->addWidget(durata);
-    layoutBox->addWidget(lingue);
-    layoutBox->addWidget(sottotitoli);
-    layoutBox->setAlignment(Qt::AlignLeft);
-
-    cardLayout->addWidget(box);
-    leftLayout->addWidget(card);
-}
-
-void FilmView::createTrailersSection(){
+void FilmView::createScrollableSection(){
     rightSide->setObjectName("gaga");
     rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
@@ -334,7 +228,7 @@ void FilmView::createTrailersSection(){
     QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
     sezioneTrailer->setObjectName("sp");
 
-    for (const Trailer* t : film->getTrailers()) {
+    for (const Trailer* t : filmPtr->getTrailers()) {
         CardTrailer* card = new CardTrailer(t);
         layoutTrailer->addWidget(card);
         connect(card, &CardTrailer::viewTrailer, this, [this](const Trailer* trailer){
@@ -362,7 +256,7 @@ void FilmView::createButtons(){
             QMessageBox msgBox(this);
             msgBox.setWindowTitle("Conferma estensione data");
 
-            auto fine = film->getDataFineRilascio();
+            auto fine = filmPtr->getDataFineRilascio();
             auto nuovaFine = sys_days(fine) + days{7}; 
 
             msgBox.setText(QString::fromStdString(
