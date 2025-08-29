@@ -505,8 +505,11 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     manager.setCinemaName("Cinema Aurora");
     manager.setCinemaCover(":/images/default.png");
     manager.setCinemaMediaList(mediaList);
-    manager.exportSessionToXml();
-    manager.exportMediaListToXml();
+    /*Se sei angela: questi sono commentati perchè li avevo solo testati, decommenta se hai bisogno
+    Ci sono un bel po di qDebug che vengono stampati che provengono da MediaManagerJson...sembrano tanti
+    non so se è COSÌ CORRETTO che siano così tanti...è normale? viene sovrascritto tutto ogni volta mi fa paura */
+    // manager.exportSessionToXml();
+    // manager.exportMediaListToXml();
     MediaManagerJson jsonManager(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML")); 
-    manager.importSessionFromXml(jsonManager);
+    // manager.importSessionFromXml(jsonManager);
 }
