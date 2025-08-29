@@ -47,6 +47,7 @@ void InsertCinemaPage::checkCinemaNameAvailability(const QString& text) {
     }
     QString nome = text.trimmed();
 
+    //LISTA TEMPORANEA SOLO PER FAR COMPILARE
     MediaManagerJson repo(temporanea, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
     QList<CinemaData*> listCinema;
     repo.loadCinemaData(listCinema);

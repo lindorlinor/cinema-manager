@@ -66,6 +66,7 @@ void CinemaSelectionPage::refreshCinemaButtons() {
     for(CinemaData* c : cinemas) delete c;
     cinemas.clear();
 
+    //LISTA TEMPORANEA SOLO PER FAR COMPILARE
     MediaManagerJson repo(temporanea, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
     repo.loadCinemaData(cinemas);
     for (CinemaData* c : cinemas) {
