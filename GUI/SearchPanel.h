@@ -17,17 +17,21 @@
 
 #include "CinemaSelectionPage.h"
 #include "InsertMedia.h"
+#include "DataFiles/MediaManagerJson.h"
 
 /* #include "MediaLibraryTutto.h" */
 #include "MediaLibraryGenerale.h"
+
+class LibraryObserver;
 
 class SearchPanel:public QWidget{
     Q_OBJECT
     private:
 
+    QList<Media*> mediaList;
+    MediaManagerJson* manager;
 
-    //TEMPORANEO
-    QList<const Media*> listMedia;
+    vector<LibraryObserver*> libraryObservers;
 
     //menu
     void addMenus(QVBoxLayout* mainLayout);
@@ -39,12 +43,21 @@ class SearchPanel:public QWidget{
     * filtrano i Media tra: tutto, film, trailer, inserzione, podcast
     */
    
-   QToolButton* tutto;
-   QToolButton* film;
-   QToolButton* trailer;
-   QToolButton* inserzione;
-   QToolButton* podcast;
-   QToolButton* puntata;
+    QToolButton* tutto;
+    QToolButton* film;
+    QToolButton* trailer;
+    QToolButton* inserzione;
+    QToolButton* podcast;
+    QToolButton* puntata;
+
+    QComboBox* attivita;
+    QComboBox* ordinamento;
+
+    //valori da passarea ll'observer
+    int comboAttivita = 0;   
+    int comboOrdinamento = 0; 
+    QString filtroBottone = "Film"; 
+    QString ricerca = "";
    
    //salva il nome del cinema
    /**
@@ -110,8 +123,14 @@ class SearchPanel:public QWidget{
     //indice per tenere traccia dell'ultima pagina presentata nello stackModifiche e poter tornare indietro
     int previousIndex;
 
+    //metodi che svolgono le attività necessarie che prevengono la chiamata all'update
+    void updateFiltroMedia(const QString& filtro);
+    void preUpdate();
+
     public:
 	explicit SearchPanel(QWidget *parent);
+    void addObserver(LibraryObserver* obs);
+    void update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca);
 
     /**
     * @brief slot per modificare stackModifiche

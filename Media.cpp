@@ -206,3 +206,7 @@ string Media::getImPath() const
 {
     return m_imPath;
 }
+
+bool Media::getMediaAttivo() const{
+    return m_dataFineRilascio <= year_month_day{floor<days>(system_clock::now())};
+}

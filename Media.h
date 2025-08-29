@@ -123,6 +123,8 @@ public:
      */
     virtual double calcolaIncasso() = 0;
 
+    bool getMediaAttivo() const;
+
     //visitor
     virtual void accept(MediaVisitor* visitor) = 0;
 

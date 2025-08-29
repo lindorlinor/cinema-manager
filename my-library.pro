@@ -47,6 +47,7 @@ HEADERS +=  \
             GUI/MediaLibraryGenerale.h \
             GUI/FlowLayout.h \
             GUI/FlowVisitor.h \
+            GUI/LibraryObserver.h \
             DataFiles/CinemaXmlRepository.h \
             DataFiles/MediaManagerJson.h \
             DataFiles/MediaUpdateVisitor.h 

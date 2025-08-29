@@ -5,86 +5,91 @@
 #include <QJsonArray>
 
 
-MediaManagerJson::MediaManagerJson(const QString &basePath, QObject *parent)
-: QObject(parent), m_basePath(basePath)  {}
-
-MediaManagerJson::~MediaManagerJson() {
-    clearMediaList();
-}
-
-void MediaManagerJson::clearMediaList() {
-    for(Media* m : m_mediaList){
-        delete m;       // cancella tutti gli oggetti puntati dai puntatori
-    }
-    m_mediaList.clear();      // svuota la lista
-}
+MediaManagerJson::MediaManagerJson(QList<Media*>& mediaList, const QString &basePath, QObject *parent)
+: QObject(parent), m_basePath(basePath), mediaList(mediaList)  {}
 
 
 // LOAD FILE //
 
-void MediaManagerJson::loadFilms() {
+void MediaManagerJson::loadFilms(const QString& nomeCinema) {
     
     QList<FilmData*> films;
     loadFilmsData(films);
     for (FilmData* data : films) {
-        m_mediaList.append(createFilmFromData(*data));
+        if(data->nomeCinema == nomeCinema)
+            mediaList.append(createFilmFromData(*data));
         delete data;
     }
 }
 
-void MediaManagerJson::loadTrailers() {
+void MediaManagerJson::loadTrailers(const QString& nomeCinema) {
     
     QList<TrailerData*> trailers;
     loadTrailersData(trailers);
     for (TrailerData* data : trailers) {
-        m_mediaList.append(createTrailerFromData(*data));
+        if(data->nomeCinema == nomeCinema)
+            mediaList.append(createTrailerFromData(*data));
         delete data;
     }
 }
 
-void MediaManagerJson::loadInserzioni() {
+void MediaManagerJson::loadInserzioni(const QString& nomeCinema) {
     
     QList<InserzioniData*> inserzioni;
     loadInserzioniData(inserzioni);
     for (InserzioniData* data : inserzioni) {
-        m_mediaList.append(createInserzioneFromData(*data));
+        if(data->nomeCinema == nomeCinema)
+            mediaList.append(createInserzioneFromData(*data));
         delete data;
     }
 }
 
-void MediaManagerJson::loadPodcast() {
+void MediaManagerJson::loadPodcast(const QString& nomeCinema) {
     
     QList<PodcastData*> podcast;
     loadPodcastData(podcast);
     for (PodcastData* data : podcast) {
-        m_mediaList.append(createPodcastFromData(*data));
+        if(data->nomeCinema == nomeCinema)
+            mediaList.append(createPodcastFromData(*data));
         delete data;
     }
 }
 
-void MediaManagerJson::loadPuntate() {
+void MediaManagerJson::loadPuntate(const QString& nomeCinema) {
     
     QList<PuntataData*> puntata;
     loadPuntateData(puntata);
     for (PuntataData* data : puntata) {
-        m_mediaList.append(createPuntataFromData(*data));
+        if(data->nomeCinema == nomeCinema)
+            mediaList.append(createPuntataFromData(*data));
         delete data;
     }
 }
 
-void MediaManagerJson::loadAll() {
+void MediaManagerJson::loadAll(QList<Media*>& list, const QString& nomeCinema) {
+    mediaList.clear();
+    mediaList = list;
 
-    loadFilms();
-    loadTrailers();
-    loadInserzioni();
-    loadPodcast();
-    loadPuntate();
+    loadFilms(nomeCinema);
+    loadTrailers(nomeCinema);
+    loadInserzioni(nomeCinema);
+    loadPodcast(nomeCinema);
+    loadPuntate(nomeCinema);
 }
 
-void MediaManagerJson::remove(Media* media) {
+void MediaManagerJson::removeAll() {
+
+    for(Media* m : mediaList){
+        delete m;
+    }
+
+    mediaList.clear();
+}
+
+void MediaManagerJson::removeMedia(Media* media) {
     if (!media) return;
 
-    m_mediaList.removeOne(media);
+    mediaList.removeOne(media);
     delete media; // libera memoria
 
     QList<MediaData*> mediaData;
@@ -108,7 +113,7 @@ void MediaManagerJson::remove(Media* media) {
         saveCinema(c);
     }
 
-    for(CinemaData* m : mediaData) {
+    for(MediaData* m : mediaData) {
         delete m; 
     }
 }
@@ -138,7 +143,7 @@ void MediaManagerJson::modified(Media& media, MediaData* data) {
         saveCinema(c);
     }
 
-    for (CinemaData* m : mediaData)
+    for (MediaData* m : mediaData)
         delete m;
 }
 
@@ -200,11 +205,11 @@ void MediaManagerJson::updateTrailer(Trailer& media, const TrailerData* data){
     updateCommonField(media, data);
     
     media.setNProiezioniGiornaliere(data->nProiezioniGiornaliere);
-    for(Media* m : m_mediaList){
+    for(Media* m : mediaList){
         Film* f = dynamic_cast<Film*>(m); 
         if(f && f->getTitolo() == data->filmAssociato.toStdString() && f->getAutore() == data->autoreFilmAssociato.toStdString())
-            if(static_cast<Trailer*>(m)->getFilm() != f)
-                static_cast<Trailer*>(m)->associaFilm(f);
+            if(media.getFilm() != f)
+                media.associaFilm(f);
     }
 }
 
@@ -242,19 +247,19 @@ void MediaManagerJson::updatePuntata(Puntata& media, const PuntataData* data){
         media.aggiungiOspite(o.toStdString());
     }
 
-    for(Media* m : m_mediaList){
+    for(Media* m : mediaList){
         Podcast* p = dynamic_cast<Podcast*>(m); 
         if(p && p->getTitolo() == data->podcastAssociato.toStdString() && p->getAutore() == data->autorePodcastAssociato.toStdString())
-            if(static_cast<Puntata*>(m)->getPodcast() != p)
-                static_cast<Puntata*>(m)->associaPodcast(p);
+            if(media.getPodcast() != p)
+                media.associaPodcast(p);
     }
 }
 
 
 
 // TROVA MEDIA PER RIFERIMENTO A PODCAST O FILM //
-Media* MediaManagerJson::findMedia(const QString& titolo, const QString& autore, const QString& tipo){
-    for(Media* m : m_mediaList){
+Media* MediaManagerJson::findMediaReference(const QString& titolo, const QString& autore, const QString& tipo){
+    for(Media* m : mediaList){
         if(m->getAutore() == autore.toStdString() && m->getTitolo() == titolo.toStdString())
             if( (tipo =="trailer" && dynamic_cast<Film*>(m) ) || (tipo == "puntata" && dynamic_cast<Podcast*>(m)))
                 return m;
@@ -274,6 +279,14 @@ year_month_day MediaManagerJson::convertDate(const QDate& data){
 }
 
 // CREATE MEDIA //
+
+void MediaManagerJson::createMedia(const MediaData& data){
+    if(data.tipologia == "film") mediaList.append(createFilmFromData(static_cast<const FilmData&>(data)));
+    else if(data.tipologia == "trailer") mediaList.append(createTrailerFromData(static_cast<const TrailerData&>(data)));
+    else if(data.tipologia == "inserzione") mediaList.append(createInserzioneFromData(static_cast<const InserzioniData&>(data)));
+    else if(data.tipologia == "podcast") mediaList.append(createPodcastFromData(static_cast<const PodcastData&>(data)));
+    else if(data.tipologia == "puntata") mediaList.append(createPuntataFromData(static_cast<const PuntataData&>(data)));
+}
 
 Film* MediaManagerJson::createFilmFromData(const FilmData& data) {
 
@@ -309,7 +322,7 @@ Trailer* MediaManagerJson::createTrailerFromData (const TrailerData& data) {
                           data.formato,
                           data.risoluzione,
                           data.nProiezioniGiornaliere,
-                          static_cast<Film*>(findMedia(data.filmAssociato, data.autoreFilmAssociato, data.tipologia)),
+                          static_cast<Film*>(findMediaReference(data.filmAssociato, data.autoreFilmAssociato, data.tipologia)),
                           data.autore.toStdString(),
                           data.path.toStdString());
 
@@ -382,7 +395,7 @@ Puntata* MediaManagerJson::createPuntataFromData(const PuntataData& data) {
                           convertDate(data.dataInizioRilascio),
                           convertDate(data.dataFineRilascio),
                           data.durataMinuti,
-                          static_cast<Podcast*>(findMedia(data.podcastAssociato, data.autorePodcastAssociato, data.tipologia)),
+                          static_cast<Podcast*>(findMediaReference(data.podcastAssociato, data.autorePodcastAssociato, data.tipologia)),
                           data.numeroPubblicita,
                           data.autore.toStdString(),
                           data.path.toStdString());
@@ -502,6 +515,8 @@ void MediaManagerJson::saveMedia(MediaData* media) {
     
     mediaList.append(media);
     saveList(mediaList);
+
+    createMedia(*media);
 
     for(CinemaData* c : cinemaList){
         saveCinema(c);

@@ -15,16 +15,18 @@ class FlowVisitor : public MediaVisitor {
 
     private:
     QWidget* library; 
-    FlowLayout* flow; 
     const QString& filtro; 
+    MediaFrame* frame;
 public:
-    explicit FlowVisitor(QWidget* l, FlowLayout* f, const QString& filter);
+    explicit FlowVisitor(QWidget* l, const QString& filter);
 
     void visit(Film* film) override;
     void visit(Trailer* trailer) override;
     void visit(Inserzione* inserzione) override;
     void visit(Podcast* podcast) override;
     void visit(Puntata* puntata) override;
+
+    QWidget* getWidget() const;
 
     ~FlowVisitor();
 };

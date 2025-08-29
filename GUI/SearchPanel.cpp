@@ -1,9 +1,14 @@
 #include "SearchPanel.h"
-#include "InsertMedia.h"
 #include "FilmView.h"
 #include "DetailPageVisitor.h"
+#include "LibraryObserver.h"
 
 void SearchPanel::addMenus(QVBoxLayout* mainLayout){
+
+    //gestione del json
+    manager = new MediaManagerJson(mediaList, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"),this);
+    manager->loadAll(mediaList, p_nomeCinema);
+
     QMenuBar* menuBar = new QMenuBar(this);
     
     QMenu* file = new QMenu("File", menuBar);
@@ -39,7 +44,8 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     altro->addAction(new QAction("Exit Full Screen", altro));
     connect(file->actions()[5],&QAction::triggered, this, [this](){ emit escSearchPanel(); 
                                                                     if(stackModifiche->currentIndex()==1) emit resetPages();
-                                                                    stackModifiche->setCurrentIndex(0);});
+                                                                    stackModifiche->setCurrentIndex(0);
+                                                                    manager->removeAll();});
     connect(file->actions()[6], &QAction::triggered, qApp, &QApplication::quit);
     connect(altro->actions()[1], &QAction::triggered, this, &SearchPanel::setFullScreen);
     connect(altro->actions()[2], &QAction::triggered, this, &SearchPanel::escFullScreen);
@@ -180,9 +186,8 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     cerca->setPlaceholderText("Cerca in Tutto...");
     
     //barra dei filtri
-    QComboBox* attivita = new QComboBox(this);
-    QComboBox* popolarita = new QComboBox(this);
-    QComboBox* recenti = new QComboBox(this);
+    attivita = new QComboBox(this);
+    ordinamento = new QComboBox(this);
     QWidget* widgetDestra = new QWidget(this);
     
     QToolButton* filtri = new QToolButton(this);
@@ -190,16 +195,15 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
 
     attivita->addItem("Attivi");
     attivita->addItem("Non Attivi");
-    popolarita->addItem("Popolari");
-    popolarita->addItem("Non Popolari");
-    recenti->addItem("Recenti");
-    recenti->addItem("Non Recenti");
+    attivita->addItem("Tutti");
+    ordinamento->addItem("Popolari");
+    ordinamento->addItem("Non Popolari");
+    ordinamento->addItem("Recenti");
+    ordinamento->addItem("Meno Recenti");
     
     barraFiltri->addWidget(attivita);
     barraFiltri->addSpacing(10);
-    barraFiltri->addWidget(popolarita);
-    barraFiltri->addSpacing(10);
-    barraFiltri->addWidget(recenti);
+    barraFiltri->addWidget(ordinamento);
     barraFiltri->addSpacing(10);
     barraFiltri->addWidget(filtri);
     barraFiltri->addSpacing(750);
@@ -207,13 +211,6 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     widgetSelezioneFiltri->setLayout(barraFiltri);
     
     stackLibreria = new QStackedWidget(this);
-    
-    connect(tutto, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Tutto");}); //uso una lambda per passare la stringa "Tutto" poiché non è possibile chiamare la funzione
-    connect(film, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Film");});
-    connect(trailer, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Trailer");});
-    connect(inserzione, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Inserzioni");});
-    connect(podcast, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Podcast");});
-    connect(puntata, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Puntata");});
     
     latoDestra->addWidget(cerca);
     latoDestra->addWidget(widgetSelezioneFiltri);
@@ -229,26 +226,32 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     
     
     //pannello di aggiunta media
-    InsertMedia* nuovoMedia = new InsertMedia(this);
+    InsertMedia* nuovoMedia = new InsertMedia(manager, this);
     stackModifiche->addWidget(nuovoMedia);
     
     metodoTemporaneoPerPagineDiVisualizzazione();
 
     //pannello per la libreria dei media
 /*     MediaLibraryTutto* libreriaMediaTutto = new MediaLibraryTutto(this); */
-    MediaLibraryGenerale* libreriaMediaGenerale = new MediaLibraryGenerale(listMedia, film->objectName() ,this);
+    MediaLibraryGenerale* libreriaMediaGenerale = new MediaLibraryGenerale(mediaList, film->objectName() ,this);
+
+    this->addObserver(libreriaMediaGenerale);
+
 /*     stackLibreria->addWidget(libreriaMediaTutto); */
     stackLibreria->addWidget(libreriaMediaGenerale);
     stackLibreria->setCurrentIndex(0);
     
     //GESTIONE PULSANTI
+    connect(cerca, &QLineEdit::textChanged, this, [this](const QString &testo){ ricerca = testo; 
+                                                                                for(auto o : libraryObservers) 
+                                                                                    o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca);});
     connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
-/*     connect(tutto, &QToolButton::clicked, this, [this](){stackLibreria->setCurrentIndex(0);}); */
-    connect(film, &QToolButton::clicked, this, [this,libreriaMediaGenerale](){stackLibreria->setCurrentIndex(0); libreriaMediaGenerale->getFiltro("Film");});
-    connect(trailer, &QToolButton::clicked, this, [this,libreriaMediaGenerale](){stackLibreria->setCurrentIndex(0); libreriaMediaGenerale->getFiltro("Trailer");});
-    connect(inserzione, &QToolButton::clicked, this, [this,libreriaMediaGenerale](){stackLibreria->setCurrentIndex(0); libreriaMediaGenerale->getFiltro("Inserzione");});
-    connect(podcast, &QToolButton::clicked, this, [this,libreriaMediaGenerale](){stackLibreria->setCurrentIndex(0); libreriaMediaGenerale->getFiltro("Podcast");});
-    connect(puntata, &QToolButton::clicked, this, [this,libreriaMediaGenerale](){stackLibreria->setCurrentIndex(0); libreriaMediaGenerale->getFiltro("Puntata");});
+/*     connect(tutto, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Tutto"); stackLibreria->setCurrentIndex(0);}); */
+    connect(film, &QToolButton::clicked, this, [this](){updateFiltroMedia("Film");});
+    connect(trailer, &QToolButton::clicked, this, [this](){updateFiltroMedia("Trailer");});
+    connect(inserzione, &QToolButton::clicked, this, [this](){updateFiltroMedia("Inserzione");});
+    connect(podcast, &QToolButton::clicked, this, [this](){updateFiltroMedia("Podcast");});
+    connect(puntata, &QToolButton::clicked, this, [this](){updateFiltroMedia("Puntata");});
 
 
     connect(this, &SearchPanel::giveCinemaInfoToIP, nuovoMedia, &InsertMedia::getCinemaInfo);
@@ -266,22 +269,17 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     attivita->setView(new QListView(attivita));
     attivita->view()->setFrameShape(QFrame::NoFrame);
     attivita->view()->setAttribute(Qt::WA_Hover, true);
-    popolarita->setView(new QListView(popolarita));
-    popolarita->view()->setFrameShape(QFrame::NoFrame);
-    popolarita->view()->setAttribute(Qt::WA_Hover, true);
-    recenti->setView(new QListView(recenti));
-    recenti->view()->setFrameShape(QFrame::NoFrame);
-    recenti->view()->setAttribute(Qt::WA_Hover, true);
+    ordinamento->setView(new QListView(ordinamento));
+    ordinamento->view()->setFrameShape(QFrame::NoFrame);
+    ordinamento->view()->setAttribute(Qt::WA_Hover, true);
 
     filtri->setObjectName("filtri");
     vista->setObjectName("vista");
     cerca->setObjectName("cerca");
     attivita->setObjectName("attivita");
-    popolarita->setObjectName("popolarita");
-    recenti->setObjectName("recenti");
+    ordinamento->setObjectName("ordinamento");
     attivita->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    popolarita->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    recenti->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    ordinamento->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     filtri->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     vista->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     cerca->setContentsMargins(50, 10, 100, 0);
@@ -324,7 +322,10 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
     ricerca->addWidget(widgetFiltri);
     ricerca->addWidget(stackModifiche);
     mainLayout->addLayout(ricerca);
-    
+
+    connect(attivita, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int index){ comboAttivita = index; preUpdate();});
+    connect(ordinamento, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int index){comboOrdinamento = index; preUpdate();});
+
     //style
     widgetFiltri->setObjectName("widgetFiltri");
     stackModifiche->setObjectName("stackModifiche");
@@ -420,9 +421,9 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
         ":/images/image10.png"
     );
 
-    listMedia.append(film);
-    listMedia.append(trailer1);
-    listMedia.append(trailer2);
+    mediaList.append(film);
+    mediaList.append(trailer1);
+    mediaList.append(trailer2);
 
     film->accept(visitor);
     QWidget * detailPage = visitor->getWidget();
@@ -434,4 +435,26 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
         stackModifiche->removeWidget(detailPage);
         delete detailPage;
     });
+}
+
+void SearchPanel::addObserver(LibraryObserver* obs){
+    libraryObservers.push_back(obs);
+}
+
+void SearchPanel::update(int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca){
+    for(auto obs : libraryObservers){
+        obs->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca);
+    }
+}
+
+void SearchPanel::updateFiltroMedia(const QString& filtro){
+    updateCerca(filtro);
+    stackLibreria->setCurrentIndex(0);
+    filtroBottone = filtro;
+    preUpdate();
+}
+
+void SearchPanel::preUpdate(){
+    for(auto o : libraryObservers)
+        o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca);
 }
