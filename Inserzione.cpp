@@ -68,7 +68,7 @@ double Inserzione::calcolaIncasso()
 }
 
 //metodi get
-/* Classificazione Inserzione::getTarget() const{
+Classificazione Inserzione::getTarget() const{
     return i_target;
 }
 
@@ -78,7 +78,7 @@ string Inserzione::getAziendaInserzionistica() const{
 
 double Inserzione::getCostoFissoProiezione() const{
     return i_costoFissoProiezione;
-} */
+}
 
 //metodi set
 void Inserzione::setTarget(const Classificazione& target){

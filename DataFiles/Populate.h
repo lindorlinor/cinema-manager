@@ -46,7 +46,7 @@ struct TrailerData : public PubblicitaData {
     QString autoreFilmAssociato;
 };
 
-struct InserzioniData : public PubblicitaData{
+struct InserzioneData : public PubblicitaData{
     Classificazione target;
     QString aziendaInserzionista;
     double costoFissoProiezione;

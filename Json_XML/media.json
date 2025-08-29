@@ -11,33 +11,7 @@
         "descrizione": "",
         "durataMinuti": 0,
         "formato": 0,
-        "genere": [
-        ],
-        "lingueDisponibili": [
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "cinema1",
-        "path": ":/images/default.png",
-        "risoluzione": 0,
-        "sottotitoliDisponibili": [
-        ],
-        "target": 0,
-        "tipologia": "film",
-        "titolo": "titolo film"
-    },
-    {
-        "attoriPrincipali": [
-        ],
-        "autore": "autore",
-        "casaDiProduzione": "",
-        "copertinaCinema": ":/images/image1.png",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-08-27",
-        "dataInizioRilascio": "2025-08-27",
-        "descrizione": "",
-        "durataMinuti": 0,
-        "formato": 0,
-        "genere": [
+        "generi": [
         ],
         "lingueDisponibili": [
         ],
@@ -52,25 +26,432 @@
         "titolo": "titolo film 2"
     },
     {
-        "autore": "autore",
-        "autoreFilmAssociato": "autore",
-        "copertinaCinema": ":/images/image1.png",
-        "dataFineRilascio": "",
-        "dataInizioRilascio": "",
-        "descrizione": "",
-        "durataMinuti": 0,
-        "filmAssociato": "titolo film",
+        "attoriPrincipali": [
+            "Noriko Hidaka",
+            "Chika Sakamoto",
+            "Shigesato Itoi",
+            "Hitoshi Takagi",
+            "Takashi Nagasako"
+        ],
+        "autore": "Hayao Miyazaki",
+        "casaDiProduzione": "Studio Ghibli",
+        "copertinaCinema": "",
+        "costoBiglietto": 12.5,
+        "dataFineRilascio": "2025-06-30",
+        "dataInizioRilascio": "2025-06-01",
+        "descrizione": "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
+        "durataMinuti": 86,
+        "formato": 0,
+        "generi": [
+        ],
+        "lingueDisponibili": [
+            0,
+            1
+        ],
+        "nPostCredit": 1,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/image9.png",
+        "risoluzione": 4,
+        "sottotitoliDisponibili": [
+            0
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "Il mio vicino Totoro (RE-RELEASE 2025)"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "Stanley Nova",
+        "casaDiProduzione": "Cosmo Studios",
+        "copertinaCinema": ":/images/default.png",
+        "costoBiglietto": 9.1,
+        "dataFineRilascio": "2025-07-05",
+        "dataInizioRilascio": "2025-06-10",
+        "descrizione": "Avventura fantascientifica epica.",
+        "durataMinuti": 140,
+        "formato": 0,
+        "generi": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 5,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": 2,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "Odissea nello Spazio"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "Laura Rossi",
+        "casaDiProduzione": "Mediterranea Film",
+        "copertinaCinema": ":/images/default.png",
+        "costoBiglietto": 7.8,
+        "dataFineRilascio": "2025-08-20",
+        "dataInizioRilascio": "2025-08-01",
+        "descrizione": "Thriller ambientato in un villaggio italiano.",
+        "durataMinuti": 110,
+        "formato": 9,
+        "generi": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 3,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": 1,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "Il Segreto della Laguna"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "Kenji Yamato",
+        "casaDiProduzione": "Future Pictures",
+        "copertinaCinema": ":/images/default.png",
+        "costoBiglietto": 8.6,
+        "dataFineRilascio": "2025-10-02",
+        "dataInizioRilascio": "2025-09-12",
+        "descrizione": "Dramma su un robot che scopre l’umanità.",
+        "durataMinuti": 125,
+        "formato": 0,
+        "generi": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 4,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": 2,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "Cuore di Acciaio"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "Marta Verdi",
+        "casaDiProduzione": "Arthouse Films",
+        "copertinaCinema": ":/images/default.png",
+        "costoBiglietto": 7.2,
+        "dataFineRilascio": "2025-03-25",
+        "dataInizioRilascio": "2025-03-05",
+        "descrizione": "Un viaggio introspettivo tra sogno e realtà.",
+        "durataMinuti": 98,
+        "formato": 0,
+        "generi": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 2,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": 1,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "Risveglio"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "Hao Zhang",
+        "casaDiProduzione": "Dragon Studios",
+        "copertinaCinema": ":/images/default.png",
+        "costoBiglietto": 8.9,
+        "dataFineRilascio": "2025-12-20",
+        "dataInizioRilascio": "2025-11-20",
+        "descrizione": "Fantasy epico con battaglie tra regni.",
+        "durataMinuti": 160,
+        "formato": 9,
+        "generi": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 6,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": 2,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "film",
+        "titolo": "L’Ombra del Drago"
+    },
+    {
+        "autore": "Studio Ghibli",
+        "autoreFilmAssociato": "Hayao Miyazaki",
+        "copertinaCinema": ":/images/default.png",
+        "dataFineRilascio": "2025-05-31",
+        "dataInizioRilascio": "2025-04-15",
+        "descrizione": "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
+        "durataMinuti": 2,
+        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
         "formato": 0,
         "lingueDisponibili": [
         ],
-        "nProiezioniGiornaliere": 0,
-        "nomeCinema": "cinema1",
-        "path": ":/images/default.png",
-        "risoluzione": 0,
+        "nProiezioniGiornaliere": 5,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/image10.png",
+        "risoluzione": 4,
         "sottotitoliDisponibili": [
         ],
         "tipologia": "trailer",
-        "titolo": "trailer film 1"
+        "titolo": "Trailer ufficiale - Il mio vicino Totoro (2025)"
+    },
+    {
+        "autore": "Hayao Miyazaki",
+        "autoreFilmAssociato": "Hayao Miyazaki",
+        "copertinaCinema": ":/images/default.png",
+        "dataFineRilascio": "2025-06-15",
+        "dataInizioRilascio": "2025-05-01",
+        "descrizione": "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
+        "durataMinuti": 3,
+        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 3,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/image10.png",
+        "risoluzione": 4,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
+    },
+    {
+        "autore": "Sconosciuto",
+        "conduttore": "Sconosciuto",
+        "copertinaCinema": ":/images/default.png",
+        "dataFineRilascio": "2025-03-12",
+        "dataInizioRilascio": "2025-01-10",
+        "descrizione": "Racconti di fantascienza e tecnologia.",
+        "durataMinuti": 150,
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": 2,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "Storie dal Futuro"
+    },
+    {
+        "autore": "Sconosciuto",
+        "conduttore": "Sconosciuto",
+        "copertinaCinema": ":/images/default.png",
+        "dataFineRilascio": "2025-05-15",
+        "dataInizioRilascio": "2025-04-01",
+        "descrizione": "Analisi di eventi e figure storiche.",
+        "durataMinuti": 130,
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": 1,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "Cronache Storiche"
+    },
+    {
+        "autore": "Sconosciuto",
+        "autorePodcastAssociato": "Sconosciuto",
+        "copertinaCinema": ":/images/default.png",
+        "dataFineRilascio": "2025-01-20",
+        "dataInizioRilascio": "2025-01-10",
+        "descrizione": "Discussione su AI e coscienza.",
+        "durataMinuti": 50,
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": -4464641,
+        "ospiti": [
+        ],
+        "path": ":/images/default.png",
+        "podcastAssociato": "",
+        "risoluzione": 2,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "Robot e Umanità"
+    },
+    {
+        "autore": "Sconosciuto",
+        "autorePodcastAssociato": "Sconosciuto",
+        "copertinaCinema": ":/images/default.png",
+        "dataFineRilascio": "2025-02-15",
+        "dataInizioRilascio": "2025-02-05",
+        "descrizione": "Urbanistica futuristica.",
+        "durataMinuti": 45,
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 12,
+        "ospiti": [
+        ],
+        "path": ":/images/default.png",
+        "podcastAssociato": "",
+        "risoluzione": 2,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "Città del Domani"
+    },
+    {
+        "autore": "Sconosciuto",
+        "autorePodcastAssociato": "Sconosciuto",
+        "copertinaCinema": ":/images/default.png",
+        "dataFineRilascio": "2025-03-12",
+        "dataInizioRilascio": "2025-03-01",
+        "descrizione": "Le sfide della colonizzazione spaziale.",
+        "durataMinuti": 55,
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 2,
+        "ospiti": [
+        ],
+        "path": ":/images/default.png",
+        "podcastAssociato": "",
+        "risoluzione": 2,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "Viaggi Interstellari"
+    },
+    {
+        "autore": "Sconosciuto",
+        "autorePodcastAssociato": "Sconosciuto",
+        "copertinaCinema": ":/images/default.png",
+        "dataFineRilascio": "2025-04-10",
+        "dataInizioRilascio": "2025-04-01",
+        "descrizione": "La nascita dell’Impero.",
+        "durataMinuti": 40,
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 4,
+        "ospiti": [
+        ],
+        "path": ":/images/default.png",
+        "podcastAssociato": "",
+        "risoluzione": 1,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "La Roma Antica"
+    },
+    {
+        "autore": "Sconosciuto",
+        "autorePodcastAssociato": "Sconosciuto",
+        "copertinaCinema": ":/images/default.png",
+        "dataFineRilascio": "2025-04-28",
+        "dataInizioRilascio": "2025-04-20",
+        "descrizione": "Un viaggio tra castelli e cavalieri.",
+        "durataMinuti": 42,
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 3,
+        "ospiti": [
+        ],
+        "path": ":/images/default.png",
+        "podcastAssociato": "",
+        "risoluzione": 1,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "Il Medioevo"
+    },
+    {
+        "autore": "Sconosciuto",
+        "aziendaInserzionista": "",
+        "copertinaCinema": ":/images/default.png",
+        "costoFissoProiezione": 50,
+        "dataFineRilascio": "2025-05-30",
+        "dataInizioRilascio": "2025-05-01",
+        "descrizione": "Campagna pubblicitaria nuovo modello X15.",
+        "durataMinuti": 30,
+        "fasceOrarie": [
+        ],
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": 1,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "inserzione",
+        "titolo": "Promo Smartphone X15"
+    },
+    {
+        "autore": "Sconosciuto",
+        "aziendaInserzionista": "",
+        "copertinaCinema": ":/images/default.png",
+        "costoFissoProiezione": 35,
+        "dataFineRilascio": "2025-07-15",
+        "dataInizioRilascio": "2025-06-15",
+        "descrizione": "Spot per la nuova linea estiva.",
+        "durataMinuti": 25,
+        "fasceOrarie": [
+        ],
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": 2,
+        "sottotitoliDisponibili": [
+        ],
+        "target": 0,
+        "tipologia": "inserzione",
+        "titolo": "Bevanda Frizzante Zeta"
+    },
+    {
+        "autore": "Sconosciuto",
+        "autorePodcastAssociato": "Sconosciuto",
+        "copertinaCinema": ":/images/default.png",
+        "dataFineRilascio": "2025-05-15",
+        "dataInizioRilascio": "2025-05-05",
+        "descrizione": "Come è cambiato il mondo.",
+        "durataMinuti": 48,
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 1,
+        "ospiti": [
+        ],
+        "path": ":/images/default.png",
+        "podcastAssociato": "",
+        "risoluzione": 1,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "La Rivoluzione Industriale"
     },
     {
         "copertinaCinema": ":/images/image1.png",
@@ -79,5 +460,9 @@
     {
         "copertinaCinema": ":/images/default.png",
         "nomeCinema": "cinema vuoto"
+    },
+    {
+        "copertinaCinema": ":/images/default.png",
+        "nomeCinema": "Cinema Aurora"
     }
 ]

@@ -389,9 +389,10 @@ void FilmView::createButtons(){
         msgBox.setText("Sei sicuro di voler eliminare il film? "
                     "Avrà l'effetto di eliminare tutti i trailer ad esso associati");
 
-
-        QPushButton *btnAnnulla = msgBox.addButton("Annulla", QMessageBox::RejectRole);
-        QPushButton *btnConferma = msgBox.addButton("Conferma", QMessageBox::AcceptRole);
+        //qui è da rivedere comunque. btnAnnulla e btnConferma potebbero essere rimossi 
+        //ma sono utili nel caso incui si voglia mandare segnali
+        msgBox.addButton("Annulla", QMessageBox::RejectRole);
+        msgBox.addButton("Conferma", QMessageBox::AcceptRole);
         int ret = msgBox.exec();
         if (ret == QMessageBox::Ok) {
             qDebug() << "Confermato";

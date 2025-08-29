@@ -19,7 +19,7 @@ private:
 public:
     Pubblicita(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
                year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
-               unsigned int nProiezioniGiornaliere, const string &autore = "Sconosciuto", const string &path = "immGrigia");
+               unsigned int nProiezioniGiornaliere, const string &autore = "Sconosciuto", const string &path = ":/images/default.png");
 
     
     unsigned int getNProiezioniGiornaliere() const;

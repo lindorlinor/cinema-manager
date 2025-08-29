@@ -17,8 +17,8 @@ void MediaUpdateVisitor::visit(Trailer* trailer){
 }
 
 void MediaUpdateVisitor::visit(Inserzione* inserzione){
-    *static_cast<InserzioniData*>(currentData) = *static_cast<InserzioniData*>(newData);
-    manager->updateInserzione(*inserzione, static_cast<InserzioniData*>(currentData));
+    *static_cast<InserzioneData*>(currentData) = *static_cast<InserzioneData*>(newData);
+    manager->updateInserzione(*inserzione, static_cast<InserzioneData*>(currentData));
 }
 
 void MediaUpdateVisitor::visit(Podcast* podcast){

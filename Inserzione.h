@@ -25,15 +25,15 @@ public:
     Inserzione(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
                year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
                unsigned int nProiezioniGiornaliere, const Classificazione& target, double costoProiezione,const string &aziendaInserzionista = "Sconosciuto", 
-               const string &autore = "Sconosciuto", const string &path = "immGrigia");
+               const string &autore = "Sconosciuto", const string &path = ":/images/default.png");
 
     
     
     void aggiungiFasciaOraria(FasciaOraria fasciaO);
     void rimuoviFasciaOraria(FasciaOraria fasciaO);
-    /* Classificazione getTarget() const;
+    Classificazione getTarget() const;
     string getAziendaInserzionistica() const;
-    double getCostoFissoProiezione() const; */
+    double getCostoFissoProiezione() const;
     void setTarget(const Classificazione& target);
     void setAziendaInserzionistica(const string& nome);
     void setCostoFissoProiezione(const double& nome);

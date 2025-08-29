@@ -52,7 +52,7 @@ class MediaManagerJson : public QObject{
         /**
         * @brief Crea tutti gli oggetti contenuti nel Json del rispettivo cinema chiamato
         */
-        void loadAll(QList<Media*>& list, const QString& nomeCinema);
+        void loadAll();
 
         /**
         * @brief Elimina tutti gli oggetti creati
@@ -99,11 +99,14 @@ class MediaManagerJson : public QObject{
          */
 
         void saveCinema(CinemaData* cinema);
+
+        void getCinemaNome(const QString& nomeCinema);
         
 
     private:
         QString m_basePath;
         QList<Media*>& mediaList;
+        QString cinemaAttuale;
 
         //load Data
         /**
@@ -112,7 +115,7 @@ class MediaManagerJson : public QObject{
         
         void loadFilmsData(QList<FilmData*>& films);
         void loadTrailersData(QList<TrailerData*>& trailers);
-        void loadInserzioniData(QList<InserzioniData*>& inserzioni);
+        void loadInserzioniData(QList<InserzioneData*>& inserzioni);
         void loadPodcastData(QList<PodcastData*>& podcasts);
         void loadPuntateData(QList<PuntataData*>& puntata);
 
@@ -122,11 +125,11 @@ class MediaManagerJson : public QObject{
          * 
          * creano gli oggetti Media con i dati ottenuti dalle struct e li aggiungono alla lista m_mediaList
          */
-        void loadFilms(const QString& nomeCinema);
-        void loadTrailers(const QString& nomeCinema);
-        void loadInserzioni(const QString& nomeCinema);
-        void loadPodcast(const QString& nomeCinema);
-        void loadPuntate(const QString& nomeCinema);
+        void loadFilms();
+        void loadTrailers();
+        void loadInserzioni();
+        void loadPodcast();
+        void loadPuntate();
 
         //createMedia
         /**
@@ -136,7 +139,7 @@ class MediaManagerJson : public QObject{
          */
         Film* createFilmFromData(const FilmData& data);
         Trailer* createTrailerFromData(const TrailerData& data);
-        Inserzione* createInserzioneFromData(const InserzioniData& data);
+        Inserzione* createInserzioneFromData(const InserzioneData& data);
         Podcast* createPodcastFromData(const PodcastData& data);
         Puntata* createPuntataFromData(const PuntataData& data);
         void createMedia(const MediaData& data);
@@ -159,7 +162,7 @@ class MediaManagerJson : public QObject{
         void saveList(QList<MediaData*>& mediaList);
         void saveFilm(FilmData* film, QJsonObject& obj);
         void saveTrailer(TrailerData* trailer, QJsonObject& obj);
-        void saveInserzione(InserzioniData * inserzione, QJsonObject& obj);
+        void saveInserzione(InserzioneData * inserzione, QJsonObject& obj);
         void savePodcast(PodcastData* podcast, QJsonObject& obj);
         void savePuntata(PuntataData* puntata, QJsonObject& obj);  
 
@@ -173,7 +176,7 @@ class MediaManagerJson : public QObject{
          */
         void updateFilm( Film& media, const FilmData* data);
         void updateTrailer( Trailer& media, const TrailerData* data);
-        void updateInserzione( Inserzione& media, const InserzioniData* data);
+        void updateInserzione( Inserzione& media, const InserzioneData* data);
         void updatePodcast( Podcast& media, const PodcastData* data);
         void updatePuntata( Puntata& media, const PuntataData* data);
 

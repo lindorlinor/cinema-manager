@@ -26,7 +26,7 @@ private:
 public:
     Podcast(const string &titolo, const string &descrizione,
             Formato formato, Risoluzione risoluzione,
-            const string &autore = "Sconosciuto", const string &path = "immGrigia", const string &conduttore="Sconosciuto");
+            const string &autore = "Sconosciuto", const string &path = ":/images/default.png", const string &conduttore="Sconosciuto");
 
     ~Podcast();
     
@@ -103,7 +103,7 @@ public:
      */
     void aggiornaDate();
 
-    /* string getConduttore() const; */
+    string getConduttore() const;
     void setConduttore(const string& nome);
 
     //visitor

@@ -2,12 +2,12 @@
 #include "FilmView.h"
 #include "DetailPageVisitor.h"
 #include "LibraryObserver.h"
+#include "../DataFiles/MediaManagerXml.h"
 
 void SearchPanel::addMenus(QVBoxLayout* mainLayout){
 
     //gestione del json
     manager = new MediaManagerJson(mediaList, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"),this);
-    manager->loadAll(mediaList, p_nomeCinema);
 
     QMenuBar* menuBar = new QMenuBar(this);
     
@@ -45,7 +45,8 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     connect(file->actions()[5],&QAction::triggered, this, [this](){ emit escSearchPanel(); 
                                                                     if(stackModifiche->currentIndex()==1) emit resetPages();
                                                                     stackModifiche->setCurrentIndex(0);
-                                                                    manager->removeAll();});
+                                                                    manager->removeAll();
+                                                                    preUpdate();});
     connect(file->actions()[6], &QAction::triggered, qApp, &QApplication::quit);
     connect(altro->actions()[1], &QAction::triggered, this, &SearchPanel::setFullScreen);
     connect(altro->actions()[2], &QAction::triggered, this, &SearchPanel::escFullScreen);
@@ -114,7 +115,9 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
 
     connect(cinema, &QToolButton::clicked, this, [this](){ emit escSearchPanel(); 
                                                                     if(stackModifiche->currentIndex()==1) emit resetPages();
-                                                                    stackModifiche->setCurrentIndex(0);});
+                                                                    stackModifiche->setCurrentIndex(0);
+                                                                    manager->removeAll();
+                                                                    preUpdate();});
 
     //style
 
@@ -229,7 +232,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     InsertMedia* nuovoMedia = new InsertMedia(manager, this);
     stackModifiche->addWidget(nuovoMedia);
     
-    metodoTemporaneoPerPagineDiVisualizzazione();
+    /* metodoTemporaneoPerPagineDiVisualizzazione(); */
 
     //pannello per la libreria dei media
 /*     MediaLibraryTutto* libreriaMediaTutto = new MediaLibraryTutto(this); */
@@ -355,9 +358,32 @@ SearchPanel::SearchPanel(QWidget *parent): QWidget(parent){
 void SearchPanel::updateInfoCinema(const CinemaData& data){
     //selezione Cinema
     cinema->setText("Cinema "+data.nomeCinema);
+    manager->getCinemaNome(data.nomeCinema);
+    manager->loadAll();
     emit giveCinemaInfoToIP(data);
 }
 
+void SearchPanel::addObserver(LibraryObserver* obs){
+    libraryObservers.push_back(obs);
+}
+
+void SearchPanel::update(int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca){
+    for(auto obs : libraryObservers){
+        obs->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca);
+    }
+}
+
+void SearchPanel::updateFiltroMedia(const QString& filtro){
+    updateCerca(filtro);
+    stackLibreria->setCurrentIndex(0);
+    filtroBottone = filtro;
+    preUpdate();
+}
+
+void SearchPanel::preUpdate(){
+    for(auto o : libraryObservers)
+        o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca);
+}
 
 void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     /*ROBA DA MODIFICARE, LA METTO QUI PER FARE LA PAGINA DI VISUALIZZAZIONE*/
@@ -435,26 +461,82 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
         stackModifiche->removeWidget(detailPage);
         delete detailPage;
     });
-}
 
-void SearchPanel::addObserver(LibraryObserver* obs){
-    libraryObservers.push_back(obs);
-}
+    // 5 Film
+    mediaList.push_back(new Film("Odissea nello Spazio", "Avventura fantascientifica epica.",
+                             year_month_day{2025y, June, 10d}, year_month_day{2025y, July, 5d},
+                             140, Formato::DCP, Risoluzione::FullHD_1080p,
+                             5, 9.1, "Cosmo Studios", "Stanley Nova"));
+    mediaList.push_back(new Film("Il Segreto della Laguna", "Thriller ambientato in un villaggio italiano.",
+                             year_month_day{2025y, August, 1d}, year_month_day{2025y, August, 20d},
+                             110, Formato::IMAX_3D, Risoluzione::HD_720p,
+                             3, 7.8, "Mediterranea Film", "Laura Rossi"));
+    mediaList.push_back(new Film("Cuore di Acciaio", "Dramma su un robot che scopre l’umanità.",
+                             year_month_day{2025y, September, 12d}, year_month_day{2025y, October, 2d},
+                             125, Formato::DCP, Risoluzione::FullHD_1080p,
+                             4, 8.6, "Future Pictures", "Kenji Yamato"));
+    mediaList.push_back(new Film("Risveglio", "Un viaggio introspettivo tra sogno e realtà.",
+                             year_month_day{2025y, March, 5d}, year_month_day{2025y, March, 25d},
+                             98, Formato::DCP, Risoluzione::HD_720p,
+                             2, 7.2, "Arthouse Films", "Marta Verdi"));
+    mediaList.push_back(new Film("L’Ombra del Drago", "Fantasy epico con battaglie tra regni.",
+                             year_month_day{2025y, November, 20d}, year_month_day{2025y, December, 20d},
+                             160, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
+                             6, 8.9, "Dragon Studios", "Hao Zhang"));
 
-void SearchPanel::update(int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca){
-    for(auto obs : libraryObservers){
-        obs->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca);
-    }
-}
+    // 2 Inserzioni
+    mediaList.push_back(new Inserzione("Promo Smartphone X15", "Campagna pubblicitaria nuovo modello X15.",
+                                   year_month_day{2025y, May, 1d}, year_month_day{2025y, May, 30d},
+                                   30, Formato::DCP, Risoluzione::HD_720p,
+                                   20, Classificazione::TUTTI, 50.0, "TechCorp"));
+    mediaList.push_back(new Inserzione("Bevanda Frizzante Zeta", "Spot per la nuova linea estiva.",
+                                   year_month_day{2025y, June, 15d}, year_month_day{2025y, July, 15d},
+                                   25, Formato::DCP, Risoluzione::FullHD_1080p,
+                                   18, Classificazione::TUTTI, 35.0, "DrinkIt"));
 
-void SearchPanel::updateFiltroMedia(const QString& filtro){
-    updateCerca(filtro);
-    stackLibreria->setCurrentIndex(0);
-    filtroBottone = filtro;
-    preUpdate();
-}
+    // 2 Podcast con 3 Puntate ciascuno
+    Podcast* p1 = new Podcast("Storie dal Futuro", "Racconti di fantascienza e tecnologia.",
+                              Formato::DCP, Risoluzione::FullHD_1080p);
+    Puntata* p1_1 = new Puntata("Robot e Umanità", "Discussione su AI e coscienza.",
+                                year_month_day{2025y, January, 10d}, year_month_day{2025y, January, 20d},
+                                50, p1, 2);
+    Puntata* p1_2 = new Puntata("Città del Domani", "Urbanistica futuristica.",
+                                year_month_day{2025y, February, 5d}, year_month_day{2025y, February, 15d},
+                                45, p1, 2);
+    Puntata* p1_3 = new Puntata("Viaggi Interstellari", "Le sfide della colonizzazione spaziale.",
+                                year_month_day{2025y, March, 1d}, year_month_day{2025y, March, 12d},
+                                55, p1, 2);
+    mediaList.push_back(p1);
+    mediaList.push_back(p1_1);
+    mediaList.push_back(p1_2);
+    mediaList.push_back(p1_3);
 
-void SearchPanel::preUpdate(){
-    for(auto o : libraryObservers)
-        o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca);
+    Podcast* p2 = new Podcast("Cronache Storiche", "Analisi di eventi e figure storiche.",
+                              Formato::DCP, Risoluzione::HD_720p);
+    Puntata* p2_1 = new Puntata("La Roma Antica", "La nascita dell’Impero.",
+                                year_month_day{2025y, April, 1d}, year_month_day{2025y, April, 10d},
+                                40, p2, 4);
+    Puntata* p2_2 = new Puntata("Il Medioevo", "Un viaggio tra castelli e cavalieri.",
+                                year_month_day{2025y, April, 20d}, year_month_day{2025y, April, 28d},
+                                42, p2, 3);
+    Puntata* p2_3 = new Puntata("La Rivoluzione Industriale", "Come è cambiato il mondo.",
+                                year_month_day{2025y, May, 5d}, year_month_day{2025y, May, 15d},
+                                48, p2, 1);
+    mediaList.push_back(p2);
+    mediaList.push_back(p2_1);
+    mediaList.push_back(p2_2);
+    mediaList.push_back(p2_3);
+
+    MediaManagerXml manager;
+    manager.setCinemaName("Cinema Aurora");
+    manager.setCinemaCover(":/images/default.png");
+    manager.setCinemaMediaList(mediaList);
+    /*Se sei angela: questi sono commentati perchè li avevo solo testati, decommenta se hai bisogno
+    Ci sono un bel po di qDebug che vengono stampati che provengono da MediaManagerJson...sembrano tanti
+    non so se è COSÌ CORRETTO che siano così tanti...è normale? viene sovrascritto tutto ogni volta mi fa paura */
+    // manager.exportSessionToXml();
+    // manager.exportMediaListToXml();
+   /*  MediaManagerJson jsonManager(mediaList, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));  */
+    // manager.importSessionFromXml(jsonManager);
+    // manager.importMediaListFromXml(jsonManager);
 }
