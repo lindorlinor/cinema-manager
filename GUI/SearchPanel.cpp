@@ -509,8 +509,8 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     Ci sono un bel po di qDebug che vengono stampati che provengono da MediaManagerJson...sembrano tanti
     non so se è COSÌ CORRETTO che siano così tanti...è normale? viene sovrascritto tutto ogni volta mi fa paura */
     // manager.exportSessionToXml();
-    manager.exportMediaListToXml();
+    // manager.exportMediaListToXml();
     MediaManagerJson jsonManager(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML")); 
     // manager.importSessionFromXml(jsonManager);
-    manager.importMediaListFromXml(jsonManager);
+    // manager.importMediaListFromXml(jsonManager);
 }
