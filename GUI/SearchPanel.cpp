@@ -436,12 +436,6 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
         delete detailPage;
     });
 
-    /* QList<Media*> mediaList;
-
-    mediaList.push_back(film);
-    mediaList.push_back(trailer1);
-    mediaList.push_back(trailer2);
-
     // 5 Film
     mediaList.push_back(new Film("Odissea nello Spazio", "Avventura fantascientifica epica.",
                              year_month_day{2025y, June, 10d}, year_month_day{2025y, July, 5d},
@@ -505,7 +499,7 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     mediaList.push_back(p2);
     mediaList.push_back(p2_1);
     mediaList.push_back(p2_2);
-    mediaList.push_back(p2_3); */
+    mediaList.push_back(p2_3);
 
     MediaManagerXml manager;
     manager.setCinemaName("Cinema Aurora");

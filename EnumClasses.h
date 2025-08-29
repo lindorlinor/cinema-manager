@@ -234,6 +234,7 @@ inline const char* toString(Risoluzione r) {
         case Risoluzione::QHD_1440p: return "QHD 1440p";
         case Risoluzione::UHD_4K_2160p: return "UHD 4K 2160p";
         case Risoluzione::UHD_8K_4320p: return "UHD 8K 4320p";
+        case Risoluzione::FullHD_1080p: return "FullHD 1080p";
         default: return "Non trovato";
     }
 }

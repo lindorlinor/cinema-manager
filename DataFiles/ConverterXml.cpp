@@ -244,7 +244,6 @@ void ConverterXml::populateCommonFields(const QDomElement& elem, MediaData & dat
 
 FilmData ConverterXml::fromXmlFilmElement(const QDomElement& elem) {
     FilmData data;
-
     populateCommonFields(elem,data);
 
     data.tipologia="film";
@@ -289,6 +288,76 @@ TrailerData ConverterXml::fromXmlTrailerElement(const QDomElement& elem){
 
     return data;
 }
-InserzioneData ConverterXml::fromXmlInserzioneElement(const QDomElement& elem){}
-PodcastData ConverterXml::fromXmlPodcastElement(const QDomElement& elem){}
-PuntataData ConverterXml::fromXmlPuntataElement(const QDomElement& elem){}
+InserzioneData ConverterXml::fromXmlInserzioneElement(const QDomElement& elem) {
+    InserzioneData data;
+    populateCommonFields(elem, data);
+
+    data.tipologia = "inserzione";
+
+    QDomElement nProiezioniElem = elem.firstChildElement("NProiezioniGiornaliere");
+    if(!nProiezioniElem.isNull()) {
+        data.nProiezioniGiornaliere = nProiezioniElem.text().toInt();
+    }
+
+    QDomElement targetElem = elem.firstChildElement("Target");
+    if(!targetElem.isNull()) {
+        data.target = toClassificazione(targetElem.text().toStdString());
+    }
+
+    QDomElement aziendaElem = elem.firstChildElement("AziendaInserzionistica");
+    if(!aziendaElem.isNull()) {
+        data.aziendaInserzionista = aziendaElem.text();
+    }
+
+    QDomElement costoElem = elem.firstChildElement("CostoFissoProiezione");
+    if(!costoElem.isNull()) {
+        data.costoFissoProiezione = costoElem.text().toDouble();
+    }
+
+    return data;
+}
+
+
+PodcastData ConverterXml::fromXmlPodcastElement(const QDomElement& elem) {
+    PodcastData data;
+    populateCommonFields(elem, data);
+
+    data.tipologia = "podcast";
+
+    QDomElement conduttoreElem = elem.firstChildElement("Conduttore");
+    if(!conduttoreElem.isNull()) {
+        data.conduttore = conduttoreElem.text();
+    }
+
+    return data;
+}
+
+
+PuntataData ConverterXml::fromXmlPuntataElement(const QDomElement& elem) {
+    PuntataData data;
+    populateCommonFields(elem, data);
+
+    data.tipologia = "puntata";
+
+    QDomElement numPubElem = elem.firstChildElement("NumeroPubblicita");
+    if(!numPubElem.isNull()) {
+        data.numeroPubblicita = numPubElem.text().toInt();
+    }
+
+    QDomElement podcastElem = elem.firstChildElement("PodcastAssociato");
+    if(!podcastElem.isNull()) {
+        data.podcastAssociato = podcastElem.text();
+    }
+    QDomElement autoreElem = elem.firstChildElement("AutorePodcastAssociato");
+    if(!autoreElem.isNull()) {
+        data.autorePodcastAssociato = autoreElem.text();
+    }
+    data.ospiti.clear();
+    QDomElement ospitiElem = elem.firstChildElement("Ospiti");
+    for(QDomElement o = ospitiElem.firstChildElement("Ospite"); !o.isNull(); o = o.nextSiblingElement("Ospite")) {
+        data.ospiti.push_back(o.text());
+    }
+
+    return data;
+}
+

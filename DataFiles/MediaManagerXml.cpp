@@ -144,25 +144,34 @@ void MediaManagerXml::saveDocument() {
     while (!mediaElem.isNull()) {
         QString tipo = mediaElem.tagName();
         if (tipo=="Film") {
-            FilmData* fm = new FilmData(ConverterXml::fromXmlFilmElement(mediaElem));
-            fm->nomeCinema=cinema.nomeCinema;
-            fm->copertinaCinema=cinema.copertinaCinema;
-            jsonManager.saveMedia(fm);
+            FilmData* fd = new FilmData(ConverterXml::fromXmlFilmElement(mediaElem));
+            fd->nomeCinema=cinema.nomeCinema;
+            fd->copertinaCinema=cinema.copertinaCinema;
+            jsonManager.saveMedia(fd);
         }
         else if (tipo=="Trailer") {
-            TrailerData* tm = new TrailerData(ConverterXml::fromXmlTrailerElement(mediaElem));
-            tm->nomeCinema=cinema.nomeCinema;
-            tm->copertinaCinema=cinema.copertinaCinema;
-            jsonManager.saveMedia(tm);
+            TrailerData* td = new TrailerData(ConverterXml::fromXmlTrailerElement(mediaElem));
+            td->nomeCinema=cinema.nomeCinema;
+            td->copertinaCinema=cinema.copertinaCinema;
+            jsonManager.saveMedia(td);
         }
         else if (tipo=="Inserzione") {
-            // jsonManager.saveMedia(&(ConverterXml::fromXmlInserzioneElement(mediaElem)));
+            InserzioneData* id = new InserzioneData(ConverterXml::fromXmlInserzioneElement(mediaElem));
+            id->nomeCinema=cinema.nomeCinema;
+            id->copertinaCinema=cinema.copertinaCinema;
+            jsonManager.saveMedia(id);
         }
         else if (tipo=="Podcast") {
-            // jsonManager.saveMedia(&(ConverterXml::fromXmlPodcastElement(mediaElem)));
+            PodcastData* pdd = new PodcastData(ConverterXml::fromXmlPodcastElement(mediaElem));
+            pdd->nomeCinema=cinema.nomeCinema;
+            pdd->copertinaCinema=cinema.copertinaCinema;
+            jsonManager.saveMedia(pdd);
         }
-        else if (tipo=="Podcast") {
-            // jsonManager.saveMedia(&(ConverterXml::fromXmlPuntataElement(mediaElem)));
+        else if (tipo=="Puntata") {
+            PuntataData* pd = new PuntataData(ConverterXml::fromXmlPuntataElement(mediaElem));
+            pd->nomeCinema=cinema.nomeCinema;
+            pd->copertinaCinema=cinema.copertinaCinema;
+            jsonManager.saveMedia(pd);
         }
         else {
             errors++;
