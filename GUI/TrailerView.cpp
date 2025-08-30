@@ -72,7 +72,7 @@ void TrailerView::createMediaDetails() {
     nProiezioniGiornaliere->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
         
     QLabel* targetPubb = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Target pubbliita: </span>"
+        "<span style='color:white; font-weight:bold;'>Target pubblico: </span>"
         "<span style='color:black;'>" + QString::fromStdString(toString((trailerPtr->getFilm())->getTarget())) + "</span>",dettagliProgrammazione);
 
     targetPubb->setTextFormat(Qt::RichText);

@@ -290,9 +290,29 @@ SearchPanel::SearchPanel(QWidget *parent): QWidget(parent),stackModifiche(new QS
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
     addPagina(mainLayout);
-    
+
     setLayout(mainLayout);
     
+    DetailPageVisitor* visitor = new DetailPageVisitor(); 
+    
+   
+    
+    // metodoTemporaneoPerPagineDiVisualizzazione();
+    Inserzione * i1 = new Inserzione("Promo Smartphone X15", "Campagna pubblicitaria nuovo modello X15.",
+                                   year_month_day{2025y, May, 1d}, year_month_day{2025y, May, 30d},
+                                   30, Formato::DCP, Risoluzione::HD_720p,
+                                   20, Classificazione::TUTTI, 50.0, "TechCorp","Giovanni rana",":/images/image12.png");
+    i1->accept(visitor);                               
+    
+    QWidget * detailPage = visitor->getWidget();
+    stackModifiche->addWidget(detailPage);
+    stackModifiche->setCurrentIndex(2);
+    connect(static_cast<FilmView*>(detailPage), &MediaView::returnButton, this, [this,detailPage](){
+        updateModifierPanel(previousIndex);
+        stackModifiche->removeWidget(detailPage);
+        delete detailPage;
+    });
+
     //style
     mainLayout->setContentsMargins(0, 0, 0, 0); 
     mainLayout->setSpacing(0);
@@ -402,7 +422,7 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     mediaList.append(trailer1);
     mediaList.append(trailer2);
 
-    film->accept(visitor);
+   
     QWidget * detailPage = visitor->getWidget();
     stackModifiche->addWidget(detailPage);
     stackModifiche->setCurrentIndex(2);
@@ -434,16 +454,18 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
                              160, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
                              6, 8.9, "Dragon Studios", "Hao Zhang"));
 
-    // 2 Inserzioni
-    mediaList.push_back(new Inserzione("Promo Smartphone X15", "Campagna pubblicitaria nuovo modello X15.",
+
+    Inserzione * i1 = new Inserzione("Promo Smartphone X15", "Campagna pubblicitaria nuovo modello X15.",
                                    year_month_day{2025y, May, 1d}, year_month_day{2025y, May, 30d},
                                    30, Formato::DCP, Risoluzione::HD_720p,
-                                   20, Classificazione::TUTTI, 50.0, "TechCorp"));
+                                   20, Classificazione::TUTTI, 50.0, "TechCorp");
+    // 2 Inserzioni
+    mediaList.push_back(i1);
     mediaList.push_back(new Inserzione("Bevanda Frizzante Zeta", "Spot per la nuova linea estiva.",
                                    year_month_day{2025y, June, 15d}, year_month_day{2025y, July, 15d},
                                    25, Formato::DCP, Risoluzione::FullHD_1080p,
                                    18, Classificazione::TUTTI, 35.0, "DrinkIt"));
-
+    i1->accept(visitor);
     // 2 Podcast con 3 Puntate ciascuno
     Podcast* p1 = new Podcast("Storie dal Futuro", "Racconti di fantascienza e tecnologia.",
                               Formato::DCP, Risoluzione::FullHD_1080p);
