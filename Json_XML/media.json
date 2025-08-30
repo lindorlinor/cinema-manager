@@ -1,29 +1,79 @@
 [
     {
-        "attoriPrincipali": [
+        "autore": "Studio Ghibli",
+        "autoreFilmAssociato": "Hayao Miyazaki",
+        "copertinaCinema": ":/images/default.png",
+        "dataFineRilascio": "2025-05-31",
+        "dataInizioRilascio": "2025-04-15",
+        "descrizione": "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
+        "durataMinuti": 2,
+        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
+        "formato": 0,
+        "lingueDisponibili": [
         ],
-        "autore": "autore",
-        "casaDiProduzione": "",
-        "copertinaCinema": ":/images/image1.png",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-08-27",
-        "dataInizioRilascio": "2025-08-27",
-        "descrizione": "",
-        "durataMinuti": 0,
+        "nProiezioniGiornaliere": 5,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/image10.png",
+        "risoluzione": 4,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Il mio vicino Totoro (2025)"
+    },
+    {
+        "autore": "Hayao Miyazaki",
+        "autoreFilmAssociato": "Hayao Miyazaki",
+        "copertinaCinema": ":/images/default.png",
+        "dataFineRilascio": "2025-06-15",
+        "dataInizioRilascio": "2025-05-01",
+        "descrizione": "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
+        "durataMinuti": 3,
+        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
+        "formato": 0,
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 3,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/image10.png",
+        "risoluzione": 4,
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
+    },
+    {
+        "attoriPrincipali": [
+            "Noriko Hidaka",
+            "Chika Sakamoto",
+            "Shigesato Itoi",
+            "Hitoshi Takagi",
+            "Takashi Nagasako"
+        ],
+        "autore": "Hayao Miyazaki",
+        "casaDiProduzione": "Studio Ghibli",
+        "copertinaCinema": ":/images/default.png",
+        "costoBiglietto": 12.5,
+        "dataFineRilascio": "2025-06-30",
+        "dataInizioRilascio": "2025-06-01",
+        "descrizione": "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
+        "durataMinuti": 86,
         "formato": 0,
         "generi": [
         ],
         "lingueDisponibili": [
+            0,
+            1
         ],
-        "nPostCredit": 0,
-        "nomeCinema": "cinema1",
-        "path": ":/images/default.png",
-        "risoluzione": 0,
+        "nPostCredit": 1,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/image9.png",
+        "risoluzione": 4,
         "sottotitoliDisponibili": [
+            0
         ],
         "target": 0,
         "tipologia": "film",
-        "titolo": "titolo film 2"
+        "titolo": "Il mio vicino Totoro (RE-RELEASE 2025)"
     },
     {
         "copertinaCinema": ":/images/image1.png",

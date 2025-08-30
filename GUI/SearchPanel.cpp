@@ -3,12 +3,12 @@
 #include "TrailerView.h"
 #include "DetailPageVisitor.h"
 #include "LibraryObserver.h"
-#include "../DataFiles/MediaManagerXml.h"
 
 void SearchPanel::addMenus(QVBoxLayout* mainLayout){
 
     //gestione del json
     manager = new MediaManagerJson(mediaList, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"),this);
+    xmlManager = new MediaManagerXml();
 
     QMenuBar* menuBar = new QMenuBar(this);
     
@@ -51,7 +51,24 @@ void SearchPanel::addMenus(QVBoxLayout* mainLayout){
     connect(file->actions()[6], &QAction::triggered, qApp, &QApplication::quit);
     connect(altro->actions()[1], &QAction::triggered, this, &SearchPanel::setFullScreen);
     connect(altro->actions()[2], &QAction::triggered, this, &SearchPanel::escFullScreen);
-    
+
+    metodoTemporaneoPerPagineDiVisualizzazione();
+    connect(file->actions()[4], &QAction::triggered, this,
+        [this](){
+            xmlManager->setCinemaName("Cinema Aurora");
+            xmlManager->setCinemaCover(":/images/default.png");
+            xmlManager->setCinemaMediaList(mediaList);
+            xmlManager->exportSessionToXml();
+            // manager.exportMediaListToXml();
+        });
+    connect(file->actions()[3], &QAction::triggered, this,
+        [this](){
+            xmlManager->setCinemaName("Cinema Aurora");
+            xmlManager->setCinemaCover(":/images/default.png");
+            xmlManager->setCinemaMediaList(mediaList);
+            xmlManager->importSessionFromXml(*manager);
+            // manager.importMediaListFromXml(jsonManager);
+        });
     mainLayout->addWidget(menuBar);
     
     //style
@@ -233,7 +250,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     InsertMedia* nuovoMedia = new InsertMedia(manager, this);
     stackModifiche->addWidget(nuovoMedia);
     
-    metodoTemporaneoPerPagineDiVisualizzazione();
+    
 
     //pannello per la libreria dei media
 /*     MediaLibraryTutto* libreriaMediaTutto = new MediaLibraryTutto(this); */
@@ -315,7 +332,6 @@ void SearchPanel::updateCerca(const QString& filtro){
 
 void SearchPanel::addPagina(QVBoxLayout* mainLayout){
     QWidget* widgetFiltri = new QWidget(this);
-    stackModifiche = new QStackedWidget(this);
 
     
     QHBoxLayout* ricerca = new QHBoxLayout;
@@ -343,7 +359,7 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
 
 } 
 
-SearchPanel::SearchPanel(QWidget *parent): QWidget(parent){
+SearchPanel::SearchPanel(QWidget *parent): QWidget(parent),stackModifiche(new QStackedWidget(this)){
     QVBoxLayout* mainLayout = new QVBoxLayout;
     
     addMenus(mainLayout);
@@ -359,7 +375,7 @@ SearchPanel::SearchPanel(QWidget *parent): QWidget(parent){
 void SearchPanel::updateInfoCinema(const CinemaData& data){
     //selezione Cinema
     cinema->setText("Cinema "+data.nomeCinema);
-    manager->getCinemaNome(data.nomeCinema);
+    manager->setCinemaNome(data.nomeCinema);
     manager->loadAll();
     emit giveCinemaInfoToIP(data);
 }
@@ -463,7 +479,7 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
         stackModifiche->removeWidget(detailPage);
         delete detailPage;
     });
-    // 5 Film
+    /* // 5 Film
     mediaList.push_back(new Film("2001: Odissea nello Spazio", "Avventura fantascientifica epica.",
                              year_month_day{2025y, June, 10d}, year_month_day{2025y, July, 5d},
                              140, Formato::DCP, Risoluzione::FullHD_1080p,
@@ -527,17 +543,6 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     mediaList.push_back(p2_1);
     mediaList.push_back(p2_2);
     mediaList.push_back(p2_3);
-
-    MediaManagerXml manager;
-    manager.setCinemaName("Cinema Aurora");
-    manager.setCinemaCover(":/images/default.png");
-    manager.setCinemaMediaList(mediaList);
-    /*Se sei angela: questi sono commentati perchè li avevo solo testati, decommenta se hai bisogno
-    Ci sono un bel po di qDebug che vengono stampati che provengono da MediaManagerJson...sembrano tanti
-    non so se è COSÌ CORRETTO che siano così tanti...è normale? viene sovrascritto tutto ogni volta mi fa paura */
-    manager.exportSessionToXml();
-    // manager.exportMediaListToXml();
-    MediaManagerJson jsonManager(mediaList, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
-    manager.importSessionFromXml(jsonManager);
-    // manager.importMediaListFromXml(jsonManager);
+ */
+   
 }

@@ -845,7 +845,7 @@ void MediaManagerJson::loadAllData(QList<MediaData*>& media) {
 }
 
 // HELPERS 
-void MediaManagerJson::getCinemaNome(const QString& nomeCinema){
+void MediaManagerJson::setCinemaNome(const QString& nomeCinema){
     cinemaAttuale = nomeCinema;
 }
 
