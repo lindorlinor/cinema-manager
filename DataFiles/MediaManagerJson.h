@@ -100,7 +100,7 @@ class MediaManagerJson : public QObject{
 
         void saveCinema(CinemaData* cinema);
 
-        void getCinemaNome(const QString& nomeCinema);
+        void setCinemaNome(const QString& nomeCinema);
         
 
     private:

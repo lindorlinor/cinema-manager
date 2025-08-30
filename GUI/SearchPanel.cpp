@@ -302,7 +302,7 @@ SearchPanel::SearchPanel(QWidget *parent): QWidget(parent){
 void SearchPanel::updateInfoCinema(const CinemaData& data){
     //selezione Cinema
     cinema->setText("Cinema "+data.nomeCinema);
-    manager->getCinemaNome(data.nomeCinema);
+    manager->setCinemaNome(data.nomeCinema);
     manager->loadAll();
     emit giveCinemaInfoToIP(data);
 }
