@@ -44,7 +44,7 @@ HEADERS +=  \
             GUI/FilmView.h \
             GUI/TrailerView.h \
             GUI/ExpandableLabel.h \
-            GUI/CardTrailer.h \
+            GUI/PreviewCard.h \
             GUI/DetailsPageButtons.h \
             DataFiles/Populate.h \
             DataFiles/Converter.h \
@@ -81,7 +81,7 @@ SOURCES +=  \
             GUI/FilmView.cpp \
             GUI/TrailerView.cpp \
             GUI/ExpandableLabel.cpp \
-            GUI/CardTrailer.cpp \
+            GUI/PreviewCard.cpp \
             GUI/MediaLibraryGenerale.cpp \
             GUI/DetailsPageButtons.cpp \
             GUI/FlowLayout.cpp \

@@ -1,5 +1,5 @@
-#ifndef CARDTRAILER_H
-#define CARDTRAILER_H
+#ifndef PREVIEWCARD_H
+#define PREVIEWCARD_H
 
 #include <QFrame>
 #include <QLabel>
@@ -9,21 +9,21 @@
 #include <QMouseEvent>
 #include <QEvent>
 #include <QEnterEvent>
-#include "Trailer.h"
+#include "Media.h"
 
 //prima o poi diventera un cardMedia idk
-class CardTrailer : public QFrame {
+class PreviewCard : public QFrame {
     Q_OBJECT
 
 public:
-    explicit CardTrailer(const Trailer* trailer, QWidget* parent = nullptr);
-    const Trailer* trailerPtr; 
+    explicit PreviewCard(const Media* mPtr, QWidget* parent = nullptr);
+    const Media* mediaPtr; 
 signals:
-    void viewTrailer(const Trailer* trailer);
-
+    void viewMedia(const Media* mPtr);
 
 protected:
     void mousePressEvent(QMouseEvent* event) override;
+    
 private:
     QLabel* imageLabel;
     QLabel* titleLabel;
@@ -31,4 +31,4 @@ private:
     QVBoxLayout* cardLayout;
 };
 
-#endif // CARDTRAILER_H
+#endif // PREVIEWCARD_H

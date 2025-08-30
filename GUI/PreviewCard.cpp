@@ -1,39 +1,43 @@
-#include "CardTrailer.h"
+#include "PreviewCard.h"
 #include <QPixmap>
 #include <QFont>
 #include <QPalette>
 #include <QMouseEvent>
 
-CardTrailer::CardTrailer(const Trailer* trailer, QWidget* parent)
-    : QFrame(parent),trailerPtr(trailer)
+PreviewCard::PreviewCard(const Media* mPtr, QWidget* parent)
+    : QFrame(parent),mediaPtr(mPtr)
 {
-    setFixedSize(270,200);
+    // setFixedSize(270,200);
     cardLayout = new QVBoxLayout(this);
     cardLayout->setContentsMargins(0,0,0,0);
     setContentsMargins(0,0,0,0);
     this->setObjectName("card");
 
     imageLabel = new QLabel(this);
-    QPixmap pix(QString::fromStdString(trailer->getImPath()));
-    imageLabel->setPixmap(pix.scaled(240,135, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    QPixmap pix(QString::fromStdString(mediaPtr->getImPath()));
+    qDebug() << QString::fromStdString(mediaPtr->getImPath());
+    imageLabel->setPixmap(pix.scaled(222, 320, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     imageLabel->setAlignment(Qt::AlignCenter);
 
-    titleLabel = new QLabel(QString::fromStdString(trailer->getTitolo()), this);
+    titleLabel = new QLabel(QString::fromStdString(mediaPtr->getTitolo()), this);
     titleLabel->setAlignment(Qt::AlignLeft);
     titleLabel->setWordWrap(true);
+    titleLabel->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     
     statusLabel = new QLabel(this);
-    if (trailer->FuoriProduzione()) {
+    if (mediaPtr->FuoriProduzione()) {
         statusLabel->setText("Fuori produzione");
     } else {
         statusLabel->setText("Oggi in sala");
     }
+    statusLabel->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     statusLabel->setAlignment(Qt::AlignRight);
 
     // Layout
     cardLayout->addWidget(imageLabel);
     cardLayout->addWidget(titleLabel);
-    cardLayout->addStretch();
+    cardLayout->addSpacing(20);
+    // cardLayout->addStretch();
     cardLayout->addWidget(statusLabel);
     setLayout(cardLayout);
 
@@ -46,9 +50,9 @@ CardTrailer::CardTrailer(const Trailer* trailer, QWidget* parent)
     );
 }
 
-void CardTrailer::mousePressEvent(QMouseEvent *event)
+void PreviewCard::mousePressEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton) {
-        emit viewTrailer(trailerPtr);
+        emit viewMedia(mediaPtr);
     }
 }

@@ -9,7 +9,7 @@
 #include <QScrollArea>
 #include <QHBoxLayout>
 #include "GUI/ExpandableLabel.h"
-#include "GUI/CardTrailer.h"
+#include "GUI/PreviewCard.h"
 #include "GUI/DetailsPageButtons.h"
 
 #include <QDebug>
@@ -229,11 +229,11 @@ void FilmView::createScrollableSection(){
     sezioneTrailer->setObjectName("sp");
 
     for (const Trailer* t : filmPtr->getTrailers()) {
-        CardTrailer* card = new CardTrailer(t);
+        PreviewCard* card = new PreviewCard(t);
         layoutTrailer->addWidget(card);
-        connect(card, &CardTrailer::viewTrailer, this, [this](const Trailer* trailer){
-            qDebug() << "view Trailer: " << QString::fromStdString(trailer->getTitolo());
-            emit trailerSelected(trailer);
+        connect(card, &PreviewCard::viewMedia, this, [this,t](const Media* media){
+            qDebug() << "view Media: " << QString::fromStdString(t->getTitolo());
+            emit trailerSelected(t);
         });
     }
     layoutTrailer->setSpacing(20);  
@@ -283,10 +283,8 @@ void FilmView::createButtons(){
         msgBox.setText("Sei sicuro di voler eliminare il film? "
                     "Avrà l'effetto di eliminare tutti i trailer ad esso associati");
 
-        //qui è da rivedere comunque. btnAnnulla e btnConferma potebbero essere rimossi 
-        //ma sono utili nel caso incui si voglia mandare segnali
-        QPushButton *btnAnnulla = msgBox.addButton("Annulla", QMessageBox::RejectRole);
-        QPushButton *btnConferma = msgBox.addButton("Conferma", QMessageBox::AcceptRole);
+        msgBox.addButton("Annulla", QMessageBox::RejectRole);
+        msgBox.addButton("Conferma", QMessageBox::AcceptRole);
         int ret = msgBox.exec();
         if (ret == QMessageBox::Ok) {
             qDebug() << "Confermato";

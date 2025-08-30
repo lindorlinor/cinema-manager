@@ -3,6 +3,10 @@
 #include <QScrollArea>
 #include "Film.h"
 #include "ExpandableLabel.h"
+#include "PreviewCard.h"
+#include "PreviewCard.h"
+#include "DetailsPageButtons.h"
+#include <QMessageBox>
 
 TrailerView::TrailerView(Trailer* tPtr, QWidget* parent)
     : MediaView(tPtr,parent),trailerPtr(tPtr)
@@ -135,7 +139,7 @@ void TrailerView::createMediaDetails() {
     QWidget *sezioneDettagli = new QWidget(details);
     sezioneDettagli->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
     QVBoxLayout * layoutDettagli = new QVBoxLayout(sezioneDettagli);
-    QLabel * labelDettagli = new QLabel("Dettagli sul film");
+    QLabel * labelDettagli = new QLabel("Dettagli sul trailer");
     layoutDettagli->addWidget(labelDettagli);
     labelDettagli->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
@@ -149,7 +153,7 @@ void TrailerView::createMediaDetails() {
    
     descrizione->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
-    layoutDettagliDettagli->addWidget(descrizione);
+    layoutDettagliDettagli->addWidget(descrizione,0,Qt::AlignTop);
    
     layoutDettagli->addWidget(dettagliDettagli);
 
@@ -161,5 +165,116 @@ void TrailerView::createMediaDetails() {
     splitterLayout->addWidget(leftSide);
 
 }
-void TrailerView::createScrollableSection() {}
-void TrailerView::createButtons() {}
+void TrailerView::createScrollableSection() {
+    rightSide->setObjectName("gaga");
+    rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    
+    QLabel *labelFilmA = new QLabel("Film associato",rightSide);
+    QFont fontFilmA = labelFilmA->font();
+    fontFilmA.setPointSize(17);
+    fontFilmA.setBold(true);
+    labelFilmA->setFont(fontFilmA);
+    
+    rightLayout->addWidget(labelFilmA);
+
+    QWidget * sezioneFilmA = new QWidget(rightSide);
+    QVBoxLayout* layoutFilmA = new QVBoxLayout(sezioneFilmA);
+    sezioneFilmA->setObjectName("sp"); 
+
+    const Film* filmA = trailerPtr->getFilm();
+    PreviewCard* cardFilmA = new PreviewCard(filmA);
+    cardFilmA->setFixedSize(210, 320);   
+    layoutFilmA->addWidget(cardFilmA,0,Qt::AlignCenter);
+    connect(cardFilmA, &PreviewCard::viewMedia, this, [this](const Media* media){
+        qDebug() << "view Film Associato: " << QString::fromStdString(mediaPtr->getTitolo());
+    });
+    sezioneFilmA->setContentsMargins(20,0,20,0);
+
+    QLabel *labelTrailer = new QLabel("Trailer correlati",rightSide);
+    QFont fontTrailer = labelTrailer->font();
+    fontTrailer.setPointSize(17);
+    fontTrailer.setBold(true);
+    labelTrailer->setFont(fontTrailer);
+    
+    QScrollArea* scrollTrailer = new QScrollArea(rightSide); //configurata dopo
+    QWidget * sezioneTrailer = new QWidget(scrollTrailer);
+    QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
+    sezioneTrailer->setObjectName("sp");
+
+    for (const Trailer* t : (trailerPtr->getFilm())->getTrailers()) {
+        if(t!=trailerPtr){
+            PreviewCard* cardTrailer = new PreviewCard(t);
+            layoutTrailer->addWidget(cardTrailer,0,Qt::AlignCenter);
+            connect(cardTrailer, &PreviewCard::viewMedia, this, 
+                [this,t](const Media* media){
+                    qDebug() << "view Trailer: " << QString::fromStdString(t->getTitolo());
+                    emit trailerSelected(t);
+                });
+        }
+    }
+    layoutTrailer->setSpacing(20);  
+    sezioneTrailer->setContentsMargins(20,20,20,20);
+
+    scrollTrailer->setWidget(sezioneTrailer);
+    scrollTrailer->setWidgetResizable(true);
+    scrollTrailer->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollTrailer->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    scrollTrailer->setMinimumHeight(180);
+
+
+    rightLayout->addWidget(sezioneFilmA,0,Qt::AlignTop);
+    rightLayout->addSpacing(20);
+    rightLayout->addWidget(labelTrailer);
+    rightLayout->addWidget(scrollTrailer);
+    splitterLayout->addWidget(rightSide);
+}
+void TrailerView::createButtons() {
+    DetailsPageButtons * buttons = new DetailsPageButtons(rightSide);
+    buttons->setDeleteButtonText("Elimina trailer");
+    connect(buttons,&DetailsPageButtons::extendMedia,this,
+        [this](){
+            QMessageBox msgBox(this);
+            auto fine = trailerPtr->getDataFineRilascio();
+            auto nuovaFine = (trailerPtr->getFilm())->getDataFineRilascio();
+
+            if(fine!=nuovaFine){
+                msgBox.setWindowTitle("Conferma estensione data");
+                msgBox.setText(QString::fromStdString(
+                "La data di fine proiezione cambierà in\n" + dateToString(fine) + " → " + dateToString(nuovaFine) + "in accordo con la data di fine rilascio del film associato"));
+
+                msgBox.setInformativeText("Premi conferma per continuare, annulla per non modificare.");
+                msgBox.setStandardButtons(QMessageBox::Cancel | QMessageBox::Ok);
+                msgBox.button(QMessageBox::Ok)->setText("Conferma");
+                msgBox.button(QMessageBox::Cancel)->setText("Annulla");
+
+                int ret = msgBox.exec();
+                if (ret == QMessageBox::Ok) {
+                    qDebug() << "Confermato";
+                    endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
+                    "<span style='color:black;'>" + QString::fromStdString(dateToString(nuovaFine)) + "</span>");
+                    emit extendMediaClicked();
+                }
+            }else{
+                msgBox.setWindowTitle("Impossibile estendere la data");
+                msgBox.setText("La data di fine rilascio del trailer non può superare quella del film");
+                msgBox.setInformativeText("Estendere la proiezione del film in sala per poter estendere il rilascio dei suoi trailer");
+            }
+        });
+           
+    
+    connect(buttons,&DetailsPageButtons::deleteMedia,this,[this](){
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Conferma eliminazione");
+        msgBox.setText("Sei sicuro di voler eliminare il trailer?");
+        msgBox.setInformativeText("Premi conferma per continuare, annulla per non modificare.");
+        msgBox.addButton("Annulla", QMessageBox::RejectRole);
+        msgBox.addButton("Conferma", QMessageBox::AcceptRole);
+        int ret = msgBox.exec();
+        if (ret == QMessageBox::Ok) {
+            qDebug() << "Confermato";
+            emit deleteMediaClicked();
+        }
+        });
+    rightLayout->addSpacing(60);
+    rightLayout->addWidget(buttons);
+}
