@@ -153,6 +153,15 @@ QDomElement ConverterXml::toXmlElement(const Inserzione* inserzione, QDomDocumen
     QDomElement nProiezElem = doc.createElement("NProiezioniGiornaliere");
     nProiezElem.appendChild(doc.createTextNode(QString::number(data.nProiezioniGiornaliere)));
     insElem.appendChild(nProiezElem);
+
+    QDomElement fasceOrarieElem = doc.createElement("FasceOrarie");
+    for (const FasciaOraria& fo : data.fasceOrarie) {
+        QDomElement fasciaElem = doc.createElement("Fascia");
+        fasciaElem.appendChild(doc.createTextNode(toString(fo)));
+        fasceOrarieElem.appendChild(fasciaElem);
+    }
+    insElem.appendChild(fasceOrarieElem);
+
     
     QDomElement targetElem = doc.createElement("Target");
     targetElem.appendChild(doc.createTextNode(QString::fromStdString(toString(data.target))));
@@ -299,7 +308,14 @@ InserzioneData ConverterXml::fromXmlInserzioneElement(const QDomElement& elem) {
         data.nProiezioniGiornaliere = nProiezioniElem.text().toInt();
     }
 
-    QDomElement targetElem = elem.firstChildElement("Target");
+    QDomElement fasceOrarieEleme = elem.firstChildElement("FasceOrarie");
+    QDomElement f = fasceOrarieEleme.firstChildElement("Fascia");
+    while(!f.isNull()) {
+        data.fasceOrarie.push_back(toFasciaOraria(f.text().toStdString()));
+        f = f.nextSiblingElement("Fascia");
+    }
+
+    QDomElement targetElem = elem.firstChildElement("Target");  
     if(!targetElem.isNull()) {
         data.target = toClassificazione(targetElem.text().toStdString());
     }

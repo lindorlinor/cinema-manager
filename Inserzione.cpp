@@ -98,3 +98,8 @@ void Inserzione::setCostoFissoProiezione(const double& costo){
 void Inserzione::accept(MediaVisitor* visitor) {
     visitor->visit(this);
 }
+
+
+vector<FasciaOraria> Inserzione::getFasceOrarie() const{
+    return i_fasceOrarie;
+}

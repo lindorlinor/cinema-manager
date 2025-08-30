@@ -56,7 +56,7 @@ public:
      */
     double calcolaIncasso() override;
 
-    friend vector<FasciaOraria> getFasceOrarie(const Inserzione&); //ha friend perchè è solo per i test! (al momento)
+    vector<FasciaOraria> getFasceOrarie() const;
 
     //visitor
     void accept(MediaVisitor* visitor)override;

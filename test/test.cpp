@@ -98,9 +98,6 @@ TEST_CASE("5. Inserzione.calcolaIncasso()"){
     REQUIRE(i1.calcolaIncasso()==30*15*i1.DurataCampagna());
 }
 
-vector<FasciaOraria> getFasceOrarie(const Inserzione& i){
-    return i.i_fasceOrarie;
-}
 
 TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
     SECTION("6.1 verifica aggiunta della stessa fascia oraria"){
@@ -108,8 +105,8 @@ TEST_CASE("6. Inserzione.aggiungiFasciaOraria(FasciaOraria)"){
                         Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, Classificazione::TUTTI, 15.0, "azienda");          
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
-        REQUIRE(getFasceOrarie(i1)[0]==FasciaOraria::Mattina);
-        REQUIRE(getFasceOrarie(i1).size() == 1);
+        REQUIRE(i1.getFasceOrarie()[0]==FasciaOraria::Mattina);
+        REQUIRE(i1.getFasceOrarie().size() == 1);
     }
 
     SECTION("6.2 Inserzione.calcoloIncasso()"){
@@ -129,17 +126,17 @@ TEST_CASE("7. Inserzione.rimuoviFasciaOraria(FasciaOraria)"){
         Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
                         Formato::IMAX_3D, Risoluzione::FullHD_1080p, 15, Classificazione::TUTTI, 15.0, "azienda");  
         i1.aggiungiFasciaOraria(FasciaOraria::Mattina);
-        REQUIRE(getFasceOrarie(i1)[0]==FasciaOraria::Mattina);
-        REQUIRE(getFasceOrarie(i1).size() == 1);
+        REQUIRE(i1.getFasceOrarie()[0]==FasciaOraria::Mattina);
+        REQUIRE(i1.getFasceOrarie().size() == 1);
         i1.rimuoviFasciaOraria(FasciaOraria::Mattina);
-        REQUIRE(getFasceOrarie(i1).size() == 1); //sempre presente mattina
+        REQUIRE(i1.getFasceOrarie().size() == 1); //sempre presente mattina
 
     }
      SECTION("7.2 verifica rimozione di una fascia oraria non aggiunta"){
         Inserzione i1(  "Titolo", "Descrizione", year_month_day{2025y,July,1d},year_month_day{2025y,July,30d}, 120, 
                         Formato::IMAX_3D, Risoluzione::FullHD_1080p, 3, Classificazione::TUTTI, 20.0, "azienda");          
         i1.rimuoviFasciaOraria(FasciaOraria::Sera);
-        REQUIRE(getFasceOrarie(i1).size() == 1); //presente mattina
+        REQUIRE(i1.getFasceOrarie().size() == 1); //presente mattina
 
     }
 

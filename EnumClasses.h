@@ -268,7 +268,6 @@ inline FasciaOraria toFasciaOraria(const std::string& s) {
     if (s == "Sera") return FasciaOraria::Sera;
 }
 
-// ---------- Lingua ----------
 inline Lingua toLingua(const std::string& s) {
     if (s == "Italiano") return Lingua::Italiano;
     if (s == "Inglese") return Lingua::Inglese;
@@ -314,5 +313,5 @@ inline Risoluzione toRisoluzione(const std::string& s) {
     if (s == "UHD 8K 4320p") return Risoluzione::UHD_8K_4320p;
 }
 
-#endif // NOME_DEL_FILE_H
+#endif //ENUMCLASSES_H
 

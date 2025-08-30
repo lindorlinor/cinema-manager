@@ -62,6 +62,8 @@ void Converter::populateInserzioneFields(const Inserzione* ins, InserzioneData& 
     data.nProiezioniGiornaliere = ins->getNProiezioniGiornaliere();
     data.target = ins->getTarget();
     data.aziendaInserzionista = QString::fromStdString(ins->getAziendaInserzionistica());
+    data.fasceOrarie.clear();
+    data.fasceOrarie=ins->getFasceOrarie();
     data.costoFissoProiezione = ins->getCostoFissoProiezione();
 }
 
