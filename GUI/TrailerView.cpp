@@ -275,6 +275,6 @@ void TrailerView::createButtons() {
             emit deleteMediaClicked();
         }
         });
-    rightLayout->addSpacing(60);
-    rightLayout->addWidget(buttons);
+    cardLayout->addSpacing(40);
+    cardLayout->addWidget(buttons);
 }

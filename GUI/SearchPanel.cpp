@@ -427,7 +427,7 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     mediaList.append(trailer1);
     mediaList.append(trailer2);
 
-    trailer1->accept(visitor);
+    film->accept(visitor);
     QWidget * detailPage = visitor->getWidget();
     stackModifiche->addWidget(detailPage);
     stackModifiche->setCurrentIndex(2);

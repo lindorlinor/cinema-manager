@@ -2,8 +2,7 @@
 #include <QPushButton>
 MediaView::MediaView(Media* mPtr, QWidget* parent)
     : QWidget(parent), mediaPtr(mPtr),layoutPage( new QVBoxLayout(this)),splitter(new QWidget(this)),splitterLayout(new QHBoxLayout(splitter)),leftSide(new QWidget(splitter)),
-    rightSide(new QWidget(splitter)),leftLayout(new QHBoxLayout(leftSide)),endDateLabel(nullptr),rightLayout(new QVBoxLayout(rightSide)){
-    
+    rightSide(new QWidget(splitter)),leftLayout(new QHBoxLayout(leftSide)),endDateLabel(nullptr),rightLayout(new QVBoxLayout(rightSide)),card(new QWidget(leftSide)),cardLayout(new QVBoxLayout(card)){
     this->setObjectName("gugu");
     
     createHeader();
@@ -43,8 +42,6 @@ void MediaView::createHeader(){
 
 
 void MediaView::createMediaCard(){
-    QWidget * card = new QWidget(leftSide);
-    QVBoxLayout * cardLayout = new QVBoxLayout(card);
     card->setContentsMargins(0,0,0,0);
     cardLayout->setContentsMargins(0,0,0,0);
     QPixmap image(QString::fromStdString(mediaPtr->getImPath()));

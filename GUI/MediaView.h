@@ -22,7 +22,8 @@ protected:
     QHBoxLayout* leftLayout;
     QLabel* endDateLabel; //questa si trova qui per permettere la visualizzazione del cambiamento della data quando si clicca su "Estendi data"
     QVBoxLayout* rightLayout;
-
+    QWidget * card;
+    QVBoxLayout * cardLayout;
     void createHeader();
     void createMediaCard();
     
