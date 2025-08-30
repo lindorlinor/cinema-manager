@@ -6,6 +6,7 @@
 #include "CinemaSelectionPage.h"
 #include "InsertCinemaPage.h"
 #include "SearchPanel.h"
+#include "Menu.h"
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -14,6 +15,7 @@ private:
     CinemaSelectionPage * cinemaPage;
     InsertCinemaPage * insertPage;
     SearchPanel * searchPage;
+    bool isFS = true;
 public:
     MainWindow(QWidget *parent = nullptr);
 public slots:

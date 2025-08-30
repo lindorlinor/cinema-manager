@@ -51,7 +51,7 @@ void MediaLibraryGenerale::update(int comboAttivita, int comboOrdinamento, const
     // Ricreo i widget secondo il nuovo filtro
     for (const Media* m : listMedia) {
         if( //controllo che sia attivo o meno
-            ((comboAttivita == 0 && m->getMediaAttivo()) || (comboAttivita == 1 && !m->getMediaAttivo()) || comboAttivita == 2) &&
+            ((comboAttivita == 0 && !m->FuoriProduzione()) || (comboAttivita == 1 && m->FuoriProduzione()) || comboAttivita == 2) &&
             //trovo i media che soddisfano la ricerca
             (QString::fromStdString(m->getTitolo()).contains(ricerca, Qt::CaseInsensitive) || (QString::fromStdString(m->getAutore()).contains(ricerca, Qt::CaseInsensitive)))
         ){

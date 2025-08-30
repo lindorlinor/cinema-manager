@@ -33,9 +33,6 @@ class SearchPanel:public QWidget{
 
     vector<LibraryObserver*> libraryObservers;
 
-    //menu
-    void addMenus(QVBoxLayout* mainLayout);
-
     //selezione media
     /**
     * @brief Pulsanti per filtrare i contenuti dei Media
@@ -139,15 +136,14 @@ class SearchPanel:public QWidget{
     public slots:
     void updateModifierPanel(int index);
     void updateInfoCinema(const CinemaData& data);
+    void getEscSearchPanel();
     
     
     signals:
-    void setFullScreen();
-    void escFullScreen();
-    void escSearchPanel();
     void resetPages();
     void giveCinemaInfoToIP(const CinemaData& data);
     void selectedFilterButton(const QString& filtro);
+    void escSearchPanel();
 };
 
 #endif //SEARCHPANEL_H

@@ -4,24 +4,52 @@
 #include "SearchPanel.h" 
 #include <QVBoxLayout>
 #include <QDebug>
+#include <QTimer>
 #include <QFile>
 #include <QDir>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), cinemaPage(new CinemaSelectionPage(this)), insertPage(new InsertCinemaPage(this)), searchPage(new SearchPanel(this))
 {
+    setWindowFlags(Qt::Window | Qt::CustomizeWindowHint | 
+               Qt::WindowMinimizeButtonHint | 
+               Qt::WindowMaximizeButtonHint | 
+               Qt::WindowCloseButtonHint);
+
+    QVBoxLayout* layoutV = new QVBoxLayout;
+    QWidget* central = new QWidget(this);
+    Menu* menu = new Menu(this);
+
     stackedWidget = new QStackedWidget(this);
-    setCentralWidget(stackedWidget);
+    layoutV->addWidget(menu);
+    layoutV->addWidget(stackedWidget);
+    central->setLayout(layoutV);
+
+    setCentralWidget(central);
    
     connect(cinemaPage,&CinemaSelectionPage::insertCinema,this,&MainWindow::showInsertCinemaPage);
     connect(cinemaPage,&CinemaSelectionPage::selectedCinema,this,&MainWindow::showSelectedCinemaPage);
+
+    connect(menu, &Menu::setNormalRequest, this, &MainWindow::showNormal);
+    connect(menu, &Menu::setMaximizeRequest, this, [this]() {
+        if (windowState() & Qt::WindowFullScreen) {
+            showMaximized();
+        } else {
+            showFullScreen();
+        }
+    });
+
+    connect(menu, &Menu::closeRequested, this, &MainWindow::close);
+    connect(menu,&Menu::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
+    connect(menu,&Menu::escSearchPanel,searchPage,&SearchPanel::getEscSearchPanel);
+    connect(menu, &Menu::setFullScreen, this, &MainWindow::showFullScreen);
+    connect(menu, &Menu::escFullScreen, this, &MainWindow::showMaximized);
+
     connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
   
     connect(insertPage,&InsertCinemaPage::returnCinemaSelectionPage,this,&MainWindow::showCinemaSelectionPage);
     connect(cinemaPage, &CinemaSelectionPage::selectedCinema, searchPage, &SearchPanel::updateInfoCinema);
-    connect(cinemaPage, &CinemaSelectionPage::selectedCinema, this, &MainWindow::showMaximized);
-    connect(searchPage, &SearchPanel::setFullScreen, this, &MainWindow::showFullScreen);
-    connect(searchPage, &SearchPanel::escFullScreen, this, &MainWindow::showMaximized);
+    /* connect(cinemaPage, &CinemaSelectionPage::selectedCinema, this, &MainWindow::showMaximized); */
 
     stackedWidget->addWidget(cinemaPage);
     stackedWidget->addWidget(insertPage);
@@ -31,6 +59,12 @@ MainWindow::MainWindow(QWidget *parent)
     resize(800, 500); 
     QDir dir(QCoreApplication::applicationDirPath());
     dir.cdUp();  // Da /release → [PROJECT_ROOT]
+
+    //style
+    menu->setObjectName("menuWidget");
+    central->setObjectName("central");
+    layoutV->setContentsMargins(0, 0, 0, 0); 
+    layoutV->setSpacing(0);
 
     QFile file(dir.filePath("GUI/style.qss"));
     if (file.open(QFile::ReadOnly))
