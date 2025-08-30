@@ -28,6 +28,7 @@
 #include "ListPersone.h"
 #include "SelectMediaReference.h"
 
+#include "../Media.h"
 #include "../Film.h"
 #include "../Inserzione.h"
 #include "../Trailer.h"
@@ -43,6 +44,8 @@ class InsertMedia:public QWidget{
 
     MediaManagerJson* mediaManagerJson; //serve per salvare i dati raccolti nel json
     QStackedLayout* stackTipologia; //serve per cambiare il widget di input del tab "specifiche tipologia" a seconda della tipologia selezionata nella QComboBox
+/*     MediaManagerJson* mediaManagerJson;   //TEMPORANEO
+    QList<Media*> temporanea; */
 
     //widget che verranno utilizzati nel tab "specifiche tipologia" e intercambiati tramite la selezione
     //della tipologia su un QComboBox. Lo scambio è fatto con l'utilizzo di uno QStackedLayout stackTipologia
@@ -167,8 +170,7 @@ class InsertMedia:public QWidget{
     
     
     public:
-	explicit InsertMedia(QWidget *parent);
-    ~InsertMedia();
+	explicit InsertMedia(MediaManagerJson* manager, QWidget *parent);
     void resetAllInput();
     
     signals:

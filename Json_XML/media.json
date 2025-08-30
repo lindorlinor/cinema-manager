@@ -49,7 +49,7 @@
             1
         ],
         "nPostCredit": 1,
-        "nomeCinema": "",
+        "nomeCinema": "Cinema Aurora",
         "path": ":/images/image9.png",
         "risoluzione": 4,
         "sottotitoliDisponibili": [
@@ -197,7 +197,7 @@
         "dataInizioRilascio": "2025-04-15",
         "descrizione": "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
         "durataMinuti": 2,
-        "filmAssociato": "",
+        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
         "formato": 0,
         "lingueDisponibili": [
         ],
@@ -218,7 +218,7 @@
         "dataInizioRilascio": "2025-05-01",
         "descrizione": "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
         "durataMinuti": 3,
-        "filmAssociato": "",
+        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
         "formato": 0,
         "lingueDisponibili": [
         ],
@@ -471,8 +471,12 @@
         ],
         "nPostCredit": 5,
         "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 1,
+        "ospiti": [
+        ],
         "path": ":/images/default.png",
-        "risoluzione": 2,
+        "podcastAssociato": "",
+        "risoluzione": 1,
         "sottotitoliDisponibili": [
         ],
         "target": 0,

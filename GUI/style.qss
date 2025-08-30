@@ -256,8 +256,7 @@ QDateEdit#dataFine:disabled QLineEdit {
 
 /* Lista a tendina delle combo */
 #attivita,      /*di searchpanel */
-#popolarita,    /*di searchpanel */
-#recenti,       /*di searchpanel */
+#ordinamento,    /*di searchpanel */
 #comboFormato,
 #comboRisoluzione,
 #comboTargetInserzioni,
@@ -274,8 +273,7 @@ QDateEdit#dataFine:disabled QLineEdit {
 }
 
 #attivita QAbstractItemView,      /*di searchpanel */
-#popolarita QAbstractItemView,    /*di searchpanel */
-#recenti QAbstractItemView,       /*di searchpanel */
+#ordinamento QAbstractItemView,    /*di searchpanel */
 #comboFormato QAbstractItemView,
 #comboRisoluzione QAbstractItemView,
 #comboTargetFilm QAbstractItemView,
@@ -292,8 +290,7 @@ QDateEdit#dataFine:disabled QLineEdit {
 }
 
 #attivita QAbstractItemView::item,      /*di searchpanel */
-#popolarita QAbstractItemView::item,    /*di searchpanel */
-#recenti QAbstractItemView::item,       /*di searchpanel */
+#ordinamento QAbstractItemView::item,    /*di searchpanel */
 #comboFormato QAbstractItemView::item,
 #comboRisoluzione QAbstractItemView::item,
 #comboTargetInserzioni QAbstractItemView::item,
@@ -307,8 +304,7 @@ QDateEdit#dataFine:disabled QLineEdit {
 }
 
 #attivita QAbstractItemView::item:hover,      /*di searchpanel */
-#popolarita QAbstractItemView::item:hover,    /*di searchpanel */
-#recenti QAbstractItemView::item:hover,       /*di searchpanel */
+#ordinamento QAbstractItemView::item:hover,    /*di searchpanel */
 #comboFormato QAbstractItemView::item:hover,
 #comboRisoluzione QAbstractItemView::item:hover,
 #comboTargetInserzioni QAbstractItemView::item:hover,
@@ -319,8 +315,7 @@ QDateEdit#dataFine:disabled QLineEdit {
 }
 
 #attivita::down-arrow,      /*di searchpanel */
-#popolarita::down-arrow,    /*di searchpanel */
-#recenti::down-arrow,       /*di searchpanel */
+#ordinamento::down-arrow,    /*di searchpanel */
 #comboFormato::down-arrow,
 #comboRisoluzione::down-arrow,
 #comboTargetInserzioni::down-arrow,

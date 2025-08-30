@@ -10,6 +10,7 @@
 #include <QJsonValue>
 #include <QDir>
 #include <QFileInfo>
+#include <QApplication>
 
 #include "Populate.h"
 #include "../Film.h"
@@ -21,33 +22,26 @@
  * @brief Costruttore della classe MediaManagerJson.
  * @param basePath percorso base dove leggere/salvare i file JSON.
  */
+
+class MediaUpdateVisitor;
+
 class MediaManagerJson : public QObject{
     Q_OBJECT
     public:
-        explicit MediaManagerJson(const QString& basePath, QObject *parent = nullptr);
+        explicit MediaManagerJson(QList<Media*>& mediaList, const QString& basePath = QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"), QObject *parent = nullptr);
+
+        //convertDate
+        /**
+         * @brief converte la data da QDate a year_month_day (chrono)
+         * 
+         * @return Restituisce la data in year_month_day
+         */
+        year_month_day convertDate(const QDate& data);
 
         /**
-         * @brief Cancella tutti gli oggetti puntati dai puntatori nella lista e svuota la lista.
-         * 
-         * @param list Lista di puntatori a MediaData (o sue sottoclassi) da cancellare
-         */
-        void clearMediaList(QList<MediaData*>& list);
-
-
-        //load Data
-        /**
-         * @brief Carica tutti i film dal file films.json come dati grezzi
-         * 
-         * @return QList<FilmData> Lista dei film caricati.
-         */
-        
-        void loadFilmsData(QList<FilmData*>& films);
-        void loadTrailersData(QList<TrailerData*>& trailers);
-        void loadInserzioniData(QList<InserzioneData*>& inserzioni);
-        void loadPodcastData(QList<PodcastData*>& podcasts);
-        void loadPuntateData(QList<PuntataData*>& puntata);
+        * @brief carica tutti i cinema nel Json
+        */
         void loadCinemaData(QList<CinemaData*>& puntata);
-        /* void loadAllDataAndCinema(QList<CinemaData*>& listMedia); */
         
         /**
         * @brief Carica tutti i media 
@@ -55,6 +49,76 @@ class MediaManagerJson : public QObject{
         */
         void loadAllData(QList<MediaData*>& media);
         
+        /**
+        * @brief Crea tutti gli oggetti contenuti nel Json del rispettivo cinema chiamato
+        */
+        void loadAll();
+
+        /**
+        * @brief Elimina tutti gli oggetti creati
+        */
+        void removeAll();
+
+        //remove
+        /**
+         * @brief Elimina un oggetto passatogli
+         * 
+         */
+        void removeMedia(Media* media);
+
+        //modified
+        /**
+         * @brief Modifica un oggetto passatogli
+         * 
+         * riceve in input il riferimento all'oggetto da modificare il puntatore all'oggetto struct modificato
+         * 
+         */
+        void modified(Media& media, MediaData* data);
+    
+
+        //updateCommonField
+        /**
+         * @brief aggiorna l'oggetto Media e il Json con le modifiche
+         * 
+         */
+        void updateCommonField(Media& media, const MediaData *data);
+
+        //saveMedia
+        /**
+         * @brief Salva un nuovo media nel file films.json.
+         * 
+         * Carica i film esistenti, aggiunge il nuovo e riscrive il file.
+         * 
+         * @param film Dati del film da salvare.
+         */
+        void saveMedia(MediaData* media);
+        
+        //saveCinema
+        /**
+         * @brief salva il nuovo cinema inserito nel Json
+         */
+
+        void saveCinema(CinemaData* cinema);
+
+        void getCinemaNome(const QString& nomeCinema);
+        
+
+    private:
+        QString m_basePath;
+        QList<Media*>& mediaList;
+        QString cinemaAttuale;
+
+        //load Data
+        /**
+         * @brief Carica tutti i media dal file media.json come dati grezzi
+         */
+        
+        void loadFilmsData(QList<FilmData*>& films);
+        void loadTrailersData(QList<TrailerData*>& trailers);
+        void loadInserzioniData(QList<InserzioneData*>& inserzioni);
+        void loadPodcastData(QList<PodcastData*>& podcasts);
+        void loadPuntateData(QList<PuntataData*>& puntata);
+
         //load Media
         /**
          * @brief Caricano i media con i dati ottenuti dalle struct Data
@@ -66,13 +130,6 @@ class MediaManagerJson : public QObject{
         void loadInserzioni();
         void loadPodcast();
         void loadPuntate();
-        void loadAll();
-
-        /**
-         * @brief lista degli oggetti Media creatiù
-         */
-        QList<Media*>m_mediaList;
-
 
         //createMedia
         /**
@@ -85,8 +142,9 @@ class MediaManagerJson : public QObject{
         Inserzione* createInserzioneFromData(const InserzioneData& data);
         Podcast* createPodcastFromData(const PodcastData& data);
         Puntata* createPuntataFromData(const PuntataData& data);
-        
-        //findMedia
+        void createMedia(const MediaData& data);
+
+        //findMediaReference
         /**
          * @brief Trova il film o il podcast di riferimento
          * 
@@ -96,36 +154,21 @@ class MediaManagerJson : public QObject{
          * 
          * @return Restituisce l'oggetto corrispondente alla ricerca effettuata
          */
-        Media* findMedia(const QString& titolo, const QString& autore, const QString& tipo);
+        Media* findMediaReference(const QString& titolo, const QString& autore, const QString& tipo);
 
-
-        //convertDate
         /**
-         * @brief converte la data da QDate a year_month_day (chrono)
-         * 
-         * @return Restituisce la data in year_month_day
+         * @brief salvano i nuovi oggetti nel json e li creano
          */
-        year_month_day convertDate(const QDate& data);
+        void saveList(QList<MediaData*>& mediaList);
+        void saveFilm(FilmData* film, QJsonObject& obj);
+        void saveTrailer(TrailerData* trailer, QJsonObject& obj);
+        void saveInserzione(InserzioneData * inserzione, QJsonObject& obj);
+        void savePodcast(PodcastData* podcast, QJsonObject& obj);
+        void savePuntata(PuntataData* puntata, QJsonObject& obj);  
 
-        //remove
+        //update
         /**
-         * @brief Elimina un oggetto passatogli
-         * 
-         */
-        void remove(Media* media);
-
-        //modified
-        /**
-         * @brief Modifica un oggetto passatogli
-         * 
-         * riceve in input il riferimento all'oggetto da modificare il puntatore all'oggetto struct modificato
-         * 
-         */
-        void modified(Media& media, MediaData* data);
-        
-        //toMediaData
-        /**
-         * @brief converte un oggetto Media in un Data (struct)
+         * @brief aggiorna gli oggetti e il json
          * 
          * riceve in input il riferimento all'oggetto da modificare, il riferimento all'oggetto da modificare nell'array ottenuto 
          * con il load del Json e il puntatore all'oggetto struct ottenuto dalle modifiche inserite
@@ -137,49 +180,6 @@ class MediaManagerJson : public QObject{
         void updatePodcast( Podcast& media, const PodcastData* data);
         void updatePuntata( Puntata& media, const PuntataData* data);
 
-        //updateCommonField
-        /**
-         * @brief aggiorna l'oggetto Media e il Json con le modifiche
-         * 
-         */
-        void updateCommonField(Media& media, const MediaData *data);
-
-        //clearMediaList
-        /**
-         * @brief Libera la memoria di tutti gli oggetti Media* nella lista m_mediList e la svuota
-         * 
-         */
-        void clearMediaList();
-
-        //save
-        /**
-         * @brief Salva un nuovo film nel file films.json.
-         * 
-         * Carica i film esistenti, aggiunge il nuovo e riscrive il file.
-         * 
-         * @param film Dati del film da salvare.
-         */
-        void saveMedia(MediaData* media);
-        void saveList(QList<MediaData*>& mediaList);
-        void saveFilm(FilmData* film, QJsonObject& obj);
-        void saveTrailer(TrailerData* trailer, QJsonObject& obj);
-        void saveInserzione(InserzioneData * inserzione, QJsonObject& obj);
-        void savePodcast(PodcastData* podcast, QJsonObject& obj);
-        void savePuntata(PuntataData* puntata, QJsonObject& obj); 
-        void saveCinema(CinemaData* cinema); 
-
-        /**
-         * @brief ottiene il nome del cinema
-         * 
-         * il nome del cinema verrà utilizzato per importare solo i media relativi al cinema selezionato
-         */
-        void setNomeCinema(const QString& nome);
-
-        ~MediaManagerJson();
-        
-
-    private:
-        QString m_basePath;
         /**
          * @brief Salva i campi comuni di un contenuto multimediale in un oggetto JSON.
          * 
@@ -208,6 +208,8 @@ class MediaManagerJson : public QObject{
          * @return QJsonDocument Documento JSON letto, vuoto se il file non è accessibile.
          */
         QJsonDocument loadJsonFile(const QString &fileName); 
+
+        friend class MediaUpdateVisitor;
 };
 
 #endif// MEDIAMANAGERJSON_H 

@@ -32,6 +32,7 @@
 class InsertCinemaPage : public QWidget{
     Q_OBJECT
 private:
+    QList<Media*> temporanea; //DA ELIMINARE
     QVBoxLayout* frameLayout;
     QLineEdit *textInput; //per il nome del cinema
     InsertImageFrame *imageArea; //per inserire l'immagine

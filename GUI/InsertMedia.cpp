@@ -1,7 +1,9 @@
 #include "InsertMedia.h"
 #include "SearchPanel.h"
 
-InsertMedia::InsertMedia(QWidget *parent): QWidget(parent), mediaManagerJson(new MediaManagerJson(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"),this)){
+InsertMedia::InsertMedia(MediaManagerJson* manager, QWidget *parent): QWidget(parent), mediaManagerJson(manager)
+{
+    /* mediaManagerJson-> = new MediaManagerJson(temporanea, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"),this); */
     QVBoxLayout* mainLayout = new QVBoxLayout;
     mainLayout->setContentsMargins(0, 0, 0, 0); 
     mainLayout->setSpacing(0);
@@ -12,11 +14,6 @@ InsertMedia::InsertMedia(QWidget *parent): QWidget(parent), mediaManagerJson(new
     
     setLayout(mainLayout);
 }
-
-InsertMedia::~InsertMedia() {
-    delete mediaManagerJson;
-}
-
 
 
 

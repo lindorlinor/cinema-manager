@@ -47,7 +47,8 @@ void InsertCinemaPage::checkCinemaNameAvailability(const QString& text) {
     }
     QString nome = text.trimmed();
 
-    MediaManagerJson repo(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
+    //LISTA TEMPORANEA SOLO PER FAR COMPILARE
+    MediaManagerJson repo(temporanea, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
     QList<CinemaData*> listCinema;
     repo.loadCinemaData(listCinema);
 
@@ -98,7 +99,7 @@ void InsertCinemaPage::saveCinemaInJson() {
     data.nomeCinema = textInput->text().trimmed();
     data.copertinaCinema = imagePath;
 
-    MediaManagerJson repo(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
+    MediaManagerJson repo(temporanea, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
     repo.saveCinema(&data);
 
     QMessageBox::information(this, tr("Salvato"), tr("Cinema salvato correttamente."));

@@ -25,6 +25,7 @@ class CinemaSelectionPage : public QWidget
 {
     Q_OBJECT
 private:
+    QList<Media*> temporanea; //DA ELIMINARE
     QHBoxLayout* cinemaButtonsLayout;
     QVBoxLayout *frameLayout;
     QList<CinemaData*> cinemas;

@@ -9,21 +9,20 @@
 #include "../Media.h"
 #include "FlowLayout.h"
 #include "FlowVisitor.h"
+#include "LibraryObserver.h"
 
-class MediaLibraryGenerale: public QWidget{
+class MediaLibraryGenerale: public QWidget, public LibraryObserver{
 
     private:
 
-    const QList<Media*>& listMedia;
-    QString tipoFiltro;
+    QList<Media*>& listMedia;
     QLabel* titolo;
     FlowLayout* flow;
     QWidget* widgetSupporto;
     
     public:
-    explicit MediaLibraryGenerale(const QList<Media*>& media, const QString& filtro, QWidget* parent = nullptr);
-    void getFiltro(const QString& filtro);
-    void refresh();
+    explicit MediaLibraryGenerale(QList<Media*>& media, const QString& filtro, QWidget* parent = nullptr);
+    virtual void update(int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca);
 
 };
 

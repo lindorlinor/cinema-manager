@@ -1,32 +1,43 @@
 #include "MediaLibraryGenerale.h"
 
-MediaLibraryGenerale::MediaLibraryGenerale(const QList<Media*>& media, const QString& filtro, QWidget* parent): QWidget(parent),listMedia(media), tipoFiltro(filtro){
+MediaLibraryGenerale::MediaLibraryGenerale(QList<Media*>& media, const QString& filtroBottone, QWidget* parent): QWidget(parent),listMedia(media){
 
-    titolo = new QLabel(tipoFiltro+" in Sala",this);
+    titolo = new QLabel(filtroBottone+" in Sala",this);
     QVBoxLayout* mainLayout = new QVBoxLayout;
     widgetSupporto = new QWidget(this);
 
     flow = new FlowLayout(this);
-    for(const Media* m : listMedia){
-        FlowVisitor visitor(widgetSupporto, flow, tipoFiltro);
-        const_cast<Media*>(m)->accept(&visitor);
-    }
-
     widgetSupporto->setLayout(flow);
+
+    update(0, 0, filtroBottone, "");
 
     mainLayout->addWidget(titolo);
     mainLayout->addWidget(widgetSupporto);
     setLayout(mainLayout);
 }
 
-void MediaLibraryGenerale::getFiltro(const QString& filtro){
-    tipoFiltro = filtro;
-    titolo->setText(tipoFiltro+" in Sala");
+void MediaLibraryGenerale::update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca) {
+    
+    titolo->setText(filtro+" in Sala");
 
-    refresh();
-}
-
-void MediaLibraryGenerale::refresh() {
+    //oridnamento
+    if(comboOrdinamento == 0){
+        std::sort(listMedia.begin(), listMedia.end(), [](Media* a, Media* b){
+            return a->getVisualizzazioni() > b->getVisualizzazioni();
+        });
+    }else if(comboOrdinamento == 1){
+        std::sort(listMedia.begin(), listMedia.end(), [](Media* a, Media* b){
+            return a->getVisualizzazioni() < b->getVisualizzazioni();
+        });
+    }else if(comboOrdinamento == 2){
+        std::sort(listMedia.begin(), listMedia.end(), [](Media* a, Media* b){
+            return a->getDataInizioRilascio() < b->getDataInizioRilascio();
+        });
+    }else{
+        std::sort(listMedia.begin(), listMedia.end(), [](Media* a, Media* b){
+            return a->getDataInizioRilascio() > b->getDataInizioRilascio();
+        });
+    }
 
     // Rimuovo tutti i widget dal FlowLayout
     QLayoutItem* item;
@@ -39,7 +50,15 @@ void MediaLibraryGenerale::refresh() {
 
     // Ricreo i widget secondo il nuovo filtro
     for (const Media* m : listMedia) {
-        FlowVisitor visitor(widgetSupporto, flow, tipoFiltro);
-        const_cast<Media*>(m)->accept(&visitor);
+        if( //controllo che sia attivo o meno
+            ((comboAttivita == 0 && !m->FuoriProduzione()) || (comboAttivita == 1 && !m->FuoriProduzione()) || comboAttivita == 2) &&
+            //trovo i media che soddisfano la ricerca
+            (QString::fromStdString(m->getTitolo()).contains(ricerca, Qt::CaseInsensitive) || (QString::fromStdString(m->getAutore()).contains(ricerca, Qt::CaseInsensitive)))
+        ){
+            FlowVisitor* visitor = new FlowVisitor(widgetSupporto, filtro);
+            const_cast<Media*>(m)->accept(visitor);
+            if(visitor->getWidget() != nullptr)
+                flow->addWidget(visitor->getWidget());
+        }
     }
 }
