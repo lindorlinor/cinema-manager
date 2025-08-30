@@ -46,15 +46,16 @@ HEADERS +=  \
             GUI/ExpandableLabel.h \
             GUI/PreviewCard.h \
             GUI/DetailsPageButtons.h \
+            GUI/MediaLibraryGenerale.h \
+            GUI/FlowLayout.h \
+            GUI/FlowVisitor.h \
+            GUI/LibraryObserver.h \
+            GUI/Menu.h \
             DataFiles/Populate.h \
             DataFiles/Converter.h \
             DataFiles/ConverterXml.h \
             DataFiles/MediaManagerXml.h \
             DataFiles/XmlVisitor.h \
-            GUI/MediaLibraryGenerale.h \
-            GUI/FlowLayout.h \
-            GUI/FlowVisitor.h \
-            GUI/LibraryObserver.h \
             DataFiles/MediaManagerJson.h \
             DataFiles/MediaUpdateVisitor.h
 SOURCES +=  \
@@ -87,6 +88,7 @@ SOURCES +=  \
             GUI/DetailsPageButtons.cpp \
             GUI/FlowLayout.cpp \
             GUI/FlowVisitor.cpp \
+            GUI/Menu.cpp \
             DataFiles/MediaManagerJson.cpp \
             DataFiles/Converter.cpp \
             DataFiles/ConverterXml.cpp \

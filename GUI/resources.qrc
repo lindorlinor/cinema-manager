@@ -18,6 +18,9 @@
 
     <!-- Icone -->
     <qresource>
+        <file>../icons/max.png</file>
+        <file>../icons/esc.png</file>
+        <file>../icons/min.png</file>
         <file>../icons/arrow_left.png</file>
         <file>../icons/arrow_up.png</file>
         <file>../icons/arrow_down.png</file>

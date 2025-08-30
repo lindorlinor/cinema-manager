@@ -208,6 +208,11 @@ class MediaManagerJson : public QObject{
          * @return QJsonDocument Documento JSON letto, vuoto se il file non è accessibile.
          */
         QJsonDocument loadJsonFile(const QString &fileName); 
+                
+        /**
+         * @brief Elimina il media con il titolo e l'autore passatogli
+         */
+        void removeMediaFromData(QList<MediaData*>& mediaData, const QString& titolo, const QString& autore);
 
         friend class MediaUpdateVisitor;
 };
