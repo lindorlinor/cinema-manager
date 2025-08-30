@@ -11,6 +11,10 @@ Puntata::Puntata(const string &titolo, const string &descrizione, year_month_day
                                 p_podcast->aggiungiPuntata(this);
                             }
 
+Puntata::~Puntata(){
+    p_podcast->disaccoppiaPuntata(this);
+}      
+
 
 int Puntata::isOspiteIn(const std::string& ospite) const {
     auto it = std::find(p_ospiti.begin(), p_ospiti.end(), ospite);

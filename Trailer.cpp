@@ -11,6 +11,10 @@ Trailer::Trailer(const string &titolo, const string &descrizione, year_month_day
                                     }
 
 
+Trailer::~Trailer(){
+    t_film->disaccoppiaTrailer(this);
+}                                    
+
 void Trailer::associaFilm(Film* film) {
     if (!film || t_film == film)
         return;

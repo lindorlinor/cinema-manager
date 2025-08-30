@@ -26,6 +26,8 @@ public:
             Podcast *podcast, unsigned int numeroPubblicita, const string &autore = "Sconosciuto",
             const string &path = ":/images/default.png");
 
+    ~Puntata();
+    
     void aggiungiOspite(const string &);
     void rimuoviOspite(const string &);
     unsigned int getNumeroPubblicita() const;

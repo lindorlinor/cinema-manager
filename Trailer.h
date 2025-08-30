@@ -27,6 +27,8 @@ public:
             unsigned int nProiezioniGiornaliere, Film *film, const string &autore = "Sconosciuto", 
             const string &path = ":/images/default.png");
 
+    ~Trailer();
+
     /**
      * @brief assegna un film ad un Trailer
      * 

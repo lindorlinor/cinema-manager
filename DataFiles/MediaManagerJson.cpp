@@ -16,8 +16,10 @@ void MediaManagerJson::loadFilms() {
     QList<FilmData*> films;
     loadFilmsData(films);
     for (FilmData* data : films) {
-        if(data->nomeCinema == cinemaAttuale)
-            mediaList.append(createFilmFromData(*data));
+        qDebug()<<"cinema attuale "<<cinemaAttuale<<" cinema che controllo "<<data->nomeCinema;
+        if(data->nomeCinema == cinemaAttuale){
+            qDebug()<<"sto creando l'oggetto";
+            mediaList.append(createFilmFromData(*data));}
         delete data;
     }
 }
@@ -59,7 +61,7 @@ void MediaManagerJson::loadPodcast() {
 }
 
 void MediaManagerJson::loadPuntate() {
-    
+    qDebug()<<"filtro sul cinema "<<cinemaAttuale;
     QList<PuntataData*> puntata;
     loadPuntateData(puntata);
     for (PuntataData* data : puntata) {
@@ -81,34 +83,56 @@ void MediaManagerJson::loadAll() {
 
 void MediaManagerJson::removeAll() {
 
+    //metto tutti gli elementi la cui lambda rutorna true all'inizio della lista, in questo modo posso eliminare prima
+    //trailer e puntata senza doppio delete
+    std::partition(mediaList.begin(), mediaList.end(),
+        [](Media* m){
+            return dynamic_cast<Trailer*>(m) || dynamic_cast<Puntata*>(m);
+        });
+
+    
     if(!mediaList.isEmpty()){
         for(Media* m : mediaList){
             delete m;
         }
-    
+        
         mediaList.clear();
     }
 
 }
 
+void MediaManagerJson::removeMediaFromData(QList<MediaData*>& mediaData, const QString& titolo, const QString& autore) {
+    for(auto it = mediaData.begin(); it != mediaData.end(); ) {
+        
+    if( (*it)->titolo == titolo &&
+        (*it)->autore == autore) {
+            delete *it;
+            it = mediaData.erase(it); // cancella solo questo elemento
+        } else ++it;    
+    }
+}
+
 void MediaManagerJson::removeMedia(Media* media) {
     if (!media) return;
 
-    mediaList.removeOne(media);
-    delete media; // libera memoria
-
     QList<MediaData*> mediaData;
     QList<CinemaData*> cinemaList;
-    loadAllData(mediaData);
-    loadCinemaData(cinemaList);
-    for(auto it = mediaData.begin(); it != mediaData.end(); ) {
-        
-        if( (*it)->titolo == QString::fromStdString(media->getTitolo()) &&
-            (*it)->autore == QString::fromStdString(media->getAutore())) {
-                delete *it;
-                it = mediaData.erase(it); // cancella solo questo elemento
-        } else ++it;
-        
+    loadAllData(mediaData);         
+    loadCinemaData(cinemaList);     //scarico tutti i cinema per inserirli alla ifne della lista
+
+    /* dato che quando cancello un film, di conseguenza cancello anche un trailer (stessa cosa per podcst e puntata),
+    se elimino un film o podcast devo anche togliere dalla lista tutti i media che sono diventati nullptr, che sono obbligatoriatamente
+    dopo al media eliminato perché altrimenti se il film non era presente nella creazione del trailer, questo non si sarebbe potuto creare */
+
+    mediaList.removeOne(media); //cancello il media da eliminare
+    delete media;               // libera memoria
+    removeMediaFromData(mediaData, QString::fromStdString((media)->getTitolo()), QString::fromStdString((media)->getAutore())); //elimino il media da eliminare anche dall0array per il json
+
+    //cancello i puntatori nulli che si sono potuti creare
+    for(auto it = mediaList.begin(); it!=mediaList.end(); ++it){
+        if(!(*it))              //se è nullo allora lo cancello
+            {it = mediaList.erase(it);
+            removeMediaFromData(mediaData, QString::fromStdString((*it)->getTitolo()), QString::fromStdString((*it)->getAutore()));}
     }
 
     // salva tutta la lista aggiornata

@@ -178,7 +178,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
 
     //pannello per la libreria dei media
 /*     MediaLibraryTutto* libreriaMediaTutto = new MediaLibraryTutto(this); */
-    MediaLibraryGenerale* libreriaMediaGenerale = new MediaLibraryGenerale(mediaList, film->objectName() ,this);
+    MediaLibraryGenerale* libreriaMediaGenerale = new MediaLibraryGenerale(mediaList, "Film" ,this);
 
     this->addObserver(libreriaMediaGenerale);
 
@@ -303,6 +303,7 @@ void SearchPanel::updateInfoCinema(const CinemaData& data){
     //selezione Cinema
     cinema->setText("Cinema "+data.nomeCinema);
     manager->setCinemaNome(data.nomeCinema);
+    qDebug()<<"nome cinema passato "<<data.nomeCinema;
     manager->loadAll();
     emit giveCinemaInfoToIP(data);
 }
