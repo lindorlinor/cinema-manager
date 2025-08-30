@@ -19,11 +19,11 @@ public:
     explicit PreviewCard(const Media* mPtr, QWidget* parent = nullptr);
     const Media* mediaPtr; 
 signals:
-    void viewMedia(const Media* mPtr);
+    void viewMedia();
 
 protected:
     void mousePressEvent(QMouseEvent* event) override;
-    
+
 private:
     QLabel* imageLabel;
     QLabel* titleLabel;

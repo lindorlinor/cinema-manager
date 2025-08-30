@@ -185,7 +185,7 @@ void TrailerView::createScrollableSection() {
     PreviewCard* cardFilmA = new PreviewCard(filmA);
     cardFilmA->setFixedSize(210, 320);   
     layoutFilmA->addWidget(cardFilmA,0,Qt::AlignCenter);
-    connect(cardFilmA, &PreviewCard::viewMedia, this, [this](const Media* media){
+    connect(cardFilmA, &PreviewCard::viewMedia, this, [this](){
         qDebug() << "view Film Associato: " << QString::fromStdString(mediaPtr->getTitolo());
     });
     sezioneFilmA->setContentsMargins(20,0,20,0);
@@ -206,7 +206,7 @@ void TrailerView::createScrollableSection() {
             PreviewCard* cardTrailer = new PreviewCard(t);
             layoutTrailer->addWidget(cardTrailer,0,Qt::AlignCenter);
             connect(cardTrailer, &PreviewCard::viewMedia, this, 
-                [this,t](const Media* media){
+                [this,t](){
                     qDebug() << "view Trailer: " << QString::fromStdString(t->getTitolo());
                     emit trailerSelected(t);
                 });

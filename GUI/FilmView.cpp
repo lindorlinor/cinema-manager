@@ -231,7 +231,7 @@ void FilmView::createScrollableSection(){
     for (const Trailer* t : filmPtr->getTrailers()) {
         PreviewCard* card = new PreviewCard(t);
         layoutTrailer->addWidget(card);
-        connect(card, &PreviewCard::viewMedia, this, [this,t](const Media* media){
+        connect(card, &PreviewCard::viewMedia, this, [this,t](){
             qDebug() << "view Media: " << QString::fromStdString(t->getTitolo());
             emit trailerSelected(t);
         });

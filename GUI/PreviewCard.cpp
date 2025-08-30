@@ -53,6 +53,6 @@ PreviewCard::PreviewCard(const Media* mPtr, QWidget* parent)
 void PreviewCard::mousePressEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton) {
-        emit viewMedia(mediaPtr);
+        emit viewMedia();
     }
 }

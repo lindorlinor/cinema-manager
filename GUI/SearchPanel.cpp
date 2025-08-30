@@ -479,7 +479,7 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
         stackModifiche->removeWidget(detailPage);
         delete detailPage;
     });
-    /* // 5 Film
+    // 5 Film
     mediaList.push_back(new Film("2001: Odissea nello Spazio", "Avventura fantascientifica epica.",
                              year_month_day{2025y, June, 10d}, year_month_day{2025y, July, 5d},
                              140, Formato::DCP, Risoluzione::FullHD_1080p,
@@ -543,6 +543,5 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     mediaList.push_back(p2_1);
     mediaList.push_back(p2_2);
     mediaList.push_back(p2_3);
- */
    
 }
