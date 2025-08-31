@@ -32,6 +32,7 @@ class SearchPanel:public QWidget{
 
     Cinema* s_cinemaSelezionato;
     QList<Media*> s_mediaList;
+    QList<Cinema*>& s_cinemaList;
     CinemaManager* s_manager;
     MediaManagerXml* s_xmlManager;
     vector<LibraryObserver*> s_libraryObservers;
@@ -131,7 +132,7 @@ class SearchPanel:public QWidget{
     void preUpdate();
 
     public:
-	explicit SearchPanel(QWidget *parent);
+	explicit SearchPanel(QList<Cinema*>& cinemaList, QWidget *parent);
     void addObserver(LibraryObserver* obs);
     void update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca);
 

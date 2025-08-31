@@ -280,9 +280,10 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
 
 } 
 
-SearchPanel::SearchPanel(QWidget *parent): QWidget(parent),stackModifiche(new QStackedWidget(this)){
-    //gestione del json
+SearchPanel::SearchPanel(QList<Cinema*>& cinemaList, QWidget *parent): QWidget(parent),s_cinemaList(cinemaList),stackModifiche(new QStackedWidget(this)){
+    //carico tutti gli oggetti nel Json
     s_manager = new CinemaManager;
+    s_manager->loadMedia(s_mediaList);
 
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
@@ -299,10 +300,10 @@ void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
     //selezione Cinema
     s_cinemaSelezionato = cinemaSel;
     cinema->setText("Cinema " + QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
-    
-    s_manager->loadMedia(s_mediaList);
+
     for(Media* m : s_mediaList){
-        s_cinemaSelezionato->addMedia(m);
+        if(m->getNomeCinema() == s_cinemaSelezionato->getNomeCinema())
+            s_cinemaSelezionato->addMedia(m);
     }
 
     emit giveCinemaInfoToIP(s_cinemaSelezionato);

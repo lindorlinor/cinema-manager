@@ -17,6 +17,9 @@ void Cinema::setCopertinaCinema(const string& copertina){
     c_copertinaCinema = copertina;
 }
 void Cinema::addMedia(Media* media){
+    for(Media* m : c_media){
+        if(media->getTitolo() == m->getTitolo() && media->getAutore() == m->getAutore()) return;
+    }
     c_media.push_back(media);
 }
 void Cinema::removeMedia(Media* media){
