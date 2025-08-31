@@ -2,11 +2,11 @@
 #include <algorithm>
 
 // Costruttore
-Film::Film( const string& nomeCinema, const string& copertinaCinema, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+Film::Film( const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
             year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione, 
             unsigned int nPostCredit, double costoBiglietto, const string &casaDiProduzione,
             const string &autore, const string &path, Classificazione target):
-            Media(nomeCinema, copertinaCinema, titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
+            Media(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
             durataMinuti, formato, risoluzione, autore, path),f_nPostCredit(nPostCredit),
             f_costoBiglietto(costoBiglietto),f_casaDiProduzione(casaDiProduzione),
             f_target(target), f_valutazione(0){}

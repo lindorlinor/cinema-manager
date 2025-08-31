@@ -20,14 +20,14 @@ void CinemaManager::loadCinema(QList<Cinema*>& c_cinemaList){
     
 }
 
-void CinemaManager::loadMedia(QList<Media*>& c_mediaList){
+void CinemaManager::loadMedia(QList<Media*>& c_mediaList, const QString& nomeCinema){
     QJsonDocument doc = loadJsonFile("media.json");
     if (!doc.isArray()) return;
     
     for (const auto &val : doc.array()) {
         
         QJsonObject obj = val.toObject();
-        if (obj.contains("tipologia")) {
+        if (obj.contains("tipologia") && obj["nomeCinema"] == nomeCinema) {
 
 
             if(obj["tipologia"] == "film") c_mediaList.append(createFilm(obj));
@@ -77,7 +77,7 @@ void CinemaManager::saveCinemaInJson(Cinema* c_cinema){
     saveJsonFile("media.json", QJsonDocument(array));
 }
 
-void CinemaManager::saveMediaInJson(Media* c_media) {
+void CinemaManager::saveMediaInJson(Media* c_media, const QString& nomeCinema) {
     if (!c_media) return;
 
     // carico il JSON esistente
@@ -92,7 +92,7 @@ void CinemaManager::saveMediaInJson(Media* c_media) {
     for (const auto &val : array) {
         QJsonObject obj = val.toObject();
         if (obj.contains("tipologia")) { // se non c'è tipologia, allora è un cinema 
-            if (    obj["nomeCinema"] == QString::fromStdString(c_media->getNomeCinema()) && 
+            if (    obj["nomeCinema"] == nomeCinema && 
                     obj["titolo"] == QString::fromStdString(c_media->getTitolo()) &&
                     obj["autore"] == QString::fromStdString(c_media->getAutore()))
                 return; // già presente
@@ -231,21 +231,19 @@ Film* CinemaManager::createFilm(QJsonObject& obj) {
 
     
     Film* film = new Film(
-        obj["nomeCinema"].toString().toStdString(),
-        obj["copertinaCinema"].toString().toStdString(),
         obj["titolo"].toString().toStdString(),
         obj["descrizione"].toString().toStdString(),
         convertDate(obj["dataInizioRilascio"].toString()),
         convertDate(obj["dataFineRilascio"].toString()), 
         static_cast<unsigned int>(obj["durataMinuti"].toInt()),
-        static_cast<Formato>(obj["formato"].toInt()),
-        static_cast<Risoluzione>(obj["risoluzione"].toInt()),
+        toFormato(obj["formato"].toString().toStdString()),
+        toRisoluzione(obj["risoluzione"].toString().toStdString()),
         static_cast<unsigned int>(obj["nPostCredit"].toInt()),
         obj["costoBiglietto"].toDouble(),
         obj["casaDiProduzione"].toString().toStdString(),
         obj["autore"].toString().toStdString(),
         obj["path"].toString().toStdString(),
-        static_cast<Classificazione>(obj["target"].toInt())
+        toClassificazione(obj["target"].toString().toStdString())
     );
 
     addLingue(film,obj);
@@ -258,7 +256,7 @@ Film* CinemaManager::createFilm(QJsonObject& obj) {
 
 
 Trailer* CinemaManager::createTrailer (QList<Media*> c_mediaList, QJsonObject& obj) {
-    Media* filmAssociato = findMediaReference(obj["nomeCinema"].toString(), obj["filmAssociato"].toString(), obj["autoreFilmAssociato"].toString(), "trailer", c_mediaList);
+    Media* filmAssociato = findMediaReference(obj["filmAssociato"].toString(), obj["autoreFilmAssociato"].toString(), "trailer", c_mediaList);
 
     if(!filmAssociato){
         qDebug()<<"Errore!, nessun Film collegato al Trailer "<<obj["titolo"].toString();
@@ -268,15 +266,13 @@ Trailer* CinemaManager::createTrailer (QList<Media*> c_mediaList, QJsonObject& o
     
 
     Trailer* trailer = new Trailer(
-        obj["nomeCinema"].toString().toStdString(),
-        obj["copertinaCinema"].toString().toStdString(),
         obj["titolo"].toString().toStdString(),
         obj["descrizione"].toString().toStdString(),
         convertDate(obj["dataInizioRilascio"].toString()),
         convertDate(obj["dataFineRilascio"].toString()), 
         static_cast<unsigned int>(obj["durataMinuti"].toInt()),
-        static_cast<Formato>(obj["formato"].toInt()),
-        static_cast<Risoluzione>(obj["risoluzione"].toInt()),
+        toFormato(obj["formato"].toString().toStdString()),
+        toRisoluzione(obj["risoluzione"].toString().toStdString()),
         static_cast<unsigned int>(obj["nProiezioniGiornaliere"].toInt()),
         static_cast<Film*>(filmAssociato),
         obj["autore"].toString().toStdString(),
@@ -291,17 +287,15 @@ Trailer* CinemaManager::createTrailer (QList<Media*> c_mediaList, QJsonObject& o
 Inserzione* CinemaManager::createInserzione(QJsonObject& obj) {
 
     Inserzione* inserzione = new Inserzione(
-        obj["nomeCinema"].toString().toStdString(),
-        obj["copertinaCinema"].toString().toStdString(),
         obj["titolo"].toString().toStdString(),
         obj["descrizione"].toString().toStdString(),
         convertDate(obj["dataInizioRilascio"].toString()),
         convertDate(obj["dataFineRilascio"].toString()), 
         static_cast<unsigned int>(obj["durataMinuti"].toInt()),
-        static_cast<Formato>(obj["formato"].toInt()),
-        static_cast<Risoluzione>(obj["risoluzione"].toInt()),
+        toFormato(obj["formato"].toString().toStdString()),
+        toRisoluzione(obj["risoluzione"].toString().toStdString()),
         static_cast<unsigned int>(obj["nProiezioniGiornaliere"].toInt()),
-        static_cast<Classificazione>(obj["target"].toInt()),
+        toClassificazione(obj["target"].toString().toStdString()),
         obj["costoFissoProiezione"].toDouble(),
         obj["aziendaInserzionista"].toString().toStdString(),
         obj["autore"].toString().toStdString(),
@@ -317,12 +311,10 @@ Inserzione* CinemaManager::createInserzione(QJsonObject& obj) {
 Podcast* CinemaManager::createPodcast(QJsonObject& obj) {
 
     Podcast* podcast = new Podcast(
-        obj["nomeCinema"].toString().toStdString(),
-        obj["copertinaCinema"].toString().toStdString(),
         obj["titolo"].toString().toStdString(),
         obj["descrizione"].toString().toStdString(),
-        static_cast<Formato>(obj["formato"].toInt()),
-        static_cast<Risoluzione>(obj["risoluzione"].toInt()),
+        toFormato(obj["formato"].toString().toStdString()),
+        toRisoluzione(obj["risoluzione"].toString().toStdString()),
         obj["autore"].toString().toStdString(),
         obj["path"].toString().toStdString(),
         obj["conduttore"].toString().toStdString());
@@ -331,15 +323,13 @@ Podcast* CinemaManager::createPodcast(QJsonObject& obj) {
 }
 
 Puntata* CinemaManager::createPuntata(QList<Media*> c_mediaList, QJsonObject& obj) {
-    Media* podcastAssociato = findMediaReference(obj["nomeCinema"].toString(), obj["podcastAssociato"].toString(), obj["autorePodcastAssociato"].toString(), "trailer", c_mediaList);
+    Media* podcastAssociato = findMediaReference(obj["podcastAssociato"].toString(), obj["autorePodcastAssociato"].toString(), "trailer", c_mediaList);
     if(!podcastAssociato){
         qDebug()<<"Errore!, nessun Podcast collegato alla Puntata "<<obj["titolo"].toString();
         return nullptr;
     } 
 
     Puntata* puntata = new Puntata(
-        obj["nomeCinema"].toString().toStdString(),
-        obj["copertinaCinema"].toString().toStdString(),
         obj["titolo"].toString().toStdString(),
         obj["descrizione"].toString().toStdString(),
         convertDate(obj["dataInizioRilascio"].toString()),
@@ -415,9 +405,11 @@ void CinemaManager::addOspite(Puntata* puntata, QJsonObject& obj){
 }
 
 // TROVA MEDIA PER RIFERIMENTO A PODCAST O FILM //
-Media* CinemaManager::findMediaReference(const QString& cinema, const QString& titolo, const QString& autore, const QString& tipo, QList<Media*>c_mediaList){
+
+//nota: non c'è il controllo sul cinema perché nella lista di oggetti passata, tutti gli oggetti riguardano lo stesso cinema
+Media* CinemaManager::findMediaReference(const QString& titolo, const QString& autore, const QString& tipo, QList<Media*>c_mediaList){
     for(Media* m : c_mediaList){
-        if(QString::fromStdString(m->getAutore()) == autore && QString::fromStdString(m->getTitolo()) == titolo && QString::fromStdString(m->getNomeCinema()) == cinema)
+        if(QString::fromStdString(m->getAutore()) == autore && QString::fromStdString(m->getTitolo()) == titolo)
             if( (tipo =="trailer" && dynamic_cast<Film*>(m) ) || (tipo == "puntata" && dynamic_cast<Podcast*>(m)))
                 return m;
     }

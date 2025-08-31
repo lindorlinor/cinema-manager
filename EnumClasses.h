@@ -24,13 +24,13 @@ inline std::string dateToString(const year_month_day& d) {
 
 
 enum class Formato {
+    MP4,
     DCP,
     RealD_3D,
     MOV_ProRes,
     MXF,
     WAV_5_1,
     WAV_7_1,
-    MP4,
     MOV_H264,
     TIFF,
     IMAX_3D
@@ -38,13 +38,13 @@ enum class Formato {
 
 inline const char* toString(Formato f) {
     switch (f) {
+        case Formato::MP4: return "MP4";
         case Formato::DCP: return "DCP";
         case Formato::RealD_3D: return "RealD 3D";
         case Formato::MOV_ProRes: return "MOV ProRes";
         case Formato::MXF: return "MXF";
         case Formato::WAV_5_1: return "WAV 5.1";
         case Formato::WAV_7_1: return "WAV 7.1";
-        case Formato::MP4: return "MP4";
         case Formato::MOV_H264: return "MOV H264";
         case Formato::TIFF: return "TIFF";
         case Formato::IMAX_3D: return "IMAX 3D";
@@ -54,13 +54,13 @@ inline const char* toString(Formato f) {
 
 inline std::vector<Formato> tuttiIFormati() {
     return {
+        Formato::MP4,
         Formato::DCP,
         Formato::RealD_3D,
         Formato::MOV_ProRes,
         Formato::MXF,
         Formato::WAV_5_1,
         Formato::WAV_7_1,
-        Formato::MP4,
         Formato::MOV_H264,
         Formato::TIFF,
         Formato::IMAX_3D
@@ -283,6 +283,7 @@ inline Classificazione toClassificazione(const std::string& s) {
     if (s == "6+") return Classificazione::SEI_PIU;
     if (s == "14+") return Classificazione::QUATTORDICI_PIU;
     if (s == "18+") return Classificazione::DICIOTTO_PIU;
+    return Classificazione::TUTTI;
 }
 
 inline Genere toGenere(const std::string& s) {

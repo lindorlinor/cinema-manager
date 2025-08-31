@@ -9,7 +9,7 @@
 #include <QDir>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), cinemaPage(new CinemaSelectionPage(w_cinema, this)), insertPage(new InsertCinemaPage(w_cinema, this)), searchPage(new SearchPanel(w_cinema, this))
+    : QMainWindow(parent), cinemaPage(new CinemaSelectionPage(w_cinema, this)), insertPage(new InsertCinemaPage(w_cinema, this)), searchPage(new SearchPanel(this))
 {
     setWindowFlags(Qt::Window | Qt::CustomizeWindowHint | 
                Qt::WindowMinimizeButtonHint | 

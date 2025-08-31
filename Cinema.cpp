@@ -36,6 +36,6 @@ string Cinema::getNomeCinema()const{
 string Cinema::getCopertinaCinema()const{
     return c_copertinaCinema;
 }
-vector<Media*> Cinema::getListaMedia()const{
+list<Media*> Cinema::getListaMedia()const{
     return c_media;
 }

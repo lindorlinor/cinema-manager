@@ -46,29 +46,26 @@ void SaveMediaVisitor::saveCommonFields(const Media* media, QJsonObject &obj){
     obj["autore"] = QString::fromStdString(media->getAutore());
     obj["descrizione"] = QString::fromStdString(media->getDescrizione());
     obj["durataMinuti"] = static_cast<int>(media->getDurataMinuti());
-    obj["formato"] = static_cast<int>(media->getFormato());
-    obj["risoluzione"] = static_cast<int>(media->getRisoluzione());
+    obj["formato"] = QString::fromStdString(toString(media->getFormato()));
+    obj["risoluzione"] = QString::fromStdString(toString(media->getRisoluzione()));
 
     obj["path"] = QString::fromStdString(media->getImPath());
 
     QJsonArray arrayLingue;
     for (Lingua l : media->getLingue()) {
-        arrayLingue.append(static_cast<int>(l));  
+        arrayLingue.append(QString::fromStdString(toString(l)));
     }
     obj["lingueDisponibili"] = arrayLingue;
 
     QJsonArray arraySottotitoli;
     for (Lingua l : media->getSottotitoli()) {
-        arraySottotitoli.append(static_cast<int>(l));  
+        arraySottotitoli.append(QString::fromStdString(toString(l)));
     }
     obj["sottotitoliDisponibili"] = arraySottotitoli;
 
+
     obj["dataInizioRilascio"] = dataInizio.toString("yyyy-MM-dd");
     obj["dataFineRilascio"] = dataFine.toString("yyyy-MM-dd");
-
-    obj["nomeCinema"] =QString::fromStdString(media->getNomeCinema());
-    obj["copertinaCinema"] = QString::fromStdString(media->getCopertinaCinema());
-    
 }
 
 
@@ -87,7 +84,7 @@ void SaveMediaVisitor::saveFilm(Film* film, QJsonObject& obj) {
     obj["nPostCredit"] = static_cast<int>(film->getNPostCredit());
     obj["costoBiglietto"] = film->getCostoBiglietto();
 
-    obj["target"] = static_cast<int>(film->getTarget());
+    obj["target"] = QString::fromStdString(toString(film->getTarget()));
     
     QJsonArray arrayAttori;
     for (const string& a : film->getAttoriPrincipali())
@@ -146,13 +143,13 @@ void SaveMediaVisitor::saveInserzione(Inserzione* inserzione, QJsonObject& obj) 
     
     saveCommonFields(inserzione, obj);
     
-    obj["target"] = static_cast<int>(inserzione->getTarget());
+    obj["target"] = QString::fromStdString(toString(inserzione->getTarget()));
     obj["aziendaInserzionista"] = QString::fromStdString(inserzione->getAziendaInserzionistica());
     obj["costoFissoProiezione"] = static_cast<double>(inserzione->getCostoFissoProiezione());
     
     QJsonArray arrayFasceOrarie;
     for (FasciaOraria f : inserzione->getFasceOrarie()) {
-        arrayFasceOrarie.append(static_cast<int>(f));
+        arrayFasceOrarie.append(QString::fromStdString(toString(f)));
     }
     obj["fasceOrarie"] = arrayFasceOrarie;
     obj["tipologia"] = "inserzione";

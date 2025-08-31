@@ -15,21 +15,20 @@
         "dataInizioRilascio": "2025-06-01",
         "descrizione": "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
         "durataMinuti": 86,
-        "formato": 0,
-        "generi": [
-        ],
+        "formato": "MP4",
+        "generi": [],
         "lingueDisponibili": [
-            0,
-            1
+            "Italiano",
+            "Inglese"
         ],
         "nPostCredit": 1,
         "nomeCinema": "Cinema Aurora",
         "path": ":/images/image9.png",
-        "risoluzione": 4,
+        "risoluzione": "UHD 4K 2160p",
         "sottotitoliDisponibili": [
-            0
+            "Italiano"
         ],
-        "target": 0,
+        "target": "TUTTI",
         "tipologia": "film",
         "titolo": "Il mio vicino Totoro (RE-RELEASE 2025)"
     },
@@ -42,15 +41,13 @@
         "descrizione": "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
         "durataMinuti": 2,
         "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
-        "formato": 0,
-        "lingueDisponibili": [
-        ],
+        "formato": "MP4",
+        "lingueDisponibili": [],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "Cinema Aurora",
         "path": ":/images/image10.png",
-        "risoluzione": 4,
-        "sottotitoliDisponibili": [
-        ],
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [],
         "tipologia": "trailer",
         "titolo": "Trailer ufficiale - Il mio vicino Totoro (2025)"
     },
@@ -63,15 +60,13 @@
         "descrizione": "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
         "durataMinuti": 3,
         "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
-        "formato": 0,
-        "lingueDisponibili": [
-        ],
+        "formato": "MP4",
+        "lingueDisponibili": [],
         "nProiezioniGiornaliere": 3,
         "nomeCinema": "Cinema Aurora",
         "path": ":/images/image10.png",
-        "risoluzione": 4,
-        "sottotitoliDisponibili": [
-        ],
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [],
         "tipologia": "trailer",
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },

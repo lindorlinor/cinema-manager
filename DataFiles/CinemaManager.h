@@ -44,16 +44,16 @@ class CinemaManager{
     void addAttore(Film* film, QJsonObject& obj);
     void addOspite(Puntata* puntata, QJsonObject& obj);
     void addFasceOrarie(Inserzione* inserzione, QJsonObject& obj);
-    Media* findMediaReference(const QString& cinema, const QString& titolo, const QString& autore, const QString& tipo, QList<Media*>c_mediaList);
+    Media* findMediaReference(const QString& titolo, const QString& autore, const QString& tipo, QList<Media*>c_mediaList);
 
     public:
     CinemaManager(const QString& basePath = QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
 
     void saveCinemaInJson(Cinema* c_cinema);
-    void saveMediaInJson(Media* c_media);
+    void saveMediaInJson(Media* c_media, const QString& nomeCinema);
     
     void loadCinema(QList<Cinema*>& c_cinemaList);
-    void loadMedia(QList<Media*>& c_mediaList);
+    void loadMedia(QList<Media*>& c_mediaList, const QString& nomeCinema);
 
     void updateJson(QList<Cinema*> c_cinemaList, QList<Media*> c_mediaList);
     void updateJson(QList<Media*> c_mediaList);

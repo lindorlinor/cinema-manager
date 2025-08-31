@@ -7,7 +7,7 @@ class LibraryObserver{
     private:
     public:
         virtual ~ LibraryObserver () = default ;
-        virtual void update (int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca, const QString& nomeCinema) = 0;
+        virtual void update (int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca, QList<Media*>mediaList) = 0;
 
 };
 

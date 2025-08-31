@@ -2,7 +2,7 @@
 #define CINEMA_H
 
 #include <string>
-#include <vector>
+#include <list>
 
 class Media;
 
@@ -13,7 +13,7 @@ class Cinema{
 
     string c_nomeCinema;
     string c_copertinaCinema;
-    vector<Media*> c_media;
+    list<Media*> c_media;
     
     public:
     Cinema(const string &nome, const string &copertina);
@@ -29,7 +29,7 @@ class Cinema{
     //get
     string getNomeCinema()const;
     string getCopertinaCinema()const;
-    vector<Media*> getListaMedia()const;
+    list<Media*> getListaMedia()const;
 };
 
 #endif //CINEMA_H

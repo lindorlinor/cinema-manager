@@ -1,10 +1,10 @@
 #include "Podcast.h"
 #include "Puntata.h"
 
-Podcast::Podcast(const string& nomeCinema, const string& copertinaCinema, const string &titolo, const string &descrizione,
+Podcast::Podcast(const string &titolo, const string &descrizione,
                  Formato formato, Risoluzione risoluzione,
                  const string &autore, const string &path, const string &conduttore) : 
-                                    Media(nomeCinema, copertinaCinema, titolo, descrizione, year_month_day{floor<days>(system_clock::now())}, 
+                                    Media(titolo, descrizione, year_month_day{floor<days>(system_clock::now())}, 
                                     year_month_day{floor<days>(system_clock::now())},
                                     0, formato, risoluzione, autore, path),p_conduttore(conduttore) {}
 

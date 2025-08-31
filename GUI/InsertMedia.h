@@ -46,7 +46,7 @@ class InsertMedia:public QWidget{
     CinemaManager* cinemaManager; 
 
     //cinema selezionato
-    const Cinema* im_cinemaSelezionato;
+    Cinema* im_cinemaSelezionato;
 
     //liste di media
     QList<Media*> im_mediaList;
@@ -160,8 +160,7 @@ class InsertMedia:public QWidget{
     template<class L>
     void addReference(const QString& testo, const QString& tipo, L* ly, SelectMediaReference*& reference);       //aggiunge il widget delle reference a trailer e puntata, per associare film e podcast
     
-    template<class EnumType>
-    vector<EnumType> getSelectedList(QListWidget* list);                                                        //ottiene i selezionati di una QListWidget
+    vector<std::string> getSelectedList(QListWidget* list);                                                        //ottiene i selezionati di una QListWidget
     
     
     //widget di input da aggiungere, sono stati fatti dei metodi perché utilizzati più volte o per pulizia del codice
@@ -181,11 +180,11 @@ class InsertMedia:public QWidget{
     void addGeneri(Film* film);
     void addAttore(Film* film);
     void addOspite(Puntata* puntata);
-    Media* findMediaReference(const QString& titolo, const QString& autore, const QString& cinema, const QString& tipo);
+    Media* findMediaReference(const QString& titolo, const QString& autore, const QString& tipo);
 
     
     public:
-	explicit InsertMedia(QList<Media*> s_mediaList, QWidget *parent);
+	explicit InsertMedia(QWidget *parent);
     void resetAllInput();
     
     signals:
@@ -196,7 +195,7 @@ class InsertMedia:public QWidget{
     public slots:
     void chooseImage();                      //rimuove l'immagine precedentemente selezionata
     void removeImage();                      //rimuove l'immagine precedentemente selezionata
-    void getCinemaInfo(Cinema* data);
+    void getCinemaInfo(Cinema* data, QList<Media*>);
     
 };
 

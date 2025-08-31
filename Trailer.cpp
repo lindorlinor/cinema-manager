@@ -1,13 +1,13 @@
 #include "Trailer.h"
 #include "Film.h"
 
-Trailer::Trailer(const string& nomeCinema, const string& copertinaCinema, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+Trailer::Trailer(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
                 year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
                 unsigned int nProiezioniGiornaliere, Film *film, const string &autore, 
                 const string &path) : 
-                        Pubblicita(nomeCinema, copertinaCinema, titolo, descrizione, gg_mm_aaInizioRilascio, (gg_mm_aaFineRilascio>film->getDataFineRilascio()?film->getDataFineRilascio():gg_mm_aaFineRilascio),
+                        Pubblicita(titolo, descrizione, gg_mm_aaInizioRilascio, (gg_mm_aaFineRilascio>film->getDataFineRilascio()?film->getDataFineRilascio():gg_mm_aaFineRilascio),
                                     durataMinuti, formato, risoluzione, nProiezioniGiornaliere, autore, path), t_film(film){
-                                        film->aggiungiTrailer(this);
+                                    film->aggiungiTrailer(this);
                                     }
 
 

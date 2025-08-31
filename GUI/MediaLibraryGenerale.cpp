@@ -1,6 +1,6 @@
 #include "MediaLibraryGenerale.h"
 
-MediaLibraryGenerale::MediaLibraryGenerale(QList<Media*>& media, const QString& filtroBottone, QWidget* parent): QWidget(parent),ml_mediaList(media){
+MediaLibraryGenerale::MediaLibraryGenerale(const QString& filtroBottone, QWidget* parent): QWidget(parent){
 
     titolo = new QLabel(filtroBottone+" in Sala",this);
     QVBoxLayout* mainLayout = new QVBoxLayout;
@@ -9,15 +9,15 @@ MediaLibraryGenerale::MediaLibraryGenerale(QList<Media*>& media, const QString& 
     flow = new FlowLayout(this);
     widgetSupporto->setLayout(flow);
 
-    update(0, 0, filtroBottone, "", "");
+    update(0, 0, filtroBottone, "", QList<Media*>());
 
     mainLayout->addWidget(titolo);
     mainLayout->addWidget(widgetSupporto);
     setLayout(mainLayout);
 }
 
-void MediaLibraryGenerale::update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, const QString& nomeCinema) {
-    
+void MediaLibraryGenerale::update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>mediaList) {
+    ml_mediaList = mediaList;
     titolo->setText(filtro+" in Sala");
 
     //oridnamento
@@ -53,8 +53,7 @@ void MediaLibraryGenerale::update(int comboAttivita, int comboOrdinamento, const
         if( //controllo che sia attivo o meno
             ((comboAttivita == 0 && !m->FuoriProduzione()) || (comboAttivita == 1 && m->FuoriProduzione()) || comboAttivita == 2) &&
             //trovo i media che soddisfano la ricerca
-            (((QString::fromStdString(m->getTitolo()).contains(ricerca, Qt::CaseInsensitive)) || (QString::fromStdString(m->getAutore()).contains(ricerca, Qt::CaseInsensitive))) &&
-            QString::fromStdString(m->getNomeCinema()).compare(nomeCinema, Qt::CaseInsensitive) == 0)
+            (((QString::fromStdString(m->getTitolo()).contains(ricerca, Qt::CaseInsensitive)) || (QString::fromStdString(m->getAutore()).contains(ricerca, Qt::CaseInsensitive))))
         ){
             FlowVisitor* libraryVisitor = new FlowVisitor(widgetSupporto, filtro);
             m->accept(libraryVisitor);

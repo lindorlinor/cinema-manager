@@ -35,7 +35,7 @@ private:
     int isTrailerIn(Trailer *trailer) const;
 
 public:
-    Film(const string& nomeCinema, const string& copertinaCinema, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+    Film(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
          year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
          unsigned int nPostCredit, double costoBiglietto, const string &casaDiProduzione = "Sconosciuto",
          const string &autore = "Sconosciuto", const string &path = ":/images/default.png", Classificazione target = Classificazione::TUTTI);

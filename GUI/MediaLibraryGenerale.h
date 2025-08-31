@@ -2,6 +2,7 @@
 #define MEDIALIBRARYGENERALE_H
 
 #include <QWidget>
+#include <QList>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include "../Media.h"
@@ -17,14 +18,14 @@ class MediaLibraryGenerale: public QWidget, public LibraryObserver{
     Q_OBJECT
     private:
 
-    QList<Media*>& ml_mediaList;
+    QList<Media*> ml_mediaList;
     QLabel* titolo;
     FlowLayout* flow;
     QWidget* widgetSupporto;
     
     public:
-    explicit MediaLibraryGenerale(QList<Media*>& media, const QString& filtro, QWidget* parent = nullptr);
-    virtual void update(int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca, const QString& nomeCinema);
+    explicit MediaLibraryGenerale(const QString& filtro, QWidget* parent = nullptr);
+    virtual void update(int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca, QList<Media*>mediaList);
 
     signals: 
     void requestMediaView(MediaView& widget);

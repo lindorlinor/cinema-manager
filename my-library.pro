@@ -52,7 +52,6 @@ HEADERS +=  \
             GUI/FlowVisitor.h \
             GUI/LibraryObserver.h \
             GUI/Menu.h \
-            DataFiles/Converter.h \
             DataFiles/CinemaManager.h \
             DataFiles/SaveMediaVisitor.h 
 SOURCES +=  \
@@ -87,7 +86,6 @@ SOURCES +=  \
             GUI/FlowLayout.cpp \
             GUI/FlowVisitor.cpp \
             GUI/Menu.cpp \
-            DataFiles/Converter.cpp \
             DataFiles/CinemaManager.cpp \
             DataFiles/SaveMediaVisitor.cpp 
 RESOURCES += GUI/resources.qrc

@@ -18,7 +18,7 @@
 #include "../Cinema.h"
 #include "CinemaSelectionPage.h"
 #include "InsertMedia.h"
-#include "DataFiles/MediaManagerXml.h"
+/* #include "DataFiles/MediaManagerXml.h" */
 #include "DataFiles/CinemaManager.h"
 
 /* #include "MediaLibraryTutto.h" */
@@ -31,11 +31,10 @@ class SearchPanel:public QWidget{
     private:
 
     Cinema* s_cinemaSelezionato;
-    QList<Media*> s_mediaList;
-    QList<Cinema*>& s_cinemaList;
     CinemaManager* s_manager;
-    MediaManagerXml* s_xmlManager;
+    /* MediaManagerXml* s_xmlManager; */
     vector<LibraryObserver*> s_libraryObservers;
+    QList<Media*> s_listaSUpportoMedia;
 
     //selezione media
     /**
@@ -132,7 +131,7 @@ class SearchPanel:public QWidget{
     void preUpdate();
 
     public:
-	explicit SearchPanel(QList<Cinema*>& cinemaList, QWidget *parent);
+	explicit SearchPanel(QWidget *parent);
     void addObserver(LibraryObserver* obs);
     void update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca);
 
@@ -150,7 +149,7 @@ class SearchPanel:public QWidget{
     
     signals:
     void resetPages();
-    void giveCinemaInfoToIP(Cinema* cinemaSel);
+    void giveCinemaInfoToIP(Cinema* cinemaSel, QList<Media*> mediaList);
     void selectedFilterButton(const QString& filtro);
     void escSearchPanel();
 };

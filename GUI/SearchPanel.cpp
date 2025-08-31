@@ -167,14 +167,14 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     
     
     //pannello di aggiunta media
-    InsertMedia* nuovoMedia = new InsertMedia(s_mediaList, this);
+    InsertMedia* nuovoMedia = new InsertMedia(this);
     stackModifiche->addWidget(nuovoMedia); // 1
     
     
 
     //pannello per la libreria dei media
 /*     MediaLibraryTutto* libreriaMediaTutto = new MediaLibraryTutto(this); */
-    MediaLibraryGenerale* libreriaMediaGenerale = new MediaLibraryGenerale(s_mediaList, "Film" ,this);
+    MediaLibraryGenerale* libreriaMediaGenerale = new MediaLibraryGenerale( "Film" ,this);
 
     this->addObserver(libreriaMediaGenerale);
 
@@ -185,7 +185,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     //GESTIONE PULSANTI
     connect(cerca, &QLineEdit::textChanged, this, [this](const QString &testo){ ricerca = testo; 
                                                                                 for(auto o : s_libraryObservers) 
-                                                                                    o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));});
+                                                                                    o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_listaSUpportoMedia);});
     connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
 /*     connect(tutto, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Tutto"); stackLibreria->setCurrentIndex(0);}); */
     connect(film, &QToolButton::clicked, this, [this](){updateFiltroMedia("Film");});
@@ -280,10 +280,9 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
 
 } 
 
-SearchPanel::SearchPanel(QList<Cinema*>& cinemaList, QWidget *parent): QWidget(parent),s_cinemaList(cinemaList),stackModifiche(new QStackedWidget(this)){
+SearchPanel::SearchPanel(QWidget *parent): QWidget(parent),stackModifiche(new QStackedWidget(this)){
     //carico tutti gli oggetti nel Json
     s_manager = new CinemaManager;
-    s_manager->loadMedia(s_mediaList);
 
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
@@ -301,12 +300,18 @@ void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
     s_cinemaSelezionato = cinemaSel;
     cinema->setText("Cinema " + QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
 
-    for(Media* m : s_mediaList){
-        if(m->getNomeCinema() == s_cinemaSelezionato->getNomeCinema())
-            s_cinemaSelezionato->addMedia(m);
+    s_listaSUpportoMedia.clear();
+    for(Media* m : s_cinemaSelezionato->getListaMedia()){
+        s_listaSUpportoMedia.append(m);
     }
 
-    emit giveCinemaInfoToIP(s_cinemaSelezionato);
+    s_manager->loadMedia(s_listaSUpportoMedia, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
+    for(Media* m : s_listaSUpportoMedia){
+        s_cinemaSelezionato->addMedia(m);
+    }
+
+
+    emit giveCinemaInfoToIP(s_cinemaSelezionato, s_listaSUpportoMedia);
 }
 
 void SearchPanel::addObserver(LibraryObserver* obs){
@@ -315,7 +320,7 @@ void SearchPanel::addObserver(LibraryObserver* obs){
 
 void SearchPanel::update(int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca){
     for(auto obs : s_libraryObservers){
-        obs->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
+        obs->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_listaSUpportoMedia);
     }
 }
 
@@ -328,7 +333,7 @@ void SearchPanel::updateFiltroMedia(const QString& filtro){
 
 void SearchPanel::preUpdate(){
     for(auto o : s_libraryObservers)
-        o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
+        o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_listaSUpportoMedia);
 }
 
 void SearchPanel::resetSearchPanel(){
