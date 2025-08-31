@@ -19,7 +19,7 @@
 #include "CinemaSelectionPage.h"
 #include "InsertMedia.h"
 /* #include "DataFiles/MediaManagerXml.h" */
-#include "DataFiles/CinemaManager.h"
+#include "DataFiles/CinemaRepositoryJson.h"
 
 /* #include "MediaLibraryTutto.h" */
 #include "MediaLibraryGenerale.h"
@@ -31,7 +31,7 @@ class SearchPanel:public QWidget{
     private:
 
     Cinema* s_cinemaSelezionato;
-    CinemaManager* s_manager;
+    CinemaRepositoryJson* s_manager;
     /* MediaManagerXml* s_xmlManager; */
     vector<LibraryObserver*> s_libraryObservers;
     QList<Media*> s_listaSUpportoMedia;

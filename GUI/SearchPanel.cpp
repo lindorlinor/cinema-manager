@@ -282,7 +282,7 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
 
 SearchPanel::SearchPanel(QWidget *parent): QWidget(parent),stackModifiche(new QStackedWidget(this)){
     //carico tutti gli oggetti nel Json
-    s_manager = new CinemaManager;
+    s_manager = new CinemaRepositoryJson;
 
     QVBoxLayout* mainLayout = new QVBoxLayout;
 

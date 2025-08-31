@@ -5,7 +5,7 @@
 #include <QVector>
 #include <QString>
 #include "CinemaButton.h"
-#include "../DataFiles/CinemaManager.h"
+#include "../DataFiles/CinemaRepositoryJson.h"
 #include "../Cinema.h"
 #include <QHBoxLayout>
 /**

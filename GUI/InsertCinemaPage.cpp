@@ -93,7 +93,7 @@ void InsertCinemaPage::saveCinemaInJson() {
     Cinema* cinema = new Cinema(textInput->text().trimmed().toStdString(), imagePath.toStdString());
     ic_cinema.append(cinema);
 
-    CinemaManager cinemaManager;
+    CinemaRepositoryJson cinemaManager;
     cinemaManager.saveCinemaInJson(cinema);
 
     QMessageBox::information(this, tr("Salvato"), tr("Cinema salvato correttamente."));

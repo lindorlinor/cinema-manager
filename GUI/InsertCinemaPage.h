@@ -6,7 +6,7 @@
 #include <QVBoxLayout>
 #include "InsertImageFrame.h"
 #include "../Cinema.h"
-#include "../DataFiles/CinemaManager.h"
+#include "../DataFiles/CinemaRepositoryJson.h"
 
 /**
  * @brief Pagina di inserimento di un nuovo cinema

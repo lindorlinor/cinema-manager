@@ -36,14 +36,14 @@
 #include "../Podcast.h"
 #include "../Puntata.h"
 
-#include "../DataFiles/CinemaManager.h"
+#include "../DataFiles/CinemaRepositoryJson.h"
 
 class InsertMedia:public QWidget{
     Q_OBJECT
 
     private:
     QStackedLayout* stackTipologia; //serve per cambiare il widget di input del tab "specifiche tipologia" a seconda della tipologia selezionata nella QComboBox
-    CinemaManager* cinemaManager; 
+    CinemaRepositoryJson* cinemaManager; 
 
     //cinema selezionato
     Cinema* im_cinemaSelezionato;

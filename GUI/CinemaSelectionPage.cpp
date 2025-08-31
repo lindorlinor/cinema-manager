@@ -14,7 +14,7 @@
 #include <QGridLayout>
 
 CinemaSelectionPage::CinemaSelectionPage(QList<Cinema*>& w_cinema, QWidget *parent) : QWidget(parent), sp_cinema(w_cinema), cinemaButtonsLayout(new QHBoxLayout), frameLayout(new QVBoxLayout) {
-    CinemaManager cinemaManager;
+    CinemaRepositoryJson cinemaManager;
     cinemaManager.loadCinema(sp_cinema);
 
     //crea il frame centrale

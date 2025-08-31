@@ -52,8 +52,9 @@ HEADERS +=  \
             GUI/FlowVisitor.h \
             GUI/LibraryObserver.h \
             GUI/Menu.h \
-            DataFiles/CinemaManager.h \
-            DataFiles/SaveMediaVisitor.h 
+            DataFiles/CinemaRepositoryJson.h \
+            DataFiles/JsonConverter.h \
+            DataFiles/JsonVisitor.h 
 SOURCES +=  \
             main.cpp \
             Inserzione.cpp \
@@ -86,6 +87,7 @@ SOURCES +=  \
             GUI/FlowLayout.cpp \
             GUI/FlowVisitor.cpp \
             GUI/Menu.cpp \
-            DataFiles/CinemaManager.cpp \
-            DataFiles/SaveMediaVisitor.cpp 
+            DataFiles/CinemaRepositoryJson.cpp \
+            DataFiles/JsonConverter.cpp \
+            DataFiles/JsonVisitor.cpp 
 RESOURCES += GUI/resources.qrc
