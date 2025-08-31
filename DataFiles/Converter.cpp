@@ -32,7 +32,7 @@ void Converter::populateFilmFields(const Film* film, FilmData& data) {
     if(!film) return;
     data.tipologia="film";
     data.generi.clear();
-    data.generi = film->getGenere();
+    data.generi = film->getGeneri();
     data.casaDiProduzione= QString::fromStdString(film->getCasaDiProduzione());
     data.nPostCredit=film->getNPostCredit();
     data.costoBiglietto = film->getCostoBiglietto();

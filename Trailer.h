@@ -22,7 +22,7 @@ class Trailer : public Pubblicita{
     double calcolaTassoDiStima() const;
 
 public:
-    Trailer(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+    Trailer(const string& nomeCinema, const string& copertinaCinema, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
             year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
             unsigned int nProiezioniGiornaliere, Film *film, const string &autore = "Sconosciuto", 
             const string &path = ":/images/default.png");

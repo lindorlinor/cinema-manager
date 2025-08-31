@@ -325,19 +325,20 @@ void MediaManagerJson::createMedia(const MediaData& data){
 
 Film* MediaManagerJson::createFilmFromData(const FilmData& data) {
 
-    Film* film = new Film(data.titolo.toStdString(),
-                          data.descrizione.toStdString(),
-                          convertDate(data.dataInizioRilascio),
-                          convertDate(data.dataFineRilascio),
-                          data.durataMinuti,
-                          data.formato,
-                          data.risoluzione,
-                          data.nPostCredit,
-                          data.costoBiglietto,
-                          data.casaDiProduzione.toStdString(),
-                          data.autore.toStdString(),
-                          data.path.toStdString(),
-                          data.target);
+    Film* film = new Film(
+                            data.titolo.toStdString(),
+                            data.descrizione.toStdString(),
+                            convertDate(data.dataInizioRilascio),
+                            convertDate(data.dataFineRilascio),
+                            data.durataMinuti,
+                            data.formato,
+                            data.risoluzione,
+                            data.nPostCredit,
+                            data.costoBiglietto,
+                            data.casaDiProduzione.toStdString(),
+                            data.autore.toStdString(),
+                            data.path.toStdString(),
+                            data.target);
     
     for (const QString& a : data.attoriPrincipali) {
         film->aggiungiAttore(a.toStdString());
@@ -547,9 +548,9 @@ void MediaManagerJson::saveList(QList<MediaData*>& mediaList){
     saveJsonFile("media.json", QJsonDocument(array));
 }
 
-void MediaManagerJson::saveMedia(MediaData* media) {
+void MediaManagerJson::saveMedia(Media* media) {
     if (!media) return;
-    if(media->nomeCinema != cinemaAttuale) return;
+    if(QString::fromStdString(media->getNomeCinema()) != cinemaAttuale) return;
     
     QList<MediaData*> mediaList;
     QList<CinemaData*> cinemaList;

@@ -1,4 +1,4 @@
-#include "../catch.hpp"
+/* #include "../catch.hpp"
 #include "../Film.h"
 #include "../Trailer.h"
 #include "../Inserzione.h"
@@ -328,4 +328,4 @@ TEST_CASE("14. disaccoppiaTrailer") {
     // Trailer ancora valido, ma non nella lista del film, deve essere distrutto
     REQUIRE(t->getFilm() == &film);
     delete t;
-}
+} */

@@ -55,11 +55,7 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     widgetFiltri->setLayout(latoFiltri);
     
 
-    connect(cinema, &QToolButton::clicked, this, [this](){ emit escSearchPanel(); 
-                                                                    if(stackModifiche->currentIndex()==1) emit resetPages();
-                                                                    stackModifiche->setCurrentIndex(0);
-                                                                    manager->removeAll();
-                                                                    preUpdate();});
+    connect(cinema, &QToolButton::clicked, this, &SearchPanel::escSearchPanel);
 
     //style
 
@@ -162,23 +158,23 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     latoDestra->addWidget(stackLibreria);
     widgetDestra->setLayout(latoDestra);
     
-    stackModifiche->addWidget(widgetDestra);
+    stackModifiche->addWidget(widgetDestra); // 0
+    previousIndex=0;
     
     
     //pannello per la libreria
     // stackModifiche->setCurrentIndex(0);
-    previousIndex=0;
     
     
     //pannello di aggiunta media
-    InsertMedia* nuovoMedia = new InsertMedia(manager, this);
-    stackModifiche->addWidget(nuovoMedia);
+    InsertMedia* nuovoMedia = new InsertMedia(s_mediaList, this);
+    stackModifiche->addWidget(nuovoMedia); // 1
     
     
 
     //pannello per la libreria dei media
 /*     MediaLibraryTutto* libreriaMediaTutto = new MediaLibraryTutto(this); */
-    MediaLibraryGenerale* libreriaMediaGenerale = new MediaLibraryGenerale(mediaList, "Film" ,this);
+    MediaLibraryGenerale* libreriaMediaGenerale = new MediaLibraryGenerale(s_mediaList, "Film" ,this);
 
     this->addObserver(libreriaMediaGenerale);
 
@@ -188,8 +184,8 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     
     //GESTIONE PULSANTI
     connect(cerca, &QLineEdit::textChanged, this, [this](const QString &testo){ ricerca = testo; 
-                                                                                for(auto o : libraryObservers) 
-                                                                                    o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca);});
+                                                                                for(auto o : s_libraryObservers) 
+                                                                                    o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));});
     connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
 /*     connect(tutto, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Tutto"); stackLibreria->setCurrentIndex(0);}); */
     connect(film, &QToolButton::clicked, this, [this](){updateFiltroMedia("Film");});
@@ -208,6 +204,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
         updateModifierPanel(0);
     });
 
+    connect(libreriaMediaGenerale, &MediaLibraryGenerale::requestMediaView, this, &SearchPanel::showMediaView);
     
     
     //style
@@ -231,7 +228,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     barraFiltri->setContentsMargins(50, 10, 50, 0);
     filtri->setCursor(Qt::PointingHandCursor);
     vista->setCursor(Qt::PointingHandCursor);
-    widgetSelezioneFiltri->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    widgetSelezioneFiltri->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
     //icone
     QIcon iconaVista(":/icons/vista.png");
@@ -249,7 +246,7 @@ void SearchPanel::updateCerca(const QString& filtro){
     tutto->setChecked(filtro == "Tutto");
     film->setChecked(filtro == "Film");
     trailer->setChecked(filtro == "Trailer");
-    inserzione->setChecked(filtro == "Inserzioni");
+    inserzione->setChecked(filtro == "Inserzione");
     podcast->setChecked(filtro == "Podcast");
     puntata->setChecked(filtro == "Puntata");
 }
@@ -277,15 +274,15 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
     ricerca->setContentsMargins(0, 0, 0, 0); 
     widgetFiltri->setMinimumWidth(200);
     widgetFiltri->setMaximumWidth(350);
-    widgetFiltri->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    widgetFiltri->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     stackModifiche->setMinimumWidth(800);
-    stackModifiche->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    stackModifiche->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
 } 
 
 SearchPanel::SearchPanel(QWidget *parent): QWidget(parent),stackModifiche(new QStackedWidget(this)){
     //gestione del json
-    manager = new MediaManagerJson(mediaList, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"),this);
+    s_manager = new CinemaManager;
 
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
@@ -298,21 +295,26 @@ SearchPanel::SearchPanel(QWidget *parent): QWidget(parent),stackModifiche(new QS
     mainLayout->setSpacing(0);
 }
 
-void SearchPanel::updateInfoCinema(const CinemaData& data){
+void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
     //selezione Cinema
-    cinema->setText("Cinema "+data.nomeCinema);
-    manager->setCinemaNome(data.nomeCinema);
-    manager->loadAll();
-    emit giveCinemaInfoToIP(data);
+    s_cinemaSelezionato = cinemaSel;
+    cinema->setText("Cinema " + QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
+    
+    s_manager->loadMedia(s_mediaList);
+    for(Media* m : s_mediaList){
+        s_cinemaSelezionato->addMedia(m);
+    }
+
+    emit giveCinemaInfoToIP(s_cinemaSelezionato);
 }
 
 void SearchPanel::addObserver(LibraryObserver* obs){
-    libraryObservers.push_back(obs);
+    s_libraryObservers.push_back(obs);
 }
 
 void SearchPanel::update(int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca){
-    for(auto obs : libraryObservers){
-        obs->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca);
+    for(auto obs : s_libraryObservers){
+        obs->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
     }
 }
 
@@ -324,19 +326,40 @@ void SearchPanel::updateFiltroMedia(const QString& filtro){
 }
 
 void SearchPanel::preUpdate(){
-    for(auto o : libraryObservers)
-        o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca);
+    for(auto o : s_libraryObservers)
+        o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
 }
 
-void SearchPanel::getEscSearchPanel(){
+void SearchPanel::resetSearchPanel(){
+    updateCerca("Tutto");
+    comboAttivita = 0; 
+    comboOrdinamento = 0; 
+    filtroBottone = "Film"; 
+    ricerca.clear();
+
+    attivita->setCurrentIndex(0);
+    ordinamento->setCurrentIndex(0);
+
     if(stackModifiche->currentIndex()==1) emit resetPages();
     stackModifiche->setCurrentIndex(0);
-    manager->removeAll();
     preUpdate();
 }
 
-void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
-    /*ROBA DA MODIFICARE, LA METTO QUI PER FARE LA PAGINA DI VISUALIZZAZIONE*/
+void SearchPanel::showMediaView(MediaView& widget){
+    detailPage = &widget;
+    stackModifiche->addWidget(detailPage); //2
+    updateModifierPanel(2);
+    connect(detailPage, &MediaView::returnButton, this, &SearchPanel::removeMediaView);
+}
+
+void SearchPanel::removeMediaView(){
+    updateModifierPanel(previousIndex);
+    stackModifiche->removeWidget(detailPage);
+    delete detailPage;
+}
+
+/* void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
+    // ROBA DA MODIFICARE, LA METTO QUI PER FARE LA PAGINA DI VISUALIZZAZIONE
     DetailPageVisitor* visitor = new DetailPageVisitor(); 
 
     
@@ -398,14 +421,13 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     );
     trailer2->IncrementaVisualizzazioni();
 
-    mediaList.append(film);
-    mediaList.append(trailer1);
-    mediaList.append(trailer2);
+    s_mediaList.append(film);
+    s_mediaList.append(trailer1);
+    s_mediaList.append(trailer2);
 
     film->accept(visitor);
     QWidget * detailPage = visitor->getWidget();
-    stackModifiche->addWidget(detailPage);
-    stackModifiche->setCurrentIndex(2);
+    stackModifiche->addWidget(detailPage); // 2
 
     connect(static_cast<FilmView*>(detailPage), &MediaView::returnButton, this, [this,detailPage](){
         updateModifierPanel(previousIndex);
@@ -413,33 +435,33 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
         delete detailPage;
     });
     // 5 Film
-    mediaList.push_back(new Film("2001: Odissea nello Spazio", "Avventura fantascientifica epica.",
+    s_mediaList.push_back(new Film("2001: Odissea nello Spazio", "Avventura fantascientifica epica.",
                              year_month_day{2025y, June, 10d}, year_month_day{2025y, July, 5d},
                              140, Formato::DCP, Risoluzione::FullHD_1080p,
                              5, 9.1, "Cosmo Studios", "Stanley Nova"));
-    mediaList.push_back(new Film("Il Segreto della Laguna", "Thriller ambientato in un villaggio italiano.",
+    s_mediaList.push_back(new Film("Il Segreto della Laguna", "Thriller ambientato in un villaggio italiano.",
                              year_month_day{2025y, August, 1d}, year_month_day{2025y, August, 20d},
                              110, Formato::IMAX_3D, Risoluzione::HD_720p,
                              3, 7.8, "Mediterranea Film", "Laura Rossi"));
-    mediaList.push_back(new Film("Cuore di Acciaio", "Dramma su un robot che scopre l’umanità.",
+    s_mediaList.push_back(new Film("Cuore di Acciaio", "Dramma su un robot che scopre l’umanità.",
                              year_month_day{2025y, September, 12d}, year_month_day{2025y, October, 2d},
                              125, Formato::DCP, Risoluzione::FullHD_1080p,
                              4, 8.6, "Future Pictures", "Kenji Yamato"));
-    mediaList.push_back(new Film("Risveglio", "Un viaggio introspettivo tra sogno e realtà.",
+    s_mediaList.push_back(new Film("Risveglio", "Un viaggio introspettivo tra sogno e realtà.",
                              year_month_day{2025y, March, 5d}, year_month_day{2025y, March, 25d},
                              98, Formato::DCP, Risoluzione::HD_720p,
                              2, 7.2, "Arthouse Films", "Marta Verdi"));
-    mediaList.push_back(new Film("L’Ombra del Drago", "Fantasy epico con battaglie tra regni.",
+    s_mediaList.push_back(new Film("L’Ombra del Drago", "Fantasy epico con battaglie tra regni.",
                              year_month_day{2025y, November, 20d}, year_month_day{2025y, December, 20d},
                              160, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
                              6, 8.9, "Dragon Studios", "Hao Zhang"));
 
     // 2 Inserzioni
-    mediaList.push_back(new Inserzione("Promo Smartphone X15", "Campagna pubblicitaria nuovo modello X15.",
+    s_mediaList.push_back(new Inserzione("Promo Smartphone X15", "Campagna pubblicitaria nuovo modello X15.",
                                    year_month_day{2025y, May, 1d}, year_month_day{2025y, May, 30d},
                                    30, Formato::DCP, Risoluzione::HD_720p,
                                    20, Classificazione::TUTTI, 50.0, "TechCorp"));
-    mediaList.push_back(new Inserzione("Bevanda Frizzante Zeta", "Spot per la nuova linea estiva.",
+    s_mediaList.push_back(new Inserzione("Bevanda Frizzante Zeta", "Spot per la nuova linea estiva.",
                                    year_month_day{2025y, June, 15d}, year_month_day{2025y, July, 15d},
                                    25, Formato::DCP, Risoluzione::FullHD_1080p,
                                    18, Classificazione::TUTTI, 35.0, "DrinkIt"));
@@ -456,10 +478,10 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     Puntata* p1_3 = new Puntata("Viaggi Interstellari", "Le sfide della colonizzazione spaziale.",
                                 year_month_day{2025y, March, 1d}, year_month_day{2025y, March, 12d},
                                 55, p1, 2);
-    mediaList.push_back(p1);
-    mediaList.push_back(p1_1);
-    mediaList.push_back(p1_2);
-    mediaList.push_back(p1_3);
+    s_mediaList.push_back(p1);
+    s_mediaList.push_back(p1_1);
+    s_mediaList.push_back(p1_2);
+    s_mediaList.push_back(p1_3);
 
     Podcast* p2 = new Podcast("Cronache Storiche", "Analisi di eventi e figure storiche.",
                               Formato::DCP, Risoluzione::HD_720p);
@@ -472,9 +494,9 @@ void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
     Puntata* p2_3 = new Puntata("La Rivoluzione Industriale", "Come è cambiato il mondo.",
                                 year_month_day{2025y, May, 5d}, year_month_day{2025y, May, 15d},
                                 48, p2, 1);
-    mediaList.push_back(p2);
-    mediaList.push_back(p2_1);
-    mediaList.push_back(p2_2);
-    mediaList.push_back(p2_3);
+    s_mediaList.push_back(p2);
+    s_mediaList.push_back(p2_1);
+    s_mediaList.push_back(p2_2);
+    s_mediaList.push_back(p2_3);
    
-}
+} */

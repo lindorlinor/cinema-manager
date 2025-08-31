@@ -3,8 +3,10 @@
 
 #include <QMainWindow>
 #include <QVector>
+#include <QString>
 #include "CinemaButton.h"
-#include "../DataFiles/MediaManagerJson.h"
+#include "../DataFiles/CinemaManager.h"
+#include "../Cinema.h"
 #include <QHBoxLayout>
 /**
  * @brief Pagina per la selezione del cinema
@@ -25,11 +27,10 @@ class CinemaSelectionPage : public QWidget
 {
     Q_OBJECT
 private:
-    QList<Media*> temporanea; //DA ELIMINARE
+    QList<Cinema*>& sp_cinema;
     QHBoxLayout* cinemaButtonsLayout;
     QVBoxLayout *frameLayout;
-    QList<CinemaData*> cinemas;
-    void createCinemaButton(const CinemaData& c);
+    void createCinemaButton(Cinema* c);
 
     /**
      * @brief Crea l'intestazione della pagina
@@ -47,7 +48,7 @@ private:
      */
     void createCinemaScroll();
 public:
-    CinemaSelectionPage(QWidget *parent);
+    CinemaSelectionPage(QList<Cinema*>& w_cinema, QWidget *parent);
 
     /**
      * @brief toglie e ricrea i pulsanti del cinema. 
@@ -61,7 +62,7 @@ public:
     void refreshCinemaButtons();
 signals:
     void insertCinema();
-    void selectedCinema(const CinemaData& nomeC);
+    void selectedCinema(Cinema* nomeC);
 
 };
 

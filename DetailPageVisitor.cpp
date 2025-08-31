@@ -11,7 +11,7 @@ DetailPageVisitor::DetailPageVisitor()
     : detailPage(nullptr)
 {}
 
-QWidget* DetailPageVisitor::getWidget() const {
+MediaView* DetailPageVisitor::getWidget() const {
     return detailPage;
 }
 

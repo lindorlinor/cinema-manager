@@ -1,11 +1,11 @@
 #include "Puntata.h"
 #include "POdcast.h"
 
-Puntata::Puntata(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+Puntata::Puntata(const string& nomeCinema, const string& copertinaCinema, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
                  year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti,
                  Podcast *podcast, unsigned int numeroPubblicita, const string &autore,
                  const string &path) : 
-                            Media(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
+                            Media(nomeCinema, copertinaCinema, titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
                             durataMinuti, podcast->getFormato(), podcast->getRisoluzione(), autore, path),p_podcast(podcast), 
                             p_numeroPubblicita(numeroPubblicita) {
                                 p_podcast->aggiungiPuntata(this);

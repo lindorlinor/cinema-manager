@@ -5,7 +5,7 @@ FlowVisitor::FlowVisitor(QWidget* l, const QString& filter)
 
 FlowVisitor::~FlowVisitor() {}
 
-QWidget* FlowVisitor::getWidget() const{
+MediaFrame* FlowVisitor::getWidget() const{
     return frame;
 }
 

@@ -13,11 +13,14 @@
 #include <QScrollArea>
 #include <QGridLayout>
 
-CinemaSelectionPage::CinemaSelectionPage(QWidget *parent) : QWidget(parent), cinemaButtonsLayout(new QHBoxLayout), frameLayout(new QVBoxLayout) {
+CinemaSelectionPage::CinemaSelectionPage(QList<Cinema*>& w_cinema, QWidget *parent) : QWidget(parent), sp_cinema(w_cinema), cinemaButtonsLayout(new QHBoxLayout), frameLayout(new QVBoxLayout) {
+    CinemaManager cinemaManager;
+    cinemaManager.loadCinema(sp_cinema);
+
     //crea il frame centrale
     QFrame* framePrincipale = new QFrame(this);
-    framePrincipale->setMinimumSize(630, 600);
-    framePrincipale->setMaximumSize(1000, 750);
+    framePrincipale->setMinimumSize(630, 500);
+    framePrincipale->setMaximumSize(800, 500);
     framePrincipale->setLayout(frameLayout);
 
     createHeader();
@@ -46,9 +49,9 @@ CinemaSelectionPage::CinemaSelectionPage(QWidget *parent) : QWidget(parent), cin
 
 }
 
-void CinemaSelectionPage::createCinemaButton(const CinemaData& c) {
+void CinemaSelectionPage::createCinemaButton(Cinema* c) {
     
-    CinemaButton *cinemaBtn = new CinemaButton(c.nomeCinema, QPixmap(c.copertinaCinema), this);
+    CinemaButton *cinemaBtn = new CinemaButton(QString::fromStdString(c->getNomeCinema()), QString::fromStdString(c->getCopertinaCinema()), this);
     cinemaButtonsLayout->addWidget(cinemaBtn);
 
     connect(cinemaBtn, &CinemaButton::selected, this, [this,c](){
@@ -63,14 +66,8 @@ void CinemaSelectionPage::refreshCinemaButtons() {
         delete child;
     }
 
-    for(CinemaData* c : cinemas) delete c;
-    cinemas.clear();
-
-    //LISTA TEMPORANEA SOLO PER FAR COMPILARE
-    MediaManagerJson repo(temporanea, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
-    repo.loadCinemaData(cinemas);
-    for (CinemaData* c : cinemas) {
-        createCinemaButton(*c);
+    for (Cinema* c : sp_cinema) {
+        createCinemaButton(c);
     }
 }
 

@@ -12,7 +12,6 @@
 #include <QDir>
 
 #include "MediaFrame.h"
-#include "../DataFiles/MediaManagerJson.h"
 
 class SelectMediaReference:public QWidget{
     Q_OBJECT

@@ -167,7 +167,7 @@ void FilmView::createMediaDetails(){
     attoriLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
 
-    std::vector<Genere> generi = filmPtr->getGenere();
+    std::vector<Genere> generi = filmPtr->getGeneri();
     QString generiText;
     for (size_t i = 0; i < generi.size(); ++i) {
         generiText += QString::fromUtf8(toString(generi[i]));

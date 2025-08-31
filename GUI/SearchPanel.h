@@ -15,10 +15,11 @@
 #include <QFile>
 #include <QToolButton>
 
+#include "../Cinema.h"
 #include "CinemaSelectionPage.h"
 #include "InsertMedia.h"
-#include "DataFiles/MediaManagerJson.h"
 #include "DataFiles/MediaManagerXml.h"
+#include "DataFiles/CinemaManager.h"
 
 /* #include "MediaLibraryTutto.h" */
 #include "MediaLibraryGenerale.h"
@@ -29,10 +30,11 @@ class SearchPanel:public QWidget{
     Q_OBJECT
     private:
 
-    QList<Media*> mediaList;
-    MediaManagerJson* manager;
-    MediaManagerXml* xmlManager;
-    vector<LibraryObserver*> libraryObservers;
+    Cinema* s_cinemaSelezionato;
+    QList<Media*> s_mediaList;
+    CinemaManager* s_manager;
+    MediaManagerXml* s_xmlManager;
+    vector<LibraryObserver*> s_libraryObservers;
 
     //selezione media
     /**
@@ -56,6 +58,9 @@ class SearchPanel:public QWidget{
     int comboOrdinamento = 0; 
     QString filtroBottone = "Film"; 
     QString ricerca = "";
+
+    //media che sto visualizzando
+    MediaView* detailPage;
    
    //salva il nome del cinema
    /**
@@ -136,13 +141,15 @@ class SearchPanel:public QWidget{
     */
     public slots:
     void updateModifierPanel(int index);
-    void updateInfoCinema(const CinemaData& data);
-    void getEscSearchPanel();
+    void updateInfoCinema(Cinema* cinemaSel);
+    void resetSearchPanel();    //resetta tutte le impostazioni di searchPanel
+    void showMediaView(MediaView& detailPage);
+    void removeMediaView();
     
     
     signals:
     void resetPages();
-    void giveCinemaInfoToIP(const CinemaData& data);
+    void giveCinemaInfoToIP(Cinema* cinemaSel);
     void selectedFilterButton(const QString& filtro);
     void escSearchPanel();
 };

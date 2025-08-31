@@ -5,9 +5,9 @@
 Media::~Media() {}
 
 // Costruttore
-Media::Media(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+Media::Media(const string& nomeCinema, const string& copertinaCinema, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
              year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
-             const string &autore, const string &path) : m_titolo(titolo), m_descrizione(descrizione), m_dataInizioRilascio(gg_mm_aaInizioRilascio),
+             const string &autore, const string &path) : Cinema(nomeCinema, copertinaCinema),m_titolo(titolo), m_descrizione(descrizione), m_dataInizioRilascio(gg_mm_aaInizioRilascio),
                                                          m_dataFineRilascio(gg_mm_aaFineRilascio<gg_mm_aaInizioRilascio?gg_mm_aaInizioRilascio:gg_mm_aaFineRilascio), 
                                                          m_durataMinuti(durataMinuti), m_formato(formato),
                                                          m_risoluzione(risoluzione), m_autore(autore), m_imPath(path),

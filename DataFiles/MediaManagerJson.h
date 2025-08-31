@@ -91,7 +91,7 @@ class MediaManagerJson : public QObject{
          * 
          * @param film Dati del film da salvare.
          */
-        void saveMedia(MediaData* media);
+        void saveMedia(Media* media);
         
         //saveCinema
         /**

@@ -1,11 +1,11 @@
 #include "Trailer.h"
 #include "Film.h"
 
-Trailer::Trailer(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+Trailer::Trailer(const string& nomeCinema, const string& copertinaCinema, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
                 year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
                 unsigned int nProiezioniGiornaliere, Film *film, const string &autore, 
                 const string &path) : 
-                        Pubblicita(titolo, descrizione, gg_mm_aaInizioRilascio, (gg_mm_aaFineRilascio>film->getDataFineRilascio()?film->getDataFineRilascio():gg_mm_aaFineRilascio),
+                        Pubblicita(nomeCinema, copertinaCinema, titolo, descrizione, gg_mm_aaInizioRilascio, (gg_mm_aaFineRilascio>film->getDataFineRilascio()?film->getDataFineRilascio():gg_mm_aaFineRilascio),
                                     durataMinuti, formato, risoluzione, nProiezioniGiornaliere, autore, path), t_film(film){
                                         film->aggiungiTrailer(this);
                                     }
@@ -50,8 +50,8 @@ double Trailer::calcolaTassoDiStima() const
     double tasso = 0.1;
     if (t_film->getValutazione() > 8.0)
     tasso += 0.03;
-    if (std::find(t_film->getGenere().begin(), t_film->getGenere().end(), Genere::Azione) != t_film->getGenere().end() ||
-        std::find(t_film->getGenere().begin(), t_film->getGenere().end(), Genere::Supereroi) != t_film->getGenere().end()) {
+    if (std::find(t_film->getGeneri().begin(), t_film->getGeneri().end(), Genere::Azione) != t_film->getGeneri().end() ||
+        std::find(t_film->getGeneri().begin(), t_film->getGeneri().end(), Genere::Supereroi) != t_film->getGeneri().end()) {
         tasso += 0.02;
     }
     if (t_film->getTarget() == Classificazione::DICIOTTO_PIU)

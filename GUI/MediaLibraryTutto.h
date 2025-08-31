@@ -4,7 +4,7 @@
 #include <QWidget>
 
 class MediaLibraryTutto: public QWidget{
-
+    Q_OBJECT
     private:
 
     

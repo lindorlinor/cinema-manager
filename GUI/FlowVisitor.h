@@ -26,7 +26,7 @@ public:
     void visit(Podcast* podcast) override;
     void visit(Puntata* puntata) override;
 
-    QWidget* getWidget() const;
+    MediaFrame* getWidget() const;
 
     ~FlowVisitor();
 };

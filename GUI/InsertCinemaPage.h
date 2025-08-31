@@ -5,7 +5,8 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include "InsertImageFrame.h"
-#include "../DataFiles/MediaManagerJson.h"
+#include "../Cinema.h"
+#include "../DataFiles/CinemaManager.h"
 
 /**
  * @brief Pagina di inserimento di un nuovo cinema
@@ -32,7 +33,7 @@
 class InsertCinemaPage : public QWidget{
     Q_OBJECT
 private:
-    QList<Media*> temporanea; //DA ELIMINARE
+    QList<Cinema*>& ic_cinema;
     QVBoxLayout* frameLayout;
     QLineEdit *textInput; //per il nome del cinema
     InsertImageFrame *imageArea; //per inserire l'immagine
@@ -54,7 +55,7 @@ private:
     void createLayoutInput(QVBoxLayout* layoutdx);
     void createButtonLayout(QVBoxLayout* layoutdx);
 public:
-    explicit InsertCinemaPage(QWidget * parent= nullptr);
+    explicit InsertCinemaPage(QList<Cinema*>& w_cinema, QWidget * parent= nullptr);
     void saveCinemaInJson();
     void reset();
     void resizeEvent(QResizeEvent* event) override;
@@ -64,7 +65,6 @@ public slots:
     void removeImage();
 signals:
     void returnCinemaSelectionPage();
-    void giveCinemaInfo(CinemaData* data);
     
 };
 #endif //INSERTCINEMAPAGE_H

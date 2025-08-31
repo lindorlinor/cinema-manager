@@ -1,7 +1,7 @@
 #include "InsertMedia.h"
 #include "SearchPanel.h"
 
-InsertMedia::InsertMedia(MediaManagerJson* manager, QWidget *parent): QWidget(parent), mediaManagerJson(manager)
+InsertMedia::InsertMedia(QList<Media*> s_mediaList, QWidget *parent): QWidget(parent), im_mediaList(s_mediaList)
 {
     /* mediaManagerJson-> = new MediaManagerJson(temporanea, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"),this); */
     QVBoxLayout* mainLayout = new QVBoxLayout;
@@ -358,18 +358,15 @@ void InsertMedia::updateTabTipologia(int index){
 void InsertMedia::checkMediaNameAvailability() {
     QString titolo = titoloMedia->text().trimmed();
     QString autore = autoreMedia->text().trimmed();
-
-    // Carico la lista dei cinema esistenti
-    QList<MediaData*> listInsertMedia;
-    mediaManagerJson->loadAllData(listInsertMedia);
     
     bool isAvailable = true;
     errorLabel->setVisible(false);
 
     if(titolo.isEmpty() || autore.isEmpty()) isAvailable = false;
 
-    for (const MediaData* m: listInsertMedia) {
-        if (m->titolo.compare(titolo, Qt::CaseInsensitive) == 0 && m->autore.compare(autore, Qt::CaseInsensitive) == 0) {
+    for (const Media* m: im_mediaList) {
+        if (QString::fromStdString(m->getTitolo()).compare(titolo, Qt::CaseInsensitive) == 0 && QString::fromStdString(m->getAutore()).compare(autore, Qt::CaseInsensitive) == 0
+            && QString::fromStdString(m->getNomeCinema()).compare(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()), Qt::CaseInsensitive) == 0) {
             isAvailable = false; 
         }
     }
@@ -389,9 +386,6 @@ void InsertMedia::checkMediaNameAvailability() {
         errorLabel->setVisible(false);
         saveButton->setEnabled(false);
     }
-
-    for(MediaData* m : listInsertMedia) delete m;
-    listInsertMedia.clear();
 }
 
 
@@ -818,98 +812,152 @@ void InsertMedia::addTipologia(QWidget* tipologia){
 
 
 
-//salvataggio degli input su un file Json
-
-void InsertMedia::saveCommonFields(MediaData &data) {       //funzione per salvare i dati comuni
-    data.titolo = titoloMedia->text();
-    data.autore = autoreMedia->text();
-    data.descrizione = descrizioneMedia->toPlainText();
-    data.durataMinuti = durataMinutiMedia->value();
-    data.lingueDisponibili = getSelectedList<Lingua>(listLingue);
-    data.sottotitoliDisponibili = getSelectedList<Lingua>(listSottotitoli);
-    data.formato = static_cast<Formato>(comboFormato->currentData().toInt());
-    data.risoluzione = static_cast<Risoluzione>(comboRisoluzione->currentData().toInt());
-    data.path = imagePath==""?":/images/default.png":imagePath;
-    data.nomeCinema = nomeCinema;
-    data.copertinaCinema = copertinaCinema;
-}
-
+//creazione oggetti e salvataggio su json
 
 void InsertMedia::salvaMedia(){                         //funzione per salvare gli input in un json
 
     //film
     if(stackTipologia->currentIndex()==0){
 
-        FilmData film;
-        saveCommonFields(film);
+        Film* film = new Film(  
+                                im_cinemaSelezionato->getNomeCinema(),
+                                im_cinemaSelezionato->getCopertinaCinema(),
+                                titoloMedia->text().toStdString(),
+                                descrizioneMedia->toPlainText().toStdString(),
+                                convertDate(dataInizio->date()),
+                                convertDate(dataFine->date()),
+                                durataMinutiMedia->value(),
+                                static_cast<Formato>(comboFormato->currentData().toInt()),
+                                static_cast<Risoluzione>(comboRisoluzione->currentData().toInt()),
+                                totPostCreditFilm->value(),
+                                costoBigliettoFilm->value(),
+                                CasaProdFilm->text().toStdString(),
+                                autoreMedia->text().toStdString(),
+                                imagePath==""?":/images/default.png":imagePath.toStdString(),
+                                static_cast<Classificazione>(comboTargetFilm->currentData().toInt()));
+
+        addLingue(film);
+        addSottotitoli(film);
+        addGeneri(film);
+        addAttore(film);
+
+        im_mediaList.append(film);
         
-        film.generi = getSelectedList<Genere>(listGeneri);
-        film.casaDiProduzione = CasaProdFilm->text();
-        film.attoriPrincipali = attoriFilm->getListaPersone();
-        film.nPostCredit = totPostCreditFilm->value();
-        film.costoBiglietto = costoBigliettoFilm->value();
-        film.dataInizioRilascio = dataInizio->date();
-        film.dataFineRilascio = dataFine->date();
-        film.target = static_cast<Classificazione>(comboTargetFilm->currentData().toInt());
-        film.tipologia = "film";
-        
-        mediaManagerJson->saveMedia(&film);
+        cinemaManager->saveMediaInJson(film);
     }
+
     //trailer
     else if(stackTipologia->currentIndex()==1){
-        
-        TrailerData trailer;
-        saveCommonFields(trailer);
 
-        trailer.nProiezioniGiornaliere = numeroProiezioniTrailer->value();
-        trailer.filmAssociato = titoloFilmRiferimento;
-        trailer.autoreFilmAssociato = autoreFilmRiferimento;
-        trailer.tipologia = "trailer";
+        Media* filmAssociato = findMediaReference(  titoloMedia->text(),autoreMedia->text(), 
+                                                    QString::fromStdString(im_cinemaSelezionato->getNomeCinema()),
+                                                    "trailer");
+
+        if(!filmAssociato){
+            qDebug()<<"Errore!, nessun Film collegato al Trailer "<<titoloMedia->text();
+            return;
+        } 
+
+        Trailer* trailer = new Trailer(
+                                im_cinemaSelezionato->getNomeCinema(),
+                                im_cinemaSelezionato->getCopertinaCinema(),
+                                titoloMedia->text().toStdString(),
+                                descrizioneMedia->toPlainText().toStdString(),
+                                convertDate(dataInizio->date()),
+                                convertDate(dataFine->date()),
+                                durataMinutiMedia->value(),
+                                static_cast<Formato>(comboFormato->currentData().toInt()),
+                                static_cast<Risoluzione>(comboRisoluzione->currentData().toInt()),
+                                numeroProiezioniTrailer->value(),
+                                static_cast<Film*>(filmAssociato),
+                                autoreMedia->text().toStdString(),
+                                imagePath==""?":/images/default.png":imagePath.toStdString());
+        
+        addLingue(trailer);
+        addSottotitoli(trailer);
     
-        mediaManagerJson->saveMedia(&trailer);
+        im_mediaList.append(trailer);
+        
+        cinemaManager->saveMediaInJson(trailer);
     }
     //podcast
     else if(stackTipologia->currentIndex()==2){
         
-        PodcastData podcast;
-        saveCommonFields(podcast);
-
-        podcast.conduttore = conduttorePodcast->text();
-        podcast.tipologia = "podcast";
-
-        mediaManagerJson->saveMedia(&podcast);
+        Podcast* podcast = new Podcast(
+                                im_cinemaSelezionato->getNomeCinema(),
+                                im_cinemaSelezionato->getCopertinaCinema(),
+                                titoloMedia->text().toStdString(),
+                                descrizioneMedia->toPlainText().toStdString(),
+                                static_cast<Formato>(comboFormato->currentData().toInt()),
+                                static_cast<Risoluzione>(comboRisoluzione->currentData().toInt()),
+                                autoreMedia->text().toStdString(),
+                                imagePath==""?":/images/default.png":imagePath.toStdString(),
+                                conduttorePodcast->text().toStdString());
+    
+        im_mediaList.append(podcast);
+        
+        cinemaManager->saveMediaInJson(podcast);
     }   
     //puntata
     else if(stackTipologia->currentIndex()==3){
 
-        PuntataData puntata;
-        saveCommonFields(puntata);
+        Media* PodcastAssociato = findMediaReference(  titoloMedia->text(),autoreMedia->text(), 
+                                                        QString::fromStdString(im_cinemaSelezionato->getNomeCinema()),
+                                                        "podcast");
 
-        puntata.ospiti = ospitiPuntata->getListaPersone();
-        puntata.numeroPubblicita = numeroPubblicitaPuntata->value();
-        puntata.podcastAssociato = titoloPodcastRiferimento; 
-        puntata.autorePodcastAssociato = autorePodcastRiferimento; 
-        puntata.tipologia = "puntata";
+        if(!PodcastAssociato){
+            qDebug()<<"Errore!, nessun Podcast collegato al Trailer "<<titoloMedia->text();
+            return;
+        } 
 
-        mediaManagerJson->saveMedia(&puntata);
+        Puntata* puntata = new Puntata(
+                                im_cinemaSelezionato->getNomeCinema(),
+                                im_cinemaSelezionato->getCopertinaCinema(),
+                                titoloMedia->text().toStdString(),
+                                descrizioneMedia->toPlainText().toStdString(),
+                                convertDate(dataInizio->date()),
+                                convertDate(dataFine->date()),
+                                durataMinutiMedia->value(),
+                                static_cast<Podcast*>(PodcastAssociato),
+                                numeroPubblicitaPuntata->value(),
+                                autoreMedia->text().toStdString(),
+                                imagePath==""?":/images/default.png":imagePath.toStdString());
+        
+        addLingue(puntata);
+        addSottotitoli(puntata);
+        addOspite(puntata);
+    
+        im_mediaList.append(puntata);
+        
+        cinemaManager->saveMediaInJson(puntata);
 
     }   
     //inserzione
     else if(stackTipologia->currentIndex()==4){
 
-        InserzioneData inserzione;
-        saveCommonFields(inserzione);
+        Inserzione* inserzione = new Inserzione(  
+                                im_cinemaSelezionato->getNomeCinema(),
+                                im_cinemaSelezionato->getCopertinaCinema(),
+                                titoloMedia->text().toStdString(),
+                                descrizioneMedia->toPlainText().toStdString(),
+                                convertDate(dataInizio->date()),
+                                convertDate(dataFine->date()),
+                                durataMinutiMedia->value(),
+                                static_cast<Formato>(comboFormato->currentData().toInt()),
+                                static_cast<Risoluzione>(comboRisoluzione->currentData().toInt()),
+                                numeroProiezioniGioInserzione->value(),
+                                static_cast<Classificazione>(comboTargetInserzioni->currentData().toInt()),
+                                costoBaseProiezInserzione->value(),
+                                aziendaInserzInserzione->text().toStdString(),
+                                autoreMedia->text().toStdString(),
+                                imagePath==""?":/images/default.png":imagePath.toStdString());
 
-        inserzione.nProiezioniGiornaliere = numeroProiezioniGioInserzione->value();
-        inserzione.costoFissoProiezione = costoBaseProiezInserzione->value();
-        inserzione.aziendaInserzionista = aziendaInserzInserzione->text();
-        inserzione.fasceOrarie = getSelectedList<FasciaOraria>(listFasceOrarie);
-        inserzione.dataInizioRilascio = dataInizio->date();
-        inserzione.dataFineRilascio = dataFine->date();
-        inserzione.target = static_cast<Classificazione>(comboTargetInserzioni->currentData().toInt());
-        inserzione.tipologia = "inserzione";
+        addLingue(inserzione);
+        addSottotitoli(inserzione);
 
-        mediaManagerJson->saveMedia(&inserzione);
+        im_mediaList.append(inserzione);
+        
+        cinemaManager->saveMediaInJson(inserzione);
     }   
 
 }
@@ -1048,9 +1096,67 @@ void InsertMedia::resetAllInput(){
 }
 
 //IMPOSTA IL NOME DEL CINEMA
-void InsertMedia::getCinemaInfo(const CinemaData& data){
-    copertinaCinema = data.copertinaCinema;
-    nomeCinema = data.nomeCinema;
+void InsertMedia::getCinemaInfo(Cinema* cinemaSel){
+    im_cinemaSelezionato = cinemaSel;
     if(referenceTrailer) referenceTrailer->reloadMedia();
     if(referencePuntate) referencePuntate->reloadMedia();
+}
+
+
+//HELPER PER CREATE MEDIA
+
+// CONVERTE LA DATA IN CHRONO //
+// conversione QDate -> std::chrono::year_month_day
+year_month_day InsertMedia::convertDate(const QDate& data){
+    year_month_day dataConvertita{
+        year{data.year()},
+        month{static_cast<unsigned>(data.month())},
+        day{static_cast<unsigned>(data.day())}
+    };
+    return dataConvertita;
+}
+
+void InsertMedia::addFasceOrarie(Inserzione* inserzione){
+    for (const FasciaOraria f : getSelectedList<FasciaOraria>(listFasceOrarie)) {
+        inserzione->aggiungiFasciaOraria(f);
+    }
+}
+
+void InsertMedia::addLingue(Media* media){
+    for (const Lingua l : getSelectedList<Lingua>(listLingue)) {
+        media->aggiungiLingua(l);
+    }
+}
+
+void InsertMedia::addSottotitoli(Media* media){
+    for (const Lingua s : getSelectedList<Lingua>(listSottotitoli)) {
+        media->aggiungiSottotitolo(s);
+    }
+}
+
+void InsertMedia::addGeneri(Film* film){
+    for (const Genere g : getSelectedList<Genere>(listGeneri)) {
+        film->aggiungiGenere(g);
+    }
+}
+
+void InsertMedia::addAttore(Film* film){
+    for (const QString& a : attoriFilm->getListaPersone()) {
+        film->aggiungiAttore(a.toStdString());
+    }
+}
+
+void InsertMedia::addOspite(Puntata* puntata){
+    for (const QString& o : ospitiPuntata->getListaPersone()) {
+        puntata->aggiungiOspite(o.toStdString());
+    }
+}
+
+Media* InsertMedia::findMediaReference(const QString& titolo, const QString& autore, const QString& cinema, const QString& tipo){
+    for(Media* m : im_mediaList){
+        if(QString::fromStdString(m->getAutore()) == autore && QString::fromStdString(m->getAutore()) == titolo && QString::fromStdString(m->getNomeCinema()) == cinema)
+            if( (tipo =="trailer" && dynamic_cast<Film*>(m) ) || (tipo == "puntata" && dynamic_cast<Podcast*>(m)))
+                return m;
+    }
+    return nullptr; //non ha trovato niente
 }

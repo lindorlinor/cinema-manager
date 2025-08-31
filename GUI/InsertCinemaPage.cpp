@@ -1,5 +1,4 @@
 #include "InsertCinemaPage.h"
-#include "../DataFiles/MediaManagerJson.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -8,7 +7,7 @@
 #include <QDomDocument>
 #include <QCoreApplication>
 
-InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),
+InsertCinemaPage::InsertCinemaPage(QList<Cinema*>& w_cinema, QWidget * parent):QWidget(parent), ic_cinema(w_cinema),
                                             frameLayout(new QVBoxLayout),
                                             textInput(new QLineEdit(this)),
                                             imageArea(new InsertImageFrame( "<span style='color:white; font-size:16px;'>+ <u>Aggiungi copertina</u></span>"
@@ -23,8 +22,8 @@ InsertCinemaPage::InsertCinemaPage(QWidget * parent):QWidget(parent),
                                             isAvailable(false)
 {
     QFrame* frameCentrale = new QFrame(this);
-    frameCentrale->setMinimumSize(630, 600);
-    frameCentrale->setMaximumSize(1000, 750);
+    frameCentrale->setMinimumSize(630, 500);
+    frameCentrale->setMaximumSize(800, 500);
     frameCentrale->setLayout(frameLayout);
     
     createHeader();
@@ -47,15 +46,10 @@ void InsertCinemaPage::checkCinemaNameAvailability(const QString& text) {
     }
     QString nome = text.trimmed();
 
-    //LISTA TEMPORANEA SOLO PER FAR COMPILARE
-    MediaManagerJson repo(temporanea, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
-    QList<CinemaData*> listCinema;
-    repo.loadCinemaData(listCinema);
-
     isAvailable = true;
 
-    for (const CinemaData* c: listCinema) {
-        if (c->nomeCinema.compare(text, Qt::CaseInsensitive) == 0) {
+    for (const Cinema* c: ic_cinema) {
+        if (QString::fromStdString(c->getNomeCinema()).compare(text, Qt::CaseInsensitive) == 0) {
             isAvailable = false;
         }
     }
@@ -95,12 +89,12 @@ void InsertCinemaPage::removeImage(){
 
 //crea il file xml del cinema e appare un messaggio che conferma il successo dell'operazione
 void InsertCinemaPage::saveCinemaInJson() {
-    CinemaData data;
-    data.nomeCinema = textInput->text().trimmed();
-    data.copertinaCinema = imagePath;
+    
+    Cinema* cinema = new Cinema(textInput->text().trimmed().toStdString(), imagePath.toStdString());
+    ic_cinema.append(cinema);
 
-    MediaManagerJson repo(temporanea, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
-    repo.saveCinema(&data);
+    CinemaManager cinemaManager;
+    cinemaManager.saveCinemaInJson(cinema);
 
     QMessageBox::information(this, tr("Salvato"), tr("Cinema salvato correttamente."));
     emit returnCinemaSelectionPage();
@@ -225,7 +219,7 @@ void InsertCinemaPage::createLayoutInput(QVBoxLayout* layoutdx) {
     layoutInput->addStretch();
 
     imageArea->setMinimumSize(365,240);
-    imageArea->setMaximumSize(7435,240);
+    imageArea->setMaximumSize(745,240);
     layoutInput->addWidget(imageArea);
     layoutInput->setAlignment(Qt::AlignCenter);
     

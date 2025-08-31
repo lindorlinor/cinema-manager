@@ -6,11 +6,13 @@
 #include "CinemaSelectionPage.h"
 #include "InsertCinemaPage.h"
 #include "SearchPanel.h"
+#include "../Cinema.h"
 #include "Menu.h"
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 private:
+    QList<Cinema*> w_cinema;
     QStackedWidget *stackedWidget;
     CinemaSelectionPage * cinemaPage;
     InsertCinemaPage * insertPage;
@@ -20,7 +22,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
 public slots:
     void showInsertCinemaPage();
-    void showSelectedCinemaPage(const CinemaData& cinema);
+    void showSelectedCinemaPage(const Cinema* cinema);
     void showCinemaSelectionPage();
 };
 

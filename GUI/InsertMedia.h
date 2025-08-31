@@ -28,24 +28,28 @@
 #include "ListPersone.h"
 #include "SelectMediaReference.h"
 
+#include "../Cinema.h"
 #include "../Media.h"
 #include "../Film.h"
 #include "../Inserzione.h"
 #include "../Trailer.h"
 #include "../Podcast.h"
 #include "../Puntata.h"
-#include "../DataFiles/Populate.h"
-#include "../DataFiles/MediaManagerJson.h"
+
+#include "../DataFiles/CinemaManager.h"
 
 class InsertMedia:public QWidget{
     Q_OBJECT
 
     private:
-
-    MediaManagerJson* mediaManagerJson; //serve per salvare i dati raccolti nel json
     QStackedLayout* stackTipologia; //serve per cambiare il widget di input del tab "specifiche tipologia" a seconda della tipologia selezionata nella QComboBox
-/*     MediaManagerJson* mediaManagerJson;   //TEMPORANEO
-    QList<Media*> temporanea; */
+    CinemaManager* cinemaManager; 
+
+    //cinema selezionato
+    const Cinema* im_cinemaSelezionato;
+
+    //liste di media
+    QList<Media*> im_mediaList;
 
     //widget che verranno utilizzati nel tab "specifiche tipologia" e intercambiati tramite la selezione
     //della tipologia su un QComboBox. Lo scambio è fatto con l'utilizzo di uno QStackedLayout stackTipologia
@@ -131,7 +135,6 @@ class InsertMedia:public QWidget{
     
     //salvataggio degli input su un file Json
     void salvaMedia();                       //salva tutti i dati raccolti in un file json
-    void saveCommonFields(MediaData &data);  //salva i campi comuni alle varie tipologie (richiamato da salvaMedia)
     
     //template
     
@@ -167,10 +170,22 @@ class InsertMedia:public QWidget{
     QTextEdit* addDescrizioneWidget(QHBoxLayout* baseH);
     QDateEdit* addDataInizioRilascio(QVBoxLayout* ly);   //comuni a tutti tranne a podcast
     QDateEdit* addDataFineRilascio(QVBoxLayout* ly);     //comuni a tutti tranne a podcast
-    
+
+
+    //HELPER PER CREATE MEDIA
+    //converte da data in chrono
+    year_month_day convertDate(const QDate& data);
+    void addFasceOrarie(Inserzione* inserzione);
+    void addLingue(Media* media);
+    void addSottotitoli(Media* media);
+    void addGeneri(Film* film);
+    void addAttore(Film* film);
+    void addOspite(Puntata* puntata);
+    Media* findMediaReference(const QString& titolo, const QString& autore, const QString& cinema, const QString& tipo);
+
     
     public:
-	explicit InsertMedia(MediaManagerJson* manager, QWidget *parent);
+	explicit InsertMedia(QList<Media*> s_mediaList, QWidget *parent);
     void resetAllInput();
     
     signals:
@@ -181,7 +196,7 @@ class InsertMedia:public QWidget{
     public slots:
     void chooseImage();                      //rimuove l'immagine precedentemente selezionata
     void removeImage();                      //rimuove l'immagine precedentemente selezionata
-    void getCinemaInfo(const CinemaData& data);
+    void getCinemaInfo(Cinema* data);
     
 };
 

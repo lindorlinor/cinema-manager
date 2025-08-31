@@ -22,7 +22,7 @@ class Inserzione : public Pubblicita{
     int isFasciaOrariaIn(FasciaOraria fasciaO) const;
 
 public:
-    Inserzione(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+    Inserzione(const string& nomeCinema, const string& copertinaCinema, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
                year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
                unsigned int nProiezioniGiornaliere, const Classificazione& target, double costoProiezione,const string &aziendaInserzionista = "Sconosciuto", 
                const string &autore = "Sconosciuto", const string &path = ":/images/default.png");

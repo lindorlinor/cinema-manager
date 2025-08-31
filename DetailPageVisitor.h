@@ -3,15 +3,16 @@
 
 #include <QWidget>
 #include "MediaVisitor.h" 
+#include "GUI/MediaView.h" 
 
 class DetailPageVisitor : public MediaVisitor {
 private:
-    QWidget* detailPage; 
+    MediaView* detailPage; 
 public:
     DetailPageVisitor();
     ~DetailPageVisitor() override = default;
 
-    QWidget* getWidget() const;
+    MediaView* getWidget() const;
 
     void visit(Film* film) override;
     void visit(Trailer* trailer) override;

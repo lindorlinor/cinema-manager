@@ -27,6 +27,7 @@ HEADERS +=  \
             Film.h \
             Podcast.h \
             Puntata.h \
+            Cinema.h \
             catch.hpp \
             MediaVisitor.h \
             DetailPageVisitor.h \
@@ -51,13 +52,9 @@ HEADERS +=  \
             GUI/FlowVisitor.h \
             GUI/LibraryObserver.h \
             GUI/Menu.h \
-            DataFiles/Populate.h \
             DataFiles/Converter.h \
-            DataFiles/ConverterXml.h \
-            DataFiles/MediaManagerXml.h \
-            DataFiles/XmlVisitor.h \
-            DataFiles/MediaManagerJson.h \
-            DataFiles/MediaUpdateVisitor.h
+            DataFiles/CinemaManager.h \
+            DataFiles/SaveMediaVisitor.h 
 SOURCES +=  \
             main.cpp \
             Inserzione.cpp \
@@ -67,6 +64,7 @@ SOURCES +=  \
             Film.cpp \
             Podcast.cpp \
             Puntata.cpp \
+            Cinema.cpp \
             DetailPageVisitor.cpp \
             test/test.cpp \
             GUI/CinemaButton.cpp \
@@ -89,10 +87,7 @@ SOURCES +=  \
             GUI/FlowLayout.cpp \
             GUI/FlowVisitor.cpp \
             GUI/Menu.cpp \
-            DataFiles/MediaManagerJson.cpp \
             DataFiles/Converter.cpp \
-            DataFiles/ConverterXml.cpp \
-            DataFiles/MediaManagerXml.cpp \
-            DataFiles/XmlVisitor.cpp \
-            DataFiles/MediaUpdateVisitor.cpp
+            DataFiles/CinemaManager.cpp \
+            DataFiles/SaveMediaVisitor.cpp 
 RESOURCES += GUI/resources.qrc

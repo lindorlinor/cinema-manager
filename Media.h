@@ -8,6 +8,7 @@
 #include <vector>
 #include <random>
 #include "EnumClasses.h"
+#include "Cinema.h"
 
 using namespace std;
 using namespace std::chrono;
@@ -20,7 +21,7 @@ class MediaVisitor;
  *
  * Classe base astratta per tutti i tipi di media: film, pubblicità, podcast e puntate.
  */
-class Media
+class Media : public Cinema
 {
 private:
     string m_titolo;
@@ -38,7 +39,7 @@ private:
     vector<Lingua> m_lingueDisponibili;
     vector<Lingua> m_sottotitoliDisponibili;
 public:
-    Media(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
+    Media(const string& nomeCinema, const string& copertinaCinema, const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
           year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
           const string &autore = "Sconosciuto", const string &imPath = ":/images/default.png");
 
