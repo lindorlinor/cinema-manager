@@ -3,9 +3,7 @@
 
 #include "Media.h"
 #include "MediaVisitor.h"
-
-class Puntata; // dichiarazione incompleta
-
+#include "Puntata.h"
 /**
  * @class Podcast
  * @brief Rappresenta un podcast distribuito dal cinema nei canali appropriati. Deriva direttamente da Media

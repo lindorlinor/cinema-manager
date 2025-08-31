@@ -4,6 +4,106 @@
 #include "DetailPageVisitor.h"
 #include "LibraryObserver.h"
 
+SearchPanel::SearchPanel(QWidget *parent): QWidget(parent),stackModifiche(new QStackedWidget(this)){
+    //gestione del json
+    manager = new MediaManagerJson(mediaList, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"),this);
+
+    QVBoxLayout* mainLayout = new QVBoxLayout;
+
+    addPagina(mainLayout);
+
+    setLayout(mainLayout);
+    
+    DetailPageVisitor* visitor = new DetailPageVisitor(); 
+    
+    //inserzione temporanea
+    /*Inserzione * i1 = new Inserzione("Promo Smartphone X15", "Campagna pubblicitaria nuovo modello X15.",
+                                   year_month_day{2025y, May, 1d}, year_month_day{2025y, May, 30d},
+                                   30, Formato::DCP, Risoluzione::HD_720p,
+                                   20, Classificazione::TUTTI, 50.0, "TechCorp","Giovanni rana",":/images/image12.png"); 
+    i1->accept(visitor);*/
+    
+    //Podcast con alcune puntate temporaneo
+    /* Podcast * pd = new Podcast("Storie del cinema","Il podcast che racconta il mondo del cinema fino ai giorni nostri. Ogni mercoledì con Lucia Dalla Monta' solo nei canali del cinema"
+                                , Formato::MP4, Risoluzione::FullHD_1080p,"Cinema Milano",":/images/image12.png","Lucia Dalla Monta");
+    Puntata * p1 = new Puntata("La nascita del cinema","Vi siete mai chiesti come il cinema è arrivato a quello che è oggi? Oggi lo scopriamo in questa nuova puntata condotta da Lucia Dalla Monta",
+                                year_month_day{2025y/September/1d},year_month_day{2025y/September/15d},32,pd,2,"Cinema Milano",":/images/image12.png");
+    pd->aggiungiPuntata(p1);
+    pd->accept(visitor); */          
+    
+
+    Film* film = new Film(
+                            "Il mio vicino Totoro (RE-RELEASE 2025)",
+                            "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
+                            year_month_day{2025y/June/1d},
+                            year_month_day{2025y/June/30d},
+                            86,
+                            Formato::DCP,
+                            Risoluzione::UHD_4K_2160p,
+                            1,      
+                            12.50,
+                            "Studio Ghibli",
+                            "Hayao Miyazaki",
+                            ":/images/image9.png",
+                            Classificazione::TUTTI
+                        );
+    film->aggiungiLingua(Lingua::Italiano);
+    film->aggiungiLingua(Lingua::Inglese);
+    film->aggiungiAttore("Noriko Hidaka");
+    film->aggiungiAttore("Chika Sakamoto");
+    film->aggiungiAttore("Shigesato Itoi");
+    film->aggiungiAttore("Hitoshi Takagi");
+    film->aggiungiAttore("Takashi Nagasako");
+
+    film->aggiungiSottotitolo(Lingua::Italiano);
+    film->IncrementaVisualizzazioni();
+    film->setValutazione();
+    // Primo trailer
+    Trailer* trailer1 = new Trailer(
+        "Trailer ufficiale - Il mio vicino Totoro (2025)",
+        "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
+        year_month_day{2025y/April/15d},   // data inizio rilascio
+        year_month_day{2025y/May/31d},     // data fine rilascio
+        2,                                 // durata in minuti
+        Formato::DCP,
+        Risoluzione::UHD_4K_2160p,
+        5,                                 // n° proiezioni giornaliere
+        film,
+        "Studio Ghibli",
+        ":/images/image10.png"
+    );
+    trailer1->IncrementaVisualizzazioni();
+    // Secondo trailer
+    Trailer* trailer2 = new Trailer(
+        "Trailer speciale anniversario - Il mio vicino Totoro (2025)",
+        "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
+        year_month_day{2025y/May/1d},      // data inizio rilascio
+        year_month_day{2025y/June/15d},    // data fine rilascio
+        3,                                 // durata in minuti
+        Formato::DCP,
+        Risoluzione::UHD_4K_2160p,
+        3,                                 // n° proiezioni giornaliere
+        film,
+        "Hayao Miyazaki",
+        ":/images/image10.png"
+    );
+    trailer2->IncrementaVisualizzazioni();
+
+    film->accept(visitor);
+
+    QWidget * detailPage = visitor->getWidget();
+    stackModifiche->addWidget(detailPage);
+    stackModifiche->setCurrentIndex(2);
+    connect(static_cast<FilmView*>(detailPage), &MediaView::returnButton, this, [this,detailPage](){
+        updateModifierPanel(previousIndex);
+        stackModifiche->removeWidget(detailPage);
+        delete detailPage;
+    });
+
+    mainLayout->setContentsMargins(0, 0, 0, 0); 
+    mainLayout->setSpacing(0);
+}
+
 void SearchPanel::updateModifierPanel(int index){
     if(stackModifiche->currentIndex()!=index){
         previousIndex = stackModifiche->currentIndex();
@@ -283,40 +383,7 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
 
 } 
 
-SearchPanel::SearchPanel(QWidget *parent): QWidget(parent),stackModifiche(new QStackedWidget(this)){
-    //gestione del json
-    manager = new MediaManagerJson(mediaList, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"),this);
 
-    QVBoxLayout* mainLayout = new QVBoxLayout;
-
-    addPagina(mainLayout);
-
-    setLayout(mainLayout);
-    
-    DetailPageVisitor* visitor = new DetailPageVisitor(); 
-    
-   
-    
-    // metodoTemporaneoPerPagineDiVisualizzazione();
-    Inserzione * i1 = new Inserzione("Promo Smartphone X15", "Campagna pubblicitaria nuovo modello X15.",
-                                   year_month_day{2025y, May, 1d}, year_month_day{2025y, May, 30d},
-                                   30, Formato::DCP, Risoluzione::HD_720p,
-                                   20, Classificazione::TUTTI, 50.0, "TechCorp","Giovanni rana",":/images/image12.png");
-    i1->accept(visitor);                               
-    
-    QWidget * detailPage = visitor->getWidget();
-    stackModifiche->addWidget(detailPage);
-    stackModifiche->setCurrentIndex(2);
-    connect(static_cast<FilmView*>(detailPage), &MediaView::returnButton, this, [this,detailPage](){
-        updateModifierPanel(previousIndex);
-        stackModifiche->removeWidget(detailPage);
-        delete detailPage;
-    });
-
-    //style
-    mainLayout->setContentsMargins(0, 0, 0, 0); 
-    mainLayout->setSpacing(0);
-}
 
 void SearchPanel::updateInfoCinema(const CinemaData& data){
     //selezione Cinema
