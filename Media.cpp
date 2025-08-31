@@ -11,7 +11,9 @@ Media::Media(const string &titolo, const string &descrizione, year_month_day gg_
                                                          m_dataFineRilascio(gg_mm_aaFineRilascio<gg_mm_aaInizioRilascio?gg_mm_aaInizioRilascio:gg_mm_aaFineRilascio), 
                                                          m_durataMinuti(durataMinuti), m_formato(formato),
                                                          m_risoluzione(risoluzione), m_autore(autore), m_imPath(path),
-                                                         m_dataLastViewUpdate(gg_mm_aaInizioRilascio), m_visualizzazioni(0) {}
+                                                         m_dataLastViewUpdate(gg_mm_aaInizioRilascio), m_visualizzazioni(0) {
+                                                            IncrementaVisualizzazioni();
+                                                         }
 
 bool Media::FuoriProduzione() const
 {

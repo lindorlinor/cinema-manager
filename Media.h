@@ -37,6 +37,16 @@ private:
     
     vector<Lingua> m_lingueDisponibili;
     vector<Lingua> m_sottotitoliDisponibili;
+
+    /**
+     * @brief assegna in automatico il numero di visualizzazioni
+     * 
+     * assegna un numero di visualizzazioni in automatico simulando una reale attività, aggiunge un numero randomico di
+     * visualizzazioni per ogni giorno dalla data di InizioRilascio finché il media non raggiunge la data di FineRilascio
+     */
+
+    void IncrementaVisualizzazioni();
+    
 public:
     Media(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
           year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
@@ -94,15 +104,6 @@ public:
     void setDurataMinuti(unsigned int durata);
     virtual void setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio);
     virtual void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio);
-    
-    /**
-     * @brief assegna in automatico il numero di visualizzazioni
-     * 
-     * assegna un numero di visualizzazioni in automatico simulando una reale attività, aggiunge un numero randomico di
-     * visualizzazioni per ogni giorno dalla data di InizioRilascio finché il media non raggiunge la data di FineRilascio
-     */
-
-    void IncrementaVisualizzazioni();
     
     // metodi astratti
     virtual ~Media() = 0;

@@ -6,7 +6,9 @@ Podcast::Podcast(const string &titolo, const string &descrizione,
                  const string &autore, const string &path, const string &conduttore) : 
                                     Media(titolo, descrizione, year_month_day{floor<days>(system_clock::now())}, 
                                     year_month_day{floor<days>(system_clock::now())},
-                                    0, formato, risoluzione, autore, path),p_conduttore(conduttore) {}
+                                    0, formato, risoluzione, autore, path),p_conduttore(conduttore) {
+                                        setVisualizzazioni(0);
+                                    }
 
 Podcast::~Podcast()
 {
@@ -28,7 +30,6 @@ void Podcast::setConduttore(const string& nome){
 void Podcast::aggiungiPuntata(Puntata* puntata){
     if(puntata && isPuntataIn(puntata)==-1 && puntata->getPodcast() == this){
 
-        puntata->IncrementaVisualizzazioni();
         setVisualizzazioni(getVisualizzazioni() + puntata->getVisualizzazioni());
         setDurataMinuti(getDurataMinuti() + puntata->getDurataMinuti());
         p_elencoPuntate.push_back(puntata);
