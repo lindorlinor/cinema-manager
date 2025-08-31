@@ -24,15 +24,15 @@ SearchPanel::SearchPanel(QWidget *parent): QWidget(parent),stackModifiche(new QS
     i1->accept(visitor);*/
     
     //Podcast con alcune puntate temporaneo
-    /* Podcast * pd = new Podcast("Storie del cinema","Il podcast che racconta il mondo del cinema fino ai giorni nostri. Ogni mercoledì con Lucia Dalla Monta' solo nei canali del cinema"
+    Podcast * pd = new Podcast("Storie del cinema","Il podcast che racconta il mondo del cinema fino ai giorni nostri. Ogni mercoledì con Lucia Dalla Monta' solo nei canali del cinema"
                                 , Formato::MP4, Risoluzione::FullHD_1080p,"Cinema Milano",":/images/image12.png","Lucia Dalla Monta");
     Puntata * p1 = new Puntata("La nascita del cinema","Vi siete mai chiesti come il cinema è arrivato a quello che è oggi? Oggi lo scopriamo in questa nuova puntata condotta da Lucia Dalla Monta",
                                 year_month_day{2025y/September/1d},year_month_day{2025y/September/15d},32,pd,2,"Cinema Milano",":/images/image12.png");
-    pd->aggiungiPuntata(p1);
-    pd->accept(visitor); */          
+    // pd->accept(visitor);   
+    p1->accept(visitor);       
     
 
-    Film* film = new Film(
+    /* Film* film = new Film(
                             "Il mio vicino Totoro (RE-RELEASE 2025)",
                             "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
                             year_month_day{2025y/June/1d},
@@ -89,7 +89,7 @@ SearchPanel::SearchPanel(QWidget *parent): QWidget(parent),stackModifiche(new QS
     );
     trailer2->IncrementaVisualizzazioni();
 
-    film->accept(visitor);
+    film->accept(visitor); */
 
     QWidget * detailPage = visitor->getWidget();
     stackModifiche->addWidget(detailPage);

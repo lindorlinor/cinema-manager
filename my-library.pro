@@ -45,6 +45,7 @@ HEADERS +=  \
             GUI/TrailerView.h \
             GUI/InserzioneView.h \
             GUI/PodcastView.h \
+            GUI/PuntataView.h \
             GUI/ExpandableLabel.h \
             GUI/PreviewCard.h \
             GUI/DetailsPageButtons.h \
@@ -86,6 +87,7 @@ SOURCES +=  \
             GUI/TrailerView.cpp \
             GUI/InserzioneView.cpp \
             GUI/PodcastView.cpp \
+            GUI/PuntataView.cpp \
             GUI/ExpandableLabel.cpp \
             GUI/PreviewCard.cpp \
             GUI/MediaLibraryGenerale.cpp \

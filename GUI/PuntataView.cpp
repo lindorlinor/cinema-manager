@@ -1,16 +1,17 @@
-#include "PodcastView.h"
+#include "PuntataView.h"
+#include "Podcast.h"
 #include <QScrollArea>
 #include "ExpandableLabel.h"
-#include "PreviewCard.h"
 #include "DetailsPageButtons.h"
-#include <QMessageBox>
-PodcastView::PodcastView(Podcast* pPtr, QWidget* parent):MediaView(pPtr,parent),podPtr(pPtr){
+#include "PreviewCard.h"
+
+PuntataView::PuntataView(Puntata* pPtr,QWidget* parent):MediaView(pPtr,parent),puntPtr(pPtr){
     createMediaDetails();
     createScrollableSection();
     createButtons();
-}   
+}
 
-void PodcastView::createMediaDetails(){
+void PuntataView::createMediaDetails(){
     leftSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     leftSide->setObjectName("pupu");
     leftSide->setContentsMargins(0,0,0,0);
@@ -41,24 +42,30 @@ void PodcastView::createMediaDetails(){
     layoutProgrammazione->addWidget(labelProgrammazione);
 
     QWidget * dettagliProgrammazione = new QWidget(sezioneProgrammazione);
-    QHBoxLayout * layoutDettagliProgrammazione = new QHBoxLayout(dettagliProgrammazione);
+    QGridLayout * layoutDettagliProgrammazione = new QGridLayout(dettagliProgrammazione);
     dettagliProgrammazione->setContentsMargins(10,10,10,10);
     sezioneProgrammazione->setObjectName("sp");
     
     QLabel* inizioP = new QLabel(
         "<span style='color:white; font-weight:bold;'>Inizio proiezione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(dateToString(podPtr->getDataInizioRilascio())) + "</span>",dettagliProgrammazione);
+        "<span style='color:black;'>" + QString::fromStdString(dateToString(puntPtr->getDataInizioRilascio())) + "</span>",dettagliProgrammazione);
     inizioP->setTextFormat(Qt::RichText);
     endDateLabel = new QLabel(
         "<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(dateToString(podPtr->getDataFineRilascio())) + "</span>",dettagliProgrammazione);
+        "<span style='color:black;'>" + QString::fromStdString(dateToString(puntPtr->getDataFineRilascio())) + "</span>",dettagliProgrammazione);
     endDateLabel->setTextFormat(Qt::RichText);
     inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     endDateLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-   
-    layoutDettagliProgrammazione->addWidget(inizioP);
-    layoutDettagliProgrammazione->addWidget(endDateLabel);
+        
+    QLabel* nPubblicita = new QLabel(
+        "<span style='color:white; font-weight:bold;'>Numero di pubblicita': </span>"
+        "<span style='color:black;'>" + QString::number(puntPtr->getNumeroPubblicita()) + "</span>",dettagliProgrammazione);
+    nPubblicita->setTextFormat(Qt::RichText);
+
+    layoutDettagliProgrammazione->addWidget(inizioP,1,0);
+    layoutDettagliProgrammazione->addWidget(endDateLabel,1,1);
+    layoutDettagliProgrammazione->addWidget(nPubblicita,2,0);
 
     layoutProgrammazione->addWidget(dettagliProgrammazione);
     
@@ -78,11 +85,11 @@ void PodcastView::createMediaDetails(){
     // Visualizzazioni e incasso
     QLabel* incasso = new QLabel(
         "<span style='color:white; font-weight:bold;'>Incasso totale: </span>"
-        "<span style='color:black;'>" + QString::number(podPtr->calcolaIncasso()) + " €</span>",dettagliPerformance);
+        "<span style='color:black;'>" + QString::number(puntPtr->calcolaIncasso()) + " €</span>",dettagliPerformance);
     incasso->setTextFormat(Qt::RichText);
     QLabel* visualizzazioni = new QLabel(
         "<span style='color:white; font-weight:bold;'>Visualizzazioni: </span>"
-        "<span style='color:black;'>" + QString::number(podPtr->getVisualizzazioni()) + "</span>",dettagliPerformance);
+        "<span style='color:black;'>" + QString::number(puntPtr->getVisualizzazioni()) + "</span>",dettagliPerformance);
     visualizzazioni->setTextFormat(Qt::RichText);
 
     layoutDettagliPerformance->addWidget(incasso);
@@ -102,11 +109,11 @@ void PodcastView::createMediaDetails(){
     
     QLabel* risoluzione = new QLabel(
         "<span style='color:white; font-weight:bold;'>Risoluzione: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(podPtr->getRisoluzione())) + "</span>",dettagliTecnici);
+        "<span style='color:black;'>" + QString::fromUtf8(toString(puntPtr->getRisoluzione())) + "</span>",dettagliTecnici);
     risoluzione->setTextFormat(Qt::RichText);
     QLabel* formato = new QLabel(
         "<span style='color:white; font-weight:bold;'>Formato: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(podPtr->getFormato())) + "</span>",dettagliTecnici);
+        "<span style='color:black;'>" + QString::fromUtf8(toString(puntPtr->getFormato())) + "</span>",dettagliTecnici);
     formato->setTextFormat(Qt::RichText);
 
     layoutDettagliTecnici->addWidget(risoluzione);
@@ -116,7 +123,7 @@ void PodcastView::createMediaDetails(){
     QWidget *sezioneDettagli = new QWidget(details);
     sezioneDettagli->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
     QVBoxLayout * layoutDettagli = new QVBoxLayout(sezioneDettagli);
-    QLabel * labelDettagli = new QLabel("Dettagli sul film");
+    QLabel * labelDettagli = new QLabel("Dettagli della puntata");
     layoutDettagli->addWidget(labelDettagli);
     labelDettagli->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
@@ -126,22 +133,16 @@ void PodcastView::createMediaDetails(){
     
     
     ExpandableLabel* descrizione = new ExpandableLabel(
-         "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(podPtr->getDescrizione()),dettagliDettagli);
+         "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(puntPtr->getDescrizione()),dettagliDettagli);
         
     QLabel* conduttore = new QLabel(
         "<span style='color:white; font-weight:bold;'>Conduttore: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(podPtr->getConduttore()) + "</span>",dettagliTecnici);
-    conduttore->setTextFormat(Qt::RichText);
-
-     QLabel* nPuntate = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Numero di puntate: </span>"
-        "<span style='color:black;'>" + QString::number(podPtr->getElencoPuntate().size()) + "</span>",dettagliTecnici);
+        "<span style='color:black;'>" + QString::fromStdString((puntPtr->getPodcast())->getConduttore()) + "</span>",dettagliTecnici);
     conduttore->setTextFormat(Qt::RichText);
 
 
     layoutDettagliDettagli->addWidget(descrizione);
     layoutDettagliDettagli->addWidget(conduttore);
-    layoutDettagliDettagli->addWidget(nPuntate);
 
 
     layoutDettagli->addWidget(dettagliDettagli);
@@ -153,92 +154,71 @@ void PodcastView::createMediaDetails(){
 
     splitterLayout->addWidget(leftSide);
 }
-
-void PodcastView::createScrollableSection(){
+void PuntataView::createScrollableSection(){
     rightSide->setObjectName("gaga");
     rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
-    QLabel *labelPuntate = new QLabel("Puntate",rightSide);
+    QLabel *labelPodA = new QLabel("Podcast associato",rightSide);
+    QFont fontPodA = labelPodA->font();
+    fontPodA.setPointSize(17);
+    fontPodA.setBold(true);
+    labelPodA->setFont(fontPodA);
+    
+
+    QWidget * sezionePodA = new QWidget(rightSide);
+    QVBoxLayout* layoutPodA = new QVBoxLayout(sezionePodA);
+    sezionePodA->setObjectName("sp"); 
+
+    const Podcast* podA = puntPtr->getPodcast();
+    PreviewCard* cardPodA = new PreviewCard(podA);
+    // cardPodA->setFixedSize(210, 320);   
+    layoutPodA->addWidget(cardPodA,0,Qt::AlignCenter);
+    connect(cardPodA, &PreviewCard::viewMedia, this, [this](){
+        qDebug() << "view Podcast Associato: " << QString::fromStdString(mediaPtr->getTitolo());
+    });
+    sezionePodA->setContentsMargins(20,0,20,0);
+
+    QLabel *labelPuntate = new QLabel("Puntate correlate",rightSide);
     QFont fontPuntate = labelPuntate->font();
     fontPuntate.setPointSize(17);
     fontPuntate.setBold(true);
     labelPuntate->setFont(fontPuntate);
     
-    rightLayout->addWidget(labelPuntate);
-
     QScrollArea* scrollPuntate = new QScrollArea(rightSide); //configurata dopo
     QWidget * sezionePuntate = new QWidget(scrollPuntate);
     QVBoxLayout * layoutPuntate = new QVBoxLayout(sezionePuntate);
     sezionePuntate->setObjectName("sp");
 
-    for (const Puntata* p : podPtr->getElencoPuntate()) {
-        PreviewCard* card = new PreviewCard(p);
-        layoutPuntate->addWidget(card);
-        connect(card, &PreviewCard::viewMedia, this, [this,p](){
-            qDebug() << "view Puntata: " << QString::fromStdString(p->getTitolo());
-            emit puntataSelected(p);
-        });
+    for (const Puntata* p : (puntPtr->getPodcast())->getElencoPuntate()) {
+        if(p!=puntPtr){
+            PreviewCard* cardPuntata = new PreviewCard(p);
+            layoutPuntate->addWidget(cardPuntata,0,Qt::AlignCenter);
+            connect(cardPuntata, &PreviewCard::viewMedia, this, 
+                [this,p](){
+                    qDebug() << "view Puntata: " << QString::fromStdString(p->getTitolo());
+                    emit puntataSelected(p);
+                });
+        }
     }
     layoutPuntate->setSpacing(20);  
-    sezionePuntate->setContentsMargins(20,20,20,33);
+    sezionePuntate->setContentsMargins(20,20,20,20);
 
     scrollPuntate->setWidget(sezionePuntate);
     scrollPuntate->setWidgetResizable(true);
     scrollPuntate->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollPuntate->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    scrollPuntate->setMinimumHeight(400);
-    rightLayout->addWidget(scrollPuntate,0,Qt::AlignTop);
+    scrollPuntate->setMinimumHeight(180);
 
+    rightLayout->addWidget(labelPodA);
+    rightLayout->addWidget(sezionePodA,0,Qt::AlignTop);
+    rightLayout->addSpacing(20);
+    rightLayout->addWidget(labelPuntate);
+    rightLayout->addWidget(scrollPuntate);
     splitterLayout->addWidget(rightSide);
 }
-
-void PodcastView::createButtons(){
+void PuntataView::createButtons(){
     DetailsPageButtons * buttons = new DetailsPageButtons(leftSide);
     buttons->setDeleteButtonText("Elimina podcast");
-    /* connect(buttons,&DetailsPageButtons::extendMedia,this,
-        [this](){
-            QMessageBox msgBox(this);
-            auto fine = trailerPtr->getDataFineRilascio();
-            auto nuovaFine = (trailerPtr->getFilm())->getDataFineRilascio();
-
-            if(fine!=nuovaFine){
-                msgBox.setWindowTitle("Conferma estensione data");
-                msgBox.setText(QString::fromStdString(
-                "La data di fine proiezione cambierà in\n" + dateToString(fine) + " → " + dateToString(nuovaFine) + "in accordo con la data di fine rilascio del film associato"));
-
-                msgBox.setInformativeText("Premi conferma per continuare, annulla per non modificare.");
-                msgBox.setStandardButtons(QMessageBox::Cancel | QMessageBox::Ok);
-                msgBox.button(QMessageBox::Ok)->setText("Conferma");
-                msgBox.button(QMessageBox::Cancel)->setText("Annulla");
-
-                int ret = msgBox.exec();
-                if (ret == QMessageBox::Ok) {
-                    qDebug() << "Confermato";
-                    endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-                    "<span style='color:black;'>" + QString::fromStdString(dateToString(nuovaFine)) + "</span>");
-                    emit extendMediaClicked();
-                }
-            }else{
-                msgBox.setWindowTitle("Impossibile estendere la data");
-                msgBox.setText("La data di fine rilascio del trailer non può superare quella del film");
-                msgBox.setInformativeText("Estendere la proiezione del film in sala per poter estendere il rilascio dei suoi trailer");
-            }
-        });
-           
-    
-    connect(buttons,&DetailsPageButtons::deleteMedia,this,[this](){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Conferma eliminazione");
-        msgBox.setText("Sei sicuro di voler eliminare il trailer?");
-        msgBox.setInformativeText("Premi conferma per continuare, annulla per non modificare.");
-        msgBox.addButton("Annulla", QMessageBox::RejectRole);
-        msgBox.addButton("Conferma", QMessageBox::AcceptRole);
-        int ret = msgBox.exec();
-        if (ret == QMessageBox::Ok) {
-            qDebug() << "Confermato";
-            emit deleteMediaClicked();
-        }
-        }); */
     cardLayout->addSpacing(40);
     cardLayout->addWidget(buttons);
 }
