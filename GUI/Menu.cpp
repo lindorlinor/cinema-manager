@@ -1,11 +1,9 @@
 #include "Menu.h"
 #include "MainWindow.h"
 
-Menu::Menu(QWidget* parent):QWidget(parent){
-    QMenuBar* menuBar = new QMenuBar(this);
+Menu::Menu(QWidget* parent):QWidget(parent),menuBar(new QMenuBar(this)),file(new QMenu("File",menuBar)){
     QHBoxLayout* menuH = new QHBoxLayout; 
-    
-    QMenu* file = new QMenu("File", menuBar);
+
     QMenu* modifica = new QMenu("Modifica", menuBar);
     QMenu* visualizza = new QMenu("Visualizza", menuBar);
     QMenu* altro = new QMenu("Altro", menuBar);
@@ -36,6 +34,10 @@ Menu::Menu(QWidget* parent):QWidget(parent){
     altro->addAction(new QAction("Cambia Vista", altro));
     altro->addAction(new QAction("Full Screen", altro));
     altro->addAction(new QAction("Exit Full Screen", altro));
+    connect(file->actions()[1],&QAction::triggered, this, &Menu::importMediaList);
+    connect(file->actions()[2],&QAction::triggered, this, &Menu::exportMediaList);
+    connect(file->actions()[3],&QAction::triggered, this, &Menu::importSession);
+    connect(file->actions()[4],&QAction::triggered, this, &Menu::exportSession);
     connect(file->actions()[5],&QAction::triggered, this, &Menu::backToCinemaSelection);
     connect(file->actions()[6], &QAction::triggered, qApp, &QApplication::quit);
     connect(altro->actions()[1], &QAction::triggered, this, &Menu::setFullScreen);
@@ -79,4 +81,15 @@ Menu::Menu(QWidget* parent):QWidget(parent){
     modifica->setObjectName("modifica");
     visualizza->setObjectName("visualizza");
     altro->setObjectName("altro");
+}
+
+void Menu::setFileActionVisibility(int i, bool visible) {
+    if(!file) return;
+    
+    QList<QAction*> actionsList = file->actions();
+
+    if(i<0 || i>=actionsList.size()) 
+        return; 
+
+    actionsList[i]->setVisible(visible);
 }

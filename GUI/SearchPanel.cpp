@@ -3,7 +3,20 @@
 #include "TrailerView.h"
 #include "DetailPageVisitor.h"
 #include "LibraryObserver.h"
-#include "../DataFiles/MediaManagerXml.h"
+
+SearchPanel::SearchPanel(MediaManagerXml* xmlManager,QWidget *parent):s_xmlManager(xmlManager),QWidget(parent),stackModifiche(new QStackedWidget(this)){
+    //carico tutti gli oggetti sal Json
+    s_manager = new CinemaRepositoryJson;
+    QVBoxLayout* mainLayout = new QVBoxLayout;
+
+    addPagina(mainLayout);
+    
+    setLayout(mainLayout);
+    
+    //style
+    mainLayout->setContentsMargins(0, 0, 0, 0); 
+    mainLayout->setSpacing(0);
+}
 
 void SearchPanel::updateModifierPanel(int index){
     if(stackModifiche->currentIndex()!=index){
@@ -56,7 +69,10 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     widgetFiltri->setLayout(latoFiltri);
     
 
-    connect(cinema, &QToolButton::clicked, this, &SearchPanel::escSearchPanel);
+    connect(cinema, &QToolButton::clicked, this, [this](){
+        emit escSearchPanel();
+        s_xmlManager->setCurrentCinema(nullptr);
+    });
 
     //style
 
@@ -280,20 +296,7 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
 
 } 
 
-SearchPanel::SearchPanel(QWidget *parent): QWidget(parent),stackModifiche(new QStackedWidget(this)){
-    //carico tutti gli oggetti sal Json
-    s_manager = new CinemaRepositoryJson;
 
-    QVBoxLayout* mainLayout = new QVBoxLayout;
-
-    addPagina(mainLayout);
-    
-    setLayout(mainLayout);
-    
-    //style
-    mainLayout->setContentsMargins(0, 0, 0, 0); 
-    mainLayout->setSpacing(0);
-}
 
 void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
     //selezione Cinema
@@ -304,11 +307,8 @@ void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
     updateFiltroTutto();
 
     emit giveCinemaInfoToIP(s_cinemaSelezionato, s_MediaListOfCinema);
-
-    /* prova funzionamento import
-    MediaManagerXml XMLmanager;
-    XMLmanager.setCurrentCinema(s_cinemaSelezionato);
-    XMLmanager.importSessionFromXml(*s_manager); */
+    
+    s_xmlManager->setCurrentCinema(s_cinemaSelezionato);
 }
 
 void SearchPanel::addObserver(LibraryObserver* obs){

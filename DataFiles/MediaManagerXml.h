@@ -24,7 +24,7 @@ public:
     bool importMediaListFromXml(CinemaRepositoryJson& jsonManager);
 
 private:
-    void importMediaListFromXml(QDomElement& mediaElem, CinemaRepositoryJson& jsonManager,const string& cinemaName, const string& cinemaCover);
+    void importMediaListFromXml(QDomElement& mediaElem, CinemaRepositoryJson& jsonManager,const string& cinemaName);
     void createSessionDocument(QDomDocument& doc,QDomElement& root);
     void createMediaListDocument(QDomDocument& doc,QDomElement& root);
     void saveDocument();

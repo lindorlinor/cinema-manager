@@ -51,6 +51,7 @@ QDomElement XmlVisitor::populateCommonFields(const Media* media){
 
     QDomElement lingueElem = doc->createElement("LingueDisponibili");
     for (const Lingua& l :  media->getLingue()) {
+        
         QDomElement lElem = doc->createElement("Lingua");
         lElem.appendChild(doc->createTextNode(toString(l)));
         lingueElem.appendChild(lElem);

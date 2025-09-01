@@ -1,5 +1,5 @@
 <Cinema>
-    <Nome>Cinema Angella</Nome>
+    <Nome>Cinema Aurora</Nome>
     <Copertina>:/images/default.png</Copertina>
     <MediaList>
         <Film>
@@ -63,5 +63,32 @@
             <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
             <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
         </Trailer>
+        <Film>
+            <Titolo>titolo</Titolo>
+            <Autore>Autore</Autore>
+            <Descrizione>asdad</Descrizione>
+            <DurataMinuti>7</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>SD 480p</Risoluzione>
+            <Path>:/images/coverCinema.png</Path>
+            <DataInizioRilascio>1/9/2025</DataInizioRilascio>
+            <DataFineRilascio>24/9/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili>
+                <Lingua>Italiano</Lingua>
+            </SottotitoliDisponibili>
+            <Generi>
+                <Genere>Commedia</Genere>
+            </Generi>
+            <AttoriPrincipali>
+                <Attore>asdasd</Attore>
+            </AttoriPrincipali>
+            <Target>TUTTI</Target>
+            <CostoBiglietto>8</CostoBiglietto>
+            <CasaDiProduzione>pinco pallo</CasaDiProduzione>
+            <NPostCredit>2</NPostCredit>
+        </Film>
     </MediaList>
 </Cinema>

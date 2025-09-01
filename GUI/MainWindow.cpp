@@ -1,5 +1,6 @@
 #include "MainWindow.h" 
 #include "CinemaSelectionPage.h" 
+
 #include "InsertCinemaPage.h" 
 #include "SearchPanel.h" 
 #include <QVBoxLayout>
@@ -9,7 +10,7 @@
 #include <QDir>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), cinemaPage(new CinemaSelectionPage(w_cinema, this)), insertPage(new InsertCinemaPage(w_cinema, this)), searchPage(new SearchPanel(this))
+    : QMainWindow(parent), cinemaPage(new CinemaSelectionPage(w_cinema, this)), insertPage(new InsertCinemaPage(w_cinema, this)),m_xmlManager(new MediaManagerXml()),searchPage(new SearchPanel(m_xmlManager,this))
 {
     setWindowFlags(Qt::Window | Qt::CustomizeWindowHint | 
                Qt::WindowMinimizeButtonHint | 
@@ -19,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     QVBoxLayout* layoutV = new QVBoxLayout;
     QWidget* central = new QWidget(this);
     Menu* menu = new Menu(this);
-
+    
     stackedWidget = new QStackedWidget(this);
     layoutV->addWidget(menu);
     layoutV->addWidget(stackedWidget);
@@ -44,12 +45,35 @@ MainWindow::MainWindow(QWidget *parent)
             showFullScreen();
         }
     });
+    connect(stackedWidget, &QStackedWidget::currentChanged, this, [menu](int index){
+        if(index == 0 || index == 1) {
+            menu->setFileActionVisibility(1,false);
+            menu->setFileActionVisibility(2,false);
+            menu->setFileActionVisibility(4,false);
+        }else{
+            menu->setFileActionVisibility(1,true);
+            menu->setFileActionVisibility(2,true);
+            menu->setFileActionVisibility(4,true);
+        }
+    });
+
+
     connect(menu, &Menu::closeRequested, this, &MainWindow::close);
     /* connect(menu,&Menu::backToCinemaSelection,searchPage,&SearchPanel::removeMediaView); */
     connect(menu,&Menu::backToCinemaSelection,this,&MainWindow::showCinemaSelectionPage);
     connect(menu,&Menu::backToCinemaSelection,searchPage,&SearchPanel::resetSearchPanel);
     connect(menu, &Menu::setFullScreen, this, &MainWindow::showFullScreen);
     connect(menu, &Menu::escFullScreen, this, &MainWindow::showMaximized);
+    /* connect(menu, &Menu::importMediaList, this, [this](){
+                                              m_xmlManager->importMediaListFromXml();      
+                                            }); */
+    /* connect(menu, &Menu::importSession, this, &MainWindow::showMaximized); */
+    connect(menu, &Menu::exportMediaList,this, [this](){
+                                              m_xmlManager->exportMediaListToXml();      
+                                            });
+    connect(menu, &Menu::exportSession, this, [this](){
+                                              m_xmlManager->exportSessionToXml();      
+                                            });
 
     connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
     connect(searchPage,&SearchPanel::escSearchPanel,searchPage,&SearchPanel::resetSearchPanel);
@@ -88,7 +112,7 @@ void MainWindow::showInsertCinemaPage(){
 }
 
 void MainWindow::showSelectedCinemaPage(const Cinema* cinema){
-    //TO DO
+    //@TO DO
     stackedWidget->setCurrentIndex(2);
     qDebug() << "Selezionato il cinema: " << QString::fromStdString(cinema->getNomeCinema());
 }
