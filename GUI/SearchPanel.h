@@ -32,9 +32,8 @@ class SearchPanel:public QWidget{
     Cinema* s_cinemaSelezionato;
     CinemaRepositoryJson* s_manager;
     MediaManagerXml* s_xmlManager;
-    /* MediaManagerXml* s_xmlManager; */
     vector<LibraryObserver*> s_libraryObservers;
-    QList<Media*> s_listaSupportoMedia;
+    QList<Media*> s_MediaListOfCinema;
 
     MediaLibraryGenerale* libreriaMediaGenerale;
     MediaLibraryTutto* libreriaMediaTutto;
@@ -133,16 +132,17 @@ class SearchPanel:public QWidget{
     void updateFiltroTutto();
     void updateFiltroMedia(const QString& filtro);
     void preUpdate();
-
+    /**
+    * @brief aggiorna la lista di supporto per visualizzare i media presenti nel cinema
+    */
+    void updateMediaList();
+    
     public:
 	explicit SearchPanel(MediaManagerXml* xmlManager,QWidget *parent);
     void addObserver(LibraryObserver* obs);
     void update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca);
 
-    /**
-    * @brief slot per modificare stackModifiche
-    * aggiorna lo stackModifiche
-    */
+
     public slots:
     void updateModifierPanel(int index);
     void updateInfoCinema(Cinema* cinemaSel);

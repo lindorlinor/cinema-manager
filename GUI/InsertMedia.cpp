@@ -49,7 +49,7 @@ void InsertMedia::addEnumList(L* base, const QString& labelText, const std::vect
     //lista degli enum
     for (T e : items) {
         const char* str = toString(e);
-        if (QString::fromUtf8(str) == "Non trovato") {
+        if (QString::fromUtf8(str) == "Non trovato" || QString::fromUtf8(str) == "Nessuno") {
             continue; // salto quelli con stringa "Non trovato"
         }
         QListWidgetItem* item = new QListWidgetItem(QString::fromUtf8(str), listWidget);
@@ -586,8 +586,8 @@ void InsertMedia::indietro(QVBoxLayout* mainLayout){        //pulsante indietro
     indietro->setCursor(Qt::PointingHandCursor);
 
     connect(indietro, &QPushButton::clicked, this, [this](){
-        this->resetAllInput();
-        this->tornaIndietro();
+        resetAllInput();
+        emit tornaIndietro();
     }); 
 
     //style
@@ -608,13 +608,13 @@ void InsertMedia::annullaSalva(QVBoxLayout* mainLayout){
     saveButton->setEnabled(false);
 
     connect(cancelButton, &QPushButton::clicked, this, [this](){
-        this->resetAllInput();
-        this->tornaAllaLibreria(); 
+        resetAllInput();
+        emit tornaAllaLibreria(); 
     });//poi da modificare facendolo tornare alla pagina della libreria di default
     connect(saveButton, &QPushButton::clicked, this, [this]() {
-        this->salvaMedia();
-        this->resetAllInput();
-        this->tornaAllaLibreria();
+        emit salvaMedia();
+        emit resetAllInput();
+        emit tornaAllaLibreria();
         if(referencePuntate)referencePuntate->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
         if(referenceTrailer)referenceTrailer->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
     });
@@ -837,6 +837,7 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         addAttore(film);
 
         im_cinemaSelezionato->addMedia(film);
+        qDebug()<<im_cinemaSelezionato->getListaMedia().size();
         
         qDebug()<<QString::fromStdString(im_cinemaSelezionato->getNomeCinema());
         cinemaManager->saveMediaInJson(film, QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));

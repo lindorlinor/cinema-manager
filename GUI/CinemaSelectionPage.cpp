@@ -117,9 +117,7 @@ void CinemaSelectionPage::createCinemaScroll(){
     //mette i pulsanti vicini tra loro, allineati a sinistra con uno spacing di 10
     cinemaButtonsLayout->setAlignment(Qt::AlignLeft);
     cinemaButtonsLayout->setSpacing(10);
-
-    qDebug() << "SizeHint contenitorePulsanti:" << contenitorePulsanti->sizeHint();
-    qDebug() << "ScrollArea viewport height:" << scrollArea->viewport()->height();
+    
     //aggiunge al frame la scrollArea del cinema
     frameLayout->addWidget(scrollArea);
 

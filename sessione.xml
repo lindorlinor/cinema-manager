@@ -1,90 +1,94 @@
-<MediaList>
-    <Film>
-        <Titolo>Il mio vicino Totoro (RE-RELEASE 2025)</Titolo>
-        <Autore>Hayao Miyazaki</Autore>
-        <Descrizione>La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco</Descrizione>
-        <DurataMinuti>86</DurataMinuti>
-        <Formato>MP4</Formato>
-        <Risoluzione>UHD 4K 2160p</Risoluzione>
-        <Path>:/images/image9.png</Path>
-        <DataInizioRilascio>1/6/2025</DataInizioRilascio>
-        <DataFineRilascio>30/6/2025</DataFineRilascio>
-        <LingueDisponibili>
-            <Lingua>Italiano</Lingua>
-        </LingueDisponibili>
-        <SottotitoliDisponibili>
-            <Lingua>Italiano</Lingua>
-        </SottotitoliDisponibili>
-        <Generi/>
-        <AttoriPrincipali>
-            <Attore>Noriko Hidaka</Attore>
-            <Attore>Chika Sakamoto</Attore>
-            <Attore>Shigesato Itoi</Attore>
-            <Attore>Hitoshi Takagi</Attore>
-            <Attore>Takashi Nagasako</Attore>
-        </AttoriPrincipali>
-        <Target>TUTTI</Target>
-        <CostoBiglietto>12.5</CostoBiglietto>
-        <CasaDiProduzione>Studio Ghibli</CasaDiProduzione>
-        <NPostCredit>1</NPostCredit>
-    </Film>
-    <Trailer>
-        <Titolo>Trailer ufficiale - Il mio vicino Totoro (2025)</Titolo>
-        <Autore>Studio Ghibli</Autore>
-        <Descrizione>Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.</Descrizione>
-        <DurataMinuti>2</DurataMinuti>
-        <Formato>MP4</Formato>
-        <Risoluzione>UHD 4K 2160p</Risoluzione>
-        <Path>:/images/image10.png</Path>
-        <DataInizioRilascio>15/4/2025</DataInizioRilascio>
-        <DataFineRilascio>31/5/2025</DataFineRilascio>
-        <LingueDisponibili/>
-        <SottotitoliDisponibili/>
-        <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
-        <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
-        <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
-    </Trailer>
-    <Trailer>
-        <Titolo>Trailer speciale anniversario - Il mio vicino Totoro (2025)</Titolo>
-        <Autore>Hayao Miyazaki</Autore>
-        <Descrizione>Un trailer celebrativo con scene inedite per il ritorno del film in sala.</Descrizione>
-        <DurataMinuti>3</DurataMinuti>
-        <Formato>MP4</Formato>
-        <Risoluzione>UHD 4K 2160p</Risoluzione>
-        <Path>:/images/image10.png</Path>
-        <DataInizioRilascio>1/5/2025</DataInizioRilascio>
-        <DataFineRilascio>15/6/2025</DataFineRilascio>
-        <LingueDisponibili/>
-        <SottotitoliDisponibili/>
-        <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
-        <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
-        <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
-    </Trailer>
-    <Film>
-        <Titolo>titolo</Titolo>
-        <Autore>Autore</Autore>
-        <Descrizione>asdad</Descrizione>
-        <DurataMinuti>7</DurataMinuti>
-        <Formato>MP4</Formato>
-        <Risoluzione>SD 480p</Risoluzione>
-        <Path>:/images/coverCinema.png</Path>
-        <DataInizioRilascio>1/9/2025</DataInizioRilascio>
-        <DataFineRilascio>24/9/2025</DataFineRilascio>
-        <LingueDisponibili>
-            <Lingua>Italiano</Lingua>
-        </LingueDisponibili>
-        <SottotitoliDisponibili>
-            <Lingua>Italiano</Lingua>
-        </SottotitoliDisponibili>
-        <Generi>
-            <Genere>Commedia</Genere>
-        </Generi>
-        <AttoriPrincipali>
-            <Attore>asdasd</Attore>
-        </AttoriPrincipali>
-        <Target>TUTTI</Target>
-        <CostoBiglietto>8</CostoBiglietto>
-        <CasaDiProduzione>pinco pallo</CasaDiProduzione>
-        <NPostCredit>2</NPostCredit>
-    </Film>
-</MediaList>
+<Cinema>
+    <Nome>Cinema Aurora</Nome>
+    <Copertina>:/images/default.png</Copertina>
+    <MediaList>
+        <Film>
+            <Titolo>Il mio vicino Totoro (RE-RELEASE 2025)</Titolo>
+            <Autore>Hayao Miyazaki</Autore>
+            <Descrizione>La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco</Descrizione>
+            <DurataMinuti>86</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>UHD 4K 2160p</Risoluzione>
+            <Path>:/images/image9.png</Path>
+            <DataInizioRilascio>1/6/2025</DataInizioRilascio>
+            <DataFineRilascio>30/6/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili>
+                <Lingua>Italiano</Lingua>
+            </SottotitoliDisponibili>
+            <Generi/>
+            <AttoriPrincipali>
+                <Attore>Noriko Hidaka</Attore>
+                <Attore>Chika Sakamoto</Attore>
+                <Attore>Shigesato Itoi</Attore>
+                <Attore>Hitoshi Takagi</Attore>
+                <Attore>Takashi Nagasako</Attore>
+            </AttoriPrincipali>
+            <Target>TUTTI</Target>
+            <CostoBiglietto>12.5</CostoBiglietto>
+            <CasaDiProduzione>Studio Ghibli</CasaDiProduzione>
+            <NPostCredit>1</NPostCredit>
+        </Film>
+        <Trailer>
+            <Titolo>Trailer ufficiale - Il mio vicino Totoro (2025)</Titolo>
+            <Autore>Studio Ghibli</Autore>
+            <Descrizione>Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.</Descrizione>
+            <DurataMinuti>2</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>UHD 4K 2160p</Risoluzione>
+            <Path>:/images/image10.png</Path>
+            <DataInizioRilascio>15/4/2025</DataInizioRilascio>
+            <DataFineRilascio>31/5/2025</DataFineRilascio>
+            <LingueDisponibili/>
+            <SottotitoliDisponibili/>
+            <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
+            <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
+            <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
+        </Trailer>
+        <Trailer>
+            <Titolo>Trailer speciale anniversario - Il mio vicino Totoro (2025)</Titolo>
+            <Autore>Hayao Miyazaki</Autore>
+            <Descrizione>Un trailer celebrativo con scene inedite per il ritorno del film in sala.</Descrizione>
+            <DurataMinuti>3</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>UHD 4K 2160p</Risoluzione>
+            <Path>:/images/image10.png</Path>
+            <DataInizioRilascio>1/5/2025</DataInizioRilascio>
+            <DataFineRilascio>15/6/2025</DataFineRilascio>
+            <LingueDisponibili/>
+            <SottotitoliDisponibili/>
+            <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
+            <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
+            <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
+        </Trailer>
+        <Film>
+            <Titolo>titolo</Titolo>
+            <Autore>Autore</Autore>
+            <Descrizione>asdad</Descrizione>
+            <DurataMinuti>7</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>SD 480p</Risoluzione>
+            <Path>:/images/coverCinema.png</Path>
+            <DataInizioRilascio>1/9/2025</DataInizioRilascio>
+            <DataFineRilascio>24/9/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili>
+                <Lingua>Italiano</Lingua>
+            </SottotitoliDisponibili>
+            <Generi>
+                <Genere>Commedia</Genere>
+            </Generi>
+            <AttoriPrincipali>
+                <Attore>asdasd</Attore>
+            </AttoriPrincipali>
+            <Target>TUTTI</Target>
+            <CostoBiglietto>8</CostoBiglietto>
+            <CasaDiProduzione>pinco pallo</CasaDiProduzione>
+            <NPostCredit>2</NPostCredit>
+        </Film>
+    </MediaList>
+</Cinema>

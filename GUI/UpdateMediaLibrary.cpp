@@ -14,11 +14,11 @@ void UpdateMediaLibrary::update(int comboAttivita, int comboOrdinamento, const Q
         });
     }else if(comboOrdinamento == 2){
         std::sort(mediaList.begin(), mediaList.end(), [](Media* a, Media* b){
-            return a->getDataInizioRilascio() < b->getDataInizioRilascio();
+            return a->getDataInizioRilascio() > b->getDataInizioRilascio();
         });
     }else{
         std::sort(mediaList.begin(), mediaList.end(), [](Media* a, Media* b){
-            return a->getDataInizioRilascio() > b->getDataInizioRilascio();
+            return a->getDataInizioRilascio() < b->getDataInizioRilascio();
         });
     }
 

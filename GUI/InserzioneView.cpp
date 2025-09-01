@@ -76,7 +76,7 @@ void InserzioneView::createMediaDetails(){
 
     std::vector<FasciaOraria> fasceOrarie = insPtr->getFasceOrarie();
     QString fasceTxt;
-    for (int i = 0; i < fasceOrarie.size(); ++i) {
+    for (size_t i = 0; i < fasceOrarie.size(); ++i) {
         fasceTxt += QString::fromUtf8(toString(fasceOrarie[i]));
         if (i != fasceOrarie.size() - 1) {
             fasceTxt += ", ";
