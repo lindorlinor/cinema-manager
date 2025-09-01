@@ -16,7 +16,8 @@
         "descrizione": "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
         "durataMinuti": 86,
         "formato": "MP4",
-        "generi": [],
+        "generi": [
+        ],
         "lingueDisponibili": [
             "Italiano",
             "Inglese"
@@ -42,12 +43,14 @@
         "durataMinuti": 2,
         "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
         "formato": "MP4",
-        "lingueDisponibili": [],
+        "lingueDisponibili": [
+        ],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "Cinema Aurora",
         "path": ":/images/image10.png",
         "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [],
+        "sottotitoliDisponibili": [
+        ],
         "tipologia": "trailer",
         "titolo": "Trailer ufficiale - Il mio vicino Totoro (2025)"
     },
@@ -61,12 +64,14 @@
         "durataMinuti": 3,
         "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
         "formato": "MP4",
-        "lingueDisponibili": [],
+        "lingueDisponibili": [
+        ],
         "nProiezioniGiornaliere": 3,
         "nomeCinema": "Cinema Aurora",
         "path": ":/images/image10.png",
         "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [],
+        "sottotitoliDisponibili": [
+        ],
         "tipologia": "trailer",
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },

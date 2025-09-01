@@ -2,10 +2,10 @@
 
 JsonConverter::JsonConverter(){}
 
-void JsonConverter::saveCommonFields(const Media* media, QJsonObject obj){
+void JsonConverter::saveCommonFields(const Media& media, QJsonObject& obj){
 
-    year_month_day ymdInizio = media->getDataInizioRilascio();
-    year_month_day ymdFine = media->getDataFineRilascio();
+    year_month_day ymdInizio = media.getDataInizioRilascio();
+    year_month_day ymdFine = media.getDataFineRilascio();
 
     int yearInizio = static_cast<int>(ymdInizio.year());
     unsigned int monthInizio = static_cast<unsigned int>(ymdInizio.month());
@@ -19,23 +19,23 @@ void JsonConverter::saveCommonFields(const Media* media, QJsonObject obj){
     QDate dataInizio(yearInizio, monthInizio, dayInizio);
     QDate dataFine(yearFine, monthFine, dayFine);
 
-    obj["titolo"] = QString::fromStdString(media->getTitolo());
-    obj["autore"] = QString::fromStdString(media->getAutore());
-    obj["descrizione"] = QString::fromStdString(media->getDescrizione());
-    obj["durataMinuti"] = static_cast<int>(media->getDurataMinuti());
-    obj["formato"] = QString::fromStdString(toString(media->getFormato()));
-    obj["risoluzione"] = QString::fromStdString(toString(media->getRisoluzione()));
+    obj["titolo"] = QString::fromStdString(media.getTitolo());
+    obj["autore"] = QString::fromStdString(media.getAutore());
+    obj["descrizione"] = QString::fromStdString(media.getDescrizione());
+    obj["durataMinuti"] = static_cast<int>(media.getDurataMinuti());
+    obj["formato"] = QString::fromStdString(toString(media.getFormato()));
+    obj["risoluzione"] = QString::fromStdString(toString(media.getRisoluzione()));
 
-    obj["path"] = QString::fromStdString(media->getImPath());
+    obj["path"] = QString::fromStdString(media.getImPath());
 
     QJsonArray arrayLingue;
-    for (Lingua l : media->getLingue()) {
+    for (Lingua l : media.getLingue()) {
         arrayLingue.append(QString::fromStdString(toString(l)));
     }
     obj["lingueDisponibili"] = arrayLingue;
 
     QJsonArray arraySottotitoli;
-    for (Lingua l : media->getSottotitoli()) {
+    for (Lingua l : media.getSottotitoli()) {
         arraySottotitoli.append(QString::fromStdString(toString(l)));
     }
     obj["sottotitoliDisponibili"] = arraySottotitoli;
@@ -57,7 +57,7 @@ QJsonObject JsonConverter::serialize(Cinema* media){
 QJsonObject JsonConverter::serialize(Film* media){
     QJsonObject obj;
 
-    saveCommonFields(media, obj);
+    saveCommonFields(*media, obj);
     
     QJsonArray arrayGeneri;
     for (Genere g : media->getGeneri()) {
@@ -75,7 +75,7 @@ QJsonObject JsonConverter::serialize(Film* media){
     for (const string& a : media->getAttoriPrincipali())
         arrayAttori.append(QString::fromStdString(a));
     obj["attoriPrincipali"] = arrayAttori;
-    obj["tipologia"] = "media";
+    obj["tipologia"] = "film";
 
 
     return obj;
@@ -84,12 +84,12 @@ QJsonObject JsonConverter::serialize(Film* media){
 QJsonObject JsonConverter::serialize(Trailer* media){
     QJsonObject obj;
     
-    saveCommonFields(media, obj);
+    saveCommonFields(*media, obj);
     
     obj["nProiezioniGiornaliere"] = static_cast<int>(media->getNProiezioniGiornaliere());
     obj["filmAssociato"] = QString::fromStdString(media->getFilm()->getTitolo());
     obj["autoreFilmAssociato"] = QString::fromStdString(media->getFilm()->getAutore());
-    obj["tipologia"] = "media";
+    obj["tipologia"] = "trailer";
 
     return obj;
 }
@@ -97,7 +97,7 @@ QJsonObject JsonConverter::serialize(Trailer* media){
 QJsonObject JsonConverter::serialize(Inserzione* media){
     QJsonObject obj;
     
-    saveCommonFields(media, obj);
+    saveCommonFields(*media, obj);
     
     obj["target"] = QString::fromStdString(toString(media->getTarget()));
     obj["aziendaInserzionista"] = QString::fromStdString(media->getAziendaInserzionistica());
@@ -108,7 +108,7 @@ QJsonObject JsonConverter::serialize(Inserzione* media){
         arrayFasceOrarie.append(QString::fromStdString(toString(f)));
     }
     obj["fasceOrarie"] = arrayFasceOrarie;
-    obj["tipologia"] = "media";
+    obj["tipologia"] = "inserzione";
 
     return obj;
 }
@@ -116,10 +116,10 @@ QJsonObject JsonConverter::serialize(Inserzione* media){
 QJsonObject JsonConverter::serialize(Podcast* media){
     QJsonObject obj;
     
-    saveCommonFields(media, obj);
+    saveCommonFields(*media, obj);
     
     obj["conduttore"] = QString::fromStdString(media->getConduttore());
-    obj["tipologia"] = "media";
+    obj["tipologia"] = "podcast";
 
     return obj;
 }
@@ -127,7 +127,7 @@ QJsonObject JsonConverter::serialize(Podcast* media){
 QJsonObject JsonConverter::serialize(Puntata* media){
     QJsonObject obj;
 
-    saveCommonFields(media, obj);
+    saveCommonFields(*media, obj);
     
     obj["numeroPubblicita"] = static_cast<int>(media->getNumeroPubblicita());
     obj["autorePodcastAssociato"] = QString::fromStdString(media->getPodcast()->getAutore());
@@ -137,7 +137,7 @@ QJsonObject JsonConverter::serialize(Puntata* media){
     for (const string& o : media->getOspiti())
     arrayOspiti.append(QString::fromStdString(o));
     obj["ospiti"] = arrayOspiti;
-    obj["tipologia"] = "media";
+    obj["tipologia"] = "puntata";
 
     return obj;
 }

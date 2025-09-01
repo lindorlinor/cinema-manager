@@ -1,12 +1,5 @@
 #include "SelectMediaReference.h"
 #include "MediaFrame.h"
-#include <QScrollArea>
-#include <QVBoxLayout>
-#include <QFile>
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QJsonObject>
-#include <QDebug>
 
 SelectMediaReference::SelectMediaReference(const QString& tipo, const QString* cinema, QWidget *parent)
     : QWidget(parent), tipoMedia(tipo),  cinemaNomeRiferimento(cinema), currentSelected(nullptr)

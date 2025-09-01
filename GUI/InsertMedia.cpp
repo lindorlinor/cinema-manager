@@ -3,7 +3,7 @@
 
 InsertMedia::InsertMedia(QWidget *parent): QWidget(parent)
 {
-    /* mediaManagerJson-> = new MediaManagerJson(temporanea, QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"),this); */
+    cinemaManager = new CinemaRepositoryJson(); 
     QVBoxLayout* mainLayout = new QVBoxLayout;
     mainLayout->setContentsMargins(0, 0, 0, 0); 
     mainLayout->setSpacing(0);
@@ -116,9 +116,9 @@ void InsertMedia::addEnumCombo(L* base, const QString& labelText, const std::vec
         comboBox->addItem(QString::fromUtf8(str), QVariant::fromValue(static_cast<int>(e)));
     }
 
-    comboBox->setCurrentIndex(0);
-
     addInput(label, base, comboBox);
+
+    comboBox->setCurrentIndex(0);
 
     //style
     comboBox->setView(new QListView(comboBox));
@@ -405,7 +405,6 @@ void InsertMedia::addTipologiaFilm(QWidget* TipoFilm){              //tipologia 
     addEnumCombo(filmV2,"Target",tutteLeClassificazioni(), comboTargetFilm);
     totPostCreditFilm = addSpin("Numero di Post Credit", 0, 5, 0, filmV2);
     costoBigliettoFilm = addDoubleSpin("Costo Biglietto (€)", 0.0, 15.0, 8.0, filmV2);
-
     
     widgetFilm1->setLayout(filmV1);
     widgetFilm2->setLayout(filmV2);
@@ -823,14 +822,14 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
                                 convertDate(dataInizio->date()),
                                 convertDate(dataFine->date()),
                                 durataMinutiMedia->value(),
-                                toFormato(comboFormato->currentData().toString().toStdString()),
-                                toRisoluzione(comboRisoluzione->currentData().toString().toStdString()),
+                                toFormato(comboFormato->currentText().toStdString()),
+                                toRisoluzione(comboRisoluzione->currentText().toStdString()),
                                 totPostCreditFilm->value(),
                                 costoBigliettoFilm->value(),
                                 CasaProdFilm->text().toStdString(),
                                 autoreMedia->text().toStdString(),
                                 imagePath==""?":/images/default.png":imagePath.toStdString(),
-                                toClassificazione(comboTargetFilm->currentData().toString().toStdString()));
+                                toClassificazione(comboTargetFilm->currentText().toStdString()));
 
         addLingue(film);
         addSottotitoli(film);
@@ -839,6 +838,7 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
 
         im_cinemaSelezionato->addMedia(film);
         
+        qDebug()<<QString::fromStdString(im_cinemaSelezionato->getNomeCinema());
         cinemaManager->saveMediaInJson(film, QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
     }
 
@@ -858,8 +858,8 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
                                 convertDate(dataInizio->date()),
                                 convertDate(dataFine->date()),
                                 durataMinutiMedia->value(),
-                                toFormato(comboFormato->currentData().toString().toStdString()),
-                                toRisoluzione(comboRisoluzione->currentData().toString().toStdString()),
+                                toFormato(comboFormato->currentText().toStdString()),
+                                toRisoluzione(comboRisoluzione->currentText().toStdString()),
                                 numeroProiezioniTrailer->value(),
                                 static_cast<Film*>(filmAssociato),
                                 autoreMedia->text().toStdString(),
@@ -878,8 +878,8 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         Podcast* podcast = new Podcast(
                                 titoloMedia->text().toStdString(),
                                 descrizioneMedia->toPlainText().toStdString(),
-                                toFormato(comboFormato->currentData().toString().toStdString()),
-                                toRisoluzione(comboRisoluzione->currentData().toString().toStdString()),
+                                toFormato(comboFormato->currentText().toStdString()),
+                                toRisoluzione(comboRisoluzione->currentText().toStdString()),
                                 autoreMedia->text().toStdString(),
                                 imagePath==""?":/images/default.png":imagePath.toStdString(),
                                 conduttorePodcast->text().toStdString());
@@ -927,10 +927,10 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
                                 convertDate(dataInizio->date()),
                                 convertDate(dataFine->date()),
                                 durataMinutiMedia->value(),
-                                toFormato(comboFormato->currentData().toString().toStdString()),
-                                toRisoluzione(comboRisoluzione->currentData().toString().toStdString()),
+                                toFormato(comboFormato->currentText().toStdString()),
+                                toRisoluzione(comboRisoluzione->currentText().toStdString()),
                                 numeroProiezioniGioInserzione->value(),
-                                toClassificazione(comboTargetInserzioni->currentData().toString().toStdString()),
+                                toClassificazione(comboTargetInserzioni->currentText().toStdString()),
                                 costoBaseProiezInserzione->value(),
                                 aziendaInserzInserzione->text().toStdString(),
                                 autoreMedia->text().toStdString(),

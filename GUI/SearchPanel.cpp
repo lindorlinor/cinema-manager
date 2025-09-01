@@ -173,13 +173,13 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     
 
     //pannello per la libreria dei media
-/*     MediaLibraryTutto* libreriaMediaTutto = new MediaLibraryTutto(this); */
-    MediaLibraryGenerale* libreriaMediaGenerale = new MediaLibraryGenerale( "Film" ,this);
+    libreriaMediaTutto = new MediaLibraryTutto(this);
+    libreriaMediaGenerale = new MediaLibraryGenerale( "Film" ,this);
 
     this->addObserver(libreriaMediaGenerale);
 
-/*     stackLibreria->addWidget(libreriaMediaTutto); */
-    stackLibreria->addWidget(libreriaMediaGenerale);
+    stackLibreria->addWidget(libreriaMediaTutto); //0
+    stackLibreria->addWidget(libreriaMediaGenerale); //1
     stackLibreria->setCurrentIndex(0);
     
     //GESTIONE PULSANTI
@@ -187,12 +187,12 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
                                                                                 for(auto o : s_libraryObservers) 
                                                                                     o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_listaSUpportoMedia);});
     connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
-/*     connect(tutto, &QToolButton::clicked, this, [this](){SearchPanel::updateCerca("Tutto"); stackLibreria->setCurrentIndex(0);}); */
+    connect(tutto, &QToolButton::clicked, this, &SearchPanel::updateFiltroTutto);
     connect(film, &QToolButton::clicked, this, [this](){updateFiltroMedia("Film");});
     connect(trailer, &QToolButton::clicked, this, [this](){updateFiltroMedia("Trailer");});
-    connect(inserzione, &QToolButton::clicked, this, [this](){updateFiltroMedia("Inserzione");});
+    connect(inserzione, &QToolButton::clicked, this, [this](){updateFiltroMedia("Inserzioni");});
     connect(podcast, &QToolButton::clicked, this, [this](){updateFiltroMedia("Podcast");});
-    connect(puntata, &QToolButton::clicked, this, [this](){updateFiltroMedia("Puntata");});
+    connect(puntata, &QToolButton::clicked, this, [this](){updateFiltroMedia("Puntate");});
 
 
     connect(this, &SearchPanel::giveCinemaInfoToIP, nuovoMedia, &InsertMedia::getCinemaInfo);
@@ -205,6 +205,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     });
 
     connect(libreriaMediaGenerale, &MediaLibraryGenerale::requestMediaView, this, &SearchPanel::showMediaView);
+    connect(libreriaMediaTutto, &MediaLibraryTutto::requestMediaView, this, &SearchPanel::showMediaView);
     
     
     //style
@@ -281,7 +282,7 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
 } 
 
 SearchPanel::SearchPanel(QWidget *parent): QWidget(parent),stackModifiche(new QStackedWidget(this)){
-    //carico tutti gli oggetti nel Json
+    //carico tutti gli oggetti sal Json
     s_manager = new CinemaRepositoryJson;
 
     QVBoxLayout* mainLayout = new QVBoxLayout;
@@ -310,6 +311,7 @@ void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
         s_cinemaSelezionato->addMedia(m);
     }
 
+    updateFiltroTutto();
 
     emit giveCinemaInfoToIP(s_cinemaSelezionato, s_listaSUpportoMedia);
 }
@@ -326,9 +328,15 @@ void SearchPanel::update(int comboAttivita, int comboOrdinamento, const QString&
 
 void SearchPanel::updateFiltroMedia(const QString& filtro){
     updateCerca(filtro);
-    stackLibreria->setCurrentIndex(0);
+    stackLibreria->setCurrentIndex(1);
     filtroBottone = filtro;
     preUpdate();
+}
+
+void SearchPanel::updateFiltroTutto(){
+    updateCerca("Tutto"); 
+    stackLibreria->setCurrentIndex(0); 
+    libreriaMediaTutto->update(comboAttivita, comboOrdinamento, ricerca, s_listaSUpportoMedia);
 }
 
 void SearchPanel::preUpdate(){
@@ -349,6 +357,7 @@ void SearchPanel::resetSearchPanel(){
     if(stackModifiche->currentIndex()==1) emit resetPages();
     stackModifiche->setCurrentIndex(0);
     preUpdate();
+    updateFiltroTutto();
 }
 
 void SearchPanel::showMediaView(MediaView& widget){

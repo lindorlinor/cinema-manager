@@ -1,5 +1,83 @@
 #include "MediaLibraryTutto.h"
 
 MediaLibraryTutto::MediaLibraryTutto(QWidget* parent):QWidget(parent){
+
+    container = new QWidget();  
+    QVBoxLayout* mainLayout = new QVBoxLayout;
+    layoutContainer = new QVBoxLayout(container); 
+    container->setLayout(layoutContainer);
+    QLabel* titolo = new QLabel("Tutto", this);
+
+    scrollArea = new QScrollArea(this);
+    scrollArea->setWidgetResizable(true);
+    scrollArea->setWidget(container); 
+
+    mainLayout->addWidget(titolo);
+    mainLayout->addWidget(scrollArea);
+    setLayout(mainLayout);
+
+    //style
+    scrollArea->setStyleSheet(
+                                "QScrollArea QWidget{"
+                                    "border-radius: 10px;"
+                                    "background-color: #073c47;"
+                                    "border: none}"
+                                    "QScrollArea{"
+                                    "background: transparent;}"
+                                "QScrollBar:vertical {"
+                                    "background: #4e7f8b;"
+                                    "width: 12px;"
+                                    "margin: 0px;"
+                                    "border: 1px solid #4e7f8b;}"
+                                "QScrollBar::handle:vertical {"
+                                    "background: #d9d9d9;"
+                                    "min-height: 20px;"
+                                    "border-radius: 3px;}"
+                                "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
+                                    "background: #4e7f8b;"
+                                    "border: 1px solid #4e7f8b;"
+                                    "height: 12px;"
+                                    "border-radius: 5px;"
+                                    "subcontrol-position: top;"
+                                    "subcontrol-origin: margin;}"
+                                "QScrollBar::add-line:vertical:hover, QScrollBar::sub-line:vertical:hover {"
+                                    "background: #4e7f8b;}"
+                            );
+    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+}
+
+void MediaLibraryTutto::update(int comboAttivita, int comboOrdinamento, const QString& ricerca, QList<Media*>& mediaList){
+
+    QList<QString> allFiltri = QList<QString>({"Film", "Trailer", "Inserzioni", "Podcast", "Puntate"});
+
+    QLayoutItem* item;
+    while ((item = layoutContainer->takeAt(0)) != nullptr) {
+        if (item->widget()) {
+            item->widget()->deleteLater();  
+        }
+        delete item;
+    }
+
+    for(QString f : allFiltri){
+        QWidget* salaWidget = new QWidget(this);
+        QVBoxLayout* salaV = new QVBoxLayout(salaWidget);
     
+        QLabel* titolo = new QLabel(f + " in Sala", salaWidget);
+        ScrollListWidget* scroll = new ScrollListWidget(salaWidget); 
+        scroll->update(comboAttivita, comboOrdinamento, ricerca, f, mediaList);
+
+        salaV->addWidget(titolo);
+        salaV->addWidget(scroll);
+        salaWidget->setLayout(salaV);
+
+        layoutContainer->addWidget(salaWidget);
+
+        connect(scroll, &ScrollListWidget::requestMediaViewfromScoll, this, &MediaLibraryTutto::reciveRequestMediaView);
+    }
+
+}
+
+void MediaLibraryTutto::reciveRequestMediaView(MediaView& widget){
+    emit requestMediaView(widget);
 }

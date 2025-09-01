@@ -48,10 +48,13 @@ HEADERS +=  \
             GUI/PreviewCard.h \
             GUI/DetailsPageButtons.h \
             GUI/MediaLibraryGenerale.h \
+            GUI/MediaLibraryTutto.h \
             GUI/FlowLayout.h \
             GUI/FlowVisitor.h \
             GUI/LibraryObserver.h \
             GUI/Menu.h \
+            GUI/FrameVisitor.h \
+            GUI/ScrollListWidget.h \
             DataFiles/CinemaRepositoryJson.h \
             DataFiles/JsonConverter.h \
             DataFiles/JsonVisitor.h 
@@ -83,10 +86,13 @@ SOURCES +=  \
             GUI/ExpandableLabel.cpp \
             GUI/PreviewCard.cpp \
             GUI/MediaLibraryGenerale.cpp \
+            GUI/MediaLibraryTutto.cpp \
             GUI/DetailsPageButtons.cpp \
+            GUI/ScrollListWidget.cpp \
             GUI/FlowLayout.cpp \
             GUI/FlowVisitor.cpp \
             GUI/Menu.cpp \
+            GUI/FrameVisitor.cpp \
             DataFiles/CinemaRepositoryJson.cpp \
             DataFiles/JsonConverter.cpp \
             DataFiles/JsonVisitor.cpp 

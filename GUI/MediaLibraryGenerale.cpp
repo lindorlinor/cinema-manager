@@ -4,37 +4,34 @@ MediaLibraryGenerale::MediaLibraryGenerale(const QString& filtroBottone, QWidget
 
     titolo = new QLabel(filtroBottone+" in Sala",this);
     QVBoxLayout* mainLayout = new QVBoxLayout;
-    widgetSupporto = new QWidget(this);
+    container = new QWidget(this);
 
     flow = new FlowLayout(this);
-    widgetSupporto->setLayout(flow);
-
-    update(0, 0, filtroBottone, "", QList<Media*>());
+    container->setLayout(flow);
 
     mainLayout->addWidget(titolo);
-    mainLayout->addWidget(widgetSupporto);
+    mainLayout->addWidget(container);
     setLayout(mainLayout);
 }
 
-void MediaLibraryGenerale::update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>mediaList) {
-    ml_mediaList = mediaList;
+void MediaLibraryGenerale::update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList) {
     titolo->setText(filtro+" in Sala");
 
     //oridnamento
     if(comboOrdinamento == 0){
-        std::sort(ml_mediaList.begin(), ml_mediaList.end(), [](Media* a, Media* b){
+        std::sort(mediaList.begin(), mediaList.end(), [](Media* a, Media* b){
             return a->getVisualizzazioni() > b->getVisualizzazioni();
         });
     }else if(comboOrdinamento == 1){
-        std::sort(ml_mediaList.begin(), ml_mediaList.end(), [](Media* a, Media* b){
+        std::sort(mediaList.begin(), mediaList.end(), [](Media* a, Media* b){
             return a->getVisualizzazioni() < b->getVisualizzazioni();
         });
     }else if(comboOrdinamento == 2){
-        std::sort(ml_mediaList.begin(), ml_mediaList.end(), [](Media* a, Media* b){
+        std::sort(mediaList.begin(), mediaList.end(), [](Media* a, Media* b){
             return a->getDataInizioRilascio() < b->getDataInizioRilascio();
         });
     }else{
-        std::sort(ml_mediaList.begin(), ml_mediaList.end(), [](Media* a, Media* b){
+        std::sort(mediaList.begin(), mediaList.end(), [](Media* a, Media* b){
             return a->getDataInizioRilascio() > b->getDataInizioRilascio();
         });
     }
@@ -49,13 +46,13 @@ void MediaLibraryGenerale::update(int comboAttivita, int comboOrdinamento, const
     }
 
     // Ricreo i widget secondo il nuovo filtro
-    for (Media* m : ml_mediaList) {
+    for (Media* m : mediaList) {
         if( //controllo che sia attivo o meno
             ((comboAttivita == 0 && !m->FuoriProduzione()) || (comboAttivita == 1 && m->FuoriProduzione()) || comboAttivita == 2) &&
             //trovo i media che soddisfano la ricerca
             (((QString::fromStdString(m->getTitolo()).contains(ricerca, Qt::CaseInsensitive)) || (QString::fromStdString(m->getAutore()).contains(ricerca, Qt::CaseInsensitive))))
         ){
-            FlowVisitor* libraryVisitor = new FlowVisitor(widgetSupporto, filtro);
+            FlowVisitor* libraryVisitor = new FlowVisitor(container, filtro);
             m->accept(libraryVisitor);
             MediaFrame* media(libraryVisitor->getWidget());
             if(media != nullptr){

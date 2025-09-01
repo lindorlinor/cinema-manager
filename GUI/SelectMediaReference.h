@@ -10,6 +10,8 @@
 #include <QJsonObject>
 #include <QCoreApplication>
 #include <QDir>
+#include <QVBoxLayout>
+#include <QDebug>
 
 #include "MediaFrame.h"
 

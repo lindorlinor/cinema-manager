@@ -2,20 +2,35 @@
 #define SCROLLLISTWIDGET_H
 
 #include <QWidget>
+#include <QString>
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonArray>
 #include <QScrollArea>
-#include <QList>
+#include <QJsonObject>
+#include <QCoreApplication>
+#include <QDir>
+#include <QVBoxLayout>
+#include <QDebug>
 
+#include "FrameVisitor.h"
+#include "FlowVisitor.h"
+#include "MediaView.h"
 #include "../Media.h"
+#include "../DetailPageVisitor.h"
 
 class ScrollListWidget: public QWidget{
-
+    Q_OBJECT
     private:
-    const QList<const Media*>& listMedia;
-    QString tipoFiltro;
-    
+    QWidget* container;
+    QHBoxLayout* layoutContainer;
+        
     public:
-    explicit ScrollListWidget(const QList<const Media*>& media, const QString& filtro, QWidget* parent = nullptr);
+    explicit ScrollListWidget(QWidget* parent = nullptr);
+    void update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList);
 
+    signals:
+     void requestMediaViewfromScoll(MediaView& widget);
 };
 
 #endif //SCROLLLISTWIDGET_H

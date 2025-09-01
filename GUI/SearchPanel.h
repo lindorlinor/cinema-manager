@@ -21,7 +21,7 @@
 /* #include "DataFiles/MediaManagerXml.h" */
 #include "DataFiles/CinemaRepositoryJson.h"
 
-/* #include "MediaLibraryTutto.h" */
+#include "MediaLibraryTutto.h"
 #include "MediaLibraryGenerale.h"
 
 class LibraryObserver;
@@ -35,6 +35,9 @@ class SearchPanel:public QWidget{
     /* MediaManagerXml* s_xmlManager; */
     vector<LibraryObserver*> s_libraryObservers;
     QList<Media*> s_listaSUpportoMedia;
+
+    MediaLibraryGenerale* libreriaMediaGenerale;
+    MediaLibraryTutto* libreriaMediaTutto;
 
     //selezione media
     /**
@@ -127,6 +130,7 @@ class SearchPanel:public QWidget{
     int previousIndex;
 
     //metodi che svolgono le attività necessarie che prevengono la chiamata all'update
+    void updateFiltroTutto();
     void updateFiltroMedia(const QString& filtro);
     void preUpdate();
 

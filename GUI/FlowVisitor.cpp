@@ -30,7 +30,7 @@ void FlowVisitor::visit(Trailer* trailer){
 }
 
 void FlowVisitor::visit(Inserzione* inserzione){
-    if(filtro == "Inserzione"){
+    if(filtro == "Inserzioni"){
         frame = new MediaFrame(
             QString::fromStdString(inserzione->getTitolo()),
             QString::fromStdString(inserzione->getImPath()),
@@ -50,7 +50,7 @@ void FlowVisitor::visit(Podcast* podcast){
 }
 
 void FlowVisitor::visit(Puntata* puntata){
-    if(filtro == "Puntata"){
+    if(filtro == "Puntate"){
         frame = new MediaFrame(
             QString::fromStdString(puntata->getTitolo()),
             QString::fromStdString(puntata->getImPath()),

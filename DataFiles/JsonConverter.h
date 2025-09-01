@@ -26,7 +26,7 @@ class JsonConverter{
     void addOspite(Puntata* puntata, QJsonObject obj);
     void addFasceOrarie(Inserzione* inserzione, QJsonObject obj);
     Media* findMediaReference(const QString& titolo, const QString& autore, const QString& tipo, QList<Media*>c_mediaList);
-    void saveCommonFields(const Media* media, QJsonObject obj);
+    void saveCommonFields(const Media& media, QJsonObject &obj);
 
     public:
     JsonConverter();

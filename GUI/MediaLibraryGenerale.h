@@ -18,14 +18,13 @@ class MediaLibraryGenerale: public QWidget, public LibraryObserver{
     Q_OBJECT
     private:
 
-    QList<Media*> ml_mediaList;
     QLabel* titolo;
     FlowLayout* flow;
-    QWidget* widgetSupporto;
+    QWidget* container;
     
     public:
     explicit MediaLibraryGenerale(const QString& filtro, QWidget* parent = nullptr);
-    virtual void update(int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca, QList<Media*>mediaList);
+    virtual void update(int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca, QList<Media*>& mediaList);
 
     signals: 
     void requestMediaView(MediaView& widget);

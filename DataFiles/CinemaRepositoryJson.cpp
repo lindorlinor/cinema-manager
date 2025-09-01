@@ -66,6 +66,7 @@ void CinemaRepositoryJson::saveMediaInJson(Media* c_media, const QString& nomeCi
     if (!c_media) return;
 
     // carico il JSON esistente
+    qDebug()<<"gli passo media.json, che vuoi";
     QJsonDocument doc = loadJsonFile("media.json");
     QJsonArray array;
 
@@ -144,8 +145,11 @@ void CinemaRepositoryJson::deleteCinema(QList<Cinema*>& c_cinemaList, Cinema* ci
 //HELPER
 
 QJsonDocument CinemaRepositoryJson::loadJsonFile(const QString &fileName) {
+    qDebug()<<c_basePath;
     QDir dir(c_basePath);
+
     QString filePath = dir.filePath(fileName);
+
 
     QFile file(filePath);
     if (!file.open(QIODevice::ReadOnly)) {
