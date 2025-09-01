@@ -178,7 +178,7 @@ Film* JsonConverter::deserializeFilm(QJsonObject obj) {
 
 
 Trailer* JsonConverter::deserializeTrailer(QList<Media*> c_mediaList, QJsonObject obj) {
-    Media* filmAssociato = findMediaReference(obj["filmAssociato"].toString(), obj["autoreFilmAssociato"].toString(), "media", c_mediaList);
+    Media* filmAssociato = findMediaReference(obj["filmAssociato"].toString(), obj["autoreFilmAssociato"].toString(), "trailer", c_mediaList);
 
     if(!filmAssociato){
         qDebug()<<"Errore!, nessun Film collegato al Trailer "<<obj["titolo"].toString();
@@ -245,7 +245,7 @@ Podcast* JsonConverter::deserializePodcast(QJsonObject obj) {
 }
 
 Puntata* JsonConverter::deserializePuntata(QList<Media*> c_mediaList, QJsonObject obj) {
-    Media* podcastAssociato = findMediaReference(obj["podcastAssociato"].toString(), obj["autorePodcastAssociato"].toString(), "media", c_mediaList);
+    Media* podcastAssociato = findMediaReference(obj["podcastAssociato"].toString(), obj["autorePodcastAssociato"].toString(), "podcast", c_mediaList);
     if(!podcastAssociato){
         qDebug()<<"Errore!, nessun Podcast collegato alla Puntata "<<obj["titolo"].toString();
         return nullptr;
@@ -342,7 +342,7 @@ year_month_day JsonConverter::convertDate(const QString& data){
 Media* JsonConverter::findMediaReference(const QString& titolo, const QString& autore, const QString& tipo, QList<Media*>c_mediaList){
     for(Media* m : c_mediaList){
         if(QString::fromStdString(m->getAutore()) == autore && QString::fromStdString(m->getTitolo()) == titolo)
-            if( (tipo =="media" && dynamic_cast<Film*>(m) ) || (tipo == "media" && dynamic_cast<Podcast*>(m)))
+            if( (tipo =="trailer" && dynamic_cast<Film*>(m) ) || (tipo == "puntata" && dynamic_cast<Podcast*>(m)))
                 return m;
     }
     return nullptr; //non ha trovato niente

@@ -6,17 +6,19 @@ MediaLibraryTutto::MediaLibraryTutto(QWidget* parent):QWidget(parent){
     QVBoxLayout* mainLayout = new QVBoxLayout;
     layoutContainer = new QVBoxLayout(container); 
     container->setLayout(layoutContainer);
-    QLabel* titolo = new QLabel("Tutto", this);
+    QLabel* titoloPagina = new QLabel("Tutto", this);
 
     scrollArea = new QScrollArea(this);
     scrollArea->setWidgetResizable(true);
     scrollArea->setWidget(container); 
 
-    mainLayout->addWidget(titolo);
+    mainLayout->addWidget(titoloPagina);
     mainLayout->addWidget(scrollArea);
     setLayout(mainLayout);
 
     //style
+    mainLayout->setAlignment(Qt::AlignTop);
+    titoloPagina->setStyleSheet("color: #fed36a; font-size: 20pt; font-weight: bold;");
     scrollArea->setStyleSheet(
                                 "QScrollArea QWidget{"
                                     "border-radius: 10px;"
@@ -28,11 +30,12 @@ MediaLibraryTutto::MediaLibraryTutto(QWidget* parent):QWidget(parent){
                                     "background: #4e7f8b;"
                                     "width: 12px;"
                                     "margin: 0px;"
+                                    "border-radius: 5px;"
                                     "border: 1px solid #4e7f8b;}"
                                 "QScrollBar::handle:vertical {"
                                     "background: #d9d9d9;"
                                     "min-height: 20px;"
-                                    "border-radius: 3px;}"
+                                    "border-radius: 5px;}"
                                 "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
                                     "background: #4e7f8b;"
                                     "border: 1px solid #4e7f8b;"
@@ -60,20 +63,25 @@ void MediaLibraryTutto::update(int comboAttivita, int comboOrdinamento, const QS
     }
 
     for(QString f : allFiltri){
-        QWidget* salaWidget = new QWidget(this);
+        QWidget* salaWidget = new QWidget(container);
         QVBoxLayout* salaV = new QVBoxLayout(salaWidget);
     
         QLabel* titolo = new QLabel(f + " in Sala", salaWidget);
         ScrollListWidget* scroll = new ScrollListWidget(salaWidget); 
-        scroll->update(comboAttivita, comboOrdinamento, ricerca, f, mediaList);
+        scroll->update(comboAttivita, comboOrdinamento, f, ricerca, mediaList);
+        scroll->setFixedHeight(330);
+        if (scroll->getNumeroWidgetLayout()){
+            salaV->addWidget(titolo);
+            salaV->addWidget(scroll);
+            salaWidget->setLayout(salaV);
+    
+            layoutContainer->addWidget(salaWidget);
+    
+            connect(scroll, &ScrollListWidget::requestMediaView, this, &MediaLibraryTutto::reciveRequestMediaView);
+        }
 
-        salaV->addWidget(titolo);
-        salaV->addWidget(scroll);
-        salaWidget->setLayout(salaV);
+        titolo->setStyleSheet("color: #fed36a; font-size: 18pt; font-weight: bold;");
 
-        layoutContainer->addWidget(salaWidget);
-
-        connect(scroll, &ScrollListWidget::requestMediaViewfromScoll, this, &MediaLibraryTutto::reciveRequestMediaView);
     }
 
 }

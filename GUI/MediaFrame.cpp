@@ -3,25 +3,21 @@
 MediaFrame::MediaFrame( const QString& titolo, const QString& imagePath,const QString& autore, QWidget* parent):QFrame(parent), titoloMedia(titolo), 
                         autoreMedia(autore), imgLabel(new QLabel(this)), pix(imagePath){
 
-    imgLabel->setPixmap(pix.scaled(100, 150));
+    imgLabel->setPixmap(pix.scaled(100, 150, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     
-    QLabel* titoloLabel = new QLabel(titolo);
+    titoloLabel = new QLabel(titolo);
     
     QVBoxLayout* layout = new QVBoxLayout;
-    layout->addWidget(imgLabel);
-    layout->addWidget(titoloLabel);
+    layout->addWidget(imgLabel, Qt::AlignCenter);
+    layout->addWidget(titoloLabel, Qt::AlignCenter);
     
     setLayout(layout);
     
     //style
     titoloLabel->setWordWrap(true);
-    imgLabel->setAlignment(Qt::AlignCenter);
-    titoloLabel->setAlignment(Qt::AlignCenter);
-    setMaximumSize(250,200);
     titoloLabel->setMaximumHeight(60);
-    imgLabel->setMaximumHeight(140);
     imgLabel->setStyleSheet("border:none");
-    titoloLabel->setStyleSheet("color: #05313c; background-color: #4e7f8b; border:none; font-size: 12pt;");
+    titoloLabel->setStyleSheet("color: #05313c; background-color: #4e7f8b; border:none; font-size: 12pt; font-weight: bold; ");
     setStyleSheet("background-color: #4e7f8b;");
     layout->setAlignment(Qt::AlignCenter);
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -44,4 +40,9 @@ void MediaFrame::setSelected(bool selected){
     if (selected)   setStyleSheet("border: 3px solid #d9d9d9; padding: 0px;  background-color: #4e7f8b");
     else            setStyleSheet("background-color: #4e7f8b;");
              
+}
+void MediaFrame::editImageScale(int w, int h){
+    imgLabel->setPixmap(pix.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    setStyleSheet("background-color: #05313c;");
+    titoloLabel->setStyleSheet("color: #bdced3; background-color: #05313c; border:none; font-size: 12pt;");
 }

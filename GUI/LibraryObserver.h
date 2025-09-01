@@ -3,6 +3,8 @@
 
 #include <QString>
 
+class Media;
+
 class LibraryObserver{
     private:
     public:

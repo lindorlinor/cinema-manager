@@ -22,15 +22,14 @@ class SelectMediaReference:public QWidget{
     QString titolo;
     QString autore;
     QString tipoMedia;
-    const QString* cinemaNomeRiferimento;
     MediaFrame* currentSelected;
     QWidget* container;
     QVBoxLayout* layoutContainer; 
 
     public:
-    explicit SelectMediaReference(const QString& tipo, const QString* cinema, QWidget *parent = nullptr);
+    explicit SelectMediaReference(const QString& tipo, QWidget *parent = nullptr);
     void setSelectFalse();
-    void reloadMedia();
+    void reloadMedia(const QString& nomeCinema);
 
     signals:
     void mediaSelected(MediaFrame* frame);
