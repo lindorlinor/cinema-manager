@@ -286,7 +286,7 @@ void JsonConverter::addLingue(Media* media, QJsonObject obj){
     QJsonArray lingue = obj["lingueDisponibili"].toArray();
 
     for (const QJsonValue& value : lingue) {
-./        Lingua l = toLingua(value.toString().toStdString());
+        Lingua l = toLingua(value.toString().toStdString());
         media->aggiungiLingua(l);
     }
 }

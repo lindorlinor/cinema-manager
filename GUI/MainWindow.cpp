@@ -1,6 +1,5 @@
 #include "MainWindow.h" 
 #include "CinemaSelectionPage.h" 
-
 #include "InsertCinemaPage.h" 
 #include "SearchPanel.h" 
 #include <QVBoxLayout>
@@ -10,7 +9,7 @@
 #include <QDir>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), cinemaPage(new CinemaSelectionPage(w_cinema, this)), insertPage(new InsertCinemaPage(w_cinema, this)),m_xmlManager(new MediaManagerXml()),searchPage(new SearchPanel(m_xmlManager,this))
+    : QMainWindow(parent), cinemaPage(new CinemaSelectionPage(w_cinema, this)), insertPage(new InsertCinemaPage(w_cinema, this)),m_jsonManager(new CinemaRepositoryJson()),m_xmlManager(new MediaManagerXml()),searchPage(new SearchPanel(m_jsonManager,m_xmlManager,this))
 {
     setWindowFlags(Qt::Window | Qt::CustomizeWindowHint | 
                Qt::WindowMinimizeButtonHint | 
@@ -64,10 +63,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(menu,&Menu::escSearchPanel,searchPage,&SearchPanel::resetSearchPanel);
     connect(menu, &Menu::setFullScreen, this, &MainWindow::showFullScreen);
     connect(menu, &Menu::escFullScreen, this, &MainWindow::showMaximized);
-    /* connect(menu, &Menu::importMediaList, this, [this](){
-                                              m_xmlManager->importMediaListFromXml();      
-                                            }); */
-    /* connect(menu, &Menu::importSession, this, &MainWindow::showMaximized); */
+    connect(menu, &Menu::importMediaList, this, [this](){
+                                              m_xmlManager->importMediaListFromXml(*m_jsonManager);      
+                                            });
+    connect(menu, &Menu::importSession, this, [this](){
+                                              m_xmlManager->importSessionFromXml(*m_jsonManager);      
+                                            });
     connect(menu, &Menu::exportMediaList,this, [this](){
                                               m_xmlManager->exportMediaListToXml();      
                                             });

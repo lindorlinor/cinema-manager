@@ -129,13 +129,15 @@ bool MediaManagerXml::importSessionFromXml(CinemaRepositoryJson& jsonManager) {
 }
 
 
-void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,CinemaRepositoryJson& jsonManager,const string& cinemaName){
+void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,CinemaRepositoryJson& jsonManager,const string& cinemaName){    
     unsigned int errors =0;
     while (!mediaElem.isNull()) {
         QString tipo = mediaElem.tagName();
         if (tipo=="Film") {
             Film* fd = new Film(*XmlVisitor::fromXmlFilmElement(mediaElem));
+            currentCinema->addMedia(fd);
             jsonManager.saveMediaInJson(fd,QString::fromStdString(cinemaName));
+            // qDebug() << QString::fromStdString(currentCinema->getNomeCinema()) << QString::fromStdString(currentCinema->getCopertinaCinema()) << currentCinema->getListaMedia().size();
         }else if (tipo=="Trailer") {
             Trailer* td = new Trailer(*XmlVisitor::fromXmlTrailerElement(mediaElem,currentCinema->getListaMedia()));
             jsonManager.saveMediaInJson(td,QString::fromStdString(cinemaName));
@@ -144,6 +146,7 @@ void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,CinemaReposi
             jsonManager.saveMediaInJson(id,QString::fromStdString(cinemaName));
         }else if (tipo=="Podcast") {
             Podcast* pdd = new Podcast(*XmlVisitor::fromXmlPodcastElement(mediaElem));
+            currentCinema->addMedia(pdd);
             jsonManager.saveMediaInJson(pdd,QString::fromStdString(cinemaName));
         } else if (tipo=="Puntata") {
             Puntata* pd = new Puntata(*XmlVisitor::fromXmlPuntataElement(mediaElem,currentCinema->getListaMedia()));

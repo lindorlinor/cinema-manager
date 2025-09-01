@@ -305,11 +305,11 @@ Trailer* XmlVisitor::fromXmlTrailerElement(const QDomElement& elem,list<Media*> 
         titoloFilmA=filmElem.text().toStdString();
         autoreFilmA=autoreElem.text().toStdString();
     }
-    qDebug() <<mediaList.size();
-    qDebug() << QString::fromStdString(titoloFilmA) << QString::fromStdString(autoreFilmA) << QString::fromStdString( descrizione )<<  QString::fromStdString(dateToString(dI));
+    // qDebug() <<mediaList.size();
+    // qDebug() << QString::fromStdString(titoloFilmA) << QString::fromStdString(autoreFilmA) << QString::fromStdString( descrizione )<<  QString::fromStdString(dateToString(dI));
     Trailer* media= new Trailer(titolo, descrizione,dI,dF,durata,formato,ris,nProiezioniGiornaliere,findFilmInList(mediaList,titoloFilmA,autoreFilmA),autore,path);
     populateCommonFields(elem,media);
-    qDebug() << QString::fromStdString(titoloFilmA) << QString::fromStdString(autoreFilmA) << QString::fromStdString( descrizione )<<  QString::fromStdString(dateToString(dI));
+    // qDebug() << QString::fromStdString(titoloFilmA) << QString::fromStdString(autoreFilmA) << QString::fromStdString( descrizione )<<  QString::fromStdString(dateToString(dI));
     return media;
 }
 
