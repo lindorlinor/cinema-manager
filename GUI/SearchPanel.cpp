@@ -181,7 +181,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     //GESTIONE PULSANTI
     connect(cerca, &QLineEdit::textChanged, this, [this](const QString &testo){ ricerca = testo; 
                                                                                 for(auto o : s_libraryObservers) 
-                                                                                    o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_listaSupportoMedia);});
+                                                                                    o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema);});
     connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
     connect(tutto, &QToolButton::clicked, this, &SearchPanel::updateFiltroTutto);
     connect(film, &QToolButton::clicked, this, [this](){updateFiltroMedia("Film");});
@@ -198,6 +198,8 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     });
     connect(nuovoMedia, &InsertMedia::tornaAllaLibreria, this, [this](){
         updateModifierPanel(0);
+        updateMediaList();
+        updateFiltroTutto();
     });
 
     connect(libreriaMediaGenerale, &MediaLibraryGenerale::requestMediaView, this, &SearchPanel::showMediaView);
@@ -298,21 +300,10 @@ void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
     s_cinemaSelezionato = cinemaSel;
     cinema->setText("Cinema " + QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
 
-    s_listaSupportoMedia.clear();
-    for(Media* m : s_cinemaSelezionato->getListaMedia()){
-        s_listaSupportoMedia.append(m);
-    }
-
-    s_manager->loadMedia(s_listaSupportoMedia, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
-    for(Media* m : s_listaSupportoMedia){
-        s_cinemaSelezionato->addMedia(m);
-        qDebug() << s_cinemaSelezionato->getListaMedia().size(); //stampa 0
-    }
-
-
+    updateMediaList();
     updateFiltroTutto();
 
-    emit giveCinemaInfoToIP(s_cinemaSelezionato, s_listaSupportoMedia);
+    emit giveCinemaInfoToIP(s_cinemaSelezionato, s_MediaListOfCinema);
 
     /* prova funzionamento import
     MediaManagerXml XMLmanager;
@@ -326,7 +317,7 @@ void SearchPanel::addObserver(LibraryObserver* obs){
 
 void SearchPanel::update(int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca){
     for(auto obs : s_libraryObservers){
-        obs->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_listaSupportoMedia);
+        obs->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema);
     }
 }
 
@@ -340,13 +331,22 @@ void SearchPanel::updateFiltroMedia(const QString& filtro){
 void SearchPanel::updateFiltroTutto(){
     updateCerca("Tutto"); 
     stackLibreria->setCurrentIndex(0); 
-    libreriaMediaTutto->update(comboAttivita, comboOrdinamento, ricerca, s_listaSupportoMedia);
+    libreriaMediaTutto->update(comboAttivita, comboOrdinamento, ricerca, s_MediaListOfCinema);
 }
 
 void SearchPanel::preUpdate(){
-    libreriaMediaTutto->update(comboAttivita, comboOrdinamento, ricerca, s_listaSupportoMedia);
+    libreriaMediaTutto->update(comboAttivita, comboOrdinamento, ricerca, s_MediaListOfCinema);
     for(auto o : s_libraryObservers)
-        o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_listaSupportoMedia);
+        o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema);
+}
+
+void SearchPanel::updateMediaList(){
+    s_MediaListOfCinema.clear();
+    
+    s_manager->loadMedia(s_MediaListOfCinema, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
+    for(Media* m : s_MediaListOfCinema){
+        s_cinemaSelezionato->addMedia(m);
+    }
 }
 
 //slot
@@ -363,7 +363,7 @@ void SearchPanel::resetSearchPanel(){
     if(stackModifiche->currentIndex()==1) emit resetPages();
     stackModifiche->setCurrentIndex(0);
 
-    for(Media* m : s_listaSupportoMedia){
+    for(Media* m : s_MediaListOfCinema){
         s_cinemaSelezionato->removeMedia(m);
     }
 

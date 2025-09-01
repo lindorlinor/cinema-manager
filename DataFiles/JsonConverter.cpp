@@ -63,7 +63,7 @@ QJsonObject JsonConverter::serialize(Film* media){
     
     QJsonArray arrayGeneri;
     for (Genere g : media->getGeneri()) {
-        arrayGeneri.append(static_cast<int>(g));
+        arrayGeneri.append(QString::fromStdString(toString(g)));
     }
     obj["generi"] = arrayGeneri;
     
@@ -286,8 +286,7 @@ void JsonConverter::addLingue(Media* media, QJsonObject obj){
     QJsonArray lingue = obj["lingueDisponibili"].toArray();
 
     for (const QJsonValue& value : lingue) {
-        int lingueInt = value.toInt();
-        Lingua l = static_cast<Lingua>(lingueInt);
+        Lingua l = toLingua(value.toString().toStdString());
         media->aggiungiLingua(l);
     }
 }
@@ -296,9 +295,8 @@ void JsonConverter::addSottotitoli(Media* media, QJsonObject obj){
     QJsonArray sottotitoli = obj["sottotitoliDisponibili"].toArray();
 
     for (const QJsonValue& value : sottotitoli) {
-        int sottotitoliInt = value.toInt();
-        Lingua l = static_cast<Lingua>(sottotitoliInt);
-        media->aggiungiSottotitolo(l);
+        Lingua s = toLingua(value.toString().toStdString());
+        media->aggiungiSottotitolo(s);
     }
 }
 
@@ -307,7 +305,7 @@ void JsonConverter::addGeneri(Film* media, QJsonObject obj){
 
     for (const QJsonValue& value : generi) {
         int generiInt = value.toInt();
-        Genere g = static_cast<Genere>(generiInt);
+        Genere g = toGenere(value.toString().toStdString());
         media->aggiungiGenere(g);
     }
 }

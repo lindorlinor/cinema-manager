@@ -87,7 +87,8 @@ inline std::vector<Formato> tuttiIFormati() {
 enum class FasciaOraria{
     Mattina,
     Pomeriggio,
-    Sera
+    Sera,
+    Nessuno
 };
 
 
@@ -97,6 +98,7 @@ inline const char* toString(FasciaOraria fo) {
         case FasciaOraria::Mattina: return "Mattina";
         case FasciaOraria::Pomeriggio: return "Pomeriggio";
         case FasciaOraria::Sera: return "Sera";
+        case FasciaOraria::Nessuno: return "Nessuno";
         default: return "Non trovato";
     }
 }
@@ -105,7 +107,8 @@ inline std::vector<FasciaOraria> tutteLeFasceOrarie() {
     return {
         FasciaOraria::Mattina,
         FasciaOraria::Pomeriggio,
-        FasciaOraria::Sera
+        FasciaOraria::Sera,
+        FasciaOraria::Nessuno
     };
 }
 
@@ -116,7 +119,8 @@ enum class Lingua {
     Spagnolo,
     Tedesco,
     Giapponese,
-    Cinese
+    Cinese,
+    Nessuno
 };
 
 inline const char* toString(Lingua l) {
@@ -128,6 +132,7 @@ inline const char* toString(Lingua l) {
         case Lingua::Tedesco: return "Tedesco";
         case Lingua::Giapponese: return "Giapponese";
         case Lingua::Cinese: return "Cinese";
+        case Lingua::Nessuno: return "Nessuno";
         default: return "Non trovato";
     }
 }
@@ -140,7 +145,8 @@ inline std::vector<Lingua> tutteLeLingue() {
         Lingua::Spagnolo,
         Lingua::Tedesco,
         Lingua::Giapponese,
-        Lingua::Cinese
+        Lingua::Cinese,
+        Lingua::Nessuno
     };
 }
 
@@ -187,7 +193,8 @@ enum class Genere {
     Documentario,
     Storico,
     Romantico,
-    Supereroi
+    Supereroi,
+    Nessuno
 };
 
 inline const char* toString(Genere g) {
@@ -208,6 +215,7 @@ inline const char* toString(Genere g) {
         case Genere::Storico: return "Storico";
         case Genere::Romantico: return "Romantico";
         case Genere::Supereroi: return "Supereroi";
+        case Genere::Nessuno: return "Nessuno";
         default: return "Non trovato";
     }
 }
@@ -229,7 +237,8 @@ inline std::vector<Genere> tuttiIGeneri() {
         Genere::Animazione,
         Genere::Storico,
         Genere::Romantico,
-        Genere::Supereroi
+        Genere::Supereroi,
+        Genere::Nessuno
     };
 }
 
@@ -275,12 +284,14 @@ inline Formato toFormato(const std::string& s) {
     if (s == "MOV H264") return Formato::MOV_H264;
     if (s == "TIFF") return Formato::TIFF;
     if (s == "IMAX 3D") return Formato::IMAX_3D;
+    return Formato::DCP;
 }
 
 inline FasciaOraria toFasciaOraria(const std::string& s) {
     if (s == "Mattina") return FasciaOraria::Mattina;
     if (s == "Pomeriggio") return FasciaOraria::Pomeriggio;
     if (s == "Sera") return FasciaOraria::Sera;
+    return FasciaOraria::Nessuno;
 }
 
 inline Lingua toLingua(const std::string& s) {
@@ -291,6 +302,7 @@ inline Lingua toLingua(const std::string& s) {
     if (s == "Tedesco") return Lingua::Tedesco;
     if (s == "Giapponese") return Lingua::Giapponese;
     if (s == "Cinese") return Lingua::Cinese;
+    return Lingua::Nessuno;
 }
 
 inline Classificazione toClassificazione(const std::string& s) {
@@ -318,6 +330,7 @@ inline Genere toGenere(const std::string& s) {
     if (s == "Storico") return Genere::Storico;
     if (s == "Romantico") return Genere::Romantico;
     if (s == "Supereroi") return Genere::Supereroi;
+     return Genere::Nessuno;
 }
 
 inline Risoluzione toRisoluzione(const std::string& s) {
@@ -327,6 +340,7 @@ inline Risoluzione toRisoluzione(const std::string& s) {
     if (s == "QHD 1440p") return Risoluzione::QHD_1440p;
     if (s == "UHD 4K 2160p") return Risoluzione::UHD_4K_2160p;
     if (s == "UHD 8K 4320p") return Risoluzione::UHD_8K_4320p;
+    return Risoluzione::SD_480p;
 }
 
 #endif //ENUMCLASSES_H
