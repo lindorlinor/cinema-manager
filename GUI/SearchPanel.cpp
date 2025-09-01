@@ -301,7 +301,6 @@ void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
     //selezione Cinema
     s_cinemaSelezionato = cinemaSel;
     cinema->setText("Cinema " + QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
-
     s_listaSUpportoMedia.clear();
     for(Media* m : s_cinemaSelezionato->getListaMedia()){
         s_listaSUpportoMedia.append(m);
@@ -310,12 +309,12 @@ void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
     s_manager->loadMedia(s_listaSUpportoMedia, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
     for(Media* m : s_listaSUpportoMedia){
         s_cinemaSelezionato->addMedia(m);
+        qDebug() << s_cinemaSelezionato->getListaMedia().size(); //stampa 0
     }
 
     updateFiltroTutto();
 
     emit giveCinemaInfoToIP(s_cinemaSelezionato, s_listaSUpportoMedia);
-
     MediaManagerXml managerXml;
     managerXml.setCurrentCinema(s_cinemaSelezionato);
     // managerXml.exportMediaListToXml();
