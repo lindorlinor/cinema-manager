@@ -9,7 +9,7 @@
 #include "MediaFrame.h"
 #include "../Media.h"
 #include "FlowLayout.h"
-#include "FlowVisitor.h"
+#include "FrameVisitor.h"
 #include "LibraryObserver.h"
 #include "MediaView.h"
 #include "../DetailPageVisitor.h"

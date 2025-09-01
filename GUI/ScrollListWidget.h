@@ -14,7 +14,7 @@
 #include <QDebug>
 
 #include "FrameVisitor.h"
-#include "FlowVisitor.h"
+#include "FlowLayout.h"
 #include "MediaView.h"
 #include "../Media.h"
 #include "../DetailPageVisitor.h"
@@ -23,7 +23,7 @@ class ScrollListWidget: public QWidget{
     Q_OBJECT
     private:
     QWidget* container;
-    QHBoxLayout* layoutContainer;
+    FlowLayout* layoutContainer;
         
     public:
     explicit ScrollListWidget(QWidget* parent = nullptr);

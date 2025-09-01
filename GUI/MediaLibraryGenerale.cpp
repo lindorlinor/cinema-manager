@@ -52,7 +52,7 @@ void MediaLibraryGenerale::update(int comboAttivita, int comboOrdinamento, const
             //trovo i media che soddisfano la ricerca
             (((QString::fromStdString(m->getTitolo()).contains(ricerca, Qt::CaseInsensitive)) || (QString::fromStdString(m->getAutore()).contains(ricerca, Qt::CaseInsensitive))))
         ){
-            FlowVisitor* libraryVisitor = new FlowVisitor(container, filtro);
+            FrameVisitor* libraryVisitor = new FrameVisitor(container, filtro);
             m->accept(libraryVisitor);
             MediaFrame* media(libraryVisitor->getWidget());
             if(media != nullptr){

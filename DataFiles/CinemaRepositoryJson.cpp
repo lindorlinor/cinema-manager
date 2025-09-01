@@ -145,7 +145,6 @@ void CinemaRepositoryJson::deleteCinema(QList<Cinema*>& c_cinemaList, Cinema* ci
 //HELPER
 
 QJsonDocument CinemaRepositoryJson::loadJsonFile(const QString &fileName) {
-    qDebug()<<c_basePath;
     QDir dir(c_basePath);
 
     QString filePath = dir.filePath(fileName);

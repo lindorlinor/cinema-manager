@@ -28,11 +28,12 @@ MediaLibraryTutto::MediaLibraryTutto(QWidget* parent):QWidget(parent){
                                     "background: #4e7f8b;"
                                     "width: 12px;"
                                     "margin: 0px;"
+                                    "border-radius: 5px;"
                                     "border: 1px solid #4e7f8b;}"
                                 "QScrollBar::handle:vertical {"
                                     "background: #d9d9d9;"
                                     "min-height: 20px;"
-                                    "border-radius: 3px;}"
+                                    "border-radius: 5px;}"
                                 "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
                                     "background: #4e7f8b;"
                                     "border: 1px solid #4e7f8b;"
@@ -65,7 +66,8 @@ void MediaLibraryTutto::update(int comboAttivita, int comboOrdinamento, const QS
     
         QLabel* titolo = new QLabel(f + " in Sala", salaWidget);
         ScrollListWidget* scroll = new ScrollListWidget(salaWidget); 
-        scroll->update(comboAttivita, comboOrdinamento, ricerca, f, mediaList);
+        scroll->update(comboAttivita, comboOrdinamento, f, ricerca, mediaList);
+        scroll->setFixedHeight(330);
 
         salaV->addWidget(titolo);
         salaV->addWidget(scroll);

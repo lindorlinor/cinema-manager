@@ -50,7 +50,6 @@ HEADERS +=  \
             GUI/MediaLibraryGenerale.h \
             GUI/MediaLibraryTutto.h \
             GUI/FlowLayout.h \
-            GUI/FlowVisitor.h \
             GUI/LibraryObserver.h \
             GUI/Menu.h \
             GUI/FrameVisitor.h \
@@ -90,7 +89,6 @@ SOURCES +=  \
             GUI/DetailsPageButtons.cpp \
             GUI/ScrollListWidget.cpp \
             GUI/FlowLayout.cpp \
-            GUI/FlowVisitor.cpp \
             GUI/Menu.cpp \
             GUI/FrameVisitor.cpp \
             DataFiles/CinemaRepositoryJson.cpp \

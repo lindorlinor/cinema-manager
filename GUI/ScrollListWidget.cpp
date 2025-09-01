@@ -3,7 +3,7 @@
 ScrollListWidget::ScrollListWidget(QWidget* parent): QWidget(parent){
 
     container = new QWidget(this);
-    layoutContainer = new QHBoxLayout(container);
+    layoutContainer = new FlowLayout(container);
     container->setLayout(layoutContainer);
     
     // Scroll area
@@ -18,7 +18,6 @@ ScrollListWidget::ScrollListWidget(QWidget* parent): QWidget(parent){
     //style
     layoutContainer->setAlignment(Qt::AlignTop);
     mainLayout->setContentsMargins(0,0,0,0);
-    container->setMinimumHeight(300);
     scrollArea->setStyleSheet(
                                 "QScrollArea QWidget{"
                                     "border-radius: 10px;"
@@ -26,23 +25,24 @@ ScrollListWidget::ScrollListWidget(QWidget* parent): QWidget(parent){
                                     "border: none}"
                                     "QScrollArea{"
                                     "background: transparent;}"
-                                "QScrollBar:vertical {"
+                                "QScrollBar:horizontal {"
                                     "background: #4e7f8b;"
-                                    "width: 12px;"
-                                    "margin: 0px;"
-                                    "border: 1px solid #4e7f8b;}"
-                                "QScrollBar::handle:vertical {"
-                                    "background: #d9d9d9;"
-                                    "min-height: 20px;"
-                                    "border-radius: 3px;}"
-                                "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
-                                    "background: #4e7f8b;"
-                                    "border: 1px solid #4e7f8b;"
                                     "height: 12px;"
+                                    "margin: 0px;"
+                                    "border-radius: 5px;"
+                                    "border: 1px solid #05313c;}"
+                                "QScrollBar::handle:horizontal {"
+                                    "background: #05313c;"
+                                    "min-height: 20px;"
+                                    "border-radius: 5px;}"
+                                "QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {"
+                                    "background: #4e7f8b;"
+                                    "border: 1px solid #05313c;"
+                                    "width: 12px;"
                                     "border-radius: 5px;"
                                     "subcontrol-position: top;"
                                     "subcontrol-origin: margin;}"
-                                "QScrollBar::add-line:vertical:hover, QScrollBar::sub-line:vertical:hover {"
+                                "QScrollBar::add-line:horizontal:hover, QScrollBar::sub-line:horizontal:hover {"
                                     "background: #4e7f8b;}"
                             );
     scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -61,18 +61,16 @@ void ScrollListWidget::update(int comboAttivita, int comboOrdinamento, const QSt
 
     for (Media* m : mediaList) {
 
-        FrameVisitor* visitor = new FrameVisitor(m, container, filtro);
+        FrameVisitor* visitor = new FrameVisitor(container, filtro);
         m->accept(visitor);
-        MediaFrame* frame(visitor->getFrame());
-        /* qDebug()<<"richiamato"; */
+        MediaFrame* media(visitor->getWidget());
         
-        if(frame != nullptr){
-            /* qDebug()<<"eh è sbagliato cogliona"; */
-            frame->setMinimumSize(140,200);
-            frame->setCursor(Qt::PointingHandCursor);
-            layoutContainer->addWidget(frame);
+        if(media != nullptr){
+            media->setFixedSize(230,300);
+            media->setCursor(Qt::PointingHandCursor);
+            layoutContainer->addWidget(media);
             //visitor per visualizzare la pagina con i dettagli del media
-            connect(frame, &MediaFrame::selected, this, [this, m](){
+            connect(media, &MediaFrame::selected, this, [this, m](){
                 DetailPageVisitor detailVisitor;
                 m->accept(&detailVisitor);
                 emit requestMediaViewfromScoll(*detailVisitor.getWidget());
@@ -122,7 +120,7 @@ void ScrollListWidget::update(int comboAttivita, int comboOrdinamento, const QSt
             //trovo i media che soddisfano la ricerca
             (((QString::fromStdString(m->getTitolo()).contains(ricerca, Qt::CaseInsensitive)) || (QString::fromStdString(m->getAutore()).contains(ricerca, Qt::CaseInsensitive))))
         ){
-            FlowVisitor* libraryVisitor = new FlowVisitor(container, filtro);
+            FrameVisitor* libraryVisitor = new FrameVisitor(container, filtro);
             m->accept(libraryVisitor);
             MediaFrame* media(libraryVisitor->getWidget());
             if(media != nullptr){

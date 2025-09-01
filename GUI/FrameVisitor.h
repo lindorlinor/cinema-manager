@@ -1,36 +1,34 @@
-#ifndef FRMAEVISITOR_H
-#define FRMAEVISITOR_H
+#ifndef FRAMEVISITOR_H
+#define FRAMEVISITOR_H
 
-#include <QJsonObject>
-
-#include "MediaFrame.h"
 #include "../MediaVisitor.h"
-#include "../Media.h"
+#include "FlowLayout.h"
+#include "MediaFrame.h"
 #include "../Film.h"
 #include "../Trailer.h"
 #include "../Inserzione.h"
 #include "../Podcast.h"
 #include "../Puntata.h"
 
+
 class FrameVisitor : public MediaVisitor {
 
     private:
-    Media* v_media;
-    QWidget* v_container;
-    MediaFrame* v_frame;
-    QString v_filtro;
+    QWidget* library; 
+    const QString& filtro; 
+    MediaFrame* frame;
+public:
+    explicit FrameVisitor(QWidget* l, const QString& filter);
 
-    public:
-    explicit FrameVisitor(Media* media, QWidget* container, const QString& filtro);
-    MediaFrame* getFrame();
+    void visit(Film* film) override;
+    void visit(Trailer* trailer) override;
+    void visit(Inserzione* inserzione) override;
+    void visit(Podcast* podcast) override;
+    void visit(Puntata* puntata) override;
 
-    virtual void visit(Film* film) override;
-    virtual void visit(Trailer* trailer) override;
-    virtual void visit(Inserzione* inserzione) override;
-    virtual void visit(Podcast* podcast) override;
-    virtual void visit(Puntata* puntata) override;
+    MediaFrame* getWidget() const;
 
     ~FrameVisitor();
 };
 
-#endif // FRMAEVISITOR_H
+#endif // FRAMEVISITOR_H
