@@ -90,5 +90,29 @@
     {
         "copertinaCinema": ":/images/default.png",
         "nomeCinema": "Cinema Aurora"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "aaa",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-09-01",
+        "dataInizioRilascio": "2025-09-01",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "generi": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "path": ":/images/default.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "caca"
     }
 ]
