@@ -36,7 +36,7 @@ Menu::Menu(QWidget* parent):QWidget(parent){
     altro->addAction(new QAction("Cambia Vista", altro));
     altro->addAction(new QAction("Full Screen", altro));
     altro->addAction(new QAction("Exit Full Screen", altro));
-    connect(file->actions()[5],&QAction::triggered, this, &Menu::escSearchPanel);
+    connect(file->actions()[5],&QAction::triggered, this, &Menu::backToCinemaSelection);
     connect(file->actions()[6], &QAction::triggered, qApp, &QApplication::quit);
     connect(altro->actions()[1], &QAction::triggered, this, &Menu::setFullScreen);
     connect(altro->actions()[2], &QAction::triggered, this, &Menu::escFullScreen);

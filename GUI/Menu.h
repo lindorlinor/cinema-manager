@@ -19,7 +19,7 @@ class Menu: public QWidget{
     explicit Menu(QWidget* parent = nullptr);
 
     signals:
-    void escSearchPanel();
+    void backToCinemaSelection();
     void setFullScreen();
     void escFullScreen();
     void setNormalRequest();
