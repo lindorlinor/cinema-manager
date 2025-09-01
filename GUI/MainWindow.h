@@ -8,15 +8,18 @@
 #include "SearchPanel.h"
 #include "../Cinema.h"
 #include "Menu.h"
+#include "DataFiles/MediaManagerXml.h" 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 private:
     QList<Cinema*> w_cinema;
-    QStackedWidget *stackedWidget;
     CinemaSelectionPage * cinemaPage;
     InsertCinemaPage * insertPage;
+    MediaManagerXml* m_xmlManager;
     SearchPanel * searchPage;
+    QStackedWidget *stackedWidget;
+    
     bool isFS = true;
 public:
     MainWindow(QWidget *parent = nullptr);

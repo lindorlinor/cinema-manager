@@ -14,6 +14,7 @@ Cinema*  MediaManagerXml::MediaManagerXml::getCurrentCinema() const{
     return currentCinema;
 }
 void MediaManagerXml::exportSessionToXml() {
+    if(!currentCinema)  return;
     QDomDocument doc;
     QDomElement root = doc.createElement("Cinema");
     doc.appendChild(root);
@@ -123,12 +124,12 @@ bool MediaManagerXml::importSessionFromXml(CinemaRepositoryJson& jsonManager) {
 
     QDomElement mediaElem = mediaListElem.firstChildElement();
 
-    importMediaListFromXml(mediaElem,jsonManager,nome.text().toStdString(),copertina.text().toStdString());
+    importMediaListFromXml(mediaElem,jsonManager,nome.text().toStdString());
     return true;
 }
 
 
-void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,CinemaRepositoryJson& jsonManager,const string& cinemaName, const string& cinemaCover){
+void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,CinemaRepositoryJson& jsonManager,const string& cinemaName){
     unsigned int errors =0;
     while (!mediaElem.isNull()) {
         QString tipo = mediaElem.tagName();
@@ -158,6 +159,7 @@ void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,CinemaReposi
 
 }
 bool MediaManagerXml::importMediaListFromXml(CinemaRepositoryJson& jsonManager){
+    if(!currentCinema) return false;
     QString filePath = QFileDialog::getOpenFileName(
     nullptr, "Apri sessione XML", "", "XML Files (*.xml)");
     if (filePath.isEmpty()) return false;
@@ -187,6 +189,6 @@ bool MediaManagerXml::importMediaListFromXml(CinemaRepositoryJson& jsonManager){
     }
 
     QDomElement mediaElem = mediaListElem.firstChildElement();
-    importMediaListFromXml(mediaElem,jsonManager,currentCinema->getNomeCinema(),currentCinema->getCopertinaCinema());
+    importMediaListFromXml(mediaElem,jsonManager,currentCinema->getNomeCinema());
     return true;
 } 
