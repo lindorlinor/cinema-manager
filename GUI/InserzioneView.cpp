@@ -1,23 +1,26 @@
-#include "TrailerView.h"
+#include "InserzioneView.h"
+#include <QVBoxLayout>
+#include <QMessageBox>
+#include <QLabel>
+#include <QString>
+#include <QPixmap>
+#include <QGridLayout>
 #include <QPushButton>
 #include <QScrollArea>
-#include "Film.h"
-#include "ExpandableLabel.h"
-#include "PreviewCard.h"
-#include "PreviewCard.h"
-#include "DetailsPageButtons.h"
-#include <QMessageBox>
+#include <QHBoxLayout>
+#include "GUI/ExpandableLabel.h"
+#include "GUI/PreviewCard.h"
+#include "GUI/DetailsPageButtons.h"
+#include <QDebug>
 
-TrailerView::TrailerView(Trailer* tPtr, QWidget* parent)
-    : MediaView(tPtr,parent),trailerPtr(tPtr)
-{
+InserzioneView::InserzioneView(Inserzione* iPtr, QWidget* parent):MediaView(iPtr,parent),insPtr(iPtr){
     createMediaDetails();
     createScrollableSection();
     createButtons();
 }
 
 
-void TrailerView::createMediaDetails() {
+void InserzioneView::createMediaDetails(){
     leftSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     leftSide->setObjectName("pupu");
     leftSide->setContentsMargins(0,0,0,0);
@@ -56,32 +59,47 @@ void TrailerView::createMediaDetails() {
     
     QLabel* inizioP = new QLabel(
         "<span style='color:white; font-weight:bold;'>Inizio proiezione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(dateToString(trailerPtr->getDataInizioRilascio())) + "</span>",dettagliProgrammazione);
+        "<span style='color:black;'>" + QString::fromStdString(dateToString(insPtr->getDataInizioRilascio())) + "</span>",dettagliProgrammazione);
     inizioP->setTextFormat(Qt::RichText);
     endDateLabel = new QLabel(
         "<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(dateToString(trailerPtr->getDataFineRilascio())) + "</span>",dettagliProgrammazione);
+        "<span style='color:black;'>" + QString::fromStdString(dateToString(insPtr->getDataFineRilascio())) + "</span>",dettagliProgrammazione);
     endDateLabel->setTextFormat(Qt::RichText);
     inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     endDateLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     QLabel* nProiezioniGiornaliere = new QLabel(
         "<span style='color:white; font-weight:bold;'>Numero proiezioni giornaliere: </span>"
-        "<span style='color:black;'>" + QString::number(trailerPtr->getNProiezioniGiornaliere()) + "</span>",dettagliProgrammazione);
+        "<span style='color:black;'>" + QString::number(insPtr->getNProiezioniGiornaliere()) + "</span>",dettagliProgrammazione);
     nProiezioniGiornaliere->setTextFormat(Qt::RichText);
     nProiezioniGiornaliere->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+
+    std::vector<FasciaOraria> fasceOrarie = insPtr->getFasceOrarie();
+    QString fasceTxt;
+    for (int i = 0; i < fasceOrarie.size(); ++i) {
+        fasceTxt += QString::fromUtf8(toString(fasceOrarie[i]));
+        if (i != fasceOrarie.size() - 1) {
+            fasceTxt += ", ";
+        }
+    }
+    QLabel* fasce = new QLabel(
+        "<span style='color:white; font-weight:bold;'>Fasce orarie: </span>"
+        "<span style='color:black;'>" + fasceTxt + "</span>",dettagliProgrammazione);
+    fasce->setTextFormat(Qt::RichText);
+    fasce->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
         
     QLabel* targetPubb = new QLabel(
         "<span style='color:white; font-weight:bold;'>Target pubblico: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(toString((trailerPtr->getFilm())->getTarget())) + "</span>",dettagliProgrammazione);
-
+        "<span style='color:black;'>" + QString::fromStdString(toString(insPtr->getTarget())) + "</span>",dettagliProgrammazione);
+    
     targetPubb->setTextFormat(Qt::RichText);
     targetPubb->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
 
     layoutDettagliProgrammazione->addWidget(inizioP,0,0);
     layoutDettagliProgrammazione->addWidget(endDateLabel,0,1);
     layoutDettagliProgrammazione->addWidget(nProiezioniGiornaliere,1,0);
-    layoutDettagliProgrammazione->addWidget(targetPubb,2,0);
+    layoutDettagliProgrammazione->addWidget(fasce,2,0);
+    layoutDettagliProgrammazione->addWidget(targetPubb,3,0);
     layoutProgrammazione->addWidget(dettagliProgrammazione);
     
     
@@ -97,16 +115,22 @@ void TrailerView::createMediaDetails() {
     sezionePerformance->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     sezionePerformance->setObjectName("sp");
     
+    
+    QLabel* costoFissoProiezioni = new QLabel(
+        "<span style='color:white; font-weight:bold;'>Costo fisso proiezioni: </span>"
+        "<span style='color:black;'>" + QString::number(insPtr->getCostoFissoProiezione()) + " €</span>",dettagliPerformance);
+    costoFissoProiezioni->setTextFormat(Qt::RichText);
 
     QLabel* incasso = new QLabel(
         "<span style='color:white; font-weight:bold;'>Stima incasso totale: </span>"
-        "<span style='color:black;'>" + QString::number(trailerPtr->calcolaIncasso()) + " €</span>",dettagliPerformance);
+        "<span style='color:black;'>" + QString::number(insPtr->calcolaIncasso()) + " €</span>",dettagliPerformance);
     incasso->setTextFormat(Qt::RichText);
     QLabel* visualizzazioni = new QLabel(
         "<span style='color:white; font-weight:bold;'>Visualizzazioni: </span>"
-        "<span style='color:black;'>" + QString::number(trailerPtr->getVisualizzazioni()) + "</span>",dettagliPerformance);
+        "<span style='color:black;'>" + QString::number(insPtr->getVisualizzazioni()) + "</span>",dettagliPerformance);
     visualizzazioni->setTextFormat(Qt::RichText);
 
+    layoutDettagliPerformance->addWidget(costoFissoProiezioni);
     layoutDettagliPerformance->addWidget(incasso);
     layoutDettagliPerformance->addWidget(visualizzazioni);
 
@@ -125,11 +149,11 @@ void TrailerView::createMediaDetails() {
     
     QLabel* risoluzione = new QLabel(
         "<span style='color:white; font-weight:bold;'>Risoluzione: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(trailerPtr->getRisoluzione())) + "</span>",dettagliTecnici);
+        "<span style='color:black;'>" + QString::fromUtf8(toString(insPtr->getRisoluzione())) + "</span>",dettagliTecnici);
     risoluzione->setTextFormat(Qt::RichText);
     QLabel* formato = new QLabel(
         "<span style='color:white; font-weight:bold;'>Formato: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(trailerPtr->getFormato())) + "</span>",dettagliTecnici);
+        "<span style='color:black;'>" + QString::fromUtf8(toString(insPtr->getFormato())) + "</span>",dettagliTecnici);
     formato->setTextFormat(Qt::RichText);
 
     layoutDettagliTecnici->addWidget(risoluzione);
@@ -149,7 +173,7 @@ void TrailerView::createMediaDetails() {
     
     
     ExpandableLabel* descrizione = new ExpandableLabel(
-         "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(trailerPtr->getDescrizione()),dettagliDettagli);
+         "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(insPtr->getDescrizione()),dettagliDettagli);
    
     descrizione->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
@@ -165,82 +189,22 @@ void TrailerView::createMediaDetails() {
     splitterLayout->addWidget(leftSide);
 
 }
-void TrailerView::createScrollableSection() {
-    rightSide->setObjectName("gaga");
-    rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    
-    QLabel *labelFilmA = new QLabel("Film associato",rightSide);
-    QFont fontFilmA = labelFilmA->font();
-    fontFilmA.setPointSize(17);
-    fontFilmA.setBold(true);
-    labelFilmA->setFont(fontFilmA);
-    
-    rightLayout->addWidget(labelFilmA);
-
-    QWidget * sezioneFilmA = new QWidget(rightSide);
-    QVBoxLayout* layoutFilmA = new QVBoxLayout(sezioneFilmA);
-    sezioneFilmA->setObjectName("sp"); 
-
-    const Film* filmA = trailerPtr->getFilm();
-    PreviewCard* cardFilmA = new PreviewCard(filmA);
-    cardFilmA->setFixedSize(210, 320);   
-    layoutFilmA->addWidget(cardFilmA,0,Qt::AlignCenter);
-    connect(cardFilmA, &PreviewCard::viewMedia, this, [this](){
-        qDebug() << "view Film Associato: " << QString::fromStdString(mediaPtr->getTitolo());
-    });
-    sezioneFilmA->setContentsMargins(20,0,20,0);
-
-    QLabel *labelTrailer = new QLabel("Trailer correlati",rightSide);
-    QFont fontTrailer = labelTrailer->font();
-    fontTrailer.setPointSize(17);
-    fontTrailer.setBold(true);
-    labelTrailer->setFont(fontTrailer);
-    
-    QScrollArea* scrollTrailer = new QScrollArea(rightSide); //configurata dopo
-    QWidget * sezioneTrailer = new QWidget(scrollTrailer);
-    QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
-    sezioneTrailer->setObjectName("sp");
-
-    for (const Trailer* t : (trailerPtr->getFilm())->getTrailers()) {
-        if(t!=trailerPtr){
-            PreviewCard* cardTrailer = new PreviewCard(t);
-            layoutTrailer->addWidget(cardTrailer,0,Qt::AlignCenter);
-            connect(cardTrailer, &PreviewCard::viewMedia, this, 
-                [this,t](){
-                    qDebug() << "view Trailer: " << QString::fromStdString(t->getTitolo());
-                    emit trailerSelected(t);
-                });
-        }
-    }
-    layoutTrailer->setSpacing(20);  
-    sezioneTrailer->setContentsMargins(20,20,20,20);
-
-    scrollTrailer->setWidget(sezioneTrailer);
-    scrollTrailer->setWidgetResizable(true);
-    scrollTrailer->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scrollTrailer->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    scrollTrailer->setMinimumHeight(180);
 
 
-    rightLayout->addWidget(sezioneFilmA,0,Qt::AlignTop);
-    rightLayout->addSpacing(20);
-    rightLayout->addWidget(labelTrailer);
-    rightLayout->addWidget(scrollTrailer);
-    splitterLayout->addWidget(rightSide);
-}
-void TrailerView::createButtons() {
+void InserzioneView::createButtons(){
     DetailsPageButtons * buttons = new DetailsPageButtons(leftSide);
-    buttons->setDeleteButtonText("Elimina trailer");
+    buttons->setDeleteButtonText("Elimina Inserzione");
+
     connect(buttons,&DetailsPageButtons::extendMedia,this,
         [this](){
             QMessageBox msgBox(this);
-            auto fine = trailerPtr->getDataFineRilascio();
-            auto nuovaFine = (trailerPtr->getFilm())->getDataFineRilascio();
+            auto fine = insPtr->getDataFineRilascio();
+            auto nuovaFine = insPtr->getDataFineRilascio() + months{1};
 
             if(fine!=nuovaFine){
                 msgBox.setWindowTitle("Conferma estensione data");
                 msgBox.setText(QString::fromStdString(
-                "La data di fine proiezione cambierà in\n" + dateToString(fine) + " → " + dateToString(nuovaFine) + "in accordo con la data di fine rilascio del film associato"));
+                "La data di fine proiezione cambierà in\n" + dateToString(fine) + " → " + dateToString(nuovaFine)));
 
                 msgBox.setInformativeText("Premi conferma per continuare, annulla per non modificare.");
                 msgBox.setStandardButtons(QMessageBox::Cancel | QMessageBox::Ok);
@@ -254,10 +218,6 @@ void TrailerView::createButtons() {
                     "<span style='color:black;'>" + QString::fromStdString(dateToString(nuovaFine)) + "</span>");
                     emit extendMediaClicked();
                 }
-            }else{
-                msgBox.setWindowTitle("Impossibile estendere la data");
-                msgBox.setText("La data di fine rilascio del trailer non può superare quella del film");
-                msgBox.setInformativeText("Estendere la proiezione del film in sala per poter estendere il rilascio dei suoi trailer");
             }
         });
            
@@ -265,7 +225,7 @@ void TrailerView::createButtons() {
     connect(buttons,&DetailsPageButtons::deleteMedia,this,[this](){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Conferma eliminazione");
-        msgBox.setText("Sei sicuro di voler eliminare il trailer?");
+        msgBox.setText("Sei sicuro di voler eliminare l'inserzione?");
         msgBox.setInformativeText("Premi conferma per continuare, annulla per non modificare.");
         msgBox.addButton("Annulla", QMessageBox::RejectRole);
         msgBox.addButton("Conferma", QMessageBox::AcceptRole);
@@ -278,3 +238,49 @@ void TrailerView::createButtons() {
     cardLayout->addSpacing(40);
     cardLayout->addWidget(buttons);
 }
+
+//@to do non so come farla al momento, devo passare la lista di media WOPSIEE COME FACCIO AAGHHH
+void InserzioneView::createScrollableSection(){
+    /* rightSide->setObjectName("gaga");
+    rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    
+    QLabel *labelTrailer = new QLabel("Trailer",rightSide);
+    QFont fontTrailer = labelTrailer->font();
+    fontTrailer.setPointSize(17);
+    fontTrailer.setBold(true);
+    labelTrailer->setFont(fontTrailer);
+    
+    rightLayout->addWidget(labelTrailer);
+
+    QScrollArea* scrollTrailer = new QScrollArea(rightSide); //configurata dopo
+    QWidget * sezioneTrailer = new QWidget(scrollTrailer);
+    QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
+    sezioneTrailer->setObjectName("sp");
+
+    for (const Trailer* t : insPtr->get()) {
+        PreviewCard* card = new PreviewCard(t);
+        layoutTrailer->addWidget(card);
+        connect(card, &PreviewCard::viewMedia, this, [this,t](){
+            qDebug() << "view Media: " << QString::fromStdString(t->getTitolo());
+            emit trailerSelected(t);
+        });
+    }
+    layoutTrailer->setSpacing(20);  
+    sezioneTrailer->setContentsMargins(20,20,20,33);
+
+    scrollTrailer->setWidget(sezioneTrailer);
+    scrollTrailer->setWidgetResizable(true);
+    scrollTrailer->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollTrailer->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    scrollTrailer->setMinimumHeight(400);
+    rightLayout->addWidget(scrollTrailer,0,Qt::AlignTop);
+
+    splitterLayout->addWidget(rightSide); */
+}
+
+
+
+
+
+
+

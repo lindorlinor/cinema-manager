@@ -1,6 +1,9 @@
 #include "DetailPageVisitor.h"
-#include "GUI/TrailerView.h"
 #include "GUI/FilmView.h"
+#include "GUI/TrailerView.h"
+#include "GUI/InserzioneView.h"
+#include "GUI/PodcastView.h"
+#include "GUI/PuntataView.h"
 #include "../Film.h"
 #include "../Trailer.h"
 #include "../Inserzione.h"
@@ -24,6 +27,15 @@ void DetailPageVisitor::visit(Trailer* trailer) {
     detailPage->setStyleSheet("QLabel { background-color: red} #sp { background-color: orange} #details { background-color: purple} #gugu { background-color: pink} #gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
 
 }
-void DetailPageVisitor::visit(Inserzione*) {}
-void DetailPageVisitor::visit(Podcast*) {}
-void DetailPageVisitor::visit(Puntata*) {}
+void DetailPageVisitor::visit(Inserzione* inserzione) {
+    detailPage = new InserzioneView(inserzione);
+    detailPage->setStyleSheet("QLabel { background-color: red} #sp { background-color: orange} #details { background-color: purple} #gugu { background-color: pink} #gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
+}
+void DetailPageVisitor::visit(Podcast* podcast) {
+    detailPage = new PodcastView(podcast);
+    detailPage->setStyleSheet("QLabel { background-color: red} #sp { background-color: orange} #details { background-color: purple} #gugu { background-color: pink} #gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
+}
+void DetailPageVisitor::visit(Puntata* puntata) {
+    detailPage = new PuntataView(puntata);
+    detailPage->setStyleSheet("QLabel { background-color: red} #sp { background-color: orange} #details { background-color: purple} #gugu { background-color: pink} #gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
+}
