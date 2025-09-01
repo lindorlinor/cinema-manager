@@ -20,11 +20,11 @@ class Menu: public QWidget{
     explicit Menu(QWidget* parent = nullptr);
     void setFileActionVisibility(int i, bool visible);
     signals:
+    void backToCinemaSelection();
     void importMediaList();
     void importSession();
     void exportSession();
     void exportMediaList();
-    void escSearchPanel();
     void setFullScreen();
     void escFullScreen();
     void setNormalRequest();

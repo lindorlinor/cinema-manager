@@ -58,9 +58,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     connect(menu, &Menu::closeRequested, this, &MainWindow::close);
-    connect(menu,&Menu::escSearchPanel,searchPage,&SearchPanel::removeMediaView);
-    connect(menu,&Menu::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
-    connect(menu,&Menu::escSearchPanel,searchPage,&SearchPanel::resetSearchPanel);
+    /* connect(menu,&Menu::backToCinemaSelection,searchPage,&SearchPanel::removeMediaView); */
+    connect(menu,&Menu::backToCinemaSelection,this,&MainWindow::showCinemaSelectionPage);
+    connect(menu,&Menu::backToCinemaSelection,searchPage,&SearchPanel::resetSearchPanel);
     connect(menu, &Menu::setFullScreen, this, &MainWindow::showFullScreen);
     connect(menu, &Menu::escFullScreen, this, &MainWindow::showMaximized);
     connect(menu, &Menu::importMediaList, this, [this](){
