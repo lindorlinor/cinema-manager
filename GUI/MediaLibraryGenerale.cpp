@@ -15,7 +15,7 @@ MediaLibraryGenerale::MediaLibraryGenerale(const QString& filtroBottone, QWidget
 
     //style
     layoutContainer->setAlignment(Qt::AlignTop);
-    titolo->setStyleSheet("color: #fed36a; font-size: 18pt; font-wight: bold;");
+    titolo->setStyleSheet("color: #fed36a; font-size: 18pt; font-weight: bold;");
 }
 
 void MediaLibraryGenerale::update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList){

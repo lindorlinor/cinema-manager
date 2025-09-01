@@ -178,7 +178,7 @@ Film* JsonConverter::deserializeFilm(QJsonObject obj) {
 
 
 Trailer* JsonConverter::deserializeTrailer(QList<Media*> c_mediaList, QJsonObject obj) {
-    Media* filmAssociato = findMediaReference(obj["filmAssociato"].toString(), obj["autoreFilmAssociato"].toString(), "media", c_mediaList);
+    Media* filmAssociato = findMediaReference(obj["filmAssociato"].toString(), obj["autoreFilmAssociato"].toString(), "trailer", c_mediaList);
 
     if(!filmAssociato){
         qDebug()<<"Errore!, nessun Film collegato al Trailer "<<obj["titolo"].toString();
@@ -245,7 +245,7 @@ Podcast* JsonConverter::deserializePodcast(QJsonObject obj) {
 }
 
 Puntata* JsonConverter::deserializePuntata(QList<Media*> c_mediaList, QJsonObject obj) {
-    Media* podcastAssociato = findMediaReference(obj["podcastAssociato"].toString(), obj["autorePodcastAssociato"].toString(), "media", c_mediaList);
+    Media* podcastAssociato = findMediaReference(obj["podcastAssociato"].toString(), obj["autorePodcastAssociato"].toString(), "podcast", c_mediaList);
     if(!podcastAssociato){
         qDebug()<<"Errore!, nessun Podcast collegato alla Puntata "<<obj["titolo"].toString();
         return nullptr;
