@@ -1,19 +1,18 @@
 #include "MediaManagerXml.h"
 #include "XmlVisitor.h"
-#include "ConverterXml.h"
 #include <QFile>
 #include <QFileDialog>
 #include <QDomElement>
 #include <QMessageBox>
 
-MediaManagerXml::MediaManagerXml(){}
+MediaManagerXml::MediaManagerXml():currentCinema(nullptr){}
 
-void MediaManagerXml::setCinemaName(const QString& name) {cinemaName = name;}
-
-void MediaManagerXml::setCinemaCover(const QString& cover) {cinemaCover = cover;}
-
-void MediaManagerXml::setCinemaMediaList(const QList<Media*>& list) {mediaList = list;}
-
+void MediaManagerXml::setCurrentCinema(Cinema* newCinema){
+    currentCinema=newCinema;
+}
+Cinema*  MediaManagerXml::MediaManagerXml::getCurrentCinema() const{
+    return currentCinema;
+}
 void MediaManagerXml::exportSessionToXml() {
     QDomDocument doc;
     QDomElement root = doc.createElement("Cinema");
@@ -36,11 +35,11 @@ void MediaManagerXml::exportMediaListToXml(){
 void MediaManagerXml::createSessionDocument(QDomDocument& doc,QDomElement& root) {
 
     QDomElement nome = doc.createElement("Nome");
-    nome.appendChild(doc.createTextNode(cinemaName));
+    nome.appendChild(doc.createTextNode(QString::fromStdString(currentCinema->getNomeCinema())));
     root.appendChild(nome);
 
     QDomElement copertina = doc.createElement("Copertina");
-    copertina.appendChild(doc.createTextNode(cinemaCover));
+    copertina.appendChild(doc.createTextNode(QString::fromStdString(currentCinema->getCopertinaCinema())));
     root.appendChild(copertina);
 
     QDomElement mediaListElem = doc.createElement("MediaList");
@@ -51,28 +50,14 @@ void MediaManagerXml::createSessionDocument(QDomDocument& doc,QDomElement& root)
 
 void MediaManagerXml::createMediaListDocument(QDomDocument& doc,QDomElement& root){
     
-    XmlVisitor visitor(doc);
+    XmlVisitor visitor(&doc);
 
-    for (Media* media : mediaList) {
+    for (Media* media : currentCinema->getListaMedia()) {
         if (!media) continue;
         media->accept(&visitor);
         QDomElement mediaElem;
 
         mediaElem = visitor.getXmlElement();
-        /* if (Film* f = dynamic_cast<Film*>(media)) {
-            mediaElem = ConverterXml::toXmlElement(f, doc);
-        } else if (Trailer* t = dynamic_cast<Trailer*>(media)) {
-            mediaElem = ConverterXml::toXmlElement(t, doc);
-        } else if (Podcast* p = dynamic_cast<Podcast*>(media)) {
-            mediaElem = ConverterXml::toXmlElement(p, doc);
-        } else if (Puntata* pt = dynamic_cast<Puntata*>(media)) {
-            mediaElem = ConverterXml::toXmlElement(pt, doc);
-        } else if (Inserzione* i = dynamic_cast<Inserzione*>(media)) {
-            mediaElem = ConverterXml::toXmlElement(i, doc);
-        } else {
-            mediaElem = ConverterXml::toXmlElement(media, doc);
-        }
- */
         root.appendChild(mediaElem);
     }
 }
@@ -96,7 +81,7 @@ void MediaManagerXml::saveDocument() {
     file.close();
 }
 
- bool MediaManagerXml::importSessionFromXml(MediaManagerJson& jsonManager) {
+bool MediaManagerXml::importSessionFromXml(CinemaRepositoryJson& jsonManager) {
     QString filePath = QFileDialog::getOpenFileName(
         nullptr, "Apri sessione XML", "", "XML Files (*.xml)");
     if (filePath.isEmpty()) return false;
@@ -128,11 +113,8 @@ void MediaManagerXml::saveDocument() {
         return false;
     }
 
-    CinemaData cinema;
-    cinema.nomeCinema = nome.text();
-    cinema.copertinaCinema = copertina.text();
     
-    jsonManager.saveCinema(&cinema);
+    jsonManager.saveCinemaInJson(new Cinema(nome.text().toStdString(), copertina.text().toStdString()));
 
     if (mediaListElem.isNull()) {
         QMessageBox::information(nullptr, "Info", "Cinema importato senza contenuti multimediali.");
@@ -141,40 +123,30 @@ void MediaManagerXml::saveDocument() {
 
     QDomElement mediaElem = mediaListElem.firstChildElement();
 
-    importMediaListFromXml(mediaElem,jsonManager,cinema.nomeCinema,cinema.copertinaCinema);
+    importMediaListFromXml(mediaElem,jsonManager,nome.text().toStdString(),copertina.text().toStdString());
     return true;
 }
 
 
-void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,MediaManagerJson& jsonManager,const QString& cinemaName, const QString& cinemaCover){
+void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,CinemaRepositoryJson& jsonManager,const string& cinemaName, const string& cinemaCover){
     unsigned int errors =0;
     while (!mediaElem.isNull()) {
         QString tipo = mediaElem.tagName();
         if (tipo=="Film") {
-            FilmData* fd = new FilmData(ConverterXml::fromXmlFilmElement(mediaElem));
-            fd->nomeCinema=cinemaName;
-            fd->copertinaCinema=cinemaCover;
-            jsonManager.saveMedia(fd);
+            Film* fd = new Film(*XmlVisitor::fromXmlFilmElement(mediaElem));
+            jsonManager.saveMediaInJson(fd,QString::fromStdString(cinemaName));
         }else if (tipo=="Trailer") {
-            TrailerData* td = new TrailerData(ConverterXml::fromXmlTrailerElement(mediaElem));
-            td->nomeCinema=cinemaName;
-            td->copertinaCinema=cinemaCover;
-            jsonManager.saveMedia(td);
+            Trailer* td = new Trailer(*XmlVisitor::fromXmlTrailerElement(mediaElem,currentCinema->getListaMedia()));
+            jsonManager.saveMediaInJson(td,QString::fromStdString(cinemaName));
         }else if (tipo=="Inserzione") {
-            InserzioneData* id = new InserzioneData(ConverterXml::fromXmlInserzioneElement(mediaElem));
-            id->nomeCinema=cinemaName;
-            id->copertinaCinema=cinemaCover;
-            jsonManager.saveMedia(id);
+            Inserzione* id = new Inserzione(*XmlVisitor::fromXmlInserzioneElement(mediaElem));
+            jsonManager.saveMediaInJson(id,QString::fromStdString(cinemaName));
         }else if (tipo=="Podcast") {
-            PodcastData* pdd = new PodcastData(ConverterXml::fromXmlPodcastElement(mediaElem));
-            pdd->nomeCinema=cinemaName;
-            pdd->copertinaCinema=cinemaCover;
-            jsonManager.saveMedia(pdd);
+            Podcast* pdd = new Podcast(*XmlVisitor::fromXmlPodcastElement(mediaElem));
+            jsonManager.saveMediaInJson(pdd,QString::fromStdString(cinemaName));
         } else if (tipo=="Puntata") {
-            PuntataData* pd = new PuntataData(ConverterXml::fromXmlPuntataElement(mediaElem));
-            pd->nomeCinema=cinemaName;
-            pd->copertinaCinema=cinemaCover;
-            jsonManager.saveMedia(pd);
+            Puntata* pd = new Puntata(*XmlVisitor::fromXmlPuntataElement(mediaElem,currentCinema->getListaMedia()));
+            jsonManager.saveMediaInJson(pd,QString::fromStdString(cinemaName));
         }else {
             errors++;
         }
@@ -185,7 +157,7 @@ void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,MediaManager
          QMessageBox::information(nullptr, "Info", errors+" media non sono stati importati.");
 
 }
-bool MediaManagerXml::importMediaListFromXml(MediaManagerJson& jsonManager){
+bool MediaManagerXml::importMediaListFromXml(CinemaRepositoryJson& jsonManager){
     QString filePath = QFileDialog::getOpenFileName(
     nullptr, "Apri sessione XML", "", "XML Files (*.xml)");
     if (filePath.isEmpty()) return false;
@@ -215,6 +187,6 @@ bool MediaManagerXml::importMediaListFromXml(MediaManagerJson& jsonManager){
     }
 
     QDomElement mediaElem = mediaListElem.firstChildElement();
-    importMediaListFromXml(mediaElem,jsonManager,cinemaName,cinemaCover);
+    importMediaListFromXml(mediaElem,jsonManager,currentCinema->getNomeCinema(),currentCinema->getCopertinaCinema());
     return true;
 } 

@@ -3,6 +3,7 @@
 #include "TrailerView.h"
 #include "DetailPageVisitor.h"
 #include "LibraryObserver.h"
+#include "../DataFiles/MediaManagerXml.h"
 
 void SearchPanel::updateModifierPanel(int index){
     if(stackModifiche->currentIndex()!=index){
@@ -314,6 +315,12 @@ void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
     updateFiltroTutto();
 
     emit giveCinemaInfoToIP(s_cinemaSelezionato, s_listaSUpportoMedia);
+
+    MediaManagerXml managerXml;
+    managerXml.setCurrentCinema(s_cinemaSelezionato);
+    // managerXml.exportMediaListToXml();
+    // managerXml.exportSessionToXml();
+    managerXml.importSessionFromXml(*s_manager);
 }
 
 void SearchPanel::addObserver(LibraryObserver* obs){
