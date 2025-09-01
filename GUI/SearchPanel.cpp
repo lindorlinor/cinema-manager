@@ -314,9 +314,10 @@ void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
 
     emit giveCinemaInfoToIP(s_cinemaSelezionato, s_listaSupportoMedia);
 
+    /* prova funzionamento import
     MediaManagerXml XMLmanager;
     XMLmanager.setCurrentCinema(s_cinemaSelezionato);
-    XMLmanager.importSessionFromXml(*s_manager);
+    XMLmanager.importSessionFromXml(*s_manager); */
 }
 
 void SearchPanel::addObserver(LibraryObserver* obs){

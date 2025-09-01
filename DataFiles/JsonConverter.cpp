@@ -1,6 +1,6 @@
 #include "JsonConverter.h"
 
-JsonConverter::JsonConverter(){}
+JsonConverter::JsonConverter(QString cName):cinemaName(cName){}
 
 void JsonConverter::saveCommonFields(const Media& media, QJsonObject& obj){
 
@@ -43,6 +43,8 @@ void JsonConverter::saveCommonFields(const Media& media, QJsonObject& obj){
 
     obj["dataInizioRilascio"] = dataInizio.toString("yyyy-MM-dd");
     obj["dataFineRilascio"] = dataFine.toString("yyyy-MM-dd");
+
+    obj["nomeCinema"] = cinemaName;
 }
 
 QJsonObject JsonConverter::serialize(Cinema* media){
