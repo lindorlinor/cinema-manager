@@ -7,7 +7,7 @@
 PreviewCard::PreviewCard(const Media* mPtr, QWidget* parent)
     : QFrame(parent),mediaPtr(mPtr)
 {
-    // setFixedSize(270,200);
+    setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed); //gasp per fortuna me ne sono accorta, si espandeva solo in alcuni casi
     cardLayout = new QVBoxLayout(this);
     cardLayout->setContentsMargins(0,0,0,0);
     setContentsMargins(0,0,0,0);
@@ -18,7 +18,7 @@ PreviewCard::PreviewCard(const Media* mPtr, QWidget* parent)
     qDebug() << QString::fromStdString(mediaPtr->getImPath());
     imageLabel->setPixmap(pix.scaled(222, 320, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     imageLabel->setAlignment(Qt::AlignCenter);
-
+    
     titleLabel = new QLabel(QString::fromStdString(mediaPtr->getTitolo()), this);
     titleLabel->setAlignment(Qt::AlignLeft);
     titleLabel->setWordWrap(true);
