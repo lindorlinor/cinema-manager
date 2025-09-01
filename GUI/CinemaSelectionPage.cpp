@@ -13,20 +13,18 @@
 #include <QScrollArea>
 #include <QGridLayout>
 
-CinemaSelectionPage::CinemaSelectionPage(QList<Cinema*>& w_cinema, QWidget *parent) : QWidget(parent), sp_cinema(w_cinema), cinemaButtonsLayout(new QHBoxLayout), frameLayout(new QVBoxLayout) {
+CinemaSelectionPage::CinemaSelectionPage(QList<Cinema*>& w_cinema, QWidget *parent) : QWidget(parent), sp_cinema(w_cinema), cinemaButtonsLayout(new QHBoxLayout), framePrincipale(new QFrame(this)),frameLayout(new QVBoxLayout(framePrincipale)) {
     CinemaRepositoryJson cinemaManager;
     cinemaManager.loadCinema(sp_cinema);
 
     //crea il frame centrale
-    QFrame* framePrincipale = new QFrame(this);
     framePrincipale->setMinimumSize(630, 500);
     framePrincipale->setMaximumSize(800, 500);
-    framePrincipale->setLayout(frameLayout);
 
     createHeader();
     
     //aggiunge al frame il pulsante per aggiungere i cinema a destra
-    QPushButton* addButton = new QPushButton("+ Aggiungi",this);
+    QPushButton* addButton = new QPushButton("+ Aggiungi",framePrincipale);
     addButton->setFixedSize(160, 40); 
     frameLayout->addWidget(addButton, 0, Qt::AlignRight);
 
@@ -35,7 +33,7 @@ CinemaSelectionPage::CinemaSelectionPage(QList<Cinema*>& w_cinema, QWidget *pare
     createCinemaScroll();
    
     // Pulsante esci
-    QPushButton* escButton = new QPushButton("Esci",this);
+    QPushButton* escButton = new QPushButton("Esci",framePrincipale);
     escButton->setFixedSize(160, 40); 
     connect(escButton, &QPushButton::clicked, qApp, &QApplication::quit);
     connect(addButton, &QPushButton::clicked, this, &CinemaSelectionPage::insertCinema);
@@ -101,14 +99,17 @@ void CinemaSelectionPage::createHeader(){
 
 void CinemaSelectionPage::createCinemaScroll(){
      //setta la scrollArea per i pulsanti del cinema
-    QScrollArea* scrollArea = new QScrollArea(this);
-    QWidget* contenitorePulsanti = new QWidget(this);
+    QScrollArea* scrollArea = new QScrollArea(framePrincipale);
+    QWidget* contenitorePulsanti = new QWidget(scrollArea);
     contenitorePulsanti->setLayout(cinemaButtonsLayout);
+    cinemaButtonsLayout->setContentsMargins(0,0,0,0);
+    contenitorePulsanti->setContentsMargins(0,0,0,0);
+
     scrollArea->setWidget(contenitorePulsanti);
     scrollArea->setWidgetResizable(true);
     scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scrollArea->setMinimumHeight(300);
+    scrollArea->setMinimumHeight(200);
 
     //cambia il comportamento di default della scrollArea che si espanderebbe
     scrollArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
@@ -117,6 +118,8 @@ void CinemaSelectionPage::createCinemaScroll(){
     cinemaButtonsLayout->setAlignment(Qt::AlignLeft);
     cinemaButtonsLayout->setSpacing(10);
 
+    qDebug() << "SizeHint contenitorePulsanti:" << contenitorePulsanti->sizeHint();
+    qDebug() << "ScrollArea viewport height:" << scrollArea->viewport()->height();
     //aggiunge al frame la scrollArea del cinema
     frameLayout->addWidget(scrollArea);
 
