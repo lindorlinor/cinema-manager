@@ -166,5 +166,35 @@
         ],
         "tipologia": "trailer",
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
+    },
+    {
+        "attoriPrincipali": [
+            "asdasd"
+        ],
+        "autore": "Autore",
+        "casaDiProduzione": "pinco pallo",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-09-24",
+        "dataInizioRilascio": "2025-09-01",
+        "descrizione": "asdad",
+        "durataMinuti": 7,
+        "formato": "MP4",
+        "generi": [
+            3
+        ],
+        "lingueDisponibili": [
+            "Inglese",
+            "Francese"
+        ],
+        "nPostCredit": 2,
+        "nomeCinema": "Cinema Angella",
+        "path": ":/images/coverCinema.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Francese"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "titolo"
     }
 ]

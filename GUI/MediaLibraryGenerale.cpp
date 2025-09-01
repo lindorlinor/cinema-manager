@@ -3,9 +3,9 @@
 MediaLibraryGenerale::MediaLibraryGenerale(const QString& filtroBottone, QWidget* parent): UpdateMediaLibrary(parent), filtro(filtroBottone){
 
     titolo = new QLabel(filtroBottone+" in Sala",this);
+    titolo->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     QVBoxLayout* mainLayout = new QVBoxLayout;
     container = new QWidget(this);
-
     layoutContainer = new FlowLayout(this);
     container->setLayout(layoutContainer);
 
