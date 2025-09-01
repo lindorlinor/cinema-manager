@@ -85,7 +85,7 @@ void CinemaRepositoryJson::saveMediaInJson(Media* c_media, const QString& nomeCi
     }
 
 
-    JsonVisitor visitor(c_media);
+    JsonVisitor visitor(nomeCinema);
     c_media->accept(&visitor);
 
     array.append(visitor.getObj());
@@ -115,14 +115,16 @@ void CinemaRepositoryJson::updateJson(QList<Cinema*> c_cinemaList){
 
     QJsonArray array;
 
-    for(Cinema* cinema : c_cinemaList){
+    for (Cinema* cinema : c_cinemaList) {
+    // serializzo il cinema
         array.append(converter->serialize(cinema));
-    }
 
-    for(Media* media : c_mediaList){
-        JsonVisitor visitor(media);
-        media->accept(&visitor);
-        array.append(visitor.getObj());
+        // serializzo i media associati
+        for (Media* media : cinema->getListaMedia()) {
+            JsonVisitor visitor(QString::fromStdString(cinema->getNomeCinema())); // passi il nome del cinema al visitor
+            media->accept(&visitor);
+            array.append(visitor.getObj());
+        }
     }
     // salva il JSON aggiornato
     saveJsonFile("media.json", QJsonDocument(array));

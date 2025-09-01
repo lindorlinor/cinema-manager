@@ -17,7 +17,7 @@
 class JsonConverter{
 
     private:
-
+    QString cinemaName;
     year_month_day convertDate(const QString& data);
     void addLingue(Media* media, QJsonObject obj);
     void addSottotitoli(Media* media, QJsonObject obj);
@@ -29,7 +29,7 @@ class JsonConverter{
     void saveCommonFields(const Media& media, QJsonObject &obj);
 
     public:
-    JsonConverter();
+    JsonConverter(QString cName);
     QJsonObject serialize(Cinema* media);
     QJsonObject serialize(Film* media);
     QJsonObject serialize(Trailer* media);

@@ -65,7 +65,6 @@ void MediaLibraryTutto::update(int comboAttivita, int comboOrdinamento, const QS
     for(QString f : allFiltri){
         QWidget* salaWidget = new QWidget(container);
         QVBoxLayout* salaV = new QVBoxLayout(salaWidget);
-    
         QLabel* titolo = new QLabel(f + " in Sala", salaWidget);
         ScrollListWidget* scroll = new ScrollListWidget(salaWidget); 
         scroll->update(comboAttivita, comboOrdinamento, f, ricerca, mediaList);
@@ -75,7 +74,7 @@ void MediaLibraryTutto::update(int comboAttivita, int comboOrdinamento, const QS
             salaV->addWidget(scroll);
             salaWidget->setLayout(salaV);
     
-            layoutContainer->addWidget(salaWidget);
+            layoutContainer->addWidget(salaWidget,0,Qt::AlignTop);
     
             connect(scroll, &ScrollListWidget::requestMediaView, this, &MediaLibraryTutto::reciveRequestMediaView);
         }

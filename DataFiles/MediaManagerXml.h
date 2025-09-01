@@ -2,40 +2,34 @@
 #define MEDIAMANAGERXML_H
 
 #include <QString>
-#include <QList>
+#include <list>
 #include <QDomDocument>
 
-#include "Media.h"    
-#include "Populate.h"  
-#include "MediaManagerJson.h"
+#include "../Media.h"
+#include "CinemaRepositoryJson.h"
+#include "../Cinema.h"
 
 class MediaManagerXml {
 public:
     MediaManagerXml();
 
-    void setCinemaName(const QString& name);
-    void setCinemaCover(const QString& cover);
-    void setCinemaMediaList(const QList<Media*>& mediaList);
+    void setCurrentCinema(Cinema*);
 
-    const QString& getCinemaName() const; //to do
-    const QString& getCinemaCover() const; //to do
-    const QList<Media*>& getCinemaMediaList() const; //to do
+    Cinema* getCurrentCinema() const;
 
     void exportSessionToXml();
     void exportMediaListToXml();
 
-    bool importSessionFromXml(MediaManagerJson& jsonManager);
-    bool importMediaListFromXml(MediaManagerJson& jsonManager);
+    bool importSessionFromXml(CinemaRepositoryJson& jsonManager);
+    bool importMediaListFromXml(CinemaRepositoryJson& jsonManager);
 
 private:
-    void importMediaListFromXml(QDomElement& mediaElem, MediaManagerJson& jsonManager,const QString& cinemaName, const QString& cinemaCover);
+    void importMediaListFromXml(QDomElement& mediaElem, CinemaRepositoryJson& jsonManager,const string& cinemaName, const string& cinemaCover);
     void createSessionDocument(QDomDocument& doc,QDomElement& root);
     void createMediaListDocument(QDomDocument& doc,QDomElement& root);
     void saveDocument();
     QDomDocument xmlDocument;
-    QString cinemaName;
-    QString cinemaCover;
-    QList<Media*> mediaList;
+    Cinema* currentCinema;
 };
 
 #endif // MEDIAMANAGERXML_H

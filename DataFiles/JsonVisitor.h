@@ -10,10 +10,10 @@ class JsonVisitor : public MediaVisitor {
 
     private:
     QJsonObject v_obj;
-    Media* v_media;
+    QString cinemaName;
 
     public:
-    explicit JsonVisitor(Media* media);
+    explicit JsonVisitor(QString cName);
     QJsonObject getObj();
 
     virtual void visit(Film* film) override;

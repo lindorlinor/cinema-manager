@@ -14,6 +14,21 @@
 using namespace std::chrono;
 
 
+inline year_month_day stringToDate(const std::string& s) {
+    unsigned d, m;
+    int y;
+    char sep1, sep2;
+
+    std::istringstream iss(s);
+    iss >> d >> sep1 >> m >> sep2 >> y;
+
+    if (!iss || sep1 != '/' || sep2 != '/') {
+        throw std::runtime_error("Formato data non valido: " + s);
+    }
+
+    return year{y}/month{m}/day{d};
+}
+
 inline std::string dateToString(const year_month_day& d) {
     std::ostringstream oss;
     oss << unsigned(d.day()) << "/"

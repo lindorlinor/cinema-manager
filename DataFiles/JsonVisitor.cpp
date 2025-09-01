@@ -1,6 +1,6 @@
 #include "JsonVisitor.h"
 
-JsonVisitor::JsonVisitor(Media* media): v_media(media){}
+JsonVisitor::JsonVisitor(QString cName):cinemaName(cName){}
 
 JsonVisitor::~JsonVisitor() {}
 
@@ -9,26 +9,26 @@ QJsonObject JsonVisitor::getObj(){
 }
 
 void JsonVisitor::visit(Film* film){
-    JsonConverter converter;
+    JsonConverter converter(cinemaName);
     v_obj = (converter.serialize(film));
 }
 
 void JsonVisitor::visit(Trailer* trailer){
-    JsonConverter converter;
+    JsonConverter converter(cinemaName);
     v_obj = (converter.serialize(trailer));
 }
 
 void JsonVisitor::visit(Inserzione* inserzione){
-    JsonConverter converter;
+    JsonConverter converter(cinemaName);
     v_obj = (converter.serialize(inserzione));
 }
 
 void JsonVisitor::visit(Podcast* podcast){
-    JsonConverter converter;
+    JsonConverter converter(cinemaName);
     v_obj = (converter.serialize(podcast));
 }
 
 void JsonVisitor::visit(Puntata* puntata){
-    JsonConverter converter;
+    JsonConverter converter(cinemaName);
     v_obj = (converter.serialize(puntata));
 }

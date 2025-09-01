@@ -3,6 +3,7 @@
 #include "TrailerView.h"
 #include "DetailPageVisitor.h"
 #include "LibraryObserver.h"
+#include "../DataFiles/MediaManagerXml.h"
 
 void SearchPanel::updateModifierPanel(int index){
     if(stackModifiche->currentIndex()!=index){
@@ -305,12 +306,18 @@ void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
     s_manager->loadMedia(s_listaSupportoMedia, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
     for(Media* m : s_listaSupportoMedia){
         s_cinemaSelezionato->addMedia(m);
+        qDebug() << s_cinemaSelezionato->getListaMedia().size(); //stampa 0
     }
 
 
     updateFiltroTutto();
 
     emit giveCinemaInfoToIP(s_cinemaSelezionato, s_listaSupportoMedia);
+
+    /* prova funzionamento import
+    MediaManagerXml XMLmanager;
+    XMLmanager.setCurrentCinema(s_cinemaSelezionato);
+    XMLmanager.importSessionFromXml(*s_manager); */
 }
 
 void SearchPanel::addObserver(LibraryObserver* obs){

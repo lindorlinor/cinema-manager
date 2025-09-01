@@ -29,6 +29,7 @@ class CinemaSelectionPage : public QWidget
 private:
     QList<Cinema*>& sp_cinema;
     QHBoxLayout* cinemaButtonsLayout;
+    QFrame* framePrincipale;
     QVBoxLayout *frameLayout;
     void createCinemaButton(Cinema* c);
 
