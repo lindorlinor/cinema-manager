@@ -161,11 +161,6 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     stackModifiche->addWidget(widgetDestra); // 0
     previousIndex=0;
     
-    
-    //pannello per la libreria
-    // stackModifiche->setCurrentIndex(0);
-    
-    
     //pannello di aggiunta media
     InsertMedia* nuovoMedia = new InsertMedia(this);
     stackModifiche->addWidget(nuovoMedia); // 1
@@ -209,6 +204,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     
     
     //style
+    latoDestra->setContentsMargins(60,0,0,0);
     attivita->setView(new QListView(attivita));
     attivita->view()->setFrameShape(QFrame::NoFrame);
     attivita->view()->setAttribute(Qt::WA_Hover, true);
@@ -225,8 +221,8 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     ordinamento->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     filtri->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     vista->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    cerca->setContentsMargins(50, 10, 100, 0);
-    barraFiltri->setContentsMargins(50, 10, 50, 0);
+    cerca->setContentsMargins(0, 10, 100, 0);
+    barraFiltri->setContentsMargins(0, 10, 50, 0);
     filtri->setCursor(Qt::PointingHandCursor);
     vista->setCursor(Qt::PointingHandCursor);
     widgetSelezioneFiltri->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -310,6 +306,7 @@ void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
     for(Media* m : s_listaSupportoMedia){
         s_cinemaSelezionato->addMedia(m);
     }
+
 
     updateFiltroTutto();
 

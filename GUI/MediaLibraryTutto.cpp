@@ -17,6 +17,8 @@ MediaLibraryTutto::MediaLibraryTutto(QWidget* parent):QWidget(parent){
     setLayout(mainLayout);
 
     //style
+    mainLayout->setAlignment(Qt::AlignTop);
+    titoloPagina->setStyleSheet("color: #fed36a; font-size: 20pt; font-weight: bold;");
     scrollArea->setStyleSheet(
                                 "QScrollArea QWidget{"
                                     "border-radius: 10px;"
@@ -77,6 +79,8 @@ void MediaLibraryTutto::update(int comboAttivita, int comboOrdinamento, const QS
     
             connect(scroll, &ScrollListWidget::requestMediaView, this, &MediaLibraryTutto::reciveRequestMediaView);
         }
+
+        titolo->setStyleSheet("color: #fed36a; font-size: 18pt; font-weight: bold;");
 
     }
 

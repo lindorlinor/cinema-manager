@@ -44,7 +44,9 @@ void UpdateMediaLibrary::update(int comboAttivita, int comboOrdinamento, const Q
             if(media != nullptr){
                 layoutContainer->addWidget(media);
                 media->setCursor(Qt::PointingHandCursor);
-                media->setFixedSize(240,300);
+                media->setMinimumSize(190,300);
+                media->setMaximumSize(430,300);
+                media->editImageScale(430,250);
                 //visitor per visualizzare la pagina con i dettagli del media
 
                 connect(media, &MediaFrame::selected, this, [this, m](){

@@ -12,6 +12,9 @@ MediaLibraryGenerale::MediaLibraryGenerale(const QString& filtroBottone, QWidget
     mainLayout->addWidget(titolo);
     mainLayout->addWidget(container);
     setLayout(mainLayout);
+
+    //style
+    titolo->setStyleSheet("color: #fed36a; font-size: 18pt");
 }
 
 void MediaLibraryGenerale::update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList){

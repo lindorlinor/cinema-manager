@@ -56,7 +56,7 @@ void InsertMedia::addEnumList(L* base, const QString& labelText, const std::vect
 
         item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
         item->setCheckState(Qt::Unchecked);
-        item->setData(Qt::UserRole, static_cast<int>(e));
+        item->setData(Qt::UserRole, QString::fromUtf8(str));
     }
 
     addInput(label, base, listWidget);
@@ -79,7 +79,8 @@ void InsertMedia::addEnumList(L* base, const QString& labelText, const std::vect
                                 "border: 1px solid #04303b;"
                                 "border-radius: 5px; }"
 
-                                "QScrollBar::handle:vertical {background: #285965;"       
+                                "QScrollBar::handle:vertical {background: #285965;"   
+                                "border-radius: 5px;"    
                                 "min-height: 20px;"
                                 "border-radius: 3px;}"
 

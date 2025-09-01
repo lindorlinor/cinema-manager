@@ -18,6 +18,7 @@ class MediaFrame: public QFrame{
     QString titoloMedia;
     QString autoreMedia;
     QLabel* imgLabel;
+    QLabel* titoloLabel;
     QPixmap pix;
 
     public:
@@ -26,6 +27,7 @@ class MediaFrame: public QFrame{
     QString getAutore() const;
     void mousePressEvent(QMouseEvent* event)override;
     void setSelected(bool selected);
+    void editImageScale(int w, int h);
 
     signals:
     void selected(MediaFrame* frame);
