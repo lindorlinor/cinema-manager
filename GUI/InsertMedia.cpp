@@ -845,7 +845,7 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
     //trailer
     else if(stackTipologia->currentIndex()==1){
 
-        Media* filmAssociato = findMediaReference(titoloMedia->text(),autoreMedia->text(), "trailer");
+        Media* filmAssociato = findMediaReference(titoloFilmRiferimento, autoreFilmRiferimento, "trailer");
 
         if(!filmAssociato){
             qDebug()<<"Errore!, nessun Film collegato al Trailer "<<titoloMedia->text();
@@ -891,7 +891,7 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
     //puntata
     else if(stackTipologia->currentIndex()==3){
 
-        Media* PodcastAssociato = findMediaReference(titoloMedia->text(),autoreMedia->text(),"podcast");
+        Media* PodcastAssociato = findMediaReference(titoloPodcastRiferimento,autorePodcastRiferimento,"podcast");
 
         if(!PodcastAssociato){
             qDebug()<<"Errore!, nessun Podcast collegato al Trailer "<<titoloMedia->text();
@@ -1139,7 +1139,7 @@ void InsertMedia::addOspite(Puntata* puntata){
 
 Media* InsertMedia::findMediaReference(const QString& titolo, const QString& autore, const QString& tipo){
     for(Media* m : im_mediaList){
-        if(QString::fromStdString(m->getAutore()) == autore && QString::fromStdString(m->getAutore()) == titolo)
+        if(QString::fromStdString(m->getAutore()) == autore && QString::fromStdString(m->getTitolo()) == titolo)
             if( (tipo =="trailer" && dynamic_cast<Film*>(m) ) || (tipo == "puntata" && dynamic_cast<Podcast*>(m)))
                 return m;
     }

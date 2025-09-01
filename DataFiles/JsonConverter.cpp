@@ -342,7 +342,7 @@ year_month_day JsonConverter::convertDate(const QString& data){
 Media* JsonConverter::findMediaReference(const QString& titolo, const QString& autore, const QString& tipo, QList<Media*>c_mediaList){
     for(Media* m : c_mediaList){
         if(QString::fromStdString(m->getAutore()) == autore && QString::fromStdString(m->getTitolo()) == titolo)
-            if( (tipo =="media" && dynamic_cast<Film*>(m) ) || (tipo == "media" && dynamic_cast<Podcast*>(m)))
+            if( (tipo =="trailer" && dynamic_cast<Film*>(m) ) || (tipo == "puntata" && dynamic_cast<Podcast*>(m)))
                 return m;
     }
     return nullptr; //non ha trovato niente
