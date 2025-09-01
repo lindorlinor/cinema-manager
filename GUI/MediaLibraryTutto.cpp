@@ -6,13 +6,13 @@ MediaLibraryTutto::MediaLibraryTutto(QWidget* parent):QWidget(parent){
     QVBoxLayout* mainLayout = new QVBoxLayout;
     layoutContainer = new QVBoxLayout(container); 
     container->setLayout(layoutContainer);
-    QLabel* titolo = new QLabel("Tutto", this);
+    QLabel* titoloPagina = new QLabel("Tutto", this);
 
     scrollArea = new QScrollArea(this);
     scrollArea->setWidgetResizable(true);
     scrollArea->setWidget(container); 
 
-    mainLayout->addWidget(titolo);
+    mainLayout->addWidget(titoloPagina);
     mainLayout->addWidget(scrollArea);
     setLayout(mainLayout);
 
@@ -61,21 +61,23 @@ void MediaLibraryTutto::update(int comboAttivita, int comboOrdinamento, const QS
     }
 
     for(QString f : allFiltri){
-        QWidget* salaWidget = new QWidget(this);
+        QWidget* salaWidget = new QWidget(container);
         QVBoxLayout* salaV = new QVBoxLayout(salaWidget);
     
         QLabel* titolo = new QLabel(f + " in Sala", salaWidget);
         ScrollListWidget* scroll = new ScrollListWidget(salaWidget); 
         scroll->update(comboAttivita, comboOrdinamento, f, ricerca, mediaList);
         scroll->setFixedHeight(330);
+        if (scroll->getNumeroWidgetLayout()){
+            salaV->addWidget(titolo);
+            salaV->addWidget(scroll);
+            salaWidget->setLayout(salaV);
+    
+            layoutContainer->addWidget(salaWidget);
+    
+            connect(scroll, &ScrollListWidget::requestMediaView, this, &MediaLibraryTutto::reciveRequestMediaView);
+        }
 
-        salaV->addWidget(titolo);
-        salaV->addWidget(scroll);
-        salaWidget->setLayout(salaV);
-
-        layoutContainer->addWidget(salaWidget);
-
-        connect(scroll, &ScrollListWidget::requestMediaViewfromScoll, this, &MediaLibraryTutto::reciveRequestMediaView);
     }
 
 }

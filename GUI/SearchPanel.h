@@ -34,7 +34,7 @@ class SearchPanel:public QWidget{
     CinemaRepositoryJson* s_manager;
     /* MediaManagerXml* s_xmlManager; */
     vector<LibraryObserver*> s_libraryObservers;
-    QList<Media*> s_listaSUpportoMedia;
+    QList<Media*> s_listaSupportoMedia;
 
     MediaLibraryGenerale* libreriaMediaGenerale;
     MediaLibraryTutto* libreriaMediaTutto;

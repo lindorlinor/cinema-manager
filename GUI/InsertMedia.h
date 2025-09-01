@@ -67,8 +67,6 @@ class InsertMedia:public QWidget{
     void addTipologiaPuntate(QWidget* TipoPuntata);
 
     //variabili necessarie per raccogliere i dati di input
-    QString copertinaCinema; 
-    QString nomeCinema; 
     QLineEdit* titoloMedia;
     QLineEdit* autoreMedia;
     ListPersone* attoriFilm;

@@ -165,7 +165,7 @@ QDoubleSpinBox* InsertMedia::addDoubleSpin(const QString& testo, double min, dou
 template<class L>
 void InsertMedia::addReference(const QString& testo, const QString& tipo, L* ly, SelectMediaReference*& reference){
     QLabel* label = new QLabel(testo,this);
-    reference = new SelectMediaReference(tipo, &nomeCinema, this);
+    reference = new SelectMediaReference(tipo, this);
 
     addInput(label, ly, reference);
     
@@ -426,7 +426,6 @@ void InsertMedia::addTipologiaTrailer(QWidget* TipoTrailer){        //tipologia 
 
     numeroProiezioniTrailer = addSpin("Numero Proiezioni Giornaliere", 0, 20, 0, TrailerH);
     addReference("Film", "film", TrailerH, referenceTrailer);
-
     TipoTrailer->setLayout(TrailerH);
 
     //style
@@ -542,7 +541,7 @@ void InsertMedia::addPagina(QVBoxLayout* mainLayout){
     connect(framePath, &InsertImageFrame::removeImage, this, &InsertMedia::removeImage);
     
     //style
-    widgetPagina2->setContentsMargins(0,0,30,0);
+    widgetPagina2->setContentsMargins(0,14,30,67);
     widgetPagina1->setObjectName("anteprima");
     widgetPagina1->setMaximumWidth(370);
     paginaV2->setAlignment(Qt::AlignCenter);
@@ -615,8 +614,8 @@ void InsertMedia::annullaSalva(QVBoxLayout* mainLayout){
         this->salvaMedia();
         this->resetAllInput();
         this->tornaAllaLibreria();
-        if(referencePuntate)referencePuntate->reloadMedia();
-        if(referenceTrailer)referenceTrailer->reloadMedia();
+        if(referencePuntate)referencePuntate->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
+        if(referenceTrailer)referenceTrailer->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
     });
 
     //style
@@ -1083,8 +1082,8 @@ void InsertMedia::resetAllInput(){
 void InsertMedia::getCinemaInfo(Cinema* cinemaSel, QList<Media*>listMedia){
     im_cinemaSelezionato = cinemaSel;
     im_mediaList = listMedia;
-    if(referenceTrailer) referenceTrailer->reloadMedia();
-    if(referencePuntate) referencePuntate->reloadMedia();
+    if(referenceTrailer) referenceTrailer->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
+    if(referencePuntate) referencePuntate->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
 }
 
 

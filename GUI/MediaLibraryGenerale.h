@@ -1,33 +1,22 @@
 #ifndef MEDIALIBRARYGENERALE_H
 #define MEDIALIBRARYGENERALE_H
 
-#include <QWidget>
 #include <QList>
 #include <QHBoxLayout>
-#include <QVBoxLayout>
-#include "../Media.h"
-#include "MediaFrame.h"
-#include "../Media.h"
-#include "FlowLayout.h"
-#include "FrameVisitor.h"
 #include "LibraryObserver.h"
-#include "MediaView.h"
-#include "../DetailPageVisitor.h"
+#include "UpdateMediaLibrary.h"
 
-class MediaLibraryGenerale: public QWidget, public LibraryObserver{
+
+class MediaLibraryGenerale: public UpdateMediaLibrary, public LibraryObserver{
     Q_OBJECT
     private:
 
+    const QString filtro;
     QLabel* titolo;
-    FlowLayout* flow;
-    QWidget* container;
     
     public:
     explicit MediaLibraryGenerale(const QString& filtro, QWidget* parent = nullptr);
-    virtual void update(int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca, QList<Media*>& mediaList);
-
-    signals: 
-    void requestMediaView(MediaView& widget);
+    virtual void update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList) override;
 
 };
 

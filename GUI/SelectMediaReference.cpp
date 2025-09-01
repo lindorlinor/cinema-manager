@@ -1,8 +1,8 @@
 #include "SelectMediaReference.h"
 #include "MediaFrame.h"
 
-SelectMediaReference::SelectMediaReference(const QString& tipo, const QString* cinema, QWidget *parent)
-    : QWidget(parent), tipoMedia(tipo),  cinemaNomeRiferimento(cinema), currentSelected(nullptr)
+SelectMediaReference::SelectMediaReference(const QString& tipo, QWidget *parent)
+    : QWidget(parent), tipoMedia(tipo), currentSelected(nullptr)
 {
     // Container interno per gli item
     container = new QWidget(this);
@@ -17,8 +17,6 @@ SelectMediaReference::SelectMediaReference(const QString& tipo, const QString* c
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(scrollArea);
     setLayout(mainLayout);
-
-    reloadMedia();
 
     //style
     layoutContainer->addSpacerItem(new QSpacerItem(20, 400, QSizePolicy::Minimum, QSizePolicy::Expanding));
@@ -53,7 +51,7 @@ SelectMediaReference::SelectMediaReference(const QString& tipo, const QString* c
     mainLayout->setAlignment(Qt::AlignRight);
 }
 
-void SelectMediaReference::reloadMedia() {
+void SelectMediaReference::reloadMedia(const QString& nomeCinema) {
     // Pulisce i widget esistenti
     QLayoutItem* child;
     while ((child = layoutContainer->takeAt(0)) != nullptr) {
@@ -77,13 +75,13 @@ void SelectMediaReference::reloadMedia() {
         QJsonObject obj = m.toObject();
         QString tip = obj["tipologia"].toString();
         QString cinema = obj["nomeCinema"].toString();
-        if (tip == tipoMedia && cinema == *cinemaNomeRiferimento){
+        if (tip == tipoMedia && cinema == nomeCinema){
             QString titolo = obj["titolo"].toString();
             QString autore = obj["autore"].toString();
             QString imagePath = obj["path"].toString();
     
             MediaFrame* mediaframe = new MediaFrame(titolo, imagePath, autore, container);
-            mediaframe->setMinimumSize(140,200);
+            mediaframe->setFixedSize(200,250);
             layoutContainer->addWidget(mediaframe);
 
             mediaframe->setCursor(Qt::PointingHandCursor);

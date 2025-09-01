@@ -66,7 +66,6 @@ void CinemaRepositoryJson::saveMediaInJson(Media* c_media, const QString& nomeCi
     if (!c_media) return;
 
     // carico il JSON esistente
-    qDebug()<<"gli passo media.json, che vuoi";
     QJsonDocument doc = loadJsonFile("media.json");
     QJsonArray array;
 
