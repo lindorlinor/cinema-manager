@@ -212,11 +212,11 @@ void XmlVisitor::visit(Puntata* puntata){
     }
 
     QDomElement tPodElem = doc->createElement("TitoloPodcastAssociato");
-    tPodElem.appendChild(doc->createTextNode(QString::fromStdString(puntata->getPodcast()->getTitolo())));
+    tPodElem.appendChild(doc->createTextNode(QString::fromStdString((puntata->getPodcast())->getTitolo())));
     puntElem.appendChild(tPodElem);
 
     QDomElement aPodElem = doc->createElement("AutorePodcastAssociato");
-    aPodElem.appendChild(doc->createTextNode(QString::fromStdString(puntata->getPodcast()->getAutore())));
+    aPodElem.appendChild(doc->createTextNode(QString::fromStdString((puntata->getPodcast())->getAutore())));
     puntElem.appendChild(aPodElem);
 
     QDomElement nPubbElem = doc->createElement("NPubblicita");
@@ -305,12 +305,15 @@ Trailer* XmlVisitor::fromXmlTrailerElement(const QDomElement& elem,list<Media*> 
         titoloFilmA=filmElem.text().toStdString();
         autoreFilmA=autoreElem.text().toStdString();
     }
-    // qDebug() <<mediaList.size();
+    Film* filmA = findFilmInList(mediaList,titoloFilmA,autoreFilmA);
+    if(filmA){
+        Trailer* media= new Trailer(titolo, descrizione,dI,dF,durata,formato,ris,nProiezioniGiornaliere,filmA,autore,path);
+        populateCommonFields(elem,media);
+        return media;
+    }
+        
     // qDebug() << QString::fromStdString(titoloFilmA) << QString::fromStdString(autoreFilmA) << QString::fromStdString( descrizione )<<  QString::fromStdString(dateToString(dI));
-    Trailer* media= new Trailer(titolo, descrizione,dI,dF,durata,formato,ris,nProiezioniGiornaliere,findFilmInList(mediaList,titoloFilmA,autoreFilmA),autore,path);
-    populateCommonFields(elem,media);
-    // qDebug() << QString::fromStdString(titoloFilmA) << QString::fromStdString(autoreFilmA) << QString::fromStdString( descrizione )<<  QString::fromStdString(dateToString(dI));
-    return media;
+    return nullptr;
 }
 
 Inserzione* XmlVisitor::fromXmlInserzioneElement(const QDomElement& elem) {
@@ -381,11 +384,7 @@ Podcast* XmlVisitor::fromXmlPodcastElement(const QDomElement& elem) {
     if(!conduttoreElem.isNull()) {
         conduttore = conduttoreElem.text().toStdString();
     }
-
     Podcast* media = new Podcast(titolo, descrizione,formato,ris,autore,path,conduttore);
-    populateCommonFields(elem, media);
-
-
     return media;
 }
 
@@ -421,7 +420,6 @@ Puntata* XmlVisitor::fromXmlPuntataElement(const QDomElement& elem,list<Media*> 
     for(QDomElement o = ospitiElem.firstChildElement("Ospite"); !o.isNull(); o = o.nextSiblingElement("Ospite")) {
        media->aggiungiOspite(o.text().toStdString());
     }
-
     return media;
 }
 

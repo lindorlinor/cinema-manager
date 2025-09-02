@@ -61,35 +61,66 @@
         <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
         <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
     </Trailer>
-    <Film>
-        <Titolo>titolo</Titolo>
-        <Autore>Autore</Autore>
-        <Descrizione>asdad</Descrizione>
-        <DurataMinuti>7</DurataMinuti>
+    <Podcast>
+        <Titolo>Storie del cinema</Titolo>
+        <Autore>Cinema Milano</Autore>
+        <Descrizione>Il podcast che racconta il mondo del cinema fino ai giorni nostri. Ogni mercoledì con Lucia Dalla Monta' solo nei canali del cinema</Descrizione>
+        <DurataMinuti>0</DurataMinuti>
         <Formato>MP4</Formato>
-        <Risoluzione>SD 480p</Risoluzione>
-        <Path>:/images/coverCinema.png</Path>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/.png</Path>
+        <DataInizioRilascio></DataInizioRilascio>
+        <DataFineRilascio></DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <Conduttore>Lucia Dalla Monta</Conduttore>
+    </Podcast>
+    <Puntata>
+        <Titolo>La nascita del cinema</Titolo>
+        <Autore>Cinema Milano</Autore>
+        <Descrizione>Vi siete mai chiesti come il cinema è arrivato a quello che è oggi? Oggi lo scopriamo in questa nuova puntata condotta da Lucia Dalla Monta</Descrizione>
+        <DurataMinuti>32</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/image17.png</Path>
         <DataInizioRilascio>1/9/2025</DataInizioRilascio>
-        <DataFineRilascio>24/9/2025</DataFineRilascio>
-        <LingueDisponibili>
-            <Lingua>Inglese</Lingua>
-            <Lingua>Francese</Lingua>
-            <Lingua>Italiano</Lingua>
-        </LingueDisponibili>
-        <SottotitoliDisponibili>
-            <Lingua>Francese</Lingua>
-            <Lingua>Italiano</Lingua>
-            <Lingua>Inglese</Lingua>
-        </SottotitoliDisponibili>
-        <Generi>
-            <Genere>Nessuno</Genere>
-        </Generi>
-        <AttoriPrincipali>
-            <Attore>asdasd</Attore>
-        </AttoriPrincipali>
-        <Target>TUTTI</Target>
-        <CostoBiglietto>8</CostoBiglietto>
-        <CasaDiProduzione>pinco pallo</CasaDiProduzione>
-        <NPostCredit>2</NPostCredit>
-    </Film>
+        <DataFineRilascio>15/9/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <TitoloPodcastAssociato>Storie del cinema</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>Cinema Milano</AutorePodcastAssociato>
+        <NPubblicita>2</NPubblicita>
+    </Puntata>
+    <Puntata>
+        <Titolo>Il dopoguerra e il neorealismo</Titolo>
+        <Autore>Cinema Milano</Autore>
+        <Descrizione>Analizziamo l'esplosione del neorealismo italiano, dai registi ai film che hanno segnato il dopoguerra.</Descrizione>
+        <DurataMinuti>27</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/image17.png</Path>
+        <DataInizioRilascio>1/11/2025</DataInizioRilascio>
+        <DataFineRilascio>15/11/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <TitoloPodcastAssociato>Storie del cinema</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>Cinema Milano</AutorePodcastAssociato>
+        <NPubblicita>1</NPubblicita>
+    </Puntata>
+    <Puntata>
+        <Titolo>Registi contemporanei e nuovi linguaggi</Titolo>
+        <Autore>Cinema Milano</Autore>
+        <Descrizione>Interviste e riflessioni su registi emergenti e sulle tecniche narrative del cinema moderno.</Descrizione>
+        <DurataMinuti>33</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/image17.png</Path>
+        <DataInizioRilascio>16/11/2025</DataInizioRilascio>
+        <DataFineRilascio>30/11/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <TitoloPodcastAssociato>Storie del cinema</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>Cinema Milano</AutorePodcastAssociato>
+        <NPubblicita>2</NPubblicita>
+    </Puntata>
 </MediaList>

@@ -21,16 +21,19 @@ void CinemaRepositoryJson::loadMedia(QList<Media*>& c_mediaList, const QString& 
     if (!doc.isArray()) return;
     
     for (const auto &val : doc.array()) {
-        
         QJsonObject obj = val.toObject();
         if (obj.contains("tipologia") && obj["nomeCinema"] == nomeCinema) {
-
-
             if(obj["tipologia"] == "film") c_mediaList.append(converter->deserializeFilm(obj));
-            else if(obj["tipologia"] == "trailer") c_mediaList.append(converter->deserializeTrailer(c_mediaList, obj));
+            else if(obj["tipologia"] == "trailer"){
+                c_mediaList.append(converter->deserializeTrailer(c_mediaList, obj));
+            } 
             else if(obj["tipologia"] == "inserzione") c_mediaList.append(converter->deserializeInserzione(obj));
-            else if(obj["tipologia"] == "podcast") c_mediaList.append(converter->deserializePodcast(obj));
-            else if(obj["tipologia"] == "puntata") c_mediaList.append(converter->deserializePuntata(c_mediaList, obj));
+            else if(obj["tipologia"] == "podcast"){
+                c_mediaList.append(converter->deserializePodcast(obj));
+            } 
+            else if(obj["tipologia"] == "puntata"){
+                c_mediaList.append(converter->deserializePuntata(c_mediaList, obj));
+            }
         }
     }
     
@@ -175,6 +178,6 @@ void CinemaRepositoryJson::saveJsonFile(const QString &fileName, const QJsonDocu
 
     file.write(doc.toJson());
     file.close();
-    qDebug() << "File JSON creato o sovrascritto:" << filePath;
-    qDebug() << "Current working directory:" << QDir::currentPath();
+   /*  qDebug() << "File JSON creato o sovrascritto:" << filePath;
+    qDebug() << "Current working directory:" << QDir::currentPath(); */
 }

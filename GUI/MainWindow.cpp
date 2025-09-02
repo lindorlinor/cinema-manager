@@ -64,13 +64,14 @@ MainWindow::MainWindow(QWidget *parent)
     connect(menu, &Menu::setFullScreen, this, &MainWindow::showFullScreen);
     connect(menu, &Menu::escFullScreen, this, &MainWindow::showMaximized);
     connect(menu, &Menu::importMediaList, this, [this](){
-                                              m_xmlManager->importMediaListFromXml(*m_jsonManager);      
+                                              m_xmlManager->importMediaListFromXml(*m_jsonManager);
+                                              searchPage->updateInfoCinema(m_xmlManager->getCurrentCinema());       
                                             });
     connect(menu, &Menu::importSession, this, [this](){
                                               m_xmlManager->importSessionFromXml(*m_jsonManager);      
                                             });
     connect(menu, &Menu::exportMediaList,this, [this](){
-                                              m_xmlManager->exportMediaListToXml();      
+                                              m_xmlManager->exportMediaListToXml(); 
                                             });
     connect(menu, &Menu::exportSession, this, [this](){
                                               m_xmlManager->exportSessionToXml();      

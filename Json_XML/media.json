@@ -165,36 +165,87 @@
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },
     {
-        "attoriPrincipali": [
-            "asdasd"
-        ],
-        "autore": "Autore",
-        "casaDiProduzione": "pinco pallo",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-09-24",
-        "dataInizioRilascio": "2025-09-01",
-        "descrizione": "asdad",
-        "durataMinuti": 7,
+        "autore": "Cinema Milano",
+        "conduttore": "Lucia Dalla Monta",
+        "dataFineRilascio": "2025-09-02",
+        "dataInizioRilascio": "2025-09-02",
+        "descrizione": "Il podcast che racconta il mondo del cinema fino ai giorni nostri. Ogni mercoledì con Lucia Dalla Monta' solo nei canali del cinema",
+        "durataMinuti": 0,
         "formato": "MP4",
-        "generi": [
-            "Nessuno"
-        ],
         "lingueDisponibili": [
-            "Inglese",
-            "Francese",
-            "Italiano"
         ],
-        "nPostCredit": 2,
         "nomeCinema": "Cinema Aurora",
-        "path": ":/images/coverCinema.png",
-        "risoluzione": "SD 480p",
+        "path": ":/images/image17.png",
+        "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
-            "Francese",
-            "Italiano",
-            "Inglese"
         ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "titolo"
+        "tipologia": "podcast",
+        "titolo": "Storie del cinema"
+    },
+    {
+        "autore": "Cinema Milano",
+        "autorePodcastAssociato": "Cinema Milano",
+        "dataFineRilascio": "2025-09-15",
+        "dataInizioRilascio": "2025-09-01",
+        "descrizione": "Vi siete mai chiesti come il cinema è arrivato a quello che è oggi? Oggi lo scopriamo in questa nuova puntata condotta da Lucia Dalla Monta",
+        "durataMinuti": 32,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 2,
+        "ospiti": [
+        ],
+        "path": ":/images/image17.png",
+        "podcastAssociato": "Storie del cinema",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "La nascita del cinema"
+    },
+    {
+        "autore": "Cinema Milano",
+        "autorePodcastAssociato": "Cinema Milano",
+        "dataFineRilascio": "2025-11-15",
+        "dataInizioRilascio": "2025-11-01",
+        "descrizione": "Analizziamo l'esplosione del neorealismo italiano, dai registi ai film che hanno segnato il dopoguerra.",
+        "durataMinuti": 27,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 1,
+        "ospiti": [
+        ],
+        "path": ":/images/image17.png",
+        "podcastAssociato": "Storie del cinema",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "Il dopoguerra e il neorealismo"
+    },
+    {
+        "autore": "Cinema Milano",
+        "autorePodcastAssociato": "Cinema Milano",
+        "dataFineRilascio": "2025-11-30",
+        "dataInizioRilascio": "2025-11-16",
+        "descrizione": "Interviste e riflessioni su registi emergenti e sulle tecniche narrative del cinema moderno.",
+        "durataMinuti": 33,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 2,
+        "ospiti": [
+        ],
+        "path": ":/images/image17.png",
+        "podcastAssociato": "Storie del cinema",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "Registi contemporanei e nuovi linguaggi"
     }
 ]

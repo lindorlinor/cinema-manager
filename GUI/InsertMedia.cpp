@@ -837,9 +837,9 @@ void InsertMedia::salvaMedia(){                         //funzione per salvare g
         addAttore(film);
 
         im_cinemaSelezionato->addMedia(film);
-        qDebug()<<im_cinemaSelezionato->getListaMedia().size();
+        // qDebug()<<im_cinemaSelezionato->getListaMedia().size();
         
-        qDebug()<<QString::fromStdString(im_cinemaSelezionato->getNomeCinema());
+        // qDebug()<<QString::fromStdString(im_cinemaSelezionato->getNomeCinema());
         cinemaManager->saveMediaInJson(film, QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
     }
 
