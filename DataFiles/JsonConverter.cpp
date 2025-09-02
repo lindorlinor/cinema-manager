@@ -247,7 +247,7 @@ Podcast* JsonConverter::deserializePodcast(QJsonObject obj) {
 }
 
 Puntata* JsonConverter::deserializePuntata(QList<Media*> c_mediaList, QJsonObject obj) {
-    Media* podcastAssociato = findMediaReference(obj["podcastAssociato"].toString(), obj["autorePodcastAssociato"].toString(), "podcast", c_mediaList);
+    Media* podcastAssociato = findMediaReference(obj["podcastAssociato"].toString(), obj["autorePodcastAssociato"].toString(), "puntata", c_mediaList);
     if(!podcastAssociato){
         qDebug()<<"Errore!, nessun Podcast collegato alla Puntata "<<obj["titolo"].toString();
         return nullptr;
@@ -286,7 +286,7 @@ void JsonConverter::addLingue(Media* media, QJsonObject obj){
     QJsonArray lingue = obj["lingueDisponibili"].toArray();
 
     for (const QJsonValue& value : lingue) {
-./        Lingua l = toLingua(value.toString().toStdString());
+        Lingua l = toLingua(value.toString().toStdString());
         media->aggiungiLingua(l);
     }
 }

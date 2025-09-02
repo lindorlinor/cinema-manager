@@ -44,8 +44,7 @@ class CinemaRepositoryJson{
     void loadMedia(QList<Media*>& c_mediaList, const QString& nomeCinema);
 
     void updateJson(QList<Cinema*> c_cinemaList);
-
-    void deleteCinema(QList<Cinema*>& c_cinemaList, Cinema* cinema);
+    void updateCinemaInJson(const QString& nomeCinemaVecchio, Cinema* cinemaAggiornato);
 };
 
 

@@ -30,6 +30,8 @@ class Menu: public QWidget{
     void setNormalRequest();
     void setMaximizeRequest();
     void closeRequested();
+    void editCinema();
+    void deleteCinema();
 
 };
 

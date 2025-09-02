@@ -9,6 +9,7 @@
 #include "../Cinema.h"
 #include "Menu.h"
 #include "DataFiles/MediaManagerXml.h" 
+#include "DataFiles/CinemaRepositoryJson.h" 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -17,6 +18,7 @@ private:
     CinemaSelectionPage * cinemaPage;
     InsertCinemaPage * insertPage;
     MediaManagerXml* m_xmlManager;
+    CinemaRepositoryJson* m_JsonManager;
     SearchPanel * searchPage;
     QStackedWidget *stackedWidget;
     
@@ -27,6 +29,7 @@ public slots:
     void showInsertCinemaPage();
     void showSelectedCinemaPage(const Cinema* cinema);
     void showCinemaSelectionPage();
+    void deleteCinemaFromList(Cinema* cinema);
 };
 
 #endif // MAINWINDOW_H

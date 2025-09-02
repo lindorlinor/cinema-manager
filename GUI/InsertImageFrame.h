@@ -27,6 +27,8 @@ public:
     void setText(const QString &text);
     void reset();
     void insertImage(const QString &text);
+
+    //nota, mettere chooseImage negli slot?
 }; 
 
 #endif // INSERTIMAGEFRAME_H

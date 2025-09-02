@@ -22,6 +22,7 @@
 #include "../DataFiles/MediaManagerXml.h"
 #include "MediaLibraryTutto.h"
 #include "MediaLibraryGenerale.h"
+#include "CinemaModifier.h"
 
 class LibraryObserver;
 
@@ -149,6 +150,8 @@ class SearchPanel:public QWidget{
     void resetSearchPanel();    //resetta tutte le impostazioni di searchPanel
     void showMediaView(MediaView& detailPage);
     void removeMediaView();
+    void acceptEditCinema();
+    void acceptDeleteCinema();
     
     
     signals:
@@ -156,6 +159,7 @@ class SearchPanel:public QWidget{
     void giveCinemaInfoToIP(Cinema* cinemaSel, QList<Media*> mediaList);
     void selectedFilterButton(const QString& filtro);
     void escSearchPanel();
+    void deleteCinemaInSearchPanel(Cinema* s_cinemaSelezionato);
 };
 
 #endif //SEARCHPANEL_H

@@ -27,10 +27,16 @@ void CinemaRepositoryJson::loadMedia(QList<Media*>& c_mediaList, const QString& 
 
 
             if(obj["tipologia"] == "film") c_mediaList.append(converter->deserializeFilm(obj));
-            else if(obj["tipologia"] == "trailer") c_mediaList.append(converter->deserializeTrailer(c_mediaList, obj));
+            else if(obj["tipologia"] == "trailer"){
+                Trailer* trailer = converter->deserializeTrailer(c_mediaList, obj);
+                if(trailer) c_mediaList.append(trailer);
+            }
             else if(obj["tipologia"] == "inserzione") c_mediaList.append(converter->deserializeInserzione(obj));
             else if(obj["tipologia"] == "podcast") c_mediaList.append(converter->deserializePodcast(obj));
-            else if(obj["tipologia"] == "puntata") c_mediaList.append(converter->deserializePuntata(c_mediaList, obj));
+            else if(obj["tipologia"] == "puntata"){
+                Puntata* puntata = converter->deserializePuntata(c_mediaList, obj); 
+                if(puntata) c_mediaList.append(puntata);
+            }
         }
     }
     
@@ -130,18 +136,28 @@ void CinemaRepositoryJson::updateJson(QList<Cinema*> c_cinemaList){
     saveJsonFile("media.json", QJsonDocument(array));
 }
 
-void CinemaRepositoryJson::deleteCinema(QList<Cinema*>& c_cinemaList, Cinema* cinema){
-    if(!cinema) return;
+void CinemaRepositoryJson::updateCinemaInJson(const QString& nomeCinemaVecchio, Cinema* cinemaAggiornato){
 
-    //una volta che cancello il cinema con delete, tutti i suoi media vengono distrutti, questo è il comportamento del distruttore
-    //di Cinema
-    c_cinemaList.removeOne(cinema);
-    delete cinema;
+    QJsonDocument doc = loadJsonFile("media.json");
+    QJsonArray array;
 
-    updateJson(c_cinemaList);
-    
+    if (doc.isArray()) {
+        array = doc.array();
+    }
+
+    for (int i = 0; i < array.size(); ++i) {
+       QJsonObject obj = array[i].toObject();
+        if (obj["nomeCinema"].toString() == nomeCinemaVecchio) { 
+            obj["nomeCinema"] =  QString::fromStdString(cinemaAggiornato->getNomeCinema());
+
+            if(obj.contains("copertinaCinema")) obj["copertinaCinema"] =  QString::fromStdString(cinemaAggiornato->getCopertinaCinema());
+        }
+        array[i] = obj;
+    }
+
+    //salvo il JSON aggiornato
+    saveJsonFile("media.json", QJsonDocument(array));
 }
-
 
 //HELPER
 

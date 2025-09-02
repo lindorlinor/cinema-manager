@@ -28,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     setCentralWidget(central);
     resize(800, 500);
-
    
     connect(cinemaPage,&CinemaSelectionPage::insertCinema,this,&MainWindow::showInsertCinemaPage);
     connect(cinemaPage,&CinemaSelectionPage::selectedCinema,this,&MainWindow::showSelectedCinemaPage);
@@ -68,13 +67,12 @@ MainWindow::MainWindow(QWidget *parent)
                                               m_xmlManager->importMediaListFromXml();      
                                             }); */
     /* connect(menu, &Menu::importSession, this, &MainWindow::showMaximized); */
-    connect(menu, &Menu::exportMediaList,this, [this](){
-                                              m_xmlManager->exportMediaListToXml();      
-                                            });
-    connect(menu, &Menu::exportSession, this, [this](){
-                                              m_xmlManager->exportSessionToXml();      
-                                            });
+    connect(menu, &Menu::exportMediaList,this, [this](){m_xmlManager->exportMediaListToXml();});
+    connect(menu, &Menu::exportSession, this, [this](){ m_xmlManager->exportSessionToXml();});
+    connect(menu, &Menu::editCinema, searchPage, &SearchPanel::acceptEditCinema);
+    connect(menu, &Menu::deleteCinema, searchPage, &SearchPanel::acceptDeleteCinema);
 
+    connect(searchPage,&SearchPanel::deleteCinemaInSearchPanel,this,&MainWindow::deleteCinemaFromList);
     connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
     connect(searchPage,&SearchPanel::escSearchPanel,searchPage,&SearchPanel::resetSearchPanel);
   
@@ -121,4 +119,11 @@ void MainWindow::showCinemaSelectionPage(){
         cinemaPage->refreshCinemaButtons();
     }
     stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::deleteCinemaFromList(Cinema* cinema){
+    if (w_cinema.removeOne(cinema)) {
+        delete cinema;
+    }
+    m_JsonManager->updateJson(w_cinema);
 }

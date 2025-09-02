@@ -343,9 +343,12 @@ void SearchPanel::preUpdate(){
 void SearchPanel::updateMediaList(){
     s_MediaListOfCinema.clear();
     
-    s_manager->loadMedia(s_MediaListOfCinema, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
-    for(Media* m : s_MediaListOfCinema){
-        s_cinemaSelezionato->addMedia(m);
+    if(s_cinemaSelezionato){
+        qDebug()<<"sto cinema è ancora qua";
+        s_manager->loadMedia(s_MediaListOfCinema, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
+        for(Media* m : s_MediaListOfCinema){
+            s_cinemaSelezionato->addMedia(m);
+        }
     }
 }
 
@@ -362,6 +365,8 @@ void SearchPanel::resetSearchPanel(){
 
     if(stackModifiche->currentIndex()==1) emit resetPages();
     stackModifiche->setCurrentIndex(0);
+
+    updateMediaList();
 
     for(Media* m : s_MediaListOfCinema){
         s_cinemaSelezionato->removeMedia(m);
@@ -382,6 +387,24 @@ void SearchPanel::removeMediaView(){
     updateModifierPanel(previousIndex);
     stackModifiche->removeWidget(detailPage);
     delete detailPage;
+}
+
+void SearchPanel::acceptEditCinema(){
+    QString nomeCinema = QString::fromStdString(s_cinemaSelezionato->getNomeCinema());
+    CinemaModifier dialog(s_cinemaSelezionato, this);
+
+    dialog.setFixedSize(850, 500);
+    dialog.exec();
+    if (dialog.exec() == QDialog::Accepted) {
+        s_manager->updateCinemaInJson(nomeCinema, s_cinemaSelezionato);
+        updateInfoCinema(s_cinemaSelezionato);
+    }
+}
+
+void SearchPanel::acceptDeleteCinema(){
+    emit deleteCinemaInSearchPanel(s_cinemaSelezionato);
+    s_cinemaSelezionato = nullptr;
+    emit escSearchPanel();
 }
 
 /* void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){

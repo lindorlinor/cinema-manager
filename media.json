@@ -1,0 +1,10 @@
+[
+    {
+        "copertinaCinema": ":/images/default.png",
+        "nomeCinema": "Cinema Aurora"
+    },
+    {
+        "copertinaCinema": ":/images/default.png",
+        "nomeCinema": "Cinema vuoto"
+    }
+]
