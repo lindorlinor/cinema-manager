@@ -30,7 +30,7 @@ public:
     virtual void visit(Podcast* podcast) override;
     virtual void visit(Puntata* puntata) override;
 
-    static Film* fromXmlFilmElement(const QDomElement& elem);
+    static Film* fromXmlFilmElement(const QDomElement& elem,unsigned int&);
     static Trailer* fromXmlTrailerElement(const QDomElement& elem,list<Media*> mediaList);
     static Inserzione* fromXmlInserzioneElement(const QDomElement& elem);
     static Podcast* fromXmlPodcastElement(const QDomElement& elem);

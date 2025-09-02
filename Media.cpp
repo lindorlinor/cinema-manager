@@ -1,19 +1,36 @@
 #include "Media.h"
+#include "EnumClasses.h"
 #include <iostream>
 #include <algorithm>
 
 Media::~Media() {}
 
-// Costruttore
-Media::Media(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
-             year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
-             const string &autore, const string &path) : m_titolo(titolo), m_descrizione(descrizione), m_dataInizioRilascio(gg_mm_aaInizioRilascio),
-                                                         m_dataFineRilascio(gg_mm_aaFineRilascio<gg_mm_aaInizioRilascio?gg_mm_aaInizioRilascio:gg_mm_aaFineRilascio), 
-                                                         m_durataMinuti(durataMinuti), m_formato(formato),
-                                                         m_risoluzione(risoluzione), m_autore(autore), m_imPath(path),
-                                                         m_dataLastViewUpdate(gg_mm_aaInizioRilascio), m_visualizzazioni(0) {
-                                                            IncrementaVisualizzazioni();
-                                                         }
+
+Media::Media(const string &titolo, const string &descrizione, 
+             year_month_day gg_mm_aaInizioRilascio,
+             year_month_day gg_mm_aaFineRilascio, 
+             unsigned int durataMinuti, 
+             Formato formato, Risoluzione risoluzione,
+             const string &autore, const string &path)
+    : m_titolo(titolo),
+      m_descrizione(descrizione),
+      m_dataInizioRilascio( gg_mm_aaInizioRilascio.ok() ? gg_mm_aaInizioRilascio : today() ),
+      m_dataFineRilascio( gg_mm_aaFineRilascio.ok() ? 
+                          (gg_mm_aaFineRilascio < (gg_mm_aaInizioRilascio.ok()?gg_mm_aaInizioRilascio:today())
+                             ? (gg_mm_aaInizioRilascio.ok()?gg_mm_aaInizioRilascio:today())
+                             : gg_mm_aaFineRilascio)
+                          : (gg_mm_aaInizioRilascio.ok()?gg_mm_aaInizioRilascio:today()) ),
+      m_durataMinuti(durataMinuti),
+      m_formato(formato),
+      m_risoluzione(risoluzione),
+      m_autore(autore),
+      m_imPath(path),
+      m_dataLastViewUpdate( gg_mm_aaInizioRilascio.ok() ? gg_mm_aaInizioRilascio : today() ),
+      m_visualizzazioni(0)
+{
+    IncrementaVisualizzazioni();
+}
+
 
 bool Media::FuoriProduzione() const
 {

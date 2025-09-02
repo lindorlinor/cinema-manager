@@ -5,6 +5,7 @@
 #include <iostream>
 #include <format>
 #include <QDebug>
+#include <qmessagebox.h>
 
 XmlVisitor::XmlVisitor(QDomDocument *d):doc(d){}
 QDomElement XmlVisitor::getXmlElement() const{
@@ -243,7 +244,7 @@ void XmlVisitor::populateCommonFields(const QDomElement& elem, Media* media){
 }
 
 
-Film* XmlVisitor::fromXmlFilmElement(const QDomElement& elem) {
+Film* XmlVisitor::fromXmlFilmElement(const QDomElement& elem,unsigned int& errors) {
     std::string titolo = elem.firstChildElement("Titolo").text().toStdString();
     std::string autore = elem.firstChildElement("Autore").text().toStdString();
     std::string descrizione = elem.firstChildElement("Descrizione").text().toStdString();
@@ -252,9 +253,17 @@ Film* XmlVisitor::fromXmlFilmElement(const QDomElement& elem) {
     Risoluzione ris = toRisoluzione(elem.firstChildElement("Risoluzione").text().toStdString());
     std::string path = elem.firstChildElement("Path").text().toStdString();
 
-    year_month_day dI= stringToDate(elem.firstChildElement("DataInizioRilascio").text().toStdString());
-    year_month_day dF =stringToDate(elem.firstChildElement("DataFineRilascio").text().toStdString());
-    
+    year_month_day dI;
+    year_month_day dF;
+    try {
+        dI = stringToDate(elem.firstChildElement("DataInizioRilascio").text().toStdString());
+        dF = stringToDate(elem.firstChildElement("DataFineRilascio").text().toStdString());
+    } catch(const std::exception& e) {
+        errors++;
+        QString msg = QString("Errore parsing della data: %1").arg(e.what());
+        QMessageBox::warning(nullptr, "Errore importazione", msg);
+    }   
+  
 
     Classificazione target = toClassificazione(elem.firstChildElement("Target").text().toStdString());
     double costoBiglietto =elem.firstChildElement("CostoBiglietto").text().toDouble();
