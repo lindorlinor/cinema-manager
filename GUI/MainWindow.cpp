@@ -83,7 +83,16 @@ MainWindow::MainWindow(QWidget *parent)
     connect(searchPage,&SearchPanel::deleteCinemaInSearchPanel,this,&MainWindow::deleteCinemaFromList);
     connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
     connect(searchPage,&SearchPanel::escSearchPanel,searchPage,&SearchPanel::resetSearchPanel);
-  
+    connect(searchPage, &SearchPanel::updateJson,this,[this](){
+        /* debug perchè non capivo perchè non si aggiornasse nel json ma il metodo non aggiorna il json veramente ciao
+        qDebug() << "aggiorna il json perchè ho chiamato la funzione";
+        qDebug() << QString::fromStdString(w_cinema[2]->getNomeCinema());
+        qDebug() << w_cinema[2]->getListaMedia().size();
+        for (Media* media : w_cinema[2]->getListaMedia()) {
+            qDebug() << QString::fromStdString(media->getTitolo()) << " " << QString::fromStdString(dateToString(media->getDataFineRilascio()));
+        } */
+        m_jsonManager->updateJson(w_cinema);
+    });                                     
 
     stackedWidget->addWidget(cinemaPage);
     stackedWidget->addWidget(insertPage);

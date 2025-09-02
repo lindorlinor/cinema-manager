@@ -87,10 +87,10 @@
     {
         "autore": "Cinema Milano",
         "conduttore": "Lucia Dalla Monta",
-        "dataFineRilascio": "2025-09-02",
-        "dataInizioRilascio": "2025-09-02",
+        "dataFineRilascio": "2025-11-30",
+        "dataInizioRilascio": "2025-09-01",
         "descrizione": "Il podcast che racconta il mondo del cinema fino ai giorni nostri. Ogni mercoledì con Lucia Dalla Monta' solo nei canali del cinema",
-        "durataMinuti": 0,
+        "durataMinuti": 92,
         "formato": "MP4",
         "lingueDisponibili": [
         ],
@@ -204,7 +204,7 @@
     {
         "autore": "Studio Ghibli",
         "autoreFilmAssociato": "Hayao Miyazaki",
-        "dataFineRilascio": "2025-09-30",
+        "dataFineRilascio": "2025-09-02",
         "dataInizioRilascio": "2025-04-15",
         "descrizione": "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
         "durataMinuti": 2,
@@ -224,7 +224,7 @@
     {
         "autore": "Hayao Miyazaki",
         "autoreFilmAssociato": "Hayao Miyazaki",
-        "dataFineRilascio": "2025-09-15",
+        "dataFineRilascio": "2025-09-02",
         "dataInizioRilascio": "2025-05-01",
         "descrizione": "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
         "durataMinuti": 3,

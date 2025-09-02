@@ -228,7 +228,7 @@ void TrailerView::createScrollableSection() {
     rightLayout->addWidget(scrollTrailer);
     splitterLayout->addWidget(rightSide);
 }
-void TrailerView::createButtons() {
+void TrailerView::createButtons(){
     DetailsPageButtons * buttons = new DetailsPageButtons(trailerPtr,leftSide);
     buttons->setDeleteButtonText("Elimina trailer");
     connect(buttons,&DetailsPageButtons::extendMedia,this,

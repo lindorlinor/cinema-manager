@@ -252,7 +252,6 @@ void FilmView::createButtons(){
     DetailsPageButtons * buttons = new DetailsPageButtons(filmPtr,rightSide);
     buttons->setDeleteButtonText("Elimina film");
     connect(buttons,&DetailsPageButtons::extendMedia,this,[this](){
-        
             QMessageBox msgBox(this);
             msgBox.setWindowTitle("Conferma estensione data");
 
@@ -270,10 +269,10 @@ void FilmView::createButtons(){
 
             int ret = msgBox.exec();
             if (ret == QMessageBox::Ok) {
-                qDebug() << "Confermato";
-                endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-                "<span style='color:black;'>" + QString::fromStdString(dateToString(year_month_day(nuovaFine))) + "</span>");
+                filmPtr->estendiDataFineRilascio();
                 emit extendMediaClicked();
+                endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
+                "<span style='color:black;'>" + QString::fromStdString(dateToString(filmPtr->getDataFineRilascio())) + "</span>");
             }
         });
     

@@ -161,6 +161,7 @@ class SearchPanel:public QWidget{
     void selectedFilterButton(const QString& filtro);
     void escSearchPanel();
     void deleteCinemaInSearchPanel(Cinema* s_cinemaSelezionato);
+    void updateJson();
 };
 
 #endif //SEARCHPANEL_H

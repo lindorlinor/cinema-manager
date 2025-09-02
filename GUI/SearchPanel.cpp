@@ -4,7 +4,7 @@
 #include "DetailPageVisitor.h"
 #include "LibraryObserver.h"
 
-SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xmlManager,QWidget *parent):s_jsonManager(s_jsonManager),s_xmlManager(xmlManager),QWidget(parent),stackModifiche(new QStackedWidget(this)){
+SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xmlManager,QWidget *parent):QWidget(parent),s_jsonManager(s_jsonManager),s_xmlManager(xmlManager),stackModifiche(new QStackedWidget(this)){
     //carico tutti gli oggetti sal Json
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
@@ -378,6 +378,7 @@ void SearchPanel::showMediaView(MediaView& widget){
     stackModifiche->addWidget(detailPage); //2
     updateModifierPanel(2);
     connect(detailPage, &MediaView::returnButton, this, &SearchPanel::removeMediaView);
+    connect(detailPage, &MediaView::extendMediaClicked,this,&SearchPanel::updateJson);
 }
 
 void SearchPanel::removeMediaView(){
