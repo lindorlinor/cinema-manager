@@ -10,7 +10,9 @@
 #include <QDir>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), cinemaPage(new CinemaSelectionPage(w_cinema, this)), insertPage(new InsertCinemaPage(w_cinema, this)),m_xmlManager(new MediaManagerXml()),searchPage(new SearchPanel(m_xmlManager,this))
+    : QMainWindow(parent), cinemaPage(new CinemaSelectionPage(w_cinema, this)), insertPage(new InsertCinemaPage(w_cinema, this)),
+                                                                                m_xmlManager(new MediaManagerXml()),m_JsonManager(new CinemaRepositoryJson()),
+                                                                                searchPage(new SearchPanel(m_xmlManager,this))
 {
     setWindowFlags(Qt::Window | Qt::CustomizeWindowHint | 
                Qt::WindowMinimizeButtonHint | 

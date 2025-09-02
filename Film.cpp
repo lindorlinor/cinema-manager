@@ -1,5 +1,6 @@
 #include "Film.h"
 #include <algorithm>
+#include <QDebug>
 
 // Costruttore
 Film::Film( const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
@@ -11,12 +12,13 @@ Film::Film( const string &titolo, const string &descrizione, year_month_day gg_m
             f_costoBiglietto(costoBiglietto),f_casaDiProduzione(casaDiProduzione),
             f_target(target), f_valutazione(0){}
 
-
+//da sistemare
 Film::~Film(){
-    while (!trailers.empty()) {
-        delete trailers.back();
-        trailers.pop_back();
+    for (auto it = trailers.begin(); it!= trailers.end(); ++it) {
+        delete *it;
+        *it = nullptr;
     }
+    trailers.clear();
 }
 
 double Film::calcolaIncasso() { return getVisualizzazioni() * f_costoBiglietto; }

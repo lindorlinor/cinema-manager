@@ -214,7 +214,7 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     });
     connect(nuovoMedia, &InsertMedia::tornaAllaLibreria, this, [this](){
         updateModifierPanel(0);
-        updateMediaList();
+        updateMediaList(); //to do
         updateFiltroTutto();
     });
 
@@ -344,7 +344,6 @@ void SearchPanel::updateMediaList(){
     s_MediaListOfCinema.clear();
     
     if(s_cinemaSelezionato){
-        qDebug()<<"sto cinema è ancora qua";
         s_manager->loadMedia(s_MediaListOfCinema, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
         for(Media* m : s_MediaListOfCinema){
             s_cinemaSelezionato->addMedia(m);
@@ -394,17 +393,27 @@ void SearchPanel::acceptEditCinema(){
     CinemaModifier dialog(s_cinemaSelezionato, this);
 
     dialog.setFixedSize(850, 500);
-    dialog.exec();
-    if (dialog.exec() == QDialog::Accepted) {
+    int result = dialog.exec();
+    if (result == QDialog::Accepted) {
         s_manager->updateCinemaInJson(nomeCinema, s_cinemaSelezionato);
         updateInfoCinema(s_cinemaSelezionato);
     }
 }
 
 void SearchPanel::acceptDeleteCinema(){
-    emit deleteCinemaInSearchPanel(s_cinemaSelezionato);
-    s_cinemaSelezionato = nullptr;
-    emit escSearchPanel();
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Conferma eliminazione");
+    msgBox.setText("Sei sicuro di voler eliminare il cinema? "
+                    "Avrà l'effetto di eliminare tutti i media ad esso associati");
+    QPushButton* annulla = msgBox.addButton("Annulla", QMessageBox::RejectRole);
+    QPushButton* conferma = msgBox.addButton("Conferma", QMessageBox::AcceptRole);
+    msgBox.exec();
+    if (msgBox.clickedButton() == conferma) {
+        qDebug() << "Confermato";
+        emit deleteCinemaInSearchPanel(s_cinemaSelezionato);
+        s_cinemaSelezionato = nullptr;
+        emit escSearchPanel();
+    }
 }
 
 /* void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){

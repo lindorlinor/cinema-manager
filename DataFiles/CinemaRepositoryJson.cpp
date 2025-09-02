@@ -104,34 +104,30 @@ void CinemaRepositoryJson::saveMediaInJson(Media* c_media, const QString& nomeCi
 //perché non si stanno aggiungendo media che possono creare doppioni. Non ci sono altri casi in cui questa funzione può venire chiamata
 void CinemaRepositoryJson::updateJson(QList<Cinema*> c_cinemaList){
 
-    //svuoto il file Json
-    QFile file("media.json");
-    if (file.open(QIODevice::WriteOnly)) {
-        file.write("[]");
-        file.close();
-    }
-
-    //carico nella lista m_mediaList tutti i media
-    QList<Media*> c_mediaList;
-    for(Cinema* c : c_cinemaList){
-        for(Media* m : c->getListaMedia()){
-            c_mediaList.append(m);
-        }
-    }
-
     QJsonArray array;
-
-    for (Cinema* cinema : c_cinemaList) {
-    // serializzo il cinema
-        array.append(converter->serialize(cinema));
-
-        // serializzo i media associati
-        for (Media* media : cinema->getListaMedia()) {
-            JsonVisitor visitor(QString::fromStdString(cinema->getNomeCinema())); // passi il nome del cinema al visitor
-            media->accept(&visitor);
+    
+    //carico tutti i cinema presenti nella lista passata
+    for(Cinema* c : c_cinemaList){
+        array.append(converter->serialize(c));
+        QList<Media*> mediaList;
+        loadMedia(mediaList, QString::fromStdString(c->getNomeCinema()));
+        
+        for(Media* m : mediaList){
+            qDebug()<<"creato "<<QString::fromStdString(m->getTitolo());
+            JsonVisitor visitor(QString::fromStdString(c->getNomeCinema()));
+            m->accept(&visitor);
             array.append(visitor.getObj());
         }
+/*         for(Media* m : mediaList){
+            if(m){
+                qDebug()<<"cerco di distruggere "<<QString::fromStdString(m->getTitolo());
+                delete m;
+                qDebug()<<"distrutto";
+            } 
+        } */
     }
+
+
     // salva il JSON aggiornato
     saveJsonFile("media.json", QJsonDocument(array));
 }
@@ -182,7 +178,7 @@ void CinemaRepositoryJson::saveJsonFile(const QString &fileName, const QJsonDocu
     QString filePath = dir.filePath(fileName);  // combina basePath + fileName correttamente
 
     QFile file(filePath);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text)) {
         qWarning() << "Impossibile scrivere" << filePath;
         return;
     }

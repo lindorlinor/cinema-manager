@@ -1,39 +1,175 @@
 [
     {
-        "copertinaCinema": ":/images/default.png",
-        "nomeCinema": "Cinema Aurora"
+        "copertinaCinema": ":/images/image1.png",
+        "nomeCinema": "cinema1 modificato"
     },
     {
         "copertinaCinema": ":/images/default.png",
-        "nomeCinema": "Cinema Angela mod"
-    },
-    {
-        "copertinaCinema": ":/images/default.png",
-        "nomeCinema": "Cinema vuoto"
+        "nomeCinema": "Cinema Angela"
     },
     {
         "attoriPrincipali": [
+            "Noriko Hidaka",
+            "Chika Sakamoto",
+            "Shigesato Itoi",
+            "Hitoshi Takagi",
+            "Takashi Nagasako"
         ],
-        "autore": "ee",
-        "casaDiProduzione": "",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-09-02",
-        "dataInizioRilascio": "2025-09-02",
-        "descrizione": "",
-        "durataMinuti": 0,
+        "autore": "Hayao Miyazaki",
+        "casaDiProduzione": "Studio Ghibli",
+        "costoBiglietto": 12.5,
+        "dataFineRilascio": "2025-06-30",
+        "dataInizioRilascio": "2025-06-01",
+        "descrizione": "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
+        "durataMinuti": 86,
         "formato": "MP4",
         "generi": [
         ],
         "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
         ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Angela mod",
-        "path": ":/images/default.png",
-        "risoluzione": "SD 480p",
+        "nPostCredit": 1,
+        "nomeCinema": "Cinema Angela",
+        "path": ":/images/image9.png",
+        "risoluzione": "UHD 4K 2160p",
         "sottotitoliDisponibili": [
+            "Italiano"
         ],
         "target": "TUTTI",
         "tipologia": "film",
-        "titolo": "ee"
+        "titolo": "Il mio vicino Totoro (RE-RELEASE 2025)"
+    },
+    {
+        "autore": "Studio Ghibli",
+        "autoreFilmAssociato": "Hayao Miyazaki",
+        "dataFineRilascio": "2025-05-31",
+        "dataInizioRilascio": "2025-04-15",
+        "descrizione": "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
+        "durataMinuti": 2,
+        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 5,
+        "nomeCinema": "Cinema Angela",
+        "path": ":/images/image10.png",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Il mio vicino Totoro (2025)"
+    },
+    {
+        "autore": "Hayao Miyazaki",
+        "autoreFilmAssociato": "Hayao Miyazaki",
+        "dataFineRilascio": "2025-06-15",
+        "dataInizioRilascio": "2025-05-01",
+        "descrizione": "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
+        "durataMinuti": 3,
+        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 3,
+        "nomeCinema": "Cinema Angela",
+        "path": ":/images/image10.png",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
+    },
+    {
+        "copertinaCinema": ":/images/image10.png",
+        "nomeCinema": "Cinema Aurora"
+    },
+    {
+        "autore": "Cinema Milano",
+        "conduttore": "Lucia Dalla Monta",
+        "dataFineRilascio": "2025-11-30",
+        "dataInizioRilascio": "2025-09-01",
+        "descrizione": "Il podcast che racconta il mondo del cinema fino ai giorni nostri. Ogni mercoledì con Lucia Dalla Monta' solo nei canali del cinema",
+        "durataMinuti": 92,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/image17.png",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "Storie del cinema"
+    },
+    {
+        "autore": "Cinema Milano",
+        "autorePodcastAssociato": "Cinema Milano",
+        "dataFineRilascio": "2025-09-15",
+        "dataInizioRilascio": "2025-09-01",
+        "descrizione": "Vi siete mai chiesti come il cinema è arrivato a quello che è oggi? Oggi lo scopriamo in questa nuova puntata condotta da Lucia Dalla Monta",
+        "durataMinuti": 32,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 2,
+        "ospiti": [
+        ],
+        "path": ":/images/image17.png",
+        "podcastAssociato": "Storie del cinema",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "La nascita del cinema"
+    },
+    {
+        "autore": "Cinema Milano",
+        "autorePodcastAssociato": "Cinema Milano",
+        "dataFineRilascio": "2025-11-15",
+        "dataInizioRilascio": "2025-11-01",
+        "descrizione": "Analizziamo l'esplosione del neorealismo italiano, dai registi ai film che hanno segnato il dopoguerra.",
+        "durataMinuti": 27,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 1,
+        "ospiti": [
+        ],
+        "path": ":/images/image17.png",
+        "podcastAssociato": "Storie del cinema",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "Il dopoguerra e il neorealismo"
+    },
+    {
+        "autore": "Cinema Milano",
+        "autorePodcastAssociato": "Cinema Milano",
+        "dataFineRilascio": "2025-11-30",
+        "dataInizioRilascio": "2025-11-16",
+        "descrizione": "Interviste e riflessioni su registi emergenti e sulle tecniche narrative del cinema moderno.",
+        "durataMinuti": 33,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 2,
+        "ospiti": [
+        ],
+        "path": ":/images/image17.png",
+        "podcastAssociato": "Storie del cinema",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "Registi contemporanei e nuovi linguaggi"
+    },
+    {
+        "copertinaCinema": ":/images/default.png",
+        "nomeCinema": "caca"
     }
 ]

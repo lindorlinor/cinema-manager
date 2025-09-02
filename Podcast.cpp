@@ -10,13 +10,12 @@ Podcast::Podcast(const string &titolo, const string &descrizione,
                                         setVisualizzazioni(0);
                                     }
 
-Podcast::~Podcast()
-{
-    while (!p_elencoPuntate.empty())
-    {
-        delete p_elencoPuntate.back();
-        p_elencoPuntate.pop_back();
+Podcast::~Podcast(){
+    for (auto& p : p_elencoPuntate) {
+        delete p;
+        p = nullptr;
     }
+    p_elencoPuntate.clear();
 }
 
 string Podcast::getConduttore() const{
