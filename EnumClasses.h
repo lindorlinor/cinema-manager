@@ -14,19 +14,42 @@
 using namespace std::chrono;
 
 
+
+inline year_month_day today() {
+    using namespace std::chrono;
+    return floor<days>(system_clock::now());
+}
+
 inline year_month_day stringToDate(const std::string& s) {
-    unsigned d, m;
-    int y;
+    if (s.empty()) {
+        return year_month_day{}; //data stringa ""
+    }
+
+    unsigned d = 0, m = 0;
+    int y = 0;
     char sep1, sep2;
 
     std::istringstream iss(s);
-    iss >> d >> sep1 >> m >> sep2 >> y;
 
-    if (!iss || sep1 != '/' || sep2 != '/') {
-        throw std::runtime_error("Formato data non valido: " + s);
+    if (iss >> d >> sep1 >> m >> sep2 >> y && sep1 == '/' && sep2 == '/') {
+        if (d < 1 || d > 31 || m < 1 || m > 12) {
+            throw std::runtime_error("Giorno o mese non valido: " + s);
+        }
+        return year{y}/month{m}/day{d};
     }
 
-    return year{y}/month{m}/day{d};
+    iss.clear();
+    iss.str(s);
+    char dash1, dash2;
+
+    if (iss >> y >> dash1 >> m >> dash2 >> d && dash1 == '-' && dash2 == '-') {
+        if (d < 1 || d > 31 || m < 1 || m > 12) {
+            throw std::runtime_error("Giorno o mese non valido: " + s);
+        }
+        return year{y}/month{m}/day{d};
+    }
+
+    throw std::runtime_error("Formato data non valido: " + s);
 }
 
 inline std::string dateToString(const year_month_day& d) {

@@ -4,9 +4,8 @@
 #include "DetailPageVisitor.h"
 #include "LibraryObserver.h"
 
-SearchPanel::SearchPanel(MediaManagerXml* xmlManager,QWidget *parent):s_xmlManager(xmlManager),QWidget(parent),stackModifiche(new QStackedWidget(this)){
+SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xmlManager,QWidget *parent):s_jsonManager(s_jsonManager),s_xmlManager(xmlManager),QWidget(parent),stackModifiche(new QStackedWidget(this)){
     //carico tutti gli oggetti sal Json
-    s_manager = new CinemaRepositoryJson;
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
     addPagina(mainLayout);
@@ -305,7 +304,6 @@ void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
 
     updateMediaList();
     updateFiltroTutto();
-
     emit giveCinemaInfoToIP(s_cinemaSelezionato, s_MediaListOfCinema);
     
     s_xmlManager->setCurrentCinema(s_cinemaSelezionato);
@@ -344,7 +342,7 @@ void SearchPanel::updateMediaList(){
     s_MediaListOfCinema.clear();
     
     if(s_cinemaSelezionato){
-        s_manager->loadMedia(s_MediaListOfCinema, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
+        s_jsonManager->loadMedia(s_MediaListOfCinema, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
         for(Media* m : s_MediaListOfCinema){
             s_cinemaSelezionato->addMedia(m);
         }
@@ -395,7 +393,7 @@ void SearchPanel::acceptEditCinema(){
     dialog.setFixedSize(850, 500);
     int result = dialog.exec();
     if (result == QDialog::Accepted) {
-        s_manager->updateCinemaInJson(nomeCinema, s_cinemaSelezionato);
+        s_jsonManager->updateCinemaInJson(nomeCinema, s_cinemaSelezionato);
         updateInfoCinema(s_cinemaSelezionato);
     }
 }

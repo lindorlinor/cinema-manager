@@ -32,7 +32,7 @@ class SearchPanel:public QWidget{
     private:
 
     Cinema* s_cinemaSelezionato;
-    CinemaRepositoryJson* s_manager;
+    CinemaRepositoryJson* s_jsonManager;
     MediaManagerXml* s_xmlManager;
     vector<LibraryObserver*> s_libraryObservers;
     QList<Media*> s_MediaListOfCinema;
@@ -140,7 +140,7 @@ class SearchPanel:public QWidget{
     void updateMediaList();
     
     public:
-	explicit SearchPanel(MediaManagerXml* xmlManager,QWidget *parent);
+	explicit SearchPanel(CinemaRepositoryJson* jsonManager, MediaManagerXml* xmlManager,QWidget *parent);
     void addObserver(LibraryObserver* obs);
     void update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca);
 

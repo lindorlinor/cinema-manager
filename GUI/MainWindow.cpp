@@ -1,6 +1,5 @@
 #include "MainWindow.h" 
 #include "CinemaSelectionPage.h" 
-
 #include "InsertCinemaPage.h" 
 #include "SearchPanel.h" 
 #include <QVBoxLayout>
@@ -11,8 +10,8 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), cinemaPage(new CinemaSelectionPage(w_cinema, this)), insertPage(new InsertCinemaPage(w_cinema, this)),
-                                                                                m_xmlManager(new MediaManagerXml()),m_JsonManager(new CinemaRepositoryJson()),
-                                                                                searchPage(new SearchPanel(m_xmlManager,this))
+                                                                                m_xmlManager(new MediaManagerXml()),m_jsonManager(new CinemaRepositoryJson()),
+                                                                                searchPage(new SearchPanel(m_jsonManager, m_xmlManager,this))
 {
     setWindowFlags(Qt::Window | Qt::CustomizeWindowHint | 
                Qt::WindowMinimizeButtonHint | 
@@ -65,14 +64,21 @@ MainWindow::MainWindow(QWidget *parent)
     connect(menu,&Menu::backToCinemaSelection,searchPage,&SearchPanel::resetSearchPanel);
     connect(menu, &Menu::setFullScreen, this, &MainWindow::showFullScreen);
     connect(menu, &Menu::escFullScreen, this, &MainWindow::showMaximized);
-    /* connect(menu, &Menu::importMediaList, this, [this](){
-                                              m_xmlManager->importMediaListFromXml();      
-                                            }); */
-    /* connect(menu, &Menu::importSession, this, &MainWindow::showMaximized); */
-    connect(menu, &Menu::exportMediaList,this, [this](){m_xmlManager->exportMediaListToXml();});
-    connect(menu, &Menu::exportSession, this, [this](){ m_xmlManager->exportSessionToXml();});
     connect(menu, &Menu::editCinema, searchPage, &SearchPanel::acceptEditCinema);
     connect(menu, &Menu::deleteCinema, searchPage, &SearchPanel::acceptDeleteCinema);
+    connect(menu, &Menu::importMediaList, this, [this](){
+                                              m_xmlManager->importMediaListFromXml(*m_jsonManager);
+                                              searchPage->updateInfoCinema(m_xmlManager->getCurrentCinema());       
+                                            });
+    connect(menu, &Menu::importSession, this, [this](){
+                                              m_xmlManager->importSessionFromXml(*m_jsonManager);      
+                                            });
+    connect(menu, &Menu::exportMediaList,this, [this](){
+                                              m_xmlManager->exportMediaListToXml(); 
+                                            });
+    connect(menu, &Menu::exportSession, this, [this](){
+                                              m_xmlManager->exportSessionToXml();      
+                                            });
 
     connect(searchPage,&SearchPanel::deleteCinemaInSearchPanel,this,&MainWindow::deleteCinemaFromList);
     connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
@@ -127,5 +133,5 @@ void MainWindow::deleteCinemaFromList(Cinema* cinema){
     if (w_cinema.removeOne(cinema)) {
         delete cinema;
     }
-    m_JsonManager->updateJson(w_cinema);
+    m_jsonManager->updateJson(w_cinema);
 }

@@ -1,94 +1,126 @@
-<Cinema>
-    <Nome>Cinema Aurora</Nome>
-    <Copertina>:/images/default.png</Copertina>
-    <MediaList>
-        <Film>
-            <Titolo>Il mio vicino Totoro (RE-RELEASE 2025)</Titolo>
-            <Autore>Hayao Miyazaki</Autore>
-            <Descrizione>La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco</Descrizione>
-            <DurataMinuti>86</DurataMinuti>
-            <Formato>MP4</Formato>
-            <Risoluzione>UHD 4K 2160p</Risoluzione>
-            <Path>:/images/image9.png</Path>
-            <DataInizioRilascio>1/6/2025</DataInizioRilascio>
-            <DataFineRilascio>30/6/2025</DataFineRilascio>
-            <LingueDisponibili>
-                <Lingua>Italiano</Lingua>
-            </LingueDisponibili>
-            <SottotitoliDisponibili>
-                <Lingua>Italiano</Lingua>
-            </SottotitoliDisponibili>
-            <Generi/>
-            <AttoriPrincipali>
-                <Attore>Noriko Hidaka</Attore>
-                <Attore>Chika Sakamoto</Attore>
-                <Attore>Shigesato Itoi</Attore>
-                <Attore>Hitoshi Takagi</Attore>
-                <Attore>Takashi Nagasako</Attore>
-            </AttoriPrincipali>
-            <Target>TUTTI</Target>
-            <CostoBiglietto>12.5</CostoBiglietto>
-            <CasaDiProduzione>Studio Ghibli</CasaDiProduzione>
-            <NPostCredit>1</NPostCredit>
-        </Film>
-        <Trailer>
-            <Titolo>Trailer ufficiale - Il mio vicino Totoro (2025)</Titolo>
-            <Autore>Studio Ghibli</Autore>
-            <Descrizione>Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.</Descrizione>
-            <DurataMinuti>2</DurataMinuti>
-            <Formato>MP4</Formato>
-            <Risoluzione>UHD 4K 2160p</Risoluzione>
-            <Path>:/images/image10.png</Path>
-            <DataInizioRilascio>15/4/2025</DataInizioRilascio>
-            <DataFineRilascio>31/5/2025</DataFineRilascio>
-            <LingueDisponibili/>
-            <SottotitoliDisponibili/>
-            <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
-            <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
-            <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
-        </Trailer>
-        <Trailer>
-            <Titolo>Trailer speciale anniversario - Il mio vicino Totoro (2025)</Titolo>
-            <Autore>Hayao Miyazaki</Autore>
-            <Descrizione>Un trailer celebrativo con scene inedite per il ritorno del film in sala.</Descrizione>
-            <DurataMinuti>3</DurataMinuti>
-            <Formato>MP4</Formato>
-            <Risoluzione>UHD 4K 2160p</Risoluzione>
-            <Path>:/images/image10.png</Path>
-            <DataInizioRilascio>1/5/2025</DataInizioRilascio>
-            <DataFineRilascio>15/6/2025</DataFineRilascio>
-            <LingueDisponibili/>
-            <SottotitoliDisponibili/>
-            <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
-            <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
-            <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
-        </Trailer>
-        <Film>
-            <Titolo>titolo</Titolo>
-            <Autore>Autore</Autore>
-            <Descrizione>asdad</Descrizione>
-            <DurataMinuti>7</DurataMinuti>
-            <Formato>MP4</Formato>
-            <Risoluzione>SD 480p</Risoluzione>
-            <Path>:/images/coverCinema.png</Path>
-            <DataInizioRilascio>1/9/2025</DataInizioRilascio>
-            <DataFineRilascio>24/9/2025</DataFineRilascio>
-            <LingueDisponibili>
-                <Lingua>Italiano</Lingua>
-            </LingueDisponibili>
-            <SottotitoliDisponibili>
-                <Lingua>Italiano</Lingua>
-            </SottotitoliDisponibili>
-            <Generi>
-                <Genere>Commedia</Genere>
-            </Generi>
-            <AttoriPrincipali>
-                <Attore>asdasd</Attore>
-            </AttoriPrincipali>
-            <Target>TUTTI</Target>
-            <CostoBiglietto>8</CostoBiglietto>
-            <CasaDiProduzione>pinco pallo</CasaDiProduzione>
-            <NPostCredit>2</NPostCredit>
-        </Film>
-    </MediaList>
-</Cinema>
+<MediaList>
+    <Film>
+        <Titolo>Il mio vicino Totoro (RE-RELEASE 2025)</Titolo>
+        <Autore>Hayao Miyazaki</Autore>
+        <Descrizione>La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco</Descrizione>
+        <DurataMinuti>86</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>UHD 4K 2160p</Risoluzione>
+        <Path>:/images/image9.png</Path>
+        <DataInizioRilascio>1/09/2025</DataInizioRilascio>
+        <DataFineRilascio>30/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+        </SottotitoliDisponibili>
+        <Generi/>
+        <AttoriPrincipali>
+            <Attore>Noriko Hidaka</Attore>
+            <Attore>Chika Sakamoto</Attore>
+            <Attore>Shigesato Itoi</Attore>
+            <Attore>Hitoshi Takagi</Attore>
+            <Attore>Takashi Nagasako</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>12.5</CostoBiglietto>
+        <CasaDiProduzione>Studio Ghibli</CasaDiProduzione>
+        <NPostCredit>1</NPostCredit>
+    </Film>
+    <Trailer>
+        <Titolo>Trailer ufficiale - Il mio vicino Totoro (2025)</Titolo>
+        <Autore>Studio Ghibli</Autore>
+        <Descrizione>Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.</Descrizione>
+        <DurataMinuti>2</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>UHD 4K 2160p</Risoluzione>
+        <Path>:/images/image10.png</Path>
+        <DataInizioRilascio>15/4/2025</DataInizioRilascio>
+        <DataFineRilascio>31/9/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
+    </Trailer>
+    <Trailer>
+        <Titolo>Trailer speciale anniversario - Il mio vicino Totoro (2025)</Titolo>
+        <Autore>Hayao Miyazaki</Autore>
+        <Descrizione>Un trailer celebrativo con scene inedite per il ritorno del film in sala.</Descrizione>
+        <DurataMinuti>3</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>UHD 4K 2160p</Risoluzione>
+        <Path>:/images/image10.png</Path>
+        <DataInizioRilascio>1/5/2025</DataInizioRilascio>
+        <DataFineRilascio>15/9/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
+    </Trailer>
+    <Podcast>
+        <Titolo>Storie del cinema</Titolo>
+        <Autore>Cinema Milano</Autore>
+        <Descrizione>Il podcast che racconta il mondo del cinema fino ai giorni nostri. Ogni mercoledì con Lucia Dalla Monta' solo nei canali del cinema</Descrizione>
+        <DurataMinuti>0</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/.png</Path>
+        <DataInizioRilascio></DataInizioRilascio>
+        <DataFineRilascio></DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <Conduttore>Lucia Dalla Monta</Conduttore>
+    </Podcast>
+    <Puntata>
+        <Titolo>La nascita del cinema</Titolo>
+        <Autore>Cinema Milano</Autore>
+        <Descrizione>Vi siete mai chiesti come il cinema è arrivato a quello che è oggi? Oggi lo scopriamo in questa nuova puntata condotta da Lucia Dalla Monta</Descrizione>
+        <DurataMinuti>32</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/image17.png</Path>
+        <DataInizioRilascio>1/9/2025</DataInizioRilascio>
+        <DataFineRilascio>15/9/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <TitoloPodcastAssociato>Storie del cinema</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>Cinema Milano</AutorePodcastAssociato>
+        <NPubblicita>2</NPubblicita>
+    </Puntata>
+    <Puntata>
+        <Titolo>Il dopoguerra e il neorealismo</Titolo>
+        <Autore>Cinema Milano</Autore>
+        <Descrizione>Analizziamo l'esplosione del neorealismo italiano, dai registi ai film che hanno segnato il dopoguerra.</Descrizione>
+        <DurataMinuti>27</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/image17.png</Path>
+        <DataInizioRilascio>1/11/2025</DataInizioRilascio>
+        <DataFineRilascio>15/11/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <TitoloPodcastAssociato>Storie del cinema</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>Cinema Milano</AutorePodcastAssociato>
+        <NPubblicita>1</NPubblicita>
+    </Puntata>
+    <Puntata>
+        <Titolo>Registi contemporanei e nuovi linguaggi</Titolo>
+        <Autore>Cinema Milano</Autore>
+        <Descrizione>Interviste e riflessioni su registi emergenti e sulle tecniche narrative del cinema moderno.</Descrizione>
+        <DurataMinuti>33</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/image17.png</Path>
+        <DataInizioRilascio>16/11/2025</DataInizioRilascio>
+        <DataFineRilascio>30/11/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <TitoloPodcastAssociato>Storie del cinema</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>Cinema Milano</AutorePodcastAssociato>
+        <NPubblicita>2</NPubblicita>
+    </Puntata>
+</MediaList>
