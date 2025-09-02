@@ -38,5 +38,8 @@
         <file>../icons/filtri.png</file>
         <file>../icons/disabled.png</file>
         <file>../icons/enabled.png</file>
+        <file>../icons/in_sala.png</file>
+        <file>../icons/non_in_sala.png</file>
+        <file>../icons/edit.png</file>
     </qresource>
 </RCC>
