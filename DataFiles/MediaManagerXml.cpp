@@ -135,7 +135,6 @@ void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,CinemaReposi
         QString tipo = mediaElem.tagName();
         if (tipo=="Film") {
             Film* fd = new Film(*XmlVisitor::fromXmlFilmElement(mediaElem,errors));
-            qDebug() << errors;
             currentCinema->addMedia(fd);
             jsonManager.saveMediaInJson(fd,QString::fromStdString(cinemaName));
         }else if (tipo=="Trailer") {
