@@ -4,10 +4,9 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QIcon>
-#include <QFile>
 
-DetailsPageButtons::DetailsPageButtons(QWidget* parent)
-    : QWidget(parent)
+DetailsPageButtons::DetailsPageButtons(Media* mPtr, QWidget* parent)
+    : QWidget(parent), mediaPtr(mPtr)
 {
 
     auto* mainLayout = new QVBoxLayout(this);
@@ -20,31 +19,34 @@ DetailsPageButtons::DetailsPageButtons(QWidget* parent)
     extendTool->setAutoRaise(true);
     extendTool->setFixedSize(24, 24);
     extendTool->setToolTip("Attiva/Disattiva pulsante");
-    
+
     extendButton->setEnabled(true);
     extendTool->setChecked(true);
     extendTool->setIcon(QIcon(":/icons/enabled.png"));
-    
+
     auto* row1 = new QHBoxLayout();
     row1->addWidget(extendButton);
     row1->addWidget(extendTool);
     mainLayout->addLayout(row1);
-    
-    
+
+    if (mediaPtr && mediaPtr->FuoriProduzione()) {
+        extendButton->setEnabled(false);
+        extendTool->setVisible(false);
+    }
+
     deleteButton = new QPushButton("Elimina media");
     deleteButton->setCursor(Qt::PointingHandCursor);
     deleteButton->setMinimumHeight(53);
-    
+
     deleteTool = new QToolButton();
     deleteTool->setCheckable(true);
     deleteTool->setAutoRaise(true);
     deleteTool->setFixedSize(24, 24);
     deleteTool->setToolTip("Attiva/Disattiva pulsante");
-    
+
     deleteButton->setEnabled(false);
     deleteTool->setChecked(false);
     deleteTool->setIcon(QIcon(":/icons/disabled.png"));
-
 
     auto* row2 = new QHBoxLayout();
     row2->addWidget(deleteButton);

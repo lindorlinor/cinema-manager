@@ -240,5 +240,32 @@
         ],
         "tipologia": "trailer",
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "Hayao Miyazaki",
+        "casaDiProduzione": "Studio Ghibli",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-08-21",
+        "dataInizioRilascio": "2025-08-05",
+        "descrizione": "",
+        "durataMinuti": 96,
+        "formato": "IMAX 3D",
+        "generi": [
+            "Animazione"
+        ],
+        "lingueDisponibili": [
+            "Italiano"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Kiki consegne a domicilio"
     }
 ]

@@ -192,7 +192,7 @@ void InserzioneView::createMediaDetails(){
 
 
 void InserzioneView::createButtons(){
-    DetailsPageButtons * buttons = new DetailsPageButtons(leftSide);
+    DetailsPageButtons * buttons = new DetailsPageButtons(insPtr,leftSide);
     buttons->setDeleteButtonText("Elimina Inserzione");
 
     connect(buttons,&DetailsPageButtons::extendMedia,this,

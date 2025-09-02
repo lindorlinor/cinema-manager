@@ -249,7 +249,7 @@ void FilmView::createScrollableSection(){
     splitterLayout->addWidget(rightSide);
 }
 void FilmView::createButtons(){
-    DetailsPageButtons * buttons = new DetailsPageButtons(rightSide);
+    DetailsPageButtons * buttons = new DetailsPageButtons(filmPtr,rightSide);
     buttons->setDeleteButtonText("Elimina film");
     connect(buttons,&DetailsPageButtons::extendMedia,this,[this](){
         

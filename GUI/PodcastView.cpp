@@ -195,7 +195,7 @@ void PodcastView::createScrollableSection(){
 }
 
 void PodcastView::createButtons(){
-    DetailsPageButtons * buttons = new DetailsPageButtons(leftSide);
+    DetailsPageButtons * buttons = new DetailsPageButtons(podPtr,leftSide);
     buttons->setDeleteButtonText("Elimina podcast");
     /* connect(buttons,&DetailsPageButtons::extendMedia,this,
         [this](){

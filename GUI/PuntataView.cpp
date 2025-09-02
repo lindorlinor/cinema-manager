@@ -217,7 +217,7 @@ void PuntataView::createScrollableSection(){
     splitterLayout->addWidget(rightSide);
 }
 void PuntataView::createButtons(){
-    DetailsPageButtons * buttons = new DetailsPageButtons(leftSide);
+    DetailsPageButtons * buttons = new DetailsPageButtons(puntPtr,leftSide);
     buttons->setDeleteButtonText("Elimina podcast");
     cardLayout->addSpacing(40);
     cardLayout->addWidget(buttons);
