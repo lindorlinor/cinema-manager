@@ -3,6 +3,7 @@
 #include "TrailerView.h"
 #include "DetailPageVisitor.h"
 #include "LibraryObserver.h"
+#include "InserzioneView.h"
 
 SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xmlManager,QWidget *parent):QWidget(parent),s_jsonManager(s_jsonManager),s_xmlManager(xmlManager),stackModifiche(new QStackedWidget(this)){
     //carico tutti gli oggetti sal Json
@@ -375,6 +376,8 @@ void SearchPanel::resetSearchPanel(){
 
 void SearchPanel::showMediaView(MediaView& widget){
     detailPage = &widget;
+    if(dynamic_cast<InserzioneView*>(&widget))
+        (static_cast<InserzioneView*>(&widget))->setMediaList(s_cinemaSelezionato->getListaMedia());
     stackModifiche->addWidget(detailPage); //2
     updateModifierPanel(2);
     connect(detailPage, &MediaView::returnButton, this, &SearchPanel::removeMediaView);

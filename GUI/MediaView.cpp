@@ -10,7 +10,6 @@ MediaView::MediaView(Media* mPtr, QWidget* parent)
     
     splitterLayout->setSpacing(130); //aggiunge un po di spazio tra parte sinistra e destra della pagina
     layoutPage->addWidget(splitter,0,Qt::AlignHCenter);
-    // layoutPage->addWidget(splitter,0,Qt::AlignCenter);
     rightSide->setMinimumWidth(302);
     leftSide->setMinimumWidth(930);
 }

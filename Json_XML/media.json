@@ -87,10 +87,10 @@
     {
         "autore": "Cinema Milano",
         "conduttore": "Lucia Dalla Monta",
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-09-03",
+        "dataFineRilascio": "2025-11-30",
+        "dataInizioRilascio": "2025-09-01",
         "descrizione": "Il podcast che racconta il mondo del cinema fino ai giorni nostri. Ogni mercoledì con Lucia Dalla Monta' solo nei canali del cinema",
-        "durataMinuti": 0,
+        "durataMinuti": 92,
         "formato": "MP4",
         "lingueDisponibili": [
         ],
@@ -267,5 +267,193 @@
         ],
         "tipologia": "trailer",
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
+    },
+    {
+        "autore": "FilmLab",
+        "conduttore": "Marco Rossi",
+        "dataFineRilascio": "2025-09-03",
+        "dataInizioRilascio": "2025-09-03",
+        "descrizione": "Approfondimenti sui grandi registi e capolavori cinematografici.",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/image17.png",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "Cinema d'Autore"
+    },
+    {
+        "autore": "FilmLab",
+        "autorePodcastAssociato": "FilmLab",
+        "dataFineRilascio": "2025-10-15",
+        "dataInizioRilascio": "2025-10-01",
+        "descrizione": "Esploriamo l'era del cinema muto e i suoi maestri.",
+        "durataMinuti": 40,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 1,
+        "ospiti": [
+        ],
+        "path": ":/images/image17.png",
+        "podcastAssociato": "Cinema d'Autore",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "Analisi del cinema muto"
+    },
+    {
+        "autore": "FilmLab",
+        "autorePodcastAssociato": "FilmLab",
+        "dataFineRilascio": "2025-10-31",
+        "dataInizioRilascio": "2025-10-16",
+        "descrizione": "Il movimento francese che ha rivoluzionato il cinema.",
+        "durataMinuti": 35,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "numeroPubblicita": 2,
+        "ospiti": [
+        ],
+        "path": ":/images/image17.png",
+        "podcastAssociato": "Cinema d'Autore",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "La Nouvelle Vague"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "Hayao Miyazaki",
+        "casaDiProduzione": "Studio Ghibli",
+        "costoBiglietto": 10,
+        "dataFineRilascio": "2025-09-30",
+        "dataInizioRilascio": "2025-09-10",
+        "descrizione": "Un'avventura magica in un mondo fantastico popolato da spiriti e divinità.",
+        "durataMinuti": 125,
+        "formato": "IMAX 3D",
+        "generi": [
+            "Animazione",
+            "Avventura"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 1,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/film2.png",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "La città incantata"
+    },
+    {
+        "autore": "Studio Ghibli",
+        "autoreFilmAssociato": "Hayao Miyazaki",
+        "dataFineRilascio": "2025-09-28",
+        "dataInizioRilascio": "2025-09-12",
+        "descrizione": "Un assaggio delle meraviglie del mondo fantastico di Chihiro.",
+        "durataMinuti": 3,
+        "filmAssociato": "La città incantata",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 4,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/image10.png",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - La città incantata"
+    },
+    {
+        "autore": "Studio Lumière",
+        "aziendaInserzionista": "",
+        "costoFissoProiezione": 40,
+        "dataFineRilascio": "2025-10-05",
+        "dataInizioRilascio": "2025-09-05",
+        "descrizione": "Scopri i grandi classici del cinema in versione rimasterizzata.",
+        "durataMinuti": 2,
+        "fasceOrarie": [
+            "Mattina",
+            "Pomeriggio",
+            "Sera"
+        ],
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/image12.png",
+        "risoluzione": "UHD 8K 4320p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "target": "TUTTI",
+        "tipologia": "inserzione",
+        "titolo": "Cinema Evolution"
+    },
+    {
+        "autore": "DocuStudio",
+        "aziendaInserzionista": "",
+        "costoFissoProiezione": 25,
+        "dataFineRilascio": "2025-10-10",
+        "dataInizioRilascio": "2025-09-10",
+        "descrizione": "Una selezione dei migliori documentari per gli appassionati di cinema.",
+        "durataMinuti": 1,
+        "fasceOrarie": [
+            "Mattina",
+            "Pomeriggio"
+        ],
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/image12.png",
+        "risoluzione": "UHD 8K 4320p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "target": "TUTTI",
+        "tipologia": "inserzione",
+        "titolo": "Documentari d’Autore"
+    },
+    {
+        "autore": "FestivalCinema",
+        "aziendaInserzionista": "",
+        "costoFissoProiezione": 35,
+        "dataFineRilascio": "2025-10-15",
+        "dataInizioRilascio": "2025-09-15",
+        "descrizione": "Una rassegna dei cortometraggi più interessanti prodotti quest’anno.",
+        "durataMinuti": 3,
+        "fasceOrarie": [
+            "Mattina",
+            "Sera"
+        ],
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/image12.png",
+        "risoluzione": "UHD 8K 4320p",
+        "sottotitoliDisponibili": [
+            "Inglese"
+        ],
+        "target": "TUTTI",
+        "tipologia": "inserzione",
+        "titolo": "Short Films Festival"
     }
 ]
