@@ -2,11 +2,7 @@
 
 InsertMedia::InsertMedia(QWidget *parent): MediaInterface(parent){
 
-    qDebug()<<"chiamato InitUI";
     initUI();
-    qDebug()<<"InitUI ha finito ";
-
-    qDebug() << "stacktipologia:" << stackTipologia;
 
     connect(indietro, &QPushButton::clicked, this, [this](){
         resetAllInput();

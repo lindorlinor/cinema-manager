@@ -3,17 +3,19 @@
 MediaFrame::MediaFrame( const QString& titolo, const QString& imagePath,const QString& autore, QWidget* parent):QFrame(parent), titoloMedia(titolo), 
                         autoreMedia(autore), imgLabel(new QLabel(this)), pix(imagePath){
 
-    imgLabel->setPixmap(pix.scaled(100, 150, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    imgLabel->setPixmap(pix.scaled(160, 160, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     
     titoloLabel = new QLabel(titolo);
     
     QVBoxLayout* layout = new QVBoxLayout;
-    layout->addWidget(imgLabel, Qt::AlignCenter);
-    layout->addWidget(titoloLabel, Qt::AlignCenter);
+    layout->addWidget(imgLabel);
+    layout->addWidget(titoloLabel);
     
     setLayout(layout);
     
     //style
+    imgLabel->setAlignment(Qt::AlignCenter);
+    titoloLabel->setAlignment(Qt::AlignCenter);
     titoloLabel->setWordWrap(true);
     titoloLabel->setMaximumHeight(60);
     imgLabel->setStyleSheet("border:none");

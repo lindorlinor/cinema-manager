@@ -25,8 +25,8 @@ void MediaInterface::initUI(){
 void MediaInterface::getCinemaInfo(Cinema* cinemaSel, QList<Media*>listMedia){
     im_cinemaSelezionato = cinemaSel;
     im_mediaList = listMedia;
-    /* if(referenceTrailer) referenceTrailer->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
-    if(referencePuntate) referencePuntate->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema())); */
+    if(referenceTrailer) referenceTrailer->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
+    if(referencePuntate) referencePuntate->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
 }
 
 
@@ -536,6 +536,12 @@ QWidget* MediaInterface::addTabs(){
                     );
     return WidgetTabAnnullaSalva;
 }
+
+
+
+
+
+
 
 
 
