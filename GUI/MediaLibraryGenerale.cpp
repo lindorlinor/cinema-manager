@@ -6,15 +6,17 @@ MediaLibraryGenerale::MediaLibraryGenerale(const QString& filtroBottone, QWidget
     titolo->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     QVBoxLayout* mainLayout = new QVBoxLayout;
     container = new QWidget(this);
-    layoutContainer = new FlowLayout(this);
-    container->setLayout(layoutContainer);
+    FlowLayoutContainer = new FlowLayout(this);
+    container->setLayout(FlowLayoutContainer);
+    
+    setPreferredLayout(FlowLayoutContainer);
 
     mainLayout->addWidget(titolo);
     mainLayout->addWidget(container);
     setLayout(mainLayout);
 
     //style
-    layoutContainer->setAlignment(Qt::AlignTop);
+    FlowLayoutContainer->setAlignment(Qt::AlignTop);
     titolo->setStyleSheet("color: #fed36a; font-size: 18pt; font-weight: bold;");
 }
 

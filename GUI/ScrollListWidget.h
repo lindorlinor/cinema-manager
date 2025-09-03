@@ -14,6 +14,8 @@
 
 class ScrollListWidget: public UpdateMediaLibrary{
     Q_OBJECT
+    private:
+    QScrollArea* scrollArea;
         
     public:
     explicit ScrollListWidget(QWidget* parent);

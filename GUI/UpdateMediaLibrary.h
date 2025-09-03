@@ -6,7 +6,9 @@
 #include <QString>
 #include <QScrollArea>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QDebug>
+#include <QLayout>
 
 #include "FrameVisitor.h"
 #include "FlowLayout.h"
@@ -20,14 +22,17 @@ class UpdateMediaLibrary: public QWidget{
 
     protected:
     QWidget* container;
-    FlowLayout* layoutContainer;
+    QHBoxLayout* HorizontalLayoutContainer; //true
+    FlowLayout* FlowLayoutContainer; //false
     int numeroWidget;
+    bool chooseLayout;
+    void setPreferredLayout(QLayout* layout);
         
     public:
     UpdateMediaLibrary(QWidget* parent = nullptr);
     virtual void update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList);
     int getNumeroWidgetLayout() const;
-
+    
     signals:
     void requestMediaView(MediaView& widget);
 };

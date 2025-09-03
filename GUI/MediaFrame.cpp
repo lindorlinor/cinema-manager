@@ -14,6 +14,7 @@ MediaFrame::MediaFrame( const QString& titolo, const QString& imagePath,const QS
     setLayout(layout);
     
     //style
+    imgLabel->setContentsMargins(0,0,0,0);
     imgLabel->setAlignment(Qt::AlignCenter);
     titoloLabel->setAlignment(Qt::AlignCenter);
     titoloLabel->setWordWrap(true);
