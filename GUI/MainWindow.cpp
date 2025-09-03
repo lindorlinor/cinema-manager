@@ -173,5 +173,5 @@ void MainWindow::deleteCinemaFromList(Cinema* cinema){
     if (w_cinema.removeOne(cinema)) {
         delete cinema;
     }
-    m_jsonManager->updateJson(w_cinema);
+    m_jsonManager->deleteCinemaInJson(w_cinema);
 }

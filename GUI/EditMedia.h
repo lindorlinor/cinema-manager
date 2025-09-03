@@ -1,17 +1,22 @@
 #ifndef EDITMEDIA_H
 #define EDITMEDIA_H
 
+#include <string>
+#include <vector>
+
 #include "MediaInterface.h"
-#include "EditMediaVisitor.h"
 
 class EditMedia:public MediaInterface{
     Q_OBJECT
 
     private:
 
+    virtual void checkMediaNameAvailability() override;
     virtual void salvaMedia() override;
+    void setCheckListWidget(QListWidget* list, const QList<QString>& select);
     void initValue();
     int index;
+    Media* em_media;
         
     virtual void setLimitTabTipologia(int index) override;     
                   

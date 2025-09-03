@@ -97,9 +97,40 @@ void CinemaRepositoryJson::saveMediaInJson(Media* c_media, const QString& nomeCi
     saveJsonFile("media.json", QJsonDocument(array));
 }
 
+void CinemaRepositoryJson::updateMediaInJson(Cinema* cinemaSelezionato){
+
+    QJsonArray array;
+    QList<Cinema*> c_cinemaList;
+    loadCinema(c_cinemaList);
+
+    for(Cinema* c : c_cinemaList){
+        array.append(converter->serialize(c));
+        if(c->getNomeCinema() == cinemaSelezionato->getNomeCinema()){
+            for(Media* m : cinemaSelezionato->getListaMedia()){
+                JsonVisitor visitor(QString::fromStdString(c->getNomeCinema()));
+                m->accept(&visitor);
+                array.append(visitor.getObj());
+            }
+        }
+        else{
+            QList<Media*> mediaList;
+            loadMedia(mediaList, QString::fromStdString(c->getNomeCinema()));
+            
+            for(Media* m : mediaList){
+                JsonVisitor visitor(QString::fromStdString(c->getNomeCinema()));
+                m->accept(&visitor);
+                array.append(visitor.getObj());
+            }
+        }
+    }
+
+    // salva il JSON aggiornato
+    saveJsonFile("media.json", QJsonDocument(array));
+}
+
 //non è necessario il controllo dei duplicati perché sono già stati fatti in precedenza per la modifica, mentre per la rimozione non sono necessari
 //perché non si stanno aggiungendo media che possono creare doppioni. Non ci sono altri casi in cui questa funzione può venire chiamata
-void CinemaRepositoryJson::updateJson(QList<Cinema*> c_cinemaList){
+void CinemaRepositoryJson::deleteCinemaInJson(QList<Cinema*> c_cinemaList){
 
     QJsonArray array;
     
@@ -110,7 +141,6 @@ void CinemaRepositoryJson::updateJson(QList<Cinema*> c_cinemaList){
         loadMedia(mediaList, QString::fromStdString(c->getNomeCinema()));
         
         for(Media* m : mediaList){
-            qDebug()<<"creato "<<QString::fromStdString(m->getTitolo());
             JsonVisitor visitor(QString::fromStdString(c->getNomeCinema()));
             m->accept(&visitor);
             array.append(visitor.getObj());

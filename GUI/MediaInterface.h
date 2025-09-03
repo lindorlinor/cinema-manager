@@ -51,6 +51,8 @@ class MediaInterface:public QWidget{
     //liste di media
     QList<Media*> im_mediaList;
 
+    QLabel* titolo;
+
     //costruzioni dei diversi widget per la tab "specifiche tipologia", verranno utilizzati nel tab "specifiche tipologia" 
     //e intercambiati tramite la selezione della tipologia su un QComboBox. Lo scambio è fatto con l'utilizzo di uno QStackedLayout stackTipologia
     QWidget* addTipologiaFilm();
@@ -114,7 +116,7 @@ class MediaInterface:public QWidget{
         
         
     //metodi funzionali per il corretto comportamento della pagina
-    void checkMediaNameAvailability();
+    virtual void checkMediaNameAvailability();
 
     //set dei limiti a seconda della tipologia scelta o impostata
     virtual void setLimitTabTipologia(int index) = 0;

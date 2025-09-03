@@ -170,19 +170,6 @@ QWidget* MediaInterface::addDoubleSpin(const QString& testo, double min, double 
 
 QWidget* MediaInterface::addReference(const QString& testo, const QString& tipo, SelectMediaReference* reference){
     QLabel* label = new QLabel(testo,this);
-
-    
-    connect(reference, &SelectMediaReference::mediaSelected, this, [this, tipo](MediaFrame* f){
-        if(tipo == "film"){
-            titoloFilmRiferimento = f->getTitolo();
-            autoreFilmRiferimento = f->getAutore();
-        }
-        else if(tipo == "podcast"){
-            titoloPodcastRiferimento = f->getTitolo();
-            autorePodcastRiferimento = f->getAutore();
-        }
-        checkMediaNameAvailability();
-    });
     
     //style
     label->setAlignment(Qt::AlignCenter);
@@ -378,6 +365,12 @@ QWidget* MediaInterface::addTipologiaTrailer(){        //tipologia Trailer
         TrailerH->addWidget(addReference("Film", "film", referenceTrailer));
         TipoTrailer->setLayout(TrailerH);
 
+        connect(referenceTrailer, &SelectMediaReference::mediaSelected, this, [this](MediaFrame* f){
+            titoloFilmRiferimento = f->getTitolo();
+            autoreFilmRiferimento = f->getAutore();
+            checkMediaNameAvailability();
+        });
+
         //style
         numeroProiezioniTrailer->setObjectName("numeroProiezioniTrailer");
 
@@ -461,6 +454,12 @@ QWidget* MediaInterface::addTipologiaPuntate(){    //tipologia Puntata
         puntataH->addWidget(addReference("Podcast","podcast",referencePuntate));
 
         TipoPuntata->setLayout(puntataH);
+
+        connect(referencePuntate, &SelectMediaReference::mediaSelected, this, [this](MediaFrame* f){
+            titoloPodcastRiferimento = f->getTitolo();
+            autorePodcastRiferimento = f->getAutore();
+            checkMediaNameAvailability();
+        });
 
         //style
         numeroPubblicitaPuntata->setObjectName("numeroPubblicitaPuntata");
@@ -564,7 +563,7 @@ QWidget* MediaInterface::addPagina(){
     QWidget* widgetPagina3 = new QWidget(this);
     QWidget* widgetPagina4 = new QWidget(this);
 
-    QLabel* titolo = new QLabel("Aggiungi un elemento alla libreria");
+    titolo = new QLabel(this);
     framePath = new InsertImageFrame(   "<span style='color:#05313c; font-size:16px;'><b> +<u>Aggiungi copertina</u></b></span><br>"
                                         "<span style='color:#05313c;; font-size:16px;'> oppure rilasciala</span>",
                                         "#frame { border: 3px dashed #05313c; border-radius: 12px; } "

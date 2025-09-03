@@ -4,6 +4,8 @@ InsertMedia::InsertMedia(QWidget *parent): MediaInterface(parent){
 
     initUI();
 
+    titolo->setText("Aggiungi un elemento alla libreria");
+
     connect(indietro, &QPushButton::clicked, this, [this](){
         resetAllInput();
         emit tornaIndietro();
