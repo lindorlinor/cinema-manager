@@ -1,14 +1,17 @@
 #include "MediaView.h"
 #include <QPushButton>
+#include <QToolButton>
 MediaView::MediaView(Media* mPtr, QWidget* parent)
-    : QWidget(parent), mediaPtr(mPtr),layoutPage( new QVBoxLayout(this)),splitter(new QWidget(this)),splitterLayout(new QHBoxLayout(splitter)),leftSide(new QWidget(splitter)),
-    rightSide(new QWidget(splitter)),leftLayout(new QHBoxLayout(leftSide)),endDateLabel(nullptr),rightLayout(new QVBoxLayout(rightSide)),card(new QWidget(leftSide)),cardLayout(new QVBoxLayout(card)){
+    : QWidget(parent), mediaPtr(mPtr),layoutPage( new QVBoxLayout(this)),splitter(new QWidget(this)),splitterLayout(new QHBoxLayout(splitter)),leftSide(new QWidget(splitter)),leftLayout(new QHBoxLayout(leftSide)),
+    details(new QFrame(leftSide)),detailsLayout(new QVBoxLayout(details)),endDateLabel(nullptr),rightSide(new QWidget(splitter)),rightLayout(new QVBoxLayout(rightSide)),card(new QWidget(leftSide)),cardLayout(new QVBoxLayout(card)){
     this->setObjectName("gugu");
     
     createHeader();
     
-    splitterLayout->setSpacing(55); //aggiunge un po di spazio tra parte sinistra e destra della pagina
+    splitterLayout->setSpacing(130); //aggiunge un po di spazio tra parte sinistra e destra della pagina
     layoutPage->addWidget(splitter,0,Qt::AlignHCenter);
+    rightSide->setMinimumWidth(302);
+    leftSide->setMinimumWidth(930);
 }
 
 
@@ -34,9 +37,12 @@ void MediaView::createHeader(){
     titolo->setFont(fontTitolo);
 
     layoutHeader->addWidget(titolo);
+    layoutHeader->setContentsMargins(50,0,0,0);
     layoutHeader->setAlignment(Qt::AlignLeft);
-
+    layoutPage->addSpacing(40);
     layoutPage->addWidget(contenitoreHeader);
+    layoutPage->addSpacing(40);
+
 }
 
 
@@ -47,13 +53,12 @@ void MediaView::createMediaCard(){
     QPixmap image(QString::fromStdString(mediaPtr->getImPath()));
     QLabel * copertina = new QLabel(card);
     copertina->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    QPixmap scaled = image.scaled(330,489,Qt::KeepAspectRatio,Qt::SmoothTransformation);
+    QPixmap scaled = image.scaled(390,577,Qt::KeepAspectRatio,Qt::SmoothTransformation);
     copertina->setPixmap(scaled);
     cardLayout->addWidget(copertina,0,Qt::AlignTop);
-
     cardLayout->setSpacing(0);
     QWidget* box = new QWidget(card);
-    box->setFixedSize(330, 231);
+    box->setFixedSize(390, 218);
     box->setObjectName("caca");
     QVBoxLayout* layoutBox = new QVBoxLayout(box);
     layoutBox->setContentsMargins(35, 35, 35, 35);
@@ -99,8 +104,54 @@ void MediaView::createMediaCard(){
     layoutBox->addWidget(lingue);
     layoutBox->addWidget(sottotitoli);
     layoutBox->setAlignment(Qt::AlignLeft);
-    box->setFixedHeight(165);
+    // box->setFixedHeight(165);
     cardLayout->addWidget(box,0,Qt::AlignTop);
     card->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     leftLayout->addWidget(card,0,Qt::AlignTop);
+}
+
+
+void MediaView::createRowDetails(){
+    QWidget * row = new QWidget(details);
+    row->setFixedHeight(50);
+    row->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
+    QHBoxLayout * rowLayout = new QHBoxLayout(row);
+
+    QWidget* containerLabel = new QWidget;
+    QHBoxLayout* containerLayout = new QHBoxLayout(containerLabel);
+    containerLayout->setContentsMargins(0,0,0,0);
+
+    QLabel* iconLabel = new QLabel(containerLabel);
+    QLabel* textLabel = new QLabel(containerLabel);
+    if (!mediaPtr->FuoriProduzione()){
+        iconLabel->setPixmap(QPixmap(":/icons/in_sala.png").scaled(16,16, Qt::KeepAspectRatio));
+        textLabel->setText("Attualmente in distribuzione");
+        textLabel->setStyleSheet("color: #FED36A;");
+    }else{
+        iconLabel->setPixmap(QPixmap(":/icons/non_in_sala.png").scaled(16,16, Qt::KeepAspectRatio));
+        textLabel->setText("Fuori produzione");
+        textLabel->setStyleSheet("color: #BDCED3;");
+    }
+
+    containerLayout->addWidget(iconLabel);
+    containerLayout->addWidget(textLabel);
+
+    
+    QToolButton* editTool = new QToolButton(containerLabel);
+    editTool->setFixedSize(120, 30);
+    editTool->setEnabled(true);
+    editTool->setAutoRaise(true);
+    editTool->setText("Modifica media");
+    editTool->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    editTool->setIcon(QIcon(":/icons/edit.png"));
+
+    connect(editTool, &QToolButton::clicked, this, [this](){
+        qDebug() << "hai cliccato edit del media " << QString::fromStdString(mediaPtr->getTitolo());
+        editMediaClicked(mediaPtr);
+    });
+
+    rowLayout->addWidget(containerLabel);
+    rowLayout->addStretch();
+    rowLayout->addWidget(editTool);
+    detailsLayout->addWidget(row);
 }

@@ -18,11 +18,13 @@ FilmView::FilmView(Film* fPtr, QWidget* parent):MediaView(fPtr,parent),filmPtr(f
     createMediaDetails();
     createScrollableSection();
     createButtons();
+    layoutPage->addSpacing(30);
 }
 
 
 void FilmView::createMediaDetails(){
-    leftSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    createRowDetails();
+    leftSide->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
     leftSide->setObjectName("pupu");
     leftSide->setContentsMargins(0,0,0,0);
     leftLayout->setSpacing(0);
@@ -31,11 +33,9 @@ void FilmView::createMediaDetails(){
     createMediaCard();
 
     QScrollArea* scrollDetails = new QScrollArea(leftSide);
-    QFrame * details = new QFrame(scrollDetails);
-    QVBoxLayout * detailsLayout = new QVBoxLayout(details);
+    details->setParent(scrollDetails);
     detailsLayout->setContentsMargins(0, 0, 0, 0);
-    // details->setFixedHeight(scaled.height()+210);
-    details->setMaximumWidth(600);
+    leftSide->setMinimumWidth(930);
     details->setContentsMargins(0,0,13,0);
     details->setObjectName("details");
 
@@ -46,14 +46,14 @@ void FilmView::createMediaDetails(){
     leftLayout->addWidget(scrollDetails);
     detailsLayout->setSpacing(10);
     QWidget * sezioneProgrammazione = new QWidget(details);
-    sezioneProgrammazione->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    sezioneProgrammazione->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     QVBoxLayout * layoutProgrammazione = new QVBoxLayout(sezioneProgrammazione);
     
     QLabel * labelProgrammazione = new QLabel("Informazioni di programmazione");
     layoutProgrammazione->addWidget(labelProgrammazione);
-
     QWidget * dettagliProgrammazione = new QWidget(sezioneProgrammazione);
     QGridLayout * layoutDettagliProgrammazione = new QGridLayout(dettagliProgrammazione);
+    layoutDettagliProgrammazione->setAlignment(Qt::AlignLeft);
     dettagliProgrammazione->setContentsMargins(10,10,10,10);
     sezioneProgrammazione->setObjectName("sp");
     
@@ -206,6 +206,7 @@ void FilmView::createMediaDetails(){
     detailsLayout->addWidget(sezionePerformance);
     detailsLayout->addWidget(sezioneTecnica);
     detailsLayout->addWidget(sezioneDettagli);
+    detailsLayout->addStretch();
 
     splitterLayout->addWidget(leftSide);
 
@@ -228,12 +229,14 @@ void FilmView::createScrollableSection(){
     QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
     sezioneTrailer->setObjectName("sp");
 
-    for (const Trailer* t : filmPtr->getTrailers()) {
+    for (Trailer* t : filmPtr->getTrailers()) {
         PreviewCard* card = new PreviewCard(t);
         layoutTrailer->addWidget(card);
         connect(card, &PreviewCard::viewMedia, this, [this,t](){
+            DetailPageVisitor detailVisitor;
+            t->accept(&detailVisitor);
+            emit requestMediaView(*detailVisitor.getWidget());
             qDebug() << "view Media: " << QString::fromStdString(t->getTitolo());
-            emit trailerSelected(t);
         });
     }
     layoutTrailer->setSpacing(20);  
@@ -243,16 +246,15 @@ void FilmView::createScrollableSection(){
     scrollTrailer->setWidgetResizable(true);
     scrollTrailer->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollTrailer->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    scrollTrailer->setMinimumHeight(400);
+    scrollTrailer->setMinimumHeight(500);
     rightLayout->addWidget(scrollTrailer,0,Qt::AlignTop);
 
     splitterLayout->addWidget(rightSide);
 }
 void FilmView::createButtons(){
-    DetailsPageButtons * buttons = new DetailsPageButtons(rightSide);
+    DetailsPageButtons * buttons = new DetailsPageButtons(filmPtr,rightSide);
     buttons->setDeleteButtonText("Elimina film");
     connect(buttons,&DetailsPageButtons::extendMedia,this,[this](){
-        
             QMessageBox msgBox(this);
             msgBox.setWindowTitle("Conferma estensione data");
 
@@ -270,10 +272,10 @@ void FilmView::createButtons(){
 
             int ret = msgBox.exec();
             if (ret == QMessageBox::Ok) {
-                qDebug() << "Confermato";
-                endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-                "<span style='color:black;'>" + QString::fromStdString(dateToString(year_month_day(nuovaFine))) + "</span>");
+                filmPtr->estendiDataFineRilascio();
                 emit extendMediaClicked();
+                endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
+                "<span style='color:black;'>" + QString::fromStdString(dateToString(filmPtr->getDataFineRilascio())) + "</span>");
             }
         });
     

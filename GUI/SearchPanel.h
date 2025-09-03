@@ -143,16 +143,16 @@ class SearchPanel:public QWidget{
 	explicit SearchPanel(CinemaRepositoryJson* jsonManager, MediaManagerXml* xmlManager,QWidget *parent);
     void addObserver(LibraryObserver* obs);
     void update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca);
-    
-    
+
+
     public slots:
     void updateModifierPanel(int index);
     void updateInfoCinema(Cinema* cinemaSel);
     void resetSearchPanel();    //resetta tutte le impostazioni di searchPanel
     void showMediaView(MediaView& detailPage);
-    void removeMediaView();
+    void removeMediaView(QWidget* widget);
     void acceptEditCinema();
-    void acceptDeleteCinema();
+    void acceptDeleteCinema();    
     
     
     signals:
@@ -163,6 +163,8 @@ class SearchPanel:public QWidget{
     void selectedFilterButton(const QString& filtro);
     void escSearchPanel();
     void deleteCinemaInSearchPanel(Cinema* s_cinemaSelezionato);
+    void deleteCinema();
+    void updateJson();
 };
 
 #endif //SEARCHPANEL_H

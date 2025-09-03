@@ -10,9 +10,11 @@ PodcastView::PodcastView(Podcast* pPtr, QWidget* parent):MediaView(pPtr,parent),
     createMediaDetails();
     createScrollableSection();
     createButtons();
+    layoutPage->addSpacing(30);
 }   
 
 void PodcastView::createMediaDetails(){
+    createRowDetails();
     leftSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     leftSide->setObjectName("pupu");
     leftSide->setContentsMargins(0,0,0,0);
@@ -22,8 +24,7 @@ void PodcastView::createMediaDetails(){
     createMediaCard();
 
     QScrollArea* scrollDetails = new QScrollArea(leftSide);
-    QFrame * details = new QFrame(scrollDetails);
-    QVBoxLayout * detailsLayout = new QVBoxLayout(details);
+    details->setParent(scrollDetails);
     detailsLayout->setContentsMargins(0, 0, 0, 0);
     details->setMaximumWidth(600);
     details->setContentsMargins(0,0,13,0);
@@ -36,7 +37,7 @@ void PodcastView::createMediaDetails(){
     leftLayout->addWidget(scrollDetails);
     detailsLayout->setSpacing(10);
     QWidget * sezioneProgrammazione = new QWidget(details);
-    sezioneProgrammazione->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    sezioneProgrammazione->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     QVBoxLayout * layoutProgrammazione = new QVBoxLayout(sezioneProgrammazione);
     
     QLabel * labelProgrammazione = new QLabel("Informazioni di distribuzione");
@@ -44,6 +45,7 @@ void PodcastView::createMediaDetails(){
 
     QWidget * dettagliProgrammazione = new QWidget(sezioneProgrammazione);
     QHBoxLayout * layoutDettagliProgrammazione = new QHBoxLayout(dettagliProgrammazione);
+    layoutDettagliProgrammazione->setAlignment(Qt::AlignLeft);
     dettagliProgrammazione->setContentsMargins(10,10,10,10);
     sezioneProgrammazione->setObjectName("sp");
     
@@ -134,16 +136,18 @@ void PodcastView::createMediaDetails(){
         "<span style='color:white; font-weight:bold;'>Conduttore: </span>"
         "<span style='color:black;'>" + QString::fromStdString(podPtr->getConduttore()) + "</span>",dettagliTecnici);
     conduttore->setTextFormat(Qt::RichText);
+    conduttore->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);   
 
      QLabel* nPuntate = new QLabel(
         "<span style='color:white; font-weight:bold;'>Numero di puntate: </span>"
         "<span style='color:black;'>" + QString::number(podPtr->getElencoPuntate().size()) + "</span>",dettagliTecnici);
-    conduttore->setTextFormat(Qt::RichText);
-
+    nPuntate->setTextFormat(Qt::RichText);
+     nPuntate->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);  
 
     layoutDettagliDettagli->addWidget(descrizione);
     layoutDettagliDettagli->addWidget(conduttore);
     layoutDettagliDettagli->addWidget(nPuntate);
+
 
 
     layoutDettagli->addWidget(dettagliDettagli);
@@ -152,7 +156,9 @@ void PodcastView::createMediaDetails(){
     detailsLayout->addWidget(sezionePerformance);
     detailsLayout->addWidget(sezioneTecnica);
     detailsLayout->addWidget(sezioneDettagli);
+    detailsLayout->addStretch();
 
+    leftSide->setFixedHeight(700);
     splitterLayout->addWidget(leftSide);
 }
 
@@ -173,12 +179,13 @@ void PodcastView::createScrollableSection(){
     QVBoxLayout * layoutPuntate = new QVBoxLayout(sezionePuntate);
     sezionePuntate->setObjectName("sp");
 
-    for (const Puntata* p : podPtr->getElencoPuntate()) {
+    for (Puntata* p : podPtr->getElencoPuntate()) {
         PreviewCard* card = new PreviewCard(p);
         layoutPuntate->addWidget(card);
         connect(card, &PreviewCard::viewMedia, this, [this,p](){
-            qDebug() << "view Puntata: " << QString::fromStdString(p->getTitolo());
-            emit puntataSelected(p);
+            DetailPageVisitor detailVisitor;
+            p->accept(&detailVisitor);
+            emit requestMediaView(*detailVisitor.getWidget());
         });
     }
     layoutPuntate->setSpacing(20);  
@@ -188,14 +195,14 @@ void PodcastView::createScrollableSection(){
     scrollPuntate->setWidgetResizable(true);
     scrollPuntate->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollPuntate->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    scrollPuntate->setMinimumHeight(400);
+    scrollPuntate->setMinimumHeight(600);
     rightLayout->addWidget(scrollPuntate,0,Qt::AlignTop);
 
     splitterLayout->addWidget(rightSide);
 }
 
 void PodcastView::createButtons(){
-    DetailsPageButtons * buttons = new DetailsPageButtons(leftSide);
+    DetailsPageButtons * buttons = new DetailsPageButtons(podPtr,leftSide);
     buttons->setDeleteButtonText("Elimina podcast");
     /* connect(buttons,&DetailsPageButtons::extendMedia,this,
         [this](){
@@ -242,5 +249,5 @@ void PodcastView::createButtons(){
         }
         }); */
     cardLayout->addSpacing(40);
-    cardLayout->addWidget(buttons);
+    cardLayout->addWidget(buttons,0,Qt::AlignCenter);
 }

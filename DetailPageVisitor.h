@@ -4,10 +4,10 @@
 #include <QWidget>
 #include "MediaVisitor.h" 
 #include "GUI/MediaView.h" 
-
+class MediaView;
 class DetailPageVisitor : public MediaVisitor {
 private:
-    MediaView* detailPage; 
+    MediaView* detailPage;
 public:
     DetailPageVisitor();
     ~DetailPageVisitor() override = default;

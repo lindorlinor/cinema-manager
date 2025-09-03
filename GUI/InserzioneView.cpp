@@ -15,12 +15,12 @@
 
 InserzioneView::InserzioneView(Inserzione* iPtr, QWidget* parent):MediaView(iPtr,parent),insPtr(iPtr){
     createMediaDetails();
-    createScrollableSection();
     createButtons();
 }
 
 
 void InserzioneView::createMediaDetails(){
+    createRowDetails();
     leftSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     leftSide->setObjectName("pupu");
     leftSide->setContentsMargins(0,0,0,0);
@@ -30,8 +30,7 @@ void InserzioneView::createMediaDetails(){
     createMediaCard();
 
     QScrollArea* scrollDetails = new QScrollArea(leftSide);
-    QFrame * details = new QFrame(scrollDetails);
-    QVBoxLayout * detailsLayout = new QVBoxLayout(details);
+    details->setParent(scrollDetails);
     detailsLayout->setContentsMargins(0, 0, 0, 0);
     // details->setFixedHeight(scaled.height()+210);
     scrollDetails->setMinimumHeight(550);
@@ -46,7 +45,7 @@ void InserzioneView::createMediaDetails(){
     leftLayout->addWidget(scrollDetails);
     detailsLayout->setSpacing(10);
     QWidget * sezioneProgrammazione = new QWidget(details);
-    sezioneProgrammazione->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    sezioneProgrammazione->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     QVBoxLayout * layoutProgrammazione = new QVBoxLayout(sezioneProgrammazione);
     
     QLabel * labelProgrammazione = new QLabel("Informazioni di programmazione");
@@ -54,6 +53,7 @@ void InserzioneView::createMediaDetails(){
 
     QWidget * dettagliProgrammazione = new QWidget(sezioneProgrammazione);
     QGridLayout * layoutDettagliProgrammazione = new QGridLayout(dettagliProgrammazione);
+    layoutDettagliProgrammazione->setAlignment(Qt::AlignLeft);
     dettagliProgrammazione->setContentsMargins(10,10,10,10);
     sezioneProgrammazione->setObjectName("sp");
     
@@ -185,6 +185,7 @@ void InserzioneView::createMediaDetails(){
     detailsLayout->addWidget(sezionePerformance);
     detailsLayout->addWidget(sezioneTecnica);
     detailsLayout->addWidget(sezioneDettagli);
+    detailsLayout->addStretch();
 
     splitterLayout->addWidget(leftSide);
 
@@ -192,7 +193,7 @@ void InserzioneView::createMediaDetails(){
 
 
 void InserzioneView::createButtons(){
-    DetailsPageButtons * buttons = new DetailsPageButtons(leftSide);
+    DetailsPageButtons * buttons = new DetailsPageButtons(insPtr,leftSide);
     buttons->setDeleteButtonText("Elimina Inserzione");
 
     connect(buttons,&DetailsPageButtons::extendMedia,this,
@@ -236,49 +237,59 @@ void InserzioneView::createButtons(){
         }
         });
     cardLayout->addSpacing(40);
-    cardLayout->addWidget(buttons);
+    cardLayout->addWidget(buttons,0,Qt::AlignCenter);
 }
 
 //@to do non so come farla al momento, devo passare la lista di media WOPSIEE COME FACCIO AAGHHH
 void InserzioneView::createScrollableSection(){
-    /* rightSide->setObjectName("gaga");
+    rightSide->setObjectName("gaga");
     rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
-    QLabel *labelTrailer = new QLabel("Trailer",rightSide);
-    QFont fontTrailer = labelTrailer->font();
-    fontTrailer.setPointSize(17);
-    fontTrailer.setBold(true);
-    labelTrailer->setFont(fontTrailer);
+    QLabel *labelInserzioni = new QLabel("Altre inserzioni",rightSide);
+    QFont fontIns = labelInserzioni->font();
+    fontIns.setPointSize(17);
+    fontIns.setBold(true);
+    labelInserzioni->setFont(fontIns);
     
-    rightLayout->addWidget(labelTrailer);
+    rightLayout->addWidget(labelInserzioni);
 
-    QScrollArea* scrollTrailer = new QScrollArea(rightSide); //configurata dopo
-    QWidget * sezioneTrailer = new QWidget(scrollTrailer);
-    QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
-    sezioneTrailer->setObjectName("sp");
+    QScrollArea* scrollInserzioni = new QScrollArea(rightSide); //configurata dopo
+    QWidget * sezioneInserzioni = new QWidget(scrollInserzioni);
+    QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneInserzioni);
+    sezioneInserzioni->setObjectName("sp");
 
-    for (const Trailer* t : insPtr->get()) {
-        PreviewCard* card = new PreviewCard(t);
-        layoutTrailer->addWidget(card);
-        connect(card, &PreviewCard::viewMedia, this, [this,t](){
-            qDebug() << "view Media: " << QString::fromStdString(t->getTitolo());
-            emit trailerSelected(t);
-        });
+    for (Media* m : mediaList) {
+        Inserzione* i = dynamic_cast<Inserzione*>(m);
+        if (i && i != insPtr) {
+            PreviewCard* card = new PreviewCard(i);
+            layoutTrailer->addWidget(card);
+            connect(card, &PreviewCard::viewMedia, this, [this, i]() {
+                DetailPageVisitor detailVisitor;
+                i->accept(&detailVisitor);
+                emit requestMediaView(*detailVisitor.getWidget());
+            });
+        }
     }
+
     layoutTrailer->setSpacing(20);  
-    sezioneTrailer->setContentsMargins(20,20,20,33);
+    sezioneInserzioni->setContentsMargins(20,20,20,33);
 
-    scrollTrailer->setWidget(sezioneTrailer);
-    scrollTrailer->setWidgetResizable(true);
-    scrollTrailer->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scrollTrailer->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    scrollTrailer->setMinimumHeight(400);
-    rightLayout->addWidget(scrollTrailer,0,Qt::AlignTop);
+    scrollInserzioni->setWidget(sezioneInserzioni);
+    scrollInserzioni->setWidgetResizable(true);
+    scrollInserzioni->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollInserzioni->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    scrollInserzioni->setMinimumHeight(600);
+    rightLayout->addWidget(scrollInserzioni,0,Qt::AlignTop);
 
-    splitterLayout->addWidget(rightSide); */
+    splitterLayout->addWidget(rightSide);
 }
 
 
+
+void InserzioneView::setMediaList(const std::list<Media*>& list) {
+    mediaList = list;
+    createScrollableSection();
+}
 
 
 

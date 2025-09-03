@@ -14,10 +14,12 @@ TrailerView::TrailerView(Trailer* tPtr, QWidget* parent)
     createMediaDetails();
     createScrollableSection();
     createButtons();
+    layoutPage->addSpacing(30);
 }
 
 
 void TrailerView::createMediaDetails() {
+    createRowDetails();
     leftSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     leftSide->setObjectName("pupu");
     leftSide->setContentsMargins(0,0,0,0);
@@ -27,8 +29,7 @@ void TrailerView::createMediaDetails() {
     createMediaCard();
 
     QScrollArea* scrollDetails = new QScrollArea(leftSide);
-    QFrame * details = new QFrame(scrollDetails);
-    QVBoxLayout * detailsLayout = new QVBoxLayout(details);
+    details->setParent(scrollDetails);
     detailsLayout->setContentsMargins(0, 0, 0, 0);
     // details->setFixedHeight(scaled.height()+210);
     scrollDetails->setMinimumHeight(550);
@@ -43,7 +44,7 @@ void TrailerView::createMediaDetails() {
     leftLayout->addWidget(scrollDetails);
     detailsLayout->setSpacing(10);
     QWidget * sezioneProgrammazione = new QWidget(details);
-    sezioneProgrammazione->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    sezioneProgrammazione->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     QVBoxLayout * layoutProgrammazione = new QVBoxLayout(sezioneProgrammazione);
     
     QLabel * labelProgrammazione = new QLabel("Informazioni di programmazione");
@@ -51,6 +52,7 @@ void TrailerView::createMediaDetails() {
 
     QWidget * dettagliProgrammazione = new QWidget(sezioneProgrammazione);
     QGridLayout * layoutDettagliProgrammazione = new QGridLayout(dettagliProgrammazione);
+    layoutDettagliProgrammazione->setAlignment(Qt::AlignLeft);
     dettagliProgrammazione->setContentsMargins(10,10,10,10);
     sezioneProgrammazione->setObjectName("sp");
     
@@ -161,11 +163,12 @@ void TrailerView::createMediaDetails() {
     detailsLayout->addWidget(sezionePerformance);
     detailsLayout->addWidget(sezioneTecnica);
     detailsLayout->addWidget(sezioneDettagli);
+    detailsLayout->addStretch();
 
     splitterLayout->addWidget(leftSide);
 
 }
-void TrailerView::createScrollableSection() {
+void TrailerView::createScrollableSection(){
     rightSide->setObjectName("gaga");
     rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
@@ -181,11 +184,14 @@ void TrailerView::createScrollableSection() {
     QVBoxLayout* layoutFilmA = new QVBoxLayout(sezioneFilmA);
     sezioneFilmA->setObjectName("sp"); 
 
-    const Film* filmA = trailerPtr->getFilm();
+    Film* filmA = trailerPtr->getFilm();
     PreviewCard* cardFilmA = new PreviewCard(filmA);
     cardFilmA->setFixedSize(210, 320);   
     layoutFilmA->addWidget(cardFilmA,0,Qt::AlignCenter);
-    connect(cardFilmA, &PreviewCard::viewMedia, this, [this](){
+    connect(cardFilmA, &PreviewCard::viewMedia, this, [this,filmA](){
+        DetailPageVisitor detailVisitor;
+        filmA->accept(&detailVisitor);
+        emit requestMediaView(*detailVisitor.getWidget());
         qDebug() << "view Film Associato: " << QString::fromStdString(mediaPtr->getTitolo());
     });
     sezioneFilmA->setContentsMargins(20,0,20,0);
@@ -201,14 +207,15 @@ void TrailerView::createScrollableSection() {
     QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
     sezioneTrailer->setObjectName("sp");
 
-    for (const Trailer* t : (trailerPtr->getFilm())->getTrailers()) {
+    for (Trailer* t : (trailerPtr->getFilm())->getTrailers()) {
         if(t!=trailerPtr){
             PreviewCard* cardTrailer = new PreviewCard(t);
             layoutTrailer->addWidget(cardTrailer,0,Qt::AlignCenter);
             connect(cardTrailer, &PreviewCard::viewMedia, this, 
                 [this,t](){
-                    qDebug() << "view Trailer: " << QString::fromStdString(t->getTitolo());
-                    emit trailerSelected(t);
+                    DetailPageVisitor detailVisitor;
+                    t->accept(&detailVisitor);
+                    emit requestMediaView(*detailVisitor.getWidget());
                 });
         }
     }
@@ -228,8 +235,8 @@ void TrailerView::createScrollableSection() {
     rightLayout->addWidget(scrollTrailer);
     splitterLayout->addWidget(rightSide);
 }
-void TrailerView::createButtons() {
-    DetailsPageButtons * buttons = new DetailsPageButtons(leftSide);
+void TrailerView::createButtons(){
+    DetailsPageButtons * buttons = new DetailsPageButtons(trailerPtr,leftSide);
     buttons->setDeleteButtonText("Elimina trailer");
     connect(buttons,&DetailsPageButtons::extendMedia,this,
         [this](){
@@ -276,5 +283,5 @@ void TrailerView::createButtons() {
         }
         });
     cardLayout->addSpacing(40);
-    cardLayout->addWidget(buttons);
+    cardLayout->addWidget(buttons,0,Qt::AlignCenter);
 }

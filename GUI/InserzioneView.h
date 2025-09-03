@@ -6,14 +6,13 @@ class InserzioneView: public MediaView{
      Q_OBJECT
 public:
     explicit InserzioneView(Inserzione* iPtr,QWidget* parent = nullptr);
-    private:
+    void setMediaList(const std::list<Media*>& list);
+private:
     Inserzione* insPtr;
     void createMediaDetails() override;
     void createScrollableSection() override;
     void createButtons() override;
-signals:
-    void puntataSelected(); //segnale emesso quando cliccato su un trailer del film, trailer è il puntatore al trailer cliccato
-
+    list<Media*> mediaList;
 };
 
 #endif //INSERZIONEVIEW_H

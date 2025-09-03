@@ -3,6 +3,7 @@
 #include "TrailerView.h"
 #include "DetailPageVisitor.h"
 #include "LibraryObserver.h"
+#include "InserzioneView.h"
 
 SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xmlManager,QWidget *parent):QWidget(parent), s_jsonManager(s_jsonManager),
                                                     s_xmlManager(xmlManager),stackModifiche(new QStackedWidget(this)){
@@ -20,13 +21,43 @@ SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xm
 
 void SearchPanel::updateModifierPanel(int index){
     if(stackModifiche->currentIndex()!=index){
-        previousIndex = stackModifiche->currentIndex();
+        if(previousIndex)
+            previousIndex = stackModifiche->currentIndex();
         stackModifiche->setCurrentIndex(index);
     } 
 
     if(index == 2) emit setQMenuEnabled();
     else emit setQMenuDisabled();
 }
+
+void SearchPanel::showMediaView(MediaView& widget){
+    if(auto inserzione = dynamic_cast<InserzioneView*>(&widget))
+        inserzione->setMediaList(s_cinemaSelezionato->getListaMedia()); //per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, mi semrbava meglio cosi
+
+    stackModifiche->addWidget(&widget);
+    stackModifiche->setCurrentWidget(&widget);
+
+    connect(&widget, &MediaView::returnButton, this, [this, &widget](){
+        removeMediaView(&widget);
+    });
+    
+    connect(&widget, &MediaView::extendMediaClicked, this, &SearchPanel::updateJson);
+    connect(&widget, &MediaView::requestMediaView, this, &SearchPanel::showMediaView);
+}
+
+void SearchPanel::removeMediaView(QWidget* widget){
+    int widgetIndex = stackModifiche->indexOf(widget);
+
+    if(widgetIndex > 2)
+        stackModifiche->setCurrentIndex(widgetIndex - 1);
+    else
+        stackModifiche->setCurrentIndex(0);
+
+    stackModifiche->removeWidget(widget);
+    delete widget;
+}
+
+
 
 void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     //agginta ricerca LatoFiltri
@@ -377,18 +408,7 @@ void SearchPanel::resetSearchPanel(){
     updateFiltroTutto();
 }
 
-void SearchPanel::showMediaView(MediaView& widget){
-    detailPage = &widget;
-    stackModifiche->addWidget(detailPage); //2
-    updateModifierPanel(2);
-    connect(detailPage, &MediaView::returnButton, this, &SearchPanel::removeMediaView);
-}
 
-void SearchPanel::removeMediaView(){
-    updateModifierPanel(previousIndex);
-    stackModifiche->removeWidget(detailPage);
-    delete detailPage;
-}
 
 void SearchPanel::acceptEditCinema(){
     QString nomeCinema = QString::fromStdString(s_cinemaSelezionato->getNomeCinema());

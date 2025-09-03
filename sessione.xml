@@ -1,76 +1,14 @@
 <MediaList>
-    <Film>
-        <Titolo>Il mio vicino Totoro (RE-RELEASE 2025)</Titolo>
-        <Autore>Hayao Miyazaki</Autore>
-        <Descrizione>La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco</Descrizione>
-        <DurataMinuti>86</DurataMinuti>
-        <Formato>MP4</Formato>
-        <Risoluzione>UHD 4K 2160p</Risoluzione>
-        <Path>:/images/image9.png</Path>
-        <DataInizioRilascio>1/09/2025</DataInizioRilascio>
-        <DataFineRilascio>30/9/2025</DataFineRilascio>
-        <LingueDisponibili>
-            <Lingua>Italiano</Lingua>
-            <Lingua>Inglese</Lingua>
-        </LingueDisponibili>
-        <SottotitoliDisponibili>
-            <Lingua>Italiano</Lingua>
-        </SottotitoliDisponibili>
-        <Generi/>
-        <AttoriPrincipali>
-            <Attore>Noriko Hidaka</Attore>
-            <Attore>Chika Sakamoto</Attore>
-            <Attore>Shigesato Itoi</Attore>
-            <Attore>Hitoshi Takagi</Attore>
-            <Attore>Takashi Nagasako</Attore>
-        </AttoriPrincipali>
-        <Target>TUTTI</Target>
-        <CostoBiglietto>12.5</CostoBiglietto>
-        <CasaDiProduzione>Studio Ghibli</CasaDiProduzione>
-        <NPostCredit>1</NPostCredit>
-    </Film>
-    <Trailer>
-        <Titolo>Trailer ufficiale - Il mio vicino Totoro (2025)</Titolo>
-        <Autore>Studio Ghibli</Autore>
-        <Descrizione>Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.</Descrizione>
-        <DurataMinuti>2</DurataMinuti>
-        <Formato>MP4</Formato>
-        <Risoluzione>UHD 4K 2160p</Risoluzione>
-        <Path>:/images/image10.png</Path>
-        <DataInizioRilascio>15/4/2025</DataInizioRilascio>
-        <DataFineRilascio>31/9/2025</DataFineRilascio>
-        <LingueDisponibili/>
-        <SottotitoliDisponibili/>
-        <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
-        <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
-        <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
-    </Trailer>
-    <Trailer>
-        <Titolo>Trailer speciale anniversario - Il mio vicino Totoro (2025)</Titolo>
-        <Autore>Hayao Miyazaki</Autore>
-        <Descrizione>Un trailer celebrativo con scene inedite per il ritorno del film in sala.</Descrizione>
-        <DurataMinuti>3</DurataMinuti>
-        <Formato>MP4</Formato>
-        <Risoluzione>UHD 4K 2160p</Risoluzione>
-        <Path>:/images/image10.png</Path>
-        <DataInizioRilascio>1/5/2025</DataInizioRilascio>
-        <DataFineRilascio>15/9/2025</DataFineRilascio>
-        <LingueDisponibili/>
-        <SottotitoliDisponibili/>
-        <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
-        <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
-        <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
-    </Trailer>
     <Podcast>
         <Titolo>Storie del cinema</Titolo>
         <Autore>Cinema Milano</Autore>
         <Descrizione>Il podcast che racconta il mondo del cinema fino ai giorni nostri. Ogni mercoledì con Lucia Dalla Monta' solo nei canali del cinema</Descrizione>
-        <DurataMinuti>0</DurataMinuti>
+        <DurataMinuti>92</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/.png</Path>
-        <DataInizioRilascio></DataInizioRilascio>
-        <DataFineRilascio></DataFineRilascio>
+        <Path>:/images/image17.png</Path>
+        <DataInizioRilascio>1/9/2025</DataInizioRilascio>
+        <DataFineRilascio>30/11/2025</DataFineRilascio>
         <LingueDisponibili/>
         <SottotitoliDisponibili/>
         <Conduttore>Lucia Dalla Monta</Conduttore>
@@ -123,4 +61,243 @@
         <AutorePodcastAssociato>Cinema Milano</AutorePodcastAssociato>
         <NPubblicita>2</NPubblicita>
     </Puntata>
+    <Film>
+        <Titolo>Kiki consegne a domicilio</Titolo>
+        <Autore>Hayao Miyazaki</Autore>
+        <Descrizione></Descrizione>
+        <DurataMinuti>96</DurataMinuti>
+        <Formato>IMAX 3D</Formato>
+        <Risoluzione>UHD 4K 2160p</Risoluzione>
+        <Path>:/images/default.png</Path>
+        <DataInizioRilascio>5/8/2025</DataInizioRilascio>
+        <DataFineRilascio>21/8/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili/>
+        <Generi>
+            <Genere>Animazione</Genere>
+        </Generi>
+        <AttoriPrincipali/>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>8</CostoBiglietto>
+        <CasaDiProduzione>Studio Ghibli</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Il mio vicino Totoro (RE-RELEASE 2025)</Titolo>
+        <Autore>Hayao Miyazaki</Autore>
+        <Descrizione>La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco</Descrizione>
+        <DurataMinuti>86</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>UHD 4K 2160p</Risoluzione>
+        <Path>:/images/image9.png</Path>
+        <DataInizioRilascio>1/9/2025</DataInizioRilascio>
+        <DataFineRilascio>2/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+        </SottotitoliDisponibili>
+        <Generi/>
+        <AttoriPrincipali>
+            <Attore>Noriko Hidaka</Attore>
+            <Attore>Chika Sakamoto</Attore>
+            <Attore>Shigesato Itoi</Attore>
+            <Attore>Hitoshi Takagi</Attore>
+            <Attore>Takashi Nagasako</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>12.5</CostoBiglietto>
+        <CasaDiProduzione>Studio Ghibli</CasaDiProduzione>
+        <NPostCredit>1</NPostCredit>
+    </Film>
+    <Trailer>
+        <Titolo>Trailer ufficiale - Il mio vicino Totoro (2025)</Titolo>
+        <Autore>Studio Ghibli</Autore>
+        <Descrizione>Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.</Descrizione>
+        <DurataMinuti>2</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>UHD 4K 2160p</Risoluzione>
+        <Path>:/images/image10.png</Path>
+        <DataInizioRilascio>15/8/2025</DataInizioRilascio>
+        <DataFineRilascio>2/9/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
+    </Trailer>
+    <Trailer>
+        <Titolo>Trailer speciale anniversario - Il mio vicino Totoro (2025)</Titolo>
+        <Autore>Hayao Miyazaki</Autore>
+        <Descrizione>Un trailer celebrativo con scene inedite per il ritorno del film in sala.</Descrizione>
+        <DurataMinuti>3</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>UHD 4K 2160p</Risoluzione>
+        <Path>:/images/image10.png</Path>
+        <DataInizioRilascio>1/8/2025</DataInizioRilascio>
+        <DataFineRilascio>2/9/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
+    </Trailer>
+    <Podcast>
+        <Titolo>Cinema d'Autore</Titolo>
+        <Autore>FilmLab</Autore>
+        <Descrizione>Approfondimenti sui grandi registi e capolavori cinematografici.</Descrizione>
+        <DurataMinuti>75</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/image17.png</Path>
+        <DataInizioRilascio>1/10/2025</DataInizioRilascio>
+        <DataFineRilascio>31/10/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <Conduttore>Marco Rossi</Conduttore>
+    </Podcast>
+    <Puntata>
+        <Titolo>Analisi del cinema muto</Titolo>
+        <Autore>FilmLab</Autore>
+        <Descrizione>Esploriamo l'era del cinema muto e i suoi maestri.</Descrizione>
+        <DurataMinuti>40</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/image17.png</Path>
+        <DataInizioRilascio>1/10/2025</DataInizioRilascio>
+        <DataFineRilascio>15/10/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <TitoloPodcastAssociato>Cinema d'Autore</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>FilmLab</AutorePodcastAssociato>
+        <NPubblicita>1</NPubblicita>
+    </Puntata>
+    <Puntata>
+        <Titolo>La Nouvelle Vague</Titolo>
+        <Autore>FilmLab</Autore>
+        <Descrizione>Il movimento francese che ha rivoluzionato il cinema.</Descrizione>
+        <DurataMinuti>35</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/image17.png</Path>
+        <DataInizioRilascio>16/10/2025</DataInizioRilascio>
+        <DataFineRilascio>31/10/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <TitoloPodcastAssociato>Cinema d'Autore</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>FilmLab</AutorePodcastAssociato>
+        <NPubblicita>2</NPubblicita>
+    </Puntata>
+    <Film>
+        <Titolo>La città incantata</Titolo>
+        <Autore>Hayao Miyazaki</Autore>
+        <Descrizione>Un'avventura magica in un mondo fantastico popolato da spiriti e divinità.</Descrizione>
+        <DurataMinuti>125</DurataMinuti>
+        <Formato>IMAX 3D</Formato>
+        <Risoluzione>UHD 4K 2160p</Risoluzione>
+        <Path>:/images/film2.png</Path>
+        <DataInizioRilascio>10/9/2025</DataInizioRilascio>
+        <DataFineRilascio>30/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili/>
+        <Generi>
+            <Genere>Animazione</Genere>
+            <Genere>Avventura</Genere>
+        </Generi>
+        <AttoriPrincipali/>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>10</CostoBiglietto>
+        <CasaDiProduzione>Studio Ghibli</CasaDiProduzione>
+        <NPostCredit>1</NPostCredit>
+    </Film>
+    <Trailer>
+        <Titolo>Trailer ufficiale - La città incantata</Titolo>
+        <Autore>Studio Ghibli</Autore>
+        <Descrizione>Un assaggio delle meraviglie del mondo fantastico di Chihiro.</Descrizione>
+        <DurataMinuti>3</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>UHD 4K 2160p</Risoluzione>
+        <Path>:/images/image10.png</Path>
+        <DataInizioRilascio>12/9/2025</DataInizioRilascio>
+        <DataFineRilascio>28/9/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>4</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>La città incantata</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
+    </Trailer>
+    <Inserzione>
+        <Titolo>Cinema Evolution</Titolo>
+        <Autore>Studio Lumière</Autore>
+        <Descrizione>Scopri i grandi classici del cinema in versione rimasterizzata.</Descrizione>
+        <DurataMinuti>2</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>UHD 8K 4320p</Risoluzione>
+        <Path>:/images/image12.png</Path>
+        <DataInizioRilascio>5/9/2025</DataInizioRilascio>
+        <DataFineRilascio>5/10/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </SottotitoliDisponibili>
+        <NProiezioniGiornaliere>0</NProiezioniGiornaliere>
+        <FasceOrarie>
+            <Fascia>Mattina</Fascia>
+        </FasceOrarie>
+        <Target>TUTTI</Target>
+        <AziendaInserzionista></AziendaInserzionista>
+        <CostoFissoProiezione>40</CostoFissoProiezione>
+    </Inserzione>
+    <Inserzione>
+        <Titolo>Documentari d’Autore</Titolo>
+        <Autore>DocuStudio</Autore>
+        <Descrizione>Una selezione dei migliori documentari per gli appassionati di cinema.</Descrizione>
+        <DurataMinuti>1</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>UHD 8K 4320p</Risoluzione>
+        <Path>:/images/image12.png</Path>
+        <DataInizioRilascio>10/9/2025</DataInizioRilascio>
+        <DataFineRilascio>10/10/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+        </SottotitoliDisponibili>
+        <NProiezioniGiornaliere>0</NProiezioniGiornaliere>
+        <FasceOrarie>
+            <Fascia>Mattina</Fascia>
+        </FasceOrarie>
+        <Target>TUTTI</Target>
+        <AziendaInserzionista></AziendaInserzionista>
+        <CostoFissoProiezione>25</CostoFissoProiezione>
+    </Inserzione>
+    <Inserzione>
+        <Titolo>Short Films Festival</Titolo>
+        <Autore>FestivalCinema</Autore>
+        <Descrizione>Una rassegna dei cortometraggi più interessanti prodotti quest’anno.</Descrizione>
+        <DurataMinuti>3</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>UHD 8K 4320p</Risoluzione>
+        <Path>:/images/image12.png</Path>
+        <DataInizioRilascio>15/9/2025</DataInizioRilascio>
+        <DataFineRilascio>15/10/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili>
+            <Lingua>Inglese</Lingua>
+        </SottotitoliDisponibili>
+        <NProiezioniGiornaliere>0</NProiezioniGiornaliere>
+        <FasceOrarie>
+            <Fascia>Mattina</Fascia>
+        </FasceOrarie>
+        <Target>TUTTI</Target>
+        <AziendaInserzionista></AziendaInserzionista>
+        <CostoFissoProiezione>35</CostoFissoProiezione>
+    </Inserzione>
 </MediaList>

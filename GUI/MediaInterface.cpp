@@ -168,7 +168,7 @@ QWidget* MediaInterface::addDoubleSpin(const QString& testo, double min, double 
     return addInput(label, doubleSpin);
 }
 
-QWidget* MediaInterface::addReference(const QString& testo, const QString& tipo, SelectMediaReference* reference){
+QWidget* MediaInterface::addReference(const QString& testo SelectMediaReference* reference){
     QLabel* label = new QLabel(testo,this);
     
     //style

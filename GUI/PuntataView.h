@@ -11,10 +11,5 @@ private:
     void createMediaDetails() override;
     void createScrollableSection() override;
     void createButtons() override;
-signals:
-    /*@to do come in tutti le altre MediaView non so se hanno senso,appena finisco cerco di capire (potrei direttamente fare la connect dentro qui ma non so
-    se dovrei invece passare per searchPanel idk)*/
-    void podcastSelected(const Podcast* podcast); 
-    void puntataSelected(const Puntata* puntata); 
 };
 #endif

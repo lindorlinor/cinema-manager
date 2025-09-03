@@ -9,9 +9,11 @@ PuntataView::PuntataView(Puntata* pPtr,QWidget* parent):MediaView(pPtr,parent),p
     createMediaDetails();
     createScrollableSection();
     createButtons();
+    layoutPage->addSpacing(30);
 }
 
 void PuntataView::createMediaDetails(){
+    createRowDetails();
     leftSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     leftSide->setObjectName("pupu");
     leftSide->setContentsMargins(0,0,0,0);
@@ -35,7 +37,7 @@ void PuntataView::createMediaDetails(){
     leftLayout->addWidget(scrollDetails);
     detailsLayout->setSpacing(10);
     QWidget * sezioneProgrammazione = new QWidget(details);
-    sezioneProgrammazione->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    sezioneProgrammazione->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     QVBoxLayout * layoutProgrammazione = new QVBoxLayout(sezioneProgrammazione);
     
     QLabel * labelProgrammazione = new QLabel("Informazioni di distribuzione");
@@ -43,6 +45,7 @@ void PuntataView::createMediaDetails(){
 
     QWidget * dettagliProgrammazione = new QWidget(sezioneProgrammazione);
     QGridLayout * layoutDettagliProgrammazione = new QGridLayout(dettagliProgrammazione);
+    layoutDettagliProgrammazione->setAlignment(Qt::AlignLeft);
     dettagliProgrammazione->setContentsMargins(10,10,10,10);
     sezioneProgrammazione->setObjectName("sp");
     
@@ -133,14 +136,14 @@ void PuntataView::createMediaDetails(){
     
     
     ExpandableLabel* descrizione = new ExpandableLabel(
-         "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(puntPtr->getDescrizione()),dettagliDettagli);
+        "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(puntPtr->getDescrizione()),dettagliDettagli);
         
     QLabel* conduttore = new QLabel(
         "<span style='color:white; font-weight:bold;'>Conduttore: </span>"
         "<span style='color:black;'>" + QString::fromStdString((puntPtr->getPodcast())->getConduttore()) + "</span>",dettagliTecnici);
     conduttore->setTextFormat(Qt::RichText);
-
-
+    conduttore->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+            
     layoutDettagliDettagli->addWidget(descrizione);
     layoutDettagliDettagli->addWidget(conduttore);
 
@@ -151,10 +154,13 @@ void PuntataView::createMediaDetails(){
     detailsLayout->addWidget(sezionePerformance);
     detailsLayout->addWidget(sezioneTecnica);
     detailsLayout->addWidget(sezioneDettagli);
+    detailsLayout->addStretch();
 
+    leftSide->setFixedHeight(700);
     splitterLayout->addWidget(leftSide);
 }
 void PuntataView::createScrollableSection(){
+    rightSide->setFixedHeight(650);
     rightSide->setObjectName("gaga");
     rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
@@ -169,12 +175,14 @@ void PuntataView::createScrollableSection(){
     QVBoxLayout* layoutPodA = new QVBoxLayout(sezionePodA);
     sezionePodA->setObjectName("sp"); 
 
-    const Podcast* podA = puntPtr->getPodcast();
+    Podcast* podA = puntPtr->getPodcast();
     PreviewCard* cardPodA = new PreviewCard(podA);
     // cardPodA->setFixedSize(210, 320);   
     layoutPodA->addWidget(cardPodA,0,Qt::AlignCenter);
-    connect(cardPodA, &PreviewCard::viewMedia, this, [this](){
-        qDebug() << "view Podcast Associato: " << QString::fromStdString(mediaPtr->getTitolo());
+    connect(cardPodA, &PreviewCard::viewMedia, this, [this,podA](){
+        DetailPageVisitor detailVisitor;
+        podA->accept(&detailVisitor);
+        emit requestMediaView(*detailVisitor.getWidget());
     });
     sezionePodA->setContentsMargins(20,0,20,0);
 
@@ -189,14 +197,15 @@ void PuntataView::createScrollableSection(){
     QVBoxLayout * layoutPuntate = new QVBoxLayout(sezionePuntate);
     sezionePuntate->setObjectName("sp");
 
-    for (const Puntata* p : (puntPtr->getPodcast())->getElencoPuntate()) {
+    for (Puntata* p : (puntPtr->getPodcast())->getElencoPuntate()) {
         if(p!=puntPtr){
             PreviewCard* cardPuntata = new PreviewCard(p);
             layoutPuntate->addWidget(cardPuntata,0,Qt::AlignCenter);
             connect(cardPuntata, &PreviewCard::viewMedia, this, 
                 [this,p](){
-                    qDebug() << "view Puntata: " << QString::fromStdString(p->getTitolo());
-                    emit puntataSelected(p);
+                    DetailPageVisitor detailVisitor;
+                    p->accept(&detailVisitor);
+                    emit requestMediaView(*detailVisitor.getWidget());
                 });
         }
     }
@@ -217,8 +226,8 @@ void PuntataView::createScrollableSection(){
     splitterLayout->addWidget(rightSide);
 }
 void PuntataView::createButtons(){
-    DetailsPageButtons * buttons = new DetailsPageButtons(leftSide);
+    DetailsPageButtons * buttons = new DetailsPageButtons(puntPtr,leftSide);
     buttons->setDeleteButtonText("Elimina podcast");
     cardLayout->addSpacing(40);
-    cardLayout->addWidget(buttons);
+    cardLayout->addWidget(buttons,0,Qt::AlignCenter);
 }

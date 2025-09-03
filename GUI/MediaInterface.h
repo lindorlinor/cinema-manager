@@ -139,7 +139,7 @@ class MediaInterface:public QWidget{
     QWidget* addLineEdit(const QString& testo, QLineEdit* lineEdit);                                                        //aggiunge i Widget che contengono un LineEdit
     QWidget* addSpin(const QString& testo, int min, int max, int standard, QSpinBox * spin);                             //aggiunge i Widget che contengono uno spin
     QWidget* addDoubleSpin(const QString& testo, double min, double max, double standard, QDoubleSpinBox* doubleSpin);        //aggiunge i Widget che contengono un Doublespin
-    QWidget* addReference(const QString& testo, const QString& tipo, SelectMediaReference* reference); //aggiunge il widget delle reference a trailer e puntata, per associare film e podcast
+    QWidget* addReference(const QString& testo, SelectMediaReference* reference); //aggiunge il widget delle reference a trailer e puntata, per associare film e podcast
     
     vector<std::string> getSelectedList(QListWidget* list);                                                        //ottiene i selezionati di una QListWidget
     

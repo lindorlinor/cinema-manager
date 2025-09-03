@@ -114,9 +114,8 @@ bool MediaManagerXml::importSessionFromXml(CinemaRepositoryJson& jsonManager) {
         return false;
     }
 
-    
     jsonManager.saveCinemaInJson(new Cinema(nome.text().toStdString(), copertina.text().toStdString()));
-
+    
     if (mediaListElem.isNull()) {
         QMessageBox::information(nullptr, "Info", "Cinema importato senza contenuti multimediali.");
         return true;
@@ -129,26 +128,28 @@ bool MediaManagerXml::importSessionFromXml(CinemaRepositoryJson& jsonManager) {
 }
 
 
-void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,CinemaRepositoryJson& jsonManager,const string& cinemaName){    
+void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,CinemaRepositoryJson& jsonManager,const string& cinemaName){  
+    list<Media*> supportList; /*la lista serve solo per permettere a trailer (risp puntata) di trovare il film riferito (risp podcast riferito), 
+    altrimenti non vengono costruiti i Trailer (risp puntate). Non era possibile usare la lista di currentCinema perchè currentCinema in alcuni casi è null*/
     unsigned int errors =0;
     while (!mediaElem.isNull()) {
         QString tipo = mediaElem.tagName();
         if (tipo=="Film") {
-            Film* fd = new Film(*XmlVisitor::fromXmlFilmElement(mediaElem,errors));
-            currentCinema->addMedia(fd);
+            Film* fd = XmlVisitor::fromXmlFilmElement(mediaElem,errors);
+            supportList.push_back(fd);
             jsonManager.saveMediaInJson(fd,QString::fromStdString(cinemaName));
         }else if (tipo=="Trailer") {
-            Trailer* td = new Trailer(*XmlVisitor::fromXmlTrailerElement(mediaElem,currentCinema->getListaMedia()));
+            Trailer* td = XmlVisitor::fromXmlTrailerElement(mediaElem,supportList);
             jsonManager.saveMediaInJson(td,QString::fromStdString(cinemaName));
         }else if (tipo=="Inserzione") {
-            Inserzione* id = new Inserzione(*XmlVisitor::fromXmlInserzioneElement(mediaElem));
+            Inserzione* id = XmlVisitor::fromXmlInserzioneElement(mediaElem);
             jsonManager.saveMediaInJson(id,QString::fromStdString(cinemaName));
         }else if (tipo=="Podcast") {
-            Podcast* pdd = new Podcast(*XmlVisitor::fromXmlPodcastElement(mediaElem));
-            currentCinema->addMedia(pdd);
+            Podcast* pdd = XmlVisitor::fromXmlPodcastElement(mediaElem);
+            supportList.push_back(pdd);
             jsonManager.saveMediaInJson(pdd,QString::fromStdString(cinemaName));
         } else if (tipo=="Puntata") {
-            Puntata* pd = new Puntata(*XmlVisitor::fromXmlPuntataElement(mediaElem,currentCinema->getListaMedia()));
+            Puntata* pd = XmlVisitor::fromXmlPuntataElement(mediaElem,supportList);
             jsonManager.saveMediaInJson(pd,QString::fromStdString(cinemaName));
         }else {
             errors++;
@@ -158,7 +159,7 @@ void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,CinemaReposi
 
     if(errors)
          QMessageBox::information(nullptr, "Info", QString::number(errors) + " media non sono stati importati correttamente");
-
+    qDebug() << "esco da importMediaListFromXml"; 
 }
 bool MediaManagerXml::importMediaListFromXml(CinemaRepositoryJson& jsonManager){
     if(!currentCinema) return false;
