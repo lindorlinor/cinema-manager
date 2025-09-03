@@ -484,7 +484,7 @@
         ],
         "nPostCredit": 1,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/i_puffi_il_film.png",
+        "path": ":/images/locandina_ipuffiilfilm.jpg",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
@@ -538,7 +538,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/i_roses.png",
+        "path": ":/images/locandina_irosesfilm.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -589,7 +589,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/tutta_colpa_del_rock.png",
+        "path": ":/images/locandina_tuttacolpadelrock.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -642,22 +642,22 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/harry_potter_calice_fuoco.png",
+        "path": ":/images/locandina_harrypottereilcalicedifuoco.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
         "target": "TUTTI",
         "tipologia": "film",
-        "titolo": "Harry Potter e il Calice di Fuoco"
+        "titolo": "Harry Potter e il Calice di Fuoco - 20esimo anniversario"
     },
     {
         "autore": "Warner Bros",
         "autoreFilmAssociato": "Mike Newell",
-        "dataFineRilascio": "2025-09-03",
+        "dataFineRilascio": "2025-09-07",
         "dataInizioRilascio": "2005-09-23",
         "descrizione": "Il trailer ufficiale del quarto capitolo della saga di Harry Potter.",
         "durataMinuti": 2,
-        "filmAssociato": "Harry Potter e il Calice di Fuoco",
+        "filmAssociato": "Harry Potter e il Calice di Fuoco - 20esimo anniversario",
         "formato": "MP4",
         "lingueDisponibili": [
         ],
@@ -701,7 +701,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/una_scomoda_circostanza.png",
+        "path": ":/images/locandina_caughtstealing.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -758,7 +758,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/weapons.png",
+        "path": ":/images/locandina_weapons.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -811,13 +811,13 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/lo_squalo_50.png",
+        "path": ":/images/locandina_losqualo50anniversario.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
         "target": "TUTTI",
         "tipologia": "film",
-        "titolo": "Lo Squalo - Anniversario 50 anni"
+        "titolo": "Lo Squalo - 50esimo anniversario"
     },
     {
         "autore": "Universal Pictures / Adler Entertainment",
@@ -826,7 +826,7 @@
         "dataInizioRilascio": "2025-07-04",
         "descrizione": "Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.",
         "durataMinuti": 2,
-        "filmAssociato": "Lo Squalo - Anniversario 50 anni",
+        "filmAssociato": "Lo Squalo - 50esimo anniversario",
         "formato": "IMAX 3D",
         "lingueDisponibili": [
         ],
