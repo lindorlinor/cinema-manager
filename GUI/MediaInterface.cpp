@@ -168,7 +168,7 @@ QWidget* MediaInterface::addDoubleSpin(const QString& testo, double min, double 
     return addInput(label, doubleSpin);
 }
 
-QWidget* MediaInterface::addReference(const QString& testo SelectMediaReference* reference){
+QWidget* MediaInterface::addReference(const QString& testo, SelectMediaReference* reference){
     QLabel* label = new QLabel(testo,this);
     
     //style
@@ -362,7 +362,7 @@ QWidget* MediaInterface::addTipologiaTrailer(){        //tipologia Trailer
         numeroProiezioniTrailer = new QSpinBox(this);
 
         TrailerH->addWidget(addSpin("Numero Proiezioni Giornaliere", 0, 20, 0, numeroProiezioniTrailer));
-        TrailerH->addWidget(addReference("Film", "film", referenceTrailer));
+        TrailerH->addWidget(addReference("Film", referenceTrailer));
         TipoTrailer->setLayout(TrailerH);
 
         connect(referenceTrailer, &SelectMediaReference::mediaSelected, this, [this](MediaFrame* f){
@@ -451,7 +451,7 @@ QWidget* MediaInterface::addTipologiaPuntate(){    //tipologia Puntata
         widgetPuntata->setLayout(puntataV);
 
         puntataH->addWidget(widgetPuntata);
-        puntataH->addWidget(addReference("Podcast","podcast",referencePuntate));
+        puntataH->addWidget(addReference("Podcast",referencePuntate));
 
         TipoPuntata->setLayout(puntataH);
 
