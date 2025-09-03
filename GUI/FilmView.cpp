@@ -229,12 +229,14 @@ void FilmView::createScrollableSection(){
     QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
     sezioneTrailer->setObjectName("sp");
 
-    for (const Trailer* t : filmPtr->getTrailers()) {
+    for (Trailer* t : filmPtr->getTrailers()) {
         PreviewCard* card = new PreviewCard(t);
         layoutTrailer->addWidget(card);
         connect(card, &PreviewCard::viewMedia, this, [this,t](){
+            DetailPageVisitor detailVisitor;
+            t->accept(&detailVisitor);
+            emit requestMediaView(*detailVisitor.getWidget());
             qDebug() << "view Media: " << QString::fromStdString(t->getTitolo());
-            emit trailerSelected(t);
         });
     }
     layoutTrailer->setSpacing(20);  

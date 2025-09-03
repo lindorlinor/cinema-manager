@@ -150,7 +150,7 @@ class SearchPanel:public QWidget{
     void updateInfoCinema(Cinema* cinemaSel);
     void resetSearchPanel();    //resetta tutte le impostazioni di searchPanel
     void showMediaView(MediaView& detailPage);
-    void removeMediaView();
+    void removeMediaView(QWidget* widget);
     void acceptEditCinema();
     void acceptDeleteCinema();
     

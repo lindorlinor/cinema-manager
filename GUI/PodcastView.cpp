@@ -179,12 +179,13 @@ void PodcastView::createScrollableSection(){
     QVBoxLayout * layoutPuntate = new QVBoxLayout(sezionePuntate);
     sezionePuntate->setObjectName("sp");
 
-    for (const Puntata* p : podPtr->getElencoPuntate()) {
+    for (Puntata* p : podPtr->getElencoPuntate()) {
         PreviewCard* card = new PreviewCard(p);
         layoutPuntate->addWidget(card);
         connect(card, &PreviewCard::viewMedia, this, [this,p](){
-            qDebug() << "view Puntata: " << QString::fromStdString(p->getTitolo());
-            emit puntataSelected(p);
+            DetailPageVisitor detailVisitor;
+            p->accept(&detailVisitor);
+            emit requestMediaView(*detailVisitor.getWidget());
         });
     }
     layoutPuntate->setSpacing(20);  

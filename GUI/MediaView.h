@@ -5,6 +5,7 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>
+#include "../DetailPageVisitor.h"
 #include "../Media.h"
 
 class MediaView : public QWidget{
@@ -39,6 +40,7 @@ signals:
     void extendMediaClicked(); //segnale emesso quando cliccato su "estendi Media"
     void deleteMediaClicked();  //sengale emesso quando cliccato su "elimina Media"
     void returnButton(); //segnale emesso quando cliccato il pulsante "Torna indietro"
+    void requestMediaView(MediaView& widget);
 };
 
 #endif // MEDIAVIEW_H

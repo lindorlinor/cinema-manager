@@ -184,11 +184,14 @@ void TrailerView::createScrollableSection(){
     QVBoxLayout* layoutFilmA = new QVBoxLayout(sezioneFilmA);
     sezioneFilmA->setObjectName("sp"); 
 
-    const Film* filmA = trailerPtr->getFilm();
+    Film* filmA = trailerPtr->getFilm();
     PreviewCard* cardFilmA = new PreviewCard(filmA);
     cardFilmA->setFixedSize(210, 320);   
     layoutFilmA->addWidget(cardFilmA,0,Qt::AlignCenter);
-    connect(cardFilmA, &PreviewCard::viewMedia, this, [this](){
+    connect(cardFilmA, &PreviewCard::viewMedia, this, [this,filmA](){
+        DetailPageVisitor detailVisitor;
+        filmA->accept(&detailVisitor);
+        emit requestMediaView(*detailVisitor.getWidget());
         qDebug() << "view Film Associato: " << QString::fromStdString(mediaPtr->getTitolo());
     });
     sezioneFilmA->setContentsMargins(20,0,20,0);
@@ -204,14 +207,15 @@ void TrailerView::createScrollableSection(){
     QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
     sezioneTrailer->setObjectName("sp");
 
-    for (const Trailer* t : (trailerPtr->getFilm())->getTrailers()) {
+    for (Trailer* t : (trailerPtr->getFilm())->getTrailers()) {
         if(t!=trailerPtr){
             PreviewCard* cardTrailer = new PreviewCard(t);
             layoutTrailer->addWidget(cardTrailer,0,Qt::AlignCenter);
             connect(cardTrailer, &PreviewCard::viewMedia, this, 
                 [this,t](){
-                    qDebug() << "view Trailer: " << QString::fromStdString(t->getTitolo());
-                    emit trailerSelected(t);
+                    DetailPageVisitor detailVisitor;
+                    t->accept(&detailVisitor);
+                    emit requestMediaView(*detailVisitor.getWidget());
                 });
         }
     }

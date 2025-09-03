@@ -14,8 +14,5 @@ private:
     void createMediaDetails() override;
     void createScrollableSection() override;
     void createButtons() override;
-signals:
-    void trailerSelected(const Trailer* trailer); //segnale emesso quando cliccato su un trailer del film, trailer è il puntatore al trailer cliccato
-
 };
 #endif

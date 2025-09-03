@@ -13,9 +13,6 @@ private:
     void createScrollableSection() override;
     void createButtons() override;
     list<Media*> mediaList;
-signals:
-    void inserzioneSelected(Inserzione * i); //segnale emesso quando cliccato su un trailer del film, trailer è il puntatore al trailer cliccato
-
 };
 
 #endif //INSERZIONEVIEW_H

@@ -264,8 +264,9 @@ void InserzioneView::createScrollableSection(){
             PreviewCard* card = new PreviewCard(i);
             layoutTrailer->addWidget(card);
             connect(card, &PreviewCard::viewMedia, this, [this, i]() {
-                qDebug() << "view Media: " << QString::fromStdString(i->getTitolo());
-                emit inserzioneSelected(i);
+                DetailPageVisitor detailVisitor;
+                i->accept(&detailVisitor);
+                emit requestMediaView(*detailVisitor.getWidget());
             });
         }
     }

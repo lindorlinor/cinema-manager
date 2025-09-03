@@ -175,12 +175,14 @@ void PuntataView::createScrollableSection(){
     QVBoxLayout* layoutPodA = new QVBoxLayout(sezionePodA);
     sezionePodA->setObjectName("sp"); 
 
-    const Podcast* podA = puntPtr->getPodcast();
+    Podcast* podA = puntPtr->getPodcast();
     PreviewCard* cardPodA = new PreviewCard(podA);
     // cardPodA->setFixedSize(210, 320);   
     layoutPodA->addWidget(cardPodA,0,Qt::AlignCenter);
-    connect(cardPodA, &PreviewCard::viewMedia, this, [this](){
-        qDebug() << "view Podcast Associato: " << QString::fromStdString(mediaPtr->getTitolo());
+    connect(cardPodA, &PreviewCard::viewMedia, this, [this,podA](){
+        DetailPageVisitor detailVisitor;
+        podA->accept(&detailVisitor);
+        emit requestMediaView(*detailVisitor.getWidget());
     });
     sezionePodA->setContentsMargins(20,0,20,0);
 
@@ -195,14 +197,15 @@ void PuntataView::createScrollableSection(){
     QVBoxLayout * layoutPuntate = new QVBoxLayout(sezionePuntate);
     sezionePuntate->setObjectName("sp");
 
-    for (const Puntata* p : (puntPtr->getPodcast())->getElencoPuntate()) {
+    for (Puntata* p : (puntPtr->getPodcast())->getElencoPuntate()) {
         if(p!=puntPtr){
             PreviewCard* cardPuntata = new PreviewCard(p);
             layoutPuntate->addWidget(cardPuntata,0,Qt::AlignCenter);
             connect(cardPuntata, &PreviewCard::viewMedia, this, 
                 [this,p](){
-                    qDebug() << "view Puntata: " << QString::fromStdString(p->getTitolo());
-                    emit puntataSelected(p);
+                    DetailPageVisitor detailVisitor;
+                    p->accept(&detailVisitor);
+                    emit requestMediaView(*detailVisitor.getWidget());
                 });
         }
     }
