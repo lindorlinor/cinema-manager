@@ -134,21 +134,21 @@ void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,CinemaReposi
     while (!mediaElem.isNull()) {
         QString tipo = mediaElem.tagName();
         if (tipo=="Film") {
-            Film* fd = new Film(*XmlVisitor::fromXmlFilmElement(mediaElem,errors));
+            Film* fd = XmlVisitor::fromXmlFilmElement(mediaElem,errors);
             currentCinema->addMedia(fd);
             jsonManager.saveMediaInJson(fd,QString::fromStdString(cinemaName));
         }else if (tipo=="Trailer") {
-            Trailer* td = new Trailer(*XmlVisitor::fromXmlTrailerElement(mediaElem,currentCinema->getListaMedia()));
+            Trailer* td = XmlVisitor::fromXmlTrailerElement(mediaElem,currentCinema->getListaMedia());
             jsonManager.saveMediaInJson(td,QString::fromStdString(cinemaName));
         }else if (tipo=="Inserzione") {
-            Inserzione* id = new Inserzione(*XmlVisitor::fromXmlInserzioneElement(mediaElem));
+            Inserzione* id = XmlVisitor::fromXmlInserzioneElement(mediaElem);
             jsonManager.saveMediaInJson(id,QString::fromStdString(cinemaName));
         }else if (tipo=="Podcast") {
-            Podcast* pdd = new Podcast(*XmlVisitor::fromXmlPodcastElement(mediaElem));
+            Podcast* pdd = XmlVisitor::fromXmlPodcastElement(mediaElem);
             currentCinema->addMedia(pdd);
             jsonManager.saveMediaInJson(pdd,QString::fromStdString(cinemaName));
         } else if (tipo=="Puntata") {
-            Puntata* pd = new Puntata(*XmlVisitor::fromXmlPuntataElement(mediaElem,currentCinema->getListaMedia()));
+            Puntata* pd = XmlVisitor::fromXmlPuntataElement(mediaElem,currentCinema->getListaMedia());
             jsonManager.saveMediaInJson(pd,QString::fromStdString(cinemaName));
         }else {
             errors++;
