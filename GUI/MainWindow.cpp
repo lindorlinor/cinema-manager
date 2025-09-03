@@ -8,10 +8,9 @@
 #include <QFile>
 #include <QDir>
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), cinemaPage(new CinemaSelectionPage(w_cinema, this)), insertPage(new InsertCinemaPage(w_cinema, this)),
-                                                                                m_xmlManager(new MediaManagerXml()),m_jsonManager(new CinemaRepositoryJson()),
-                                                                                searchPage(new SearchPanel(m_jsonManager, m_xmlManager,this))
+MainWindow::MainWindow(QWidget *parent):    QMainWindow(parent), cinemaPage(new CinemaSelectionPage(w_cinema, this)), insertPage(new InsertCinemaPage(w_cinema, this)),
+                                            m_xmlManager(new MediaManagerXml()),m_jsonManager(new CinemaRepositoryJson()),
+                                            searchPage(new SearchPanel(m_jsonManager, m_xmlManager,this))
 {
     setWindowFlags(Qt::Window | Qt::CustomizeWindowHint | 
                Qt::WindowMinimizeButtonHint | 
@@ -45,15 +44,54 @@ MainWindow::MainWindow(QWidget *parent)
             showFullScreen();
         }
     });
+
     connect(stackedWidget, &QStackedWidget::currentChanged, this, [menu](int index){
         if(index == 0 || index == 1) {
-            menu->setFileActionVisibility(1,false);
-            menu->setFileActionVisibility(2,false);
-            menu->setFileActionVisibility(4,false);
+            menu->setFileActionEnabled(0,false);
+            menu->setFileActionEnabled(1,false);
+            menu->setFileActionEnabled(2,false);
+            menu->setFileActionEnabled(4,false);
+            menu->setFileActionEnabled(5,false);
         }else{
-            menu->setFileActionVisibility(1,true);
-            menu->setFileActionVisibility(2,true);
-            menu->setFileActionVisibility(4,true);
+            menu->setFileActionEnabled(0,true);
+            menu->setFileActionEnabled(1,true);
+            menu->setFileActionEnabled(2,true);
+            menu->setFileActionEnabled(4,true);
+            menu->setFileActionEnabled(5,true);
+        }
+    });
+
+    connect(stackedWidget, &QStackedWidget::currentChanged, this, [menu, this](int index){
+        if(index == 0 || index == 1) {
+            menu->setModifierActionEnabled(0,false);
+            menu->setModifierActionEnabled(1,false);
+            menu->setModifierActionEnabled(2,false);
+            menu->setModifierActionEnabled(3,false);
+        }else{
+            menu->setModifierActionEnabled(2,true);
+            menu->setModifierActionEnabled(3,true);
+        }
+    });
+
+    connect(stackedWidget, &QStackedWidget::currentChanged, this, [menu](int index){
+        if(index == 0 || index == 1) {
+            menu->setViewActionEnabled(0,false);
+            menu->setViewActionEnabled(1,false);
+            menu->setViewActionEnabled(2,false);
+            menu->setViewActionEnabled(3,false);
+        }else{
+            menu->setViewActionEnabled(0,true);
+            menu->setViewActionEnabled(1,true);
+            menu->setViewActionEnabled(2,true);
+            menu->setViewActionEnabled(3,true);
+        }
+    });
+
+    connect(stackedWidget, &QStackedWidget::currentChanged, this, [menu](int index){
+        if(index == 0 || index == 1) {
+            menu->setViewActionEnabled(0,false);
+        }else{
+            menu->setViewActionEnabled(0,true);
         }
     });
 
@@ -83,6 +121,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(searchPage,&SearchPanel::deleteCinemaInSearchPanel,this,&MainWindow::deleteCinemaFromList);
     connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
     connect(searchPage,&SearchPanel::escSearchPanel,searchPage,&SearchPanel::resetSearchPanel);
+    connect(searchPage,&SearchPanel::setQMenuEnabled,this,[menu](){menu->setModifierActionEnabled(0,true); menu->setModifierActionEnabled(1,true);});
+    connect(searchPage,&SearchPanel::setQMenuDisabled,this,[menu](){menu->setModifierActionEnabled(0,false); menu->setModifierActionEnabled(1,false);});
   
 
     stackedWidget->addWidget(cinemaPage);

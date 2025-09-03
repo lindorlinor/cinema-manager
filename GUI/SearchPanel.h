@@ -143,8 +143,8 @@ class SearchPanel:public QWidget{
 	explicit SearchPanel(CinemaRepositoryJson* jsonManager, MediaManagerXml* xmlManager,QWidget *parent);
     void addObserver(LibraryObserver* obs);
     void update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca);
-
-
+    
+    
     public slots:
     void updateModifierPanel(int index);
     void updateInfoCinema(Cinema* cinemaSel);
@@ -156,6 +156,8 @@ class SearchPanel:public QWidget{
     
     
     signals:
+    void setQMenuEnabled();
+    void setQMenuDisabled();
     void resetPages();
     void giveCinemaInfoToIP(Cinema* cinemaSel, QList<Media*> mediaList);
     void selectedFilterButton(const QString& filtro);

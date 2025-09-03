@@ -17,7 +17,6 @@ private:
     QList<Cinema*> w_cinema;
     CinemaSelectionPage * cinemaPage;
     InsertCinemaPage * insertPage;
-    CinemaRepositoryJson* m_jsonManager;
     MediaManagerXml* m_xmlManager;
     CinemaRepositoryJson* m_jsonManager;
     SearchPanel * searchPage;

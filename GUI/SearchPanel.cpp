@@ -4,7 +4,8 @@
 #include "DetailPageVisitor.h"
 #include "LibraryObserver.h"
 
-SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xmlManager,QWidget *parent):s_jsonManager(s_jsonManager),s_xmlManager(xmlManager),QWidget(parent),stackModifiche(new QStackedWidget(this)){
+SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xmlManager,QWidget *parent):QWidget(parent), s_jsonManager(s_jsonManager),
+                                                    s_xmlManager(xmlManager),stackModifiche(new QStackedWidget(this)){
     //carico tutti gli oggetti sal Json
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
@@ -22,6 +23,9 @@ void SearchPanel::updateModifierPanel(int index){
         previousIndex = stackModifiche->currentIndex();
         stackModifiche->setCurrentIndex(index);
     } 
+
+    if(index == 2) emit setQMenuEnabled();
+    else emit setQMenuDisabled();
 }
 
 void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
@@ -407,10 +411,13 @@ void SearchPanel::acceptDeleteCinema(){
     QPushButton* conferma = msgBox.addButton("Conferma", QMessageBox::AcceptRole);
     msgBox.exec();
     if (msgBox.clickedButton() == conferma) {
-        qDebug() << "Confermato";
+        qDebug() << "Eliminazione cinema "<<QString::fromStdString(s_cinemaSelezionato->getNomeCinema())<<" confermata";
         emit deleteCinemaInSearchPanel(s_cinemaSelezionato);
         s_cinemaSelezionato = nullptr;
         emit escSearchPanel();
+    }
+    else if (msgBox.clickedButton() == annulla){
+        qDebug() << "Eliminazione cinema "<<QString::fromStdString(s_cinemaSelezionato->getNomeCinema())<<" annullata";
     }
 }
 

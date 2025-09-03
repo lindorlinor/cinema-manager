@@ -90,6 +90,11 @@
 }
 
 /* Menu Bar */
+
+#menuBar{
+    padding: 5px;
+}
+
 #menuBar,
 #file,
 #modifica,
@@ -98,7 +103,6 @@
     background-color: #05313c;
     color: #bec4c5;
     font-size: 13pt;
-    padding: 5px 12px;
 }
 
 #file,
@@ -109,15 +113,31 @@
     border-radius:8px;
 }
 
+#file::item,
+#modifica::item,
+#visualizza::item,
+#altro::item{
+    padding: 5px 12px;
+}
+
 #file::item:selected,
 #modifica::item:selected,
 #visualizza::item:selected,
 #altro::item:selected,
 #menuBar::item:selected{
     color: #05313c;
-    padding: 5px 8px;
     border-radius:8px;
     background-color: #4e7f8b;
+}
+
+#file::item:disabled,
+#modifica::item:disabled,
+#visualizza::item:disabled,
+#altro::item:disabled{
+    color: #264750;
+    background-color: #04242b;
+    padding: 5px 8px;
+    border-radius:8px;
 }
 
 #central{

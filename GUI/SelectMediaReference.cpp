@@ -52,10 +52,15 @@ SelectMediaReference::SelectMediaReference(const QString& tipo, QWidget *parent)
 }
 
 void SelectMediaReference::reloadMedia(const QString& nomeCinema) {
+
     // Pulisce i widget esistenti
     QLayoutItem* child;
     while ((child = layoutContainer->takeAt(0)) != nullptr) {
-        if (child->widget()) child->widget()->deleteLater();
+        if (child->widget()) {
+            child->widget()->deleteLater();
+        } else if (child->layout()) {
+            delete child->layout(); 
+        }
         delete child;
     }
 
@@ -87,11 +92,12 @@ void SelectMediaReference::reloadMedia(const QString& nomeCinema) {
             mediaframe->setCursor(Qt::PointingHandCursor);
             
             connect(mediaframe, &MediaFrame::selected, this, [this](MediaFrame* f){
-                if (currentSelected)
+                if (currentSelected){
                     currentSelected->setSelected(false);
-                currentSelected = f;
-                currentSelected->setSelected(true);
-                emit mediaSelected(f);
+                    currentSelected = f;
+                    currentSelected->setSelected(true);
+                    emit mediaSelected(f);
+                }
             });
         }
     }
