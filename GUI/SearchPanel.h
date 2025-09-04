@@ -24,6 +24,7 @@
 #include "MediaLibraryTutto.h"
 #include "MediaLibraryGenerale.h"
 #include "CinemaModifier.h"
+#include "EditMedia.h"
 
 class LibraryObserver;
 
@@ -146,6 +147,7 @@ class SearchPanel:public QWidget{
 
 
     public slots:
+    void showEditPage(Media* media);
     void updateModifierPanel(int index);
     void updateInfoCinema(Cinema* cinemaSel);
     void resetSearchPanel();    //resetta tutte le impostazioni di searchPanel
@@ -153,6 +155,7 @@ class SearchPanel:public QWidget{
     void removeMediaView(QWidget* widget);
     void acceptEditCinema();
     void acceptDeleteCinema();    
+    void updateJson();
     
     
     signals:
@@ -164,7 +167,6 @@ class SearchPanel:public QWidget{
     void escSearchPanel();
     void deleteCinemaInSearchPanel(Cinema* s_cinemaSelezionato);
     void deleteCinema();
-    void updateJson();
 };
 
 #endif //SEARCHPANEL_H

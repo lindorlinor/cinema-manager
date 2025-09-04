@@ -1,10 +1,65 @@
 [
     {
+        "copertinaCinema": ":/images/image10.png",
+        "nomeCinema": "cinema1 modificato2"
+    },
+    {
+        "autore": "a",
+        "conduttore": "aa",
+        "dataFineRilascio": "2025-09-20",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Francese",
+            "Giapponese",
+            "Inglese",
+            "Tedesco"
+        ],
+        "nomeCinema": "cinema1 modificato2",
+        "path": ":/images/default.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "modificato"
+    },
+    {
+        "autore": "e",
+        "autorePodcastAssociato": "a",
+        "dataFineRilascio": "2025-09-20",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Francese",
+            "Giapponese"
+        ],
+        "nomeCinema": "cinema1 modificato2",
+        "numeroPubblicita": 0,
+        "ospiti": [
+        ],
+        "path": ":/images/default.png",
+        "podcastAssociato": "modificato",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Inglese",
+            "Francese",
+            "Tedesco"
+        ],
+        "tipologia": "puntata",
+        "titolo": "e"
+    },
+    {
         "copertinaCinema": ":/images/default.png",
         "nomeCinema": "Cinema Angela"
     },
     {
         "attoriPrincipali": [
+            "Chika Sakamoto",
+            "Hitoshi Takagi",
             "Noriko Hidaka",
             "Chika Sakamoto",
             "Shigesato Itoi",
@@ -17,20 +72,23 @@
         "dataFineRilascio": "2025-06-30",
         "dataInizioRilascio": "2025-06-01",
         "descrizione": "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
-        "durataMinuti": 86,
+        "durataMinuti": 90,
         "formato": "MP4",
         "generi": [
         ],
         "lingueDisponibili": [
             "Italiano",
-            "Inglese"
+            "Inglese",
+            "Cinese"
         ],
         "nPostCredit": 1,
         "nomeCinema": "Cinema Angela",
         "path": ":/images/image9.png",
         "risoluzione": "UHD 4K 2160p",
         "sottotitoliDisponibili": [
-            "Italiano"
+            "Italiano",
+            "Spagnolo",
+            "Cinese"
         ],
         "target": "TUTTI",
         "tipologia": "film",
@@ -77,7 +135,36 @@
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },
     {
-        "copertinaCinema": ":/images/coverCinema.png",
+        "attoriPrincipali": [
+        ],
+        "autore": "a",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-09-26",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "",
+        "durataMinuti": 80,
+        "formato": "MP4",
+        "generi": [
+        ],
+        "lingueDisponibili": [
+            "Inglese",
+            "Tedesco"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "Cinema Angela",
+        "path": ":/images/default.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Francese",
+            "Tedesco"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "aaaacaaaaa"
+    },
+    {
+        "copertinaCinema": ":/images/image10.png",
         "nomeCinema": "Cinema Aurora"
     },
     {
@@ -332,7 +419,7 @@
         "autore": "Hayao Miyazaki",
         "casaDiProduzione": "Studio Ghibli",
         "costoBiglietto": 10,
-        "dataFineRilascio": "2025-09-30",
+        "dataFineRilascio": "2025-10-14",
         "dataInizioRilascio": "2025-09-10",
         "descrizione": "Un'avventura magica in un mondo fantastico popolato da spiriti e divinità.",
         "durataMinuti": 125,
@@ -358,7 +445,7 @@
     {
         "autore": "Studio Ghibli",
         "autoreFilmAssociato": "Hayao Miyazaki",
-        "dataFineRilascio": "2025-09-28",
+        "dataFineRilascio": "2025-10-14",
         "dataInizioRilascio": "2025-09-12",
         "descrizione": "Un assaggio delle meraviglie del mondo fantastico di Chihiro.",
         "durataMinuti": 3,
@@ -447,6 +534,31 @@
         "target": "TUTTI",
         "tipologia": "inserzione",
         "titolo": "Short Films Festival"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "e",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-09-03",
+        "dataInizioRilascio": "2025-09-03",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "generi": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "ee"
     },
     {
         "copertinaCinema": ":/images/default.png",

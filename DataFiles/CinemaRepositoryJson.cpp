@@ -99,6 +99,8 @@ void CinemaRepositoryJson::saveMediaInJson(Media* c_media, const QString& nomeCi
 
 void CinemaRepositoryJson::updateMediaInJson(Cinema* cinemaSelezionato){
 
+    qDebug()<<"chiamato ";
+
     QJsonArray array;
     QList<Cinema*> c_cinemaList;
     loadCinema(c_cinemaList);

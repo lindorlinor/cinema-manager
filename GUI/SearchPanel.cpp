@@ -19,46 +19,6 @@ SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xm
     mainLayout->setSpacing(0);
 }
 
-void SearchPanel::updateModifierPanel(int index){
-    if(stackModifiche->currentIndex()!=index){
-        if(previousIndex)
-            previousIndex = stackModifiche->currentIndex();
-        stackModifiche->setCurrentIndex(index);
-    } 
-
-    if(index == 2) emit setQMenuEnabled();
-    else emit setQMenuDisabled();
-}
-
-void SearchPanel::showMediaView(MediaView& widget){
-    if(auto inserzione = dynamic_cast<InserzioneView*>(&widget))
-        inserzione->setMediaList(s_cinemaSelezionato->getListaMedia()); //per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, mi semrbava meglio cosi
-
-    stackModifiche->addWidget(&widget);
-    stackModifiche->setCurrentWidget(&widget);
-
-    connect(&widget, &MediaView::returnButton, this, [this, &widget](){
-        removeMediaView(&widget);
-    });
-    
-    connect(&widget, &MediaView::extendMediaClicked, this, &SearchPanel::updateJson);
-    connect(&widget, &MediaView::requestMediaView, this, &SearchPanel::showMediaView);
-}
-
-void SearchPanel::removeMediaView(QWidget* widget){
-    int widgetIndex = stackModifiche->indexOf(widget);
-
-    if(widgetIndex > 2)
-        stackModifiche->setCurrentIndex(widgetIndex - 1);
-    else
-        stackModifiche->setCurrentIndex(0);
-
-    stackModifiche->removeWidget(widget);
-    delete widget;
-}
-
-
-
 void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     //agginta ricerca LatoFiltri
     QVBoxLayout* latoFiltri = new QVBoxLayout;
@@ -331,19 +291,6 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
 } 
 
 
-
-void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
-    //selezione Cinema
-    s_cinemaSelezionato = cinemaSel;
-    cinema->setText("Cinema " + QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
-
-    updateMediaList();
-    updateFiltroTutto();
-    emit giveCinemaInfoToIP(s_cinemaSelezionato, s_MediaListOfCinema);
-    
-    s_xmlManager->setCurrentCinema(s_cinemaSelezionato);
-}
-
 void SearchPanel::addObserver(LibraryObserver* obs){
     s_libraryObservers.push_back(obs);
 }
@@ -385,6 +332,20 @@ void SearchPanel::updateMediaList(){
 }
 
 //slot
+
+void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
+    //selezione Cinema
+    s_cinemaSelezionato = cinemaSel;
+    cinema->setText("Cinema " + QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
+
+    updateMediaList();
+    updateFiltroTutto();
+    emit giveCinemaInfoToIP(s_cinemaSelezionato, s_MediaListOfCinema);
+    
+    s_xmlManager->setCurrentCinema(s_cinemaSelezionato);
+}
+
+
 void SearchPanel::resetSearchPanel(){
     updateCerca("Tutto");
     comboAttivita = 0; 
@@ -439,4 +400,69 @@ void SearchPanel::acceptDeleteCinema(){
     else if (msgBox.clickedButton() == annulla){
         qDebug() << "Eliminazione cinema "<<QString::fromStdString(s_cinemaSelezionato->getNomeCinema())<<" annullata";
     }
+}
+
+void SearchPanel::updateModifierPanel(int index){
+    if(stackModifiche->currentIndex()!=index){
+        if(previousIndex)
+            previousIndex = stackModifiche->currentIndex();
+        stackModifiche->setCurrentIndex(index);
+    } 
+
+    if(index == 2) emit setQMenuEnabled();
+    else emit setQMenuDisabled();
+}
+
+void SearchPanel::showMediaView(MediaView& widget){
+    if(auto inserzione = dynamic_cast<InserzioneView*>(&widget))
+        inserzione->setMediaList(s_cinemaSelezionato->getListaMedia()); //per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, mi semrbava meglio cosi
+
+    stackModifiche->addWidget(&widget);
+    stackModifiche->setCurrentWidget(&widget);
+
+
+    connect(&widget, &MediaView::editMediaClicked, this, &SearchPanel::showEditPage);
+    connect(&widget, &MediaView::returnButton, this, [this, &widget](){
+        removeMediaView(&widget);
+    });
+/*     connect(this, &SearchPanel::escSearchPanel, this, [this, &widget](){
+        removeMediaView(&widget);
+        updateModifierPanel(0);}); */
+    
+    connect(&widget, &MediaView::extendMediaClicked, this, &SearchPanel::updateJson);
+    connect(&widget, &MediaView::requestMediaView, this, &SearchPanel::showMediaView);
+    connect(addMedia, &QPushButton::clicked, this, [this, &widget](){removeMediaView(&widget); updateModifierPanel(1);});
+}
+
+void SearchPanel::removeMediaView(QWidget* widget){
+    int widgetIndex = stackModifiche->indexOf(widget);
+
+    if(widgetIndex > 2){
+        stackModifiche->setCurrentIndex(widgetIndex - 1);
+        stackModifiche->removeWidget(widget);
+        delete widget;
+    }
+    else
+        updateModifierPanel(0);
+
+}
+
+
+void SearchPanel::showEditPage(Media* media){
+    EditMedia* editMedia = new EditMedia(media, this); 
+    int backIndex = stackModifiche->currentIndex();
+    
+    editMedia->getCinemaInfo(s_cinemaSelezionato, s_MediaListOfCinema);
+    editMedia->initValue();
+    
+    stackModifiche->addWidget(editMedia);
+    stackModifiche->setCurrentWidget(editMedia);
+    connect(editMedia, &EditMedia::tornaIndietro, this, [this, editMedia, backIndex](){
+        stackModifiche->setCurrentIndex(backIndex);       
+        stackModifiche->removeWidget(editMedia); 
+        delete editMedia;});
+}
+
+void SearchPanel::updateJson(){
+    s_jsonManager->updateMediaInJson(s_cinemaSelezionato);
 }

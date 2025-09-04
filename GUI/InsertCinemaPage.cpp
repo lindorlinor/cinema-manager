@@ -10,8 +10,7 @@
 InsertCinemaPage::InsertCinemaPage(QList<Cinema*>& w_cinema, QWidget * parent):QWidget(parent), ic_cinema(w_cinema),
                                             frameLayout(new QVBoxLayout),
                                             textInput(new QLineEdit(this)),
-                                            imageArea(new InsertImageFrame( "<span style='color:white; font-size:16px;'>+ <u>Aggiungi copertina</u></span>"
-                                                                            "<span style='color: #708084; font-size:16px;'> oppure rilasciala</span>",
+                                            imageArea(new InsertImageFrame( "<span style='color:white; font-size:16px;'>+ <u>Aggiungi copertina</u></span>",
                                                                             "#frame { border: 2px dashed #4E7F8B; border-radius: 12px; } "
                                                                             "QToolButton { border: none; color: #BDCED3; font-weight: bold; } "
                                                                             "QToolButton:hover { color: #ffffffff; }", this)),
@@ -35,7 +34,10 @@ InsertCinemaPage::InsertCinemaPage(QList<Cinema*>& w_cinema, QWidget * parent):Q
     layoutPrincipale->setAlignment(Qt::AlignCenter);
     setLayout(layoutPrincipale);
 
-    // setStyleSheet("QScrollArea { border: none; } QFrame { background-color: pink} QLabel { background-color: yellow} #caca{background-color: red} #pupu{background-color:blue} #gugu{background-color:purple} #gaga{background-color: green}");
+    escButton->setObjectName("escButInsertCinema");
+    saveButton->setObjectName("saveButInsertCinema");
+    escButton->setCursor(Qt::PointingHandCursor);
+    saveButton->setCursor(Qt::PointingHandCursor);
 }
 
 void InsertCinemaPage::checkCinemaNameAvailability(const QString& text) {
@@ -141,13 +143,13 @@ void InsertCinemaPage::resizeEvent(QResizeEvent* event) {
 void InsertCinemaPage::createHeader(){
     QLabel *titolo = new QLabel("Inserisci nuovo cinema",this);
     QFont fontTitolo = titolo->font();
-    fontTitolo.setPointSize(21);
+    fontTitolo.setPointSize(25);
     fontTitolo.setBold(true);
     titolo->setFont(fontTitolo);
     
     QLabel* descrizione = new QLabel("Scegli un nome e un'immagine per un nuovo cinema",this);
     QFont fontDescrizione = descrizione->font();
-    fontDescrizione.setPointSize(10);
+    fontDescrizione.setPointSize(14);
     descrizione->setFont(fontDescrizione);
 
     titolo->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
@@ -165,7 +167,8 @@ void InsertCinemaPage::createHeader(){
     frameLayout->addStretch();
     frameLayout->setAlignment( Qt::AlignLeft);
 
-    // contenitoreLabels->setObjectName("caca");
+    titolo->setObjectName("titoloInsertCinema");
+    descrizione->setObjectName("descrizioneInsertCinema");
 }
 
 void InsertCinemaPage::createSplitView(){
@@ -203,7 +206,7 @@ void InsertCinemaPage::createLayoutInput(QVBoxLayout* layoutdx) {
 
     
     QVBoxLayout *layoutNome = new QVBoxLayout;
-    QLabel *nameLabel = new QLabel("Nome cinema:",this);
+    QLabel *nameLabel = new QLabel("Nome del cinema:",this);
     nameLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     layoutNome->addWidget(nameLabel);
     layoutNome->addWidget(textInput);
@@ -218,8 +221,9 @@ void InsertCinemaPage::createLayoutInput(QVBoxLayout* layoutdx) {
     layoutInput->addWidget(errorLabel);
     layoutInput->addStretch();
 
-    imageArea->setMinimumSize(365,240);
-    imageArea->setMaximumSize(745,240);
+    imageArea->setMinimumSize(365,170);
+    imageArea->setMaximumSize(460,170);
+    contenitoreInput->setMaximumHeight(310);
     layoutInput->addWidget(imageArea);
     layoutInput->setAlignment(Qt::AlignCenter);
     
@@ -229,7 +233,13 @@ void InsertCinemaPage::createLayoutInput(QVBoxLayout* layoutdx) {
     
     layoutInput->setContentsMargins(20,20,20,20);
     layoutdx->addWidget(contenitoreInput);
-    // contenitoreInput->setObjectName("pupu");
+    contenitoreInput->setStyleSheet("background-color: #0e4551;");
+
+    nameLabel->setObjectName("labelInsertCinema");
+    textInput->setObjectName("inputInsertCinema");
+    textInput->setStyleSheet("background-color: #4e7f8b;");
+    textInput->setPlaceholderText("Nome cinema...");
+    layoutdx->setContentsMargins(20,0,0,0);
 }
 
 void InsertCinemaPage::createButtonLayout(QVBoxLayout* layoutdx) {

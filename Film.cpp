@@ -71,12 +71,6 @@ void Film::disaccoppiaTrailer(Trailer* trailer){
     }
 }
 
-
-//metodi set
-/* void Film::setAttoriPrincipali(vector<string> attori){
-    f_attoriPrincipali = attori;
-} */
-
 void Film::setValutazione(){
     sys_days inizio = getDataInizioRilascio();
     sys_days fine = getDataLastViewUpdate();
