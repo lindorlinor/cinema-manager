@@ -59,6 +59,7 @@ HEADERS +=  \
             GUI/ScrollListWidget.h \
             GUI/UpdateMediaLibrary.h \
             GUI/CinemaModifier.h \
+            GUI/MediaInterface.h \
             DataFiles/CinemaRepositoryJson.h \
             DataFiles/JsonConverter.h \
             DataFiles/JsonVisitor.h \
@@ -103,6 +104,7 @@ SOURCES +=  \
             GUI/Menu.cpp \
             GUI/FrameVisitor.cpp \
             GUI/CinemaModifier.cpp \
+            GUI/MediaInterface.cpp \
             DataFiles/CinemaRepositoryJson.cpp \
             DataFiles/JsonConverter.cpp \
             DataFiles/JsonVisitor.cpp \

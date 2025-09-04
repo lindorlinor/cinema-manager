@@ -27,6 +27,7 @@ CinemaSelectionPage::CinemaSelectionPage(QList<Cinema*>& w_cinema, QWidget *pare
     QPushButton* addButton = new QPushButton("+ Aggiungi",framePrincipale);
     addButton->setFixedSize(160, 40); 
     frameLayout->addWidget(addButton, 0, Qt::AlignRight);
+    frameLayout->addSpacing(15);
 
     //aggiunge i pulsanti del cinema al cinemaButtonsLayout scansionando le risorse attuali
     refreshCinemaButtons();
@@ -44,6 +45,11 @@ CinemaSelectionPage::CinemaSelectionPage(QList<Cinema*>& w_cinema, QWidget *pare
     layoutPrincipale->setAlignment(Qt::AlignCenter);
     setLayout(layoutPrincipale);
     setStyleSheet("QScrollArea { border: none; }");
+    escButton->setObjectName("escButtonSelectCinema");
+    addButton->setObjectName("addCinema");
+    escButton->setContentsMargins(0,15,0,0);
+    escButton->setCursor(Qt::PointingHandCursor);
+    addButton->setCursor(Qt::PointingHandCursor);
 
 }
 
@@ -72,13 +78,13 @@ void CinemaSelectionPage::refreshCinemaButtons() {
 void CinemaSelectionPage::createHeader(){
     QLabel *titolo = new QLabel("Tutti i cinema",this);
     QFont fontTitolo = titolo->font();
-    fontTitolo.setPointSize(21);
+    fontTitolo.setPointSize(25);
     fontTitolo.setBold(true);
     titolo->setFont(fontTitolo);
 
     QLabel* descrizione = new QLabel("Seleziona un cinema della catena o creane uno nuovo",this);
     QFont fontDescrizione = descrizione->font();
-    fontDescrizione.setPointSize(10);
+    fontDescrizione.setPointSize(14);
     descrizione->setFont(fontDescrizione);
 
     titolo->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
@@ -95,6 +101,8 @@ void CinemaSelectionPage::createHeader(){
     //aggiunge il contenitore per le due label al frame e le allinea a sinistra
     frameLayout->addWidget(contenitoreTesto);
     frameLayout->setAlignment( Qt::AlignLeft);
+    titolo->setObjectName("titoloSelectCinema");
+    descrizione->setObjectName("descrizioneSelectCinema");
 }
 
 void CinemaSelectionPage::createCinemaScroll(){
@@ -115,10 +123,37 @@ void CinemaSelectionPage::createCinemaScroll(){
     scrollArea->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     
     //mette i pulsanti vicini tra loro, allineati a sinistra con uno spacing di 10
-    cinemaButtonsLayout->setAlignment(Qt::AlignLeft);
+    cinemaButtonsLayout->setAlignment(Qt::AlignCenter);
     cinemaButtonsLayout->setSpacing(10);
     
     //aggiunge al frame la scrollArea del cinema
     frameLayout->addWidget(scrollArea);
+
+    contenitorePulsanti->setObjectName("contenitoreCinema");
+
+    scrollArea->setStyleSheet(
+                                "QScrollArea QWidget{"
+                                    "border-radius: 10px;"
+                                    "border: none}"
+                                    "QScrollArea{"
+                                    "background: transparent;}"
+                                "QScrollBar:horizontal {"
+                                    "background: #4e7f8a;"
+                                    "height: 12px;"
+                                    "margin: 0px;"
+                                    "border-radius: 5px;"
+                                    "border: 1px solid #4e7f8a;}"
+                                "QScrollBar::handle:horizontal {"
+                                    "background: #d9d9d9;"
+                                    "min-height: 20px;"
+                                    "border-radius: 5px;}"
+                                "QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {"
+                                    "width: 0px;"  
+                                    "height: 0px;"
+                                    "subcontrol-origin: margin;"
+                                    "subcontrol-position: none;}"
+                                "QScrollBar::add-line:horizontal:hover, QScrollBar::sub-line:horizontal:hover {"
+                                    "background: #4e7f8a;}"
+                            );
 
 }

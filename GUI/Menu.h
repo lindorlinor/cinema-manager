@@ -16,9 +16,15 @@ class Menu: public QWidget{
     private:
     QMenuBar* menuBar;
     QMenu* file;
+    QMenu* modifica;
+    QMenu* visualizza;
+    QMenu* altro;
     public:
     explicit Menu(QWidget* parent = nullptr);
-    void setFileActionVisibility(int i, bool visible);
+    void setFileActionEnabled(int i, bool visible);
+    void setModifierActionEnabled(int i, bool visible);
+    void setViewActionEnabled(int i, bool visible);
+    void setOtherActionEnabled(int i, bool visible);
     signals:
     void backToCinemaSelection();
     void importMediaList();

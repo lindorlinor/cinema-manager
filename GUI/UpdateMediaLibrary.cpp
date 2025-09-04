@@ -1,6 +1,6 @@
 #include "UpdateMediaLibrary.h"
 
-UpdateMediaLibrary::UpdateMediaLibrary(QWidget* parent):QWidget(parent){}
+UpdateMediaLibrary::UpdateMediaLibrary(QWidget* parent):QWidget(parent),chooseLayout(false){}
 
 void UpdateMediaLibrary::update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList) {
     //oridnamento
@@ -24,11 +24,21 @@ void UpdateMediaLibrary::update(int comboAttivita, int comboOrdinamento, const Q
 
     // Rimuovo tutti i widget dal FlowLayout
     QLayoutItem* item;
-    while ((item = layoutContainer->takeAt(0)) != nullptr) {
-        if (item->widget()) {
-            item->widget()->deleteLater();  
+    if(chooseLayout){
+        while ((item = HorizontalLayoutContainer->takeAt(0)) != nullptr) {
+            if (item->widget()) {
+                item->widget()->deleteLater();  
+            }
+            delete item;
         }
-        delete item;
+    }
+    else{
+        while ((item = FlowLayoutContainer->takeAt(0)) != nullptr) {
+            if (item->widget()) {
+                item->widget()->deleteLater();  
+            }
+            delete item;
+        }
     }
 
     // Ricreo i widget secondo il nuovo filtro
@@ -42,11 +52,15 @@ void UpdateMediaLibrary::update(int comboAttivita, int comboOrdinamento, const Q
             m->accept(libraryVisitor);
             MediaFrame* media(libraryVisitor->getWidget());
             if(media != nullptr){
-                layoutContainer->addWidget(media);
+
+                if(chooseLayout) HorizontalLayoutContainer->addWidget(media);
+                else FlowLayoutContainer->addWidget(media);
+
                 media->setCursor(Qt::PointingHandCursor);
-                media->setMinimumSize(190,300);
+                media->setMinimumSize(240,300);
                 media->setMaximumSize(430,300);
                 media->editImageScale(430,250);
+                
                 //visitor per visualizzare la pagina con i dettagli del media
 
                 connect(media, &MediaFrame::selected, this, [this, m](){
@@ -58,9 +72,16 @@ void UpdateMediaLibrary::update(int comboAttivita, int comboOrdinamento, const Q
         }
     }
 
-    numeroWidget = layoutContainer->count();
+    numeroWidget = chooseLayout? HorizontalLayoutContainer->count() : FlowLayoutContainer->count();
 }
 
 int UpdateMediaLibrary::getNumeroWidgetLayout() const{
     return numeroWidget;
+}
+
+void UpdateMediaLibrary::setPreferredLayout(QLayout* layout){
+    if(!layout) return;
+
+    if(dynamic_cast<QHBoxLayout*>(layout)) chooseLayout = true;
+    if(dynamic_cast<FlowLayout*>(layout)) chooseLayout = false;
 }

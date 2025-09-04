@@ -2,7 +2,7 @@
 #include "MediaFrame.h"
 
 SelectMediaReference::SelectMediaReference(const QString& tipo, QWidget *parent)
-    : QWidget(parent), tipoMedia(tipo), currentSelected(nullptr)
+    : QWidget(parent), tipoMedia(tipo), currentSelected(nullptr), sm_titolo(""), sm_autore("")
 {
     // Container interno per gli item
     container = new QWidget(this);
@@ -52,10 +52,15 @@ SelectMediaReference::SelectMediaReference(const QString& tipo, QWidget *parent)
 }
 
 void SelectMediaReference::reloadMedia(const QString& nomeCinema) {
+
     // Pulisce i widget esistenti
     QLayoutItem* child;
     while ((child = layoutContainer->takeAt(0)) != nullptr) {
-        if (child->widget()) child->widget()->deleteLater();
+        if (child->widget()) {
+            child->widget()->deleteLater();
+        } else if (child->layout()) {
+            delete child->layout(); 
+        }
         delete child;
     }
 
@@ -85,10 +90,18 @@ void SelectMediaReference::reloadMedia(const QString& nomeCinema) {
             layoutContainer->addWidget(mediaframe);
 
             mediaframe->setCursor(Qt::PointingHandCursor);
+
+            if(titolo == sm_titolo && autore == sm_autore){
+                if(currentSelected){
+                    currentSelected = mediaframe;
+                    currentSelected->setSelected(true);
+                    emit mediaSelected(mediaframe);
+                }
+            }
             
             connect(mediaframe, &MediaFrame::selected, this, [this](MediaFrame* f){
-                if (currentSelected)
-                    currentSelected->setSelected(false);
+                if (currentSelected) currentSelected->setSelected(false);
+
                 currentSelected = f;
                 currentSelected->setSelected(true);
                 emit mediaSelected(f);
@@ -106,4 +119,9 @@ void SelectMediaReference::setSelectFalse() {
         currentSelected->setSelected(false);
         currentSelected = nullptr;
     }
+}
+
+void SelectMediaReference::setSelectedItem(const QString& titolo, const QString& autore) {
+    sm_titolo = titolo;
+    sm_autore = autore;
 }

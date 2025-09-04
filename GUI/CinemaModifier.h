@@ -21,7 +21,9 @@ class CinemaModifier : public QDialog
         QLineEdit* lineEdit;
         QLabel* errorLabel;
         QPushButton* saveButton;
-        bool isAvailable;
+        bool nomeAvailable;
+        bool nomeCambiato;
+        bool copertinaCambiata;
         InsertImageFrame* imgFrame;
         QLabel* img;
         QString imagePath;

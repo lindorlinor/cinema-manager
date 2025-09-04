@@ -27,24 +27,22 @@ MediaLibraryTutto::MediaLibraryTutto(QWidget* parent):QWidget(parent){
                                     "QScrollArea{"
                                     "background: transparent;}"
                                 "QScrollBar:vertical {"
-                                    "background: #4e7f8b;"
+                                    "background: #05313c;"
                                     "width: 12px;"
                                     "margin: 0px;"
                                     "border-radius: 5px;"
-                                    "border: 1px solid #4e7f8b;}"
+                                    "border: 1px solid #05313c;}"
                                 "QScrollBar::handle:vertical {"
-                                    "background: #d9d9d9;"
+                                    "background: #4e7f8b;"
                                     "min-height: 20px;"
                                     "border-radius: 5px;}"
                                 "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
-                                    "background: #4e7f8b;"
-                                    "border: 1px solid #4e7f8b;"
-                                    "height: 12px;"
-                                    "border-radius: 5px;"
-                                    "subcontrol-position: top;"
-                                    "subcontrol-origin: margin;}"
+                                    "width: 0px;"  
+                                    "height: 0px;"
+                                    "subcontrol-origin: margin;"
+                                    "subcontrol-position: none;}"
                                 "QScrollBar::add-line:vertical:hover, QScrollBar::sub-line:vertical:hover {"
-                                    "background: #4e7f8b;}"
+                                    "background: #05313c;}"
                             );
     scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -68,7 +66,7 @@ void MediaLibraryTutto::update(int comboAttivita, int comboOrdinamento, const QS
         QLabel* titolo = new QLabel(f + " in Sala", salaWidget);
         ScrollListWidget* scroll = new ScrollListWidget(salaWidget); 
         scroll->update(comboAttivita, comboOrdinamento, f, ricerca, mediaList);
-        scroll->setFixedHeight(330);
+        scroll->setFixedHeight(400);
         if (scroll->getNumeroWidgetLayout()){
             salaV->addWidget(titolo);
             salaV->addWidget(scroll);

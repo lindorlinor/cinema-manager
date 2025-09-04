@@ -3,11 +3,13 @@
 ScrollListWidget::ScrollListWidget(QWidget* parent):UpdateMediaLibrary(parent){
 
     container = new QWidget(this);
-    layoutContainer = new FlowLayout(container);
-    container->setLayout(layoutContainer);
+    HorizontalLayoutContainer = new QHBoxLayout(container);
+    container->setLayout(HorizontalLayoutContainer);
     
+    setPreferredLayout(HorizontalLayoutContainer);
+
     // Scroll area
-    QScrollArea* scrollArea = new QScrollArea(this);
+    scrollArea = new QScrollArea(this);
     scrollArea->setWidgetResizable(true);
     scrollArea->setWidget(container);
     
@@ -16,7 +18,7 @@ ScrollListWidget::ScrollListWidget(QWidget* parent):UpdateMediaLibrary(parent){
     setLayout(mainLayout);
 
     //style
-    layoutContainer->setAlignment(Qt::AlignTop);
+    HorizontalLayoutContainer->setAlignment(Qt::AlignTop);
     mainLayout->setContentsMargins(0,0,0,0);
     scrollArea->setStyleSheet(
                                 "QScrollArea QWidget{"
@@ -36,16 +38,14 @@ ScrollListWidget::ScrollListWidget(QWidget* parent):UpdateMediaLibrary(parent){
                                     "min-height: 20px;"
                                     "border-radius: 5px;}"
                                 "QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {"
-                                    "background: #4e7f8b;"
-                                    "border: 1px solid #05313c;"
-                                    "width: 12px;"
-                                    "border-radius: 5px;"
-                                    "subcontrol-position: top;"
-                                    "subcontrol-origin: margin;}"
+                                    "width: 0px;"  
+                                    "height: 0px;"
+                                    "subcontrol-origin: margin;"
+                                    "subcontrol-position: none;}"
                                 "QScrollBar::add-line:horizontal:hover, QScrollBar::sub-line:horizontal:hover {"
                                     "background: #4e7f8b;}"
                             );
+    mainLayout->setAlignment(Qt::AlignLeft);
     scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-    mainLayout->setAlignment(Qt::AlignLeft);
 }

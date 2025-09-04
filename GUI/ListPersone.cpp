@@ -94,3 +94,11 @@ void ListPersone::resetWidget(){
     inputPersone->clear();            
     model->setStringList(QStringList()); 
 }
+
+void ListPersone::setItems(const QList<QString>& items){
+    for(QString s : items){
+        QStringList currentList = model->stringList();
+        currentList.append(s);
+        model->setStringList(currentList);
+    }
+}

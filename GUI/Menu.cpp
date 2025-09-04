@@ -1,12 +1,10 @@
 #include "Menu.h"
 #include "MainWindow.h"
 
-Menu::Menu(QWidget* parent):QWidget(parent),menuBar(new QMenuBar(this)),file(new QMenu("File",menuBar)){
+Menu::Menu(QWidget* parent):QWidget(parent),menuBar(new QMenuBar(this)),file(new QMenu("File",menuBar)),
+                            modifica(new QMenu("Modifica", menuBar)), visualizza(new QMenu("Visualizza", menuBar)),
+                            altro(new QMenu("Altro", menuBar)){
     QHBoxLayout* menuH = new QHBoxLayout; 
-
-    QMenu* modifica = new QMenu("Modifica", menuBar);
-    QMenu* visualizza = new QMenu("Visualizza", menuBar);
-    QMenu* altro = new QMenu("Altro", menuBar);
     
     menuBar->addMenu(file);
     menuBar->addMenu(modifica);
@@ -93,7 +91,7 @@ Menu::Menu(QWidget* parent):QWidget(parent),menuBar(new QMenuBar(this)),file(new
     altro->setObjectName("altro");
 }
 
-void Menu::setFileActionVisibility(int i, bool visible) {
+void Menu::setFileActionEnabled(int i, bool enabled) {
     if(!file) return;
     
     QList<QAction*> actionsList = file->actions();
@@ -101,5 +99,39 @@ void Menu::setFileActionVisibility(int i, bool visible) {
     if(i<0 || i>=actionsList.size()) 
         return; 
 
-    actionsList[i]->setVisible(visible);
+    actionsList[i]->setEnabled(enabled);
+}
+
+//abilita o disabilita l'item nel QMenu
+void Menu::setModifierActionEnabled(int i, bool enabled) {
+    if(!modifica) return;
+    
+    QList<QAction*> actionsList = modifica->actions();
+
+    if(i<0 || i>=actionsList.size()) 
+        return; 
+
+    actionsList[i]->setEnabled(enabled);
+}
+
+void Menu::setViewActionEnabled(int i, bool enabled) {
+    if(!visualizza) return;
+    
+    QList<QAction*> actionsList = visualizza->actions();
+
+    if(i<0 || i>=actionsList.size()) 
+        return; 
+
+    actionsList[i]->setEnabled(enabled);
+}
+
+void Menu::setOtherActionEnabled(int i, bool enabled) {
+    if(!altro) return;
+    
+    QList<QAction*> actionsList = altro->actions();
+
+    if(i<0 || i>=actionsList.size()) 
+        return; 
+
+    actionsList[i]->setEnabled(enabled);
 }

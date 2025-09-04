@@ -8,9 +8,10 @@ CinemaButton::CinemaButton(const QString& cinemaName="Untitled", const QPixmap& 
     imageLabel = new QLabel(this);
     imageLabel->setPixmap(cinemaImage.scaled(120, 120));
     imageLabel->setAlignment(Qt::AlignCenter);
-
+    
     nameLabel = new QLabel(cinemaName,this);
     nameLabel->setAlignment(Qt::AlignCenter);
+    nameLabel->setWordWrap(true);
 
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->addWidget(imageLabel);
@@ -19,7 +20,7 @@ CinemaButton::CinemaButton(const QString& cinemaName="Untitled", const QPixmap& 
 
     setCursor(Qt::PointingHandCursor);
 
-    setStyleSheet(" #CinemaButton {border: 1px solid gray;} #CinemaButton:hover{background-color: grey}");
+    nameLabel->setObjectName("nomeCinema");
 }
 
 void CinemaButton::mousePressEvent(QMouseEvent *event)
