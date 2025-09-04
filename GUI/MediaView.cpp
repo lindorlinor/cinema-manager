@@ -147,7 +147,7 @@ void MediaView::createRowDetails(){
 
     connect(editTool, &QToolButton::clicked, this, [this](){
         qDebug() << "hai cliccato edit del media " << QString::fromStdString(mediaPtr->getTitolo());
-        editMediaClicked(mediaPtr);
+        emit editMediaClicked(mediaPtr);
     });
 
     rowLayout->addWidget(containerLabel);

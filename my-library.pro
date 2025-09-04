@@ -60,6 +60,7 @@ HEADERS +=  \
             GUI/UpdateMediaLibrary.h \
             GUI/CinemaModifier.h \
             GUI/MediaInterface.h \
+            GUI/EditMedia.h \
             DataFiles/CinemaRepositoryJson.h \
             DataFiles/JsonConverter.h \
             DataFiles/JsonVisitor.h \
@@ -105,6 +106,7 @@ SOURCES +=  \
             GUI/FrameVisitor.cpp \
             GUI/CinemaModifier.cpp \
             GUI/MediaInterface.cpp \
+            GUI/EditMedia.cpp \
             DataFiles/CinemaRepositoryJson.cpp \
             DataFiles/JsonConverter.cpp \
             DataFiles/JsonVisitor.cpp \

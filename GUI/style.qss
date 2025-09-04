@@ -43,8 +43,8 @@
 /* SELECTED CINEMA */
 
 #addCinema{
-    border-radius: 5px;
-    padding: 5px 12px;
+    border-radius: 13px;
+    padding: 8px 12px;
     font-size: 14pt;
     background-color: #ffcb60;
     color: #073c48;
@@ -61,8 +61,8 @@
 #escButtonSelectCinema{
     background-color: #285a66;
     color: #afc5cc;
-    border-radius: 5px;
-    padding: 5px 12px;
+    border-radius: 13px;
+    padding: 8px 12px;
     font-size: 14pt;
 }
 
@@ -283,6 +283,69 @@
 
 
 
+
+
+
+
+
+/* INSERT CINEMA */
+
+
+#saveButInsertCinema,
+#escButInsertCinema{
+    padding: 5px 12px;
+    font-size: 14pt;
+    border-radius: 13px;
+}
+
+#saveButInsertCinema:disabled{
+    background-color: #a59f90;
+    color: #515a5c;
+}
+
+#saveButInsertCinema{
+    background-color: #fecb60;
+    color: #243f46;
+}
+
+#saveButInsertCinema:hover{
+    background-color: #c5a258;
+    color: #244b55;
+}
+
+#escButInsertCinema{
+    background-color: #285965;
+    color: #ffffff;
+}
+
+#escButInsertCinema:hover{
+    background-color: #204a55;
+    color: #97b0b8;
+}
+
+#titoloInsertCinema{
+    color: #ffcc61;
+}
+
+#descrizioneInsertCinema,
+#labelInsertCinema{
+    color: #bdced3;
+}
+
+#labelInsertCinema{
+    font-size: 12pt;
+}
+
+#inputInsertCinema{
+    font-size: 12pt;
+    color: #04303b;
+    padding: 8px 12px;
+    background-color: #4e7f8b;
+    border-radius: 10px;
+}
+
+
+
 /* PAGINA INSERTMEDIA */
 /* LineEdit + ComboBox (parte visibile) */
 #titoloMedia,
@@ -317,6 +380,7 @@ QDateEdit#dataInizio:enabled {
 #durataMinutiMedia::up-button:disabled,
 #durataMinutiMedia::down-button:disabled,
 #durataMinutiMedia:disabled,
+#comboTipologia:disabled,
 #comboFormato:disabled,
 #comboRisoluzione:disabled,
 QDateEdit#dataInizio:disabled,

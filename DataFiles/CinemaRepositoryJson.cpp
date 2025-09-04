@@ -5,16 +5,22 @@ CinemaRepositoryJson::CinemaRepositoryJson(const QString& basePath):c_basePath(b
 void CinemaRepositoryJson::loadCinema(QList<Cinema*>& c_cinemaList){
     QJsonDocument doc = loadJsonFile("media.json");
     if (!doc.isArray()) return;
-    
+    bool flag = false;
     for (const auto &val : doc.array()) {
         
         QJsonObject obj = val.toObject();
         if (!obj.contains("tipologia")) {
-            c_cinemaList.append(converter->deserializeCinema(obj));
+            for(Cinema* c:c_cinemaList){
+                flag = false;
+                if(obj["nomeCinema"]==QString::fromStdString(c->getNomeCinema())) flag = true;
+            }
+            if(!flag) c_cinemaList.append(converter->deserializeCinema(obj));
         }
     }
     
 }
+
+
 
 void CinemaRepositoryJson::loadMedia(QList<Media*>& c_mediaList, const QString& nomeCinema){
     QJsonDocument doc = loadJsonFile("media.json");
@@ -98,6 +104,8 @@ void CinemaRepositoryJson::saveMediaInJson(Media* c_media, const QString& nomeCi
 }
 
 void CinemaRepositoryJson::updateMediaInJson(Cinema* cinemaSelezionato){
+
+    qDebug()<<"chiamato ";
 
     QJsonArray array;
     QList<Cinema*> c_cinemaList;

@@ -82,7 +82,7 @@ void MediaManagerXml::saveDocument() {
     file.close();
 }
 
-bool MediaManagerXml::importSessionFromXml(CinemaRepositoryJson& jsonManager) {
+bool MediaManagerXml::importSessionFromXml(CinemaRepositoryJson& jsonManager){
     QString filePath = QFileDialog::getOpenFileName(
         nullptr, "Apri sessione XML", "", "XML Files (*.xml)");
     if (filePath.isEmpty()) return false;
@@ -113,9 +113,7 @@ bool MediaManagerXml::importSessionFromXml(CinemaRepositoryJson& jsonManager) {
         QMessageBox::warning(nullptr, "Errore", "Il cinema non è valido: campo obbligatorio <Nome>/<Copertina>/<MediaList> assente.");
         return false;
     }
-
     jsonManager.saveCinemaInJson(new Cinema(nome.text().toStdString(), copertina.text().toStdString()));
-    
     if (mediaListElem.isNull()) {
         QMessageBox::information(nullptr, "Info", "Cinema importato senza contenuti multimediali.");
         return true;
@@ -159,7 +157,6 @@ void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,CinemaReposi
 
     if(errors)
          QMessageBox::information(nullptr, "Info", QString::number(errors) + " media non sono stati importati correttamente");
-    qDebug() << "esco da importMediaListFromXml"; 
 }
 bool MediaManagerXml::importMediaListFromXml(CinemaRepositoryJson& jsonManager){
     if(!currentCinema) return false;

@@ -109,7 +109,9 @@ MainWindow::MainWindow(QWidget *parent):    QMainWindow(parent), cinemaPage(new 
                                               searchPage->updateInfoCinema(m_xmlManager->getCurrentCinema());       
                                             });
     connect(menu, &Menu::importSession, this, [this](){
-                                              m_xmlManager->importSessionFromXml(*m_jsonManager);      
+                                                m_xmlManager->importSessionFromXml(*m_jsonManager);
+                                                m_jsonManager->loadCinema(w_cinema);
+                                                cinemaPage->refreshCinemaButtons();
                                             });
     connect(menu, &Menu::exportMediaList,this, [this](){
                                               m_xmlManager->exportMediaListToXml(); 
