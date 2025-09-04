@@ -102,7 +102,7 @@ class SearchPanel:public QWidget{
     */
     void addPagina(QVBoxLayout* mainLayout);                //"contenitore" principale
     void addLatoFiltri(QWidget* widgetSinistra);             //lato di sinistra con i pulsanti
-    void addLatoDestra(QStackedWidget* stackModifiche);     //lato di destra con lo stackLibreria
+    void addLatoDestra();     //lato di destra con lo stackLibreria
 
     /**
      * @brief abbastanza autoesplicativo il nome XD

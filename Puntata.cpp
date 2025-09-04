@@ -6,7 +6,7 @@ Puntata::Puntata(const string &titolo, const string &descrizione, year_month_day
                  Podcast *podcast, unsigned int numeroPubblicita, const string &autore,
                  const string &path) : 
                             Media(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
-                            durataMinuti, podcast->getFormato(), podcast->getRisoluzione(), autore, podcast->getImPath()),p_podcast(podcast), 
+                            durataMinuti, podcast->getFormato(), podcast->getRisoluzione(), autore, path),p_podcast(podcast), 
                             p_numeroPubblicita(numeroPubblicita) {
                                 p_podcast->aggiungiPuntata(this);
                             }

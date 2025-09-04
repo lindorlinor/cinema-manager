@@ -193,7 +193,6 @@ void TrailerView::createScrollableSection(){
         DetailPageVisitor detailVisitor;
         filmA->accept(&detailVisitor);
         emit requestMediaView(*detailVisitor.getWidget());
-        qDebug() << "view Film Associato: " << QString::fromStdString(mediaPtr->getTitolo());
     });
     sezioneFilmA->setContentsMargins(20,0,20,0);
 

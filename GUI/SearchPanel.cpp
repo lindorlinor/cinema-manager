@@ -24,9 +24,8 @@ void SearchPanel::updateModifierPanel(int index){
         if(previousIndex)
             previousIndex = stackModifiche->currentIndex();
         stackModifiche->setCurrentIndex(index);
-    } 
-
-    if(index == 2) emit setQMenuEnabled();
+    }
+    if(index==2) emit setQMenuEnabled();
     else emit setQMenuDisabled();
 }
 
@@ -167,7 +166,7 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     tutto->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 }
 
-void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
+void SearchPanel::addLatoDestra(){
     //aggiunta ricerca superiore
     QVBoxLayout* latoDestra = new QVBoxLayout;
     QHBoxLayout* barraFiltri = new QHBoxLayout;
@@ -232,7 +231,16 @@ void SearchPanel::addLatoDestra(QStackedWidget* stackModifiche){
     connect(cerca, &QLineEdit::textChanged, this, [this](const QString &testo){ ricerca = testo; 
                                                                                 for(auto o : s_libraryObservers) 
                                                                                     o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema);});
-    connect(addMedia, &QPushButton::clicked, this, [this](){updateModifierPanel(1);});
+    connect(addMedia, &QPushButton::clicked, this, [this](){
+        if(stackModifiche->currentIndex()>2){
+            for (int i=stackModifiche->count()-1; i>=2; --i) {
+                QWidget* w = stackModifiche->widget(i);
+                stackModifiche->removeWidget(w);
+                delete w;
+            }
+        }
+        updateModifierPanel(1);
+    });
     connect(tutto, &QToolButton::clicked, this, &SearchPanel::updateFiltroTutto);
     connect(film, &QToolButton::clicked, this, [this](){updateFiltroMedia("Film");});
     connect(trailer, &QToolButton::clicked, this, [this](){updateFiltroMedia("Trailer");});
@@ -308,7 +316,7 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
     QHBoxLayout* ricerca = new QHBoxLayout;
     
     addLatoFiltri(widgetFiltri); 
-    addLatoDestra(stackModifiche); 
+    addLatoDestra(); 
     
     ricerca->addWidget(widgetFiltri);
     ricerca->addWidget(stackModifiche);
