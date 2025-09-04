@@ -58,8 +58,10 @@ void UpdateMediaLibrary::update(int comboAttivita, int comboOrdinamento, const Q
 
                 media->setCursor(Qt::PointingHandCursor);
                 media->editImageScale(430,250);
-                media->setMinimumSize(240,300);
-                media->setMaximumSize(430,300);
+                 // media->setMinimumSize(240,300);
+                // media->setMaximumSize(430,300);
+                media->setFixedHeight(300);
+                media->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
                 
                 //visitor per visualizzare la pagina con i dettagli del media
 

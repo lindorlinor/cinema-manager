@@ -91,7 +91,7 @@
         "lingueDisponibili": [
         ],
         "nomeCinema": "Cinema Aurora",
-        "path": ":/images/image17.png",
+        "path": ":/images/default_podcast_puntate.png",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -112,7 +112,7 @@
         "numeroPubblicita": 2,
         "ospiti": [
         ],
-        "path": ":/images/image17.png",
+        "path": ":/images/default_podcast_puntate.png",
         "podcastAssociato": "Storie del cinema",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
@@ -134,7 +134,7 @@
         "numeroPubblicita": 1,
         "ospiti": [
         ],
-        "path": ":/images/image17.png",
+        "path": ":/images/default_podcast_puntate.png",
         "podcastAssociato": "Storie del cinema",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
@@ -156,7 +156,7 @@
         "numeroPubblicita": 2,
         "ospiti": [
         ],
-        "path": ":/images/image17.png",
+        "path": ":/images/default_podcast_puntate.png",
         "podcastAssociato": "Storie del cinema",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
@@ -274,7 +274,7 @@
         "formato": "MP4",
         "lingueDisponibili": [
         ],
-        "nomeCinema": "Cinema Aurora",
+        "nomeCinema": "Cinema Limena",
         "path": ":/images/image17.png",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
@@ -292,7 +292,7 @@
         "formato": "MP4",
         "lingueDisponibili": [
         ],
-        "nomeCinema": "Cinema Aurora",
+        "nomeCinema": "Cinema Limena",
         "numeroPubblicita": 1,
         "ospiti": [
         ],
@@ -314,7 +314,7 @@
         "formato": "MP4",
         "lingueDisponibili": [
         ],
-        "nomeCinema": "Cinema Aurora",
+        "nomeCinema": "Cinema Limena",
         "numeroPubblicita": 2,
         "ospiti": [
         ],
