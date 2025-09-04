@@ -1,9 +1,5 @@
 [
     {
-        "copertinaCinema": ":/images/image10.png",
-        "nomeCinema": "cinema1 modificato2"
-    },
-    {
         "copertinaCinema": ":/images/default.png",
         "nomeCinema": "Cinema Angela"
     },
@@ -81,7 +77,7 @@
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },
     {
-        "copertinaCinema": ":/images/image10.png",
+        "copertinaCinema": ":/images/coverCinema.png",
         "nomeCinema": "Cinema Aurora"
     },
     {
@@ -271,10 +267,10 @@
     {
         "autore": "FilmLab",
         "conduttore": "Marco Rossi",
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-09-03",
+        "dataFineRilascio": "2025-10-31",
+        "dataInizioRilascio": "2025-10-01",
         "descrizione": "Approfondimenti sui grandi registi e capolavori cinematografici.",
-        "durataMinuti": 0,
+        "durataMinuti": 75,
         "formato": "MP4",
         "lingueDisponibili": [
         ],
@@ -388,9 +384,7 @@
         "descrizione": "Scopri i grandi classici del cinema in versione rimasterizzata.",
         "durataMinuti": 2,
         "fasceOrarie": [
-            "Mattina",
-            "Pomeriggio",
-            "Sera"
+            "Mattina"
         ],
         "formato": "MP4",
         "lingueDisponibili": [
@@ -415,8 +409,7 @@
         "descrizione": "Una selezione dei migliori documentari per gli appassionati di cinema.",
         "durataMinuti": 1,
         "fasceOrarie": [
-            "Mattina",
-            "Pomeriggio"
+            "Mattina"
         ],
         "formato": "MP4",
         "lingueDisponibili": [
@@ -440,8 +433,7 @@
         "descrizione": "Una rassegna dei cortometraggi più interessanti prodotti quest’anno.",
         "durataMinuti": 3,
         "fasceOrarie": [
-            "Mattina",
-            "Sera"
+            "Mattina"
         ],
         "formato": "MP4",
         "lingueDisponibili": [
@@ -505,7 +497,7 @@
         ],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_i_puffi_il_film.png",
+        "path": ":/images/trailer_ipuffi.jpg",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
         ],
@@ -516,7 +508,9 @@
         "attoriPrincipali": [
             "Olivia Colman",
             "Benedict Cumberbatch",
-            "Andy Samberg"
+            "Andy Samberg",
+            "Hitoshi Takagi",
+            "Takashi Nagasako"
         ],
         "autore": "Jay Roach",
         "casaDiProduzione": "Searchlight Pictures / Disney Italia",
@@ -557,7 +551,7 @@
         ],
         "nProiezioniGiornaliere": 15,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_i_roses.png",
+        "path": ":/images/trailer_iroses.jpg",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
         ],
@@ -608,7 +602,7 @@
         ],
         "nProiezioniGiornaliere": 7,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_tutta_colpa_del_rock.png",
+        "path": ":/images/trailer_tuttacolpadelrock.jpg",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
         ],
@@ -661,7 +655,7 @@
         ],
         "nProiezioniGiornaliere": 4,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_harry_potter_calice_fuoco.png",
+        "path": ":/images/trailer_harrypottereilcalicedifuoco.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -720,7 +714,7 @@
         ],
         "nProiezioniGiornaliere": 3,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_una_scomoda_circostanza.png",
+        "path": ":/images/trailer_caughtstealing.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -777,7 +771,7 @@
         ],
         "nProiezioniGiornaliere": 3,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_weapons.png",
+        "path": ":/images/trailer_weapons.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -830,7 +824,7 @@
         ],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_lo_squalo_50.png",
+        "path": ":/images/trailer_losqualo50anniversario.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -838,28 +832,27 @@
         "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
     },
     {
-        "attoriPrincipali": [
+        "autore": "Mister inserzione",
+        "aziendaInserzionista": "",
+        "costoFissoProiezione": 30,
+        "dataFineRilascio": "2025-09-11",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "La descrizione di questa inserzione lascia un po' a desiderare ma l'inserzione [ bell. nn scrive bene sta roba, mi salta delle lettere se scrivo ad una velcita sostenuta. accentiiinon funzonano",
+        "durataMinuti": 2,
+        "fasceOrarie": [
+            "Mattina"
         ],
-        "autore": "e",
-        "casaDiProduzione": "",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-09-03",
-        "descrizione": "",
-        "durataMinuti": 0,
         "formato": "MP4",
-        "generi": [
-        ],
         "lingueDisponibili": [
+            "Italiano"
         ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Aurora",
+        "nomeCinema": "Cinema Limena",
         "path": ":/images/default.png",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
         "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "ee"
+        "tipologia": "inserzione",
+        "titolo": "Inserzione 1"
     }
 ]

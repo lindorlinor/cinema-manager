@@ -35,7 +35,7 @@
         <DurataMinuti>2</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>HD 720p</Risoluzione>
-        <Path>:/images/trailer_i_puffi_il_film.png</Path>
+        <Path>:/images/trailer_ipuffi.jpg</Path>
         <DataInizioRilascio>06/06/2025</DataInizioRilascio>
         <DataFineRilascio>7/09/2025</DataFineRilascio>
         <LingueDisponibili/>
@@ -82,7 +82,7 @@
         <DurataMinuti>2</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>HD 720p</Risoluzione>
-        <Path>:/images/trailer_i_roses.png</Path>
+        <Path>:/images/trailer_iroses.jpg</Path>
         <DataInizioRilascio>1/08/2025</DataInizioRilascio>
         <DataFineRilascio>03/09/2025</DataFineRilascio>
         <LingueDisponibili/>
@@ -128,7 +128,7 @@
         <DurataMinuti>1</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>HD 720p</Risoluzione>
-        <Path>:/images/trailer_tutta_colpa_del_rock.png</Path>
+        <Path>:/images/trailer_tuttacolpadelrock.jpg</Path>
         <DataInizioRilascio>07/07/2025</DataInizioRilascio>
         <DataFineRilascio>08/09/2025</DataFineRilascio>
         <LingueDisponibili/>
@@ -174,7 +174,7 @@
         <DurataMinuti>2</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/trailer_harry_potter_calice_fuoco.png</Path>
+        <Path>:/images/trailer_harrypottereilcalicedifuoco.jpg</Path>
         <DataInizioRilascio>23/09/2005</DataInizioRilascio>
         <DataFineRilascio>07/09/2025</DataFineRilascio>
         <LingueDisponibili/>
@@ -190,7 +190,7 @@
         <DurataMinuti>109</DurataMinuti>
         <Formato>DCP</Formato>
         <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/clocandina_caughtstealing.jpg</Path>
+        <Path>:/images/locandina_caughtstealing.jpg</Path>
         <DataInizioRilascio>27/08/2025</DataInizioRilascio>
         <DataFineRilascio>07/09/2025</DataFineRilascio>
         <LingueDisponibili>
@@ -226,7 +226,7 @@
         <DurataMinuti>2</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/trailer_una_scomoda_circostanza.png</Path>
+        <Path>:/images/trailer_caughtstealing.jpg</Path>
         <DataInizioRilascio>24/07/2025</DataInizioRilascio>
         <DataFineRilascio>2/09/2025</DataFineRilascio>
         <LingueDisponibili/>
@@ -276,7 +276,7 @@
         <DurataMinuti>2</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/trailer_weapons.png</Path>
+        <Path>:/images/trailer_weapons.jpg</Path>
         <DataInizioRilascio>30/04/2025</DataInizioRilascio>
         <DataFineRilascio>05/08/2025</DataFineRilascio>
         <LingueDisponibili/>
@@ -322,7 +322,7 @@
         <DurataMinuti>2</DurataMinuti>
         <Formato>IMAX 3D</Formato>
         <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/trailer_lo_squalo_50.png</Path>
+        <Path>:/images/trailer_losqualo50anniversario.jpg</Path>
         <DataInizioRilascio>04/07/2025</DataInizioRilascio>
         <DataFineRilascio>31/08/2025</DataFineRilascio>
         <LingueDisponibili/>

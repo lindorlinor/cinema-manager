@@ -10,10 +10,17 @@
 #include <map>
 #include <string>
 #include <QList>
+#include <QVector>
 #include <chrono>
 using namespace std::chrono;
 
-
+inline QVector<QPair<QString, QString>> allFiltri = {
+        {"Film", "Tutti i "},
+        {"Trailer", "Tutti i "},
+        {"Inserzioni", "Tutte le "},
+        {"Podcast", "Tutti i "},
+        {"Puntate", "Tutte le "}
+};
 
 inline year_month_day today() {
     using namespace std::chrono;

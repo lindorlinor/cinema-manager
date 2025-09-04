@@ -5,7 +5,6 @@ MediaLibraryTutto::MediaLibraryTutto(QWidget* parent):QWidget(parent){
     container = new QWidget();  
     QVBoxLayout* mainLayout = new QVBoxLayout;
     layoutContainer = new QVBoxLayout(container); 
-    container->setLayout(layoutContainer);
     QLabel* titoloPagina = new QLabel("Tutto", this);
 
     scrollArea = new QScrollArea(this);
@@ -19,8 +18,7 @@ MediaLibraryTutto::MediaLibraryTutto(QWidget* parent):QWidget(parent){
     //style
     mainLayout->setAlignment(Qt::AlignTop);
     titoloPagina->setStyleSheet("color: #fed36a; font-size: 20pt; font-weight: bold;");
-    scrollArea->setStyleSheet(
-                                "QScrollArea QWidget{"
+    scrollArea->setStyleSheet(  "QScrollArea QWidget{"
                                     "border-radius: 10px;"
                                     "background-color: #073c47;"
                                     "border: none}"
@@ -50,28 +48,38 @@ MediaLibraryTutto::MediaLibraryTutto(QWidget* parent):QWidget(parent){
 
 void MediaLibraryTutto::update(int comboAttivita, int comboOrdinamento, const QString& ricerca, QList<Media*>& mediaList){
 
-    QList<QString> allFiltri = QList<QString>({"Film", "Trailer", "Inserzioni", "Podcast", "Puntate"});
+    // QList<QString> allFiltri = QList<QString>({"Film", "Trailer", "Inserzioni", "Podcast", "Puntate"});
 
     QLayoutItem* item;
-    while ((item = layoutContainer->takeAt(0)) != nullptr) {
+    while ((item = layoutContainer->takeAt(0)) != nullptr) { //resetta il contenuto del layout
         if (item->widget()) {
             item->widget()->deleteLater();  
         }
         delete item;
     }
 
-    for(QString f : allFiltri){
+
+    for(auto &f : allFiltri){
+        QString filtro = f.first;
+        QString prefisso = f.second;
+
         QWidget* salaWidget = new QWidget(container);
         QVBoxLayout* salaV = new QVBoxLayout(salaWidget);
-        QLabel* titolo = new QLabel(f + " in Sala", salaWidget);
         ScrollListWidget* scroll = new ScrollListWidget(salaWidget); 
-        scroll->update(comboAttivita, comboOrdinamento, f, ricerca, mediaList);
+        scroll->update(comboAttivita, comboOrdinamento, filtro, ricerca, mediaList);
         scroll->setFixedHeight(400);
+
+        QLabel* titolo;
         if (scroll->getNumeroWidgetLayout()){
+            if(comboAttivita==0)
+                titolo = new QLabel(filtro + " in Sala", salaWidget);
+            else if(comboAttivita==1)
+                titolo = new QLabel(filtro + " fuori produzione", salaWidget);
+            else
+                titolo = new QLabel(prefisso + filtro , salaWidget);
             salaV->addWidget(titolo);
             salaV->addWidget(scroll);
             salaWidget->setLayout(salaV);
-    
             layoutContainer->addWidget(salaWidget,0,Qt::AlignTop);
     
             connect(scroll, &ScrollListWidget::requestMediaView, this, &MediaLibraryTutto::reciveRequestMediaView);
