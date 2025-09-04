@@ -2,7 +2,6 @@
 
 CinemaModifier::CinemaModifier(Cinema* cinema, QWidget *parent): QDialog(parent), editCinema(cinema){
    setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
-    /* setAttribute(Qt::WA_TranslucentBackground); */
     imagePath = QString::fromStdString(editCinema->getCopertinaCinema());
 
     QHBoxLayout* popUpH1 = new QHBoxLayout;
@@ -18,7 +17,7 @@ CinemaModifier::CinemaModifier(Cinema* cinema, QWidget *parent): QDialog(parent)
     QPixmap pix(QString::fromStdString(editCinema->getCopertinaCinema())); 
     img->setPixmap(pix);
     img->setScaledContents(true);
-    imgFrame = new InsertImageFrame(" <span style='color:#05313c; font-size:16px;'><b> +<u>Cambia la copertina</u></b></span><br>",
+    imgFrame = new InsertImageFrame(" <span style='color:#05313c; font-size:10pt;'><b> +<u>Cambia la copertina</u></b></span><br>",
                                                         "#frame { border: 3px dashed #05313c; border-radius: 12px; } "
                                                         "QLabel { qproperty-alignment: AlignCenter; }" 
                                                         "QToolButton { border: none; color: #073c47; font-weight: bold; } "
@@ -41,8 +40,8 @@ CinemaModifier::CinemaModifier(Cinema* cinema, QWidget *parent): QDialog(parent)
 
     popUpV2->addWidget(label);
     popUpV2->addWidget(lineEdit);
-    popUpV2->addWidget(errorLabel);
     popUpV2->addWidget(widgetPopUp1);
+    popUpV2->addWidget(errorLabel);
     widgetPopUp3->setLayout(popUpV2);
 
     popUpH2->addWidget(widgetPopUp2);
@@ -58,9 +57,21 @@ CinemaModifier::CinemaModifier(Cinema* cinema, QWidget *parent): QDialog(parent)
     connect(imgFrame, &InsertImageFrame::removeImage, this, &CinemaModifier::removeImage);
 
     //style
-    widgetPopUp2->setMaximumWidth(250);
+    popUpH1->setAlignment(Qt::AlignBottom);
+    popUpV2->setAlignment(Qt::AlignCenter);
+    saveButton->setObjectName("saveButtonCinemaModifica");
+    cancelButton->setObjectName("cancelButtonCinemaModifica");
+    lineEdit->setStyleSheet({"background-color: #e4f8ff; color: #073c47; border: 1px solid #4e7f8b; border-radius: 5px; padding: 5px 12px;"});
+    img->setFixedSize(320,340);
+    img->setAlignment(Qt::AlignCenter);
+    label->setFixedHeight(50);
+    label->setAlignment(Qt::AlignCenter);
+    label->setStyleSheet({"color: #05313c; font-size: 15pt; font-weight: bold;"});
+    setObjectName("popUpModificheCinema");
+    widgetPopUp2->setFixedWidth(340);
+    widgetPopUp2->setStyleSheet({"background-color: #4e7f8b; padding: 5px;"});
     imgFrame->setCursor(Qt::PointingHandCursor);
-    errorLabel->setStyleSheet("color: red; font-size: 12pt;");
+    errorLabel->setStyleSheet("color: red; font-size: 10pt;");
     errorLabel->setText("");
     errorLabel->setVisible(false);
     errorLabel->setAlignment(Qt::AlignCenter);
@@ -74,25 +85,36 @@ void CinemaModifier::checkCinemaNameAvailability(){
         return;
     }
 
-    isAvailable = true;
+    nomeAvailable = true;
+    copertinaCambiata = true;
+    nomeCambiato = true;
 
     QList<Cinema*> cinemaList;
     CinemaRepositoryJson manager;
     manager.loadCinema(cinemaList);
-
+    
     for (const Cinema* c: cinemaList) {
-        if (QString::fromStdString(c->getNomeCinema()).compare(text, Qt::CaseInsensitive) == 0) {
-            isAvailable = false;
+        if (QString::fromStdString(c->getNomeCinema()).compare(text, Qt::CaseInsensitive) == 0){
+            nomeAvailable = false;
+            if (QString::fromStdString(c->getNomeCinema()).compare(QString::fromStdString(editCinema->getNomeCinema()), Qt::CaseInsensitive) == 0) {
+                nomeCambiato = false;
+                nomeAvailable = true;
+            }
         }
     }
 
-    if (!isAvailable) {
-        errorLabel->setText("Nome non disponibile. Scegliere un altro nome per il cinema");
-        errorLabel->setVisible(true);
-        saveButton->setEnabled(false);
-    } else {
+    if(QString::fromStdString(editCinema->getCopertinaCinema()).compare(imagePath, Qt::CaseInsensitive) == 0) copertinaCambiata = false;
+
+    if ((nomeCambiato || copertinaCambiata) && nomeAvailable) {
         errorLabel->setVisible(false);
         saveButton->setEnabled(true);
+    }
+    else{
+        if(nomeCambiato){
+            errorLabel->setText("Nome non disponibile. Scegliere un altro nome per il cinema");
+            errorLabel->setVisible(true);
+        }
+        saveButton->setEnabled(false);
     }
 }
 
@@ -112,12 +134,15 @@ void CinemaModifier::chooseImage(){
         img->setPixmap(pixmap.scaled(200,200, Qt::KeepAspectRatio, Qt::SmoothTransformation));
         imgFrame->insertImage(QFileInfo(fileName).fileName());
     }
+
+    checkCinemaNameAvailability();
 }
 
 void CinemaModifier::removeImage(){
-    QPixmap pixmap(":/images/default.png"); 
+    QPixmap pixmap(QString::fromStdString(editCinema->getCopertinaCinema())); 
     img->setPixmap(pixmap.scaled(200,200, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     imagePath = QString::fromStdString(editCinema->getCopertinaCinema());
+    checkCinemaNameAvailability();
 }
 
 void CinemaModifier::saveEdit(){
