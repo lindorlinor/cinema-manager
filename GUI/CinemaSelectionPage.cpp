@@ -14,8 +14,8 @@
 #include <QGridLayout>
 
 CinemaSelectionPage::CinemaSelectionPage(QList<Cinema*>& w_cinema, QWidget *parent) : QWidget(parent), sp_cinema(w_cinema), cinemaButtonsLayout(new QHBoxLayout), framePrincipale(new QFrame(this)),frameLayout(new QVBoxLayout(framePrincipale)) {
-    CinemaRepositoryJson cinemaManager;
-    cinemaManager.loadCinema(sp_cinema);
+    
+    refreshCinemaButtons();
 
     //crea il frame centrale
     framePrincipale->setMinimumSize(630, 500);
@@ -64,6 +64,10 @@ void CinemaSelectionPage::createCinemaButton(Cinema* c) {
 }
 
 void CinemaSelectionPage::refreshCinemaButtons() {
+    sp_cinema.clear();
+    CinemaRepositoryJson cinemaManager;
+    cinemaManager.loadCinema(sp_cinema);
+
     QLayoutItem* child;
     while ((child = cinemaButtonsLayout->takeAt(0)) != nullptr) {
         delete child->widget();

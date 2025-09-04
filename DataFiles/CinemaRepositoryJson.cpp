@@ -7,17 +7,19 @@ void CinemaRepositoryJson::loadCinema(QList<Cinema*>& c_cinemaList){
     if (!doc.isArray()) return;
     bool flag = false;
     for (const auto &val : doc.array()) {
-        
         QJsonObject obj = val.toObject();
         if (!obj.contains("tipologia")) {
-            for(Cinema* c:c_cinemaList){
-                flag = false;
-                if(obj["nomeCinema"]==QString::fromStdString(c->getNomeCinema())) flag = true;
+            bool flag = false;
+            for(Cinema* c : c_cinemaList){
+                if(obj["nomeCinema"] == QString::fromStdString(c->getNomeCinema())) {
+                    flag = true;
+                    break;
+                }
             }
-            if(!flag) c_cinemaList.append(converter->deserializeCinema(obj));
+            if(!flag) 
+                c_cinemaList.append(converter->deserializeCinema(obj));
         }
     }
-    
 }
 
 
