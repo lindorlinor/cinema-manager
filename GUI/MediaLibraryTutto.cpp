@@ -69,8 +69,9 @@ void MediaLibraryTutto::update(int comboAttivita, int comboOrdinamento, const QS
         scroll->update(comboAttivita, comboOrdinamento, filtro, ricerca, mediaList);
         scroll->setFixedHeight(400);
 
-        QLabel* titolo;
+        
         if (scroll->getNumeroWidgetLayout()){
+            QLabel* titolo;
             if(comboAttivita==0)
                 titolo = new QLabel(filtro + " in Sala", salaWidget);
             else if(comboAttivita==1)
@@ -83,9 +84,10 @@ void MediaLibraryTutto::update(int comboAttivita, int comboOrdinamento, const QS
             layoutContainer->addWidget(salaWidget,0,Qt::AlignTop);
     
             connect(scroll, &ScrollListWidget::requestMediaView, this, &MediaLibraryTutto::reciveRequestMediaView);
+            titolo->setStyleSheet("color: #fed36a; font-size: 18pt; font-weight: bold;");
         }
 
-        titolo->setStyleSheet("color: #fed36a; font-size: 18pt; font-weight: bold;");
+        
 
     }
 
