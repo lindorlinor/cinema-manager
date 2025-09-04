@@ -9,9 +9,9 @@ Podcast::Podcast(const string &titolo, const string &descrizione,Formato formato
 
 
 Podcast::~Podcast(){
-    for (auto& p : p_elencoPuntate) {
-        delete p;
-        p = nullptr;
+    for (auto it = p_elencoPuntate.begin(); it!= p_elencoPuntate.end(); ++it) {
+        delete *it;
+        *it = nullptr;
     }
     p_elencoPuntate.clear();
 }
