@@ -182,7 +182,7 @@ vector<std::string> MediaInterface::getSelectedList(QListWidget* list){
     for(int i=0; i<list->count(); ++i){
         QListWidgetItem* item = list->item(i);
         if(item->checkState() == Qt::Checked){
-            risultato.push_back(static_cast<std::string>(item->data(Qt::UserRole).toString().toStdString()));
+            risultato.push_back(item->data(Qt::UserRole).toString().toStdString());
         }
     }
 
@@ -302,7 +302,7 @@ void MediaInterface::checkMediaNameAvailability() {
         saveButton->setEnabled(true);
     } else {
         errorLabel->setVisible(false);
-        saveButton->setEnabled(false);
+        saveButton->setEnabled(true);
     }
 }
 

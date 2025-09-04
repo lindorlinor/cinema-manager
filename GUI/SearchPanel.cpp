@@ -19,46 +19,6 @@ SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xm
     mainLayout->setSpacing(0);
 }
 
-void SearchPanel::updateModifierPanel(int index){
-    if(stackModifiche->currentIndex()!=index){
-        if(previousIndex)
-            previousIndex = stackModifiche->currentIndex();
-        stackModifiche->setCurrentIndex(index);
-    } 
-
-    if(index == 2) emit setQMenuEnabled();
-    else emit setQMenuDisabled();
-}
-
-void SearchPanel::showMediaView(MediaView& widget){
-    if(auto inserzione = dynamic_cast<InserzioneView*>(&widget))
-        inserzione->setMediaList(s_cinemaSelezionato->getListaMedia()); //per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, mi semrbava meglio cosi
-
-    stackModifiche->addWidget(&widget);
-    stackModifiche->setCurrentWidget(&widget);
-
-    connect(&widget, &MediaView::returnButton, this, [this, &widget](){
-        removeMediaView(&widget);
-    });
-    
-    connect(&widget, &MediaView::extendMediaClicked, this, &SearchPanel::updateJson);
-    connect(&widget, &MediaView::requestMediaView, this, &SearchPanel::showMediaView);
-}
-
-void SearchPanel::removeMediaView(QWidget* widget){
-    int widgetIndex = stackModifiche->indexOf(widget);
-
-    if(widgetIndex > 2)
-        stackModifiche->setCurrentIndex(widgetIndex - 1);
-    else
-        stackModifiche->setCurrentIndex(0);
-
-    stackModifiche->removeWidget(widget);
-    delete widget;
-}
-
-
-
 void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     //agginta ricerca LatoFiltri
     QVBoxLayout* latoFiltri = new QVBoxLayout;
@@ -331,19 +291,6 @@ void SearchPanel::addPagina(QVBoxLayout* mainLayout){
 } 
 
 
-
-void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
-    //selezione Cinema
-    s_cinemaSelezionato = cinemaSel;
-    cinema->setText("Cinema " + QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
-
-    updateMediaList();
-    updateFiltroTutto();
-    emit giveCinemaInfoToIP(s_cinemaSelezionato, s_MediaListOfCinema);
-    
-    s_xmlManager->setCurrentCinema(s_cinemaSelezionato);
-}
-
 void SearchPanel::addObserver(LibraryObserver* obs){
     s_libraryObservers.push_back(obs);
 }
@@ -385,6 +332,20 @@ void SearchPanel::updateMediaList(){
 }
 
 //slot
+
+void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
+    //selezione Cinema
+    s_cinemaSelezionato = cinemaSel;
+    cinema->setText("Cinema " + QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
+
+    updateMediaList();
+    updateFiltroTutto();
+    emit giveCinemaInfoToIP(s_cinemaSelezionato, s_MediaListOfCinema);
+    
+    s_xmlManager->setCurrentCinema(s_cinemaSelezionato);
+}
+
+
 void SearchPanel::resetSearchPanel(){
     updateCerca("Tutto");
     comboAttivita = 0; 
@@ -441,145 +402,67 @@ void SearchPanel::acceptDeleteCinema(){
     }
 }
 
-/* void SearchPanel::metodoTemporaneoPerPagineDiVisualizzazione(){
-    // ROBA DA MODIFICARE, LA METTO QUI PER FARE LA PAGINA DI VISUALIZZAZIONE
-    DetailPageVisitor* visitor = new DetailPageVisitor(); 
+void SearchPanel::updateModifierPanel(int index){
+    if(stackModifiche->currentIndex()!=index){
+        if(previousIndex)
+            previousIndex = stackModifiche->currentIndex();
+        stackModifiche->setCurrentIndex(index);
+    } 
 
-    
+    if(index == 2) emit setQMenuEnabled();
+    else emit setQMenuDisabled();
+}
 
-    Film* film = new Film(
-                            "Il mio vicino Totoro (RE-RELEASE 2025)",
-                            "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
-                            year_month_day{2025y/June/1d},
-                            year_month_day{2025y/June/30d},
-                            86,
-                            Formato::DCP,
-                            Risoluzione::UHD_4K_2160p,
-                            1,      
-                            12.50,
-                            "Studio Ghibli",
-                            "Hayao Miyazaki",
-                            ":/images/image9.png",
-                            Classificazione::TUTTI
-                        );
-    film->aggiungiLingua(Lingua::Italiano);
-    film->aggiungiLingua(Lingua::Inglese);
-    film->aggiungiAttore("Noriko Hidaka");
-    film->aggiungiAttore("Chika Sakamoto");
-    film->aggiungiAttore("Shigesato Itoi");
-    film->aggiungiAttore("Hitoshi Takagi");
-    film->aggiungiAttore("Takashi Nagasako");
+void SearchPanel::showMediaView(MediaView& widget){
+    if(auto inserzione = dynamic_cast<InserzioneView*>(&widget))
+        inserzione->setMediaList(s_cinemaSelezionato->getListaMedia()); //per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, mi semrbava meglio cosi
 
-    film->aggiungiSottotitolo(Lingua::Italiano);
-    film->IncrementaVisualizzazioni();
-    film->setValutazione();
-    // Primo trailer
-    Trailer* trailer1 = new Trailer(
-        "Trailer ufficiale - Il mio vicino Totoro (2025)",
-        "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
-        year_month_day{2025y/April/15d},   // data inizio rilascio
-        year_month_day{2025y/May/31d},     // data fine rilascio
-        2,                                 // durata in minuti
-        Formato::DCP,
-        Risoluzione::UHD_4K_2160p,
-        5,                                 // n° proiezioni giornaliere
-        film,
-        "Studio Ghibli",
-        ":/images/image10.png"
-    );
-    trailer1->IncrementaVisualizzazioni();
-    // Secondo trailer
-    Trailer* trailer2 = new Trailer(
-        "Trailer speciale anniversario - Il mio vicino Totoro (2025)",
-        "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
-        year_month_day{2025y/May/1d},      // data inizio rilascio
-        year_month_day{2025y/June/15d},    // data fine rilascio
-        3,                                 // durata in minuti
-        Formato::DCP,
-        Risoluzione::UHD_4K_2160p,
-        3,                                 // n° proiezioni giornaliere
-        film,
-        "Hayao Miyazaki",
-        ":/images/image10.png"
-    );
-    trailer2->IncrementaVisualizzazioni();
+    stackModifiche->addWidget(&widget);
+    stackModifiche->setCurrentWidget(&widget);
 
-    s_mediaList.append(film);
-    s_mediaList.append(trailer1);
-    s_mediaList.append(trailer2);
 
-    film->accept(visitor);
-    QWidget * detailPage = visitor->getWidget();
-    stackModifiche->addWidget(detailPage); // 2
-
-    connect(static_cast<FilmView*>(detailPage), &MediaView::returnButton, this, [this,detailPage](){
-        updateModifierPanel(previousIndex);
-        stackModifiche->removeWidget(detailPage);
-        delete detailPage;
+    connect(&widget, &MediaView::editMediaClicked, this, &SearchPanel::showEditPage);
+    connect(&widget, &MediaView::returnButton, this, [this, &widget](){
+        removeMediaView(&widget);
     });
-    // 5 Film
-    s_mediaList.push_back(new Film("2001: Odissea nello Spazio", "Avventura fantascientifica epica.",
-                             year_month_day{2025y, June, 10d}, year_month_day{2025y, July, 5d},
-                             140, Formato::DCP, Risoluzione::FullHD_1080p,
-                             5, 9.1, "Cosmo Studios", "Stanley Nova"));
-    s_mediaList.push_back(new Film("Il Segreto della Laguna", "Thriller ambientato in un villaggio italiano.",
-                             year_month_day{2025y, August, 1d}, year_month_day{2025y, August, 20d},
-                             110, Formato::IMAX_3D, Risoluzione::HD_720p,
-                             3, 7.8, "Mediterranea Film", "Laura Rossi"));
-    s_mediaList.push_back(new Film("Cuore di Acciaio", "Dramma su un robot che scopre l’umanità.",
-                             year_month_day{2025y, September, 12d}, year_month_day{2025y, October, 2d},
-                             125, Formato::DCP, Risoluzione::FullHD_1080p,
-                             4, 8.6, "Future Pictures", "Kenji Yamato"));
-    s_mediaList.push_back(new Film("Risveglio", "Un viaggio introspettivo tra sogno e realtà.",
-                             year_month_day{2025y, March, 5d}, year_month_day{2025y, March, 25d},
-                             98, Formato::DCP, Risoluzione::HD_720p,
-                             2, 7.2, "Arthouse Films", "Marta Verdi"));
-    s_mediaList.push_back(new Film("L’Ombra del Drago", "Fantasy epico con battaglie tra regni.",
-                             year_month_day{2025y, November, 20d}, year_month_day{2025y, December, 20d},
-                             160, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
-                             6, 8.9, "Dragon Studios", "Hao Zhang"));
+/*     connect(this, &SearchPanel::escSearchPanel, this, [this, &widget](){
+        removeMediaView(&widget);
+        updateModifierPanel(0);}); */
+    
+    connect(&widget, &MediaView::extendMediaClicked, this, &SearchPanel::updateJson);
+    connect(&widget, &MediaView::requestMediaView, this, &SearchPanel::showMediaView);
+    connect(addMedia, &QPushButton::clicked, this, [this, &widget](){removeMediaView(&widget); updateModifierPanel(1);});
+}
 
-    // 2 Inserzioni
-    s_mediaList.push_back(new Inserzione("Promo Smartphone X15", "Campagna pubblicitaria nuovo modello X15.",
-                                   year_month_day{2025y, May, 1d}, year_month_day{2025y, May, 30d},
-                                   30, Formato::DCP, Risoluzione::HD_720p,
-                                   20, Classificazione::TUTTI, 50.0, "TechCorp"));
-    s_mediaList.push_back(new Inserzione("Bevanda Frizzante Zeta", "Spot per la nuova linea estiva.",
-                                   year_month_day{2025y, June, 15d}, year_month_day{2025y, July, 15d},
-                                   25, Formato::DCP, Risoluzione::FullHD_1080p,
-                                   18, Classificazione::TUTTI, 35.0, "DrinkIt"));
+void SearchPanel::removeMediaView(QWidget* widget){
+    int widgetIndex = stackModifiche->indexOf(widget);
 
-    // 2 Podcast con 3 Puntate ciascuno
-    Podcast* p1 = new Podcast("Storie dal Futuro", "Racconti di fantascienza e tecnologia.",
-                              Formato::DCP, Risoluzione::FullHD_1080p);
-    Puntata* p1_1 = new Puntata("Robot e Umanità", "Discussione su AI e coscienza.",
-                                year_month_day{2025y, January, 10d}, year_month_day{2025y, January, 20d},
-                                50, p1, 2);
-    Puntata* p1_2 = new Puntata("Città del Domani", "Urbanistica futuristica.",
-                                year_month_day{2025y, February, 5d}, year_month_day{2025y, February, 15d},
-                                45, p1, 2);
-    Puntata* p1_3 = new Puntata("Viaggi Interstellari", "Le sfide della colonizzazione spaziale.",
-                                year_month_day{2025y, March, 1d}, year_month_day{2025y, March, 12d},
-                                55, p1, 2);
-    s_mediaList.push_back(p1);
-    s_mediaList.push_back(p1_1);
-    s_mediaList.push_back(p1_2);
-    s_mediaList.push_back(p1_3);
+    if(widgetIndex > 2){
+        stackModifiche->setCurrentIndex(widgetIndex - 1);
+        stackModifiche->removeWidget(widget);
+        delete widget;
+    }
+    else
+        updateModifierPanel(0);
 
-    Podcast* p2 = new Podcast("Cronache Storiche", "Analisi di eventi e figure storiche.",
-                              Formato::DCP, Risoluzione::HD_720p);
-    Puntata* p2_1 = new Puntata("La Roma Antica", "La nascita dell’Impero.",
-                                year_month_day{2025y, April, 1d}, year_month_day{2025y, April, 10d},
-                                40, p2, 4);
-    Puntata* p2_2 = new Puntata("Il Medioevo", "Un viaggio tra castelli e cavalieri.",
-                                year_month_day{2025y, April, 20d}, year_month_day{2025y, April, 28d},
-                                42, p2, 3);
-    Puntata* p2_3 = new Puntata("La Rivoluzione Industriale", "Come è cambiato il mondo.",
-                                year_month_day{2025y, May, 5d}, year_month_day{2025y, May, 15d},
-                                48, p2, 1);
-    s_mediaList.push_back(p2);
-    s_mediaList.push_back(p2_1);
-    s_mediaList.push_back(p2_2);
-    s_mediaList.push_back(p2_3);
-   
-} */
+}
+
+
+void SearchPanel::showEditPage(Media* media){
+    EditMedia* editMedia = new EditMedia(media, this); 
+    int backIndex = stackModifiche->currentIndex();
+    
+    editMedia->getCinemaInfo(s_cinemaSelezionato, s_MediaListOfCinema);
+    editMedia->initValue();
+    
+    stackModifiche->addWidget(editMedia);
+    stackModifiche->setCurrentWidget(editMedia);
+    connect(editMedia, &EditMedia::tornaIndietro, this, [this, editMedia, backIndex](){
+        stackModifiche->setCurrentIndex(backIndex);       
+        stackModifiche->removeWidget(editMedia); 
+        delete editMedia;});
+}
+
+void SearchPanel::updateJson(){
+    s_jsonManager->updateMediaInJson(s_cinemaSelezionato);
+}

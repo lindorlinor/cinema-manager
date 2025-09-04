@@ -92,11 +92,9 @@ void SelectMediaReference::reloadMedia(const QString& nomeCinema) {
             mediaframe->setCursor(Qt::PointingHandCursor);
 
             if(titolo == sm_titolo && autore == sm_autore){
-                if(currentSelected){
-                    currentSelected = mediaframe;
-                    currentSelected->setSelected(true);
-                    emit mediaSelected(mediaframe);
-                }
+                currentSelected = mediaframe;
+                currentSelected->setSelected(true);
+                emit mediaSelected(mediaframe);
             }
             
             connect(mediaframe, &MediaFrame::selected, this, [this](MediaFrame* f){
