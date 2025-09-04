@@ -173,10 +173,10 @@ void InsertMedia::salvaMedia(){//funzione per salvare gli input in un json
     //puntata
     else if(stackTipologia->currentIndex()==3){
 
-        Media* PodcastAssociato = findMediaReference(titoloPodcastRiferimento,autorePodcastRiferimento,"podcast");
+        Media* PodcastAssociato = findMediaReference(titoloPodcastRiferimento,autorePodcastRiferimento,"puntata");
 
         if(!PodcastAssociato){
-            qDebug()<<"Errore!, nessun Podcast collegato al Trailer "<<titoloMedia->text();
+            qDebug()<<"Errore!, nessun Podcast collegato al Podcast "<<titoloMedia->text();
             return;
         } 
 

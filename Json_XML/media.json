@@ -861,5 +861,50 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "ee"
+    },
+    {
+        "autore": "a",
+        "conduttore": "aa",
+        "dataFineRilascio": "2025-09-04",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "cinema1 modificato2",
+        "path": ":/images/default.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "cca"
+    },
+    {
+        "autore": "e",
+        "autorePodcastAssociato": "a",
+        "dataFineRilascio": "2025-09-20",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Francese",
+            "Giapponese"
+        ],
+        "nomeCinema": "cinema1 modificato2",
+        "numeroPubblicita": 0,
+        "ospiti": [
+        ],
+        "path": ":/images/default.png",
+        "podcastAssociato": "cca",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Inglese",
+            "Francese",
+            "Tedesco"
+        ],
+        "tipologia": "puntata",
+        "titolo": "e"
     }
 ]

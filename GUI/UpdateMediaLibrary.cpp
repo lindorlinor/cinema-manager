@@ -57,9 +57,9 @@ void UpdateMediaLibrary::update(int comboAttivita, int comboOrdinamento, const Q
                 else FlowLayoutContainer->addWidget(media);
 
                 media->setCursor(Qt::PointingHandCursor);
+                media->editImageScale(430,250);
                 media->setMinimumSize(240,300);
                 media->setMaximumSize(430,300);
-                media->editImageScale(430,250);
                 
                 //visitor per visualizzare la pagina con i dettagli del media
 

@@ -66,7 +66,7 @@ void MediaLibraryTutto::update(int comboAttivita, int comboOrdinamento, const QS
         QLabel* titolo = new QLabel(f + " in Sala", salaWidget);
         ScrollListWidget* scroll = new ScrollListWidget(salaWidget); 
         scroll->update(comboAttivita, comboOrdinamento, f, ricerca, mediaList);
-        scroll->setFixedHeight(400);
+        scroll->setFixedHeight(350);
         if (scroll->getNumeroWidgetLayout()){
             salaV->addWidget(titolo);
             salaV->addWidget(scroll);
