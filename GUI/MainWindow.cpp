@@ -173,6 +173,9 @@ void MainWindow::showSelectedCinemaPage(const Cinema* cinema){
     stackedWidget->setCurrentIndex(2);
 }
 void MainWindow::showCinemaSelectionPage(){
+
+    searchPage->deletePagesStackModifiche();
+
     if (cinemaPage) {
         cinemaPage->refreshCinemaButtons();
     }

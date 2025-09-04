@@ -101,6 +101,7 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     
 
     connect(cinema, &QToolButton::clicked, this, [this](){
+        deletePagesStackModifiche();
         emit escSearchPanel();
         s_xmlManager->setCurrentCinema(nullptr);
     });
@@ -230,13 +231,7 @@ void SearchPanel::addLatoDestra(){
                                                                                 for(auto o : s_libraryObservers) 
                                                                                     o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema);});
     connect(addMedia, &QPushButton::clicked, this, [this](){
-        if(stackModifiche->currentIndex()>2){
-            for (int i=stackModifiche->count()-1; i>=2; --i) {
-                QWidget* w = stackModifiche->widget(i);
-                stackModifiche->removeWidget(w);
-                delete w;
-            }
-        }
+        deletePagesStackModifiche();
         updateModifierPanel(1);
     });
     connect(tutto, &QToolButton::clicked, this, &SearchPanel::updateFiltroTutto);
@@ -468,4 +463,16 @@ void SearchPanel::showEditPage(Media* media){
 
 void SearchPanel::updateJson(){
     s_jsonManager->updateMediaInJson(s_cinemaSelezionato);
+}
+
+
+
+void SearchPanel::deletePagesStackModifiche(){
+    if(stackModifiche->currentIndex()>2){
+            for (int i=stackModifiche->count()-1; i>=2; --i) {
+                QWidget* w = stackModifiche->widget(i);
+                stackModifiche->removeWidget(w);
+                delete w;
+            }
+    }
 }
