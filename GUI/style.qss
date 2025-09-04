@@ -15,7 +15,7 @@
 
 #saveButtonCinemaModifica:pressed{
     background-color:#6a9955;
-    color:#354c2a;
+    color:#cde0c4;
 }
 
 #saveButtonCinemaModifica:disabled{
@@ -25,12 +25,90 @@
 
 #cancelButtonCinemaModifica:pressed{
     background-color:#df5d49;
-    color:#762012;
+    color:#dbc9ca;
 }
 
 #popUpModificheCinema{
     background-color: #bdced3;
 }
+
+
+
+
+
+
+
+
+
+/* SELECTED CINEMA */
+
+#addCinema{
+    border-radius: 5px;
+    padding: 5px 12px;
+    font-size: 14pt;
+    background-color: #ffcb60;
+    color: #073c48;
+}
+
+#addCinema:hover{
+    background-color: #b8944e;
+}
+
+#addCinema:pressed{
+    text-decoration: underline;
+}
+
+#escButtonSelectCinema{
+    background-color: #285a66;
+    color: #afc5cc;
+    border-radius: 5px;
+    padding: 5px 12px;
+    font-size: 14pt;
+}
+
+#escButtonSelectCinema:hover{
+    background-color: #204a55;
+    color: #97b0b8;
+}
+
+#escButtonSelectCinema:pressed{
+    background-color: #df5d49;
+    color: #dbc9ca;
+}
+
+#contenitoreCinema{
+    background-color: #073c48;
+    border: none;
+} 
+
+#nomeCinema{
+    font-size: 12pt;
+    color: #243f46;
+}
+
+#CinemaButton{
+    background-color: #4e7f8b;
+    border: 1px solid #4e7f8b;
+    padding: 2px;
+}
+
+#CinemaButton:hover{
+    background-color: #36606b;
+}
+
+#titoloSelectCinema{
+    color: #ffcb60;
+}
+
+#descrizioneSelectCinema{
+    color: #ced7da;
+}
+
+
+
+
+
+
 
 
 
