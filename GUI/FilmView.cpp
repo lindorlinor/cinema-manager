@@ -280,18 +280,16 @@ void FilmView::createButtons(){
         });
     
     connect(buttons,&DetailsPageButtons::deleteMedia,this,[this](){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Conferma eliminazione");
-        msgBox.setText("Sei sicuro di voler eliminare il film? "
-                    "Avrà l'effetto di eliminare tutti i trailer ad esso associati");
+            QMessageBox msgBox;
+            msgBox.setWindowTitle("Conferma eliminazione");
+            msgBox.setText("Sei sicuro di voler eliminare il film? "
+                        "Avrà l'effetto di eliminare tutti i trailer ad esso associati");
 
-        msgBox.addButton("Annulla", QMessageBox::RejectRole);
-        msgBox.addButton("Conferma", QMessageBox::AcceptRole);
-        int ret = msgBox.exec();
-        if (ret == QMessageBox::Ok) {
-            qDebug() << "Confermato";
-            emit deleteMediaClicked();
-        }
+            msgBox.addButton("Annulla", QMessageBox::RejectRole);
+            msgBox.addButton("Conferma", QMessageBox::AcceptRole);
+            int ret = msgBox.exec();
+            if (ret == QMessageBox::Ok)
+                emit deleteMediaClicked(filmPtr);
         });
     rightLayout->addSpacing(60);
     rightLayout->addWidget(buttons);

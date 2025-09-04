@@ -214,10 +214,10 @@ void InserzioneView::createButtons(){
 
                 int ret = msgBox.exec();
                 if (ret == QMessageBox::Ok) {
-                    qDebug() << "Confermato";
-                    endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-                    "<span style='color:black;'>" + QString::fromStdString(dateToString(nuovaFine)) + "</span>");
+                    insPtr->estendiDataFineRilascio();
                     emit extendMediaClicked();
+                    endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
+                    "<span style='color:black;'>" + QString::fromStdString(dateToString(insPtr->getDataFineRilascio())) + "</span>");
                 }
             }
         });
@@ -232,8 +232,7 @@ void InserzioneView::createButtons(){
         msgBox.addButton("Conferma", QMessageBox::AcceptRole);
         int ret = msgBox.exec();
         if (ret == QMessageBox::Ok) {
-            qDebug() << "Confermato";
-            emit deleteMediaClicked();
+            emit deleteMediaClicked(insPtr);
         }
         });
     cardLayout->addSpacing(40);

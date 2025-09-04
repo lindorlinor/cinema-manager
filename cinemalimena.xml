@@ -1,332 +1,428 @@
-<MediaList>
-    <Film>
-        <Titolo>I Puffi - Il Film</Titolo>
-        <Autore>Chris Miller</Autore>
-        <Descrizione>Un’avventura animata-musicale con i Puffi alla ricerca del Grande Puffo tra dimensioni magiche...</Descrizione>
-        <DurataMinuti>92</DurataMinuti>
-        <Formato>DCP</Formato>
-        <Risoluzione>SD 480p</Risoluzione>
-        <Path>:/images/locandina_ipuffiilfilm.jpg</Path>
-        <DataInizioRilascio>22/8/2025</DataInizioRilascio>
-        <DataFineRilascio>7/9/2025</DataFineRilascio>
-        <LingueDisponibili>
-            <Lingua>Italiano</Lingua>
-            <Lingua>Inglese</Lingua>
-        </LingueDisponibili>
-        <SottotitoliDisponibili/>
-        <Generi>
-            <Genere>Animazione</Genere>
-            <Genere>Nessuno</Genere>
-        </Generi>
-        <AttoriPrincipali>
-            <Attore>Rihanna</Attore>
-            <Attore>John Goodman</Attore>
-            <Attore>Nick Offerman</Attore>
-        </AttoriPrincipali>
-        <Target>TUTTI</Target>
-        <CostoBiglietto>8</CostoBiglietto>
-        <CasaDiProduzione>Paramount Animation</CasaDiProduzione>
-        <NPostCredit>1</NPostCredit>
-    </Film>
-    <Trailer>
-        <Titolo>Trailer ufficiale - I Puffi - Il Film</Titolo>
-        <Autore>Paramount</Autore>
-        <Descrizione>Primi scorci ufficiali dell’avventura dei Puffi in CGI.</Descrizione>
-        <DurataMinuti>2</DurataMinuti>
-        <Formato>MP4</Formato>
-        <Risoluzione>HD 720p</Risoluzione>
-        <Path>:/images/trailer_i_puffi_il_film.png</Path>
-        <DataInizioRilascio>6/6/2025</DataInizioRilascio>
-        <DataFineRilascio>7/9/2025</DataFineRilascio>
-        <LingueDisponibili/>
-        <SottotitoliDisponibili/>
-        <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
-        <TitoloFilmAssociato>I Puffi - Il Film</TitoloFilmAssociato>
-        <AutoreFilmAssociato>Chris Miller</AutoreFilmAssociato>
-    </Trailer>
-    <Film>
-        <Titolo>I Roses</Titolo>
-        <Autore>Jay Roach</Autore>
-        <Descrizione>Commedia nera in cui una coppia apparentemente perfetta — Ivy e Theo Rose — vede naufragare il proprio matrimonio in una guerra emotiva tra ambizione professionale e risentimento.</Descrizione>
-        <DurataMinuti>105</DurataMinuti>
-        <Formato>DCP</Formato>
-        <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/locandina_irosesfilm.jpg</Path>
-        <DataInizioRilascio>27/8/2025</DataInizioRilascio>
-        <DataFineRilascio>3/9/2025</DataFineRilascio>
-        <LingueDisponibili>
-            <Lingua>Italiano</Lingua>
-            <Lingua>Inglese</Lingua>
-        </LingueDisponibili>
-        <SottotitoliDisponibili/>
-        <Generi>
-            <Genere>Nessuno</Genere>
-            <Genere>Commedia</Genere>
-        </Generi>
-        <AttoriPrincipali>
-            <Attore>Olivia Colman</Attore>
-            <Attore>Benedict Cumberbatch</Attore>
-            <Attore>Andy Samberg</Attore>
-        </AttoriPrincipali>
-        <Target>TUTTI</Target>
-        <CostoBiglietto>9</CostoBiglietto>
-        <CasaDiProduzione>Searchlight Pictures / Disney Italia</CasaDiProduzione>
-        <NPostCredit>0</NPostCredit>
-    </Film>
-    <Trailer>
-        <Titolo>Trailer ufficiale - I Roses</Titolo>
-        <Autore>Searchlight Pictures / Disney Italia</Autore>
-        <Descrizione>Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.</Descrizione>
-        <DurataMinuti>2</DurataMinuti>
-        <Formato>MP4</Formato>
-        <Risoluzione>HD 720p</Risoluzione>
-        <Path>:/images/trailer_i_roses.png</Path>
-        <DataInizioRilascio>1/8/2025</DataInizioRilascio>
-        <DataFineRilascio>3/9/2025</DataFineRilascio>
-        <LingueDisponibili/>
-        <SottotitoliDisponibili/>
-        <NProiezioniGiornaliere>15</NProiezioniGiornaliere>
-        <TitoloFilmAssociato>I Roses</TitoloFilmAssociato>
-        <AutoreFilmAssociato>Jay Roach</AutoreFilmAssociato>
-    </Trailer>
-    <Film>
-        <Titolo>Tutta colpa del rock</Titolo>
-        <Autore>Andrea Jublin</Autore>
-        <Descrizione>
+<Cinema>
+    <Nome>Cinema Limena</Nome>
+    <Copertina>:/images/default.png</Copertina>
+    <MediaList>
+        <Podcast>
+            <Titolo>Cinema d'Autore</Titolo>
+            <Autore>FilmLab</Autore>
+            <Descrizione>Approfondimenti sui grandi registi e capolavori cinematografici.</Descrizione>
+            <DurataMinuti>75</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>:/images/image17.png</Path>
+            <DataInizioRilascio>1/10/2025</DataInizioRilascio>
+            <DataFineRilascio>31/10/2025</DataFineRilascio>
+            <LingueDisponibili/>
+            <SottotitoliDisponibili/>
+            <Conduttore>Marco Rossi</Conduttore>
+        </Podcast>
+        <Puntata>
+            <Titolo>Analisi del cinema muto</Titolo>
+            <Autore>FilmLab</Autore>
+            <Descrizione>Esploriamo l'era del cinema muto e i suoi maestri.</Descrizione>
+            <DurataMinuti>40</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>:/images/image17.png</Path>
+            <DataInizioRilascio>1/10/2025</DataInizioRilascio>
+            <DataFineRilascio>15/10/2025</DataFineRilascio>
+            <LingueDisponibili/>
+            <SottotitoliDisponibili/>
+            <TitoloPodcastAssociato>Cinema d'Autore</TitoloPodcastAssociato>
+            <AutorePodcastAssociato>FilmLab</AutorePodcastAssociato>
+            <NPubblicita>1</NPubblicita>
+        </Puntata>
+        <Puntata>
+            <Titolo>La Nouvelle Vague</Titolo>
+            <Autore>FilmLab</Autore>
+            <Descrizione>Il movimento francese che ha rivoluzionato il cinema.</Descrizione>
+            <DurataMinuti>35</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>:/images/image17.png</Path>
+            <DataInizioRilascio>16/10/2025</DataInizioRilascio>
+            <DataFineRilascio>31/10/2025</DataFineRilascio>
+            <LingueDisponibili/>
+            <SottotitoliDisponibili/>
+            <TitoloPodcastAssociato>Cinema d'Autore</TitoloPodcastAssociato>
+            <AutorePodcastAssociato>FilmLab</AutorePodcastAssociato>
+            <NPubblicita>2</NPubblicita>
+        </Puntata>
+        <Film>
+            <Titolo>I Puffi - Il Film</Titolo>
+            <Autore>Chris Miller</Autore>
+            <Descrizione>Un’avventura animata-musicale con i Puffi alla ricerca del Grande Puffo tra dimensioni magiche...</Descrizione>
+            <DurataMinuti>92</DurataMinuti>
+            <Formato>DCP</Formato>
+            <Risoluzione>SD 480p</Risoluzione>
+            <Path>:/images/locandina_ipuffiilfilm.jpg</Path>
+            <DataInizioRilascio>22/8/2025</DataInizioRilascio>
+            <DataFineRilascio>7/9/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili/>
+            <Generi>
+                <Genere>Animazione</Genere>
+                <Genere>Nessuno</Genere>
+            </Generi>
+            <AttoriPrincipali>
+                <Attore>Rihanna</Attore>
+                <Attore>John Goodman</Attore>
+                <Attore>Nick Offerman</Attore>
+            </AttoriPrincipali>
+            <Target>TUTTI</Target>
+            <CostoBiglietto>8</CostoBiglietto>
+            <CasaDiProduzione>Paramount Animation</CasaDiProduzione>
+            <NPostCredit>1</NPostCredit>
+        </Film>
+        <Trailer>
+            <Titolo>Trailer ufficiale - I Puffi - Il Film</Titolo>
+            <Autore>Paramount</Autore>
+            <Descrizione>Primi scorci ufficiali dell’avventura dei Puffi in CGI.</Descrizione>
+            <DurataMinuti>2</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>HD 720p</Risoluzione>
+            <Path>:/images/trailer_ipuffi.jpg</Path>
+            <DataInizioRilascio>6/6/2025</DataInizioRilascio>
+            <DataFineRilascio>7/9/2025</DataFineRilascio>
+            <LingueDisponibili/>
+            <SottotitoliDisponibili/>
+            <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
+            <TitoloFilmAssociato>I Puffi - Il Film</TitoloFilmAssociato>
+            <AutoreFilmAssociato>Chris Miller</AutoreFilmAssociato>
+        </Trailer>
+        <Film>
+            <Titolo>I Roses</Titolo>
+            <Autore>Jay Roach</Autore>
+            <Descrizione>Commedia nera in cui una coppia apparentemente perfetta — Ivy e Theo Rose — vede naufragare il proprio matrimonio in una guerra emotiva tra ambizione professionale e risentimento.</Descrizione>
+            <DurataMinuti>105</DurataMinuti>
+            <Formato>DCP</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>:/images/locandina_irosesfilm.jpg</Path>
+            <DataInizioRilascio>27/8/2025</DataInizioRilascio>
+            <DataFineRilascio>3/9/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili/>
+            <Generi>
+                <Genere>Nessuno</Genere>
+                <Genere>Commedia</Genere>
+            </Generi>
+            <AttoriPrincipali>
+                <Attore>Olivia Colman</Attore>
+                <Attore>Benedict Cumberbatch</Attore>
+                <Attore>Andy Samberg</Attore>
+                <Attore>Hitoshi Takagi</Attore>
+                <Attore>Takashi Nagasako</Attore>
+            </AttoriPrincipali>
+            <Target>TUTTI</Target>
+            <CostoBiglietto>9</CostoBiglietto>
+            <CasaDiProduzione>Searchlight Pictures / Disney Italia</CasaDiProduzione>
+            <NPostCredit>0</NPostCredit>
+        </Film>
+        <Trailer>
+            <Titolo>Trailer ufficiale - I Roses</Titolo>
+            <Autore>Searchlight Pictures / Disney Italia</Autore>
+            <Descrizione>Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.</Descrizione>
+            <DurataMinuti>2</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>HD 720p</Risoluzione>
+            <Path>:/images/trailer_iroses.jpg</Path>
+            <DataInizioRilascio>1/8/2025</DataInizioRilascio>
+            <DataFineRilascio>3/9/2025</DataFineRilascio>
+            <LingueDisponibili/>
+            <SottotitoliDisponibili/>
+            <NProiezioniGiornaliere>15</NProiezioniGiornaliere>
+            <TitoloFilmAssociato>I Roses</TitoloFilmAssociato>
+            <AutoreFilmAssociato>Jay Roach</AutoreFilmAssociato>
+        </Trailer>
+        <Film>
+            <Titolo>Tutta colpa del rock</Titolo>
+            <Autore>Andrea Jublin</Autore>
+            <Descrizione>
             Bruno è un ex chitarrista rock egoista e bugiardo che finisce in carcere. Nel luogo più costrittivo trova però un’opportunità di riscatto: formare una band con altri detenuti e partecipare al Roma Rock Contest per mantenere una promessa fatta alla figlia.
         </Descrizione>
-        <DurataMinuti>100</DurataMinuti>
-        <Formato>DCP</Formato>
-        <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/locandina_tuttacolpadelrock.jpg</Path>
-        <DataInizioRilascio>28/8/2025</DataInizioRilascio>
-        <DataFineRilascio>8/9/2025</DataFineRilascio>
-        <LingueDisponibili>
-            <Lingua>Italiano</Lingua>
-        </LingueDisponibili>
-        <SottotitoliDisponibili/>
-        <Generi>
-            <Genere>Commedia</Genere>
-        </Generi>
-        <AttoriPrincipali>
-            <Attore>Lillo Petrolo</Attore>
-            <Attore>Maurizio Lastrico</Attore>
-            <Attore>Elio</Attore>
-            <Attore>Naska</Attore>
-        </AttoriPrincipali>
-        <Target>TUTTI</Target>
-        <CostoBiglietto>7</CostoBiglietto>
-        <CasaDiProduzione>Be Water Film / PiperFilm</CasaDiProduzione>
-        <NPostCredit>0</NPostCredit>
-    </Film>
-    <Trailer>
-        <Titolo>Trailer ufficiale - Tutta colpa del rock</Titolo>
-        <Autore>PiperFilm</Autore>
-        <Descrizione>Il trailer ufficiale mostra l’energia rock e l’irriverente cast carcerario alle prese con una rinascita a ritmo di musica.</Descrizione>
-        <DurataMinuti>1</DurataMinuti>
-        <Formato>MP4</Formato>
-        <Risoluzione>HD 720p</Risoluzione>
-        <Path>:/images/trailer_tutta_colpa_del_rock.png</Path>
-        <DataInizioRilascio>7/7/2025</DataInizioRilascio>
-        <DataFineRilascio>8/9/2025</DataFineRilascio>
-        <LingueDisponibili/>
-        <SottotitoliDisponibili/>
-        <NProiezioniGiornaliere>7</NProiezioniGiornaliere>
-        <TitoloFilmAssociato>Tutta colpa del rock</TitoloFilmAssociato>
-        <AutoreFilmAssociato>Andrea Jublin</AutoreFilmAssociato>
-    </Trailer>
-    <Film>
-        <Titolo>Harry Potter e il Calice di Fuoco - 20esimo anniversario</Titolo>
-        <Autore>Mike Newell</Autore>
-        <Descrizione>Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.</Descrizione>
-        <DurataMinuti>157</DurataMinuti>
-        <Formato>DCP</Formato>
-        <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/locandina_harrypottereilcalicedifuoco.jpg</Path>
-        <DataInizioRilascio>28/8/2025</DataInizioRilascio>
-        <DataFineRilascio>7/9/2025</DataFineRilascio>
-        <LingueDisponibili>
-            <Lingua>Italiano</Lingua>
-            <Lingua>Inglese</Lingua>
-        </LingueDisponibili>
-        <SottotitoliDisponibili/>
-        <Generi>
-            <Genere>Fantasy</Genere>
-            <Genere>Avventura</Genere>
-        </Generi>
-        <AttoriPrincipali>
-            <Attore>Daniel Radcliffe</Attore>
-            <Attore>Emma Watson</Attore>
-            <Attore>Rupert Grint</Attore>
-            <Attore>Ralph Fiennes</Attore>
-        </AttoriPrincipali>
-        <Target>TUTTI</Target>
-        <CostoBiglietto>10.5</CostoBiglietto>
-        <CasaDiProduzione>Warner Bros Italia</CasaDiProduzione>
-        <NPostCredit>0</NPostCredit>
-    </Film>
-    <Trailer>
-        <Titolo>Trailer ufficiale - Harry Potter e il Calice di Fuoco</Titolo>
-        <Autore>Warner Bros</Autore>
-        <Descrizione>Il trailer ufficiale del quarto capitolo della saga di Harry Potter.</Descrizione>
-        <DurataMinuti>2</DurataMinuti>
-        <Formato>MP4</Formato>
-        <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/trailer_harry_potter_calice_fuoco.png</Path>
-        <DataInizioRilascio>23/9/2005</DataInizioRilascio>
-        <DataFineRilascio>7/9/2025</DataFineRilascio>
-        <LingueDisponibili/>
-        <SottotitoliDisponibili/>
-        <NProiezioniGiornaliere>4</NProiezioniGiornaliere>
-        <TitoloFilmAssociato>Harry Potter e il Calice di Fuoco - 20esimo anniversario</TitoloFilmAssociato>
-        <AutoreFilmAssociato>Mike Newell</AutoreFilmAssociato>
-    </Trailer>
-    <Film>
-        <Titolo>Una scomoda circostanza - Caught Stealing</Titolo>
-        <Autore>Darren Aronofsky</Autore>
-        <Descrizione>Hank Thompson, ex promessa del baseball, finisce coinvolto in una violenta caccia all'uomo nel crudo sottobosco criminale di New York anni ’90 dopo aver accettato di badare al gatto del suo stravagante vicino.</Descrizione>
-        <DurataMinuti>109</DurataMinuti>
-        <Formato>DCP</Formato>
-        <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/locandina_caughtstealing.jpg</Path>
-        <DataInizioRilascio>27/8/2025</DataInizioRilascio>
-        <DataFineRilascio>7/9/2025</DataFineRilascio>
-        <LingueDisponibili>
-            <Lingua>Italiano</Lingua>
-            <Lingua>Inglese</Lingua>
-        </LingueDisponibili>
-        <SottotitoliDisponibili/>
-        <Generi>
-            <Genere>Thriller</Genere>
-            <Genere>Crime</Genere>
-            <Genere>Nessuno</Genere>
-        </Generi>
-        <AttoriPrincipali>
-            <Attore>Austin Butler</Attore>
-            <Attore>Zoë Kravitz</Attore>
-            <Attore>Matt Smith</Attore>
-            <Attore>Regina King</Attore>
-            <Attore>Liev Schreiber</Attore>
-            <Attore>Vincent D'Onofrio</Attore>
-            <Attore>Griffin Dunne</Attore>
-            <Attore>Bad Bunny</Attore>
-            <Attore>Carol Kane</Attore>
-        </AttoriPrincipali>
-        <Target>TUTTI</Target>
-        <CostoBiglietto>12</CostoBiglietto>
-        <CasaDiProduzione>Columbia Pictures / Protozoa Pictures (distribuito in Italia da Eagle Pictures)</CasaDiProduzione>
-        <NPostCredit>0</NPostCredit>
-    </Film>
-    <Trailer>
-        <Titolo>Trailer italiano ufficiale - Una scomoda circostanza</Titolo>
-        <Autore>Sony Pictures / Eagle Pictures</Autore>
-        <Descrizione>Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.</Descrizione>
-        <DurataMinuti>2</DurataMinuti>
-        <Formato>MP4</Formato>
-        <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/trailer_una_scomoda_circostanza.png</Path>
-        <DataInizioRilascio>24/7/2025</DataInizioRilascio>
-        <DataFineRilascio>2/9/2025</DataFineRilascio>
-        <LingueDisponibili/>
-        <SottotitoliDisponibili/>
-        <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
-        <TitoloFilmAssociato>Una scomoda circostanza - Caught Stealing</TitoloFilmAssociato>
-        <AutoreFilmAssociato>Darren Aronofsky</AutoreFilmAssociato>
-    </Trailer>
-    <Film>
-        <Titolo>Weapons</Titolo>
-        <Autore>Zach Cregger</Autore>
-        <Descrizione>In una misteriosa cittadina, diciassette bambini spariscono nella stessa notte: un horror/thriller enigmatico e disturbante.</Descrizione>
-        <DurataMinuti>128</DurataMinuti>
-        <Formato>DCP</Formato>
-        <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/locandina_weapons.jpg</Path>
-        <DataInizioRilascio>6/8/2025</DataInizioRilascio>
-        <DataFineRilascio>31/8/2025</DataFineRilascio>
-        <LingueDisponibili>
-            <Lingua>Italiano</Lingua>
-            <Lingua>Inglese</Lingua>
-        </LingueDisponibili>
-        <SottotitoliDisponibili/>
-        <Generi>
-            <Genere>Horror</Genere>
-            <Genere>Thriller</Genere>
-        </Generi>
-        <AttoriPrincipali>
-            <Attore>Josh Brolin</Attore>
-            <Attore>Julia Garner</Attore>
-            <Attore>Alden Ehrenreich</Attore>
-            <Attore>Austin Abrams</Attore>
-            <Attore>Cary Christopher</Attore>
-            <Attore>Toby Huss</Attore>
-            <Attore>Benedict Wong</Attore>
-            <Attore>Amy Madigan</Attore>
-        </AttoriPrincipali>
-        <Target>TUTTI</Target>
-        <CostoBiglietto>11.5</CostoBiglietto>
-        <CasaDiProduzione>New Line Cinema / Warner Bros. Pictures Italia</CasaDiProduzione>
-        <NPostCredit>0</NPostCredit>
-    </Film>
-    <Trailer>
-        <Titolo>Trailer ufficiale - Weapons</Titolo>
-        <Autore>Warner Bros. Pictures Italia</Autore>
-        <Descrizione>Trailer ufficiale italiano che anticipa il mistero inquietante dietro la sparizione dei bambini.</Descrizione>
-        <DurataMinuti>2</DurataMinuti>
-        <Formato>MP4</Formato>
-        <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/trailer_weapons.png</Path>
-        <DataInizioRilascio>30/4/2025</DataInizioRilascio>
-        <DataFineRilascio>5/8/2025</DataFineRilascio>
-        <LingueDisponibili/>
-        <SottotitoliDisponibili/>
-        <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
-        <TitoloFilmAssociato>Weapons</TitoloFilmAssociato>
-        <AutoreFilmAssociato>Zach Cregger</AutoreFilmAssociato>
-    </Trailer>
-    <Film>
-        <Titolo>Lo Squalo - 50esimo anniversario</Titolo>
-        <Autore>Steven Spielberg</Autore>
-        <Descrizione>Un capolavoro che ha inventato il blockbuster estivo: lo Squalo torna sul grande schermo per il suo cinquantesimo anniversario.</Descrizione>
-        <DurataMinuti>124</DurataMinuti>
-        <Formato>IMAX 3D</Formato>
-        <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/locandina_losqualo50anniversario.jpg</Path>
-        <DataInizioRilascio>1/9/2025</DataInizioRilascio>
-        <DataFineRilascio>3/9/2025</DataFineRilascio>
-        <LingueDisponibili>
-            <Lingua>Italiano</Lingua>
-        </LingueDisponibili>
-        <SottotitoliDisponibili/>
-        <Generi>
-            <Genere>Horror</Genere>
-            <Genere>Thriller</Genere>
-        </Generi>
-        <AttoriPrincipali>
-            <Attore>Roy Scheider</Attore>
-            <Attore>Robert Shaw</Attore>
-            <Attore>Richard Dreyfuss</Attore>
-            <Attore>Lorraine Gary</Attore>
-            <Attore>Murray Hamilton</Attore>
-        </AttoriPrincipali>
-        <Target>TUTTI</Target>
-        <CostoBiglietto>9</CostoBiglietto>
-        <CasaDiProduzione>Universal Pictures / Adler Entertainment</CasaDiProduzione>
-        <NPostCredit>0</NPostCredit>
-    </Film>
-    <Trailer>
-        <Titolo>Trailer IMAX - Lo Squalo 50° anniversario</Titolo>
-        <Autore>Universal Pictures / Adler Entertainment</Autore>
-        <Descrizione>Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.</Descrizione>
-        <DurataMinuti>2</DurataMinuti>
-        <Formato>IMAX 3D</Formato>
-        <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/trailer_lo_squalo_50.png</Path>
-        <DataInizioRilascio>4/7/2025</DataInizioRilascio>
-        <DataFineRilascio>31/8/2025</DataFineRilascio>
-        <LingueDisponibili/>
-        <SottotitoliDisponibili/>
-        <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
-        <TitoloFilmAssociato>Lo Squalo - 50esimo anniversario</TitoloFilmAssociato>
-        <AutoreFilmAssociato>Steven Spielberg</AutoreFilmAssociato>
-    </Trailer>
-</MediaList>
+            <DurataMinuti>100</DurataMinuti>
+            <Formato>DCP</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>:/images/locandina_tuttacolpadelrock.jpg</Path>
+            <DataInizioRilascio>28/8/2025</DataInizioRilascio>
+            <DataFineRilascio>8/9/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili/>
+            <Generi>
+                <Genere>Commedia</Genere>
+            </Generi>
+            <AttoriPrincipali>
+                <Attore>Lillo Petrolo</Attore>
+                <Attore>Maurizio Lastrico</Attore>
+                <Attore>Elio</Attore>
+                <Attore>Naska</Attore>
+            </AttoriPrincipali>
+            <Target>TUTTI</Target>
+            <CostoBiglietto>7</CostoBiglietto>
+            <CasaDiProduzione>Be Water Film / PiperFilm</CasaDiProduzione>
+            <NPostCredit>0</NPostCredit>
+        </Film>
+        <Trailer>
+            <Titolo>Trailer ufficiale - Tutta colpa del rock</Titolo>
+            <Autore>PiperFilm</Autore>
+            <Descrizione>Il trailer ufficiale mostra l’energia rock e l’irriverente cast carcerario alle prese con una rinascita a ritmo di musica.</Descrizione>
+            <DurataMinuti>1</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>HD 720p</Risoluzione>
+            <Path>:/images/trailer_tuttacolpadelrock.jpg</Path>
+            <DataInizioRilascio>7/7/2025</DataInizioRilascio>
+            <DataFineRilascio>8/9/2025</DataFineRilascio>
+            <LingueDisponibili/>
+            <SottotitoliDisponibili/>
+            <NProiezioniGiornaliere>7</NProiezioniGiornaliere>
+            <TitoloFilmAssociato>Tutta colpa del rock</TitoloFilmAssociato>
+            <AutoreFilmAssociato>Andrea Jublin</AutoreFilmAssociato>
+        </Trailer>
+        <Film>
+            <Titolo>Harry Potter e il Calice di Fuoco - 20esimo anniversario</Titolo>
+            <Autore>Mike Newell</Autore>
+            <Descrizione>Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.</Descrizione>
+            <DurataMinuti>157</DurataMinuti>
+            <Formato>DCP</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>:/images/locandina_harrypottereilcalicedifuoco.jpg</Path>
+            <DataInizioRilascio>28/8/2025</DataInizioRilascio>
+            <DataFineRilascio>7/9/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili/>
+            <Generi>
+                <Genere>Fantasy</Genere>
+                <Genere>Avventura</Genere>
+            </Generi>
+            <AttoriPrincipali>
+                <Attore>Daniel Radcliffe</Attore>
+                <Attore>Emma Watson</Attore>
+                <Attore>Rupert Grint</Attore>
+                <Attore>Ralph Fiennes</Attore>
+            </AttoriPrincipali>
+            <Target>TUTTI</Target>
+            <CostoBiglietto>10.5</CostoBiglietto>
+            <CasaDiProduzione>Warner Bros Italia</CasaDiProduzione>
+            <NPostCredit>0</NPostCredit>
+        </Film>
+        <Trailer>
+            <Titolo>Trailer ufficiale - Harry Potter e il Calice di Fuoco</Titolo>
+            <Autore>Warner Bros</Autore>
+            <Descrizione>Il trailer ufficiale del quarto capitolo della saga di Harry Potter.</Descrizione>
+            <DurataMinuti>2</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>:/images/trailer_harrypottereilcalicedifuoco.jpg</Path>
+            <DataInizioRilascio>23/9/2005</DataInizioRilascio>
+            <DataFineRilascio>7/9/2025</DataFineRilascio>
+            <LingueDisponibili/>
+            <SottotitoliDisponibili/>
+            <NProiezioniGiornaliere>4</NProiezioniGiornaliere>
+            <TitoloFilmAssociato>Harry Potter e il Calice di Fuoco - 20esimo anniversario</TitoloFilmAssociato>
+            <AutoreFilmAssociato>Mike Newell</AutoreFilmAssociato>
+        </Trailer>
+        <Film>
+            <Titolo>Una scomoda circostanza - Caught Stealing</Titolo>
+            <Autore>Darren Aronofsky</Autore>
+            <Descrizione>Hank Thompson, ex promessa del baseball, finisce coinvolto in una violenta caccia all'uomo nel crudo sottobosco criminale di New York anni ’90 dopo aver accettato di badare al gatto del suo stravagante vicino.</Descrizione>
+            <DurataMinuti>109</DurataMinuti>
+            <Formato>DCP</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>:/images/locandina_caughtstealing.jpg</Path>
+            <DataInizioRilascio>27/8/2025</DataInizioRilascio>
+            <DataFineRilascio>7/9/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili/>
+            <Generi>
+                <Genere>Thriller</Genere>
+                <Genere>Crime</Genere>
+                <Genere>Nessuno</Genere>
+            </Generi>
+            <AttoriPrincipali>
+                <Attore>Austin Butler</Attore>
+                <Attore>Zoë Kravitz</Attore>
+                <Attore>Matt Smith</Attore>
+                <Attore>Regina King</Attore>
+                <Attore>Liev Schreiber</Attore>
+                <Attore>Vincent D'Onofrio</Attore>
+                <Attore>Griffin Dunne</Attore>
+                <Attore>Bad Bunny</Attore>
+                <Attore>Carol Kane</Attore>
+            </AttoriPrincipali>
+            <Target>TUTTI</Target>
+            <CostoBiglietto>12</CostoBiglietto>
+            <CasaDiProduzione>Columbia Pictures / Protozoa Pictures (distribuito in Italia da Eagle Pictures)</CasaDiProduzione>
+            <NPostCredit>0</NPostCredit>
+        </Film>
+        <Trailer>
+            <Titolo>Trailer italiano ufficiale - Una scomoda circostanza</Titolo>
+            <Autore>Sony Pictures / Eagle Pictures</Autore>
+            <Descrizione>Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.</Descrizione>
+            <DurataMinuti>2</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>:/images/trailer_caughtstealing.jpg</Path>
+            <DataInizioRilascio>24/7/2025</DataInizioRilascio>
+            <DataFineRilascio>2/9/2025</DataFineRilascio>
+            <LingueDisponibili/>
+            <SottotitoliDisponibili/>
+            <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
+            <TitoloFilmAssociato>Una scomoda circostanza - Caught Stealing</TitoloFilmAssociato>
+            <AutoreFilmAssociato>Darren Aronofsky</AutoreFilmAssociato>
+        </Trailer>
+        <Film>
+            <Titolo>Weapons</Titolo>
+            <Autore>Zach Cregger</Autore>
+            <Descrizione>In una misteriosa cittadina, diciassette bambini spariscono nella stessa notte: un horror/thriller enigmatico e disturbante.</Descrizione>
+            <DurataMinuti>128</DurataMinuti>
+            <Formato>DCP</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>:/images/locandina_weapons.jpg</Path>
+            <DataInizioRilascio>6/8/2025</DataInizioRilascio>
+            <DataFineRilascio>31/8/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili/>
+            <Generi>
+                <Genere>Horror</Genere>
+                <Genere>Thriller</Genere>
+            </Generi>
+            <AttoriPrincipali>
+                <Attore>Josh Brolin</Attore>
+                <Attore>Julia Garner</Attore>
+                <Attore>Alden Ehrenreich</Attore>
+                <Attore>Austin Abrams</Attore>
+                <Attore>Cary Christopher</Attore>
+                <Attore>Toby Huss</Attore>
+                <Attore>Benedict Wong</Attore>
+                <Attore>Amy Madigan</Attore>
+            </AttoriPrincipali>
+            <Target>TUTTI</Target>
+            <CostoBiglietto>11.5</CostoBiglietto>
+            <CasaDiProduzione>New Line Cinema / Warner Bros. Pictures Italia</CasaDiProduzione>
+            <NPostCredit>0</NPostCredit>
+        </Film>
+        <Trailer>
+            <Titolo>Trailer ufficiale - Weapons</Titolo>
+            <Autore>Warner Bros. Pictures Italia</Autore>
+            <Descrizione>Trailer ufficiale italiano che anticipa il mistero inquietante dietro la sparizione dei bambini.</Descrizione>
+            <DurataMinuti>2</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>:/images/trailer_weapons.jpg</Path>
+            <DataInizioRilascio>30/4/2025</DataInizioRilascio>
+            <DataFineRilascio>5/8/2025</DataFineRilascio>
+            <LingueDisponibili/>
+            <SottotitoliDisponibili/>
+            <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
+            <TitoloFilmAssociato>Weapons</TitoloFilmAssociato>
+            <AutoreFilmAssociato>Zach Cregger</AutoreFilmAssociato>
+        </Trailer>
+        <Film>
+            <Titolo>Lo Squalo - 50esimo anniversario</Titolo>
+            <Autore>Steven Spielberg</Autore>
+            <Descrizione>Un capolavoro che ha inventato il blockbuster estivo: lo Squalo torna sul grande schermo per il suo cinquantesimo anniversario.</Descrizione>
+            <DurataMinuti>124</DurataMinuti>
+            <Formato>IMAX 3D</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>:/images/locandina_losqualo50anniversario.jpg</Path>
+            <DataInizioRilascio>1/9/2025</DataInizioRilascio>
+            <DataFineRilascio>3/9/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili/>
+            <Generi>
+                <Genere>Horror</Genere>
+                <Genere>Thriller</Genere>
+            </Generi>
+            <AttoriPrincipali>
+                <Attore>Roy Scheider</Attore>
+                <Attore>Robert Shaw</Attore>
+                <Attore>Richard Dreyfuss</Attore>
+                <Attore>Lorraine Gary</Attore>
+                <Attore>Murray Hamilton</Attore>
+            </AttoriPrincipali>
+            <Target>TUTTI</Target>
+            <CostoBiglietto>9</CostoBiglietto>
+            <CasaDiProduzione>Universal Pictures / Adler Entertainment</CasaDiProduzione>
+            <NPostCredit>0</NPostCredit>
+        </Film>
+        <Trailer>
+            <Titolo>Trailer IMAX - Lo Squalo 50° anniversario</Titolo>
+            <Autore>Universal Pictures / Adler Entertainment</Autore>
+            <Descrizione>Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.</Descrizione>
+            <DurataMinuti>2</DurataMinuti>
+            <Formato>IMAX 3D</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>:/images/trailer_losqualo50anniversario.jpg</Path>
+            <DataInizioRilascio>4/7/2025</DataInizioRilascio>
+            <DataFineRilascio>31/8/2025</DataFineRilascio>
+            <LingueDisponibili/>
+            <SottotitoliDisponibili/>
+            <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
+            <TitoloFilmAssociato>Lo Squalo - 50esimo anniversario</TitoloFilmAssociato>
+            <AutoreFilmAssociato>Steven Spielberg</AutoreFilmAssociato>
+        </Trailer>
+        <Inserzione>
+            <Titolo>Inserzione 1</Titolo>
+            <Autore>Mister inserzione</Autore>
+            <Descrizione>La descrizione di questa inserzione lascia un po' a desiderare ma l'inserzione [ bell. nn scrive bene sta roba, mi salta delle lettere se scrivo ad una velcita sostenuta. accentiiinon funzonano</Descrizione>
+            <DurataMinuti>2</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>SD 480p</Risoluzione>
+            <Path>:/images/default_inserzioni.png</Path>
+            <DataInizioRilascio>4/9/2025</DataInizioRilascio>
+            <DataFineRilascio>11/9/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili/>
+            <NProiezioniGiornaliere>0</NProiezioniGiornaliere>
+            <FasceOrarie>
+                <Fascia>Mattina</Fascia>
+            </FasceOrarie>
+            <Target>TUTTI</Target>
+            <AziendaInserzionista></AziendaInserzionista>
+            <CostoFissoProiezione>30</CostoFissoProiezione>
+        </Inserzione>
+        <Inserzione>
+            <Titolo>Inserzione2</Titolo>
+            <Autore>Autore</Autore>
+            <Descrizione></Descrizione>
+            <DurataMinuti>1</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>UHD 8K 4320p</Risoluzione>
+            <Path>:/images/default_inserzioni.png</Path>
+            <DataInizioRilascio>4/9/2025</DataInizioRilascio>
+            <DataFineRilascio>9/10/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili/>
+            <NProiezioniGiornaliere>0</NProiezioniGiornaliere>
+            <FasceOrarie>
+                <Fascia>Mattina</Fascia>
+            </FasceOrarie>
+            <Target>TUTTI</Target>
+            <AziendaInserzionista>Caca</AziendaInserzionista>
+            <CostoFissoProiezione>30</CostoFissoProiezione>
+        </Inserzione>
+    </MediaList>
+</Cinema>

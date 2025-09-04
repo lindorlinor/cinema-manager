@@ -6,6 +6,8 @@
 #include "PreviewCard.h"
 #include "DetailsPageButtons.h"
 #include <QMessageBox>
+#include <QAbstractButton>
+
 PodcastView::PodcastView(Podcast* pPtr, QWidget* parent):MediaView(pPtr,parent),podPtr(pPtr){
     createMediaDetails();
     createScrollableSection();
@@ -204,28 +206,27 @@ void PodcastView::createScrollableSection(){
 void PodcastView::createButtons(){
     DetailsPageButtons * buttons = new DetailsPageButtons(podPtr,leftSide);
     buttons->setDeleteButtonText("Elimina podcast");
-    /* connect(buttons,&DetailsPageButtons::extendMedia,this,
+    connect(buttons,&DetailsPageButtons::extendMedia,this,
         [this](){
             QMessageBox msgBox(this);
-            auto fine = trailerPtr->getDataFineRilascio();
-            auto nuovaFine = (trailerPtr->getFilm())->getDataFineRilascio();
+            auto fine = podPtr->getDataFineRilascio();
+            auto nuovaFine = sys_days(fine) + days{1};
 
             if(fine!=nuovaFine){
                 msgBox.setWindowTitle("Conferma estensione data");
                 msgBox.setText(QString::fromStdString(
-                "La data di fine proiezione cambierà in\n" + dateToString(fine) + " → " + dateToString(nuovaFine) + "in accordo con la data di fine rilascio del film associato"));
-
-                msgBox.setInformativeText("Premi conferma per continuare, annulla per non modificare.");
+                "La data di fine proiezione cambierà in\n" + dateToString(fine) + " → " + dateToString(nuovaFine) + "."));
+                msgBox.setInformativeText(QString::fromStdString("La data di fine rilascio delle puntate associate verrà posticipata di un giorno ciascuna \n\nPremi conferma per continuare, annulla per non modificare."));
                 msgBox.setStandardButtons(QMessageBox::Cancel | QMessageBox::Ok);
                 msgBox.button(QMessageBox::Ok)->setText("Conferma");
                 msgBox.button(QMessageBox::Cancel)->setText("Annulla");
 
                 int ret = msgBox.exec();
                 if (ret == QMessageBox::Ok) {
-                    qDebug() << "Confermato";
-                    endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-                    "<span style='color:black;'>" + QString::fromStdString(dateToString(nuovaFine)) + "</span>");
+                    podPtr->estendiDataFineRilascio();
                     emit extendMediaClicked();
+                    endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
+                    "<span style='color:black;'>" + QString::fromStdString(dateToString(podPtr->getDataFineRilascio())) + "</span>");
                 }
             }else{
                 msgBox.setWindowTitle("Impossibile estendere la data");
@@ -244,10 +245,9 @@ void PodcastView::createButtons(){
         msgBox.addButton("Conferma", QMessageBox::AcceptRole);
         int ret = msgBox.exec();
         if (ret == QMessageBox::Ok) {
-            qDebug() << "Confermato";
-            emit deleteMediaClicked();
+            emit deleteMediaClicked(podPtr);
         }
-        }); */
+        });
     cardLayout->addSpacing(40);
     cardLayout->addWidget(buttons,0,Qt::AlignCenter);
 }

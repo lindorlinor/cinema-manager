@@ -38,7 +38,7 @@ protected:
 signals:
     void editMediaClicked(Media* mPtr); //segnale emesso quando cliccato sull'icona di modifica media
     void extendMediaClicked(); //segnale emesso quando cliccato su "estendi Media"
-    void deleteMediaClicked();  //sengale emesso quando cliccato su "elimina Media"
+    void deleteMediaClicked(Media* mPtr);  //sengale emesso quando cliccato su "elimina Media"
     void returnButton(); //segnale emesso quando cliccato il pulsante "Torna indietro"
     void requestMediaView(MediaView& widget);
 };

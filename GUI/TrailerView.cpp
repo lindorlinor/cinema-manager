@@ -7,6 +7,7 @@
 #include "PreviewCard.h"
 #include "DetailsPageButtons.h"
 #include <QMessageBox>
+#include <QPushButton>
 
 TrailerView::TrailerView(Trailer* tPtr, QWidget* parent)
     : MediaView(tPtr,parent),trailerPtr(tPtr)
@@ -256,15 +257,16 @@ void TrailerView::createButtons(){
 
                 int ret = msgBox.exec();
                 if (ret == QMessageBox::Ok) {
-                    qDebug() << "Confermato";
-                    endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-                    "<span style='color:black;'>" + QString::fromStdString(dateToString(nuovaFine)) + "</span>");
+                    trailerPtr->estendiDataFineRilascio();
                     emit extendMediaClicked();
+                    endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
+                    "<span style='color:black;'>" + QString::fromStdString(dateToString(trailerPtr->getDataFineRilascio())) + "</span>");
                 }
             }else{
                 msgBox.setWindowTitle("Impossibile estendere la data");
                 msgBox.setText("La data di fine rilascio del trailer non può superare quella del film");
-                msgBox.setInformativeText("Estendere la proiezione del film in sala per poter estendere il rilascio dei suoi trailer");
+                msgBox.setInformativeText("Estendere la proiezione del film in sala estenderà anche la data di fine rilascio dei trailer associati.");
+                msgBox.exec();
             }
         });
            
@@ -278,8 +280,7 @@ void TrailerView::createButtons(){
         msgBox.addButton("Conferma", QMessageBox::AcceptRole);
         int ret = msgBox.exec();
         if (ret == QMessageBox::Ok) {
-            qDebug() << "Confermato";
-            emit deleteMediaClicked();
+            emit deleteMediaClicked(trailerPtr);
         }
         });
     cardLayout->addSpacing(40);

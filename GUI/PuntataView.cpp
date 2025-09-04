@@ -4,7 +4,8 @@
 #include "ExpandableLabel.h"
 #include "DetailsPageButtons.h"
 #include "PreviewCard.h"
-
+#include <QMessageBox>
+#include <QAbstractButton>
 PuntataView::PuntataView(Puntata* pPtr,QWidget* parent):MediaView(pPtr,parent),puntPtr(pPtr){
     createMediaDetails();
     createScrollableSection();
@@ -228,6 +229,50 @@ void PuntataView::createScrollableSection(){
 void PuntataView::createButtons(){
     DetailsPageButtons * buttons = new DetailsPageButtons(puntPtr,leftSide);
     buttons->setDeleteButtonText("Elimina podcast");
+    connect(buttons,&DetailsPageButtons::extendMedia,this,
+        [this](){
+            QMessageBox msgBox(this);
+            auto fine = puntPtr->getDataFineRilascio();
+            auto nuovaFine = sys_days(fine) + days{1};
+
+            if(fine!=nuovaFine){
+                msgBox.setWindowTitle("Conferma estensione data");
+                msgBox.setText(QString::fromStdString(
+                "La data di fine proiezione cambierà in\n" + dateToString(fine) + " → " + dateToString(nuovaFine) + "."));
+                msgBox.setInformativeText(QString::fromStdString("Confermando l'estensione potrebbe cambiare la data di fine rilascio del podcast associato \n\nPremi conferma per continuare, annulla per non modificare."));
+                msgBox.setStandardButtons(QMessageBox::Cancel | QMessageBox::Ok);
+                msgBox.button(QMessageBox::Ok)->setText("Conferma");
+                msgBox.button(QMessageBox::Cancel)->setText("Annulla");
+
+                int ret = msgBox.exec();
+                if (ret == QMessageBox::Ok) {
+                    puntPtr->estendiDataFineRilascio();
+                    emit extendMediaClicked();
+                    endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
+                    "<span style='color:black;'>" + QString::fromStdString(dateToString(puntPtr->getDataFineRilascio())) + "</span>");
+                }
+            }else{
+                msgBox.setWindowTitle("Impossibile estendere la data");
+                msgBox.setText("La data di fine rilascio del trailer non può superare quella del film");
+                msgBox.setInformativeText("Estendere la proiezione del film in sala per poter estendere il rilascio dei suoi trailer");
+            }
+        });
+           
+    
+    connect(buttons,&DetailsPageButtons::deleteMedia,this,[this](){
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Conferma eliminazione");
+        msgBox.setText("Sei sicuro di voler eliminare il trailer?");
+        msgBox.setInformativeText("Premi conferma per continuare, annulla per non modificare.");
+        msgBox.addButton("Annulla", QMessageBox::RejectRole);
+        msgBox.addButton("Conferma", QMessageBox::AcceptRole);
+        int ret = msgBox.exec();
+        if (ret == QMessageBox::Ok) {
+            emit deleteMediaClicked(puntPtr);
+        }
+        });
     cardLayout->addSpacing(40);
     cardLayout->addWidget(buttons,0,Qt::AlignCenter);
+
+
 }
