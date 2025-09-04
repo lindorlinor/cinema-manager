@@ -380,6 +380,7 @@ QDateEdit#dataInizio:enabled {
 #durataMinutiMedia::up-button:disabled,
 #durataMinutiMedia::down-button:disabled,
 #durataMinutiMedia:disabled,
+#comboTipologia:disabled,
 #comboFormato:disabled,
 #comboRisoluzione:disabled,
 QDateEdit#dataInizio:disabled,
