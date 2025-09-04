@@ -30,22 +30,19 @@ void SearchPanel::updateModifierPanel(int index){
 }
 
 void SearchPanel::showMediaView(MediaView& widget){
-    if(InserzioneView* insView = dynamic_cast<InserzioneView*>(&widget))
-        insView->setMediaList(s_cinemaSelezionato->getListaMedia()); //per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, mi semrbava meglio cosi
+    if(auto inserzione = dynamic_cast<InserzioneView*>(&widget))
+        inserzione->setMediaList(s_cinemaSelezionato->getListaMedia()); //per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, mi semrbava meglio cosi
 
     stackModifiche->addWidget(&widget);
     stackModifiche->setCurrentWidget(&widget);
 
-    connect(&widget, &MediaView::editMediaClicked, this, &SearchPanel::showEditPage);
     connect(&widget, &MediaView::returnButton, this, [this, &widget](){
         removeMediaView(&widget);
     });
     
     connect(&widget, &MediaView::extendMediaClicked, this, &SearchPanel::updateJson);
     connect(&widget, &MediaView::requestMediaView, this, &SearchPanel::showMediaView);
-    connect(addMedia, &QPushButton::clicked, this, [this, &widget](){removeMediaView(&widget); updateModifierPanel(1);});
 }
-
 
 void SearchPanel::removeMediaView(QWidget* widget){
     int widgetIndex = stackModifiche->indexOf(widget);
@@ -58,20 +55,6 @@ void SearchPanel::removeMediaView(QWidget* widget){
     stackModifiche->removeWidget(widget);
     delete widget;
 }
-
-/* void SearchPanel::removeMediaView(QWidget* widget){
-    int widgetIndex = stackModifiche->indexOf(widget);
-
-    if(widgetIndex > 2){
-        stackModifiche->setCurrentIndex(widgetIndex - 1);
-        stackModifiche->removeWidget(widget);
-        delete widget;
-    }
-    else
-        updateModifierPanel(0);
-
-}
- */
 
 void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     //agginta ricerca LatoFiltri

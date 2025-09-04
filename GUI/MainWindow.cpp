@@ -170,9 +170,7 @@ void MainWindow::showInsertCinemaPage(){
 }
 
 void MainWindow::showSelectedCinemaPage(const Cinema* cinema){
-    //@TO DO
     stackedWidget->setCurrentIndex(2);
-    qDebug() << "Selezionato il cinema: " << QString::fromStdString(cinema->getNomeCinema());
 }
 void MainWindow::showCinemaSelectionPage(){
     if (cinemaPage) {
