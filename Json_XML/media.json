@@ -854,5 +854,29 @@
         "target": "TUTTI",
         "tipologia": "inserzione",
         "titolo": "Inserzione 1"
+    },
+    {
+        "autore": "Autore",
+        "aziendaInserzionista": "Caca",
+        "costoFissoProiezione": 30,
+        "dataFineRilascio": "2025-10-09",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "",
+        "durataMinuti": 1,
+        "fasceOrarie": [
+            "Mattina"
+        ],
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Italiano"
+        ],
+        "nomeCinema": "Cinema Limena",
+        "path": ":/images/image12.png",
+        "risoluzione": "UHD 8K 4320p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "inserzione",
+        "titolo": "Inserzione2"
     }
 ]

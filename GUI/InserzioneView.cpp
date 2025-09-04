@@ -258,9 +258,9 @@ void InserzioneView::createScrollableSection(){
     QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneInserzioni);
     sezioneInserzioni->setObjectName("sp");
 
-    for (Media* m : mediaList) {
+    for (Media* m : *mediaList) {
         Inserzione* i = dynamic_cast<Inserzione*>(m);
-        if (i && i != insPtr) {
+        if (i && i!=insPtr){
             PreviewCard* card = new PreviewCard(i);
             layoutTrailer->addWidget(card);
             connect(card, &PreviewCard::viewMedia, this, [this, i]() {
@@ -287,7 +287,7 @@ void InserzioneView::createScrollableSection(){
 
 
 void InserzioneView::setMediaList(const std::list<Media*>& list) {
-    mediaList = list;
+    mediaList = &list;
     createScrollableSection();
 }
 

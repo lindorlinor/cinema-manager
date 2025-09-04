@@ -12,7 +12,8 @@ private:
     void createMediaDetails() override;
     void createScrollableSection() override;
     void createButtons() override;
-    list<Media*> mediaList;
+    const std::list<Media*>* mediaList;
+
 };
 
 #endif //INSERZIONEVIEW_H
