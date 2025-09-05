@@ -1,3 +1,34 @@
+/* PAGINE DETAILS */
+/* FILM */
+#labelPerformance,
+#programmazione,
+#labelTecnica,
+#labelDettagli{
+    color: #4e7f8b;
+    font-weight: bold;
+}
+
+#labelTrailer{
+    color: #fed36a;
+}
+
+#leftSide{
+    border-top:3px solid #295763;
+}
+
+#details{
+    background-color: #05313c;
+}
+
+#box{
+    background-color: #4e7f8b;
+}
+
+
+
+
+
+
 /* POP-UP MODIFICA CINEMA */
 #saveButtonCinemaModifica,
 #cancelButtonCinemaModifica{
@@ -566,8 +597,8 @@ QDateEdit#dataFine:disabled QLineEdit {
     font-size:18pt;
     color: #bdced3;
     background-color: #073c47;
-    margin-top: 70px;
-    margin-bottom: 30px;
+/*     margin-top: 70px;
+    margin-bottom: 30px */;
 }
 
 

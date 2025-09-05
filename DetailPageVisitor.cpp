@@ -20,22 +20,21 @@ MediaView* DetailPageVisitor::getWidget() const {
 
 void DetailPageVisitor::visit(Film* film) {
     detailPage = new FilmView(film);
-    detailPage->setStyleSheet("QLabel { background-color: red} #sp { background-color: orange} #details { background-color: purple} #gugu { background-color: pink} #gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
 }
 void DetailPageVisitor::visit(Trailer* trailer) {
     detailPage = new TrailerView(trailer);
-    detailPage->setStyleSheet("QLabel { background-color: red} #sp { background-color: orange} #details { background-color: purple} #gugu { background-color: pink} #gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
+    detailPage->setStyleSheet("#gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
 
 }
 void DetailPageVisitor::visit(Inserzione* inserzione) {
     detailPage = new InserzioneView(inserzione);
-    detailPage->setStyleSheet("QLabel { background-color: red} #sp { background-color: orange} #details { background-color: purple} #gugu { background-color: pink} #gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
+    detailPage->setStyleSheet("#gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
 }
 void DetailPageVisitor::visit(Podcast* podcast) {
     detailPage = new PodcastView(podcast);
-    detailPage->setStyleSheet("QLabel { background-color: red} #sp { background-color: orange} #details { background-color: purple} #gugu { background-color: pink} #gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
+    detailPage->setStyleSheet("#gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
 }
 void DetailPageVisitor::visit(Puntata* puntata) {
     detailPage = new PuntataView(puntata);
-    detailPage->setStyleSheet("QLabel { background-color: red} #sp { background-color: orange} #details { background-color: purple} #gugu { background-color: pink} #gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
+    detailPage->setStyleSheet("#gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
 }

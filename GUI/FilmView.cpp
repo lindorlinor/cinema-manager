@@ -25,7 +25,7 @@ FilmView::FilmView(Film* fPtr, QWidget* parent):MediaView(fPtr,parent),filmPtr(f
 void FilmView::createMediaDetails(){
     createRowDetails();
     leftSide->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    leftSide->setObjectName("pupu");
+    leftSide->setObjectName("leftSide");
     leftSide->setContentsMargins(0,0,0,0);
     leftLayout->setSpacing(0);
     leftLayout->setContentsMargins(0,0,0,0);
@@ -55,22 +55,22 @@ void FilmView::createMediaDetails(){
     QGridLayout * layoutDettagliProgrammazione = new QGridLayout(dettagliProgrammazione);
     layoutDettagliProgrammazione->setAlignment(Qt::AlignLeft);
     dettagliProgrammazione->setContentsMargins(10,10,10,10);
-    sezioneProgrammazione->setObjectName("sp");
+    
     
     QLabel* inizioP = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Inizio proiezione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(dateToString(filmPtr->getDataInizioRilascio())) + "</span>",dettagliProgrammazione);
+        "<span style='color: #bdced3; font-weight:bold;'>Inizio proiezione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(filmPtr->getDataInizioRilascio())) + "</span>",dettagliProgrammazione);
     inizioP->setTextFormat(Qt::RichText);
     endDateLabel = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(dateToString(filmPtr->getDataFineRilascio())) + "</span>",dettagliProgrammazione);
+        "<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(filmPtr->getDataFineRilascio())) + "</span>",dettagliProgrammazione);
     endDateLabel->setTextFormat(Qt::RichText);
     inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     endDateLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     QLabel* costoBiglietto = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Costo biglietto: </span>"
-        "<span style='color:black;'>" + QString::number(filmPtr->getCostoBiglietto()) + " €</span>",dettagliProgrammazione);
+        "<span style='color: #bdced3; font-weight:bold;'>Costo biglietto: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::number(filmPtr->getCostoBiglietto()) + " €</span>",dettagliProgrammazione);
     costoBiglietto->setTextFormat(Qt::RichText);
     costoBiglietto->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
@@ -90,20 +90,19 @@ void FilmView::createMediaDetails(){
     QVBoxLayout * layoutDettagliPerformance = new QVBoxLayout(dettagliPerformance);
     dettagliPerformance->setContentsMargins(10,10,10,10);
     sezionePerformance->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    sezionePerformance->setObjectName("sp");
     
     // Visualizzazioni e incasso
     QLabel* incasso = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Incasso totale: </span>"
-        "<span style='color:black;'>" + QString::number(filmPtr->calcolaIncasso()) + " €</span>",dettagliPerformance);
+        "<span style='color: #bdced3; font-weight:bold;'>Incasso totale: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::number(filmPtr->calcolaIncasso()) + " €</span>",dettagliPerformance);
     incasso->setTextFormat(Qt::RichText);
     QLabel* visualizzazioni = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Visualizzazioni: </span>"
-        "<span style='color:black;'>" + QString::number(filmPtr->getVisualizzazioni()) + "</span>",dettagliPerformance);
+        "<span style='color: #bdced3; font-weight:bold;'>Visualizzazioni: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::number(filmPtr->getVisualizzazioni()) + "</span>",dettagliPerformance);
     visualizzazioni->setTextFormat(Qt::RichText);
     QLabel* valutazione = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Valutazione: </span>"
-    "<span style='color:black;'>" + QString::number(filmPtr->getValutazione()) + "/5</span>",dettagliPerformance);
+        "<span style='color: #bdced3; font-weight:bold;'>Valutazione: </span>"
+    "<span style='color: #4e7f8b;'>" + QString::number(filmPtr->getValutazione()) + "/5</span>",dettagliPerformance);
     valutazione->setTextFormat(Qt::RichText);
 
     layoutDettagliPerformance->addWidget(incasso);
@@ -114,7 +113,6 @@ void FilmView::createMediaDetails(){
     QWidget * sezioneTecnica = new QWidget(details);
     QVBoxLayout * layoutTecnica = new QVBoxLayout(sezioneTecnica);
     sezioneTecnica->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    sezioneTecnica->setObjectName("sp");
     QLabel * labelTecnica = new QLabel("Caratteristiche tecniche");
     layoutTecnica->addWidget(labelTecnica);
     
@@ -123,16 +121,16 @@ void FilmView::createMediaDetails(){
     dettagliTecnici->setContentsMargins(10,10,10,10);
     
     QLabel* risoluzione = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Risoluzione: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(filmPtr->getRisoluzione())) + "</span>",dettagliTecnici);
+        "<span style='color: #bdced3; font-weight:bold;'>Risoluzione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromUtf8(toString(filmPtr->getRisoluzione())) + "</span>",dettagliTecnici);
     risoluzione->setTextFormat(Qt::RichText);
     QLabel* formato = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Formato: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(filmPtr->getFormato())) + "</span>",dettagliTecnici);
+        "<span style='color: #bdced3; font-weight:bold;'>Formato: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromUtf8(toString(filmPtr->getFormato())) + "</span>",dettagliTecnici);
     formato->setTextFormat(Qt::RichText);
     QLabel* postCredit = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Post credit: </span>"
-        "<span style='color:black;'>" + QString::number(filmPtr->getNPostCredit()) + "</span>",dettagliTecnici);
+        "<span style='color: #bdced3; font-weight:bold;'>Post credit: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::number(filmPtr->getNPostCredit()) + "</span>",dettagliTecnici);
     postCredit->setTextFormat(Qt::RichText);
     layoutDettagliTecnici->addWidget(risoluzione);
     layoutDettagliTecnici->addWidget(formato);
@@ -152,7 +150,7 @@ void FilmView::createMediaDetails(){
     
     
     ExpandableLabel* descrizione = new ExpandableLabel(
-         "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(filmPtr->getDescrizione()),dettagliDettagli);
+         "<span style='color: #bdced3; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(filmPtr->getDescrizione()),dettagliDettagli);
    
     std::vector<std::string> attoriPrincipali = filmPtr->getAttoriPrincipali();
     QString attoriText;
@@ -163,7 +161,7 @@ void FilmView::createMediaDetails(){
 
     descrizione->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
     ExpandableLabel* attoriLabel = new ExpandableLabel(
-         "<span style='color:white; font-weight:bold;'>Attori principali: </span>" + attoriText,dettagliDettagli);
+         "<span style='color: #bdced3; font-weight:bold;'>Attori principali: </span>" + attoriText,dettagliDettagli);
     attoriLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
 
@@ -177,18 +175,18 @@ void FilmView::createMediaDetails(){
     }
 
     QLabel* genere = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Genere: </span>"
-        "<span style='color:black;'>" + generiText + "</span>",dettagliDettagli);
+        "<span style='color: #bdced3; font-weight:bold;'>Genere: </span>"
+        "<span style='color: #4e7f8b;'>" + generiText + "</span>",dettagliDettagli);
     genere->setTextFormat(Qt::RichText);
 
     QLabel* classificazione = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Classificazione: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(filmPtr->getTarget())) + "</span>");
+        "<span style='color: #bdced3; font-weight:bold;'>Classificazione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromUtf8(toString(filmPtr->getTarget())) + "</span>");
     classificazione->setTextFormat(Qt::RichText);
     
     QLabel* casaProduzione = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Casa di produzione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(filmPtr->getCasaDiProduzione()) + "</span>",dettagliDettagli);
+        "<span style='color: #bdced3; font-weight:bold;'>Casa di produzione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString(filmPtr->getCasaDiProduzione()) + "</span>",dettagliDettagli);
     casaProduzione->setTextFormat(Qt::RichText);
 
     layoutDettagliDettagli->addWidget(descrizione);
@@ -210,10 +208,37 @@ void FilmView::createMediaDetails(){
 
     splitterLayout->addWidget(leftSide);
 
+    //style
+    labelProgrammazione->setObjectName("programmazione");
+    labelPerformance->setObjectName("labelPerformance");
+    labelTecnica->setObjectName("labelTecnica");
+    labelDettagli->setObjectName("labelDettagli");
+    setStyleSheet("border: none;");
+    scrollDetails->setStyleSheet( 
+                                "QScrollBar:vertical { background: #4e7f8a;"       
+                                "width: 12px;"              
+                                "margin: 0px 0px 0px 0px;"
+                                "border: 1px solid #4e7f8a;"
+                                "border-radius: 5px; }"
+
+                                "QScrollBar::handle:vertical {background: #d9d9d9;"   
+                                "border-radius: 5px;"    
+                                "min-height: 20px;"
+                                "border-radius: 3px;}"
+
+                                "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
+                                "background: #4e7f8a;"         
+                                "border: 1px solid #4e7f8a;" 
+                                "height: 12px;"
+                                "border-radius: 5px;"
+                                "subcontrol-position: top;"  
+                                "subcontrol-origin: margin;}"
+
+                                "QScrollBar::add-line:vertical:hover, QScrollBar::sub-line:vertical:hover {"
+                                "background: #4e7f8a;}");
 }
 
 void FilmView::createScrollableSection(){
-    rightSide->setObjectName("gaga");
     rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
     QLabel *labelTrailer = new QLabel("Trailer",rightSide);
@@ -227,7 +252,6 @@ void FilmView::createScrollableSection(){
     QScrollArea* scrollTrailer = new QScrollArea(rightSide); //configurata dopo
     QWidget * sezioneTrailer = new QWidget(scrollTrailer);
     QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
-    sezioneTrailer->setObjectName("sp");
     layoutTrailer->setAlignment(Qt::AlignTop);
     for (Trailer* t : filmPtr->getTrailers()) {
         PreviewCard* card = new PreviewCard(t);
@@ -249,6 +273,32 @@ void FilmView::createScrollableSection(){
     rightLayout->addWidget(scrollTrailer,0,Qt::AlignTop);
 
     splitterLayout->addWidget(rightSide);
+
+    //style
+    labelTrailer->setObjectName("labelTrailer");
+
+    scrollTrailer->setStyleSheet( 
+                                "QScrollBar:vertical { background: #4e7f8a;"       
+                                "width: 12px;"              
+                                "margin: 0px 0px 0px 0px;"
+                                "border: 1px solid #4e7f8a;"
+                                "border-radius: 5px; }"
+
+                                "QScrollBar::handle:vertical {background: #d9d9d9;"   
+                                "border-radius: 5px;"    
+                                "min-height: 20px;"
+                                "border-radius: 3px;}"
+
+                                "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
+                                "background: #4e7f8a;"         
+                                "border: 1px solid #4e7f8a;" 
+                                "height: 12px;"
+                                "border-radius: 5px;"
+                                "subcontrol-position: top;"  
+                                "subcontrol-origin: margin;}"
+
+                                "QScrollBar::add-line:vertical:hover, QScrollBar::sub-line:vertical:hover {"
+                                "background: #4e7f8a;}");
 }
 void FilmView::createButtons(){
     DetailsPageButtons * buttons = new DetailsPageButtons(filmPtr,rightSide);
@@ -273,8 +323,8 @@ void FilmView::createButtons(){
             if (ret == QMessageBox::Ok) {
                 filmPtr->estendiDataFineRilascio();
                 emit extendMediaClicked();
-                endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-                "<span style='color:black;'>" + QString::fromStdString(dateToString(filmPtr->getDataFineRilascio())) + "</span>");
+                endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
+                "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(filmPtr->getDataFineRilascio())) + "</span>");
             }
         });
     

@@ -229,6 +229,7 @@ void SearchPanel::addLatoDestra(){
     
     //GESTIONE PULSANTI
     connect(cerca, &QLineEdit::textChanged, this, [this](const QString &testo){ ricerca = testo; 
+                                                                                updateFiltroTutto();
                                                                                 for(auto o : s_libraryObservers) 
                                                                                     o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema);});
     connect(addMedia, &QPushButton::clicked, this, [this](){

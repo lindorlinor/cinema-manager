@@ -49,7 +49,7 @@ void PodcastView::createMediaDetails(){
     QHBoxLayout * layoutDettagliProgrammazione = new QHBoxLayout(dettagliProgrammazione);
     layoutDettagliProgrammazione->setAlignment(Qt::AlignLeft);
     dettagliProgrammazione->setContentsMargins(10,10,10,10);
-    sezioneProgrammazione->setObjectName("sp");
+    
     
     QLabel* inizioP = new QLabel(
         "<span style='color:white; font-weight:bold;'>Inizio proiezione: </span>"

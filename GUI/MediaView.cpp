@@ -4,29 +4,29 @@
 MediaView::MediaView(Media* mPtr, QWidget* parent)
     : QWidget(parent), mediaPtr(mPtr),layoutPage( new QVBoxLayout(this)),splitter(new QWidget(this)),splitterLayout(new QHBoxLayout(splitter)),leftSide(new QWidget(splitter)),leftLayout(new QHBoxLayout(leftSide)),
     details(new QFrame(leftSide)),detailsLayout(new QVBoxLayout(details)),endDateLabel(nullptr),rightSide(new QWidget(splitter)),rightLayout(new QVBoxLayout(rightSide)),card(new QWidget(leftSide)),cardLayout(new QVBoxLayout(card)){
-    this->setObjectName("gugu");
+    
     
     createHeader();
     
     splitterLayout->setSpacing(130); //aggiunge un po di spazio tra parte sinistra e destra della pagina
     layoutPage->addWidget(splitter,0,Qt::AlignHCenter);
-    rightSide->setMinimumWidth(302);
+    rightSide->setMinimumWidth(400);
     leftSide->setMinimumWidth(930);
 }
 
 
 void MediaView::createHeader(){
     QWidget * contenitoreHeader = new QWidget(this);
-    contenitoreHeader->setObjectName("gaga");
     contenitoreHeader->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
     QVBoxLayout * layoutHeader = new QVBoxLayout(contenitoreHeader);
 
     QPushButton* returnButton = new QPushButton("← indietro",contenitoreHeader);
     layoutHeader->addWidget(returnButton);
+    layoutHeader->addSpacing(20);
+    layoutHeader->setAlignment(Qt::AlignTop);
 
     returnButton->setCursor(Qt::PointingHandCursor);
-    returnButton->setFixedSize(96,26);
 
     connect(returnButton, &QPushButton::clicked, this, &MediaView::returnButton);
 
@@ -35,14 +35,17 @@ void MediaView::createHeader(){
     fontTitolo.setPointSize(21);
     fontTitolo.setBold(true);
     titolo->setFont(fontTitolo);
+    titolo->setContentsMargins(100,20,0,0);
 
     layoutHeader->addWidget(titolo);
-    layoutHeader->setContentsMargins(50,0,0,0);
     layoutHeader->setAlignment(Qt::AlignLeft);
-    layoutPage->addSpacing(40);
+    contenitoreHeader->setLayout(layoutHeader);
+    /* layoutPage->addSpacing(40); */
     layoutPage->addWidget(contenitoreHeader);
-    layoutPage->addSpacing(40);
+    layoutPage->addSpacing(10);
 
+    titolo->setStyleSheet("color: #fed36a;");
+    returnButton->setObjectName("indietro");
 }
 
 
@@ -59,18 +62,18 @@ void MediaView::createMediaCard(){
     cardLayout->setSpacing(0);
     QWidget* box = new QWidget(card);
     box->setFixedSize(390, 218);
-    box->setObjectName("caca");
+    box->setObjectName("box");
     QVBoxLayout* layoutBox = new QVBoxLayout(box);
     layoutBox->setContentsMargins(35, 35, 35, 35);
     layoutBox->setSpacing(10);
     QLabel* regista = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Autore: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(mediaPtr->getAutore()) + "</span>",box);
+        "<span style='color: #bdced3; font-weight:bold;'>Autore: </span>"
+        "<span style='color: #bdced3;'>" + QString::fromStdString(mediaPtr->getAutore()) + "</span>",box);
     regista->setTextFormat(Qt::RichText);
 
     QLabel* durata = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Durata: </span>"
-        "<span style='color:black;'>" + QString::number(mediaPtr->getDurataMinuti()) + " min</span>",box);
+        "<span style='color: #bdced3; font-weight:bold;'>Durata: </span>"
+        "<span style='color: #bdced3;'>" + QString::number(mediaPtr->getDurataMinuti()) + " min</span>",box);
     durata->setTextFormat(Qt::RichText);
 
     //creazione label lingue
@@ -83,8 +86,8 @@ void MediaView::createMediaCard(){
         }
     }
     QLabel* lingue = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Lingue: </span>"
-        "<span style='color:black;'>" + lingueText + "</span>",box);
+        "<span style='color: #bdced3; font-weight:bold;'>Lingue: </span>"
+        "<span style='color: #bdced3;'>" + lingueText + "</span>",box);
     lingue->setTextFormat(Qt::RichText);
 
     //creazione label sottotitoli
@@ -95,8 +98,8 @@ void MediaView::createMediaCard(){
         if (i != sottotitoliDisponibili.size() - 1) sottotitoliText += ", ";
     }
     QLabel* sottotitoli = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Sottotitoli: </span>"
-        "<span style='color:black;'>" + sottotitoliText + "</span>",box);
+        "<span style='color: #bdced3; font-weight:bold;'>Sottotitoli: </span>"
+        "<span style='color: #bdced3;'>" + sottotitoliText + "</span>",box);
     sottotitoli->setTextFormat(Qt::RichText);
 
     layoutBox->addWidget(regista);
