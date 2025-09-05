@@ -235,12 +235,31 @@ void SearchPanel::addLatoDestra(){
         deleteViewPages();
         updateModifierPanel(1);
     });
-    connect(tutto, &QToolButton::clicked, this, &SearchPanel::updateFiltroTutto);
-    connect(film, &QToolButton::clicked, this, [this](){updateFiltroMedia("Film");});
-    connect(trailer, &QToolButton::clicked, this, [this](){updateFiltroMedia("Trailer");});
-    connect(inserzione, &QToolButton::clicked, this, [this](){updateFiltroMedia("Inserzioni");});
-    connect(podcast, &QToolButton::clicked, this, [this](){updateFiltroMedia("Podcast");});
-    connect(puntata, &QToolButton::clicked, this, [this](){updateFiltroMedia("Puntate");});
+    connect(tutto, &QToolButton::clicked, this, [this](){
+        deleteViewPages();
+        updateModifierPanel(0);
+        updateFiltroTutto();
+    });
+    connect(film, &QToolButton::clicked, this, [this](){
+        deleteViewPages();
+        updateModifierPanel(0);
+        updateFiltroMedia("Film");});
+    connect(trailer, &QToolButton::clicked, this, [this](){
+        deleteViewPages();
+        updateModifierPanel(0);
+        updateFiltroMedia("Trailer");});
+    connect(inserzione, &QToolButton::clicked, this, [this](){
+        deleteViewPages();
+        updateModifierPanel(0);
+        updateFiltroMedia("Inserzioni");});
+    connect(podcast, &QToolButton::clicked, this, [this](){
+        deleteViewPages();
+        updateModifierPanel(0);
+        updateFiltroMedia("Podcast");});
+    connect(puntata, &QToolButton::clicked, this, [this](){
+        deleteViewPages();
+        updateModifierPanel(0);
+        updateFiltroMedia("Puntate");});
 
 
     connect(this, &SearchPanel::giveCinemaInfoToIP, nuovoMedia, &InsertMedia::getCinemaInfo);
@@ -469,11 +488,11 @@ void SearchPanel::updateJson(){
 
 
 void SearchPanel::deleteViewPages(){
-    if(stackModifiche->currentIndex()>2){
-            for (int i=stackModifiche->count()-1; i>=2; --i) {
-                QWidget* w = stackModifiche->widget(i);
-                stackModifiche->removeWidget(w);
-                delete w;
-            }
+    if(stackModifiche->currentIndex()>=2){
+        for (int i=stackModifiche->count()-1; i>=2; --i) {
+            QWidget* w = stackModifiche->widget(i);
+            stackModifiche->removeWidget(w);
+            delete w;
+        }
     }
 }

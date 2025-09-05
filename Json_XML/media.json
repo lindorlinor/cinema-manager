@@ -707,6 +707,50 @@
         "titolo": "Trailer ufficiale - Weapons"
     },
     {
+        "autore": "Universal Pictures / Adler Entertainment",
+        "autoreFilmAssociato": "Steven Spielberg",
+        "dataFineRilascio": "2025-08-31",
+        "dataInizioRilascio": "2025-07-04",
+        "descrizione": "Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.",
+        "durataMinuti": 2,
+        "filmAssociato": "Lo Squalo - 50esimo anniversario",
+        "formato": "IMAX 3D",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 5,
+        "nomeCinema": "Cinema Limena",
+        "path": ":/images/trailer_losqualo50anniversario.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
+    },
+    {
+        "autore": "Autore",
+        "aziendaInserzionista": "Azienda1",
+        "costoFissoProiezione": 30,
+        "dataFineRilascio": "2025-09-09",
+        "dataInizioRilascio": "2025-09-05",
+        "descrizione": "Descrizione della inserzione 1",
+        "durataMinuti": 2,
+        "fasceOrarie": [
+            "Mattina"
+        ],
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Italiano"
+        ],
+        "nomeCinema": "Cinema Limena",
+        "path": ":/images/default_inserzioni.png",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "inserzione",
+        "titolo": "Inserzione1"
+    },
+    {
         "attoriPrincipali": [
             "Roy Scheider",
             "Robert Shaw",
@@ -738,58 +782,5 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "Lo Squalo - 50esimo anniversario"
-    },
-    {
-        "autore": "Universal Pictures / Adler Entertainment",
-        "autoreFilmAssociato": "Steven Spielberg",
-        "dataFineRilascio": "2025-08-31",
-        "dataInizioRilascio": "2025-07-04",
-        "descrizione": "Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.",
-        "durataMinuti": 2,
-        "filmAssociato": "Lo Squalo - 50esimo anniversario",
-        "formato": "IMAX 3D",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_losqualo50anniversario.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
-    },
-    {
-        "attoriPrincipali": [
-            "Roy Scheider",
-            "Robert Shaw",
-            "Richard Dreyfuss",
-            "Lorraine Gary",
-            "Murray Hamilton"
-        ],
-        "autore": "Steven Spielberg",
-        "casaDiProduzione": "Universal Pictures / Adler Entertainment",
-        "costoBiglietto": 9,
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-09-01",
-        "descrizione": "Un capolavoro che ha inventato il blockbuster estivo: lo Squalo torna sul grande schermo per il suo cinquantesimo anniversario.",
-        "durataMinuti": 124,
-        "formato": "IMAX 3D",
-        "generi": [
-            "Horror",
-            "Thriller"
-        ],
-        "lingueDisponibili": [
-            "Italiano"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/lo_squalo_50.png",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Lo Squalo - Anniversario 50 anni"
     }
 ]
