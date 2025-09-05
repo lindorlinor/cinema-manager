@@ -188,9 +188,9 @@
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },
     {
-        "autore": "DocuStudio",
+        "autore": "DocuStudiooo",
         "aziendaInserzionista": "",
-        "costoFissoProiezione": 25,
+        "costoFissoProiezione": 30,
         "dataFineRilascio": "2025-10-10",
         "dataInizioRilascio": "2025-09-10",
         "descrizione": "Una selezione dei migliori documentari per gli appassionati di cinema.",
@@ -202,14 +202,14 @@
         "lingueDisponibili": [
         ],
         "nomeCinema": "Cinema Aurora",
-        "path": ":/images/image12.png",
+        "path": ":/images/default_podcast_puntate.png",
         "risoluzione": "UHD 8K 4320p",
         "sottotitoliDisponibili": [
             "Italiano"
         ],
         "target": "TUTTI",
         "tipologia": "inserzione",
-        "titolo": "Documentari d’Autore"
+        "titolo": "Documentari d’Autoreaaa"
     },
     {
         "autore": "FestivalCinema",
@@ -233,32 +233,7 @@
         ],
         "target": "TUTTI",
         "tipologia": "inserzione",
-        "titolo": "Short Films Festival"
-    },
-    {
-        "attoriPrincipali": [
-        ],
-        "autore": "aaaaa",
-        "casaDiProduzione": "",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-09-05",
-        "dataInizioRilascio": "2025-09-05",
-        "descrizione": "",
-        "durataMinuti": 0,
-        "formato": "MP4",
-        "generi": [
-        ],
-        "lingueDisponibili": [
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Aurora",
-        "path": ":/images/default.png",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "cacacaeeee"
+        "titolo": "Short Films Festivalaaa"
     },
     {
         "autore": "aa",
