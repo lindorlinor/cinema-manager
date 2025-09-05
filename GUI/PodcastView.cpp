@@ -179,6 +179,7 @@ void PodcastView::createScrollableSection(){
     QScrollArea* scrollPuntate = new QScrollArea(rightSide); //configurata dopo
     QWidget * sezionePuntate = new QWidget(scrollPuntate);
     QVBoxLayout * layoutPuntate = new QVBoxLayout(sezionePuntate);
+    layoutPuntate->setAlignment(Qt::AlignTop);
     sezionePuntate->setObjectName("sp");
 
     for (Puntata* p : podPtr->getElencoPuntate()) {

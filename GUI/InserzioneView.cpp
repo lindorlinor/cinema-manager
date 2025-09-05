@@ -254,14 +254,16 @@ void InserzioneView::createScrollableSection(){
 
     QScrollArea* scrollInserzioni = new QScrollArea(rightSide); //configurata dopo
     QWidget * sezioneInserzioni = new QWidget(scrollInserzioni);
-    QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneInserzioni);
+
+    QVBoxLayout * layoutInserzioni = new QVBoxLayout(sezioneInserzioni);
+    layoutInserzioni->setAlignment(Qt::AlignTop);
     sezioneInserzioni->setObjectName("sp");
 
     for (Media* m : *mediaList) {
         Inserzione* i = dynamic_cast<Inserzione*>(m);
         if (i && i!=insPtr){
             PreviewCard* card = new PreviewCard(i);
-            layoutTrailer->addWidget(card);
+            layoutInserzioni->addWidget(card);
             connect(card, &PreviewCard::viewMedia, this, [this, i]() {
                 DetailPageVisitor detailVisitor;
                 i->accept(&detailVisitor);
@@ -270,7 +272,7 @@ void InserzioneView::createScrollableSection(){
         }
     }
 
-    layoutTrailer->setSpacing(20);  
+    layoutInserzioni->setSpacing(20);  
     sezioneInserzioni->setContentsMargins(20,20,20,33);
 
     scrollInserzioni->setWidget(sezioneInserzioni);

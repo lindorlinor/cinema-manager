@@ -228,7 +228,7 @@ void FilmView::createScrollableSection(){
     QWidget * sezioneTrailer = new QWidget(scrollTrailer);
     QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
     sezioneTrailer->setObjectName("sp");
-
+    layoutTrailer->setAlignment(Qt::AlignTop);
     for (Trailer* t : filmPtr->getTrailers()) {
         PreviewCard* card = new PreviewCard(t);
         layoutTrailer->addWidget(card);
