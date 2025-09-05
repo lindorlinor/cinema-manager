@@ -445,7 +445,7 @@
         ],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_i_puffi_il_film.png",
+        "path": ":/images/trailer_ipuffi.jpg",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
         ],
@@ -497,7 +497,7 @@
         ],
         "nProiezioniGiornaliere": 15,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_i_roses.png",
+        "path": ":/images/trailer_iroses.jpg",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
         ],
@@ -548,7 +548,7 @@
         ],
         "nProiezioniGiornaliere": 7,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_tutta_colpa_del_rock.png",
+        "path": ":/images/trailer_tuttacolpadelrock.jpg",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
         ],
@@ -601,7 +601,7 @@
         ],
         "nProiezioniGiornaliere": 4,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_harry_potter_calice_fuoco.png",
+        "path": ":/images/trailer_harrypottereilcalicedifuoco.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -660,7 +660,7 @@
         ],
         "nProiezioniGiornaliere": 3,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_una_scomoda_circostanza.png",
+        "path": ":/images/trailer_caughtstealing.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -717,7 +717,7 @@
         ],
         "nProiezioniGiornaliere": 3,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_weapons.png",
+        "path": ":/images/trailer_weapons.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -770,7 +770,7 @@
         ],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_lo_squalo_50.png",
+        "path": ":/images/trailer_losqualo50anniversario.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -802,7 +802,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/harry_potter_calice_fuoco.png",
+        "path": ":/images/locandina_harrypottereilcalicedifuoco.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -835,7 +835,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/lo_squalo_50.png",
+        "path": ":/images/locandina_losqualo50anniversario.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -892,7 +892,7 @@
         ],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "cinema",
-        "path": ":/images/trailer_i_puffi_il_film.png",
+        "path": ":/images/trailer_ipuffi.jpg",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
         ],
@@ -946,7 +946,7 @@
         ],
         "nProiezioniGiornaliere": 15,
         "nomeCinema": "cinema",
-        "path": ":/images/trailer_i_roses.png",
+        "path": ":/images/trailer_iroses.png",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
         ],
@@ -997,7 +997,7 @@
         ],
         "nProiezioniGiornaliere": 7,
         "nomeCinema": "cinema",
-        "path": ":/images/trailer_tutta_colpa_del_rock.png",
+        "path": ":/images/trailer_tuttacolpadelrock.jpg",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
         ],
@@ -1050,7 +1050,7 @@
         ],
         "nProiezioniGiornaliere": 4,
         "nomeCinema": "cinema",
-        "path": ":/images/trailer_harry_potter_calice_fuoco.png",
+        "path": ":/images/trailer_harrypottereilcalicedifuoco.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -1088,7 +1088,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "cinema",
-        "path": ":/images/clocandina_caughtstealing.jpg",
+        "path": ":/images/locandina_caughtstealing.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -1109,7 +1109,7 @@
         ],
         "nProiezioniGiornaliere": 3,
         "nomeCinema": "cinema",
-        "path": ":/images/trailer_una_scomoda_circostanza.png",
+        "path": ":/images/trailer_caughtstealing.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -1166,7 +1166,7 @@
         ],
         "nProiezioniGiornaliere": 3,
         "nomeCinema": "cinema",
-        "path": ":/images/trailer_weapons.png",
+        "path": ":/images/trailer_weapons.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -1219,7 +1219,7 @@
         ],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "cinema",
-        "path": ":/images/trailer_lo_squalo_50.png",
+        "path": ":/images/trailer_losqualo50anniversario.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
