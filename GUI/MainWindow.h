@@ -27,7 +27,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
 public slots:
     void showInsertCinemaPage();
-    void showSelectedCinemaPage(const Cinema* cinema);
+    void showSelectedCinemaPage();
     void showCinemaSelectionPage();
     void deleteCinemaFromList(Cinema* cinema);
 };
