@@ -635,3 +635,39 @@ QPushButton#saveButton:disabled {
 #stackModifiche{
     background-color: #073c47;
 }
+
+#sezioneScroll{
+    background-color: #05313C;
+}
+
+
+QPushButton#extendButton {
+    background-color: #b1934a;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #2b2b2b;
+}
+
+QPushButton#extendButton:enabled {
+    background-color: #fed36a;
+}
+
+QPushButton#deleteButton {
+    background-color: rgba(228, 64, 67, 0.46); /*preso da figma*/ 
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #e0e0e0;
+}
+
+QPushButton#deleteButton:enabled {
+    background-color: #E44043
+}
+
+/* --- TOOLS --- */
+QToolButton#extendTool, 
+QToolButton#deleteTool {
+    border: none;
+    background: transparent;
+}

@@ -5,42 +5,43 @@ MediaView::MediaView(Media* mPtr, QWidget* parent)
     : QWidget(parent), mediaPtr(mPtr),layoutPage( new QVBoxLayout(this)),splitter(new QWidget(this)),splitterLayout(new QHBoxLayout(splitter)),leftSide(new QWidget(splitter)),leftLayout(new QHBoxLayout(leftSide)),
     details(new QFrame(leftSide)),detailsLayout(new QVBoxLayout(details)),endDateLabel(nullptr),rightSide(new QWidget(splitter)),rightLayout(new QVBoxLayout(rightSide)),card(new QWidget(leftSide)),cardLayout(new QVBoxLayout(card)){
     
-    
     createHeader();
     
     splitterLayout->setSpacing(130); //aggiunge un po di spazio tra parte sinistra e destra della pagina
     layoutPage->addWidget(splitter,0,Qt::AlignHCenter);
-    rightSide->setMinimumWidth(400);
+    rightSide->setMinimumWidth(300);
     leftSide->setMinimumWidth(930);
+    details->setContentsMargins(30,15,15,0);
 }
 
 
 void MediaView::createHeader(){
     QWidget * contenitoreHeader = new QWidget(this);
+    contenitoreHeader->setContentsMargins(92,20,0,0);
     contenitoreHeader->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-
+   
     QVBoxLayout * layoutHeader = new QVBoxLayout(contenitoreHeader);
 
     QPushButton* returnButton = new QPushButton("← indietro",contenitoreHeader);
     layoutHeader->addWidget(returnButton);
-    layoutHeader->addSpacing(20);
     layoutHeader->setAlignment(Qt::AlignTop);
+    layoutHeader->setSpacing(20);
 
     returnButton->setCursor(Qt::PointingHandCursor);
-
+    returnButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     connect(returnButton, &QPushButton::clicked, this, &MediaView::returnButton);
 
     QLabel *titolo = new QLabel(QString::fromStdString(mediaPtr->getTitolo()));
+    titolo->setContentsMargins(15,0,0,0);
     QFont fontTitolo = titolo->font();
     fontTitolo.setPointSize(21);
     fontTitolo.setBold(true);
     titolo->setFont(fontTitolo);
-    titolo->setContentsMargins(100,20,0,0);
 
     layoutHeader->addWidget(titolo);
     layoutHeader->setAlignment(Qt::AlignLeft);
     contenitoreHeader->setLayout(layoutHeader);
-    /* layoutPage->addSpacing(40); */
+    // layoutPage->addSpacing(40);
     layoutPage->addWidget(contenitoreHeader);
     layoutPage->addSpacing(10);
 

@@ -761,7 +761,27 @@
         ],
         "target": "TUTTI",
         "tipologia": "film",
-        "titolo": "Lo Squalo - Anniversario 50 anni"
+        "titolo": "Lo Squalo - 50esimo anniversario"
+    },
+    {
+        "autore": "Universal Pictures / Adler Entertainment",
+        "autoreFilmAssociato": "Steven Spielberg",
+        "dataFineRilascio": "2025-08-31",
+        "dataInizioRilascio": "2025-07-04",
+        "descrizione": "Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.",
+        "durataMinuti": 2,
+        "filmAssociato": "Lo Squalo - 50esimo anniversario",
+        "formato": "IMAX 3D",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 5,
+        "nomeCinema": "Cinema Limena",
+        "path": ":/images/trailer_losqualo50anniversario.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
     },
     {
         "copertinaCinema": ":/images/default.png",
@@ -1127,39 +1147,6 @@
         "titolo": "Lo Squalo - 50esimo anniversario"
     },
     {
-        "attoriPrincipali": [
-            "Roy Scheider",
-            "Robert Shaw",
-            "Richard Dreyfuss",
-            "Lorraine Gary",
-            "Murray Hamilton"
-        ],
-        "autore": "Steven Spielberg",
-        "casaDiProduzione": "Universal Pictures / Adler Entertainment",
-        "costoBiglietto": 9,
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-09-01",
-        "descrizione": "Un capolavoro che ha inventato il blockbuster estivo: lo Squalo torna sul grande schermo per il suo cinquantesimo anniversario.",
-        "durataMinuti": 124,
-        "formato": "IMAX 3D",
-        "generi": [
-            "Horror",
-            "Thriller"
-        ],
-        "lingueDisponibili": [
-            "Italiano"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/locandina_losqualo50anniversario.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Lo Squalo - 50esimo anniversario"
-    },
-    {
         "autore": "Universal Pictures / Adler Entertainment",
         "autoreFilmAssociato": "Steven Spielberg",
         "dataFineRilascio": "2025-08-31",
@@ -1172,26 +1159,6 @@
         ],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "cinema",
-        "path": ":/images/trailer_losqualo50anniversario.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
-    },
-        {
-        "autore": "Universal Pictures / Adler Entertainment",
-        "autoreFilmAssociato": "Steven Spielberg",
-        "dataFineRilascio": "2025-08-31",
-        "dataInizioRilascio": "2025-07-04",
-        "descrizione": "Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.",
-        "durataMinuti": 2,
-        "filmAssociato": "Lo Squalo - 50esimo anniversario",
-        "formato": "IMAX 3D",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "Cinema Limena",
         "path": ":/images/trailer_losqualo50anniversario.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [

@@ -29,7 +29,6 @@ void PodcastView::createMediaDetails(){
     details->setParent(scrollDetails);
     detailsLayout->setContentsMargins(0, 0, 0, 0);
     details->setMaximumWidth(600);
-    details->setContentsMargins(0,0,13,0);
     details->setObjectName("details");
 
     scrollDetails->setWidget(details);

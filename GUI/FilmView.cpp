@@ -36,7 +36,6 @@ void FilmView::createMediaDetails(){
     details->setParent(scrollDetails);
     detailsLayout->setContentsMargins(0, 0, 0, 0);
     leftSide->setMinimumWidth(930);
-    details->setContentsMargins(0,0,13,0);
     details->setObjectName("details");
 
     scrollDetails->setWidget(details);
@@ -167,9 +166,9 @@ void FilmView::createMediaDetails(){
 
     std::vector<Genere> generi = filmPtr->getGeneri();
     QString generiText;
-    for (size_t i = 0; i < generi.size(); ++i) {
-        generiText += QString::fromUtf8(toString(generi[i]));
-        if (i != generi.size() - 1) {
+    for (size_t i=0; i < generi.size(); ++i) {
+        generiText +=QString::fromUtf8(toString(generi[i]));
+        if (i != generi.size()-1) {
             generiText += ", ";
         }
     }
@@ -251,6 +250,8 @@ void FilmView::createScrollableSection(){
 
     QScrollArea* scrollTrailer = new QScrollArea(rightSide); //configurata dopo
     QWidget * sezioneTrailer = new QWidget(scrollTrailer);
+    sezioneTrailer->setObjectName("sezioneScroll");
+
     QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
     layoutTrailer->setAlignment(Qt::AlignTop);
     for (Trailer* t : filmPtr->getTrailers()) {
