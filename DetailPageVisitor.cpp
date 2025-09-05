@@ -23,18 +23,18 @@ void DetailPageVisitor::visit(Film* film) {
 }
 void DetailPageVisitor::visit(Trailer* trailer) {
     detailPage = new TrailerView(trailer);
-    detailPage->setStyleSheet("#gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
+    // detailPage->setStyleSheet("#gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
 
 }
 void DetailPageVisitor::visit(Inserzione* inserzione) {
     detailPage = new InserzioneView(inserzione);
-    detailPage->setStyleSheet("#gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
+    // detailPage->setStyleSheet("#gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
 }
 void DetailPageVisitor::visit(Podcast* podcast) {
     detailPage = new PodcastView(podcast);
-    detailPage->setStyleSheet("#gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
+    // detailPage->setStyleSheet("#gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
 }
 void DetailPageVisitor::visit(Puntata* puntata) {
     detailPage = new PuntataView(puntata);
-    detailPage->setStyleSheet("#gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
+    // detailPage->setStyleSheet("#gaga {background-color: red} #pupu {background-color: yellow} #caca{background-color: blue}");
 }

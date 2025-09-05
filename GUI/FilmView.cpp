@@ -35,9 +35,7 @@ void FilmView::createMediaDetails(){
     QScrollArea* scrollDetails = new QScrollArea(leftSide);
     details->setParent(scrollDetails);
     detailsLayout->setContentsMargins(0, 0, 0, 0);
-    leftSide->setMinimumWidth(930);
-    details->setContentsMargins(0,0,13,0);
-    details->setObjectName("details");
+    
 
     scrollDetails->setWidget(details);
     scrollDetails->setWidgetResizable(true);
@@ -53,6 +51,7 @@ void FilmView::createMediaDetails(){
     layoutProgrammazione->addWidget(labelProgrammazione);
     QWidget * dettagliProgrammazione = new QWidget(sezioneProgrammazione);
     QGridLayout * layoutDettagliProgrammazione = new QGridLayout(dettagliProgrammazione);
+    layoutDettagliProgrammazione->setHorizontalSpacing(35);
     layoutDettagliProgrammazione->setAlignment(Qt::AlignLeft);
     dettagliProgrammazione->setContentsMargins(10,10,10,10);
     
@@ -167,9 +166,9 @@ void FilmView::createMediaDetails(){
 
     std::vector<Genere> generi = filmPtr->getGeneri();
     QString generiText;
-    for (size_t i = 0; i < generi.size(); ++i) {
-        generiText += QString::fromUtf8(toString(generi[i]));
-        if (i != generi.size() - 1) {
+    for (size_t i=0; i < generi.size(); ++i) {
+        generiText +=QString::fromUtf8(toString(generi[i]));
+        if (i != generi.size()-1) {
             generiText += ", ";
         }
     }
@@ -189,14 +188,14 @@ void FilmView::createMediaDetails(){
         "<span style='color: #4e7f8b;'>" + QString::fromStdString(filmPtr->getCasaDiProduzione()) + "</span>",dettagliDettagli);
     casaProduzione->setTextFormat(Qt::RichText);
 
-    layoutDettagliDettagli->addWidget(descrizione);
-    layoutDettagliDettagli->addWidget(attoriLabel);
+    layoutDettagliDettagli->addWidget(descrizione,0,Qt::AlignTop);
+    layoutDettagliDettagli->addWidget(attoriLabel,0,Qt::AlignTop);
     genere->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    layoutDettagliDettagli->addWidget(genere);
+    layoutDettagliDettagli->addWidget(genere,0,Qt::AlignTop);
     classificazione->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    layoutDettagliDettagli->addWidget(classificazione);
+    layoutDettagliDettagli->addWidget(classificazione,0,Qt::AlignTop);
     casaProduzione->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    layoutDettagliDettagli->addWidget(casaProduzione);
+    layoutDettagliDettagli->addWidget(casaProduzione,0,Qt::AlignTop);
 
     layoutDettagli->addWidget(dettagliDettagli);
 
@@ -214,28 +213,8 @@ void FilmView::createMediaDetails(){
     labelTecnica->setObjectName("labelTecnica");
     labelDettagli->setObjectName("labelDettagli");
     setStyleSheet("border: none;");
-    scrollDetails->setStyleSheet( 
-                                "QScrollBar:vertical { background: #4e7f8a;"       
-                                "width: 12px;"              
-                                "margin: 0px 0px 0px 0px;"
-                                "border: 1px solid #4e7f8a;"
-                                "border-radius: 5px; }"
-
-                                "QScrollBar::handle:vertical {background: #d9d9d9;"   
-                                "border-radius: 5px;"    
-                                "min-height: 20px;"
-                                "border-radius: 3px;}"
-
-                                "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
-                                "background: #4e7f8a;"         
-                                "border: 1px solid #4e7f8a;" 
-                                "height: 12px;"
-                                "border-radius: 5px;"
-                                "subcontrol-position: top;"  
-                                "subcontrol-origin: margin;}"
-
-                                "QScrollBar::add-line:vertical:hover, QScrollBar::sub-line:vertical:hover {"
-                                "background: #4e7f8a;}");
+    scrollDetails->setObjectName("scrollDetails");
+    
 }
 
 void FilmView::createScrollableSection(){
@@ -251,6 +230,7 @@ void FilmView::createScrollableSection(){
 
     QScrollArea* scrollTrailer = new QScrollArea(rightSide); //configurata dopo
     QWidget * sezioneTrailer = new QWidget(scrollTrailer);
+    
     QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
     layoutTrailer->setAlignment(Qt::AlignTop);
     for (Trailer* t : filmPtr->getTrailers()) {
@@ -273,32 +253,10 @@ void FilmView::createScrollableSection(){
     rightLayout->addWidget(scrollTrailer,0,Qt::AlignTop);
 
     splitterLayout->addWidget(rightSide);
-
-    //style
+    
     labelTrailer->setObjectName("labelTrailer");
-
-    scrollTrailer->setStyleSheet( 
-                                "QScrollBar:vertical { background: #4e7f8a;"       
-                                "width: 12px;"              
-                                "margin: 0px 0px 0px 0px;"
-                                "border: 1px solid #4e7f8a;"
-                                "border-radius: 5px; }"
-
-                                "QScrollBar::handle:vertical {background: #d9d9d9;"   
-                                "border-radius: 5px;"    
-                                "min-height: 20px;"
-                                "border-radius: 3px;}"
-
-                                "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {"
-                                "background: #4e7f8a;"         
-                                "border: 1px solid #4e7f8a;" 
-                                "height: 12px;"
-                                "border-radius: 5px;"
-                                "subcontrol-position: top;"  
-                                "subcontrol-origin: margin;}"
-
-                                "QScrollBar::add-line:vertical:hover, QScrollBar::sub-line:vertical:hover {"
-                                "background: #4e7f8a;}");
+    sezioneTrailer->setObjectName("sezioneScroll");
+    scrollTrailer->setObjectName("scrollDetails");
 }
 void FilmView::createButtons(){
     DetailsPageButtons * buttons = new DetailsPageButtons(filmPtr,rightSide);
@@ -349,4 +307,5 @@ void FilmView::createButtons(){
 
     rightLayout->addSpacing(60);
     rightLayout->addWidget(buttons);
+    rightLayout->addSpacing(60);
 }

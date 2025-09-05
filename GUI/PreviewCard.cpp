@@ -44,8 +44,8 @@ PreviewCard::PreviewCard(const Media* mPtr, QWidget* parent)
 
     setCursor(Qt::PointingHandCursor);
     setStyleSheet(
-        "#card { background-color: #f8f9fa; border: 1px solid #ddd; border-radius: 5px; }"
-        "#card:hover { background-color: #e9ecef; }"
+        "#card { background-color: #BDCED3; border: 1px solid #BDCED3; border-radius: 5px; }"
+        "#card:hover { background-color: rgba(189, 206, 211, 0.5); }"
     );
 }
 

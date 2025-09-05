@@ -10,36 +10,41 @@ DetailsPageButtons::DetailsPageButtons(Media* mPtr, QWidget* parent)
 {
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
     extendButton = new QPushButton("Estendi data");
+    extendButton->setObjectName("extendButton");
     extendButton->setCursor(Qt::PointingHandCursor);
     extendButton->setMinimumHeight(53);
     extendButton->setFixedWidth(234);
+
     extendTool = new QToolButton();
+    extendTool->setObjectName("extendTool");
     extendTool->setCheckable(true);
     extendTool->setAutoRaise(true);
     extendTool->setFixedSize(24, 24);
     extendTool->setToolTip("Attiva/Disattiva pulsante");
-    
-    
+
     extendButton->setEnabled(true);
     extendTool->setChecked(true);
     extendTool->setIcon(QIcon(":/icons/enabled.png"));
-    
-    auto* row1 = new QHBoxLayout();
-    row1->addWidget(extendButton,0,Qt::AlignLeft);
-    row1->addWidget(extendTool,0,Qt::AlignLeft);
-    mainLayout->addLayout(row1);
+
+    QHBoxLayout* rigaExtend = new QHBoxLayout();
+    rigaExtend->addWidget(extendButton,0,Qt::AlignLeft);
+    rigaExtend->addWidget(extendTool,0,Qt::AlignLeft);
+    mainLayout->addLayout(rigaExtend);
 
     if (mediaPtr && mediaPtr->FuoriProduzione()) {
         extendButton->setEnabled(false);
         extendTool->setVisible(false);
     }
 
+    mainLayout->addSpacing(20);
     deleteButton = new QPushButton("Elimina media");
+    deleteButton->setObjectName("deleteButton");
     deleteButton->setCursor(Qt::PointingHandCursor);
     deleteButton->setMinimumHeight(53);
     deleteButton->setFixedWidth(234);
-    
+
     deleteTool = new QToolButton();
+    deleteTool->setObjectName("deleteTool");
     deleteTool->setCheckable(true);
     deleteTool->setAutoRaise(true);
     deleteTool->setFixedSize(24, 24);
@@ -49,10 +54,10 @@ DetailsPageButtons::DetailsPageButtons(Media* mPtr, QWidget* parent)
     deleteTool->setChecked(false);
     deleteTool->setIcon(QIcon(":/icons/disabled.png"));
 
-    auto* row2 = new QHBoxLayout();
-    row2->addWidget(deleteButton,0,Qt::AlignLeft);
-    row2->addWidget(deleteTool,0,Qt::AlignLeft);
-    mainLayout->addLayout(row2);
+    QHBoxLayout* rigaDelete = new QHBoxLayout();
+    rigaDelete->addWidget(deleteButton,0,Qt::AlignLeft);
+    rigaDelete->addWidget(deleteTool,0,Qt::AlignLeft);
+    mainLayout->addLayout(rigaDelete);
 
     connect(extendTool, &QToolButton::toggled, this, [this](bool checked) {
         extendButton->setEnabled(checked);
