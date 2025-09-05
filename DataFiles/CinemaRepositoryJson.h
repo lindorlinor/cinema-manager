@@ -32,6 +32,7 @@ class CinemaRepositoryJson{
     QJsonDocument loadJsonFile(const QString &fileName);
 
     void saveJsonFile(const QString &fileName, const QJsonDocument &doc);
+    void deteteMediaPointer(QList<Media*>& c_mediaList);
 
 
     public:

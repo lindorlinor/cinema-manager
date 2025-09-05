@@ -169,7 +169,7 @@ void MainWindow::showInsertCinemaPage(){
     stackedWidget->setCurrentIndex(1);
 }
 
-void MainWindow::showSelectedCinemaPage(const Cinema* cinema){
+void MainWindow::showSelectedCinemaPage(){
     stackedWidget->setCurrentIndex(2);
 }
 void MainWindow::showCinemaSelectionPage(){

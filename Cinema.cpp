@@ -1,12 +1,26 @@
 #include "Cinema.h"
 #include "Media.h"
+#include "Film.h"
+#include "Podcast.h"
+#include "Trailer.h"
+#include "Puntata.h"
+#include <QDebug>
 
 Cinema::Cinema(const string &nome, const string &copertina):c_nomeCinema(nome),c_copertinaCinema(copertina){}
 
 Cinema::~Cinema(){
     for(Media* m : c_media){
-        delete m;
+
+        if(Film* film = dynamic_cast<Film*>(m)) //disaccoppio tutti i trailer prima di eliminarli
+            for(Trailer* t : film->getTrailers())
+                film->disaccoppiaTrailer(t);
+
+        if(Podcast* podcast = dynamic_cast<Podcast*>(m)) //disaccoppio tutte le puntate prima di eliminarle
+            for(Puntata* p : podcast->getElencoPuntate())
+                podcast->disaccoppiaPuntata(p);
     }
+
+    for(Media* m : c_media) delete m;   //dopo che tutti i media trailer e puntata sono stati disaccoppiati, elimino tutto evitando doppio delete 
 }
 
 //set

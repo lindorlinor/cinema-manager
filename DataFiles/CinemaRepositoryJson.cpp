@@ -9,15 +9,11 @@ void CinemaRepositoryJson::loadCinema(QList<Cinema*>& c_cinemaList){
     for (const auto &val : doc.array()) {
         QJsonObject obj = val.toObject();
         if (!obj.contains("tipologia")) {
-            bool flag = false;
             for(Cinema* c : c_cinemaList){
-                if(obj["nomeCinema"] == QString::fromStdString(c->getNomeCinema())) {
-                    flag = true;
-                    break;
-                }
+                flag = false;
+                if(obj["nomeCinema"]==QString::fromStdString(c->getNomeCinema())) flag = true;
             }
-            if(!flag) 
-                c_cinemaList.append(converter->deserializeCinema(obj));
+            if(!flag) c_cinemaList.append(converter->deserializeCinema(obj));
         }
     }
 }
@@ -27,21 +23,33 @@ void CinemaRepositoryJson::loadCinema(QList<Cinema*>& c_cinemaList){
 void CinemaRepositoryJson::loadMedia(QList<Media*>& c_mediaList, const QString& nomeCinema){
     QJsonDocument doc = loadJsonFile("media.json");
     if (!doc.isArray()) return;
+
+    bool flag = false;
     
     for (const auto &val : doc.array()) {
         QJsonObject obj = val.toObject();
         if (obj.contains("tipologia") && obj["nomeCinema"] == nomeCinema) {
-            if(obj["tipologia"] == "film") c_mediaList.append(converter->deserializeFilm(obj));
-            else if(obj["tipologia"] == "trailer"){
-                Trailer* trailer = converter->deserializeTrailer(c_mediaList, obj);
-                if(trailer) c_mediaList.append(trailer);
+            
+            for(Media* m : c_mediaList){
+                flag = false;
+                if( obj["titolo"] == QString::fromStdString(m->getTitolo()) &&
+                    obj["autore"] == QString::fromStdString(m->getAutore())) flag = true;
             }
-            else if(obj["tipologia"] == "inserzione") c_mediaList.append(converter->deserializeInserzione(obj));
-            else if(obj["tipologia"] == "podcast") c_mediaList.append(converter->deserializePodcast(obj));
-            else if(obj["tipologia"] == "puntata"){
-                Puntata* puntata = converter->deserializePuntata(c_mediaList, obj); 
-                if(puntata) c_mediaList.append(puntata);
+
+            if(!flag){
+                if(obj["tipologia"] == "film") c_mediaList.append(converter->deserializeFilm(obj));
+                else if(obj["tipologia"] == "trailer"){
+                    Trailer* trailer = converter->deserializeTrailer(c_mediaList, obj);
+                    if(trailer) c_mediaList.append(trailer);
+                }
+                else if(obj["tipologia"] == "inserzione") c_mediaList.append(converter->deserializeInserzione(obj));
+                else if(obj["tipologia"] == "podcast") c_mediaList.append(converter->deserializePodcast(obj));
+                else if(obj["tipologia"] == "puntata"){
+                    Puntata* puntata = converter->deserializePuntata(c_mediaList, obj); 
+                    if(puntata) c_mediaList.append(puntata);
+                }
             }
+
         }
     }
     
@@ -107,8 +115,6 @@ void CinemaRepositoryJson::saveMediaInJson(Media* c_media, const QString& nomeCi
 
 void CinemaRepositoryJson::updateMediaInJson(Cinema* cinemaSelezionato){
 
-    qDebug()<<"chiamato ";
-
     QJsonArray array;
     QList<Cinema*> c_cinemaList;
     loadCinema(c_cinemaList);
@@ -131,8 +137,12 @@ void CinemaRepositoryJson::updateMediaInJson(Cinema* cinemaSelezionato){
                 m->accept(&visitor);
                 array.append(visitor.getObj());
             }
+
+            deteteMediaPointer(mediaList);
         }
     }
+
+    for(Cinema* c : c_cinemaList) delete c;
 
     // salva il JSON aggiornato
     saveJsonFile("media.json", QJsonDocument(array));
@@ -155,13 +165,8 @@ void CinemaRepositoryJson::deleteCinemaInJson(QList<Cinema*> c_cinemaList){
             m->accept(&visitor);
             array.append(visitor.getObj());
         }
-/*         for(Media* m : mediaList){
-            if(m){
-                qDebug()<<"cerco di distruggere "<<QString::fromStdString(m->getTitolo());
-                delete m;
-                qDebug()<<"distrutto";
-            } 
-        } */
+            
+        deteteMediaPointer(mediaList);
     }
 
 
@@ -226,4 +231,20 @@ void CinemaRepositoryJson::saveJsonFile(const QString &fileName, const QJsonDocu
     file.close();
    /*  qDebug() << "File JSON creato o sovrascritto:" << filePath;
     qDebug() << "Current working directory:" << QDir::currentPath(); */
+}
+
+void CinemaRepositoryJson::deteteMediaPointer(QList<Media*>& c_mediaList){
+
+    for(Media* m : c_mediaList){
+
+    if(Film* film = dynamic_cast<Film*>(m)) //disaccoppio tutti i trailer prima di eliminarli
+        for(Trailer* t : film->getTrailers())
+        film->disaccoppiaTrailer(t);
+
+    if(Podcast* podcast = dynamic_cast<Podcast*>(m)) //disaccoppio tutte le puntate prima di eliminarle
+        for(Puntata* p : podcast->getElencoPuntate())
+        podcast->disaccoppiaPuntata(p);
+    }
+
+    for(Media* m : c_mediaList) delete m;
 }
