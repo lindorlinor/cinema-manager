@@ -20,7 +20,7 @@ void ExpandableLabel::onLinkActivated(const QString&) {
 
 void ExpandableLabel::updateText() {
     if (expanded) {
-        setText(fullText + " <a href=\"#\"><u>mostra meno</u></a>");
+        setText("<span style=\"color: #4e7f8b\">"+ fullText + "</span>"  "<a href=\"#\"><span style=\"color: #4e7f8b\"><b><u>mostra meno</u></b></span></a>");
     } else {
         QFontMetrics fm(font());
         int maxWidth = this->width() > 0 ? this->width() : 300;
@@ -28,9 +28,9 @@ void ExpandableLabel::updateText() {
         QString truncated = fm.elidedText(fullText, Qt::ElideRight, maxWidth * 2); 
 
         if (truncated != fullText) {
-            setText(truncated + " <a href=\"#\"><u>...leggi tutto</u></a>");
+            setText("<span style=\"color: #4e7f8b\">"+truncated + "</span>" "<a href=\"#\"><span style=\"color: #4e7f8b\"><b><u>...leggi tutto</u></b></span></a>");
         } else {
-            setText(fullText);
+            setText("<span style=\"color: #4e7f8b\">"+fullText+ "</span>");
         }
     }
 }

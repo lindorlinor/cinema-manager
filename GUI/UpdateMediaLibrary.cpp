@@ -41,13 +41,27 @@ void UpdateMediaLibrary::update(int comboAttivita, int comboOrdinamento, const Q
         }
     }
 
+    
     // Ricreo i widget secondo il nuovo filtro
     for (Media* m : mediaList) {
+        /* Film* film = dynamic_cast<Film*>(m);
+        Puntata* puntata = dynamic_cast<Puntata*>(m); */
         if( //controllo che sia attivo o meno
             ((comboAttivita == 0 && !m->FuoriProduzione()) || (comboAttivita == 1 && m->FuoriProduzione()) || comboAttivita == 2) &&
             //trovo i media che soddisfano la ricerca
-            (((QString::fromStdString(m->getTitolo()).contains(ricerca, Qt::CaseInsensitive)) || (QString::fromStdString(m->getAutore()).contains(ricerca, Qt::CaseInsensitive))))
-        ){
+
+            //controllo se hanno un titolo o un autore corrispondente
+            ((QString::fromStdString(m->getTitolo()).contains(ricerca, Qt::CaseInsensitive)) || (QString::fromStdString(m->getAutore()).contains(ricerca, Qt::CaseInsensitive)) /* ||
+            
+            //controllo se hanno un genere o un attore corrispondente 
+            (film && (std::any_of(film->getGeneri().begin(), film->getGeneri().end(), [&](const Genere& g)
+            { return QString::fromStdString(toString(g)).contains(ricerca, Qt::CaseInsensitive);}) || std::any_of(film->getAttoriPrincipali().begin(), 
+            film->getAttoriPrincipali().end(), [&](const std::string& a){return QString::fromStdString(a).contains(ricerca, Qt::CaseInsensitive);}))) ||
+
+            //controllo se hanno ospiti corrispondenti
+            (puntata && std::any_of(puntata->getOspiti().begin(), puntata->getOspiti().end(), [&](const std::string& a)
+            {return QString::fromStdString(a).contains(ricerca, Qt::CaseInsensitive);})) */)){
+                
             FrameVisitor* libraryVisitor = new FrameVisitor(container, filtro);
             m->accept(libraryVisitor);
             MediaFrame* media(libraryVisitor->getWidget());
