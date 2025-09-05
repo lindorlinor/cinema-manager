@@ -66,10 +66,10 @@ MainWindow::MainWindow(QWidget *parent):    QMainWindow(parent), cinemaPage(new 
             menu->setModifierActionEnabled(0,false);
             menu->setModifierActionEnabled(1,false);
             menu->setModifierActionEnabled(2,false);
-            menu->setModifierActionEnabled(3,false);
         }else{
+            menu->setModifierActionEnabled(1,true);
             menu->setModifierActionEnabled(2,true);
-            menu->setModifierActionEnabled(3,true);
+            menu->setModifierActionEnabled(2,true);
         }
     });
 
@@ -98,10 +98,18 @@ MainWindow::MainWindow(QWidget *parent):    QMainWindow(parent), cinemaPage(new 
 
     connect(menu, &Menu::closeRequested, this, &MainWindow::close);
     /* connect(menu,&Menu::backToCinemaSelection,searchPage,&SearchPanel::removeMediaView); */
+    connect(menu,&Menu::viewFilm,searchPage,&SearchPanel::acceptViewFilm);
+    connect(menu,&Menu::viewTrailer,searchPage,&SearchPanel::acceptViewTrailer);
+    connect(menu,&Menu::viewInserzioni,searchPage,&SearchPanel::acceptViewInserzione);
+    connect(menu,&Menu::viewPodcast,searchPage,&SearchPanel::acceptViewPodcast);
+    connect(menu,&Menu::viewPuntate,searchPage,&SearchPanel::acceptViewPuntata);
+
     connect(menu,&Menu::backToCinemaSelection,this,&MainWindow::showCinemaSelectionPage);
+    connect(menu,&Menu::changeView,searchPage,&SearchPanel::acceptChangeView);
     connect(menu,&Menu::backToCinemaSelection,searchPage,&SearchPanel::resetSearchPanel);
     connect(menu, &Menu::setFullScreen, this, &MainWindow::showFullScreen);
     connect(menu, &Menu::escFullScreen, this, &MainWindow::showMaximized);
+    connect(menu, &Menu::addMedia, searchPage, &SearchPanel::acceptAddMedia);
     connect(menu, &Menu::editCinema, searchPage, &SearchPanel::acceptEditCinema);
     connect(menu, &Menu::deleteCinema, searchPage, &SearchPanel::acceptDeleteCinema);
     connect(menu, &Menu::importMediaList, this, [this](){
@@ -123,8 +131,8 @@ MainWindow::MainWindow(QWidget *parent):    QMainWindow(parent), cinemaPage(new 
     connect(searchPage,&SearchPanel::deleteCinemaInSearchPanel,this,&MainWindow::deleteCinemaFromList);
     connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
     connect(searchPage,&SearchPanel::escSearchPanel,searchPage,&SearchPanel::resetSearchPanel);
-    connect(searchPage,&SearchPanel::setQMenuEnabled,this,[menu](){menu->setModifierActionEnabled(0,true); menu->setModifierActionEnabled(1,true);});
-    connect(searchPage,&SearchPanel::setQMenuDisabled,this,[menu](){menu->setModifierActionEnabled(0,false); menu->setModifierActionEnabled(1,false);});
+    connect(searchPage,&SearchPanel::setQMenuEnabled,this,[menu](){menu->setOtherActionEnabled(0,true);});
+    connect(searchPage,&SearchPanel::setQMenuDisabled,this,[menu](){menu->setOtherActionEnabled(0,false);});
     connect(searchPage, &SearchPanel::deleteCinema,this,[this](){
         /* debug perchè non capivo perchè non si aggiornasse nel json ma il metodo non aggiorna il json veramente ciao
         qDebug() << "aggiorna il json perchè ho chiamato la funzione";

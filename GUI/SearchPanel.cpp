@@ -19,44 +19,6 @@ SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xm
     mainLayout->setSpacing(0);
 }
 
-void SearchPanel::updateModifierPanel(int index){
-    if(stackModifiche->currentIndex()!=index){
-        if(previousIndex)
-            previousIndex = stackModifiche->currentIndex();
-        stackModifiche->setCurrentIndex(index);
-    }
-    if(index==2) emit setQMenuEnabled();
-    else emit setQMenuDisabled();
-}
-
-void SearchPanel::showMediaView(MediaView& widget){
-    if(auto inserzione = dynamic_cast<InserzioneView*>(&widget))
-        inserzione->setMediaList(s_cinemaSelezionato->getListaMedia()); //per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, mi semrbava meglio cosi
-
-    stackModifiche->addWidget(&widget);
-    stackModifiche->setCurrentWidget(&widget);
-
-    connect(&widget, &MediaView::editMediaClicked, this, &SearchPanel::showEditPage);
-    connect(&widget, &MediaView::returnButton, this, [this, &widget](){
-        removeMediaView(&widget);
-    });
-    
-    connect(&widget, &MediaView::extendMediaClicked, this, &SearchPanel::updateJson);
-    connect(&widget, &MediaView::requestMediaView, this, &SearchPanel::showMediaView);
-}
-
-void SearchPanel::removeMediaView(QWidget* widget){
-    int widgetIndex = stackModifiche->indexOf(widget);
-
-    if(widgetIndex > 2)
-        stackModifiche->setCurrentIndex(widgetIndex-1);
-    else
-        stackModifiche->setCurrentIndex(0);
-
-    stackModifiche->removeWidget(widget);
-    delete widget;
-}
-
 void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     //agginta ricerca LatoFiltri
     QVBoxLayout* latoFiltri = new QVBoxLayout;
@@ -181,7 +143,6 @@ void SearchPanel::addLatoDestra(){
     ordinamento = new QComboBox(this);
     QWidget* widgetDestra = new QWidget(this);
     
-    QToolButton* filtri = new QToolButton(this);
     QToolButton* vista = new QToolButton(this);
 
     attivita->addItem("Attivi");
@@ -196,7 +157,6 @@ void SearchPanel::addLatoDestra(){
     barraFiltri->addSpacing(10);
     barraFiltri->addWidget(ordinamento);
     barraFiltri->addSpacing(10);
-    barraFiltri->addWidget(filtri);
     barraFiltri->addSpacing(750);
     barraFiltri->addWidget(vista,Qt::AlignRight);
     widgetSelezioneFiltri->setLayout(barraFiltri);
@@ -287,29 +247,52 @@ void SearchPanel::addLatoDestra(){
     ordinamento->view()->setFrameShape(QFrame::NoFrame);
     ordinamento->view()->setAttribute(Qt::WA_Hover, true);
 
-    filtri->setObjectName("filtri");
     vista->setObjectName("vista");
     cerca->setObjectName("cerca");
     attivita->setObjectName("attivita");
     ordinamento->setObjectName("ordinamento");
     attivita->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     ordinamento->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    filtri->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     vista->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     cerca->setContentsMargins(0, 10, 100, 0);
     barraFiltri->setContentsMargins(0, 10, 50, 0);
-    filtri->setCursor(Qt::PointingHandCursor);
     vista->setCursor(Qt::PointingHandCursor);
     widgetSelezioneFiltri->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 
     //icone
     QIcon iconaVista(":/icons/vista.png");
-    QIcon iconaFiltri(":/icons/filtri.png");
     vista->setIcon(iconaVista);
-    filtri->setIcon(iconaFiltri);
     vista->setIconSize(QSize(40,40));
-    filtri->setIconSize(QSize(35,35));
 }
+
+void SearchPanel::acceptViewFilm(){
+    updateFiltroMedia("Film"); 
+    deleteViewPages(); 
+    updateModifierPanel(0);}
+
+void SearchPanel::acceptViewTrailer(){
+    updateFiltroMedia("Trailer");
+    deleteViewPages(); 
+    updateModifierPanel(0);}
+
+void SearchPanel::acceptViewInserzione(){
+    updateFiltroMedia("Inserzioni");
+    deleteViewPages(); 
+    updateModifierPanel(0);}
+
+void SearchPanel::acceptViewPodcast(){
+    updateFiltroMedia("Podcast");
+    deleteViewPages(); 
+    updateModifierPanel(0);}
+
+void SearchPanel::acceptViewPuntata(){
+    updateFiltroMedia("Puntate");
+    deleteViewPages(); 
+    updateModifierPanel(0);}
+
+void SearchPanel::acceptAddMedia(){
+    deleteViewPages();
+    updateModifierPanel(1);}
 
 
 void SearchPanel::updateCerca(const QString& filtro){
@@ -475,8 +458,10 @@ void SearchPanel::showEditPage(Media* media){
     stackModifiche->addWidget(editMedia);
     stackModifiche->setCurrentWidget(editMedia);
     connect(editMedia, &EditMedia::tornaIndietro, this, [this, editMedia, backIndex](){
+        updateMediaList(); 
+        updateFiltroTutto();
         stackModifiche->setCurrentIndex(backIndex);       
-        stackModifiche->removeWidget(editMedia); 
+        stackModifiche->removeWidget(editMedia);
         delete editMedia;});
 }
 
@@ -496,4 +481,46 @@ void SearchPanel::deleteViewPages(){
             delete w;
         }
     }
+}
+
+void SearchPanel::updateModifierPanel(int index){
+    if(stackModifiche->currentIndex()!=index){
+        if(previousIndex)
+            previousIndex = stackModifiche->currentIndex();
+        stackModifiche->setCurrentIndex(index);
+    }
+    if(index==0) emit setQMenuEnabled();
+    else emit setQMenuDisabled();
+}
+
+void SearchPanel::showMediaView(MediaView& widget){
+    if(auto inserzione = dynamic_cast<InserzioneView*>(&widget))
+        inserzione->setMediaList(s_cinemaSelezionato->getListaMedia()); //per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, mi semrbava meglio cosi
+
+    stackModifiche->addWidget(&widget);
+    stackModifiche->setCurrentWidget(&widget);
+
+    connect(&widget, &MediaView::editMediaClicked, this, &SearchPanel::showEditPage);
+    connect(&widget, &MediaView::returnButton, this, [this, &widget](){
+        removeMediaView(&widget);
+    });
+    
+    connect(&widget, &MediaView::extendMediaClicked, this, &SearchPanel::updateJson);
+    connect(&widget, &MediaView::requestMediaView, this, &SearchPanel::showMediaView);
+}
+
+void SearchPanel::removeMediaView(QWidget* widget){
+    int widgetIndex = stackModifiche->indexOf(widget);
+
+    if(widgetIndex > 2)
+        stackModifiche->setCurrentIndex(widgetIndex-1);
+    else
+        stackModifiche->setCurrentIndex(0);
+
+    stackModifiche->removeWidget(widget);
+    delete widget;
+}
+
+void SearchPanel::acceptChangeView(){
+    
 }

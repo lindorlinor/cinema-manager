@@ -25,7 +25,15 @@ class Menu: public QWidget{
     void setModifierActionEnabled(int i, bool visible);
     void setViewActionEnabled(int i, bool visible);
     void setOtherActionEnabled(int i, bool visible);
+
     signals:
+    void changeView();
+    void addMedia();
+    void viewFilm();
+    void viewTrailer();
+    void viewInserzioni();
+    void viewPodcast();
+    void viewPuntate();
     void backToCinemaSelection();
     void importMediaList();
     void importSession();

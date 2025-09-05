@@ -21,8 +21,7 @@ Menu::Menu(QWidget* parent):QWidget(parent),menuBar(new QMenuBar(this)),file(new
     file->addAction(new QAction("Esci", file));
     
     //Menu "Modifica"
-    modifica->addAction(new QAction("Modifica Media", modifica));
-    modifica->addAction(new QAction("Rimuovi Media", modifica));
+    modifica->addAction(new QAction("Aggiungi Media", modifica));
     modifica->addAction(new QAction("Modifica Cinema", modifica));
     modifica->addAction(new QAction("Elimina Cinema", modifica));
     //Menu "Visualizza"
@@ -30,6 +29,7 @@ Menu::Menu(QWidget* parent):QWidget(parent),menuBar(new QMenuBar(this)),file(new
     visualizza->addAction(new QAction("Visualizza Trailer", visualizza));
     visualizza->addAction(new QAction("Visualizza Inserzioni", visualizza));
     visualizza->addAction(new QAction("Visualizza Podcast", visualizza));
+    visualizza->addAction(new QAction("Visualizza puntate", visualizza));
     //Menu "Altro"
     altro->addAction(new QAction("Cambia Vista", altro));
     altro->addAction(new QAction("Full Screen", altro));
@@ -44,10 +44,20 @@ Menu::Menu(QWidget* parent):QWidget(parent),menuBar(new QMenuBar(this)),file(new
     connect(file->actions()[6], &QAction::triggered, qApp, &QApplication::quit);
     
     //action di modifica
-    connect(modifica->actions()[2], &QAction::triggered, this, &Menu::editCinema);
-    connect(modifica->actions()[3], &QAction::triggered, this, &Menu::deleteCinema);
+    connect(modifica->actions()[0], &QAction::triggered, this, &Menu::addMedia);
+    connect(modifica->actions()[1], &QAction::triggered, this, &Menu::editCinema);
+    connect(modifica->actions()[2], &QAction::triggered, this, &Menu::deleteCinema);
+    
+    //action di visualizza
+    connect(visualizza->actions()[0], &QAction::triggered, this, &Menu::viewFilm);
+    connect(visualizza->actions()[1], &QAction::triggered, this, &Menu::viewTrailer);
+    connect(visualizza->actions()[2], &QAction::triggered, this, &Menu::viewInserzioni);
+    connect(visualizza->actions()[3], &QAction::triggered, this, &Menu::viewPodcast);
+    connect(visualizza->actions()[4], &QAction::triggered, this, &Menu::viewPodcast);
+    
 
     //action di Altro
+    connect(altro->actions()[0], &QAction::triggered, this, &Menu::changeView);
     connect(altro->actions()[1], &QAction::triggered, this, &Menu::setFullScreen);
     connect(altro->actions()[2], &QAction::triggered, this, &Menu::escFullScreen);
 
