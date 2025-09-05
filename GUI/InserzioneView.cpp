@@ -35,7 +35,7 @@ void InserzioneView::createMediaDetails(){
     // details->setFixedHeight(scaled.height()+210);
     scrollDetails->setMinimumHeight(550);
     details->setMaximumWidth(600);
-    details->setObjectName("details");
+    
 
     scrollDetails->setWidget(details);
     scrollDetails->setWidgetResizable(true);
@@ -57,19 +57,19 @@ void InserzioneView::createMediaDetails(){
     
     
     QLabel* inizioP = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Inizio proiezione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(dateToString(insPtr->getDataInizioRilascio())) + "</span>",dettagliProgrammazione);
+        "<span style='color: #bdced3; font-weight:bold;'>Inizio proiezione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(insPtr->getDataInizioRilascio())) + "</span>",dettagliProgrammazione);
     inizioP->setTextFormat(Qt::RichText);
     endDateLabel = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(dateToString(insPtr->getDataFineRilascio())) + "</span>",dettagliProgrammazione);
+        "<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(insPtr->getDataFineRilascio())) + "</span>",dettagliProgrammazione);
     endDateLabel->setTextFormat(Qt::RichText);
     inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     endDateLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     QLabel* nProiezioniGiornaliere = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Numero proiezioni giornaliere: </span>"
-        "<span style='color:black;'>" + QString::number(insPtr->getNProiezioniGiornaliere()) + "</span>",dettagliProgrammazione);
+        "<span style='color: #bdced3; font-weight:bold;'>Numero proiezioni giornaliere: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::number(insPtr->getNProiezioniGiornaliere()) + "</span>",dettagliProgrammazione);
     nProiezioniGiornaliere->setTextFormat(Qt::RichText);
     nProiezioniGiornaliere->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
 
@@ -82,14 +82,14 @@ void InserzioneView::createMediaDetails(){
         }
     }
     QLabel* fasce = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Fasce orarie: </span>"
-        "<span style='color:black;'>" + fasceTxt + "</span>",dettagliProgrammazione);
+        "<span style='color: #bdced3; font-weight:bold;'>Fasce orarie: </span>"
+        "<span style='color: #4e7f8b;'>" + fasceTxt + "</span>",dettagliProgrammazione);
     fasce->setTextFormat(Qt::RichText);
     fasce->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
         
     QLabel* targetPubb = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Target pubblico: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(toString(insPtr->getTarget())) + "</span>",dettagliProgrammazione);
+        "<span style='color: #bdced3; font-weight:bold;'>Target pubblico: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString(toString(insPtr->getTarget())) + "</span>",dettagliProgrammazione);
     
     targetPubb->setTextFormat(Qt::RichText);
     targetPubb->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
@@ -116,17 +116,17 @@ void InserzioneView::createMediaDetails(){
     
     
     QLabel* costoFissoProiezioni = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Costo fisso proiezioni: </span>"
-        "<span style='color:black;'>" + QString::number(insPtr->getCostoFissoProiezione()) + " €</span>",dettagliPerformance);
+        "<span style='color: #bdced3; font-weight:bold;'>Costo fisso proiezioni: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::number(insPtr->getCostoFissoProiezione()) + " €</span>",dettagliPerformance);
     costoFissoProiezioni->setTextFormat(Qt::RichText);
 
     QLabel* incasso = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Stima incasso totale: </span>"
-        "<span style='color:black;'>" + QString::number(insPtr->calcolaIncasso()) + " €</span>",dettagliPerformance);
+        "<span style='color: #bdced3; font-weight:bold;'>Stima incasso totale: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::number(insPtr->calcolaIncasso()) + " €</span>",dettagliPerformance);
     incasso->setTextFormat(Qt::RichText);
     QLabel* visualizzazioni = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Visualizzazioni: </span>"
-        "<span style='color:black;'>" + QString::number(insPtr->getVisualizzazioni()) + "</span>",dettagliPerformance);
+        "<span style='color: #bdced3; font-weight:bold;'>Visualizzazioni: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::number(insPtr->getVisualizzazioni()) + "</span>",dettagliPerformance);
     visualizzazioni->setTextFormat(Qt::RichText);
 
     layoutDettagliPerformance->addWidget(costoFissoProiezioni);
@@ -147,12 +147,12 @@ void InserzioneView::createMediaDetails(){
     dettagliTecnici->setContentsMargins(10,10,10,10);
     
     QLabel* risoluzione = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Risoluzione: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(insPtr->getRisoluzione())) + "</span>",dettagliTecnici);
+        "<span style='color: #bdced3; font-weight:bold;'>Risoluzione: </span>"
+        "<span style='color: #4e7f8b;;'>" + QString::fromUtf8(toString(insPtr->getRisoluzione())) + "</span>",dettagliTecnici);
     risoluzione->setTextFormat(Qt::RichText);
     QLabel* formato = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Formato: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(insPtr->getFormato())) + "</span>",dettagliTecnici);
+        "<span style='color: #bdced3; font-weight:bold;'>Formato: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromUtf8(toString(insPtr->getFormato())) + "</span>",dettagliTecnici);
     formato->setTextFormat(Qt::RichText);
 
     layoutDettagliTecnici->addWidget(risoluzione);
@@ -172,7 +172,7 @@ void InserzioneView::createMediaDetails(){
     
     
     ExpandableLabel* descrizione = new ExpandableLabel(
-         "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(insPtr->getDescrizione()),dettagliDettagli);
+         "<span style='color: #bdced3; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(insPtr->getDescrizione()),dettagliDettagli);
    
     descrizione->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
@@ -187,6 +187,14 @@ void InserzioneView::createMediaDetails(){
     detailsLayout->addStretch();
 
     splitterLayout->addWidget(leftSide);
+
+    //stile
+    labelProgrammazione->setObjectName("programmazione");
+    labelPerformance->setObjectName("labelPerformance");
+    labelTecnica->setObjectName("labelTecnica");
+    labelDettagli->setObjectName("labelDettagli");
+    scrollDetails->setObjectName("scrollDetails");
+
 
 }
 
@@ -244,6 +252,7 @@ void InserzioneView::createScrollableSection(){
     rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
     QLabel *labelInserzioni = new QLabel("Altre inserzioni",rightSide);
+    labelInserzioni->setObjectName("labelCorrelati");
     QFont fontIns = labelInserzioni->font();
     fontIns.setPointSize(17);
     fontIns.setBold(true);
@@ -253,11 +262,11 @@ void InserzioneView::createScrollableSection(){
 
     QScrollArea* scrollInserzioni = new QScrollArea(rightSide); //configurata dopo
     QWidget * sezioneInserzioni = new QWidget(scrollInserzioni);
-
+    
     QVBoxLayout * layoutInserzioni = new QVBoxLayout(sezioneInserzioni);
     layoutInserzioni->setAlignment(Qt::AlignTop);
-    sezioneInserzioni->setObjectName("sp");
 
+    
     for (Media* m : *mediaList) {
         Inserzione* i = dynamic_cast<Inserzione*>(m);
         if (i && i!=insPtr){
@@ -270,10 +279,10 @@ void InserzioneView::createScrollableSection(){
             });
         }
     }
-
+    
     layoutInserzioni->setSpacing(20);  
     sezioneInserzioni->setContentsMargins(20,20,20,33);
-
+    
     scrollInserzioni->setWidget(sezioneInserzioni);
     scrollInserzioni->setWidgetResizable(true);
     scrollInserzioni->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -282,6 +291,9 @@ void InserzioneView::createScrollableSection(){
     rightLayout->addWidget(scrollInserzioni,0,Qt::AlignTop);
 
     splitterLayout->addWidget(rightSide);
+    sezioneInserzioni->setObjectName("sezioneScroll");
+    scrollInserzioni->setObjectName("scrollDetails");
+
 }
 
 

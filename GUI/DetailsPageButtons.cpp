@@ -9,7 +9,6 @@ DetailsPageButtons::DetailsPageButtons(Media* mPtr, QWidget* parent)
     : QWidget(parent), mediaPtr(mPtr)
 {
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
-    mainLayout->setSpacing(20);
     extendButton = new QPushButton("Estendi data");
     extendButton->setObjectName("extendButton");
     extendButton->setCursor(Qt::PointingHandCursor);
@@ -37,7 +36,7 @@ DetailsPageButtons::DetailsPageButtons(Media* mPtr, QWidget* parent)
         extendTool->setVisible(false);
     }
 
-
+    mainLayout->addSpacing(20);
     deleteButton = new QPushButton("Elimina media");
     deleteButton->setObjectName("deleteButton");
     deleteButton->setCursor(Qt::PointingHandCursor);

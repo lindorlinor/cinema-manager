@@ -16,7 +16,6 @@ PuntataView::PuntataView(Puntata* pPtr,QWidget* parent):MediaView(pPtr,parent),p
 void PuntataView::createMediaDetails(){
     createRowDetails();
     leftSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    leftSide->setObjectName("pupu");
     leftSide->setContentsMargins(0,0,0,0);
     leftLayout->setSpacing(0);
     leftLayout->setContentsMargins(0,0,0,0);
@@ -24,11 +23,10 @@ void PuntataView::createMediaDetails(){
     createMediaCard();
 
     QScrollArea* scrollDetails = new QScrollArea(leftSide);
-    QFrame * details = new QFrame(scrollDetails);
-    QVBoxLayout * detailsLayout = new QVBoxLayout(details);
+    detailsLayout->setParent(details);
     detailsLayout->setContentsMargins(0, 0, 0, 0);
     details->setMaximumWidth(600);
-    details->setObjectName("details");
+    
 
     scrollDetails->setWidget(details);
     scrollDetails->setWidgetResizable(true);
@@ -45,25 +43,26 @@ void PuntataView::createMediaDetails(){
 
     QWidget * dettagliProgrammazione = new QWidget(sezioneProgrammazione);
     QGridLayout * layoutDettagliProgrammazione = new QGridLayout(dettagliProgrammazione);
+    layoutDettagliProgrammazione->setHorizontalSpacing(35);
     layoutDettagliProgrammazione->setAlignment(Qt::AlignLeft);
     dettagliProgrammazione->setContentsMargins(10,10,10,10);
     
     
     QLabel* inizioP = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Inizio proiezione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(dateToString(puntPtr->getDataInizioRilascio())) + "</span>",dettagliProgrammazione);
+        "<span style='color: #bdced3; font-weight:bold;'>Inizio proiezione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(puntPtr->getDataInizioRilascio())) + "</span>",dettagliProgrammazione);
     inizioP->setTextFormat(Qt::RichText);
     endDateLabel = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-        "<span style='color:black;'>" + QString::fromStdString(dateToString(puntPtr->getDataFineRilascio())) + "</span>",dettagliProgrammazione);
+        "<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(puntPtr->getDataFineRilascio())) + "</span>",dettagliProgrammazione);
     endDateLabel->setTextFormat(Qt::RichText);
     inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     endDateLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
         
     QLabel* nPubblicita = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Numero di pubblicita': </span>"
-        "<span style='color:black;'>" + QString::number(puntPtr->getNumeroPubblicita()) + "</span>",dettagliProgrammazione);
+        "<span style='color: #bdced3; font-weight:bold;'>Numero di pubblicita': </span>"
+        "<span style='color: #4e7f8b;'>" + QString::number(puntPtr->getNumeroPubblicita()) + "</span>",dettagliProgrammazione);
     nPubblicita->setTextFormat(Qt::RichText);
 
     layoutDettagliProgrammazione->addWidget(inizioP,1,0);
@@ -83,16 +82,15 @@ void PuntataView::createMediaDetails(){
     QVBoxLayout * layoutDettagliPerformance = new QVBoxLayout(dettagliPerformance);
     dettagliPerformance->setContentsMargins(10,10,10,10);
     sezionePerformance->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    sezionePerformance->setObjectName("sp");
-    
+
     // Visualizzazioni e incasso
     QLabel* incasso = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Incasso totale: </span>"
-        "<span style='color:black;'>" + QString::number(puntPtr->calcolaIncasso()) + " €</span>",dettagliPerformance);
+        "<span style='color: #bdced3; font-weight:bold;'>Incasso totale: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::number(puntPtr->calcolaIncasso()) + " €</span>",dettagliPerformance);
     incasso->setTextFormat(Qt::RichText);
     QLabel* visualizzazioni = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Visualizzazioni: </span>"
-        "<span style='color:black;'>" + QString::number(puntPtr->getVisualizzazioni()) + "</span>",dettagliPerformance);
+        "<span style='color: #bdced3; font-weight:bold;'>Visualizzazioni: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::number(puntPtr->getVisualizzazioni()) + "</span>",dettagliPerformance);
     visualizzazioni->setTextFormat(Qt::RichText);
 
     layoutDettagliPerformance->addWidget(incasso);
@@ -102,7 +100,7 @@ void PuntataView::createMediaDetails(){
     QWidget * sezioneTecnica = new QWidget(details);
     QVBoxLayout * layoutTecnica = new QVBoxLayout(sezioneTecnica);
     sezioneTecnica->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    sezioneTecnica->setObjectName("sp");
+
     QLabel * labelTecnica = new QLabel("Caratteristiche tecniche");
     layoutTecnica->addWidget(labelTecnica);
     
@@ -111,12 +109,12 @@ void PuntataView::createMediaDetails(){
     dettagliTecnici->setContentsMargins(10,10,10,10);
     
     QLabel* risoluzione = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Risoluzione: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(puntPtr->getRisoluzione())) + "</span>",dettagliTecnici);
+        "<span style='color: #bdced3; font-weight:bold;'>Risoluzione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromUtf8(toString(puntPtr->getRisoluzione())) + "</span>",dettagliTecnici);
     risoluzione->setTextFormat(Qt::RichText);
     QLabel* formato = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Formato: </span>"
-        "<span style='color:black;'>" + QString::fromUtf8(toString(puntPtr->getFormato())) + "</span>",dettagliTecnici);
+        "<span style='color: #bdced3; font-weight:bold;'>Formato: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromUtf8(toString(puntPtr->getFormato())) + "</span>",dettagliTecnici);
     formato->setTextFormat(Qt::RichText);
 
     layoutDettagliTecnici->addWidget(risoluzione);
@@ -136,11 +134,11 @@ void PuntataView::createMediaDetails(){
     
     
     ExpandableLabel* descrizione = new ExpandableLabel(
-        "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(puntPtr->getDescrizione()),dettagliDettagli);
+        "<span style='color: #bdced3; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(puntPtr->getDescrizione()),dettagliDettagli);
         
     QLabel* conduttore = new QLabel(
-        "<span style='color:white; font-weight:bold;'>Conduttore: </span>"
-        "<span style='color:black;'>" + QString::fromStdString((puntPtr->getPodcast())->getConduttore()) + "</span>",dettagliTecnici);
+        "<span style='color: #bdced3; font-weight:bold;'>Conduttore: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString((puntPtr->getPodcast())->getConduttore()) + "</span>",dettagliTecnici);
     conduttore->setTextFormat(Qt::RichText);
     conduttore->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
             
@@ -158,6 +156,14 @@ void PuntataView::createMediaDetails(){
 
     leftSide->setFixedHeight(700);
     splitterLayout->addWidget(leftSide);
+
+    //stile
+    labelProgrammazione->setObjectName("programmazione");
+    labelPerformance->setObjectName("labelPerformance");
+    labelTecnica->setObjectName("labelTecnica");
+    labelDettagli->setObjectName("labelDettagli");
+    scrollDetails->setObjectName("scrollDetails");
+
 }
 void PuntataView::createScrollableSection(){
     rightSide->setFixedHeight(650);
@@ -165,6 +171,7 @@ void PuntataView::createScrollableSection(){
     rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
     QLabel *labelPodA = new QLabel("Podcast associato",rightSide);
+    labelPodA->setObjectName("labelCorrelati");
     QFont fontPodA = labelPodA->font();
     fontPodA.setPointSize(17);
     fontPodA.setBold(true);
@@ -173,8 +180,7 @@ void PuntataView::createScrollableSection(){
 
     QWidget * sezionePodA = new QWidget(rightSide);
     QVBoxLayout* layoutPodA = new QVBoxLayout(sezionePodA);
-    sezionePodA->setObjectName("sp"); 
-
+    
     Podcast* podA = puntPtr->getPodcast();
     PreviewCard* cardPodA = new PreviewCard(podA);
     // cardPodA->setFixedSize(210, 320);   
@@ -187,6 +193,7 @@ void PuntataView::createScrollableSection(){
     sezionePodA->setContentsMargins(20,0,20,0);
 
     QLabel *labelPuntate = new QLabel("Puntate correlate",rightSide);
+    labelPuntate->setObjectName("labelCorrelati");
     QFont fontPuntate = labelPuntate->font();
     fontPuntate.setPointSize(17);
     fontPuntate.setBold(true);
@@ -195,8 +202,7 @@ void PuntataView::createScrollableSection(){
     QScrollArea* scrollPuntate = new QScrollArea(rightSide); //configurata dopo
     QWidget * sezionePuntate = new QWidget(scrollPuntate);
     QVBoxLayout * layoutPuntate = new QVBoxLayout(sezionePuntate);
-    sezionePuntate->setObjectName("sp");
-
+    
     for (Puntata* p : (puntPtr->getPodcast())->getElencoPuntate()) {
         if(p!=puntPtr){
             PreviewCard* cardPuntata = new PreviewCard(p);
@@ -207,8 +213,8 @@ void PuntataView::createScrollableSection(){
                     p->accept(&detailVisitor);
                     emit requestMediaView(*detailVisitor.getWidget());
                 });
+            }
         }
-    }
     layoutPuntate->setSpacing(20);  
     sezionePuntate->setContentsMargins(20,20,20,20);
 
@@ -217,13 +223,17 @@ void PuntataView::createScrollableSection(){
     scrollPuntate->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollPuntate->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scrollPuntate->setMinimumHeight(180);
-
+    
     rightLayout->addWidget(labelPodA);
     rightLayout->addWidget(sezionePodA,0,Qt::AlignTop);
     rightLayout->addSpacing(20);
     rightLayout->addWidget(labelPuntate);
     rightLayout->addWidget(scrollPuntate);
     splitterLayout->addWidget(rightSide);
+    
+    sezionePodA->setObjectName("sezioneScroll");
+    sezionePuntate->setObjectName("sezioneScroll");
+    scrollPuntate->setObjectName("scrollDetails");
 }
 void PuntataView::createButtons(){
     DetailsPageButtons * buttons = new DetailsPageButtons(puntPtr,leftSide);
