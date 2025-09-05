@@ -188,68 +188,6 @@
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },
     {
-        "autore": "FilmLab",
-        "conduttore": "Marco Rossi",
-        "dataFineRilascio": "2025-10-31",
-        "dataInizioRilascio": "2025-10-01",
-        "descrizione": "Approfondimenti sui grandi registi e capolavori cinematografici.",
-        "durataMinuti": 75,
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/image17.png",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "podcast",
-        "titolo": "Cinema d'Autore"
-    },
-    {
-        "autore": "FilmLab",
-        "autorePodcastAssociato": "FilmLab",
-        "dataFineRilascio": "2025-10-15",
-        "dataInizioRilascio": "2025-10-01",
-        "descrizione": "Esploriamo l'era del cinema muto e i suoi maestri.",
-        "durataMinuti": 40,
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Limena",
-        "numeroPubblicita": 1,
-        "ospiti": [
-        ],
-        "path": ":/images/image17.png",
-        "podcastAssociato": "Cinema d'Autore",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "puntata",
-        "titolo": "Analisi del cinema muto"
-    },
-    {
-        "autore": "FilmLab",
-        "autorePodcastAssociato": "FilmLab",
-        "dataFineRilascio": "2025-10-31",
-        "dataInizioRilascio": "2025-10-16",
-        "descrizione": "Il movimento francese che ha rivoluzionato il cinema.",
-        "durataMinuti": 35,
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Limena",
-        "numeroPubblicita": 2,
-        "ospiti": [
-        ],
-        "path": ":/images/image17.png",
-        "podcastAssociato": "Cinema d'Autore",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "puntata",
-        "titolo": "La Nouvelle Vague"
-    },
-    {
         "attoriPrincipali": [
         ],
         "autore": "Hayao Miyazaki",
@@ -374,6 +312,68 @@
     {
         "copertinaCinema": ":/images/coverCinema.png",
         "nomeCinema": "Cinema Limena"
+    },
+    {
+        "autore": "FilmLab",
+        "conduttore": "Marco Rossi",
+        "dataFineRilascio": "2025-10-31",
+        "dataInizioRilascio": "2025-10-01",
+        "descrizione": "Approfondimenti sui grandi registi e capolavori cinematografici.",
+        "durataMinuti": 75,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Limena",
+        "path": ":/images/image17.png",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "Cinema d'Autore"
+    },
+    {
+        "autore": "FilmLab",
+        "autorePodcastAssociato": "FilmLab",
+        "dataFineRilascio": "2025-10-15",
+        "dataInizioRilascio": "2025-10-01",
+        "descrizione": "Esploriamo l'era del cinema muto e i suoi maestri.",
+        "durataMinuti": 40,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Limena",
+        "numeroPubblicita": 1,
+        "ospiti": [
+        ],
+        "path": ":/images/image17.png",
+        "podcastAssociato": "Cinema d'Autore",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "Analisi del cinema muto"
+    },
+    {
+        "autore": "FilmLab",
+        "autorePodcastAssociato": "FilmLab",
+        "dataFineRilascio": "2025-10-31",
+        "dataInizioRilascio": "2025-10-16",
+        "descrizione": "Il movimento francese che ha rivoluzionato il cinema.",
+        "durataMinuti": 35,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Limena",
+        "numeroPubblicita": 2,
+        "ospiti": [
+        ],
+        "path": ":/images/image17.png",
+        "podcastAssociato": "Cinema d'Autore",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "La Nouvelle Vague"
     },
     {
         "attoriPrincipali": [
@@ -534,6 +534,8 @@
     },
     {
         "attoriPrincipali": [
+            "Emma Watson",
+            "Ralph Fiennes",
             "Daniel Radcliffe",
             "Emma Watson",
             "Rupert Grint",
@@ -545,11 +547,11 @@
         "dataFineRilascio": "2025-09-07",
         "dataInizioRilascio": "2025-08-28",
         "descrizione": "Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.",
-        "durataMinuti": 157,
+        "durataMinuti": 158,
         "formato": "DCP",
         "generi": [
-            "Fantasy",
-            "Avventura"
+            "Avventura",
+            "Fantasy"
         ],
         "lingueDisponibili": [
             "Italiano",
@@ -558,7 +560,7 @@
         "nPostCredit": 0,
         "nomeCinema": "Cinema Limena",
         "path": ":/images/locandina_harrypottereilcalicedifuoco.jpg",
-        "risoluzione": "FullHD 1080p",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
         "target": "TUTTI",
@@ -587,6 +589,10 @@
     },
     {
         "attoriPrincipali": [
+            "Zoë Kravitz",
+            "Regina King",
+            "Vincent D'Onofrio",
+            "Bad Bunny",
             "Austin Butler",
             "Zoë Kravitz",
             "Matt Smith",
@@ -603,12 +609,11 @@
         "dataFineRilascio": "2025-09-07",
         "dataInizioRilascio": "2025-08-27",
         "descrizione": "Hank Thompson, ex promessa del baseball, finisce coinvolto in una violenta caccia all'uomo nel crudo sottobosco criminale di New York anni ’90 dopo aver accettato di badare al gatto del suo stravagante vicino.",
-        "durataMinuti": 109,
+        "durataMinuti": 110,
         "formato": "DCP",
         "generi": [
-            "Thriller",
             "Crime",
-            "Nessuno"
+            "Thriller"
         ],
         "lingueDisponibili": [
             "Italiano",
@@ -617,7 +622,7 @@
         "nPostCredit": 0,
         "nomeCinema": "Cinema Limena",
         "path": ":/images/locandina_caughtstealing.jpg",
-        "risoluzione": "FullHD 1080p",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
         "target": "TUTTI",
@@ -756,39 +761,6 @@
     },
     {
         "attoriPrincipali": [
-            "Daniel Radcliffe",
-            "Emma Watson",
-            "Rupert Grint",
-            "Ralph Fiennes"
-        ],
-        "autore": "Mike Newell",
-        "casaDiProduzione": "Warner Bros Italia",
-        "costoBiglietto": 10.5,
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2025-08-28",
-        "descrizione": "Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.",
-        "durataMinuti": 157,
-        "formato": "DCP",
-        "generi": [
-            "Fantasy",
-            "Avventura"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/harry_potter_calice_fuoco.png",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Harry Potter e il Calice di Fuoco"
-    },
-    {
-        "attoriPrincipali": [
             "Roy Scheider",
             "Robert Shaw",
             "Richard Dreyfuss",
@@ -819,388 +791,5 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "Lo Squalo - Anniversario 50 anni"
-    },
-    {
-        "copertinaCinema": ":/images/default.png",
-        "nomeCinema": "cinema"
-    },
-    {
-        "attoriPrincipali": [
-            "Rihanna",
-            "John Goodman",
-            "Nick Offerman"
-        ],
-        "autore": "Chris Miller",
-        "casaDiProduzione": "Paramount Animation",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2025-08-22",
-        "descrizione": "Un’avventura animata-musicale con i Puffi alla ricerca del Grande Puffo tra dimensioni magiche...",
-        "durataMinuti": 92,
-        "formato": "DCP",
-        "generi": [
-            "Animazione",
-            "Nessuno"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 1,
-        "nomeCinema": "cinema",
-        "path": ":/images/locandina_ipuffiilfilm.jpg",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "I Puffi - Il Film"
-    },
-    {
-        "autore": "Paramount",
-        "autoreFilmAssociato": "Chris Miller",
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2025-06-06",
-        "descrizione": "Primi scorci ufficiali dell’avventura dei Puffi in CGI.",
-        "durataMinuti": 2,
-        "filmAssociato": "I Puffi - Il Film",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_i_puffi_il_film.png",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - I Puffi - Il Film"
-    },
-    {
-        "attoriPrincipali": [
-            "Olivia Colman",
-            "Benedict Cumberbatch",
-            "Andy Samberg",
-            "Hitoshi Takagi",
-            "Takashi Nagasako"
-        ],
-        "autore": "Jay Roach",
-        "casaDiProduzione": "Searchlight Pictures / Disney Italia",
-        "costoBiglietto": 9,
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-08-27",
-        "descrizione": "Commedia nera in cui una coppia apparentemente perfetta — Ivy e Theo Rose — vede naufragare il proprio matrimonio in una guerra emotiva tra ambizione professionale e risentimento.",
-        "durataMinuti": 105,
-        "formato": "DCP",
-        "generi": [
-            "Nessuno",
-            "Commedia"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "cinema",
-        "path": ":/images/locandina_irosesfilm.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "I Roses"
-    },
-    {
-        "autore": "Searchlight Pictures / Disney Italia",
-        "autoreFilmAssociato": "Jay Roach",
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-08-01",
-        "descrizione": "Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.",
-        "durataMinuti": 2,
-        "filmAssociato": "I Roses",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 15,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_i_roses.png",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - I Roses"
-    },
-    {
-        "attoriPrincipali": [
-            "Lillo Petrolo",
-            "Maurizio Lastrico",
-            "Elio",
-            "Naska"
-        ],
-        "autore": "Andrea Jublin",
-        "casaDiProduzione": "Be Water Film / PiperFilm",
-        "costoBiglietto": 7,
-        "dataFineRilascio": "2025-09-08",
-        "dataInizioRilascio": "2025-08-28",
-        "descrizione": "\n            Bruno è un ex chitarrista rock egoista e bugiardo che finisce in carcere. Nel luogo più costrittivo trova però un’opportunità di riscatto: formare una band con altri detenuti e partecipare al Roma Rock Contest per mantenere una promessa fatta alla figlia.\n        ",
-        "durataMinuti": 100,
-        "formato": "DCP",
-        "generi": [
-            "Commedia"
-        ],
-        "lingueDisponibili": [
-            "Italiano"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "cinema",
-        "path": ":/images/locandina_tuttacolpadelrock.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Tutta colpa del rock"
-    },
-    {
-        "autore": "PiperFilm",
-        "autoreFilmAssociato": "Andrea Jublin",
-        "dataFineRilascio": "2025-09-08",
-        "dataInizioRilascio": "2025-07-07",
-        "descrizione": "Il trailer ufficiale mostra l’energia rock e l’irriverente cast carcerario alle prese con una rinascita a ritmo di musica.",
-        "durataMinuti": 1,
-        "filmAssociato": "Tutta colpa del rock",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 7,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_tutta_colpa_del_rock.png",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Tutta colpa del rock"
-    },
-    {
-        "attoriPrincipali": [
-            "Daniel Radcliffe",
-            "Emma Watson",
-            "Rupert Grint",
-            "Ralph Fiennes"
-        ],
-        "autore": "Mike Newell",
-        "casaDiProduzione": "Warner Bros Italia",
-        "costoBiglietto": 10.5,
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2025-08-28",
-        "descrizione": "Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.",
-        "durataMinuti": 157,
-        "formato": "DCP",
-        "generi": [
-            "Fantasy",
-            "Avventura"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "cinema",
-        "path": ":/images/locandina_harrypottereilcalicedifuoco.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Harry Potter e il Calice di Fuoco - 20esimo anniversario"
-    },
-    {
-        "autore": "Warner Bros",
-        "autoreFilmAssociato": "Mike Newell",
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2005-09-23",
-        "descrizione": "Il trailer ufficiale del quarto capitolo della saga di Harry Potter.",
-        "durataMinuti": 2,
-        "filmAssociato": "Harry Potter e il Calice di Fuoco - 20esimo anniversario",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 4,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_harry_potter_calice_fuoco.png",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Harry Potter e il Calice di Fuoco"
-    },
-    {
-        "attoriPrincipali": [
-            "Austin Butler",
-            "Zoë Kravitz",
-            "Matt Smith",
-            "Regina King",
-            "Liev Schreiber",
-            "Vincent D'Onofrio",
-            "Griffin Dunne",
-            "Bad Bunny",
-            "Carol Kane"
-        ],
-        "autore": "Darren Aronofsky",
-        "casaDiProduzione": "Columbia Pictures / Protozoa Pictures (distribuito in Italia da Eagle Pictures)",
-        "costoBiglietto": 12,
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2025-08-27",
-        "descrizione": "Hank Thompson, ex promessa del baseball, finisce coinvolto in una violenta caccia all'uomo nel crudo sottobosco criminale di New York anni ’90 dopo aver accettato di badare al gatto del suo stravagante vicino.",
-        "durataMinuti": 109,
-        "formato": "DCP",
-        "generi": [
-            "Thriller",
-            "Crime",
-            "Nessuno"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "cinema",
-        "path": ":/images/clocandina_caughtstealing.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Una scomoda circostanza - Caught Stealing"
-    },
-    {
-        "autore": "Sony Pictures / Eagle Pictures",
-        "autoreFilmAssociato": "Darren Aronofsky",
-        "dataFineRilascio": "2025-09-02",
-        "dataInizioRilascio": "2025-07-24",
-        "descrizione": "Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.",
-        "durataMinuti": 2,
-        "filmAssociato": "Una scomoda circostanza - Caught Stealing",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 3,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_una_scomoda_circostanza.png",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer italiano ufficiale - Una scomoda circostanza"
-    },
-    {
-        "attoriPrincipali": [
-            "Josh Brolin",
-            "Julia Garner",
-            "Alden Ehrenreich",
-            "Austin Abrams",
-            "Cary Christopher",
-            "Toby Huss",
-            "Benedict Wong",
-            "Amy Madigan"
-        ],
-        "autore": "Zach Cregger",
-        "casaDiProduzione": "New Line Cinema / Warner Bros. Pictures Italia",
-        "costoBiglietto": 11.5,
-        "dataFineRilascio": "2025-08-31",
-        "dataInizioRilascio": "2025-08-06",
-        "descrizione": "In una misteriosa cittadina, diciassette bambini spariscono nella stessa notte: un horror/thriller enigmatico e disturbante.",
-        "durataMinuti": 128,
-        "formato": "DCP",
-        "generi": [
-            "Horror",
-            "Thriller"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "cinema",
-        "path": ":/images/locandina_weapons.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Weapons"
-    },
-    {
-        "autore": "Warner Bros. Pictures Italia",
-        "autoreFilmAssociato": "Zach Cregger",
-        "dataFineRilascio": "2025-08-05",
-        "dataInizioRilascio": "2025-04-30",
-        "descrizione": "Trailer ufficiale italiano che anticipa il mistero inquietante dietro la sparizione dei bambini.",
-        "durataMinuti": 2,
-        "filmAssociato": "Weapons",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 3,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_weapons.png",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Weapons"
-    },
-    {
-        "attoriPrincipali": [
-            "Roy Scheider",
-            "Robert Shaw",
-            "Richard Dreyfuss",
-            "Lorraine Gary",
-            "Murray Hamilton"
-        ],
-        "autore": "Steven Spielberg",
-        "casaDiProduzione": "Universal Pictures / Adler Entertainment",
-        "costoBiglietto": 9,
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-09-01",
-        "descrizione": "Un capolavoro che ha inventato il blockbuster estivo: lo Squalo torna sul grande schermo per il suo cinquantesimo anniversario.",
-        "durataMinuti": 124,
-        "formato": "IMAX 3D",
-        "generi": [
-            "Horror",
-            "Thriller"
-        ],
-        "lingueDisponibili": [
-            "Italiano"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "cinema",
-        "path": ":/images/locandina_losqualo50anniversario.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Lo Squalo - 50esimo anniversario"
-    },
-    {
-        "autore": "Universal Pictures / Adler Entertainment",
-        "autoreFilmAssociato": "Steven Spielberg",
-        "dataFineRilascio": "2025-08-31",
-        "dataInizioRilascio": "2025-07-04",
-        "descrizione": "Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.",
-        "durataMinuti": 2,
-        "filmAssociato": "Lo Squalo - 50esimo anniversario",
-        "formato": "IMAX 3D",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_lo_squalo_50.png",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
     }
 ]

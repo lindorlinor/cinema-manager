@@ -36,6 +36,7 @@ void SearchPanel::showMediaView(MediaView& widget){
     stackModifiche->addWidget(&widget);
     stackModifiche->setCurrentWidget(&widget);
 
+    connect(&widget, &MediaView::editMediaClicked, this, &SearchPanel::showEditPage);
     connect(&widget, &MediaView::returnButton, this, [this, &widget](){
         removeMediaView(&widget);
     });
@@ -48,7 +49,7 @@ void SearchPanel::removeMediaView(QWidget* widget){
     int widgetIndex = stackModifiche->indexOf(widget);
 
     if(widgetIndex > 2)
-        stackModifiche->setCurrentIndex(widgetIndex - 1);
+        stackModifiche->setCurrentIndex(widgetIndex-1);
     else
         stackModifiche->setCurrentIndex(0);
 
@@ -101,7 +102,7 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     
 
     connect(cinema, &QToolButton::clicked, this, [this](){
-        deletePagesStackModifiche();
+        deleteViewPages();
         emit escSearchPanel();
         s_xmlManager->setCurrentCinema(nullptr);
     });
@@ -231,7 +232,7 @@ void SearchPanel::addLatoDestra(){
                                                                                 for(auto o : s_libraryObservers) 
                                                                                     o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema);});
     connect(addMedia, &QPushButton::clicked, this, [this](){
-        deletePagesStackModifiche();
+        deleteViewPages();
         updateModifierPanel(1);
     });
     connect(tutto, &QToolButton::clicked, this, &SearchPanel::updateFiltroTutto);
@@ -467,7 +468,7 @@ void SearchPanel::updateJson(){
 
 
 
-void SearchPanel::deletePagesStackModifiche(){
+void SearchPanel::deleteViewPages(){
     if(stackModifiche->currentIndex()>2){
             for (int i=stackModifiche->count()-1; i>=2; --i) {
                 QWidget* w = stackModifiche->widget(i);

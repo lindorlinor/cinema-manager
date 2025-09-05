@@ -236,7 +236,6 @@ void FilmView::createScrollableSection(){
             DetailPageVisitor detailVisitor;
             t->accept(&detailVisitor);
             emit requestMediaView(*detailVisitor.getWidget());
-            qDebug() << "view Media: " << QString::fromStdString(t->getTitolo());
         });
     }
     layoutTrailer->setSpacing(20);  

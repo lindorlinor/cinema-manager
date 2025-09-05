@@ -174,7 +174,7 @@ void MainWindow::showSelectedCinemaPage(){
 }
 void MainWindow::showCinemaSelectionPage(){
 
-    searchPage->deletePagesStackModifiche();
+    searchPage->deleteViewPages();
 
     if (cinemaPage) {
         cinemaPage->refreshCinemaButtons();

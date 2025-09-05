@@ -156,7 +156,7 @@ class SearchPanel:public QWidget{
     void acceptEditCinema();
     void acceptDeleteCinema();    
     void updateJson();
-    void deletePagesStackModifiche();
+    void deleteViewPages();
     
     signals:
     void setQMenuEnabled();
