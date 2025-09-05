@@ -42,6 +42,7 @@ class MediaInterface:public QWidget{
     Q_OBJECT
 
     protected:
+    QList<Media*>& im_mediaList;
     CinemaRepositoryJson* cinemaManager; 
     QStackedLayout* stackTipologia;
 
@@ -49,7 +50,6 @@ class MediaInterface:public QWidget{
     Cinema* im_cinemaSelezionato;
 
     //liste di media
-    QList<Media*> im_mediaList;
 
     QLabel* titolo;
 
@@ -166,7 +166,7 @@ class MediaInterface:public QWidget{
     void initUI();
 
     public:
-	explicit MediaInterface(QWidget *parent);
+	explicit MediaInterface(QList<Media*>& mediaList, QWidget *parent);
     virtual ~MediaInterface() = default;
     
     signals:
@@ -175,7 +175,7 @@ class MediaInterface:public QWidget{
     public slots:
     void chooseImage();                      //rimuove l'immagine precedentemente selezionata
     void removeImage();                      //rimuove l'immagine precedentemente selezionata
-    void getCinemaInfo(Cinema* data, QList<Media*>);
+    void getCinemaInfo(Cinema* data);
     
 };
 

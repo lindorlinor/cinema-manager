@@ -262,15 +262,22 @@ void PuntataView::createButtons(){
     connect(buttons,&DetailsPageButtons::deleteMedia,this,[this](){
         QMessageBox msgBox;
         msgBox.setWindowTitle("Conferma eliminazione");
-        msgBox.setText("Sei sicuro di voler eliminare il trailer?");
-        msgBox.setInformativeText("Premi conferma per continuare, annulla per non modificare.");
-        msgBox.addButton("Annulla", QMessageBox::RejectRole);
-        msgBox.addButton("Conferma", QMessageBox::AcceptRole);
-        int ret = msgBox.exec();
-        if (ret == QMessageBox::Ok) {
+        msgBox.setText("Sei sicuro di voler eliminare la puntata?"
+                    "Premi conferma per continuare, annulla per non modificare.");
+        
+        QPushButton* annullaBtn = msgBox.addButton("Annulla", QMessageBox::RejectRole);
+        QPushButton* confermaBtn = msgBox.addButton("Conferma", QMessageBox::AcceptRole);
+        
+        msgBox.exec();
+        
+        if (msgBox.clickedButton() == confermaBtn) {
             emit deleteMediaClicked(puntPtr);
         }
-        });
+        else if(msgBox.clickedButton() == annullaBtn){
+            qDebug()<<"Eliminazione del media annullata";
+        }
+    });
+    
     cardLayout->addSpacing(40);
     cardLayout->addWidget(buttons,0,Qt::AlignCenter);
 

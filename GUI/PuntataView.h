@@ -2,6 +2,7 @@
 #define PUNTATAVIEW_H
 #include "MediaView.h"
 #include "Puntata.h"
+
 class PuntataView:public MediaView{
     Q_OBJECT
 public:

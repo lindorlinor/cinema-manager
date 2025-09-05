@@ -5,6 +5,15 @@
 #include "LibraryObserver.h"
 #include "InserzioneView.h"
 
+/* NOTE IMPORTANTI: s_MediaListOfCinema contiene gli oggetti caricati nel json ed è tramite lei che popolo il cinema selezionato con gli addMedia, ma così
+ci sono i puntatori della liste di supporto e della liste media del cinema che puntano allo stesso media -> attenzione al dangling, quando si aggiunge un elemento non 
+c'è bisogno di aggiornare la lista passata all'InsertMedia perché è passata per riferimento, e ogni volta che richiamo la libreria (tutto o generale) 
+aggiorno la lista: cancella i suoi contenuti, quindi i puntatori agli oggetti, che non diventano garbage perché sono ancora associati alla lista del cinema, e la ripopolo
+con gli elementi del cinema -> NON STO DISTRUGGENDO OGGETTI E RICREANDOLI, STO SOLO ASSEGNANDO E TOGLIENDO PUNTATORI AGLI OGGETTI. La popolazione degli oggetti nel cinema, 
+ad eccezione del primo richiamo, è fatta all'interno di InsertMedia quando viene creato un oggetto. La lista rimane aggiornata anche in InserMedia perché è èassata per riferimento.
+quando si esce dal cinema viene chiamato il reset che cancella tutti gli ogetti puntati nella lista media del cinema e cancella con clean() le lista, tutti gli oggetti sono stati 
+eliminati, senza SF o dangling pointer. */
+
 SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xmlManager,QWidget *parent):QWidget(parent), s_jsonManager(s_jsonManager),
                                                     s_xmlManager(xmlManager),stackModifiche(new QStackedWidget(this)){
     //carico tutti gli oggetti sal Json
@@ -19,43 +28,7 @@ SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xm
     mainLayout->setSpacing(0);
 }
 
-void SearchPanel::updateModifierPanel(int index){
-    if(stackModifiche->currentIndex()!=index){
-        if(previousIndex)
-            previousIndex = stackModifiche->currentIndex();
-        stackModifiche->setCurrentIndex(index);
-    }
-    if(index==2) emit setQMenuEnabled();
-    else emit setQMenuDisabled();
-}
 
-void SearchPanel::showMediaView(MediaView& widget){
-    if(auto inserzione = dynamic_cast<InserzioneView*>(&widget))
-        inserzione->setMediaList(s_cinemaSelezionato->getListaMedia()); //per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, mi semrbava meglio cosi
-
-    stackModifiche->addWidget(&widget);
-    stackModifiche->setCurrentWidget(&widget);
-
-    connect(&widget, &MediaView::editMediaClicked, this, &SearchPanel::showEditPage);
-    connect(&widget, &MediaView::returnButton, this, [this, &widget](){
-        removeMediaView(&widget);
-    });
-    
-    connect(&widget, &MediaView::extendMediaClicked, this, &SearchPanel::updateJson);
-    connect(&widget, &MediaView::requestMediaView, this, &SearchPanel::showMediaView);
-}
-
-void SearchPanel::removeMediaView(QWidget* widget){
-    int widgetIndex = stackModifiche->indexOf(widget);
-
-    if(widgetIndex > 2)
-        stackModifiche->setCurrentIndex(widgetIndex-1);
-    else
-        stackModifiche->setCurrentIndex(0);
-
-    stackModifiche->removeWidget(widget);
-    delete widget;
-}
 
 void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     //agginta ricerca LatoFiltri
@@ -212,7 +185,7 @@ void SearchPanel::addLatoDestra(){
     previousIndex=0;
     
     //pannello di aggiunta media
-    InsertMedia* nuovoMedia = new InsertMedia(this);
+    InsertMedia* nuovoMedia = new InsertMedia(s_MediaListOfCinema, this);
     stackModifiche->addWidget(nuovoMedia); // 1
     
     
@@ -383,12 +356,13 @@ void SearchPanel::preUpdate(){
 }
 
 void SearchPanel::updateMediaList(){
+
     s_MediaListOfCinema.clear();
     
     if(s_cinemaSelezionato){
-        s_jsonManager->loadMedia(s_MediaListOfCinema, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
-        for(Media* m : s_MediaListOfCinema){
-            s_cinemaSelezionato->addMedia(m);
+        for(Media* m : s_cinemaSelezionato->getListaMedia()){
+            qDebug()<<"titolo "<<QString::fromStdString(m->getTitolo());
+            s_MediaListOfCinema.append(m);
         }
     }
 }
@@ -400,9 +374,17 @@ void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
     s_cinemaSelezionato = cinemaSel;
     cinema->setText("Cinema " + QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
 
-    updateMediaList();
+    //carico tutto quello che c'è nel Json nella lista media del cinema    
+    if(s_cinemaSelezionato){
+        s_jsonManager->loadMedia(s_MediaListOfCinema, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
+        for(Media* m : s_MediaListOfCinema){
+            qDebug()<<"titolo "<<QString::fromStdString(m->getTitolo());
+            s_cinemaSelezionato->addMedia(m);
+        }
+    }
+
     updateFiltroTutto();
-    emit giveCinemaInfoToIP(s_cinemaSelezionato, s_MediaListOfCinema);
+    emit giveCinemaInfoToIP(s_cinemaSelezionato);
     
     s_xmlManager->setCurrentCinema(s_cinemaSelezionato);
 }
@@ -421,11 +403,10 @@ void SearchPanel::resetSearchPanel(){
     if(stackModifiche->currentIndex()==1) emit resetPages();
     stackModifiche->setCurrentIndex(0);
 
-    updateMediaList();
-
-    for(Media* m : s_MediaListOfCinema){
+    for(Media* m : s_cinemaSelezionato->getListaMedia()){
         s_cinemaSelezionato->removeMedia(m);
     }
+    s_MediaListOfCinema.clear();
 
     preUpdate();
     updateFiltroTutto();
@@ -466,10 +447,10 @@ void SearchPanel::acceptDeleteCinema(){
 
 
 void SearchPanel::showEditPage(Media* media){
-    EditMedia* editMedia = new EditMedia(media, this); 
+    EditMedia* editMedia = new EditMedia(s_MediaListOfCinema, media, this); 
     int backIndex = stackModifiche->currentIndex();
     
-    editMedia->getCinemaInfo(s_cinemaSelezionato, s_MediaListOfCinema);
+    editMedia->getCinemaInfo(s_cinemaSelezionato);
     editMedia->initValue();
     
     stackModifiche->addWidget(editMedia);
@@ -478,6 +459,8 @@ void SearchPanel::showEditPage(Media* media){
         stackModifiche->setCurrentIndex(backIndex);       
         stackModifiche->removeWidget(editMedia); 
         delete editMedia;});
+    connect(editMedia, &EditMedia::savedMedia, this,[this](){updateMediaList();});
+
 }
 
 
@@ -496,4 +479,73 @@ void SearchPanel::deleteViewPages(){
             delete w;
         }
     }
+}
+
+void SearchPanel::updateModifierPanel(int index){
+    if(stackModifiche->currentIndex()!=index){
+        if(previousIndex)
+            previousIndex = stackModifiche->currentIndex();
+        stackModifiche->setCurrentIndex(index);
+    }
+    if(index==2) emit setQMenuEnabled();
+    else emit setQMenuDisabled();
+}
+
+void SearchPanel::showMediaView(MediaView& widget){
+    if(auto inserzione = dynamic_cast<InserzioneView*>(&widget))
+        inserzione->setMediaList(s_cinemaSelezionato->getListaMedia()); //per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, mi semrbava meglio cosi
+
+    stackModifiche->addWidget(&widget);
+    stackModifiche->setCurrentWidget(&widget);
+
+    connect(&widget, &MediaView::editMediaClicked, this, &SearchPanel::showEditPage);
+    connect(&widget, &MediaView::returnButton, this, [this, &widget](){
+        removeMediaView(&widget);
+    });
+    
+    connect(&widget, &MediaView::extendMediaClicked, this, &SearchPanel::updateJson);
+    connect(&widget, &MediaView::requestMediaView, this, &SearchPanel::showMediaView);
+    connect(&widget, &MediaView::deleteMediaClicked, this, [this, &widget](Media* m){removeMediaView(&widget); acceptDeleteMedia(m);});
+}
+
+void SearchPanel::removeMediaView(QWidget* widget){
+    int widgetIndex = stackModifiche->indexOf(widget);
+
+    if(widgetIndex > 2)
+        stackModifiche->setCurrentIndex(widgetIndex-1);
+    else
+        stackModifiche->setCurrentIndex(0);
+
+    stackModifiche->removeWidget(widget);
+    delete widget;
+}
+
+void SearchPanel::acceptDeleteMedia(Media* media){
+
+    if(Film* film = dynamic_cast<Film*>(media)){
+        for(Trailer* t : film->getTrailers()){
+            film->disaccoppiaTrailer(t);
+            s_MediaListOfCinema.removeOne(t);
+            s_cinemaSelezionato->removeMedia(t);
+            
+            delete t;
+        }
+    }
+    
+    if(Podcast* podcast = dynamic_cast<Podcast*>(media)){
+        for(Puntata* p : podcast->getElencoPuntate()){
+            podcast->disaccoppiaPuntata(p);
+            s_MediaListOfCinema.removeOne(p);
+            s_cinemaSelezionato->removeMedia(p);
+            delete p;
+        }
+    }
+
+    s_MediaListOfCinema.removeOne(media);
+    s_cinemaSelezionato->removeMedia(media);
+    delete media;
+    updateJson();
+    updateMediaList();
+
+    updateFiltroTutto();
 }

@@ -21,7 +21,7 @@ class InsertMedia:public MediaInterface{
     virtual void setLimitTabTipologia(int index) override;     
                   
     public:
-	explicit InsertMedia(QWidget *parent);
+	explicit InsertMedia(QList<Media*>& mediaList, QWidget *parent);
     
     signals:
     void tornaAllaLibreria();

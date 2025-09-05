@@ -20,7 +20,10 @@ Cinema::~Cinema(){
                 podcast->disaccoppiaPuntata(p);
     }
 
-    for(Media* m : c_media) delete m;   //dopo che tutti i media trailer e puntata sono stati disaccoppiati, elimino tutto evitando doppio delete 
+    for(Media* m : c_media){
+        removeMedia(m);
+        delete m;   //dopo che tutti i media trailer e puntata sono stati disaccoppiati, elimino tutto evitando doppio delete 
+    }    
 }
 
 //set

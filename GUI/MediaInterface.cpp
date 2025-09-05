@@ -1,7 +1,7 @@
 #include "MediaInterface.h"
 #include "SearchPanel.h"
 
-MediaInterface::MediaInterface(QWidget *parent): QWidget(parent), stackTipologia(nullptr),titoloMedia(nullptr), autoreMedia(nullptr), attoriFilm(nullptr), ospitiPuntata(nullptr), CasaProdFilm(nullptr),
+MediaInterface::MediaInterface(QList<Media*>& mediaList, QWidget *parent): QWidget(parent), im_mediaList(mediaList),stackTipologia(nullptr),titoloMedia(nullptr), autoreMedia(nullptr), attoriFilm(nullptr), ospitiPuntata(nullptr), CasaProdFilm(nullptr),
                                                 conduttorePodcast(nullptr),aziendaInserzInserzione(nullptr),durataMinutiMedia(nullptr),totPostCreditFilm(nullptr),numeroProiezioniTrailer(nullptr),
                                                 numeroProiezioniGioInserzione(nullptr),numeroPubblicitaPuntata(nullptr),costoBigliettoFilm(nullptr),costoBaseProiezInserzione(nullptr),descrizioneMedia(nullptr),
                                                 comboTipologia(nullptr),framePath(nullptr),listLingue(nullptr),listSottotitoli(nullptr),listGeneri(nullptr),listFasceOrarie(nullptr),comboFormato(nullptr), comboRisoluzione(nullptr),
@@ -22,9 +22,8 @@ void MediaInterface::initUI(){
 }
 
 //IMPOSTA IL NOME DEL CINEMA
-void MediaInterface::getCinemaInfo(Cinema* cinemaSel, QList<Media*>listMedia){
+void MediaInterface::getCinemaInfo(Cinema* cinemaSel){
     im_cinemaSelezionato = cinemaSel;
-    im_mediaList = listMedia;
     if(referenceTrailer) referenceTrailer->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
     if(referencePuntate) referencePuntate->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
 }

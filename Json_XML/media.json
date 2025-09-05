@@ -188,80 +188,6 @@
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },
     {
-        "attoriPrincipali": [
-        ],
-        "autore": "Hayao Miyazaki",
-        "casaDiProduzione": "Studio Ghibli",
-        "costoBiglietto": 10,
-        "dataFineRilascio": "2025-10-14",
-        "dataInizioRilascio": "2025-09-10",
-        "descrizione": "Un'avventura magica in un mondo fantastico popolato da spiriti e divinità.",
-        "durataMinuti": 125,
-        "formato": "IMAX 3D",
-        "generi": [
-            "Avventura",
-            "Animazione"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 1,
-        "nomeCinema": "Cinema Aurora",
-        "path": ":/images/film2.png",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "La città incantataaa"
-    },
-    {
-        "autore": "Studio Ghibli",
-        "autoreFilmAssociato": "Hayao Miyazaki",
-        "dataFineRilascio": "2025-10-14",
-        "dataInizioRilascio": "2025-09-12",
-        "descrizione": "Un assaggio delle meraviglie del mondo fantastico di Chihiro.",
-        "durataMinuti": 3,
-        "filmAssociato": "La città incantataaa",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 4,
-        "nomeCinema": "Cinema Aurora",
-        "path": ":/images/image10.png",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - La città incantata"
-    },
-    {
-        "autore": "Studio Lumière",
-        "aziendaInserzionista": "",
-        "costoFissoProiezione": 40,
-        "dataFineRilascio": "2025-10-05",
-        "dataInizioRilascio": "2025-09-05",
-        "descrizione": "Scopri i grandi classici del cinema in versione rimasterizzata.",
-        "durataMinuti": 2,
-        "fasceOrarie": [
-            "Mattina"
-        ],
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Aurora",
-        "path": ":/images/image12.png",
-        "risoluzione": "UHD 8K 4320p",
-        "sottotitoliDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "target": "TUTTI",
-        "tipologia": "inserzione",
-        "titolo": "Cinema Evolution"
-    },
-    {
         "autore": "DocuStudio",
         "aziendaInserzionista": "",
         "costoFissoProiezione": 25,
@@ -308,6 +234,51 @@
         "target": "TUTTI",
         "tipologia": "inserzione",
         "titolo": "Short Films Festival"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "aaaaa",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-09-05",
+        "dataInizioRilascio": "2025-09-05",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "generi": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "cacacaeeee"
+    },
+    {
+        "autore": "aa",
+        "autoreFilmAssociato": "Hayao Miyazaki",
+        "dataFineRilascio": "2025-09-05",
+        "dataInizioRilascio": "2025-09-05",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 0,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "aaa"
     },
     {
         "copertinaCinema": ":/images/coverCinema.png",
@@ -764,6 +735,59 @@
         "titolo": "Lo Squalo - Anniversario 50 anni"
     },
     {
+        "attoriPrincipali": [
+            "Roy Scheider",
+            "Robert Shaw",
+            "Richard Dreyfuss",
+            "Lorraine Gary",
+            "Murray Hamilton"
+        ],
+        "autore": "Steven Spielberg",
+        "casaDiProduzione": "Universal Pictures / Adler Entertainment",
+        "costoBiglietto": 9,
+        "dataFineRilascio": "2025-09-03",
+        "dataInizioRilascio": "2025-09-01",
+        "descrizione": "Un capolavoro che ha inventato il blockbuster estivo: lo Squalo torna sul grande schermo per il suo cinquantesimo anniversario.",
+        "durataMinuti": 124,
+        "formato": "IMAX 3D",
+        "generi": [
+            "Horror",
+            "Thriller"
+        ],
+        "lingueDisponibili": [
+            "Italiano"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "Cinema Limena",
+        "path": ":/images/locandina_losqualo50anniversario.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Lo Squalo - 50esimo anniversario"
+    },
+    {
+        "autore": "Universal Pictures / Adler Entertainment",
+        "autoreFilmAssociato": "Steven Spielberg",
+        "dataFineRilascio": "2025-08-31",
+        "dataInizioRilascio": "2025-07-04",
+        "descrizione": "Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.",
+        "durataMinuti": 2,
+        "filmAssociato": "Lo Squalo - 50esimo anniversario",
+        "formato": "IMAX 3D",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 5,
+        "nomeCinema": "Cinema Limena",
+        "path": ":/images/trailer_losqualo50anniversario.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
+    },
+    {
         "copertinaCinema": ":/images/default.png",
         "nomeCinema": "cinema"
     },
@@ -1127,39 +1151,6 @@
         "titolo": "Lo Squalo - 50esimo anniversario"
     },
     {
-        "attoriPrincipali": [
-            "Roy Scheider",
-            "Robert Shaw",
-            "Richard Dreyfuss",
-            "Lorraine Gary",
-            "Murray Hamilton"
-        ],
-        "autore": "Steven Spielberg",
-        "casaDiProduzione": "Universal Pictures / Adler Entertainment",
-        "costoBiglietto": 9,
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-09-01",
-        "descrizione": "Un capolavoro che ha inventato il blockbuster estivo: lo Squalo torna sul grande schermo per il suo cinquantesimo anniversario.",
-        "durataMinuti": 124,
-        "formato": "IMAX 3D",
-        "generi": [
-            "Horror",
-            "Thriller"
-        ],
-        "lingueDisponibili": [
-            "Italiano"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/locandina_losqualo50anniversario.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Lo Squalo - 50esimo anniversario"
-    },
-    {
         "autore": "Universal Pictures / Adler Entertainment",
         "autoreFilmAssociato": "Steven Spielberg",
         "dataFineRilascio": "2025-08-31",
@@ -1172,26 +1163,6 @@
         ],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "cinema",
-        "path": ":/images/trailer_losqualo50anniversario.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
-    },
-        {
-        "autore": "Universal Pictures / Adler Entertainment",
-        "autoreFilmAssociato": "Steven Spielberg",
-        "dataFineRilascio": "2025-08-31",
-        "dataInizioRilascio": "2025-07-04",
-        "descrizione": "Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.",
-        "durataMinuti": 2,
-        "filmAssociato": "Lo Squalo - 50esimo anniversario",
-        "formato": "IMAX 3D",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "Cinema Limena",
         "path": ":/images/trailer_losqualo50anniversario.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
