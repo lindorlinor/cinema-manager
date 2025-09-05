@@ -1,6 +1,6 @@
 #include "InsertMedia.h"
 
-InsertMedia::InsertMedia(QWidget *parent): MediaInterface(parent){
+InsertMedia::InsertMedia(QList<Media*>& mediaList, QWidget *parent): MediaInterface(mediaList, parent){
 
     initUI();
 

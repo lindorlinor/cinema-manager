@@ -164,13 +164,14 @@ class SearchPanel:public QWidget{
     void acceptViewPuntata();
     void acceptViewInserzione();
     void acceptAddMedia();
-    void acceptChangeView();
+    /* void acceptChangeView(); */
+    void acceptDeleteMedia(Media* media);
     
     signals:
     void setQMenuEnabled();
     void setQMenuDisabled();
     void resetPages();
-    void giveCinemaInfoToIP(Cinema* cinemaSel, QList<Media*> mediaList);
+    void giveCinemaInfoToIP(Cinema* cinemaSe);
     void selectedFilterButton(const QString& filtro);
     void escSearchPanel();
     void deleteCinemaInSearchPanel(Cinema* s_cinemaSelezionato);

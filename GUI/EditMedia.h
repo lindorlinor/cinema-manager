@@ -21,8 +21,11 @@ class EditMedia:public MediaInterface{
     virtual void setLimitTabTipologia(int index) override;     
     
     public:
-	explicit EditMedia(Media* media, QWidget *parent);
+	explicit EditMedia(QList<Media*>& mediaList, Media* media, QWidget *parent);
     void initValue();
+
+    signals: 
+    void savedMedia();
     
 };
 

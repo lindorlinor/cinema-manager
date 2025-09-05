@@ -27,8 +27,6 @@
 
 
 
-
-
 /* POP-UP MODIFICA CINEMA */
 #saveButtonCinemaModifica,
 #cancelButtonCinemaModifica{
@@ -55,7 +53,7 @@
 }
 
 #cancelButtonCinemaModifica:pressed{
-    background-color:#df5d49;
+    background-color:#E44043;
     color:#dbc9ca;
 }
 
@@ -103,7 +101,7 @@
 }
 
 #escButtonSelectCinema:pressed{
-    background-color: #df5d49;
+    background-color: #E44043;
     color: #dbc9ca;
 }
 
@@ -307,7 +305,7 @@
 }
 
 #closeBtn:hover{
-    background-color: #e81123;
+    background-color: #E44043;
 }
 
 
@@ -669,3 +667,57 @@ QToolButton#deleteTool {
     border: none;
     background: transparent;
 }
+
+#labelCorrelati{
+    color: #ffcb60;
+}
+
+#scrollDetails {
+    border: none;
+    background-color: #05313c;
+}
+
+#scrollDetails QScrollBar:vertical {
+    background: #4e7f8a;
+    width: 12px;
+    margin: 0px 0px 0px 0px;
+    border: 1px solid #4e7f8a;
+    border-radius: 5px;
+}
+
+#scrollDetails QScrollBar::handle:vertical {
+    background: #d9d9d9;
+    border-radius: 3px;
+    min-height: 20px;
+}
+
+#scrollDetails QScrollBar::add-line:vertical,
+#scrollDetails QScrollBar::sub-line:vertical {
+    background: #4e7f8a;
+    border: 1px solid #4e7f8a;
+    height: 12px;
+    border-radius: 5px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+#scrollDetails QScrollBar::add-line:vertical:hover,
+#scrollDetails QScrollBar::sub-line:vertical:hover {
+    background: #4e7f8a;
+}
+
+
+#details QLabel {
+    font-size: 11pt;
+    color: #4e7f8b;
+}
+
+#details QLabel#programmazione,
+#details QLabel#labelPerformance,
+#details QLabel#labelTecnica,
+#details QLabel#labelDettagli {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #bdced3;
+}
+

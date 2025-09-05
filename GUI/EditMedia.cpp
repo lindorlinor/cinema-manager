@@ -1,6 +1,6 @@
 #include "EditMedia.h"
 
-EditMedia::EditMedia(Media* media, QWidget *parent): MediaInterface(parent), em_media(media){
+EditMedia::EditMedia(QList<Media*>& mediaList, Media* media, QWidget *parent): MediaInterface(mediaList, parent), em_media(media){
 
     initUI();
 
@@ -300,6 +300,7 @@ void EditMedia::salvaMedia(){
     }   
 
     cinemaManager->updateMediaInJson(im_cinemaSelezionato);
+    emit savedMedia();
 
 }
 

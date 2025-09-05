@@ -37,13 +37,22 @@ void CinemaRepositoryJson::loadMedia(QList<Media*>& c_mediaList, const QString& 
             }
 
             if(!flag){
-                if(obj["tipologia"] == "film") c_mediaList.append(converter->deserializeFilm(obj));
+                if(obj["tipologia"] == "film"){
+                    Film* film = converter->deserializeFilm(obj);
+                    if(film) c_mediaList.append(film);
+                } 
                 else if(obj["tipologia"] == "trailer"){
                     Trailer* trailer = converter->deserializeTrailer(c_mediaList, obj);
                     if(trailer) c_mediaList.append(trailer);
                 }
-                else if(obj["tipologia"] == "inserzione") c_mediaList.append(converter->deserializeInserzione(obj));
-                else if(obj["tipologia"] == "podcast") c_mediaList.append(converter->deserializePodcast(obj));
+                else if(obj["tipologia"] == "inserzione"){
+                    Inserzione* inserzione = converter->deserializeInserzione(obj);
+                    if(inserzione) c_mediaList.append(inserzione);
+                } 
+                else if(obj["tipologia"] == "podcast"){
+                    Podcast* podcast = converter->deserializePodcast(obj);
+                    if(podcast) c_mediaList.append(podcast);
+                } 
                 else if(obj["tipologia"] == "puntata"){
                     Puntata* puntata = converter->deserializePuntata(c_mediaList, obj); 
                     if(puntata) c_mediaList.append(puntata);
@@ -247,4 +256,5 @@ void CinemaRepositoryJson::deteteMediaPointer(QList<Media*>& c_mediaList){
     }
 
     for(Media* m : c_mediaList) delete m;
+    c_mediaList.clear();
 }
