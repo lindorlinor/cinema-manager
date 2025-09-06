@@ -1,5 +1,7 @@
 #include "SelectMediaReference.h"
 #include "MediaFrame.h"
+#include "../Film.h"
+#include "../Podcast.h"
 
 SelectMediaReference::SelectMediaReference(const QString& tipo, QWidget *parent)
     : QWidget(parent), tipoMedia(tipo), currentSelected(nullptr), sm_titolo(""), sm_autore("")
@@ -65,29 +67,31 @@ void SelectMediaReference::reloadMedia(const Cinema& cinema) {
     }
 
     for(Media* m : cinema.getListaMedia()){
-        
-        MediaFrame* mediaframe = new MediaFrame(*m, container);
-        mediaframe->setFixedSize(200,250);
-        layoutContainer->addWidget(mediaframe);
-        mediaframe->setCursor(Qt::PointingHandCursor);
+        if((tipoMedia == "film" && dynamic_cast<Film*>(m)) || (tipoMedia == "podcast" && dynamic_cast<Podcast*>(m)) ){
 
-        titolo = QString::fromStdString(m->getTitolo());
-        autore = QString::fromStdString(m->getAutore());
-
-        if(titolo == sm_titolo && autore == sm_autore){
-            qDebug()<<"trovato";
-            currentSelected = mediaframe;
-            currentSelected->setSelected(true);
-            emit mediaSelected(mediaframe);
-        }
-
-        connect(mediaframe, &MediaFrame::selected, this, [this](MediaFrame* f){
-            if (currentSelected) currentSelected->setSelected(false);
+            MediaFrame* mediaframe = new MediaFrame(*m, container);
+            mediaframe->setFixedSize(200,250);
+            layoutContainer->addWidget(mediaframe);
+            mediaframe->setCursor(Qt::PointingHandCursor);
     
-            currentSelected = f;
-            currentSelected->setSelected(true);
-            emit mediaSelected(f);
-        });
+            titolo = QString::fromStdString(m->getTitolo());
+            autore = QString::fromStdString(m->getAutore());
+    
+            if(titolo == sm_titolo && autore == sm_autore){
+                currentSelected = mediaframe;
+                currentSelected->setSelected(true);
+                emit mediaSelected(mediaframe);
+            }
+    
+            connect(mediaframe, &MediaFrame::selected, this, [this](MediaFrame* f){
+                if (currentSelected) currentSelected->setSelected(false);
+        
+                currentSelected = f;
+                currentSelected->setSelected(true);
+                emit mediaSelected(f);
+            });
+        }
+        
     }
 
     //style
