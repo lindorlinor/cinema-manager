@@ -13,7 +13,7 @@
 #include "GUI/DetailsPageButtons.h"
 #include <QDebug>
 
-InserzioneView::InserzioneView(Inserzione* iPtr, QWidget* parent):MediaView(iPtr,parent),insPtr(iPtr){
+InserzioneView::InserzioneView(Inserzione* iPtr, QWidget* parent):MediaView(iPtr,parent),insPtr(iPtr),mediaList(nullptr){
     createMediaDetails();
     createButtons();
 }
@@ -252,8 +252,8 @@ void InserzioneView::createButtons(){
                 if (ret == QMessageBox::Ok) {
                     insPtr->estendiDataFineRilascio();
                     emit extendMediaClicked();
-                    endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-                    "<span style='color:black;'>" + QString::fromStdString(dateToString(insPtr->getDataFineRilascio())) + "</span>");
+                    endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
+                    "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(insPtr->getDataFineRilascio())) + "</span>");
                 }
             }
         });
@@ -282,29 +282,51 @@ void InserzioneView::createButtons(){
 }
 
 //@to do non so come farla al momento, devo passare la lista di media WOPSIEE COME FACCIO AAGHHH
-void InserzioneView::createScrollableSection(){
+void InserzioneView::createScrollableSection() {
     rightSide->setObjectName("gaga");
-    rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    
-    QLabel *labelInserzioni = new QLabel("Altre inserzioni",rightSide);
+    rightSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+
+    QLabel* labelInserzioni = new QLabel("Altre inserzioni", rightSide);
     labelInserzioni->setObjectName("labelCorrelati");
     QFont fontIns = labelInserzioni->font();
     fontIns.setPointSize(17);
     fontIns.setBold(true);
     labelInserzioni->setFont(fontIns);
-    
     rightLayout->addWidget(labelInserzioni);
 
-    QScrollArea* scrollInserzioni = new QScrollArea(rightSide); //configurata dopo
-    QWidget * sezioneInserzioni = new QWidget(scrollInserzioni);
-    
-    QVBoxLayout * layoutInserzioni = new QVBoxLayout(sezioneInserzioni);
+    QScrollArea* scrollInserzioni = new QScrollArea(rightSide);
+    QWidget* sezioneInserzioni = new QWidget(scrollInserzioni);
+    layoutInserzioni = new QVBoxLayout(sezioneInserzioni);
     layoutInserzioni->setAlignment(Qt::AlignTop);
+    layoutInserzioni->setSpacing(20);
+    sezioneInserzioni->setContentsMargins(20,20,20,33);
 
-    
+    scrollInserzioni->setWidget(sezioneInserzioni);
+    scrollInserzioni->setWidgetResizable(true);
+    scrollInserzioni->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollInserzioni->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    scrollInserzioni->setMinimumHeight(600);
+
+    rightLayout->addWidget(scrollInserzioni,0,Qt::AlignTop);
+    splitterLayout->addWidget(rightSide);
+
+    sezioneInserzioni->setObjectName("sezioneScroll");
+    scrollInserzioni->setObjectName("scrollDetails");
+
+    updateScrollableSection();
+}
+
+void InserzioneView::updateScrollableSection() {
+    QLayoutItem* item;
+    while ((item = layoutInserzioni->takeAt(0)) != nullptr) {
+        if (QWidget* w = item->widget()) w->deleteLater();
+        delete item;
+    }
+
     for (Media* m : *mediaList) {
         Inserzione* i = dynamic_cast<Inserzione*>(m);
-        if (i && i!=insPtr){
+       
+        if (i && i != insPtr) {
             PreviewCard* card = new PreviewCard(i);
             layoutInserzioni->addWidget(card);
             connect(card, &PreviewCard::viewMedia, this, [this, i]() {
@@ -314,27 +336,13 @@ void InserzioneView::createScrollableSection(){
             });
         }
     }
-    
-    layoutInserzioni->setSpacing(20);  
-    sezioneInserzioni->setContentsMargins(20,20,20,33);
-    
-    scrollInserzioni->setWidget(sezioneInserzioni);
-    scrollInserzioni->setWidgetResizable(true);
-    scrollInserzioni->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scrollInserzioni->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    scrollInserzioni->setMinimumHeight(600);
-    rightLayout->addWidget(scrollInserzioni,0,Qt::AlignTop);
-
-    splitterLayout->addWidget(rightSide);
-    sezioneInserzioni->setObjectName("sezioneScroll");
-    scrollInserzioni->setObjectName("scrollDetails");
-
+    layoutInserzioni->addStretch();
 }
 
 
 
-void InserzioneView::setMediaList(const std::list<Media*>& list) {
-    mediaList = &list;
+void InserzioneView::setMediaList(const QList<Media*>* list) {
+    mediaList = list;
     createScrollableSection();
 }
 
@@ -342,6 +350,5 @@ void InserzioneView::setMediaList(const std::list<Media*>& list) {
 void InserzioneView::update(){
     MediaView::update();
     updateMediaDetails();
+    updateScrollableSection();
 }
-
-

@@ -15,6 +15,11 @@ private:
     void createScrollableSection() override;
     void createButtons() override;
     void updateMediaDetails() override;
+    void updateScrollableSection() override;
+
+    QVBoxLayout* layoutPuntate;
+    QVBoxLayout* layoutPodA;
+
     QLabel* conduttore;
     QLabel* nPubblicita;
 };

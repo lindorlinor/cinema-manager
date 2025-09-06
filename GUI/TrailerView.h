@@ -17,7 +17,10 @@ private:
     void createScrollableSection() override;
     void createButtons() override;
     void updateMediaDetails() override;
+    void updateScrollableSection() override;
 
+    QVBoxLayout* layoutFilmA;
+    QVBoxLayout* layoutTrailer;
     QLabel* nProiezioniGiornaliere;
     QLabel *targetPubb;
 };

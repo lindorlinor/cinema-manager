@@ -190,75 +190,90 @@ void TrailerView::updateMediaDetails() {
 }
 
 
-void TrailerView::createScrollableSection(){
-    rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    
-    QLabel *labelFilmA = new QLabel("Film associato",rightSide);
+void TrailerView::createScrollableSection() {
+    rightSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+
+    QLabel* labelFilmA = new QLabel("Film associato", rightSide);
     labelFilmA->setObjectName("labelCorrelati");
     QFont fontFilmA = labelFilmA->font();
     fontFilmA.setPointSize(17);
     fontFilmA.setBold(true);
     labelFilmA->setFont(fontFilmA);
-    
     rightLayout->addWidget(labelFilmA);
 
     QWidget * sezioneFilmA = new QWidget(rightSide);
-    QVBoxLayout* layoutFilmA = new QVBoxLayout(sezioneFilmA);
-
-    Film* filmA = trailerPtr->getFilm();
-    PreviewCard* cardFilmA = new PreviewCard(filmA);
-    cardFilmA->setFixedSize(210, 320);   
-    layoutFilmA->addWidget(cardFilmA,0,Qt::AlignCenter);
-    connect(cardFilmA, &PreviewCard::viewMedia, this, [this,filmA](){
-        DetailPageVisitor detailVisitor;
-        filmA->accept(&detailVisitor);
-        emit requestMediaView(*detailVisitor.getWidget());
-    });
+    layoutFilmA = new QVBoxLayout(sezioneFilmA);
     sezioneFilmA->setContentsMargins(20,0,20,0);
-    
-    QLabel *labelTrailer = new QLabel("Trailer correlati",rightSide);
+
+    QLabel* labelTrailer = new QLabel("Trailer correlati", rightSide);
     labelTrailer->setObjectName("labelCorrelati");
     QFont fontTrailer = labelTrailer->font();
     fontTrailer.setPointSize(17);
     fontTrailer.setBold(true);
     labelTrailer->setFont(fontTrailer);
-    
-    QScrollArea* scrollTrailer = new QScrollArea(rightSide); //configurata dopo
-    QWidget * sezioneTrailer = new QWidget(scrollTrailer);
-    QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
-    
-    for (Trailer* t : (trailerPtr->getFilm())->getTrailers()) {
-        if(t!=trailerPtr){
-            PreviewCard* cardTrailer = new PreviewCard(t);
-            layoutTrailer->addWidget(cardTrailer,0,Qt::AlignCenter);
-            connect(cardTrailer, &PreviewCard::viewMedia, this, 
-                [this,t](){
-                    DetailPageVisitor detailVisitor;
-                    t->accept(&detailVisitor);
-                    emit requestMediaView(*detailVisitor.getWidget());
-                });
-            }
-    }
-    layoutTrailer->setSpacing(20);  
+
+    QScrollArea* scrollTrailer = new QScrollArea(rightSide);
+    QWidget* sezioneTrailer = new QWidget(scrollTrailer);
+    layoutTrailer = new QVBoxLayout(sezioneTrailer);
+    layoutTrailer->setSpacing(20);
     sezioneTrailer->setContentsMargins(20,20,20,20);
-    
+
     scrollTrailer->setWidget(sezioneTrailer);
     scrollTrailer->setWidgetResizable(true);
     scrollTrailer->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollTrailer->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scrollTrailer->setMinimumHeight(180);
 
-
     rightLayout->addWidget(sezioneFilmA,0,Qt::AlignTop);
     rightLayout->addSpacing(20);
     rightLayout->addWidget(labelTrailer);
     rightLayout->addWidget(scrollTrailer);
     splitterLayout->addWidget(rightSide);
-    
+
     sezioneFilmA->setObjectName("sezioneScroll");
     sezioneTrailer->setObjectName("sezioneScroll");
     scrollTrailer->setObjectName("scrollDetails");
+
+    updateScrollableSection();
 }
+
+void TrailerView::updateScrollableSection() {
+    QLayoutItem* item;
+    while ((item = layoutFilmA->takeAt(0)) != nullptr) {
+        if (QWidget* w = item->widget()) w->deleteLater();
+        delete item;
+    }
+
+    Film* filmA = trailerPtr->getFilm();
+    PreviewCard* cardFilmA = new PreviewCard(filmA);
+    cardFilmA->setFixedSize(210, 320);
+    layoutFilmA->addWidget(cardFilmA,0,Qt::AlignCenter);
+    connect(cardFilmA, &PreviewCard::viewMedia, this, [this,filmA](){
+        DetailPageVisitor detailVisitor;
+        filmA->accept(&detailVisitor);
+        emit requestMediaView(*detailVisitor.getWidget());
+    });
+
+    while ((item = layoutTrailer->takeAt(0)) != nullptr) {
+        if (QWidget* w = item->widget()) w->deleteLater();
+        delete item;
+    }
+
+    for (Trailer* t : filmA->getTrailers()) {
+        if (t != trailerPtr) {
+            PreviewCard* cardTrailer = new PreviewCard(t);
+            layoutTrailer->addWidget(cardTrailer,0,Qt::AlignCenter);
+            connect(cardTrailer, &PreviewCard::viewMedia, this, [this,t](){
+                DetailPageVisitor detailVisitor;
+                t->accept(&detailVisitor);
+                emit requestMediaView(*detailVisitor.getWidget());
+            });
+        }
+    }
+    layoutTrailer->addStretch();
+}
+
+
 void TrailerView::createButtons(){
     DetailsPageButtons * buttons = new DetailsPageButtons(trailerPtr,leftSide);
     buttons->setDeleteButtonText("Elimina trailer");
@@ -283,7 +298,7 @@ void TrailerView::createButtons(){
                     trailerPtr->estendiDataFineRilascio();
                     emit extendMediaClicked();
                     endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
-                    "<span style='color:#4e7f8b;'>" + QString::fromStdString(dateToString(trailerPtr->getDataFineRilascio())) + "</span>");
+                    "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(trailerPtr->getDataFineRilascio())) + "</span>");
                 }
             }else{
                 msgBox.setWindowTitle("Impossibile estendere la data");
@@ -321,4 +336,5 @@ void TrailerView::createButtons(){
 void TrailerView::update(){
     MediaView::update();
     updateMediaDetails();
+    updateScrollableSection();
 }

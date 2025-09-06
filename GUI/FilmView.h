@@ -19,6 +19,9 @@ private:
     void createButtons() override;
 
     void updateMediaDetails() override;
+    void updateScrollableSection() override;
+
+    QVBoxLayout* layoutTrailer;
 
     QLabel* costoBiglietto;
     QLabel* valutazione;

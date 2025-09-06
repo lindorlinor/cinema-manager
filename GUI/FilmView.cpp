@@ -205,47 +205,74 @@ void FilmView::updateMediaDetails() {
                              "<span style='color: #4e7f8b;'>" + QString::fromStdString(filmPtr->getCasaDiProduzione()) + "</span>");
 }
 
-void FilmView::createScrollableSection(){
-    rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    
-    QLabel *labelTrailer = new QLabel("Trailer",rightSide);
+
+void FilmView::createScrollableSection() {
+    rightSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+
+    QLabel* labelTrailer = new QLabel("Trailer", rightSide);
     QFont fontTrailer = labelTrailer->font();
     fontTrailer.setPointSize(17);
     fontTrailer.setBold(true);
     labelTrailer->setFont(fontTrailer);
-    
+
     rightLayout->addWidget(labelTrailer);
 
-    QScrollArea* scrollTrailer = new QScrollArea(rightSide); //configurata dopo
-    QWidget * sezioneTrailer = new QWidget(scrollTrailer);
-    
-    QVBoxLayout * layoutTrailer = new QVBoxLayout(sezioneTrailer);
+    QScrollArea* scrollTrailer = new QScrollArea(rightSide);
+    QWidget* sezioneTrailer = new QWidget(scrollTrailer);
+    layoutTrailer = new QVBoxLayout(sezioneTrailer);
     layoutTrailer->setAlignment(Qt::AlignTop);
-    for (Trailer* t : filmPtr->getTrailers()) {
-        PreviewCard* card = new PreviewCard(t);
-        layoutTrailer->addWidget(card);
-        connect(card, &PreviewCard::viewMedia, this, [this,t](){
-            DetailPageVisitor detailVisitor;
-            t->accept(&detailVisitor);
-            emit requestMediaView(*detailVisitor.getWidget());
-        });
-    }
-    layoutTrailer->setSpacing(20);  
-    sezioneTrailer->setContentsMargins(20,20,20,33);
+    layoutTrailer->setSpacing(20);
+    sezioneTrailer->setContentsMargins(20, 20, 20, 33);
 
     scrollTrailer->setWidget(sezioneTrailer);
     scrollTrailer->setWidgetResizable(true);
     scrollTrailer->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollTrailer->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scrollTrailer->setMinimumHeight(500);
-    rightLayout->addWidget(scrollTrailer,0,Qt::AlignTop);
 
+    rightLayout->addWidget(scrollTrailer, 0, Qt::AlignTop);
     splitterLayout->addWidget(rightSide);
-    
+
     labelTrailer->setObjectName("labelTrailer");
     sezioneTrailer->setObjectName("sezioneScroll");
     scrollTrailer->setObjectName("scrollDetails");
+
+    updateScrollableSection();
 }
+
+
+void FilmView::updateScrollableSection() {
+    if (!filmPtr) return;
+
+    QLayoutItem* item;
+    while ((item = layoutTrailer->takeAt(0)) != nullptr) {
+        if (QWidget* w = item->widget()) {
+            w->deleteLater();
+        }
+        delete item;
+    }
+
+    for (Trailer* t : filmPtr->getTrailers()) {
+        PreviewCard* card = new PreviewCard(t);
+        layoutTrailer->addWidget(card);
+        connect(card, &PreviewCard::viewMedia, this, [this, t]() {
+            DetailPageVisitor detailVisitor;
+            t->accept(&detailVisitor);
+            emit requestMediaView(*detailVisitor.getWidget());
+        });
+    }
+
+    layoutTrailer->addStretch();
+}
+
+
+void FilmView::update(){
+    MediaView::update();
+    updateMediaDetails();
+    updateScrollableSection();
+}
+
+
 void FilmView::createButtons(){
     DetailsPageButtons * buttons = new DetailsPageButtons(filmPtr,rightSide);
     buttons->setDeleteButtonText("Elimina film");
@@ -296,11 +323,5 @@ void FilmView::createButtons(){
     rightLayout->addSpacing(60);
     rightLayout->addWidget(buttons);
     rightLayout->addSpacing(60);
-}
-
-
-void FilmView::update(){
-    MediaView::update();
-    updateMediaDetails();
 }
 

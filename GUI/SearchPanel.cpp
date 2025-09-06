@@ -547,7 +547,7 @@ void SearchPanel::updateModifierPanel(int index){
 
 void SearchPanel::showMediaView(MediaView& widget){
     if(auto inserzione = dynamic_cast<InserzioneView*>(&widget))
-        inserzione->setMediaList(s_cinemaSelezionato->getListaMedia()); //per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, mi semrbava meglio cosi
+        inserzione->setMediaList(&s_MediaListOfCinema); //per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, mi semrbava meglio cosi
 
     stackModifiche->addWidget(&widget);
     stackModifiche->setCurrentWidget(&widget);
@@ -572,6 +572,11 @@ void SearchPanel::removeMediaView(QWidget* widget){
 
     if(widgetIndex > 2){
         stackModifiche->setCurrentIndex(widgetIndex-1);
+        /* if(auto insPtr = dynamic_cast<InserzioneView*>(stackModifiche->currentWidget())){
+            updateMediaList();
+            insPtr->setMediaList(s_MediaListOfCinema);
+        } */
+            
         (static_cast<MediaView*>((stackModifiche->currentWidget())))->update(); //fa l'update nel caso in cui vi è stata una modifica del media
     }
     else

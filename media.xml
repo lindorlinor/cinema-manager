@@ -1,50 +1,19 @@
 <MediaList>
-    <Film>
-        <Titolo>I cacasasdasddasda</Titolo>
-        <Autore>Jay Roacach</Autore>
-        <Descrizione>Commedia nera in cui una coppia apparentemente perfetta — Ivy e Theo Rose — vede naufragare il proprio matrimonio in una guerra emotiva tra ambizione professionale e risentimento.</Descrizione>
-        <DurataMinuti>105</DurataMinuti>
-        <Formato>DCP</Formato>
-        <Risoluzione>FullHD 1080p</Risoluzione>
-        <Path>:/images/locandina_irosesfilm.jpg</Path>
-        <DataInizioRilascio>27/08/2025</DataInizioRilascio>
-        <DataFineRilascio>03/09/2025</DataFineRilascio>
-        <LingueDisponibili>
-            <Lingua>Italiano</Lingua>
-            <Lingua>Inglese</Lingua>
-        </LingueDisponibili>
-        <SottotitoliDisponibili/>
-        <Generi>
-            <Genere>Drammatico</Genere>
-            <Genere>Commedia</Genere>
-        </Generi>
-        <AttoriPrincipali>
-            <Attore>Olivia Colman</Attore>
-            <Attore>Benedict Cumberbatch</Attore>
-            <Attore>Andy Samberg</Attore>
-            <Attore>Hitoshi Takagi</Attore>
-            <Attore>Takashi Nagasako</Attore>
-        </AttoriPrincipali>
-        <Target>QUATTORDICI_PIU</Target>
-        <CostoBiglietto>9</CostoBiglietto>
-        <CasaDiProduzione>Searchlight Pictures / Disney Italia</CasaDiProduzione>
-        <NPostCredit>0</NPostCredit>
-    </Film>
     <Trailer>
-        <Titolo>Trailer ufficiale - I Roses</Titolo>
-        <Autore>Searchlight Pictures / Disney Italia</Autore>
-        <Descrizione>Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.</Descrizione>
+        <Titolo>Trailer ufficiale - I Puffi - Il Film</Titolo>
+        <Autore>Paramount</Autore>
+        <Descrizione>Primi scorci ufficiali dell’avventura dei Puffi in CGI.</Descrizione>
         <DurataMinuti>2</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>HD 720p</Risoluzione>
-        <Path>:/images/trailer_iroses.jpg</Path>
-        <DataInizioRilascio>1/08/2025</DataInizioRilascio>
-        <DataFineRilascio>03/09/2025</DataFineRilascio>
+        <Path>:/images/trailer_ipuffi.jpg</Path>
+        <DataInizioRilascio>6/6/2025</DataInizioRilascio>
+        <DataFineRilascio>7/9/2025</DataFineRilascio>
         <LingueDisponibili/>
         <SottotitoliDisponibili/>
-        <NProiezioniGiornaliere>15</NProiezioniGiornaliere>
-        <TitoloFilmAssociato>I Roses</TitoloFilmAssociato>
-        <AutoreFilmAssociato>Jay Roach</AutoreFilmAssociato>
+        <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>I Puffi - Il Film</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Chris Millerd</AutoreFilmAssociato>
     </Trailer>
-
 </MediaList>
+

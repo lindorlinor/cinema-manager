@@ -34,7 +34,6 @@ void PuntataView::createMediaDetails() {
     leftLayout->addWidget(scrollDetails);
     detailsLayout->setSpacing(10);
 
-    // ---- Programmazione ----
     QWidget * sezioneProgrammazione = new QWidget(details);
     sezioneProgrammazione->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     QVBoxLayout * layoutProgrammazione = new QVBoxLayout(sezioneProgrammazione);
@@ -85,7 +84,6 @@ void PuntataView::createMediaDetails() {
     layoutDettagliPerformance->addWidget(visualizzazioni);
     layoutPerformance->addWidget(dettagliPerformance);
 
-    // ---- Tecnica ----
     QWidget * sezioneTecnica = new QWidget(details);
     QVBoxLayout * layoutTecnica = new QVBoxLayout(sezioneTecnica);
     sezioneTecnica->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
@@ -106,7 +104,6 @@ void PuntataView::createMediaDetails() {
     layoutDettagliTecnici->addWidget(formato);
     layoutTecnica->addWidget(dettagliTecnici);
 
-    // ---- Dettagli ----
     QWidget *sezioneDettagli = new QWidget(details);
     sezioneDettagli->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
     QVBoxLayout * layoutDettagli = new QVBoxLayout(sezioneDettagli);
@@ -188,76 +185,95 @@ void PuntataView::updateMediaDetails() {
 
 
 
-void PuntataView::createScrollableSection(){
+void PuntataView::createScrollableSection() {
     rightSide->setFixedHeight(650);
-    rightSide->setObjectName("gaga");
-    rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    
-    QLabel *labelPodA = new QLabel("Podcast associato",rightSide);
+    rightSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+
+    QLabel* labelPodA = new QLabel("Podcast associato", rightSide);
     labelPodA->setObjectName("labelCorrelati");
     QFont fontPodA = labelPodA->font();
     fontPodA.setPointSize(17);
     fontPodA.setBold(true);
     labelPodA->setFont(fontPodA);
-    
 
-    QWidget * sezionePodA = new QWidget(rightSide);
-    QVBoxLayout* layoutPodA = new QVBoxLayout(sezionePodA);
-    
-    Podcast* podA = puntPtr->getPodcast();
-    PreviewCard* cardPodA = new PreviewCard(podA);
-    // cardPodA->setFixedSize(210, 320);   
-    layoutPodA->addWidget(cardPodA,0,Qt::AlignCenter);
-    connect(cardPodA, &PreviewCard::viewMedia, this, [this,podA](){
-        DetailPageVisitor detailVisitor;
-        podA->accept(&detailVisitor);
-        emit requestMediaView(*detailVisitor.getWidget());
-    });
-    sezionePodA->setContentsMargins(20,0,20,0);
+    QWidget* sezionePodA = new QWidget(rightSide);
+    layoutPodA = new QVBoxLayout(sezionePodA);
+    sezionePodA->setContentsMargins(20, 0, 20, 0);
 
-    QLabel *labelPuntate = new QLabel("Puntate correlate",rightSide);
+    QLabel* labelPuntate = new QLabel("Puntate correlate", rightSide);
     labelPuntate->setObjectName("labelCorrelati");
     QFont fontPuntate = labelPuntate->font();
     fontPuntate.setPointSize(17);
     fontPuntate.setBold(true);
     labelPuntate->setFont(fontPuntate);
-    
-    QScrollArea* scrollPuntate = new QScrollArea(rightSide); //configurata dopo
-    QWidget * sezionePuntate = new QWidget(scrollPuntate);
-    QVBoxLayout * layoutPuntate = new QVBoxLayout(sezionePuntate);
-    
-    for (Puntata* p : (puntPtr->getPodcast())->getElencoPuntate()) {
-        if(p!=puntPtr){
-            PreviewCard* cardPuntata = new PreviewCard(p);
-            layoutPuntate->addWidget(cardPuntata,0,Qt::AlignCenter);
-            connect(cardPuntata, &PreviewCard::viewMedia, this, 
-                [this,p](){
-                    DetailPageVisitor detailVisitor;
-                    p->accept(&detailVisitor);
-                    emit requestMediaView(*detailVisitor.getWidget());
-                });
-            }
-        }
-    layoutPuntate->setSpacing(20);  
-    sezionePuntate->setContentsMargins(20,20,20,20);
+
+    QScrollArea* scrollPuntate = new QScrollArea(rightSide);
+    QScrollArea* sezionePuntate = new QScrollArea(scrollPuntate);
+    layoutPuntate = new QVBoxLayout(sezionePuntate);
+    layoutPuntate->setAlignment(Qt::AlignTop);
+    layoutPuntate->setSpacing(20);
+    sezionePuntate->setContentsMargins(20, 20, 20, 20);
 
     scrollPuntate->setWidget(sezionePuntate);
     scrollPuntate->setWidgetResizable(true);
     scrollPuntate->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollPuntate->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scrollPuntate->setMinimumHeight(180);
-    
+
     rightLayout->addWidget(labelPodA);
-    rightLayout->addWidget(sezionePodA,0,Qt::AlignTop);
+    rightLayout->addWidget(sezionePodA, 0, Qt::AlignTop);
     rightLayout->addSpacing(20);
     rightLayout->addWidget(labelPuntate);
     rightLayout->addWidget(scrollPuntate);
     splitterLayout->addWidget(rightSide);
-    
+
     sezionePodA->setObjectName("sezioneScroll");
     sezionePuntate->setObjectName("sezioneScroll");
     scrollPuntate->setObjectName("scrollDetails");
+
+    updateScrollableSection();
 }
+
+void PuntataView::updateScrollableSection() {
+    QLayoutItem* item;
+
+    while ((item = layoutPodA->takeAt(0)) != nullptr) {
+        if (QWidget* w = item->widget())
+            w->deleteLater();
+        delete item;
+    }
+
+    Podcast* podA = puntPtr->getPodcast();
+    PreviewCard* cardPodA = new PreviewCard(podA);
+    layoutPodA->addWidget(cardPodA, 0, Qt::AlignCenter);
+    connect(cardPodA, &PreviewCard::viewMedia, this, [this, podA]() {
+        DetailPageVisitor detailVisitor;
+        podA->accept(&detailVisitor);
+        emit requestMediaView(*detailVisitor.getWidget());
+    });
+
+    while ((item = layoutPuntate->takeAt(0)) != nullptr) {
+        if (QWidget* w = item->widget())
+            w->deleteLater();
+        delete item;
+    }
+
+    for (Puntata* p : podA->getElencoPuntate()) {
+        if (p != puntPtr) {
+            PreviewCard* cardPuntata = new PreviewCard(p);
+            layoutPuntate->addWidget(cardPuntata, 0, Qt::AlignCenter);
+            connect(cardPuntata, &PreviewCard::viewMedia, this, [this, p]() {
+                DetailPageVisitor detailVisitor;
+                p->accept(&detailVisitor);
+                emit requestMediaView(*detailVisitor.getWidget());
+            });
+        }
+    }
+
+    layoutPuntate->addStretch();
+}
+
+
 void PuntataView::createButtons(){
     DetailsPageButtons * buttons = new DetailsPageButtons(puntPtr,leftSide);
     buttons->setDeleteButtonText("Elimina puntata");
@@ -280,8 +296,8 @@ void PuntataView::createButtons(){
                 if (ret == QMessageBox::Ok) {
                     puntPtr->estendiDataFineRilascio();
                     emit extendMediaClicked();
-                    endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-                    "<span style='color:black;'>" + QString::fromStdString(dateToString(puntPtr->getDataFineRilascio())) + "</span>");
+                    endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
+                    "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(puntPtr->getDataFineRilascio())) + "</span>");
                 }
             }else{
                 msgBox.setWindowTitle("Impossibile estendere la data");
@@ -319,4 +335,7 @@ void PuntataView::createButtons(){
 void PuntataView::update(){
     MediaView::update();
     updateMediaDetails();
+    updateScrollableSection();
 }
+
+

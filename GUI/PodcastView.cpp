@@ -196,45 +196,58 @@ void PodcastView::updateMediaDetails() {
         QString::number(podPtr->getElencoPuntate().size()) + "</span>");
 }
 
-void PodcastView::createScrollableSection(){
-    rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    
-    QLabel *labelPuntate = new QLabel("Puntate",rightSide);
+void PodcastView::createScrollableSection() {
+    rightSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+
+    QLabel* labelPuntate = new QLabel("Puntate", rightSide);
     labelPuntate->setObjectName("labelCorrelati");
     QFont fontPuntate = labelPuntate->font();
     fontPuntate.setPointSize(17);
     fontPuntate.setBold(true);
     labelPuntate->setFont(fontPuntate);
-    
     rightLayout->addWidget(labelPuntate);
 
-    QScrollArea* scrollPuntate = new QScrollArea(rightSide); //configurata dopo
+    QScrollArea* scrollPuntate = new QScrollArea(rightSide);
     scrollPuntate->setObjectName("scrollDetails");
-    QWidget * sezionePuntate = new QWidget(scrollPuntate);
-    sezionePuntate->setObjectName("sezioneScroll");
-    QVBoxLayout * layoutPuntate = new QVBoxLayout(sezionePuntate);
-    layoutPuntate->setAlignment(Qt::AlignTop);
 
-    for (Puntata* p : podPtr->getElencoPuntate()) {
-        PreviewCard* card = new PreviewCard(p);
-        layoutPuntate->addWidget(card);
-        connect(card, &PreviewCard::viewMedia, this, [this,p](){
-            DetailPageVisitor detailVisitor;
-            p->accept(&detailVisitor);
-            emit requestMediaView(*detailVisitor.getWidget());
-        });
-    }
-    layoutPuntate->setSpacing(20);  
-    sezionePuntate->setContentsMargins(20,20,20,33);
+    QWidget* sezionePuntate = new QWidget(scrollPuntate);
+    sezionePuntate->setObjectName("sezioneScroll");
+
+    layoutPuntate = new QVBoxLayout(sezionePuntate);
+    layoutPuntate->setAlignment(Qt::AlignTop);
+    layoutPuntate->setSpacing(20);
+    sezionePuntate->setContentsMargins(20, 20, 20, 33);
 
     scrollPuntate->setWidget(sezionePuntate);
     scrollPuntate->setWidgetResizable(true);
     scrollPuntate->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollPuntate->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scrollPuntate->setMinimumHeight(600);
-    rightLayout->addWidget(scrollPuntate,0,Qt::AlignTop);
-
+    rightLayout->addWidget(scrollPuntate, 0, Qt::AlignTop);
     splitterLayout->addWidget(rightSide);
+
+    updateScrollableSection();
+}
+
+void PodcastView::updateScrollableSection() {
+    QLayoutItem* item;
+    while ((item = layoutPuntate->takeAt(0)) != nullptr) {
+        if (QWidget* w = item->widget())
+            w->deleteLater();
+        delete item;
+    }
+
+    for (Puntata* p : podPtr->getElencoPuntate()) {
+        PreviewCard* card = new PreviewCard(p);
+        layoutPuntate->addWidget(card);
+        connect(card, &PreviewCard::viewMedia, this, [this, p]() {
+            DetailPageVisitor detailVisitor;
+            p->accept(&detailVisitor);
+            emit requestMediaView(*detailVisitor.getWidget());
+        });
+    }
+
+    layoutPuntate->addStretch();
 }
 
 void PodcastView::createButtons(){
@@ -259,8 +272,8 @@ void PodcastView::createButtons(){
                 if (ret == QMessageBox::Ok) {
                     podPtr->estendiDataFineRilascio();
                     emit extendMediaClicked();
-                    endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-                    "<span style='color:black;'>" + QString::fromStdString(dateToString(podPtr->getDataFineRilascio())) + "</span>");
+                    endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
+                    "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(podPtr->getDataFineRilascio())) + "</span>");
                 }
             }else{
                 msgBox.setWindowTitle("Impossibile estendere la data");
@@ -300,4 +313,5 @@ void PodcastView::createButtons(){
 void PodcastView::update(){
     MediaView::update();
     updateMediaDetails();
+    updateScrollableSection();
 }

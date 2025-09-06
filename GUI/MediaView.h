@@ -61,6 +61,7 @@ private:
 
     //metodi di update che i figli devono overridare
     virtual void updateMediaDetails() =0;
+    virtual void updateScrollableSection() =0;
 
 signals:
     void editMediaClicked(Media* mPtr); //segnale emesso quando cliccato sull'icona di modifica media

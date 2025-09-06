@@ -6,7 +6,7 @@ class InserzioneView: public MediaView{
      Q_OBJECT
 public:
     explicit InserzioneView(Inserzione* iPtr,QWidget* parent = nullptr);
-    void setMediaList(const std::list<Media*>& list);
+    void setMediaList(const QList<Media*>* list);
 public slots:
     void update() override;
 private:
@@ -14,9 +14,12 @@ private:
     void createMediaDetails() override;
     void createScrollableSection() override;
     void createButtons() override;
-    const std::list<Media*>* mediaList;
+    const QList<Media*>* mediaList;//per passare le altre inserzioni
     void updateMediaDetails() override;
+    void updateScrollableSection() override;
 
+    //ddefiniti come campi privati per permettere l'update
+    QVBoxLayout* layoutInserzioni;
     QLabel* nProiezioniGiornaliere;
     QLabel* fasce;
     QLabel* targetPubb;
