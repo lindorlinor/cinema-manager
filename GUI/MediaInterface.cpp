@@ -244,7 +244,7 @@ QWidget* MediaInterface::addDataInizioRilascio(QDateEdit* dataInizio) {
     dataInizio->setCalendarPopup(true);
     dataInizio->setDisplayFormat("dd/MM/yyyy");
     dataInizio->setDate(QDate::currentDate());
-    QCalendarWidget* calendar = new QCalendarWidget;
+    QCalendarWidget* calendar = new QCalendarWidget(this);
     calendar->setMinimumSize(280,180); 
     dataInizio->setCalendarWidget(calendar);
 
@@ -257,7 +257,7 @@ QWidget* MediaInterface::addDataFineRilascio(QDateEdit* dataFine) {
     dataFine->setCalendarPopup(true);
     dataFine->setDisplayFormat("dd/MM/yyyy");
     dataFine->setDate(QDate::currentDate());
-    QCalendarWidget* calendar = new QCalendarWidget;
+    QCalendarWidget* calendar = new QCalendarWidget(this);
     calendar->setMinimumSize(280,180); 
     dataFine->setCalendarWidget(calendar);
 

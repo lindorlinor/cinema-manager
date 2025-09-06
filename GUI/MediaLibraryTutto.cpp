@@ -2,7 +2,7 @@
 
 MediaLibraryTutto::MediaLibraryTutto(QWidget* parent):QWidget(parent){
 
-    container = new QWidget();  
+    container = new QWidget(this);  
     QVBoxLayout* mainLayout = new QVBoxLayout;
     layoutContainer = new QVBoxLayout(container); 
     QLabel* titoloPagina = new QLabel("Tutto", this);
@@ -47,8 +47,6 @@ MediaLibraryTutto::MediaLibraryTutto(QWidget* parent):QWidget(parent){
 }
 
 void MediaLibraryTutto::update(const bool& view, int comboAttivita, int comboOrdinamento, const QString& ricerca, QList<Media*>& mediaList){
-
-    // QList<QString> allFiltri = QList<QString>({"Film", "Trailer", "Inserzioni", "Podcast", "Puntate"});
 
     QLayoutItem* item;
     while ((item = layoutContainer->takeAt(0)) != nullptr) { //resetta il contenuto del layout

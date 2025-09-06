@@ -420,6 +420,7 @@ void SearchPanel::resetSearchPanel(){
     comboAttivita = 0; 
     comboOrdinamento = 0; 
     filtroBottone = "Film"; 
+    changeView = 1;
     ricerca.clear();
 
     attivita->setCurrentIndex(0);
@@ -431,9 +432,8 @@ void SearchPanel::resetSearchPanel(){
     for(Media* m : s_cinemaSelezionato->getListaMedia()){
         s_cinemaSelezionato->removeMedia(m);
     }
-    s_MediaListOfCinema.clear();
+    s_jsonManager->deleteMediaPointer(s_MediaListOfCinema);
 
-    preUpdate();
     updateFiltroTutto();
 }
 
@@ -447,7 +447,9 @@ void SearchPanel::acceptEditCinema(){
     int result = dialog.exec();
     if (result == QDialog::Accepted) {
         s_jsonManager->updateCinemaInJson(nomeCinema, s_cinemaSelezionato);
-        updateInfoCinema(s_cinemaSelezionato);
+
+        cinema->setText("Cinema " + QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
+        updateFiltroTutto();
     }
 }
 

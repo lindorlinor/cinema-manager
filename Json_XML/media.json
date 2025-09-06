@@ -4,118 +4,9 @@
         "nomeCinema": "Cinema Aurora"
     },
     {
-        "autore": "Cinema Milano",
-        "conduttore": "Lucia Dalla Monta",
-        "dataFineRilascio": "2025-12-01",
-        "dataInizioRilascio": "2025-09-01",
-        "descrizione": "Il podcast che racconta il mondo del cinema fino ai giorni nostri. Ogni mercoledì con Lucia Dalla Monta' solo nei canali del cinema",
-        "durataMinuti": 92,
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Aurora",
-        "path": ":/images/locandina_caughtstealing.jpg",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "podcast",
-        "titolo": "Storie del cinema waw"
-    },
-    {
-        "autore": "Cinema Milano",
-        "autorePodcastAssociato": "Cinema Milano",
-        "dataFineRilascio": "2025-09-16",
-        "dataInizioRilascio": "2025-09-01",
-        "descrizione": "Vi siete mai chiesti come il cinema è arrivato a quello che è oggi? Oggi lo scopriamo in questa nuova puntata condotta da Lucia Dalla Monta",
-        "durataMinuti": 32,
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Aurora",
-        "numeroPubblicita": 2,
-        "ospiti": [
-        ],
-        "path": ":/images/default_podcast_puntate.png",
-        "podcastAssociato": "Storie del cinema waw",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "puntata",
-        "titolo": "La nascita del cinema"
-    },
-    {
-        "autore": "Cinema Milano",
-        "autorePodcastAssociato": "Cinema Milano",
-        "dataFineRilascio": "2025-11-16",
-        "dataInizioRilascio": "2025-11-01",
-        "descrizione": "Analizziamo l'esplosione del neorealismo italiano, dai registi ai film che hanno segnato il dopoguerra.",
-        "durataMinuti": 27,
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Aurora",
-        "numeroPubblicita": 1,
-        "ospiti": [
-        ],
-        "path": ":/images/default_podcast_puntate.png",
-        "podcastAssociato": "Storie del cinema waw",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "puntata",
-        "titolo": "Il dopoguerra e il neorealismo"
-    },
-    {
-        "autore": "Cinema Milano",
-        "autorePodcastAssociato": "Cinema Milano",
-        "dataFineRilascio": "2025-12-01",
-        "dataInizioRilascio": "2025-11-16",
-        "descrizione": "Interviste e riflessioni su registi emergenti e sulle tecniche narrative del cinema moderno.",
-        "durataMinuti": 33,
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Aurora",
-        "numeroPubblicita": 2,
-        "ospiti": [
-        ],
-        "path": ":/images/default_podcast_puntate.png",
-        "podcastAssociato": "Storie del cinema waw",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "puntata",
-        "titolo": "Registi contemporanei e nuovi linguaggi"
-    },
-    {
         "attoriPrincipali": [
-        ],
-        "autore": "Hayao Miyazaki",
-        "casaDiProduzione": "Studio Ghibli",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-08-21",
-        "dataInizioRilascio": "2025-08-05",
-        "descrizione": "",
-        "durataMinuti": 96,
-        "formato": "IMAX 3D",
-        "generi": [
-            "Animazione"
-        ],
-        "lingueDisponibili": [
-            "Italiano"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Aurora",
-        "path": ":/images/default.png",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Kiki consegne a domicilio"
-    },
-    {
-        "attoriPrincipali": [
+            "Chika Sakamoto",
+            "Hitoshi Takagi",
             "Noriko Hidaka",
             "Chika Sakamoto",
             "Shigesato Itoi",
@@ -125,33 +16,65 @@
         "autore": "Hayao Miyazaki",
         "casaDiProduzione": "Studio Ghibli",
         "costoBiglietto": 12.5,
-        "dataFineRilascio": "2025-09-02",
-        "dataInizioRilascio": "2025-09-01",
+        "dataFineRilascio": "2025-06-30",
+        "dataInizioRilascio": "2025-06-01",
         "descrizione": "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
-        "durataMinuti": 86,
+        "durataMinuti": 90,
         "formato": "MP4",
         "generi": [
         ],
         "lingueDisponibili": [
             "Italiano",
-            "Inglese"
+            "Inglese",
+            "Cinese"
         ],
         "nPostCredit": 1,
         "nomeCinema": "Cinema Aurora",
         "path": ":/images/image9.png",
         "risoluzione": "UHD 4K 2160p",
         "sottotitoliDisponibili": [
-            "Italiano"
+            "Italiano",
+            "Spagnolo",
+            "Cinese"
         ],
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "Il mio vicino Totoro (RE-RELEASE 2025)"
     },
     {
+        "attoriPrincipali": [
+        ],
+        "autore": "a",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-09-26",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "",
+        "durataMinuti": 80,
+        "formato": "MP4",
+        "generi": [
+        ],
+        "lingueDisponibili": [
+            "Inglese",
+            "Tedesco"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Francese",
+            "Tedesco"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "aaaacaaaaa"
+    },
+    {
         "autore": "Studio Ghibli",
         "autoreFilmAssociato": "Hayao Miyazaki",
-        "dataFineRilascio": "2025-09-02",
-        "dataInizioRilascio": "2025-08-15",
+        "dataFineRilascio": "2025-05-31",
+        "dataInizioRilascio": "2025-04-15",
         "descrizione": "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
         "durataMinuti": 2,
         "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
@@ -170,8 +93,8 @@
     {
         "autore": "Hayao Miyazaki",
         "autoreFilmAssociato": "Hayao Miyazaki",
-        "dataFineRilascio": "2025-09-02",
-        "dataInizioRilascio": "2025-08-01",
+        "dataFineRilascio": "2025-06-15",
+        "dataInizioRilascio": "2025-05-01",
         "descrizione": "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
         "durataMinuti": 3,
         "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
@@ -210,50 +133,6 @@
         "titolo": "Cinema d'Autore"
     },
     {
-        "autore": "FilmLab",
-        "autorePodcastAssociato": "FilmLab",
-        "dataFineRilascio": "2025-10-16",
-        "dataInizioRilascio": "2025-10-01",
-        "descrizione": "Esploriamo l'era del cinema muto e i suoi maestri.",
-        "durataMinuti": 40,
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Limena",
-        "numeroPubblicita": 1,
-        "ospiti": [
-        ],
-        "path": ":/images/image17.png",
-        "podcastAssociato": "Cinema d'Autore",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "puntata",
-        "titolo": "Analisi del cinema muto"
-    },
-    {
-        "autore": "FilmLab",
-        "autorePodcastAssociato": "FilmLab",
-        "dataFineRilascio": "2025-11-01",
-        "dataInizioRilascio": "2025-10-16",
-        "descrizione": "Il movimento francese che ha rivoluzionato il cinema.",
-        "durataMinuti": 35,
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Limena",
-        "numeroPubblicita": 2,
-        "ospiti": [
-        ],
-        "path": ":/images/image17.png",
-        "podcastAssociato": "Cinema d'Autore",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "puntata",
-        "titolo": "La Nouvelle Vague"
-    },
-    {
         "attoriPrincipali": [
             "Rihanna",
             "John Goodman",
@@ -284,26 +163,6 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "I Puffi - Il Film"
-    },
-    {
-        "autore": "Paramount",
-        "autoreFilmAssociato": "Chris Miller",
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2025-06-06",
-        "descrizione": "Primi scorci ufficiali dell’avventura dei Puffi in CGI.",
-        "durataMinuti": 2,
-        "filmAssociato": "I Puffi - Il Film",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_ipuffi.jpg",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - I Puffi - Il Film"
     },
     {
         "attoriPrincipali": [
@@ -340,26 +199,6 @@
         "titolo": "I Roses"
     },
     {
-        "autore": "Searchlight Pictures / Disney Italia",
-        "autoreFilmAssociato": "Jay Roach",
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-08-01",
-        "descrizione": "Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.",
-        "durataMinuti": 2,
-        "filmAssociato": "I Roses",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 15,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_iroses.jpg",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - I Roses"
-    },
-    {
         "attoriPrincipali": [
             "Lillo Petrolo",
             "Maurizio Lastrico",
@@ -389,26 +228,6 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "Tutta colpa del rock"
-    },
-    {
-        "autore": "PiperFilm",
-        "autoreFilmAssociato": "Andrea Jublin",
-        "dataFineRilascio": "2025-09-08",
-        "dataInizioRilascio": "2025-07-07",
-        "descrizione": "Il trailer ufficiale mostra l’energia rock e l’irriverente cast carcerario alle prese con una rinascita a ritmo di musica.",
-        "durataMinuti": 1,
-        "filmAssociato": "Tutta colpa del rock",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 7,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_tuttacolpadelrock.jpg",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Tutta colpa del rock"
     },
     {
         "attoriPrincipali": [
@@ -444,26 +263,6 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "Harry Potter e il Calice di Fuoco - 20esimo anniversario"
-    },
-    {
-        "autore": "Warner Bros",
-        "autoreFilmAssociato": "Mike Newell",
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2005-09-23",
-        "descrizione": "Il trailer ufficiale del quarto capitolo della saga di Harry Potter.",
-        "durataMinuti": 2,
-        "filmAssociato": "Harry Potter e il Calice di Fuoco - 20esimo anniversario",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 4,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_harrypottereilcalicedifuoco.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Harry Potter e il Calice di Fuoco"
     },
     {
         "attoriPrincipali": [
@@ -508,26 +307,6 @@
         "titolo": "Una scomoda circostanza - Caught Stealing"
     },
     {
-        "autore": "Sony Pictures / Eagle Pictures",
-        "autoreFilmAssociato": "Darren Aronofsky",
-        "dataFineRilascio": "2025-09-02",
-        "dataInizioRilascio": "2025-07-24",
-        "descrizione": "Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.",
-        "durataMinuti": 2,
-        "filmAssociato": "Una scomoda circostanza - Caught Stealing",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 3,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_caughtstealing.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer italiano ufficiale - Una scomoda circostanza"
-    },
-    {
         "attoriPrincipali": [
             "Josh Brolin",
             "Julia Garner",
@@ -563,26 +342,6 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "Weapons"
-    },
-    {
-        "autore": "Warner Bros. Pictures Italia",
-        "autoreFilmAssociato": "Zach Cregger",
-        "dataFineRilascio": "2025-08-05",
-        "dataInizioRilascio": "2025-04-30",
-        "descrizione": "Trailer ufficiale italiano che anticipa il mistero inquietante dietro la sparizione dei bambini.",
-        "durataMinuti": 2,
-        "filmAssociato": "Weapons",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 3,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_weapons.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Weapons"
     },
     {
         "autore": "Autore",
@@ -642,6 +401,170 @@
         "titolo": "Lo Squalo - 50esimo anniversario"
     },
     {
+        "autore": "FilmLab",
+        "autorePodcastAssociato": "FilmLab",
+        "dataFineRilascio": "2025-10-16",
+        "dataInizioRilascio": "2025-10-01",
+        "descrizione": "Esploriamo l'era del cinema muto e i suoi maestri.",
+        "durataMinuti": 40,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Limena",
+        "numeroPubblicita": 1,
+        "ospiti": [
+        ],
+        "path": ":/images/image17.png",
+        "podcastAssociato": "Cinema d'Autore",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "Analisi del cinema muto"
+    },
+    {
+        "autore": "FilmLab",
+        "autorePodcastAssociato": "FilmLab",
+        "dataFineRilascio": "2025-11-01",
+        "dataInizioRilascio": "2025-10-16",
+        "descrizione": "Il movimento francese che ha rivoluzionato il cinema.",
+        "durataMinuti": 35,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Limena",
+        "numeroPubblicita": 2,
+        "ospiti": [
+        ],
+        "path": ":/images/image17.png",
+        "podcastAssociato": "Cinema d'Autore",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "La Nouvelle Vague"
+    },
+    {
+        "autore": "Paramount",
+        "autoreFilmAssociato": "Chris Miller",
+        "dataFineRilascio": "2025-09-07",
+        "dataInizioRilascio": "2025-06-06",
+        "descrizione": "Primi scorci ufficiali dell’avventura dei Puffi in CGI.",
+        "durataMinuti": 2,
+        "filmAssociato": "I Puffi - Il Film",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 5,
+        "nomeCinema": "Cinema Limena",
+        "path": ":/images/trailer_ipuffi.jpg",
+        "risoluzione": "HD 720p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - I Puffi - Il Film"
+    },
+    {
+        "autore": "Searchlight Pictures / Disney Italia",
+        "autoreFilmAssociato": "Jay Roach",
+        "dataFineRilascio": "2025-09-03",
+        "dataInizioRilascio": "2025-08-01",
+        "descrizione": "Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.",
+        "durataMinuti": 2,
+        "filmAssociato": "I Roses",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 15,
+        "nomeCinema": "Cinema Limena",
+        "path": ":/images/trailer_iroses.jpg",
+        "risoluzione": "HD 720p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - I Roses"
+    },
+    {
+        "autore": "PiperFilm",
+        "autoreFilmAssociato": "Andrea Jublin",
+        "dataFineRilascio": "2025-09-08",
+        "dataInizioRilascio": "2025-07-07",
+        "descrizione": "Il trailer ufficiale mostra l’energia rock e l’irriverente cast carcerario alle prese con una rinascita a ritmo di musica.",
+        "durataMinuti": 1,
+        "filmAssociato": "Tutta colpa del rock",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 7,
+        "nomeCinema": "Cinema Limena",
+        "path": ":/images/trailer_tuttacolpadelrock.jpg",
+        "risoluzione": "HD 720p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Tutta colpa del rock"
+    },
+    {
+        "autore": "Warner Bros",
+        "autoreFilmAssociato": "Mike Newell",
+        "dataFineRilascio": "2025-09-07",
+        "dataInizioRilascio": "2005-09-23",
+        "descrizione": "Il trailer ufficiale del quarto capitolo della saga di Harry Potter.",
+        "durataMinuti": 2,
+        "filmAssociato": "Harry Potter e il Calice di Fuoco - 20esimo anniversario",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 4,
+        "nomeCinema": "Cinema Limena",
+        "path": ":/images/trailer_harrypottereilcalicedifuoco.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Harry Potter e il Calice di Fuoco"
+    },
+    {
+        "autore": "Sony Pictures / Eagle Pictures",
+        "autoreFilmAssociato": "Darren Aronofsky",
+        "dataFineRilascio": "2025-09-02",
+        "dataInizioRilascio": "2025-07-24",
+        "descrizione": "Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.",
+        "durataMinuti": 2,
+        "filmAssociato": "Una scomoda circostanza - Caught Stealing",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 3,
+        "nomeCinema": "Cinema Limena",
+        "path": ":/images/trailer_caughtstealing.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer italiano ufficiale - Una scomoda circostanza"
+    },
+    {
+        "autore": "Warner Bros. Pictures Italia",
+        "autoreFilmAssociato": "Zach Cregger",
+        "dataFineRilascio": "2025-08-05",
+        "dataInizioRilascio": "2025-04-30",
+        "descrizione": "Trailer ufficiale italiano che anticipa il mistero inquietante dietro la sparizione dei bambini.",
+        "durataMinuti": 2,
+        "filmAssociato": "Weapons",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 3,
+        "nomeCinema": "Cinema Limena",
+        "path": ":/images/trailer_weapons.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Weapons"
+    },
+    {
         "autore": "Universal Pictures / Adler Entertainment",
         "autoreFilmAssociato": "Steven Spielberg",
         "dataFineRilascio": "2025-08-31",
@@ -698,26 +621,6 @@
         "titolo": "I Puffi - Il Film"
     },
     {
-        "autore": "Paramount",
-        "autoreFilmAssociato": "Chris Miller",
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2025-06-06",
-        "descrizione": "Primi scorci ufficiali dell’avventura dei Puffi in CGI.",
-        "durataMinuti": 2,
-        "filmAssociato": "I Puffi - Il Film",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_ipuffi.jpg",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - I Puffi - Il Film"
-    },
-    {
         "attoriPrincipali": [
             "Olivia Colman",
             "Benedict Cumberbatch",
@@ -752,77 +655,6 @@
         "titolo": "I Roses"
     },
     {
-        "autore": "Searchlight Pictures / Disney Italia",
-        "autoreFilmAssociato": "Jay Roach",
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-08-01",
-        "descrizione": "Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.",
-        "durataMinuti": 2,
-        "filmAssociato": "I Roses",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 15,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_iroses.png",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - I Roses"
-    },
-    {
-        "attoriPrincipali": [
-            "Lillo Petrolo",
-            "Maurizio Lastrico",
-            "Elio",
-            "Naska"
-        ],
-        "autore": "Andrea Jublin",
-        "casaDiProduzione": "Be Water Film / PiperFilm",
-        "costoBiglietto": 7,
-        "dataFineRilascio": "2025-09-08",
-        "dataInizioRilascio": "2025-08-28",
-        "descrizione": "\n            Bruno è un ex chitarrista rock egoista e bugiardo che finisce in carcere. Nel luogo più costrittivo trova però un’opportunità di riscatto: formare una band con altri detenuti e partecipare al Roma Rock Contest per mantenere una promessa fatta alla figlia.\n        ",
-        "durataMinuti": 100,
-        "formato": "DCP",
-        "generi": [
-            "Commedia"
-        ],
-        "lingueDisponibili": [
-            "Italiano"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "cinema",
-        "path": ":/images/locandina_tuttacolpadelrock.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Tutta colpa del rock"
-    },
-    {
-        "autore": "PiperFilm",
-        "autoreFilmAssociato": "Andrea Jublin",
-        "dataFineRilascio": "2025-09-08",
-        "dataInizioRilascio": "2025-07-07",
-        "descrizione": "Il trailer ufficiale mostra l’energia rock e l’irriverente cast carcerario alle prese con una rinascita a ritmo di musica.",
-        "durataMinuti": 1,
-        "filmAssociato": "Tutta colpa del rock",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 7,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_tuttacolpadelrock.jpg",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Tutta colpa del rock"
-    },
-    {
         "attoriPrincipali": [
             "Daniel Radcliffe",
             "Emma Watson",
@@ -832,7 +664,7 @@
         "autore": "Mike Newell",
         "casaDiProduzione": "Warner Bros Italia",
         "costoBiglietto": 10.5,
-        "dataFineRilascio": "2025-09-07",
+        "dataFineRilascio": "2025-09-14",
         "dataInizioRilascio": "2025-08-28",
         "descrizione": "Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.",
         "durataMinuti": 157,
@@ -854,26 +686,6 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "Harry Potter e il Calice di Fuoco - 20esimo anniversario"
-    },
-    {
-        "autore": "Warner Bros",
-        "autoreFilmAssociato": "Mike Newell",
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2005-09-23",
-        "descrizione": "Il trailer ufficiale del quarto capitolo della saga di Harry Potter.",
-        "durataMinuti": 2,
-        "filmAssociato": "Harry Potter e il Calice di Fuoco - 20esimo anniversario",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 4,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_harrypottereilcalicedifuoco.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Harry Potter e il Calice di Fuoco"
     },
     {
         "attoriPrincipali": [
@@ -915,26 +727,6 @@
         "titolo": "Una scomoda circostanza - Caught Stealing"
     },
     {
-        "autore": "Sony Pictures / Eagle Pictures",
-        "autoreFilmAssociato": "Darren Aronofsky",
-        "dataFineRilascio": "2025-09-02",
-        "dataInizioRilascio": "2025-07-24",
-        "descrizione": "Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.",
-        "durataMinuti": 2,
-        "filmAssociato": "Una scomoda circostanza - Caught Stealing",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 3,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_caughtstealing.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer italiano ufficiale - Una scomoda circostanza"
-    },
-    {
         "attoriPrincipali": [
             "Josh Brolin",
             "Julia Garner",
@@ -972,26 +764,6 @@
         "titolo": "Weapons"
     },
     {
-        "autore": "Warner Bros. Pictures Italia",
-        "autoreFilmAssociato": "Zach Cregger",
-        "dataFineRilascio": "2025-08-05",
-        "dataInizioRilascio": "2025-04-30",
-        "descrizione": "Trailer ufficiale italiano che anticipa il mistero inquietante dietro la sparizione dei bambini.",
-        "durataMinuti": 2,
-        "filmAssociato": "Weapons",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 3,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_weapons.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Weapons"
-    },
-    {
         "attoriPrincipali": [
             "Roy Scheider",
             "Robert Shaw",
@@ -1023,6 +795,106 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "Lo Squalo - 50esimo anniversario"
+    },
+    {
+        "autore": "Paramount",
+        "autoreFilmAssociato": "Chris Miller",
+        "dataFineRilascio": "2025-09-07",
+        "dataInizioRilascio": "2025-06-06",
+        "descrizione": "Primi scorci ufficiali dell’avventura dei Puffi in CGI.",
+        "durataMinuti": 2,
+        "filmAssociato": "I Puffi - Il Film",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 5,
+        "nomeCinema": "cinema",
+        "path": ":/images/trailer_ipuffi.jpg",
+        "risoluzione": "HD 720p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - I Puffi - Il Film"
+    },
+    {
+        "autore": "Searchlight Pictures / Disney Italia",
+        "autoreFilmAssociato": "Jay Roach",
+        "dataFineRilascio": "2025-09-03",
+        "dataInizioRilascio": "2025-08-01",
+        "descrizione": "Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.",
+        "durataMinuti": 2,
+        "filmAssociato": "I Roses",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 15,
+        "nomeCinema": "cinema",
+        "path": ":/images/trailer_iroses.png",
+        "risoluzione": "HD 720p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - I Roses"
+    },
+    {
+        "autore": "Warner Brosss",
+        "autoreFilmAssociato": "Mike Newell",
+        "dataFineRilascio": "2025-09-14",
+        "dataInizioRilascio": "2005-09-23",
+        "descrizione": "Il trailer ufficiale del quarto capitolo della saga di Harry Potter.",
+        "durataMinuti": 2,
+        "filmAssociato": "Harry Potter e il Calice di Fuoco - 20esimo anniversario",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 4,
+        "nomeCinema": "cinema",
+        "path": ":/images/trailer_harrypottereilcalicedifuoco.jpg",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Harry Potter e il Calice di Fuoco"
+    },
+    {
+        "autore": "Sony Pictures / Eagle Pictures",
+        "autoreFilmAssociato": "Darren Aronofsky",
+        "dataFineRilascio": "2025-09-02",
+        "dataInizioRilascio": "2025-07-24",
+        "descrizione": "Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.",
+        "durataMinuti": 2,
+        "filmAssociato": "Una scomoda circostanza - Caught Stealing",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 3,
+        "nomeCinema": "cinema",
+        "path": ":/images/trailer_caughtstealing.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer italiano ufficiale - Una scomoda circostanza"
+    },
+    {
+        "autore": "Warner Bros. Pictures Italia",
+        "autoreFilmAssociato": "Zach Cregger",
+        "dataFineRilascio": "2025-08-05",
+        "dataInizioRilascio": "2025-04-30",
+        "descrizione": "Trailer ufficiale italiano che anticipa il mistero inquietante dietro la sparizione dei bambini.",
+        "durataMinuti": 2,
+        "filmAssociato": "Weapons",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 3,
+        "nomeCinema": "cinema",
+        "path": ":/images/trailer_weapons.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Weapons"
     },
     {
         "autore": "Universal Pictures / Adler Entertainment",
@@ -1074,26 +946,6 @@
         "titolo": "ccaaaa"
     },
     {
-        "autore": "e",
-        "autoreFilmAssociato": "ee",
-        "dataFineRilascio": "2025-09-05",
-        "dataInizioRilascio": "2025-09-05",
-        "descrizione": "",
-        "durataMinuti": 0,
-        "filmAssociato": "ccaaaa",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 0,
-        "nomeCinema": "Cinema Prova",
-        "path": ":/images/default.png",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "aaa"
-    },
-    {
         "autore": "c",
         "conduttore": "",
         "dataFineRilascio": "2025-09-05",
@@ -1110,31 +962,6 @@
         ],
         "tipologia": "podcast",
         "titolo": "ee"
-    },
-    {
-        "autore": "dede",
-        "autorePodcastAssociato": "c",
-        "dataFineRilascio": "2025-09-05",
-        "dataInizioRilascio": "2025-09-05",
-        "descrizione": "",
-        "durataMinuti": 0,
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Prova",
-        "numeroPubblicita": 0,
-        "ospiti": [
-            "ef",
-            "f",
-            "fee"
-        ],
-        "path": ":/images/default.png",
-        "podcastAssociato": "ee",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "puntata",
-        "titolo": "dede"
     },
     {
         "attoriPrincipali": [
@@ -1167,26 +994,6 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "I Puffi - Il Film"
-    },
-    {
-        "autore": "Paramount",
-        "autoreFilmAssociato": "Chris Miller",
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2025-06-06",
-        "descrizione": "Primi scorci ufficiali dell’avventura dei Puffi in CGI.",
-        "durataMinuti": 2,
-        "filmAssociato": "I Puffi - Il Film",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "Cinema Prova",
-        "path": ":/images/trailer_ipuffi.jpg",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - I Puffi - Il Film"
     },
     {
         "attoriPrincipali": [
@@ -1223,26 +1030,6 @@
         "titolo": "I Roses"
     },
     {
-        "autore": "Searchlight Pictures / Disney Italia",
-        "autoreFilmAssociato": "Jay Roach",
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-08-01",
-        "descrizione": "Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.",
-        "durataMinuti": 2,
-        "filmAssociato": "I Roses",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 15,
-        "nomeCinema": "Cinema Prova",
-        "path": ":/images/trailer_iroses.jpg",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - I Roses"
-    },
-    {
         "attoriPrincipali": [
             "Lillo Petrolo",
             "Maurizio Lastrico",
@@ -1272,26 +1059,6 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "Tutta colpa del rock"
-    },
-    {
-        "autore": "PiperFilm",
-        "autoreFilmAssociato": "Andrea Jublin",
-        "dataFineRilascio": "2025-09-08",
-        "dataInizioRilascio": "2025-07-07",
-        "descrizione": "Il trailer ufficiale mostra l’energia rock e l’irriverente cast carcerario alle prese con una rinascita a ritmo di musica.",
-        "durataMinuti": 1,
-        "filmAssociato": "Tutta colpa del rock",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 7,
-        "nomeCinema": "Cinema Prova",
-        "path": ":/images/trailer_tuttacolpadelrock.jpg",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Tutta colpa del rock"
     },
     {
         "attoriPrincipali": [
@@ -1333,26 +1100,6 @@
         "titolo": "Una scomoda circostanza - Caught Stealing"
     },
     {
-        "autore": "Sony Pictures / Eagle Pictures",
-        "autoreFilmAssociato": "Darren Aronofsky",
-        "dataFineRilascio": "2025-09-02",
-        "dataInizioRilascio": "2025-07-24",
-        "descrizione": "Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.",
-        "durataMinuti": 2,
-        "filmAssociato": "Una scomoda circostanza - Caught Stealing",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 3,
-        "nomeCinema": "Cinema Prova",
-        "path": ":/images/trailer_caughtstealing.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer italiano ufficiale - Una scomoda circostanza"
-    },
-    {
         "attoriPrincipali": [
             "Josh Brolin",
             "Julia Garner",
@@ -1390,26 +1137,6 @@
         "titolo": "Weapons"
     },
     {
-        "autore": "Warner Bros. Pictures Italia",
-        "autoreFilmAssociato": "Zach Cregger",
-        "dataFineRilascio": "2025-08-05",
-        "dataInizioRilascio": "2025-04-30",
-        "descrizione": "Trailer ufficiale italiano che anticipa il mistero inquietante dietro la sparizione dei bambini.",
-        "durataMinuti": 2,
-        "filmAssociato": "Weapons",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 3,
-        "nomeCinema": "Cinema Prova",
-        "path": ":/images/trailer_weapons.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Weapons"
-    },
-    {
         "attoriPrincipali": [
             "Roy Scheider",
             "Robert Shaw",
@@ -1441,26 +1168,6 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "Lo Squalo - 50esimo anniversario"
-    },
-    {
-        "autore": "Universal Pictures / Adler Entertainment",
-        "autoreFilmAssociato": "Steven Spielberg",
-        "dataFineRilascio": "2025-08-31",
-        "dataInizioRilascio": "2025-07-04",
-        "descrizione": "Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.",
-        "durataMinuti": 2,
-        "filmAssociato": "Lo Squalo - 50esimo anniversario",
-        "formato": "IMAX 3D",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "Cinema Prova",
-        "path": ":/images/trailer_losqualo50anniversario.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
     },
     {
         "attoriPrincipali": [
@@ -1501,6 +1208,200 @@
         "titolo": "Il mio vicino Totoro (RE-RELEASE 2025)"
     },
     {
+        "attoriPrincipali": [
+        ],
+        "autore": "a",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-09-26",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "",
+        "durataMinuti": 80,
+        "formato": "MP4",
+        "generi": [
+        ],
+        "lingueDisponibili": [
+            "Inglese",
+            "Tedesco"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "Cinema Prova",
+        "path": ":/images/default.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Francese",
+            "Tedesco"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "aaaacaaaaa"
+    },
+    {
+        "autore": "e",
+        "autoreFilmAssociato": "ee",
+        "dataFineRilascio": "2025-09-05",
+        "dataInizioRilascio": "2025-09-05",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "filmAssociato": "ccaaaa",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 0,
+        "nomeCinema": "Cinema Prova",
+        "path": ":/images/default.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "aaa"
+    },
+    {
+        "autore": "dede",
+        "autorePodcastAssociato": "c",
+        "dataFineRilascio": "2025-09-05",
+        "dataInizioRilascio": "2025-09-05",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Prova",
+        "numeroPubblicita": 0,
+        "ospiti": [
+            "ef",
+            "f",
+            "fee"
+        ],
+        "path": ":/images/default.png",
+        "podcastAssociato": "ee",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "dede"
+    },
+    {
+        "autore": "Paramount",
+        "autoreFilmAssociato": "Chris Miller",
+        "dataFineRilascio": "2025-09-07",
+        "dataInizioRilascio": "2025-06-06",
+        "descrizione": "Primi scorci ufficiali dell’avventura dei Puffi in CGI.",
+        "durataMinuti": 2,
+        "filmAssociato": "I Puffi - Il Film",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 5,
+        "nomeCinema": "Cinema Prova",
+        "path": ":/images/trailer_ipuffi.jpg",
+        "risoluzione": "HD 720p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - I Puffi - Il Film"
+    },
+    {
+        "autore": "Searchlight Pictures / Disney Italia",
+        "autoreFilmAssociato": "Jay Roach",
+        "dataFineRilascio": "2025-09-03",
+        "dataInizioRilascio": "2025-08-01",
+        "descrizione": "Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.",
+        "durataMinuti": 2,
+        "filmAssociato": "I Roses",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 15,
+        "nomeCinema": "Cinema Prova",
+        "path": ":/images/trailer_iroses.jpg",
+        "risoluzione": "HD 720p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - I Roses"
+    },
+    {
+        "autore": "PiperFilm",
+        "autoreFilmAssociato": "Andrea Jublin",
+        "dataFineRilascio": "2025-09-08",
+        "dataInizioRilascio": "2025-07-07",
+        "descrizione": "Il trailer ufficiale mostra l’energia rock e l’irriverente cast carcerario alle prese con una rinascita a ritmo di musica.",
+        "durataMinuti": 1,
+        "filmAssociato": "Tutta colpa del rock",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 7,
+        "nomeCinema": "Cinema Prova",
+        "path": ":/images/trailer_tuttacolpadelrock.jpg",
+        "risoluzione": "HD 720p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Tutta colpa del rock"
+    },
+    {
+        "autore": "Sony Pictures / Eagle Pictures",
+        "autoreFilmAssociato": "Darren Aronofsky",
+        "dataFineRilascio": "2025-09-02",
+        "dataInizioRilascio": "2025-07-24",
+        "descrizione": "Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.",
+        "durataMinuti": 2,
+        "filmAssociato": "Una scomoda circostanza - Caught Stealing",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 3,
+        "nomeCinema": "Cinema Prova",
+        "path": ":/images/trailer_caughtstealing.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer italiano ufficiale - Una scomoda circostanza"
+    },
+    {
+        "autore": "Warner Bros. Pictures Italia",
+        "autoreFilmAssociato": "Zach Cregger",
+        "dataFineRilascio": "2025-08-05",
+        "dataInizioRilascio": "2025-04-30",
+        "descrizione": "Trailer ufficiale italiano che anticipa il mistero inquietante dietro la sparizione dei bambini.",
+        "durataMinuti": 2,
+        "filmAssociato": "Weapons",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 3,
+        "nomeCinema": "Cinema Prova",
+        "path": ":/images/trailer_weapons.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Weapons"
+    },
+    {
+        "autore": "Universal Pictures / Adler Entertainment",
+        "autoreFilmAssociato": "Steven Spielberg",
+        "dataFineRilascio": "2025-08-31",
+        "dataInizioRilascio": "2025-07-04",
+        "descrizione": "Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.",
+        "durataMinuti": 2,
+        "filmAssociato": "Lo Squalo - 50esimo anniversario",
+        "formato": "IMAX 3D",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 5,
+        "nomeCinema": "Cinema Prova",
+        "path": ":/images/trailer_losqualo50anniversario.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
+    },
+    {
         "autore": "Studio Ghibli",
         "autoreFilmAssociato": "Hayao Miyazaki",
         "dataFineRilascio": "2025-05-31",
@@ -1539,34 +1440,5 @@
         ],
         "tipologia": "trailer",
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
-    },
-    {
-        "attoriPrincipali": [
-        ],
-        "autore": "a",
-        "casaDiProduzione": "",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-09-26",
-        "dataInizioRilascio": "2025-09-04",
-        "descrizione": "",
-        "durataMinuti": 80,
-        "formato": "MP4",
-        "generi": [
-        ],
-        "lingueDisponibili": [
-            "Inglese",
-            "Tedesco"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Prova",
-        "path": ":/images/default.png",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-            "Francese",
-            "Tedesco"
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "aaaacaaaaa"
     }
 ]

@@ -63,11 +63,11 @@ void UpdateMediaLibrary::update(const bool& view, int comboAttivita, int comboOr
             (puntata && std::any_of(puntata->getOspiti().begin(), puntata->getOspiti().end(), [&](const std::string& a)
             {return QString::fromStdString(a).contains(ricerca, Qt::CaseInsensitive);})) */)){
                 
-            CardVisitor* libraryVisitor = new CardVisitor(container, filtro, view);
-            m->accept(libraryVisitor);
+            CardVisitor libraryVisitor(container, filtro, view);
+            m->accept(&libraryVisitor);
 
             if(!view){
-                HorizontalCard* card(libraryVisitor->getWidgetCard());
+                HorizontalCard* card(libraryVisitor.getWidgetCard());
     
                 if(card != nullptr){
                     if(chooseLayout) HorizontalLayoutContainer->addWidget(card);
@@ -86,7 +86,7 @@ void UpdateMediaLibrary::update(const bool& view, int comboAttivita, int comboOr
                 }
             }
             else{
-                MediaFrame* media(libraryVisitor->getWidgetFrame());
+                MediaFrame* media(libraryVisitor.getWidgetFrame());
     
                 if(media != nullptr){
                     if(chooseLayout) HorizontalLayoutContainer->addWidget(media);
