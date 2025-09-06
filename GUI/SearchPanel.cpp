@@ -561,7 +561,7 @@ void SearchPanel::showMediaView(MediaView& widget){
     
     connect(&widget, &MediaView::extendMediaClicked, this, &SearchPanel::updateJson);
     connect(&widget, &MediaView::requestMediaView, this, &SearchPanel::showMediaView);
-    connect(&widget, &MediaView::deleteMediaClicked, this, [this, &widget](Media* m){removeMediaView(&widget); acceptDeleteMedia(m);});
+    connect(&widget, &MediaView::deleteMediaClicked, this, [this, &widget](Media* m){acceptDeleteMedia(m);});
 }
 
 /*@to do metto MediaView invece che widget? no tanto stackModifiche 
@@ -611,5 +611,6 @@ void SearchPanel::acceptDeleteMedia(Media* media){
     updateMediaList();
 
     deleteViewPages();
+    stackModifiche->setCurrentIndex(0);
     updateFiltroTutto();
 }

@@ -563,8 +563,7 @@ QWidget* MediaInterface::addPagina(){
     QWidget* widgetPagina4 = new QWidget(this);
 
     titolo = new QLabel(this);
-    framePath = new InsertImageFrame(   "<span style='color:#05313c; font-size:16px;'><b> +<u>Aggiungi copertina</u></b></span><br>"
-                                        "<span style='color:#05313c;; font-size:16px;'> oppure rilasciala</span>",
+    framePath = new InsertImageFrame(   "<span style='color:#05313c; font-size:16px;'><b> +<u>Aggiungi copertina</u></b></span><br>",
                                         "#frame { border: 3px dashed #05313c; border-radius: 12px; } "
                                         "QLabel { qproperty-alignment: AlignCenter; }" 
                                         "QToolButton { border: none; color: #073c47; font-weight: bold; } "

@@ -23,38 +23,6 @@
     },
     {
         "attoriPrincipali": [
-            "Rihanna",
-            "Nick Offerman",
-            "John Goodman"
-        ],
-        "autore": "Chris Millerd",
-        "casaDiProduzione": "Paramount Animation",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-09-21",
-        "dataInizioRilascio": "2025-08-22",
-        "descrizione": "Un’avventura animata-musicale con i Puffi alla ricerca del Grande Puffo tra dimensioni magiche...\n",
-        "durataMinuti": 93,
-        "formato": "DCP",
-        "generi": [
-            "Animazione"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 1,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/locandina_ipuffiilfilm.jpg",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-            "Italiano"
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "I Puffi - Il Filmmmm"
-    },
-    {
-        "attoriPrincipali": [
             "Olivia Colman",
             "Benedict Cumberbatch",
             "Andy Samberg",
@@ -86,71 +54,6 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "I Roses"
-    },
-    {
-        "attoriPrincipali": [
-            "Lillo Petrolo",
-            "Maurizio Lastrico",
-            "Elio",
-            "Naska"
-        ],
-        "autore": "Andrea Jublin",
-        "casaDiProduzione": "Be Water Film / PiperFilm",
-        "costoBiglietto": 7,
-        "dataFineRilascio": "2025-09-08",
-        "dataInizioRilascio": "2025-08-28",
-        "descrizione": "\n            Bruno è un ex chitarrista rock egoista e bugiardo che finisce in carcere. Nel luogo più costrittivo trova però un’opportunità di riscatto: formare una band con altri detenuti e partecipare al Roma Rock Contest per mantenere una promessa fatta alla figlia.\n        ",
-        "durataMinuti": 100,
-        "formato": "DCP",
-        "generi": [
-            "Commedia"
-        ],
-        "lingueDisponibili": [
-            "Italiano"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/locandina_tuttacolpadelrock.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Tutta colpa del rock"
-    },
-    {
-        "attoriPrincipali": [
-            "Daniel Radcliffe",
-            "Emma Watson",
-            "Rupert Grint",
-            "Ralph Fiennes"
-        ],
-        "autore": "Mike Newelll",
-        "casaDiProduzione": "Warner Bros Italia",
-        "costoBiglietto": 10.5,
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2025-08-28",
-        "descrizione": "Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.asdasd",
-        "durataMinuti": 158,
-        "formato": "DCP",
-        "generi": [
-            "Avventura",
-            "Fantasy"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/locandina_harrypottereilcalicedifuoco.jpg",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-            "Italiano"
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Harry Potter e il Calice di Fuoco - 20esimo anniversario"
     },
     {
         "attoriPrincipali": [
@@ -423,46 +326,6 @@
         "titolo": "Trailer ufficiale - I Roses"
     },
     {
-        "autore": "PiperFilm",
-        "autoreFilmAssociato": "Andrea Jublin",
-        "dataFineRilascio": "2025-09-08",
-        "dataInizioRilascio": "2025-07-07",
-        "descrizione": "Il trailer ufficiale mostra l’energia rock e l’irriverente cast carcerario alle prese con una rinascita a ritmo di musica.",
-        "durataMinuti": 1,
-        "filmAssociato": "Tutta colpa del rock",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 7,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_tuttacolpadelrock.jpg",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Tutta colpa del rock"
-    },
-    {
-        "autore": "Warner Bros",
-        "autoreFilmAssociato": "Mike Newelll",
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2005-09-23",
-        "descrizione": "Il trailer ufficiale del quarto capitolo della saga di Harry Potter.",
-        "durataMinuti": 2,
-        "filmAssociato": "Harry Potter e il Calice di Fuoco - 20esimo anniversario",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 4,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_harrypottereilcalicedifuoco.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Harry Potter e il Calice di Fuoco"
-    },
-    {
         "autore": "Sony Pictures / Eagle Pictures",
         "autoreFilmAssociato": "Darren Aronofsky",
         "dataFineRilascio": "2025-09-02",
@@ -640,41 +503,6 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "Tutta colpa del rock"
-    },
-    {
-        "attoriPrincipali": [
-            "Emma Watson",
-            "Ralph Fiennes",
-            "Daniel Radcliffe",
-            "Emma Watson",
-            "Rupert Grint",
-            "Ralph Fiennes"
-        ],
-        "autore": "Mike Newell",
-        "casaDiProduzione": "Warner Bros Italia",
-        "costoBiglietto": 10.5,
-        "dataFineRilascio": "2025-09-14",
-        "dataInizioRilascio": "2025-08-28",
-        "descrizione": "Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.",
-        "durataMinuti": 158,
-        "formato": "DCP",
-        "generi": [
-            "Avventura",
-            "Fantasy"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/locandina_harrypottereilcalicedifuoco.jpg",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Harry Potter e il Calice di Fuoco - 20esimo anniversario"
     },
     {
         "attoriPrincipali": [
@@ -1017,46 +845,6 @@
         "titolo": "Trailer ufficiale - Tutta colpa del rock"
     },
     {
-        "autore": "Warner Bros",
-        "autoreFilmAssociato": "Mike Newell",
-        "dataFineRilascio": "2025-09-14",
-        "dataInizioRilascio": "2005-09-23",
-        "descrizione": "Il trailer ufficiale del quarto capitolo della saga di Harry Potter.",
-        "durataMinuti": 2,
-        "filmAssociato": "Harry Potter e il Calice di Fuoco - 20esimo anniversario",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 4,
-        "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/trailer_harrypottereilcalicedifuoco.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Harry Potter e il Calice di Fuoco"
-    },
-    {
-        "autore": "Sony Pictures / Eagle Pictures",
-        "autoreFilmAssociato": "Darren Aronofsky",
-        "dataFineRilascio": "2025-09-02",
-        "dataInizioRilascio": "2025-07-24",
-        "descrizione": "Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.",
-        "durataMinuti": 2,
-        "filmAssociato": "Una scomoda circostanza - Caught Stealing",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 3,
-        "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/trailer_caughtstealing.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer italiano ufficiale - Una scomoda circostanza"
-    },
-    {
         "autore": "Warner Bros. Pictures Italia",
         "autoreFilmAssociato": "Zach Cregger",
         "dataFineRilascio": "2025-08-05",
@@ -1141,42 +929,8 @@
         "nomeCinema": "cinemaaa"
     },
     {
-        "attoriPrincipali": [
-            "Chika Sakamoto",
-            "Hitoshi Takagi",
-            "Noriko Hidaka",
-            "Chika Sakamoto",
-            "Shigesato Itoi",
-            "Hitoshi Takagi",
-            "Takashi Nagasako"
-        ],
-        "autore": "Hayao Miyazaki",
-        "casaDiProduzione": "Studio Ghibli",
-        "costoBiglietto": 12.5,
-        "dataFineRilascio": "2025-06-30",
-        "dataInizioRilascio": "2025-06-01",
-        "descrizione": "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
-        "durataMinuti": 90,
-        "formato": "MP4",
-        "generi": [
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese",
-            "Cinese"
-        ],
-        "nPostCredit": 1,
-        "nomeCinema": "cinemaaa",
-        "path": ":/images/image9.png",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-            "Italiano",
-            "Spagnolo",
-            "Cinese"
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Il mio vicino Totoro (RE-RELEASE 2025)"
+        "copertinaCinema": ":/images/default.png",
+        "nomeCinema": "caca"
     },
     {
         "attoriPrincipali": [
@@ -1203,7 +957,7 @@
             "Inglese"
         ],
         "nPostCredit": 0,
-        "nomeCinema": "cinemaaa",
+        "nomeCinema": "caca",
         "path": ":/images/locandina_irosesfilm.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
@@ -1213,24 +967,42 @@
         "titolo": "I cacasasdasddasda"
     },
     {
-        "autore": "Studio Ghiblieee",
-        "autoreFilmAssociato": "Hayao Miyazaki",
-        "dataFineRilascio": "2025-05-31",
-        "dataInizioRilascio": "2025-04-15",
-        "descrizione": "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
-        "durataMinuti": 2,
-        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
-        "formato": "MP4",
-        "lingueDisponibili": [
+        "attoriPrincipali": [
+            "Chika Sakamoto",
+            "Hitoshi Takagi",
+            "Noriko Hidaka",
+            "Chika Sakamoto",
+            "Shigesato Itoi",
+            "Hitoshi Takagi",
+            "Takashi Nagasako"
         ],
-        "nProiezioniGiornaliere": 2,
-        "nomeCinema": "cinemaaa",
-        "path": ":/images/image10.png",
+        "autore": "Hayao Miyazaki",
+        "casaDiProduzione": "Studio Ghibli",
+        "costoBiglietto": 12.5,
+        "dataFineRilascio": "2025-06-30",
+        "dataInizioRilascio": "2025-06-01",
+        "descrizione": "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
+        "durataMinuti": 90,
+        "formato": "MP4",
+        "generi": [
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Cinese"
+        ],
+        "nPostCredit": 1,
+        "nomeCinema": "caca",
+        "path": ":/images/image9.png",
         "risoluzione": "UHD 4K 2160p",
         "sottotitoliDisponibili": [
+            "Italiano",
+            "Spagnolo",
+            "Cinese"
         ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Il mio vicino Totoro (2025)"
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Il mio vicino Totoro (RE-RELEASE 2025)"
     },
     {
         "autore": "Hayao Miyazaki",
@@ -1244,16 +1016,12 @@
         "lingueDisponibili": [
         ],
         "nProiezioniGiornaliere": 3,
-        "nomeCinema": "cinemaaa",
+        "nomeCinema": "caca",
         "path": ":/images/image10.png",
         "risoluzione": "UHD 4K 2160p",
         "sottotitoliDisponibili": [
         ],
         "tipologia": "trailer",
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
-    },
-    {
-        "copertinaCinema": ":/images/default.png",
-        "nomeCinema": "caca"
     }
 ]
