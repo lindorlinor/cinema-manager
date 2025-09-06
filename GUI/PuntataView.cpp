@@ -322,7 +322,7 @@ void PuntataView::createButtons(){
             emit deleteMediaClicked(puntPtr);
         }
         else if(msgBox.clickedButton() == annullaBtn){
-            qDebug()<<"Eliminazione del media annullata";
+            // qDebug()<<"Eliminazione del media annullata";
         }
     });
     

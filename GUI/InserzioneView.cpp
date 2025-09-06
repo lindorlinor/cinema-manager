@@ -273,7 +273,7 @@ void InserzioneView::createButtons(){
                 emit deleteMediaClicked(insPtr);
             }
             else if(msgBox.clickedButton() == annullaBtn){
-                qDebug()<<"Eliminazione del media annullata";
+                // qDebug()<<"Eliminazione del media annullata";
             }
         });
 

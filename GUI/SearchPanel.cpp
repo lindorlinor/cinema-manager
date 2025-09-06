@@ -486,14 +486,15 @@ void SearchPanel::acceptDeleteCinema(){
     QPushButton* conferma = msgBox.addButton("Conferma", QMessageBox::AcceptRole);
     msgBox.exec();
     if (msgBox.clickedButton() == conferma) {
-        qDebug() << "Eliminazione cinema "<<QString::fromStdString(s_cinemaSelezionato->getNomeCinema())<<" confermata";
+        // qDebug() << "Eliminazione cinema "<<QString::fromStdString(s_cinemaSelezionato->getNomeCinema())<<" confermata";
+        s_xmlManager->setCurrentCinema(nullptr);
         emit deleteCinemaInSearchPanel(s_cinemaSelezionato);
         resetSearchPanelAfterDeleteCinema();
         emit escSearchPanelAfterDeleteCinema();
         emit setQMenuDisabled();
     }
     else if (msgBox.clickedButton() == annulla){
-        qDebug() << "Eliminazione cinema "<<QString::fromStdString(s_cinemaSelezionato->getNomeCinema())<<" annullata";
+        // qDebug() << "Eliminazione cinema "<<QString::fromStdString(s_cinemaSelezionato->getNomeCinema())<<" annullata";
     }
 }
 

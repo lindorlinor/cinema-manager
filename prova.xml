@@ -1,16 +1,16 @@
 <Cinema>
-    <Nome>Cinema prova</Nome>
+    <Nome>Cinema Limena</Nome>
     <Copertina>:/images/coverCinema.png</Copertina>
     <MediaList>
         <Podcast>
             <Titolo>Cinema d'Autore</Titolo>
             <Autore>FilmLab</Autore>
             <Descrizione>Approfondimenti sui grandi registi e capolavori cinematografici.</Descrizione>
-            <DurataMinuti>75</DurataMinuti>
+            <DurataMinuti>35</DurataMinuti>
             <Formato>MP4</Formato>
-            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Risoluzione>SD 480p</Risoluzione>
             <Path>:/images/image17.png</Path>
-            <DataInizioRilascio>1/10/2025</DataInizioRilascio>
+            <DataInizioRilascio>16/10/2025</DataInizioRilascio>
             <DataFineRilascio>1/11/2025</DataFineRilascio>
             <LingueDisponibili/>
             <SottotitoliDisponibili/>
@@ -19,19 +19,22 @@
         <Film>
             <Titolo>I Puffi - Il Film</Titolo>
             <Autore>Chris Miller</Autore>
-            <Descrizione>Un’avventura animata-musicale con i Puffi alla ricerca del Grande Puffo tra dimensioni magiche...</Descrizione>
+            <Descrizione>Un’avventura animata-musicale con i Puffi alla ricerca del Grande Puffo tra dimensioni magiche...
+</Descrizione>
             <DurataMinuti>93</DurataMinuti>
             <Formato>DCP</Formato>
             <Risoluzione>SD 480p</Risoluzione>
             <Path>:/images/locandina_ipuffiilfilm.jpg</Path>
             <DataInizioRilascio>22/8/2025</DataInizioRilascio>
-            <DataFineRilascio>14/9/2025</DataFineRilascio>
+            <DataFineRilascio>21/9/2025</DataFineRilascio>
             <LingueDisponibili>
                 <Lingua>Italiano</Lingua>
                 <Lingua>Inglese</Lingua>
             </LingueDisponibili>
             <SottotitoliDisponibili>
                 <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+                <Lingua>Francese</Lingua>
             </SottotitoliDisponibili>
             <Generi>
                 <Genere>Animazione</Genere>
@@ -39,7 +42,6 @@
             <AttoriPrincipali>
                 <Attore>Rihanna</Attore>
                 <Attore>John Goodman</Attore>
-                <Attore>Nick Offerman</Attore>
             </AttoriPrincipali>
             <Target>TUTTI</Target>
             <CostoBiglietto>8</CostoBiglietto>
@@ -109,8 +111,8 @@
         </Film>
         <Film>
             <Titolo>Harry Potter e il Calice di Fuoco - 20esimo anniversario</Titolo>
-            <Autore>Mike Newell</Autore>
-            <Descrizione>Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.</Descrizione>
+            <Autore>Mike Newelll</Autore>
+            <Descrizione>Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.asdasd</Descrizione>
             <DurataMinuti>158</DurataMinuti>
             <Formato>DCP</Formato>
             <Risoluzione>SD 480p</Risoluzione>
@@ -121,12 +123,50 @@
                 <Lingua>Italiano</Lingua>
                 <Lingua>Inglese</Lingua>
             </LingueDisponibili>
-            <SottotitoliDisponibili/>
+            <SottotitoliDisponibili>
+                <Lingua>Italiano</Lingua>
+            </SottotitoliDisponibili>
             <Generi>
                 <Genere>Avventura</Genere>
                 <Genere>Fantasy</Genere>
             </Generi>
             <AttoriPrincipali>
+                <Attore>Emma Watson</Attore>
+                <Attore>Daniel Radcliffe</Attore>
+                <Attore>Emma Watson</Attore>
+                <Attore>Emma Watson</Attore>
+                <Attore>Daniel Radcliffe</Attore>
+                <Attore>Emma Watson</Attore>
+                <Attore>Ralph Fiennes</Attore>
+                <Attore>Emma Watson</Attore>
+                <Attore>Ralph Fiennes</Attore>
+                <Attore>Emma Watson</Attore>
+                <Attore>Ralph Fiennes</Attore>
+                <Attore>Daniel Radcliffe</Attore>
+                <Attore>Emma Watson</Attore>
+                <Attore>Ralph Fiennes</Attore>
+                <Attore>Rupert Grint</Attore>
+                <Attore>Daniel Radcliffe</Attore>
+                <Attore>Rupert Grint</Attore>
+                <Attore>Daniel Radcliffe</Attore>
+                <Attore>Rupert Grint</Attore>
+                <Attore>Emma Watson</Attore>
+                <Attore>Daniel Radcliffe</Attore>
+                <Attore>Emma Watson</Attore>
+                <Attore>Rupert Grint</Attore>
+                <Attore>Daniel Radcliffe</Attore>
+                <Attore>Rupert Grint</Attore>
+                <Attore>Emma Watson</Attore>
+                <Attore>Daniel Radcliffe</Attore>
+                <Attore>Emma Watson</Attore>
+                <Attore>Rupert Grint</Attore>
+                <Attore>Emma Watson</Attore>
+                <Attore>Daniel Radcliffe</Attore>
+                <Attore>Emma Watson</Attore>
+                <Attore>Rupert Grint</Attore>
+                <Attore>Ralph Fiennes</Attore>
+                <Attore>Emma Watson</Attore>
+                <Attore>Ralph Fiennes</Attore>
                 <Attore>Emma Watson</Attore>
                 <Attore>Ralph Fiennes</Attore>
                 <Attore>Daniel Radcliffe</Attore>
@@ -242,49 +282,44 @@
             <CasaDiProduzione>Universal Pictures / Adler Entertainment</CasaDiProduzione>
             <NPostCredit>0</NPostCredit>
         </Film>
-        <Inserzione>
-            <Titolo>Inserzione1</Titolo>
-            <Autore>Autore1</Autore>
-            <Descrizione>Descrizione di una inserzione</Descrizione>
-            <DurataMinuti>1</DurataMinuti>
-            <Formato>MP4</Formato>
-            <Risoluzione>SD 480p</Risoluzione>
-            <Path>:/images/default_inserzioni.png</Path>
-            <DataInizioRilascio>6/9/2025</DataInizioRilascio>
-            <DataFineRilascio>18/9/2025</DataFineRilascio>
-            <LingueDisponibili/>
-            <SottotitoliDisponibili/>
-            <NProiezioniGiornaliere>0</NProiezioniGiornaliere>
-            <FasceOrarie>
-                <Fascia>Mattina</Fascia>
-            </FasceOrarie>
-            <Target>TUTTI</Target>
-            <AziendaInserzionista>Azienda1</AziendaInserzionista>
-            <CostoFissoProiezione>30</CostoFissoProiezione>
-        </Inserzione>
-        <Puntata>
-            <Titolo>Analisi del cinema muto</Titolo>
-            <Autore>FilmLab</Autore>
-            <Descrizione>Esploriamo l'era del cinema muto e i suoi maestri.</Descrizione>
-            <DurataMinuti>40</DurataMinuti>
-            <Formato>MP4</Formato>
+        <Film>
+            <Titolo>I cacasasdasddasda</Titolo>
+            <Autore>Jay Roacach</Autore>
+            <Descrizione>Commedia nera in cui una coppia apparentemente perfetta — Ivy e Theo Rose — vede naufragare il proprio matrimonio in una guerra emotiva tra ambizione professionale e risentimento.</Descrizione>
+            <DurataMinuti>105</DurataMinuti>
+            <Formato>DCP</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/image17.png</Path>
-            <DataInizioRilascio>1/10/2025</DataInizioRilascio>
-            <DataFineRilascio>16/10/2025</DataFineRilascio>
-            <LingueDisponibili/>
+            <Path>:/images/locandina_irosesfilm.jpg</Path>
+            <DataInizioRilascio>27/8/2025</DataInizioRilascio>
+            <DataFineRilascio>3/9/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+            </LingueDisponibili>
             <SottotitoliDisponibili/>
-            <TitoloPodcastAssociato>Cinema d'Autore</TitoloPodcastAssociato>
-            <AutorePodcastAssociato>FilmLab</AutorePodcastAssociato>
-            <NPubblicita>1</NPubblicita>
-        </Puntata>
+            <Generi>
+                <Genere>Nessuno</Genere>
+                <Genere>Commedia</Genere>
+            </Generi>
+            <AttoriPrincipali>
+                <Attore>Olivia Colman</Attore>
+                <Attore>Benedict Cumberbatch</Attore>
+                <Attore>Andy Samberg</Attore>
+                <Attore>Hitoshi Takagi</Attore>
+                <Attore>Takashi Nagasako</Attore>
+            </AttoriPrincipali>
+            <Target>TUTTI</Target>
+            <CostoBiglietto>9</CostoBiglietto>
+            <CasaDiProduzione>Searchlight Pictures / Disney Italia</CasaDiProduzione>
+            <NPostCredit>0</NPostCredit>
+        </Film>
         <Puntata>
             <Titolo>La Nouvelle Vague</Titolo>
             <Autore>FilmLab</Autore>
             <Descrizione>Il movimento francese che ha rivoluzionato il cinema.</Descrizione>
             <DurataMinuti>35</DurataMinuti>
             <Formato>MP4</Formato>
-            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Risoluzione>SD 480p</Risoluzione>
             <Path>:/images/image17.png</Path>
             <DataInizioRilascio>16/10/2025</DataInizioRilascio>
             <DataFineRilascio>1/11/2025</DataFineRilascio>
@@ -294,22 +329,6 @@
             <AutorePodcastAssociato>FilmLab</AutorePodcastAssociato>
             <NPubblicita>2</NPubblicita>
         </Puntata>
-        <Trailer>
-            <Titolo>Trailer ufficiale - I Puffi - Il Film</Titolo>
-            <Autore>Paramount</Autore>
-            <Descrizione>Primi scorci ufficiali dell’avventura dei Puffi in CGI.</Descrizione>
-            <DurataMinuti>2</DurataMinuti>
-            <Formato>MP4</Formato>
-            <Risoluzione>HD 720p</Risoluzione>
-            <Path>:/images/trailer_ipuffi.jpg</Path>
-            <DataInizioRilascio>6/6/2025</DataInizioRilascio>
-            <DataFineRilascio>14/9/2025</DataFineRilascio>
-            <LingueDisponibili/>
-            <SottotitoliDisponibili/>
-            <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
-            <TitoloFilmAssociato>I Puffi - Il Film</TitoloFilmAssociato>
-            <AutoreFilmAssociato>Chris Miller</AutoreFilmAssociato>
-        </Trailer>
         <Trailer>
             <Titolo>Trailer ufficiale - I Roses</Titolo>
             <Autore>Searchlight Pictures / Disney Italia</Autore>
@@ -341,22 +360,6 @@
             <NProiezioniGiornaliere>7</NProiezioniGiornaliere>
             <TitoloFilmAssociato>Tutta colpa del rock</TitoloFilmAssociato>
             <AutoreFilmAssociato>Andrea Jublin</AutoreFilmAssociato>
-        </Trailer>
-        <Trailer>
-            <Titolo>Trailer ufficiale - Harry Potter e il Calice di Fuoco</Titolo>
-            <Autore>Warner Bros</Autore>
-            <Descrizione>Il trailer ufficiale del quarto capitolo della saga di Harry Potter.</Descrizione>
-            <DurataMinuti>2</DurataMinuti>
-            <Formato>MP4</Formato>
-            <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/trailer_harrypottereilcalicedifuoco.jpg</Path>
-            <DataInizioRilascio>23/9/2005</DataInizioRilascio>
-            <DataFineRilascio>7/9/2025</DataFineRilascio>
-            <LingueDisponibili/>
-            <SottotitoliDisponibili/>
-            <NProiezioniGiornaliere>4</NProiezioniGiornaliere>
-            <TitoloFilmAssociato>Harry Potter e il Calice di Fuoco - 20esimo anniversario</TitoloFilmAssociato>
-            <AutoreFilmAssociato>Mike Newell</AutoreFilmAssociato>
         </Trailer>
         <Trailer>
             <Titolo>Trailer italiano ufficiale - Una scomoda circostanza</Titolo>

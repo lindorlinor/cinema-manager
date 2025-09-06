@@ -324,7 +324,7 @@ void TrailerView::createButtons(){
             emit deleteMediaClicked(trailerPtr);
         }
         else if(msgBox.clickedButton() == annullaBtn){
-            qDebug()<<"Eliminazione del media annullata";
+            // qDebug()<<"Eliminazione del media annullata";
         }
     });
     cardLayout->addSpacing(40);
