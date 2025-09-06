@@ -10,7 +10,6 @@ HorizontalCard::HorizontalCard(const Media& media, QWidget* parent): QFrame(pare
     QLabel* titolo = new QLabel(this);
     QLabel* autore = new QLabel(this);
     QLabel* durata = new QLabel(this);
-    QLabel* visualizzazioni = new QLabel(this);
     QLabel* lingue = new QLabel(this);
     QLabel* sottotitoli = new QLabel(this);
 
@@ -46,7 +45,6 @@ HorizontalCard::HorizontalCard(const Media& media, QWidget* parent): QFrame(pare
     titolo->setText("<span style='color: #bdced3; font-weight:bold; font-size: 12pt;'>Titolo: </span>""<span style='color: #bdced3; font-size: 12pt;'>"+QString::fromStdString(media.getTitolo())+"</span>");
     autore->setText("<span style='color: #bdced3; font-weight:bold; font-size: 12pt;'>Autore: </span>""<span style='color: #bdced3; font-size: 12pt;'>"+QString::fromStdString(media.getAutore())+"</span>");
     durata->setText("<span style='color: #bdced3; font-weight:bold; font-size: 12pt;'>Durata: </span>""<span style='color: #bdced3; font-size: 12pt;'>"+QString::number(media.getDurataMinuti())+" min </span>");
-    visualizzazioni->setText("<span style='color: #bdced3; font-weight:bold; font-size: 12pt;'>Visualizzazioni: </span>""<span style='color: #bdced3; font-size: 12pt;'>"+QString::number(media.getVisualizzazioni())+"</span>");
     lingue->setText(
         "<span style='color: #bdced3; font-size: 12pt; font-weight:bold;'>Lingue: </span>"
         "<span style='color: #bdced3; font-size: 12pt;'>" + lingueText + "</span>");
@@ -59,7 +57,6 @@ HorizontalCard::HorizontalCard(const Media& media, QWidget* parent): QFrame(pare
     layoutV->addWidget(titolo);
     layoutV->addWidget(autore);
     layoutV->addWidget(durata);
-    layoutV->addWidget(visualizzazioni);
     layoutV->addWidget(lingue);
     layoutV->addWidget(sottotitoli);
     widget->setLayout(layoutV);

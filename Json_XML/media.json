@@ -1180,35 +1180,6 @@
     },
     {
         "attoriPrincipali": [
-        ],
-        "autore": "a",
-        "casaDiProduzione": "",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-10-03",
-        "dataInizioRilascio": "2025-09-04",
-        "descrizione": "",
-        "durataMinuti": 80,
-        "formato": "MP4",
-        "generi": [
-        ],
-        "lingueDisponibili": [
-            "Inglese",
-            "Tedesco"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "cinemaaa",
-        "path": ":/images/default.png",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-            "Francese",
-            "Tedesco"
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "aaaacaaaaaaaa"
-    },
-    {
-        "attoriPrincipali": [
             "Olivia Colman",
             "Benedict Cumberbatch",
             "Andy Samberg",
