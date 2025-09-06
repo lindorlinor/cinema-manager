@@ -131,6 +131,7 @@ void MediaView::updateMediaCard() {
 void MediaView::createRowDetails(){
     QWidget * row = new QWidget(details);
     row->setFixedHeight(50);
+    row->setFixedWidth(580);
     row->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     QHBoxLayout * rowLayout = new QHBoxLayout(row);
 

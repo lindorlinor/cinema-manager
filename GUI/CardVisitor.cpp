@@ -32,7 +32,7 @@ void CardVisitor::visit(Trailer* trailer){
 }
 
 void CardVisitor::visit(Inserzione* inserzione){
-    if(filtro == "Inserzioni"){
+    if(filtro == "Inserzione"){
         if(vista){
         frame = new MediaFrame(*inserzione, library);
         }

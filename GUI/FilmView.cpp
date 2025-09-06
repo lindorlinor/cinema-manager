@@ -43,12 +43,11 @@ void FilmView::createMediaDetails() {
     leftLayout->addWidget(scrollDetails);
     detailsLayout->setSpacing(10);
 
-    // --- Programmazione ---
     QWidget* sezioneProgrammazione = new QWidget(details);
     QVBoxLayout* layoutProgrammazione = new QVBoxLayout(sezioneProgrammazione);
     QLabel* labelProgrammazione = new QLabel("Informazioni di programmazione");
     layoutProgrammazione->addWidget(labelProgrammazione);
-
+    
     QWidget* dettagliProgrammazione = new QWidget(sezioneProgrammazione);
     QGridLayout* layoutDettagliProgrammazione = new QGridLayout(dettagliProgrammazione);
     layoutDettagliProgrammazione->setContentsMargins(10,10,10,10);
@@ -120,14 +119,18 @@ void FilmView::createMediaDetails() {
     dettagliDettagli->setContentsMargins(10,10,10,10);
 
     descrizione = new ExpandableLabel("",dettagliDettagli);
+    descrizione->setFixedWidth(550);
     descrizione->setTextFormat(Qt::RichText);
     attoriLabel = new ExpandableLabel("",dettagliDettagli);
+    attoriLabel->setFixedWidth(550);
     attoriLabel->setTextFormat(Qt::RichText);
     genere = new QLabel(dettagliDettagli);
     genere->setTextFormat(Qt::RichText);
     classificazione = new QLabel(dettagliDettagli);
     classificazione->setTextFormat(Qt::RichText);
     casaProduzione = new QLabel(dettagliDettagli);
+    casaProduzione->setTextFormat(Qt::RichText);
+    casaProduzione->setWordWrap(true);
 
     layoutDettagliDettagli->addWidget(descrizione);
     layoutDettagliDettagli->addWidget(attoriLabel);
@@ -154,6 +157,10 @@ void FilmView::createMediaDetails() {
 
     setStyleSheet("border: none;");
 
+    sezioneProgrammazione->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    sezionePerformance->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    sezioneTecnica->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    sezioneDettagli->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
     updateMediaDetails();
 }
 void FilmView::updateMediaDetails() {
