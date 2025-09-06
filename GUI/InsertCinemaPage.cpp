@@ -78,7 +78,8 @@ void InsertCinemaPage::chooseImage(){
     );
 
     if (!fileName.isEmpty()) {
-        imagePath = ":/images/" + QFileInfo(fileName).fileName();
+        imagePath = "images/" + QFileInfo(fileName).fileName();
+        imagePath = fileName;/* ":/images/" + QFileInfo(fileName).fileName(); */
         hasCustomImage = true;
         imageArea->insertImage(QFileInfo(fileName).fileName());
     }

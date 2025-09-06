@@ -813,7 +813,7 @@ void MediaInterface::chooseImage(){
     );
 
     if (!fileName.isEmpty()) {
-        imagePath = ":/images/" + QFileInfo(fileName).fileName();
+        imagePath = "images/" + QFileInfo(fileName).fileName();
         QPixmap pixmap(imagePath);
         copertina->setAlignment(Qt::AlignCenter);
         copertina->setPixmap(pixmap.scaled(280,330, Qt::KeepAspectRatio, Qt::SmoothTransformation));

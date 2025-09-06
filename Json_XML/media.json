@@ -1138,5 +1138,55 @@
         ],
         "tipologia": "trailer",
         "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "aaa",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-09-06",
+        "dataInizioRilascio": "2025-09-06",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "generi": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "Cinema Aurora",
+        "path": "/mnt/c/Users/angel/Desktop/studi/universita/appunti/II anno/ProgrammazioneOggetti/my-library/images/image1.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "prova"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "e",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-09-06",
+        "dataInizioRilascio": "2025-09-06",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "generi": [
+        ],
+        "lingueDisponibili": [
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "Cinema Aurora",
+        "path": "images/film1.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "ee"
     }
 ]

@@ -98,6 +98,7 @@ MainWindow::MainWindow(QWidget *parent):    QMainWindow(parent), cinemaPage(new 
 
     connect(menu, &Menu::closeRequested, this, &MainWindow::close);
     /* connect(menu,&Menu::backToCinemaSelection,searchPage,&SearchPanel::removeMediaView); */
+    connect(menu, &Menu::addMedia, searchPage, &SearchPanel::acceptAddMedia);
     connect(menu,&Menu::viewFilm,searchPage,&SearchPanel::acceptViewFilm);
     connect(menu,&Menu::viewTrailer,searchPage,&SearchPanel::acceptViewTrailer);
     connect(menu,&Menu::viewInserzioni,searchPage,&SearchPanel::acceptViewInserzione);
