@@ -478,7 +478,7 @@ void SearchPanel::acceptEditCinema(){
 }
 
 void SearchPanel::acceptDeleteCinema(){
-    QMessageBox msgBox;
+    QMessageBox msgBox(this);
     msgBox.setWindowTitle("Conferma eliminazione");
     msgBox.setText("Sei sicuro di voler eliminare il cinema? "
                     "Avrà l'effetto di eliminare tutti i media ad esso associati");
