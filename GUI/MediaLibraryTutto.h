@@ -41,7 +41,7 @@ class MediaLibraryTutto: public QWidget{
     
     public:
     explicit MediaLibraryTutto(QWidget* parent = nullptr);
-    void update(int comboAttivita, int comboOrdinamento, const QString& ricerca, QList<Media*>& mediaList);
+    void update(const bool& view, int comboAttivita, int comboOrdinamento, const QString& ricerca, QList<Media*>& mediaList);
 
     signals: 
     void requestMediaView(MediaView& widget);

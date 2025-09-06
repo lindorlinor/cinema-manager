@@ -10,9 +10,8 @@ Film::Film( const string &titolo, const string &descrizione, year_month_day gg_m
             Media(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
             durataMinuti, formato, risoluzione, autore, path),f_nPostCredit(nPostCredit),
             f_costoBiglietto(costoBiglietto),f_casaDiProduzione(casaDiProduzione),
-            f_target(target), f_valutazione(0){}
+            f_target(target), f_valutazione(0){setValutazione();}
 
-//da sistemare
 Film::~Film(){
     for (auto it = trailers.begin(); it!= trailers.end(); ++it) {
         delete *it;
@@ -74,7 +73,7 @@ void Film::disaccoppiaTrailer(Trailer* trailer){
 void Film::setValutazione(){
     sys_days inizio = getDataInizioRilascio();
     sys_days fine = getDataLastViewUpdate();
-    unsigned int giorni = (fine-inizio).count();
+    unsigned int giorni = (fine-inizio).count() + 1;
 
     if (giorni == 0 || getVisualizzazioni() == 0){
         f_valutazione = 0.0;

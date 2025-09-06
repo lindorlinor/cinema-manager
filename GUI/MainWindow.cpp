@@ -105,7 +105,7 @@ MainWindow::MainWindow(QWidget *parent):    QMainWindow(parent), cinemaPage(new 
     connect(menu,&Menu::viewPuntate,searchPage,&SearchPanel::acceptViewPuntata);
 
     connect(menu,&Menu::backToCinemaSelection,this,&MainWindow::showCinemaSelectionPage);
-    /* connect(menu,&Menu::changeView,searchPage,&SearchPanel::acceptChangeView); */
+    connect(menu,&Menu::changeView,searchPage,&SearchPanel::acceptChangeView);
     connect(menu,&Menu::backToCinemaSelection,searchPage,&SearchPanel::resetSearchPanel);
     connect(menu, &Menu::setFullScreen, this, &MainWindow::showFullScreen);
     connect(menu, &Menu::escFullScreen, this, &MainWindow::showMaximized);

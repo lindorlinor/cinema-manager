@@ -10,7 +10,7 @@
 #include <QDebug>
 #include <QLayout>
 
-#include "FrameVisitor.h"
+#include "CardVisitor.h"
 #include "FlowLayout.h"
 #include "MediaView.h"
 #include "MediaFrame.h"
@@ -31,7 +31,7 @@
  * - Pulizia del layout attuale (orizzontale o a flusso) e ricostruzione dei widget
  *   in base ai filtri selezionati.
  * - Creazione dinamica di widget `MediaFrame` tramite il pattern Visitor
- *   (`FrameVisitor`) in funzione del filtro richiesto.
+ *   (`CardVisitor`) in funzione del filtro richiesto.
  * - Gestione di ricerca testuale su titolo e autore dei media.
  * - Connessione del segnale di selezione di un media (`MediaFrame::selected`)
  *   alla richiesta di visualizzazione della pagina di dettaglio (`requestMediaView`).
@@ -46,7 +46,7 @@
  *
  * @see Media
  * @see MediaFrame
- * @see FrameVisitor
+ * @see CardVisitor
  * @see DetailPageVisitor
  * @see FlowLayout
  */
@@ -64,7 +64,7 @@ class UpdateMediaLibrary: public QWidget{
         
     public:
     UpdateMediaLibrary(QWidget* parent = nullptr);
-    virtual void update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList);
+    virtual void update(const bool& view, int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList);
     int getNumeroWidgetLayout() const;
     
     signals:

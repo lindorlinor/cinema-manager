@@ -324,8 +324,8 @@ void InsertMedia::resetAllInput(){
     if(dataInizio) dataInizio->setDate(QDate::currentDate());
     if(dataFine) dataFine->setDate(QDate::currentDate());
 
-    if(referencePuntate)referencePuntate->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
-    if(referenceTrailer)referenceTrailer->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
+    if(referencePuntate)referencePuntate->reloadMedia(*im_cinemaSelezionato);
+    if(referenceTrailer)referenceTrailer->reloadMedia(*im_cinemaSelezionato);
     
     QPixmap pixmap(":/images/default.png"); 
     copertina->setPixmap(pixmap.scaled(280,330, Qt::KeepAspectRatio, Qt::SmoothTransformation));

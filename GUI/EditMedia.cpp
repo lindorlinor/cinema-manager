@@ -76,6 +76,8 @@ void EditMedia::initValue(){
     dataInizio->setDate(dataInizioRilascio);
     dataFine->setDate(dataFineRilascio);
 
+    QPixmap pixmap(imagePath); 
+    copertina->setPixmap(pixmap.scaled(280,330, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 
 
     //valori per tipologia
@@ -99,7 +101,7 @@ void EditMedia::initValue(){
     else if(index == 1){
         Trailer* trailer = static_cast<Trailer*>(em_media);
         referenceTrailer->setSelectedItem(QString::fromStdString(trailer->getFilm()->getTitolo()),QString::fromStdString(trailer->getFilm()->getAutore()));
-        if(referenceTrailer) referenceTrailer->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
+        if(referenceTrailer) referenceTrailer->reloadMedia(*im_cinemaSelezionato);
         numeroProiezioniTrailer->setValue(trailer->getDurataMinuti());
     }
     else if(index == 2){
@@ -110,7 +112,7 @@ void EditMedia::initValue(){
     else if(index == 3){
         Puntata* puntata = static_cast<Puntata*>(em_media);
         referencePuntate->setSelectedItem(QString::fromStdString(puntata->getPodcast()->getTitolo()),QString::fromStdString(puntata->getPodcast()->getAutore()));
-        if(referencePuntate) referencePuntate->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
+        if(referencePuntate) referencePuntate->reloadMedia(*im_cinemaSelezionato);
         QList<QString> risultato;
         for(const string& s : puntata->getOspiti()){ risultato.append(QString::fromStdString(s));}
         ospitiPuntata->setItems(risultato);

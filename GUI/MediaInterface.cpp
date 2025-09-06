@@ -24,8 +24,8 @@ void MediaInterface::initUI(){
 //IMPOSTA IL NOME DEL CINEMA
 void MediaInterface::getCinemaInfo(Cinema* cinemaSel){
     im_cinemaSelezionato = cinemaSel;
-    if(referenceTrailer) referenceTrailer->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
-    if(referencePuntate) referencePuntate->reloadMedia(QString::fromStdString(im_cinemaSelezionato->getNomeCinema()));
+    if(referenceTrailer) referenceTrailer->reloadMedia(*im_cinemaSelezionato);
+    if(referencePuntate) referencePuntate->reloadMedia(*im_cinemaSelezionato);
 }
 
 

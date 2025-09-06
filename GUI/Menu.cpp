@@ -53,7 +53,7 @@ Menu::Menu(QWidget* parent):QWidget(parent),menuBar(new QMenuBar(this)),file(new
     connect(visualizza->actions()[1], &QAction::triggered, this, &Menu::viewTrailer);
     connect(visualizza->actions()[2], &QAction::triggered, this, &Menu::viewInserzioni);
     connect(visualizza->actions()[3], &QAction::triggered, this, &Menu::viewPodcast);
-    connect(visualizza->actions()[4], &QAction::triggered, this, &Menu::viewPodcast);
+    connect(visualizza->actions()[4], &QAction::triggered, this, &Menu::viewPuntate);
     
 
     //action di Altro

@@ -14,6 +14,7 @@
 #include <QDebug>
 
 #include "MediaFrame.h"
+#include "../Cinema.h"
 
 class SelectMediaReference:public QWidget{
     Q_OBJECT
@@ -31,7 +32,7 @@ class SelectMediaReference:public QWidget{
     public:
     explicit SelectMediaReference(const QString& tipo, QWidget *parent = nullptr);
     void setSelectFalse();
-    void reloadMedia(const QString& nomeCinema);
+    void reloadMedia(const Cinema& cinema);
     void setSelectedItem(const QString& titolo, const QString& autore);
 
     signals:

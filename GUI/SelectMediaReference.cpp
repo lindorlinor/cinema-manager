@@ -51,7 +51,7 @@ SelectMediaReference::SelectMediaReference(const QString& tipo, QWidget *parent)
     mainLayout->setAlignment(Qt::AlignRight);
 }
 
-void SelectMediaReference::reloadMedia(const QString& nomeCinema) {
+void SelectMediaReference::reloadMedia(const Cinema& cinema) {
 
     // Pulisce i widget esistenti
     QLayoutItem* child;
@@ -70,43 +70,27 @@ void SelectMediaReference::reloadMedia(const QString& nomeCinema) {
         return;
     }
 
-    QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
-    file.close();
-    if (!doc.isArray()) return;
+    for(Media* m : cinema.getListaMedia()){
+        
+        MediaFrame* mediaframe = new MediaFrame(*m, container);
+        mediaframe->setFixedSize(200,250);
+        layoutContainer->addWidget(mediaframe);
+        mediaframe->setCursor(Qt::PointingHandCursor);
 
-    QJsonArray media = doc.array();
-
-    for (const auto& m : media) {
-        QJsonObject obj = m.toObject();
-        QString tip = obj["tipologia"].toString();
-        QString cinema = obj["nomeCinema"].toString();
-        if (tip == tipoMedia && cinema == nomeCinema){
-            QString titolo = obj["titolo"].toString();
-            QString autore = obj["autore"].toString();
-            QString imagePath = obj["path"].toString();
-    
-            MediaFrame* mediaframe = new MediaFrame(titolo, imagePath, autore, container);
-            mediaframe->setFixedSize(200,250);
-            layoutContainer->addWidget(mediaframe);
-
-            mediaframe->setCursor(Qt::PointingHandCursor);
-
-            if(titolo == sm_titolo && autore == sm_autore){
-                currentSelected = mediaframe;
-                currentSelected->setSelected(true);
-                emit mediaSelected(mediaframe);
-            }
-            
-            connect(mediaframe, &MediaFrame::selected, this, [this](MediaFrame* f){
-                if (currentSelected) currentSelected->setSelected(false);
-
-                currentSelected = f;
-                currentSelected->setSelected(true);
-                emit mediaSelected(f);
-            });
+        if(titolo == sm_titolo && autore == sm_autore){
+            currentSelected = mediaframe;
+            currentSelected->setSelected(true);
+            emit mediaSelected(mediaframe);
         }
-    }
 
+        connect(mediaframe, &MediaFrame::selected, this, [this](MediaFrame* f){
+            if (currentSelected) currentSelected->setSelected(false);
+    
+            currentSelected = f;
+            currentSelected->setSelected(true);
+            emit mediaSelected(f);
+        });
+    }
 
     //style
     layoutContainer->setAlignment(Qt::AlignCenter);

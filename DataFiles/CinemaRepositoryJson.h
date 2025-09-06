@@ -37,7 +37,7 @@ class CinemaRepositoryJson{
     public:
     CinemaRepositoryJson(const QString& basePath = QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML"));
     
-    void deteteMediaPointer(QList<Media*>& c_mediaList);
+    void deleteMediaPointer(QList<Media*>& c_mediaList);
     void saveCinemaInJson(Cinema* c_cinema);
     void saveMediaInJson(Media* c_media, const QString& nomeCinema);
     

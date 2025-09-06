@@ -16,7 +16,7 @@ class MediaLibraryGenerale: public UpdateMediaLibrary, public LibraryObserver{
     
     public:
     explicit MediaLibraryGenerale(const QString& filtro, QWidget* parent = nullptr);
-    virtual void update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList) override;
+    virtual void update(const bool& view, int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList) override;
 
 };
 

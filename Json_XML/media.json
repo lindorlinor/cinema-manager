@@ -6,7 +6,7 @@
     {
         "autore": "Cinema Milano",
         "conduttore": "Lucia Dalla Monta",
-        "dataFineRilascio": "2025-11-30",
+        "dataFineRilascio": "2025-12-01",
         "dataInizioRilascio": "2025-09-01",
         "descrizione": "Il podcast che racconta il mondo del cinema fino ai giorni nostri. Ogni mercoledì con Lucia Dalla Monta' solo nei canali del cinema",
         "durataMinuti": 92,
@@ -14,17 +14,17 @@
         "lingueDisponibili": [
         ],
         "nomeCinema": "Cinema Aurora",
-        "path": ":/images/default_podcast_puntate.png",
-        "risoluzione": "FullHD 1080p",
+        "path": ":/images/locandina_caughtstealing.jpg",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
         "tipologia": "podcast",
-        "titolo": "Storie del cinema"
+        "titolo": "Storie del cinema waw"
     },
     {
         "autore": "Cinema Milano",
         "autorePodcastAssociato": "Cinema Milano",
-        "dataFineRilascio": "2025-09-15",
+        "dataFineRilascio": "2025-09-16",
         "dataInizioRilascio": "2025-09-01",
         "descrizione": "Vi siete mai chiesti come il cinema è arrivato a quello che è oggi? Oggi lo scopriamo in questa nuova puntata condotta da Lucia Dalla Monta",
         "durataMinuti": 32,
@@ -36,7 +36,7 @@
         "ospiti": [
         ],
         "path": ":/images/default_podcast_puntate.png",
-        "podcastAssociato": "Storie del cinema",
+        "podcastAssociato": "Storie del cinema waw",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -46,7 +46,7 @@
     {
         "autore": "Cinema Milano",
         "autorePodcastAssociato": "Cinema Milano",
-        "dataFineRilascio": "2025-11-15",
+        "dataFineRilascio": "2025-11-16",
         "dataInizioRilascio": "2025-11-01",
         "descrizione": "Analizziamo l'esplosione del neorealismo italiano, dai registi ai film che hanno segnato il dopoguerra.",
         "durataMinuti": 27,
@@ -58,7 +58,7 @@
         "ospiti": [
         ],
         "path": ":/images/default_podcast_puntate.png",
-        "podcastAssociato": "Storie del cinema",
+        "podcastAssociato": "Storie del cinema waw",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -68,7 +68,7 @@
     {
         "autore": "Cinema Milano",
         "autorePodcastAssociato": "Cinema Milano",
-        "dataFineRilascio": "2025-11-30",
+        "dataFineRilascio": "2025-12-01",
         "dataInizioRilascio": "2025-11-16",
         "descrizione": "Interviste e riflessioni su registi emergenti e sulle tecniche narrative del cinema moderno.",
         "durataMinuti": 33,
@@ -80,7 +80,7 @@
         "ospiti": [
         ],
         "path": ":/images/default_podcast_puntate.png",
-        "podcastAssociato": "Storie del cinema",
+        "podcastAssociato": "Storie del cinema waw",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -188,81 +188,13 @@
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },
     {
-        "autore": "Studio Lumière",
-        "aziendaInserzionista": "",
-        "costoFissoProiezione": 30,
-        "dataFineRilascio": "2025-10-10",
-        "dataInizioRilascio": "2025-09-10",
-        "descrizione": "Una selezione dei migliori documentari per gli appassionati di cinema.",
-        "durataMinuti": 1,
-        "fasceOrarie": [
-            "Mattina"
-        ],
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Aurora",
-        "path": ":/images/default_podcast_puntate.png",
-        "risoluzione": "UHD 8K 4320p",
-        "sottotitoliDisponibili": [
-            "Italiano"
-        ],
-        "target": "TUTTI",
-        "tipologia": "inserzione",
-        "titolo": "Documentari d’Autoreaaa"
-    },
-    {
-        "autore": "FestivalCinema",
-        "aziendaInserzionista": "",
-        "costoFissoProiezione": 35,
-        "dataFineRilascio": "2025-10-15",
-        "dataInizioRilascio": "2025-09-15",
-        "descrizione": "Una rassegna dei cortometraggi più interessanti prodotti quest’anno.",
-        "durataMinuti": 3,
-        "fasceOrarie": [
-            "Mattina"
-        ],
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Aurora",
-        "path": ":/images/image12.png",
-        "risoluzione": "UHD 8K 4320p",
-        "sottotitoliDisponibili": [
-            "Inglese"
-        ],
-        "target": "TUTTI",
-        "tipologia": "inserzione",
-        "titolo": "Short Films Festivalaaa"
-    },
-    {
-        "autore": "aa",
-        "autoreFilmAssociato": "Hayao Miyazaki",
-        "dataFineRilascio": "2025-09-05",
-        "dataInizioRilascio": "2025-09-05",
-        "descrizione": "",
-        "durataMinuti": 0,
-        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 0,
-        "nomeCinema": "Cinema Aurora",
-        "path": ":/images/default.png",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "aaa"
-    },
-    {
         "copertinaCinema": ":/images/coverCinema.png",
         "nomeCinema": "Cinema Limena"
     },
     {
         "autore": "FilmLab",
         "conduttore": "Marco Rossi",
-        "dataFineRilascio": "2025-10-31",
+        "dataFineRilascio": "2025-11-01",
         "dataInizioRilascio": "2025-10-01",
         "descrizione": "Approfondimenti sui grandi registi e capolavori cinematografici.",
         "durataMinuti": 75,
@@ -280,7 +212,7 @@
     {
         "autore": "FilmLab",
         "autorePodcastAssociato": "FilmLab",
-        "dataFineRilascio": "2025-10-15",
+        "dataFineRilascio": "2025-10-16",
         "dataInizioRilascio": "2025-10-01",
         "descrizione": "Esploriamo l'era del cinema muto e i suoi maestri.",
         "durataMinuti": 40,
@@ -302,7 +234,7 @@
     {
         "autore": "FilmLab",
         "autorePodcastAssociato": "FilmLab",
-        "dataFineRilascio": "2025-10-31",
+        "dataFineRilascio": "2025-11-01",
         "dataInizioRilascio": "2025-10-16",
         "descrizione": "Il movimento francese che ha rivoluzionato il cinema.",
         "durataMinuti": 35,
@@ -675,59 +607,6 @@
         "target": "TUTTI",
         "tipologia": "inserzione",
         "titolo": "Inserzione1"
-    },
-    {
-        "attoriPrincipali": [
-            "Roy Scheider",
-            "Robert Shaw",
-            "Richard Dreyfuss",
-            "Lorraine Gary",
-            "Murray Hamilton"
-        ],
-        "autore": "Steven Spielberg",
-        "casaDiProduzione": "Universal Pictures / Adler Entertainment",
-        "costoBiglietto": 9,
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-09-01",
-        "descrizione": "Un capolavoro che ha inventato il blockbuster estivo: lo Squalo torna sul grande schermo per il suo cinquantesimo anniversario.",
-        "durataMinuti": 124,
-        "formato": "IMAX 3D",
-        "generi": [
-            "Horror",
-            "Thriller"
-        ],
-        "lingueDisponibili": [
-            "Italiano"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/locandina_losqualo50anniversario.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Lo Squalo - 50esimo anniversario"
-    },
-    {
-        "autore": "Universal Pictures / Adler Entertainment",
-        "autoreFilmAssociato": "Steven Spielberg",
-        "dataFineRilascio": "2025-08-31",
-        "dataInizioRilascio": "2025-07-04",
-        "descrizione": "Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.",
-        "durataMinuti": 2,
-        "filmAssociato": "Lo Squalo - 50esimo anniversario",
-        "formato": "IMAX 3D",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_losqualo50anniversario.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
     },
     {
         "attoriPrincipali": [

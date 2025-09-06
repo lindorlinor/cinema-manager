@@ -1,11 +1,10 @@
 #include "MediaFrame.h"
 
-MediaFrame::MediaFrame( const QString& titolo, const QString& imagePath,const QString& autore, QWidget* parent):QFrame(parent), titoloMedia(titolo), 
-                        autoreMedia(autore), imgLabel(new QLabel(this)), pix(imagePath){
+MediaFrame::MediaFrame( const Media& media, QWidget* parent):QFrame(parent),imgLabel(new QLabel(this)), pix(QString::fromStdString(media.getImPath())), mf_media(&media){
 
     imgLabel->setPixmap(pix.scaled(160, 160, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     
-    titoloLabel = new QLabel(titolo);
+    titoloLabel = new QLabel(QString::fromStdString(mf_media->getTitolo()));
     
     QVBoxLayout* layout = new QVBoxLayout;
     layout->addWidget(imgLabel);
@@ -27,11 +26,11 @@ MediaFrame::MediaFrame( const QString& titolo, const QString& imagePath,const QS
 }
 
 QString MediaFrame::getTitolo() const{
-    return titoloMedia;
+    return QString::fromStdString(mf_media->getTitolo());
 }
 
 QString MediaFrame::getAutore() const{
-    return autoreMedia;
+    return QString::fromStdString(mf_media->getAutore());
 }
 
 void MediaFrame::mousePressEvent(QMouseEvent* event){

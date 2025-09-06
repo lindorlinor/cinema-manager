@@ -46,7 +46,7 @@ MediaLibraryTutto::MediaLibraryTutto(QWidget* parent):QWidget(parent){
     scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
-void MediaLibraryTutto::update(int comboAttivita, int comboOrdinamento, const QString& ricerca, QList<Media*>& mediaList){
+void MediaLibraryTutto::update(const bool& view, int comboAttivita, int comboOrdinamento, const QString& ricerca, QList<Media*>& mediaList){
 
     // QList<QString> allFiltri = QList<QString>({"Film", "Trailer", "Inserzioni", "Podcast", "Puntate"});
 
@@ -66,7 +66,7 @@ void MediaLibraryTutto::update(int comboAttivita, int comboOrdinamento, const QS
         QWidget* salaWidget = new QWidget(container);
         QVBoxLayout* salaV = new QVBoxLayout(salaWidget);
         ScrollListWidget* scroll = new ScrollListWidget(salaWidget); 
-        scroll->update(comboAttivita, comboOrdinamento, filtro, ricerca, mediaList);
+        scroll->update(view, comboAttivita, comboOrdinamento, filtro, ricerca, mediaList);
         scroll->setFixedHeight(350);
 
         

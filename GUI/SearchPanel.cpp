@@ -188,7 +188,7 @@ void SearchPanel::addLatoDestra(){
 
     //pannello per la libreria dei media
     libreriaMediaTutto = new MediaLibraryTutto(this);
-    libreriaMediaGenerale = new MediaLibraryGenerale( "Film" ,this);
+    libreriaMediaGenerale = new MediaLibraryGenerale("Film" ,this);
 
     this->addObserver(libreriaMediaGenerale);
 
@@ -200,7 +200,7 @@ void SearchPanel::addLatoDestra(){
     connect(cerca, &QLineEdit::textChanged, this, [this](const QString &testo){ ricerca = testo; 
                                                                                 updateFiltroTutto();
                                                                                 for(auto o : s_libraryObservers) 
-                                                                                    o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema);});
+                                                                                    o->update(changeView, comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema);});
     connect(addMedia, &QPushButton::clicked, this, [this](){
         deleteViewPages();
         updateModifierPanel(1);
@@ -232,6 +232,7 @@ void SearchPanel::addLatoDestra(){
         updateFiltroMedia("Puntate");});
 
 
+    connect(vista, &QPushButton::clicked, this, &SearchPanel::acceptChangeView);
     connect(this, &SearchPanel::giveCinemaInfoToIP, nuovoMedia, &InsertMedia::getCinemaInfo);
     connect(this, &SearchPanel::resetPages, nuovoMedia, &InsertMedia::resetAllInput);
     connect(nuovoMedia, &InsertMedia::tornaIndietro, this, [this](){
@@ -351,7 +352,7 @@ void SearchPanel::addObserver(LibraryObserver* obs){
 
 void SearchPanel::update(int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca){
     for(auto obs : s_libraryObservers){
-        obs->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema);
+        obs->update(changeView, comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema);
     }
 }
 
@@ -365,13 +366,13 @@ void SearchPanel::updateFiltroMedia(const QString& filtro){
 void SearchPanel::updateFiltroTutto(){
     updateCerca("Tutto"); 
     stackLibreria->setCurrentIndex(0); 
-    libreriaMediaTutto->update(comboAttivita, comboOrdinamento, ricerca, s_MediaListOfCinema);
+    libreriaMediaTutto->update(changeView, comboAttivita, comboOrdinamento, ricerca, s_MediaListOfCinema);
 }
 
 void SearchPanel::preUpdate(){
-    libreriaMediaTutto->update(comboAttivita, comboOrdinamento, ricerca, s_MediaListOfCinema);
+    libreriaMediaTutto->update(changeView, comboAttivita, comboOrdinamento, ricerca, s_MediaListOfCinema);
     for(auto o : s_libraryObservers)
-        o->update(comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema);
+        o->update(changeView, comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema);
 }
 
 void SearchPanel::updateMediaList(){
@@ -380,13 +381,19 @@ void SearchPanel::updateMediaList(){
     
     if(s_cinemaSelezionato){
         for(Media* m : s_cinemaSelezionato->getListaMedia()){
-            qDebug()<<"titolo "<<QString::fromStdString(m->getTitolo());
             s_MediaListOfCinema.append(m);
         }
     }
 }
 
 //slot
+
+void SearchPanel::acceptChangeView(){
+    changeView = !changeView;
+    if(stackLibreria->currentIndex() == 0){
+        updateFiltroTutto();
+    } else preUpdate();
+}
 
 void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
     //selezione Cinema
@@ -397,7 +404,6 @@ void SearchPanel::updateInfoCinema(Cinema* cinemaSel){
     if(s_cinemaSelezionato){
         s_jsonManager->loadMedia(s_MediaListOfCinema, QString::fromStdString(s_cinemaSelezionato->getNomeCinema()));
         for(Media* m : s_MediaListOfCinema){
-            qDebug()<<"titolo "<<QString::fromStdString(m->getTitolo());
             s_cinemaSelezionato->addMedia(m);
         }
     }
@@ -568,5 +574,6 @@ void SearchPanel::acceptDeleteMedia(Media* media){
     updateJson();
     updateMediaList();
 
+    deleteViewPages();
     updateFiltroTutto();
 }

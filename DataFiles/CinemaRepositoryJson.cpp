@@ -26,6 +26,7 @@ void CinemaRepositoryJson::loadMedia(QList<Media*>& c_mediaList, const QString& 
 
     bool flag = false;
     
+    // prima carico tutti i film, podcast e inserzioni
     for (const auto &val : doc.array()) {
         QJsonObject obj = val.toObject();
         if (obj.contains("tipologia") && obj["nomeCinema"] == nomeCinema) {
@@ -40,10 +41,6 @@ void CinemaRepositoryJson::loadMedia(QList<Media*>& c_mediaList, const QString& 
                 if(obj["tipologia"] == "film"){
                     Film* film = converter->deserializeFilm(obj);
                     if(film) c_mediaList.append(film);
-                } 
-                else if(obj["tipologia"] == "trailer"){
-                    Trailer* trailer = converter->deserializeTrailer(c_mediaList, obj);
-                    if(trailer) c_mediaList.append(trailer);
                 }
                 else if(obj["tipologia"] == "inserzione"){
                     Inserzione* inserzione = converter->deserializeInserzione(obj);
@@ -52,7 +49,28 @@ void CinemaRepositoryJson::loadMedia(QList<Media*>& c_mediaList, const QString& 
                 else if(obj["tipologia"] == "podcast"){
                     Podcast* podcast = converter->deserializePodcast(obj);
                     if(podcast) c_mediaList.append(podcast);
-                } 
+                }
+            }
+
+        }
+    }
+
+    //poi carico le puntate e i trailer perché non possono essere creati se non esiste il relativo Podcast o Film
+    for (const auto &val : doc.array()) {
+        QJsonObject obj = val.toObject();
+        if (obj.contains("tipologia") && obj["nomeCinema"] == nomeCinema) {
+            
+            for(Media* m : c_mediaList){
+                flag = false;
+                if( obj["titolo"] == QString::fromStdString(m->getTitolo()) &&
+                    obj["autore"] == QString::fromStdString(m->getAutore())) flag = true;
+            }
+
+            if(!flag){
+                if(obj["tipologia"] == "trailer"){
+                    Trailer* trailer = converter->deserializeTrailer(c_mediaList, obj);
+                    if(trailer) c_mediaList.append(trailer);
+                }
                 else if(obj["tipologia"] == "puntata"){
                     Puntata* puntata = converter->deserializePuntata(c_mediaList, obj); 
                     if(puntata) c_mediaList.append(puntata);
@@ -147,7 +165,7 @@ void CinemaRepositoryJson::updateMediaInJson(Cinema* cinemaSelezionato){
                 array.append(visitor.getObj());
             }
 
-            deteteMediaPointer(mediaList);
+            deleteMediaPointer(mediaList);
         }
     }
 
@@ -175,7 +193,7 @@ void CinemaRepositoryJson::deleteCinemaInJson(QList<Cinema*> c_cinemaList){
             array.append(visitor.getObj());
         }
             
-        deteteMediaPointer(mediaList);
+        deleteMediaPointer(mediaList);
     }
 
 
@@ -242,7 +260,7 @@ void CinemaRepositoryJson::saveJsonFile(const QString &fileName, const QJsonDocu
     qDebug() << "Current working directory:" << QDir::currentPath(); */
 }
 
-void CinemaRepositoryJson::deteteMediaPointer(QList<Media*>& c_mediaList){
+void CinemaRepositoryJson::deleteMediaPointer(QList<Media*>& c_mediaList){
 
     for(Media* m : c_mediaList){
 

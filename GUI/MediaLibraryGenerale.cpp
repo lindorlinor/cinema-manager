@@ -21,7 +21,7 @@ MediaLibraryGenerale::MediaLibraryGenerale(const QString& filtroBottone, QWidget
     titolo->setStyleSheet("color: #fed36a; font-size: 18pt; font-weight: bold;");
 }
 
-void MediaLibraryGenerale::update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList){
+void MediaLibraryGenerale::update(const bool& view, int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList){
     QString prefisso;
     for (const auto &f : allFiltri) { //recupero del prefisso a seconda del filtro ("Film","Inserzioni" etc)
         if (f.first == filtro) {
@@ -37,5 +37,5 @@ void MediaLibraryGenerale::update(int comboAttivita, int comboOrdinamento, const
     else
         titolo->setText(prefisso + filtro);
     
-    UpdateMediaLibrary::update(comboAttivita, comboOrdinamento,  filtro, ricerca, mediaList);
+    UpdateMediaLibrary::update(view, comboAttivita, comboOrdinamento,  filtro, ricerca, mediaList);
 }

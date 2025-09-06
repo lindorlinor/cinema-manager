@@ -63,7 +63,7 @@ class SearchPanel:public QWidget{
     int comboOrdinamento = 0; 
     QString filtroBottone = "Film"; 
     QString ricerca = "";
-    /* bool = 0; */ // 0 default, 1 espanso (sono le possibili viste)
+    bool changeView= 1; // 1 default, 0 espanso (sono le possibili viste)
 
     //media che sto visualizzando
     MediaView* detailPage;
@@ -164,7 +164,7 @@ class SearchPanel:public QWidget{
     void acceptViewPuntata();
     void acceptViewInserzione();
     void acceptAddMedia();
-    /* void acceptChangeView(); */
+    void acceptChangeView();
     void acceptDeleteMedia(Media* media);
     
     signals:

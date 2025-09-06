@@ -55,12 +55,13 @@ HEADERS +=  \
             GUI/FlowLayout.h \
             GUI/LibraryObserver.h \
             GUI/Menu.h \
-            GUI/FrameVisitor.h \
+            GUI/CardVisitor.h \
             GUI/ScrollListWidget.h \
             GUI/UpdateMediaLibrary.h \
             GUI/CinemaModifier.h \
             GUI/MediaInterface.h \
             GUI/EditMedia.h \
+            GUI/HorizontalCard.h \
             DataFiles/CinemaRepositoryJson.h \
             DataFiles/JsonConverter.h \
             DataFiles/JsonVisitor.h \
@@ -103,10 +104,11 @@ SOURCES +=  \
             GUI/FlowLayout.cpp \
             GUI/UpdateMediaLibrary.cpp \
             GUI/Menu.cpp \
-            GUI/FrameVisitor.cpp \
+            GUI/CardVisitor.cpp \
             GUI/CinemaModifier.cpp \
             GUI/MediaInterface.cpp \
             GUI/EditMedia.cpp \
+            GUI/HorizontalCard.cpp \
             DataFiles/CinemaRepositoryJson.cpp \
             DataFiles/JsonConverter.cpp \
             DataFiles/JsonVisitor.cpp \

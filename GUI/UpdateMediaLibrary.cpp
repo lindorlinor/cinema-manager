@@ -2,7 +2,8 @@
 
 UpdateMediaLibrary::UpdateMediaLibrary(QWidget* parent):QWidget(parent),chooseLayout(false){}
 
-void UpdateMediaLibrary::update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList) {
+void UpdateMediaLibrary::update(const bool& view, int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList) {
+
     //oridnamento
     if(comboOrdinamento == 0){
         std::sort(mediaList.begin(), mediaList.end(), [](Media* a, Media* b){
@@ -62,26 +63,49 @@ void UpdateMediaLibrary::update(int comboAttivita, int comboOrdinamento, const Q
             (puntata && std::any_of(puntata->getOspiti().begin(), puntata->getOspiti().end(), [&](const std::string& a)
             {return QString::fromStdString(a).contains(ricerca, Qt::CaseInsensitive);})) */)){
                 
-            FrameVisitor* libraryVisitor = new FrameVisitor(container, filtro);
+            CardVisitor* libraryVisitor = new CardVisitor(container, filtro, view);
             m->accept(libraryVisitor);
-            MediaFrame* media(libraryVisitor->getWidget());
-            if(media != nullptr){
 
-                if(chooseLayout) HorizontalLayoutContainer->addWidget(media);
-                else FlowLayoutContainer->addWidget(media);
-
-                media->setCursor(Qt::PointingHandCursor);
-                media->editImageScale(430,250);
-                media->setFixedHeight(300);
-                media->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-                
-                //visitor per visualizzare la pagina con i dettagli del media
-
-                connect(media, &MediaFrame::selected, this, [this, m](){
-                    DetailPageVisitor detailVisitor;
-                    m->accept(&detailVisitor);
-                    emit requestMediaView(*detailVisitor.getWidget());
-                });
+            if(!view){
+                HorizontalCard* card(libraryVisitor->getWidgetCard());
+    
+                if(card != nullptr){
+                    if(chooseLayout) HorizontalLayoutContainer->addWidget(card);
+                    else FlowLayoutContainer->addWidget(card);
+    
+                    card->setCursor(Qt::PointingHandCursor);
+                    card->setFixedHeight(300);
+                    card->setMaximumWidth(710);
+                    //visitor per visualizzare la pagina con i dettagli del media
+    
+                    connect(card, &HorizontalCard::selected, this, [this, m](){
+                        DetailPageVisitor detailVisitor;
+                        m->accept(&detailVisitor);
+                        emit requestMediaView(*detailVisitor.getWidget());
+                    });
+                }
+            }
+            else{
+                MediaFrame* media(libraryVisitor->getWidgetFrame());
+    
+                if(media != nullptr){
+                    if(chooseLayout) HorizontalLayoutContainer->addWidget(media);
+                    else FlowLayoutContainer->addWidget(media);
+    
+                    media->setCursor(Qt::PointingHandCursor);
+                    media->editImageScale(430,250);
+                    media->setFixedHeight(300);
+                    media->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+                    
+                    //visitor per visualizzare la pagina con i dettagli del media
+    
+                    connect(media, &MediaFrame::selected, this, [this, m](){
+                        DetailPageVisitor detailVisitor;
+                        m->accept(&detailVisitor);
+                        emit requestMediaView(*detailVisitor.getWidget());
+                    });
+    
+                }
             }
         }
     }
@@ -99,3 +123,5 @@ void UpdateMediaLibrary::setPreferredLayout(QLayout* layout){
     if(dynamic_cast<QHBoxLayout*>(layout)) chooseLayout = true;
     if(dynamic_cast<FlowLayout*>(layout)) chooseLayout = false;
 }
+
+
