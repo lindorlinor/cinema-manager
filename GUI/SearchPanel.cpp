@@ -15,7 +15,8 @@ quando si esce dal cinema viene chiamato il reset che cancella tutti gli ogetti 
 eliminati, senza SF o dangling pointer. */
 
 SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xmlManager,QWidget *parent):QWidget(parent), s_jsonManager(s_jsonManager),
-                                                    s_xmlManager(xmlManager),stackModifiche(new QStackedWidget(this)){
+                                                    s_xmlManager(xmlManager),stackModifiche(new QStackedWidget(this)), comboAttivita(0), comboOrdinamento(0), filtroBottone("Film"),
+                                                    ricerca(""), changeView(1){
     //carico tutti gli oggetti sal Json
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
@@ -75,6 +76,7 @@ void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
     connect(cinema, &QToolButton::clicked, this, [this](){
         deleteViewPages();
         emit escSearchPanel();
+        emit setQMenuDisabled();
         s_xmlManager->setCurrentCinema(nullptr);
     });
 
@@ -221,7 +223,7 @@ void SearchPanel::addLatoDestra(){
     connect(inserzione, &QToolButton::clicked, this, [this](){
         deleteViewPages();
         updateModifierPanel(0);
-        updateFiltroMedia("Inserzioni");});
+        updateFiltroMedia("Inserzione");});
     connect(podcast, &QToolButton::clicked, this, [this](){
         deleteViewPages();
         updateModifierPanel(0);
@@ -240,7 +242,7 @@ void SearchPanel::addLatoDestra(){
     });
     connect(nuovoMedia, &InsertMedia::tornaAllaLibreria, this, [this](){
         updateModifierPanel(0);
-        updateMediaList(); //to do
+        updateMediaList();
         updateFiltroTutto();
     });
     
@@ -287,7 +289,7 @@ void SearchPanel::acceptViewTrailer(){
     updateModifierPanel(0);}
 
 void SearchPanel::acceptViewInserzione(){
-    updateFiltroMedia("Inserzioni");
+    updateFiltroMedia("Inserzione");
     deleteViewPages(); 
     updateModifierPanel(0);}
 
@@ -488,7 +490,7 @@ void SearchPanel::acceptDeleteCinema(){
         emit deleteCinemaInSearchPanel(s_cinemaSelezionato);
         resetSearchPanelAfterDeleteCinema();
         emit escSearchPanelAfterDeleteCinema();
-
+        emit setQMenuDisabled();
     }
     else if (msgBox.clickedButton() == annulla){
         qDebug() << "Eliminazione cinema "<<QString::fromStdString(s_cinemaSelezionato->getNomeCinema())<<" annullata";

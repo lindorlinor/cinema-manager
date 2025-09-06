@@ -80,6 +80,23 @@ void InsertMedia::setLimitTabTipologia(int index){
 
     }
 
+    /* se un media ha ancora l'immagine di default, quando si cambia la tipologia, cambia anche la copertina di default se invece
+    non aveva nessuna immagine di default, la copertina non cambia */
+
+    // da aggiungere: trailer, film e puntata
+    if( imagePath == ":images/default.png" || imagePath == ":/images/default_podcast_puntate.png" || imagePath == ":/images/default_inserzioni.png"){
+        
+        if(index == 0) imagePath = ":images/default.png";                          //default del film
+        else if(index == 1) imagePath = ":images/default.png";                     //default del traielr
+        else if(index == 2) imagePath = ":/images/default_podcast_puntate.png";    //default del podcast
+        else if(index == 3) imagePath = ":images/default.png";                     //default della puntata
+        else if(index == 4) imagePath = ":/images/default_inserzioni.png";         //default dell'inserzione
+        
+        QPixmap pixmap(imagePath);
+        copertina->setAlignment(Qt::AlignCenter);
+        copertina->setPixmap(pixmap.scaled(280,330, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    }
+
     checkMediaNameAvailability();
 }
 
@@ -163,7 +180,7 @@ void InsertMedia::salvaMedia(){//funzione per salvare gli input in un json
                                 toFormato(comboFormato->currentText().toStdString()),
                                 toRisoluzione(comboRisoluzione->currentText().toStdString()),
                                 autoreMedia->text().toStdString(),
-                                imagePath==""?":/images/default.png":imagePath.toStdString(),
+                                imagePath==""?":/images/default_podcast_puntate.png":imagePath.toStdString(),
                                 conduttorePodcast->text().toStdString());
     
         im_cinemaSelezionato->addMedia(podcast);
@@ -189,7 +206,7 @@ void InsertMedia::salvaMedia(){//funzione per salvare gli input in un json
                                 static_cast<Podcast*>(PodcastAssociato),
                                 numeroPubblicitaPuntata->value(),
                                 autoreMedia->text().toStdString(),
-                                imagePath==""?":/images/default.png":imagePath.toStdString());
+                                imagePath==""? ":/images/default.png":imagePath.toStdString());
         
         addLingue(puntata);
         addSottotitoli(puntata);
@@ -216,7 +233,7 @@ void InsertMedia::salvaMedia(){//funzione per salvare gli input in un json
                                 costoBaseProiezInserzione->value(),
                                 aziendaInserzInserzione->text().toStdString(),
                                 autoreMedia->text().toStdString(),
-                                imagePath==""?":/images/default.png":imagePath.toStdString());
+                                imagePath==""?":/images/default_inserzioni.png":imagePath.toStdString());
 
         addLingue(inserzione);
         addSottotitoli(inserzione);
