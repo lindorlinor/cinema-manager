@@ -79,11 +79,13 @@ MainWindow::MainWindow(QWidget *parent):    QMainWindow(parent), cinemaPage(new 
             menu->setViewActionEnabled(1,false);
             menu->setViewActionEnabled(2,false);
             menu->setViewActionEnabled(3,false);
+            menu->setViewActionEnabled(4,false);
         }else{
             menu->setViewActionEnabled(0,true);
             menu->setViewActionEnabled(1,true);
             menu->setViewActionEnabled(2,true);
             menu->setViewActionEnabled(3,true);
+            menu->setViewActionEnabled(4,true);
         }
     });
 
@@ -105,6 +107,7 @@ MainWindow::MainWindow(QWidget *parent):    QMainWindow(parent), cinemaPage(new 
     connect(menu,&Menu::viewPodcast,searchPage,&SearchPanel::acceptViewPodcast);
     connect(menu,&Menu::viewPuntate,searchPage,&SearchPanel::acceptViewPuntata);
 
+    connect(menu,&Menu::backToCinemaSelection,this,[menu](){menu->setOtherActionEnabled(0,false);});
     connect(menu,&Menu::backToCinemaSelection,this,&MainWindow::showCinemaSelectionPage);
     connect(menu,&Menu::changeView,searchPage,&SearchPanel::acceptChangeView);
     connect(menu,&Menu::backToCinemaSelection,searchPage,&SearchPanel::resetSearchPanel);
