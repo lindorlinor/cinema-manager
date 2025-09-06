@@ -438,6 +438,27 @@ void SearchPanel::resetSearchPanel(){
     updateFiltroTutto();
 }
 
+void SearchPanel::resetSearchPanelAfterDeleteCinema(){
+    updateCerca("Tutto");
+    comboAttivita = 0; 
+    comboOrdinamento = 0; 
+    filtroBottone = "Film"; 
+    changeView = 1;
+    ricerca.clear();
+
+    attivita->setCurrentIndex(0);
+    ordinamento->setCurrentIndex(0);
+
+    if(stackModifiche->currentIndex()==1) emit resetPages();
+    stackModifiche->setCurrentIndex(0);
+
+    //non elimino gli oggetti e non li tolgo dalla lista media del cinema perché
+    //quest'operazione è già stata fatta quando + stato eliminato il cinema 
+    s_MediaListOfCinema.clear();
+
+    updateFiltroTutto();
+}
+
 
 
 void SearchPanel::acceptEditCinema(){
@@ -465,8 +486,9 @@ void SearchPanel::acceptDeleteCinema(){
     if (msgBox.clickedButton() == conferma) {
         qDebug() << "Eliminazione cinema "<<QString::fromStdString(s_cinemaSelezionato->getNomeCinema())<<" confermata";
         emit deleteCinemaInSearchPanel(s_cinemaSelezionato);
-        s_cinemaSelezionato = nullptr;
-        emit escSearchPanel();
+        resetSearchPanelAfterDeleteCinema();
+        emit escSearchPanelAfterDeleteCinema();
+
     }
     else if (msgBox.clickedButton() == annulla){
         qDebug() << "Eliminazione cinema "<<QString::fromStdString(s_cinemaSelezionato->getNomeCinema())<<" annullata";

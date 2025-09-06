@@ -813,7 +813,7 @@ void MediaInterface::chooseImage(){
     );
 
     if (!fileName.isEmpty()) {
-        imagePath = ":/images/" + QFileInfo(fileName).fileName();
+        imagePath = "images/" + QFileInfo(fileName).fileName();
         QPixmap pixmap(imagePath);
         copertina->setAlignment(Qt::AlignCenter);
         copertina->setPixmap(pixmap.scaled(280,330, Qt::KeepAspectRatio, Qt::SmoothTransformation));
@@ -874,6 +874,7 @@ void MediaInterface::addGeneri(Film* film){
 
 void MediaInterface::addAttore(Film* film){
     for (const QString& a : attoriFilm->getListaPersone()) {
+        qDebug()<<"aggiungo "<<a;
         film->aggiungiAttore(a.toStdString());
     }
 }

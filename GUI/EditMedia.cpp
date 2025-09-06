@@ -239,8 +239,9 @@ void EditMedia::salvaMedia(){
             addGeneri(film);
         }
 
-        for(const string& a : film->getAttoriPrincipali())
-            film->rimuoviAttore(a);
+        while (!film->getAttoriPrincipali().empty()) {
+            film->rimuoviAttore(film->getAttoriPrincipali().front());
+        }
         addAttore(film);
     }
 
@@ -285,8 +286,9 @@ void EditMedia::salvaMedia(){
             puntata->associaPodcast(static_cast<Podcast*>(PodcastAssociato));
         }
         
-        for(const string& o : puntata->getOspiti())
-        puntata->rimuoviOspite(o);
+        while (!puntata->getOspiti().empty()) {
+            puntata->rimuoviOspite(puntata->getOspiti().front());
+        }
         addOspite(puntata);
         
     }   

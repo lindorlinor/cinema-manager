@@ -128,7 +128,7 @@ void CinemaModifier::chooseImage(){
     );
 
     if (!fileName.isEmpty()) {
-        imagePath = ":/images/" + QFileInfo(fileName).fileName();
+        imagePath = "images/" + QFileInfo(fileName).fileName();
         QPixmap pixmap(imagePath);
         img->setAlignment(Qt::AlignCenter);
         img->setPixmap(pixmap.scaled(200,200, Qt::KeepAspectRatio, Qt::SmoothTransformation));

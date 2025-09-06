@@ -36,6 +36,7 @@ Menu::Menu(QWidget* parent):QWidget(parent),menuBar(new QMenuBar(this)),file(new
     altro->addAction(new QAction("Exit Full Screen", altro));
 
     //action di File
+    connect(file->actions()[0],&QAction::triggered, this, &Menu::addMedia);
     connect(file->actions()[1],&QAction::triggered, this, &Menu::importMediaList);
     connect(file->actions()[2],&QAction::triggered, this, &Menu::exportMediaList);
     connect(file->actions()[3],&QAction::triggered, this, &Menu::importSession);

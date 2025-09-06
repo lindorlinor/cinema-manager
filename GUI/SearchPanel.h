@@ -162,8 +162,10 @@ class SearchPanel:public QWidget{
     void acceptAddMedia();
     void acceptChangeView();
     void acceptDeleteMedia(Media* media);
+    void resetSearchPanelAfterDeleteCinema();
     
     signals:
+    void escSearchPanelAfterDeleteCinema();
     void setQMenuEnabled();
     void setQMenuDisabled();
     void resetPages();
