@@ -29,7 +29,7 @@ SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xm
     mainLayout->setSpacing(0);
 }
 
-void SearchPanel::addLatoFiltri(QWidget* widgetFiltri){
+void SearchPanel::addLatoFiltri(){
     //agginta ricerca LatoFiltri
     QVBoxLayout* latoFiltri = new QVBoxLayout;
     QVBoxLayout* selezioneMedia = new QVBoxLayout;
@@ -320,12 +320,12 @@ void SearchPanel::updateCerca(const QString& filtro){
 }
 
 void SearchPanel::addPagina(QVBoxLayout* mainLayout){
-    QWidget* widgetFiltri = new QWidget(this);
+    widgetFiltri = new QWidget(this);
 
     
     QHBoxLayout* ricerca = new QHBoxLayout;
     
-    addLatoFiltri(widgetFiltri); 
+    addLatoFiltri(); 
     addLatoDestra(); 
     
     ricerca->addWidget(widgetFiltri);
@@ -619,4 +619,23 @@ void SearchPanel::acceptDeleteMedia(Media* media){
     deleteViewPages();
     stackModifiche->setCurrentIndex(0);
     updateFiltroTutto();
+}
+
+
+void SearchPanel::resizeEvent(QResizeEvent* event) { //per gestire il ridimensionamento, appaiono solo le icone se la widgetFiltri è troppo piccola
+    QWidget::resizeEvent(event);
+
+    bool showText = widgetFiltri->width() > 250;
+
+    QList<QToolButton*> buttons = {tutto, film, trailer, inserzione, podcast, puntata, cinema};
+
+    for (QToolButton* btn : buttons) {
+        if (showText) {
+            addMedia->setText("+ Aggiungi");
+            btn->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+        } else {
+            addMedia->setText("+");
+            btn->setToolButtonStyle(Qt::ToolButtonIconOnly);
+        }
+    }
 }

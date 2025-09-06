@@ -284,11 +284,11 @@ void InserzioneView::createButtons(){
 
 //@to do non so come farla al momento, devo passare la lista di media WOPSIEE COME FACCIO AAGHHH
 void InserzioneView::createScrollableSection() {
-    rightSide->setObjectName("gaga");
-    rightSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
+    rightLayout->addStretch(); //stretch altrimenti non si centra orrizzontalmente
+    rightSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
+    rightLayout->setAlignment(Qt::AlignHCenter);
     QLabel* labelInserzioni = new QLabel("Altre inserzioni", rightSide);
-    labelInserzioni->setObjectName("labelCorrelati");
     QFont fontIns = labelInserzioni->font();
     fontIns.setPointSize(17);
     fontIns.setBold(true);
@@ -299,18 +299,21 @@ void InserzioneView::createScrollableSection() {
     QWidget* sezioneInserzioni = new QWidget(scrollInserzioni);
     layoutInserzioni = new QVBoxLayout(sezioneInserzioni);
     layoutInserzioni->setAlignment(Qt::AlignTop);
-    layoutInserzioni->setSpacing(20);
+    layoutInserzioni->addSpacing(20);
     sezioneInserzioni->setContentsMargins(20,20,20,33);
 
     scrollInserzioni->setWidget(sezioneInserzioni);
     scrollInserzioni->setWidgetResizable(true);
     scrollInserzioni->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollInserzioni->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    scrollInserzioni->setMinimumHeight(600);
-
-    rightLayout->addWidget(scrollInserzioni,0,Qt::AlignTop);
+    scrollInserzioni->setMinimumHeight(261);   
+    scrollInserzioni->setMaximumHeight(600);  
+    scrollInserzioni->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding); 
+    rightLayout->addWidget(scrollInserzioni,1);
+    rightLayout->addStretch(); //stretch altrimenti non si centra orrizzontalmente
     splitterLayout->addWidget(rightSide);
-
+    
+    labelInserzioni->setObjectName("labelCorrelati");
     sezioneInserzioni->setObjectName("sezioneScroll");
     scrollInserzioni->setObjectName("scrollDetails");
 

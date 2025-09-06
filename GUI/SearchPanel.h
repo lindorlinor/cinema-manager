@@ -86,6 +86,8 @@ class SearchPanel:public QWidget{
     * 
     */
    QPushButton* addMedia;
+
+   QWidget * widgetFiltri;
    
    //barra du ricerca
     QLineEdit* cerca;
@@ -103,7 +105,7 @@ class SearchPanel:public QWidget{
     * @brief metodi per creare la gui della pagina
     */
     void addPagina(QVBoxLayout* mainLayout);                //"contenitore" principale
-    void addLatoFiltri(QWidget* widgetSinistra);             //lato di sinistra con i pulsanti
+    void addLatoFiltri();             //lato di sinistra con i pulsanti
     void addLatoDestra();     //lato di destra con lo stackLibreria
 
 
@@ -174,6 +176,7 @@ class SearchPanel:public QWidget{
     void escSearchPanel();
     void deleteCinemaInSearchPanel(Cinema* s_cinemaSelezionato);
     void deleteCinema();
+protected:
+    void resizeEvent(QResizeEvent* event);
 };
-
 #endif //SEARCHPANEL_H

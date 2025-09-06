@@ -44,6 +44,8 @@ protected:
     void createMediaCard();
     void createRowDetails();
 
+    void resizeEvent(QResizeEvent* event) override;
+
 private:
     QWidget* box;
     QLabel* regista;

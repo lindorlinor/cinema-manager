@@ -214,7 +214,7 @@ void FilmView::updateMediaDetails() {
 
 
 void FilmView::createScrollableSection() {
-    rightSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    rightSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
 
     QLabel* labelTrailer = new QLabel("Trailer", rightSide);
     QFont fontTrailer = labelTrailer->font();
@@ -235,9 +235,10 @@ void FilmView::createScrollableSection() {
     scrollTrailer->setWidgetResizable(true);
     scrollTrailer->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollTrailer->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    scrollTrailer->setMinimumHeight(500);
-
-    rightLayout->addWidget(scrollTrailer, 0, Qt::AlignTop);
+    scrollTrailer->setMinimumHeight(261);   
+    scrollTrailer->setMaximumHeight(500);  
+    scrollTrailer->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Expanding); 
+    rightLayout->addWidget(scrollTrailer,1);
     splitterLayout->addWidget(rightSide);
 
     labelTrailer->setObjectName("labelTrailer");

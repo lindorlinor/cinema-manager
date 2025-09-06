@@ -193,3 +193,14 @@ void MediaView::update(){
     updateHeader();
     updateMediaCard();
 }
+
+
+void MediaView::resizeEvent(QResizeEvent* event) {
+    QWidget::resizeEvent(event); // chiama il comportamento di default
+
+    if (width() < 1350) {
+        rightSide->hide();   // nasconde rightSide se la larghezza è minore di 1027
+    } else {
+        rightSide->show();   // mostra rightSide se la larghezza è maggiore o uguale a 1027
+    }
+}
