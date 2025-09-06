@@ -106,7 +106,6 @@ void SelectMediaReference::setSelectFalse() {
 }
 
 void SelectMediaReference::setSelectedItem(const QString& titolo, const QString& autore) {
-    qDebug()<<"impostati";
     sm_titolo = titolo;
     sm_autore = autore;
 }

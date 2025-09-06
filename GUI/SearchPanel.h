@@ -59,11 +59,11 @@ class SearchPanel:public QWidget{
     QComboBox* ordinamento;
 
     //valori da passarea ll'observer
-    int comboAttivita = 0;   
-    int comboOrdinamento = 0; 
-    QString filtroBottone = "Film"; 
-    QString ricerca = "";
-    bool changeView= 1; // 1 default, 0 espanso (sono le possibili viste)
+    int comboAttivita;   
+    int comboOrdinamento; 
+    QString filtroBottone; 
+    QString ricerca;
+    bool changeView; // 1 default, 0 espanso (sono le possibili viste)
 
     //media che sto visualizzando
     MediaView* detailPage;

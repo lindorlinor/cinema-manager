@@ -321,7 +321,6 @@ Trailer* XmlVisitor::fromXmlTrailerElement(const QDomElement& elem,list<Media*> 
         return media;
     }
         
-    // qDebug() << QString::fromStdString(titoloFilmA) << QString::fromStdString(autoreFilmA) << QString::fromStdString( descrizione )<<  QString::fromStdString(dateToString(dI));
     return nullptr;
 }
 

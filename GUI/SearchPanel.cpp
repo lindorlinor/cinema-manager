@@ -15,7 +15,8 @@ quando si esce dal cinema viene chiamato il reset che cancella tutti gli ogetti 
 eliminati, senza SF o dangling pointer. */
 
 SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xmlManager,QWidget *parent):QWidget(parent), s_jsonManager(s_jsonManager),
-                                                    s_xmlManager(xmlManager),stackModifiche(new QStackedWidget(this)){
+                                                    s_xmlManager(xmlManager),stackModifiche(new QStackedWidget(this)), comboAttivita(0), comboOrdinamento(0), filtroBottone("Film"),
+                                                    ricerca(""), changeView(1){
     //carico tutti gli oggetti sal Json
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
