@@ -130,6 +130,7 @@ MainWindow::MainWindow(QWidget *parent):    QMainWindow(parent), cinemaPage(new 
 
     connect(searchPage,&SearchPanel::deleteCinemaInSearchPanel,this,&MainWindow::deleteCinemaFromList);
     connect(searchPage,&SearchPanel::escSearchPanel,this,&MainWindow::showCinemaSelectionPage);
+    connect(searchPage,&SearchPanel::escSearchPanelAfterDeleteCinema,this,&MainWindow::showCinemaSelectionPage);
     connect(searchPage,&SearchPanel::escSearchPanel,searchPage,&SearchPanel::resetSearchPanel);
     connect(searchPage,&SearchPanel::setQMenuEnabled,this,[menu](){menu->setOtherActionEnabled(0,true);});
     connect(searchPage,&SearchPanel::setQMenuDisabled,this,[menu](){menu->setOtherActionEnabled(0,false);});
@@ -193,6 +194,7 @@ void MainWindow::showCinemaSelectionPage(){
 void MainWindow::deleteCinemaFromList(Cinema* cinema){
     if (w_cinema.removeOne(cinema)) {
         delete cinema;
+        cinema = nullptr;
     }
     m_jsonManager->deleteCinemaInJson(w_cinema);
 }

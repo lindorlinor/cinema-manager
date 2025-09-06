@@ -64,12 +64,6 @@ void SelectMediaReference::reloadMedia(const Cinema& cinema) {
         delete child;
     }
 
-    QFile file(QDir(QCoreApplication::applicationDirPath()).filePath("../Json_XML/media.json"));
-    if (!file.open(QIODevice::ReadOnly)) {
-        qWarning() << "File JSON non trovato:" << file.fileName();
-        return;
-    }
-
     for(Media* m : cinema.getListaMedia()){
         
         MediaFrame* mediaframe = new MediaFrame(*m, container);
@@ -77,7 +71,11 @@ void SelectMediaReference::reloadMedia(const Cinema& cinema) {
         layoutContainer->addWidget(mediaframe);
         mediaframe->setCursor(Qt::PointingHandCursor);
 
+        titolo = QString::fromStdString(m->getTitolo());
+        autore = QString::fromStdString(m->getAutore());
+
         if(titolo == sm_titolo && autore == sm_autore){
+            qDebug()<<"trovato";
             currentSelected = mediaframe;
             currentSelected->setSelected(true);
             emit mediaSelected(mediaframe);
@@ -104,6 +102,7 @@ void SelectMediaReference::setSelectFalse() {
 }
 
 void SelectMediaReference::setSelectedItem(const QString& titolo, const QString& autore) {
+    qDebug()<<"impostati";
     sm_titolo = titolo;
     sm_autore = autore;
 }

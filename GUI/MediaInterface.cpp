@@ -874,6 +874,7 @@ void MediaInterface::addGeneri(Film* film){
 
 void MediaInterface::addAttore(Film* film){
     for (const QString& a : attoriFilm->getListaPersone()) {
+        qDebug()<<"aggiungo "<<a;
         film->aggiungiAttore(a.toStdString());
     }
 }
