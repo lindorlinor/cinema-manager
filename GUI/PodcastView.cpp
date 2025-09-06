@@ -16,20 +16,19 @@ PodcastView::PodcastView(Podcast* pPtr, QWidget* parent):MediaView(pPtr,parent),
     layoutPage->addSpacing(30);
 }   
 
-void PodcastView::createMediaDetails(){
+void PodcastView::createMediaDetails() {
     createRowDetails();
     leftSide->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    leftSide->setContentsMargins(0,0,0,0);
+    leftSide->setContentsMargins(0, 0, 0, 0);
     leftLayout->setSpacing(0);
-    leftLayout->setContentsMargins(0,0,0,0);
-    
+    leftLayout->setContentsMargins(0, 0, 0, 0);
+
     createMediaCard();
 
     QScrollArea* scrollDetails = new QScrollArea(leftSide);
     details->setParent(scrollDetails);
     detailsLayout->setContentsMargins(0, 0, 0, 0);
     details->setMaximumWidth(600);
-    
 
     scrollDetails->setWidget(details);
     scrollDetails->setWidgetResizable(true);
@@ -37,120 +36,99 @@ void PodcastView::createMediaDetails(){
     scrollDetails->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     leftLayout->addWidget(scrollDetails);
     detailsLayout->setSpacing(10);
-    QWidget * sezioneProgrammazione = new QWidget(details);
-    sezioneProgrammazione->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    QVBoxLayout * layoutProgrammazione = new QVBoxLayout(sezioneProgrammazione);
-    
-    QLabel * labelProgrammazione = new QLabel("Informazioni di distribuzione");
+
+
+    QWidget* sezioneProgrammazione = new QWidget(details);
+    sezioneProgrammazione->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+    QVBoxLayout* layoutProgrammazione = new QVBoxLayout(sezioneProgrammazione);
+
+    QLabel* labelProgrammazione = new QLabel("Informazioni di distribuzione");
     layoutProgrammazione->addWidget(labelProgrammazione);
 
-    QWidget * dettagliProgrammazione = new QWidget(sezioneProgrammazione);
-    QHBoxLayout * layoutDettagliProgrammazione = new QHBoxLayout(dettagliProgrammazione);
+    QWidget* dettagliProgrammazione = new QWidget(sezioneProgrammazione);
+    QHBoxLayout* layoutDettagliProgrammazione = new QHBoxLayout(dettagliProgrammazione);
     layoutDettagliProgrammazione->setSpacing(35);
     layoutDettagliProgrammazione->setAlignment(Qt::AlignLeft);
-    dettagliProgrammazione->setContentsMargins(10,10,10,10);
-    
-    
-    QLabel* inizioP = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Inizio proiezione: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(podPtr->getDataInizioRilascio())) + "</span>",dettagliProgrammazione);
+    dettagliProgrammazione->setContentsMargins(10, 10, 10, 10);
+
+    inizioP = new QLabel(dettagliProgrammazione);
     inizioP->setTextFormat(Qt::RichText);
-    endDateLabel = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(podPtr->getDataFineRilascio())) + "</span>",dettagliProgrammazione);
+    inizioP->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+
+    endDateLabel = new QLabel(dettagliProgrammazione);
     endDateLabel->setTextFormat(Qt::RichText);
-    inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    endDateLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-   
+    endDateLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+
     layoutDettagliProgrammazione->addWidget(inizioP);
     layoutDettagliProgrammazione->addWidget(endDateLabel);
-
     layoutProgrammazione->addWidget(dettagliProgrammazione);
-    
-    
-    QWidget * sezionePerformance = new QWidget(details);
-    QVBoxLayout * layoutPerformance = new QVBoxLayout(sezionePerformance);
-    
-    QLabel * labelPerformance = new QLabel("Performance e statistiche");
+
+    QWidget* sezionePerformance = new QWidget(details);
+    QVBoxLayout* layoutPerformance = new QVBoxLayout(sezionePerformance);
+
+    QLabel* labelPerformance = new QLabel("Performance e statistiche");
     layoutPerformance->addWidget(labelPerformance);
-    
-    QWidget * dettagliPerformance = new QWidget(sezionePerformance);
-    QVBoxLayout * layoutDettagliPerformance = new QVBoxLayout(dettagliPerformance);
-    dettagliPerformance->setContentsMargins(10,10,10,10);
-    sezionePerformance->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    
-    // Visualizzazioni e incasso
-    QLabel* incasso = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Incasso totale: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::number(podPtr->calcolaIncasso()) + " €</span>",dettagliPerformance);
+
+    QWidget* dettagliPerformance = new QWidget(sezionePerformance);
+    QVBoxLayout* layoutDettagliPerformance = new QVBoxLayout(dettagliPerformance);
+    dettagliPerformance->setContentsMargins(10, 10, 10, 10);
+    sezionePerformance->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+
+    incasso = new QLabel(dettagliPerformance);
     incasso->setTextFormat(Qt::RichText);
-    QLabel* visualizzazioni = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Visualizzazioni: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::number(podPtr->getVisualizzazioni()) + "</span>",dettagliPerformance);
+
+    visualizzazioni = new QLabel(dettagliPerformance);
     visualizzazioni->setTextFormat(Qt::RichText);
 
     layoutDettagliPerformance->addWidget(incasso);
     layoutDettagliPerformance->addWidget(visualizzazioni);
     layoutPerformance->addWidget(dettagliPerformance);
-    
-    QWidget * sezioneTecnica = new QWidget(details);
-    QVBoxLayout * layoutTecnica = new QVBoxLayout(sezioneTecnica);
-    sezioneTecnica->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
 
-    QLabel * labelTecnica = new QLabel("Caratteristiche tecniche");
+    QWidget* sezioneTecnica = new QWidget(details);
+    QVBoxLayout* layoutTecnica = new QVBoxLayout(sezioneTecnica);
+    sezioneTecnica->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+
+    QLabel* labelTecnica = new QLabel("Caratteristiche tecniche");
     layoutTecnica->addWidget(labelTecnica);
-    
-    QWidget * dettagliTecnici = new QWidget(sezioneTecnica);
-    QVBoxLayout * layoutDettagliTecnici = new QVBoxLayout(dettagliTecnici);
-    dettagliTecnici->setContentsMargins(10,10,10,10);
-    
-    QLabel* risoluzione = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Risoluzione: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::fromUtf8(toString(podPtr->getRisoluzione())) + "</span>",dettagliTecnici);
+
+    QWidget* dettagliTecnici = new QWidget(sezioneTecnica);
+    QVBoxLayout* layoutDettagliTecnici = new QVBoxLayout(dettagliTecnici);
+    dettagliTecnici->setContentsMargins(10, 10, 10, 10);
+
+    risoluzione = new QLabel(dettagliTecnici);
     risoluzione->setTextFormat(Qt::RichText);
-    QLabel* formato = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Formato: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::fromUtf8(toString(podPtr->getFormato())) + "</span>",dettagliTecnici);
+
+    formato = new QLabel(dettagliTecnici);
     formato->setTextFormat(Qt::RichText);
 
     layoutDettagliTecnici->addWidget(risoluzione);
     layoutDettagliTecnici->addWidget(formato);
     layoutTecnica->addWidget(dettagliTecnici);
-    
-    QWidget *sezioneDettagli = new QWidget(details);
-    sezioneDettagli->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
-    QVBoxLayout * layoutDettagli = new QVBoxLayout(sezioneDettagli);
-    QLabel * labelDettagli = new QLabel("Dettagli sul film");
-    layoutDettagli->addWidget(labelDettagli);
-    labelDettagli->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    
-    QWidget * dettagliDettagli = new QWidget(sezioneDettagli); //@to do ciao linor del futuro, cambia sto nome per favore
-    QVBoxLayout * layoutDettagliDettagli = new QVBoxLayout(dettagliDettagli);
-    dettagliDettagli->setContentsMargins(10,10,10,10);
-    
-    
-    ExpandableLabel* descrizione = new ExpandableLabel(
-         "<span style='color: #bdced3; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(podPtr->getDescrizione()),dettagliDettagli);
-        
-    QLabel* conduttore = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Conduttore: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::fromStdString(podPtr->getConduttore()) + "</span>",dettagliTecnici);
-    conduttore->setTextFormat(Qt::RichText);
-    conduttore->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);   
 
-     QLabel* nPuntate = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Numero di puntate: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::number(podPtr->getElencoPuntate().size()) + "</span>",dettagliTecnici);
-    nPuntate->setTextFormat(Qt::RichText);
-     nPuntate->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);  
+    QWidget* sezioneDettagli = new QWidget(details);
+    sezioneDettagli->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    QVBoxLayout* layoutDettagli = new QVBoxLayout(sezioneDettagli);
+
+    QLabel* labelDettagli = new QLabel("Dettagli sul film");
+    layoutDettagli->addWidget(labelDettagli);
+    labelDettagli->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+
+    QWidget* dettagliDettagli = new QWidget(sezioneDettagli);
+    QVBoxLayout* layoutDettagliDettagli = new QVBoxLayout(dettagliDettagli);
+    dettagliDettagli->setContentsMargins(10, 10, 10, 10);
+
+    descrizione = new ExpandableLabel("", dettagliDettagli);
+    conduttore = new QLabel(dettagliDettagli);
+    conduttore->setTextFormat(Qt::RichText);
+    conduttore->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+
+    puntate = new QLabel(dettagliDettagli);
+    puntate->setTextFormat(Qt::RichText);
+    puntate->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
     layoutDettagliDettagli->addWidget(descrizione);
     layoutDettagliDettagli->addWidget(conduttore);
-    layoutDettagliDettagli->addWidget(nPuntate);
-
-
-
+    layoutDettagliDettagli->addWidget(puntate);
     layoutDettagli->addWidget(dettagliDettagli);
 
     detailsLayout->addWidget(sezioneProgrammazione);
@@ -162,14 +140,62 @@ void PodcastView::createMediaDetails(){
     leftSide->setFixedHeight(700);
     splitterLayout->addWidget(leftSide);
 
-    //stile
+    // stile
     labelProgrammazione->setObjectName("programmazione");
     labelPerformance->setObjectName("labelPerformance");
     labelTecnica->setObjectName("labelTecnica");
     labelDettagli->setObjectName("labelDettagli");
     scrollDetails->setObjectName("scrollDetails");
-    
+
+    updateMediaDetails();
 }
+
+void PodcastView::updateMediaDetails() {
+    inizioP->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Inizio proiezione: </span>"
+        "<span style='color: #4e7f8b;'>" +
+        QString::fromStdString(dateToString(podPtr->getDataInizioRilascio())) + "</span>");
+
+    endDateLabel->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
+        "<span style='color: #4e7f8b;'>" +
+        QString::fromStdString(dateToString(podPtr->getDataFineRilascio())) + "</span>");
+
+    incasso->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Incasso totale: </span>"
+        "<span style='color: #4e7f8b;'>" +
+        QString::number(podPtr->calcolaIncasso()) + " €</span>");
+
+    visualizzazioni->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Visualizzazioni: </span>"
+        "<span style='color: #4e7f8b;'>" +
+        QString::number(podPtr->getVisualizzazioni()) + "</span>");
+
+    risoluzione->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Risoluzione: </span>"
+        "<span style='color: #4e7f8b;'>" +
+        QString::fromUtf8(toString(podPtr->getRisoluzione())) + "</span>");
+
+    formato->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Formato: </span>"
+        "<span style='color: #4e7f8b;'>" +
+        QString::fromUtf8(toString(podPtr->getFormato())) + "</span>");
+
+    descrizione->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Descrizione: </span><br>" +
+        QString::fromStdString(podPtr->getDescrizione()));
+
+    conduttore->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Conduttore: </span>"
+        "<span style='color: #4e7f8b;'>" +
+        QString::fromStdString(podPtr->getConduttore()) + "</span>");
+
+    puntate->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Numero di puntate: </span>"
+        "<span style='color: #4e7f8b;'>" +
+        QString::number(podPtr->getElencoPuntate().size()) + "</span>");
+}
+
 void PodcastView::createScrollableSection(){
     rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
@@ -269,4 +295,9 @@ void PodcastView::createButtons(){
 
     cardLayout->addSpacing(40);
     cardLayout->addWidget(buttons,0,Qt::AlignCenter);
+}
+
+void PodcastView::update(){
+    MediaView::update();
+    updateMediaDetails();
 }

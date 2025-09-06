@@ -2,7 +2,6 @@
 #include <QPushButton>
 #include <QScrollArea>
 #include "Film.h"
-#include "ExpandableLabel.h"
 #include "PreviewCard.h"
 #include "PreviewCard.h"
 #include "DetailsPageButtons.h"
@@ -20,140 +19,103 @@ TrailerView::TrailerView(Trailer* tPtr, QWidget* parent)
 
 
 void TrailerView::createMediaDetails() {
-    createRowDetails();
+    createRowDetails(); // da MediaView
     leftSide->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    leftSide->setObjectName("pupu");
     leftSide->setContentsMargins(0,0,0,0);
     leftLayout->setSpacing(0);
     leftLayout->setContentsMargins(0,0,0,0);
-    
-    createMediaCard();
+
+    createMediaCard(); // da MediaView
 
     QScrollArea* scrollDetails = new QScrollArea(leftSide);
     details->setParent(scrollDetails);
     detailsLayout->setContentsMargins(0, 0, 0, 0);
     scrollDetails->setMinimumHeight(550);
     details->setMaximumWidth(600);
-    
 
     scrollDetails->setWidget(details);
     scrollDetails->setWidgetResizable(true);
     scrollDetails->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollDetails->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     leftLayout->addWidget(scrollDetails);
+
     detailsLayout->setSpacing(10);
-    QWidget * sezioneProgrammazione = new QWidget(details);
+
+    QWidget* sezioneProgrammazione = new QWidget(details);
     sezioneProgrammazione->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    QVBoxLayout * layoutProgrammazione = new QVBoxLayout(sezioneProgrammazione);
-    
-    QLabel * labelProgrammazione = new QLabel("Informazioni di programmazione");
+    QVBoxLayout* layoutProgrammazione = new QVBoxLayout(sezioneProgrammazione);
+    layoutProgrammazione->setContentsMargins(0,0,0,0);
+
+    QLabel* labelProgrammazione = new QLabel("Informazioni di programmazione");
     layoutProgrammazione->addWidget(labelProgrammazione);
 
-    QWidget * dettagliProgrammazione = new QWidget(sezioneProgrammazione);
-    QGridLayout * layoutDettagliProgrammazione = new QGridLayout(dettagliProgrammazione);
+    QWidget* dettagliProgrammazione = new QWidget(sezioneProgrammazione);
+    QGridLayout* layoutDettagliProgrammazione = new QGridLayout(dettagliProgrammazione);
     layoutDettagliProgrammazione->setAlignment(Qt::AlignLeft);
     dettagliProgrammazione->setContentsMargins(10,10,10,10);
-    
-    
-    QLabel* inizioP = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Inizio proiezione: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(trailerPtr->getDataInizioRilascio())) + "</span>",dettagliProgrammazione);
-    inizioP->setTextFormat(Qt::RichText);
-    endDateLabel = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(trailerPtr->getDataFineRilascio())) + "</span>",dettagliProgrammazione);
-    endDateLabel->setTextFormat(Qt::RichText);
-    inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    endDateLabel->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    inizioP->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    QLabel* nProiezioniGiornaliere = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Numero proiezioni giornaliere: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::number(trailerPtr->getNProiezioniGiornaliere()) + "</span>",dettagliProgrammazione);
-    nProiezioniGiornaliere->setTextFormat(Qt::RichText);
-    nProiezioniGiornaliere->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-        
-    QLabel* targetPubb = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Target pubblico: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::fromStdString(toString((trailerPtr->getFilm())->getTarget())) + "</span>",dettagliProgrammazione);
 
-    targetPubb->setTextFormat(Qt::RichText);
-    targetPubb->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    inizioP = new QLabel(dettagliProgrammazione);
+    endDateLabel = new QLabel(dettagliProgrammazione);
+    nProiezioniGiornaliere = new QLabel(dettagliProgrammazione);
+    targetPubb = new QLabel(dettagliProgrammazione);
 
     layoutDettagliProgrammazione->addWidget(inizioP,0,0);
     layoutDettagliProgrammazione->addWidget(endDateLabel,0,1);
     layoutDettagliProgrammazione->addWidget(nProiezioniGiornaliere,1,0);
     layoutDettagliProgrammazione->addWidget(targetPubb,2,0);
     layoutProgrammazione->addWidget(dettagliProgrammazione);
-    
-    
-    QWidget * sezionePerformance = new QWidget(details);
-    QVBoxLayout * layoutPerformance = new QVBoxLayout(sezionePerformance);
-    
-    QLabel * labelPerformance = new QLabel("Performance e statistiche");
-    layoutPerformance->addWidget(labelPerformance);
-    
-    QWidget * dettagliPerformance = new QWidget(sezionePerformance);
-    QVBoxLayout * layoutDettagliPerformance = new QVBoxLayout(dettagliPerformance);
-    dettagliPerformance->setContentsMargins(10,10,10,10);
-    sezionePerformance->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    
 
-    QLabel* incasso = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Stima incasso totale: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::number(trailerPtr->calcolaIncasso()) + " €</span>",dettagliPerformance);
-    incasso->setTextFormat(Qt::RichText);
-    QLabel* visualizzazioni = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Visualizzazioni: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::number(trailerPtr->getVisualizzazioni()) + "</span>",dettagliPerformance);
-    visualizzazioni->setTextFormat(Qt::RichText);
+    QWidget* sezionePerformance = new QWidget(details);
+    QVBoxLayout* layoutPerformance = new QVBoxLayout(sezionePerformance);
+    sezionePerformance->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
+
+    QLabel* labelPerformance = new QLabel("Performance e statistiche");
+    layoutPerformance->addWidget(labelPerformance);
+
+    QWidget* dettagliPerformance = new QWidget(sezionePerformance);
+    QVBoxLayout* layoutDettagliPerformance = new QVBoxLayout(dettagliPerformance);
+    dettagliPerformance->setContentsMargins(10,10,10,10);
+
+    incasso = new QLabel(dettagliPerformance);
+    visualizzazioni = new QLabel(dettagliPerformance);
 
     layoutDettagliPerformance->addWidget(incasso);
     layoutDettagliPerformance->addWidget(visualizzazioni);
-
     layoutPerformance->addWidget(dettagliPerformance);
-    
-    QWidget * sezioneTecnica = new QWidget(details);
-    QVBoxLayout * layoutTecnica = new QVBoxLayout(sezioneTecnica);
+
+    QWidget* sezioneTecnica = new QWidget(details);
+    QVBoxLayout* layoutTecnica = new QVBoxLayout(sezioneTecnica);
     sezioneTecnica->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    QLabel * labelTecnica = new QLabel("Caratteristiche tecniche");
+
+    QLabel* labelTecnica = new QLabel("Caratteristiche tecniche");
     layoutTecnica->addWidget(labelTecnica);
-    
-    QWidget * dettagliTecnici = new QWidget(sezioneTecnica);
-    QVBoxLayout * layoutDettagliTecnici = new QVBoxLayout(dettagliTecnici);
+
+    QWidget* dettagliTecnici = new QWidget(sezioneTecnica);
+    QVBoxLayout* layoutDettagliTecnici = new QVBoxLayout(dettagliTecnici);
     dettagliTecnici->setContentsMargins(10,10,10,10);
-    
-    QLabel* risoluzione = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Risoluzione: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::fromUtf8(toString(trailerPtr->getRisoluzione())) + "</span>",dettagliTecnici);
-    risoluzione->setTextFormat(Qt::RichText);
-    QLabel* formato = new QLabel(
-        "<span style='color: #bdced3; font-weight:bold;'>Formato: </span>"
-        "<span style='color: #4e7f8b;'>" + QString::fromUtf8(toString(trailerPtr->getFormato())) + "</span>",dettagliTecnici);
-    formato->setTextFormat(Qt::RichText);
+
+    risoluzione = new QLabel(dettagliTecnici);
+    formato = new QLabel(dettagliTecnici);
 
     layoutDettagliTecnici->addWidget(risoluzione);
     layoutDettagliTecnici->addWidget(formato);
     layoutTecnica->addWidget(dettagliTecnici);
-    
-    QWidget *sezioneDettagli = new QWidget(details);
-    sezioneDettagli->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
-    QVBoxLayout * layoutDettagli = new QVBoxLayout(sezioneDettagli);
-    QLabel * labelDettagli = new QLabel("Dettagli sul trailer");
-    layoutDettagli->addWidget(labelDettagli);
-    labelDettagli->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    
-    QWidget * dettagliDettagli = new QWidget(sezioneDettagli); //@to do ciao linor del futuro, cambia sto nome per favore
-    QVBoxLayout * layoutDettagliDettagli = new QVBoxLayout(dettagliDettagli);
-    dettagliDettagli->setContentsMargins(10,10,10,10);
-    
-    
-    ExpandableLabel* descrizione = new ExpandableLabel(
-         "<span style='color:white; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(trailerPtr->getDescrizione()),dettagliDettagli);
-   
-    descrizione->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
+    QWidget* sezioneDettagli = new QWidget(details);
+    sezioneDettagli->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
+    QVBoxLayout* layoutDettagli = new QVBoxLayout(sezioneDettagli);
+
+    QLabel* labelDettagli = new QLabel("Dettagli sul trailer");
+    layoutDettagli->addWidget(labelDettagli);
+
+    QWidget* dettagliDettagli = new QWidget(sezioneDettagli);
+    QVBoxLayout* layoutDettagliDettagli = new QVBoxLayout(dettagliDettagli);
+    dettagliDettagli->setContentsMargins(10,10,10,10);
+
+    descrizione = new ExpandableLabel(" ",dettagliDettagli);
+    descrizione->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
     layoutDettagliDettagli->addWidget(descrizione,0,Qt::AlignTop);
-   
+
     layoutDettagli->addWidget(dettagliDettagli);
 
     detailsLayout->addWidget(sezioneProgrammazione);
@@ -168,26 +130,67 @@ void TrailerView::createMediaDetails() {
     labelPerformance->setObjectName("labelPerformance");
     labelTecnica->setObjectName("labelTecnica");
     labelDettagli->setObjectName("labelDettagli");
-    //stile
-    details->setStyleSheet(
-        "QLabel {"
-            "font-size: 11pt;"
-            "color: #4e7f8b;"
-        "}"
-        "QLabel#programmazione,"
-        "QLabel#labelPerformance,"
-        "QLabel#labelTecnica,"
-        "QLabel#labelDettagli {"
-            "font-size: 13pt;"
-            "font-weight: bold;"
-            "color: #bdced3;"
-        "}"
-    );
     scrollDetails->setObjectName("scrollDetails");
-   
+
+    sezioneProgrammazione->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+
+    endDateLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    inizioP->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    nProiezioniGiornaliere->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    targetPubb->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    sezionePerformance->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
+    sezioneTecnica->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
+    sezioneDettagli->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Preferred);
+    labelDettagli->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+
+    descrizione->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+
+    updateMediaDetails();
 }
+
+
+
+
+void TrailerView::updateMediaDetails() {
+    inizioP->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Inizio proiezione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(trailerPtr->getDataInizioRilascio())) + "</span>");
+    
+    endDateLabel->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(trailerPtr->getDataFineRilascio())) + "</span>");
+
+    nProiezioniGiornaliere->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Numero proiezioni giornaliere: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::number(trailerPtr->getNProiezioniGiornaliere()) + "</span>");
+
+    targetPubb->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Target pubblico: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString(toString(trailerPtr->getFilm()->getTarget())) + "</span>");
+
+    incasso->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Stima incasso totale: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::number(trailerPtr->calcolaIncasso()) + " €</span>");
+
+    visualizzazioni->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Visualizzazioni: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::number(trailerPtr->getVisualizzazioni()) + "</span>");
+
+    risoluzione->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Risoluzione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromUtf8(toString(trailerPtr->getRisoluzione())) + "</span>");
+
+    formato->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Formato: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromUtf8(toString(trailerPtr->getFormato())) + "</span>");
+
+    descrizione->setText(
+        "<span style='color: #bdced3; font-weight:bold;'>Descrizione: </span><br>" +
+        QString::fromStdString(trailerPtr->getDescrizione()));
+}
+
+
 void TrailerView::createScrollableSection(){
-    rightSide->setObjectName("gaga");
     rightSide->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     
     QLabel *labelFilmA = new QLabel("Film associato",rightSide);
@@ -279,8 +282,8 @@ void TrailerView::createButtons(){
                 if (ret == QMessageBox::Ok) {
                     trailerPtr->estendiDataFineRilascio();
                     emit extendMediaClicked();
-                    endDateLabel->setText("<span style='color:white; font-weight:bold;'>Fine proiezione: </span>"
-                    "<span style='color:black;'>" + QString::fromStdString(dateToString(trailerPtr->getDataFineRilascio())) + "</span>");
+                    endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
+                    "<span style='color:#4e7f8b;'>" + QString::fromStdString(dateToString(trailerPtr->getDataFineRilascio())) + "</span>");
                 }
             }else{
                 msgBox.setWindowTitle("Impossibile estendere la data");
@@ -311,4 +314,11 @@ void TrailerView::createButtons(){
     });
     cardLayout->addSpacing(40);
     cardLayout->addWidget(buttons,0,Qt::AlignCenter);
+}
+
+
+
+void TrailerView::update(){
+    MediaView::update();
+    updateMediaDetails();
 }

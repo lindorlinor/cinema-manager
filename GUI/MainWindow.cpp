@@ -113,8 +113,11 @@ MainWindow::MainWindow(QWidget *parent):    QMainWindow(parent), cinemaPage(new 
     connect(menu, &Menu::editCinema, searchPage, &SearchPanel::acceptEditCinema);
     connect(menu, &Menu::deleteCinema, searchPage, &SearchPanel::acceptDeleteCinema);
     connect(menu, &Menu::importMediaList, this, [this](){
-                                              m_xmlManager->importMediaListFromXml(*m_jsonManager);
-                                              searchPage->updateInfoCinema(m_xmlManager->getCurrentCinema());       
+                                                m_xmlManager->importMediaListFromXml(*m_jsonManager);
+                                                // searchPage->updateInfoCinema(m_xmlManager->getCurrentCinema());
+                                                searchPage->updateMediaList();
+                                                searchPage->updateFiltroTutto();
+
                                             });
     connect(menu, &Menu::importSession, this, [this](){
                                                 m_xmlManager->importSessionFromXml(*m_jsonManager);

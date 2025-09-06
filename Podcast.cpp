@@ -24,6 +24,25 @@ void Podcast::setConduttore(const string& nome){
     p_conduttore = nome;
 }
 
+void Podcast::setFormato(const Formato& formato){
+    Media::setFormato(formato);
+
+    for (Puntata* puntata : p_elencoPuntate) {
+        if (puntata) {
+            puntata->setFormato(formato);
+        }
+    }
+}
+
+void Podcast::setRisoluzione(const Risoluzione& ris){
+    Media::setRisoluzione(ris);
+
+    for(Puntata* puntata : p_elencoPuntate) {
+        if(puntata) {
+            puntata->setRisoluzione(ris);
+        }
+    }
+}
 void Podcast::aggiungiPuntata(Puntata* puntata){
     if(puntata && isPuntataIn(puntata)==-1 && puntata->getPodcast() == this){
 

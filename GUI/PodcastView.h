@@ -6,10 +6,17 @@ class PodcastView: public MediaView{
     Q_OBJECT
 public:
     explicit PodcastView(Podcast* pPtr, QWidget* parent = nullptr);
+public slots:
+    void update() override;
 private:
     Podcast* podPtr;
     void createMediaDetails() override;
     void createScrollableSection() override;
     void createButtons() override;
+    void updateMediaDetails() override;
+
+    QLabel* conduttore;
+    QLabel* puntate;
+
 };
 #endif //PODCASTVOEW_H

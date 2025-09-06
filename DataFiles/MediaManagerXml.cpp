@@ -4,6 +4,7 @@
 #include <QFileDialog>
 #include <QDomElement>
 #include <QMessageBox>
+#include <QDebug>
 
 MediaManagerXml::MediaManagerXml():currentCinema(nullptr){}
 
@@ -125,39 +126,60 @@ bool MediaManagerXml::importSessionFromXml(CinemaRepositoryJson& jsonManager){
     return true;
 }
 
+/**
+ * @brief Metodo di utilità per l'importazione dei media, richiamato da importSessionFromXml e importMediaListFromXml.
+ * 
+ * Questo metodo gestisce l'importazione dei media nei JSON. 
+ * Quando è richiamato da importSessionFromXml, currentCinema è nullptr, perché l'importazione dei media non avviene all'interno di un cinema esistente.
+ * Quando è richiamato da importMediaListFromXml, il metodo aggiorna anche la lista dei media del cinema corrente, permettendo il corretto aggiornamento della pagina.
+ * 
+ * @details La lista supportList serve solo come riferimento per Trailer e Puntata, permettendo loro di trovare i Film o Podcast associati.
+ * In assenza di currentCinema, la lista del cinema non viene aggiornata, perché il JSON gestisce la creazione iniziale del cinema.
+ * 
+ * @param mediaElem L'elemento XML contenente i dati dei media.
+ * @param jsonManager Riferimento al gestore JSON per salvare i media.
+ * @param cinemaName Nome del cinema associato all'importazione.
+ */
 
-void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem,CinemaRepositoryJson& jsonManager,const string& cinemaName){  
-    list<Media*> supportList; /*la lista serve solo per permettere a trailer (risp puntata) di trovare il film riferito (risp podcast riferito), 
-    altrimenti non vengono costruiti i Trailer (risp puntate). Non era possibile usare la lista di currentCinema perchè currentCinema in alcuni casi è null*/
-    unsigned int errors =0;
+void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem, CinemaRepositoryJson& jsonManager, const string& cinemaName) {  
+    list<Media*> supportList;  
+    unsigned int errors = 0;
+
     while (!mediaElem.isNull()) {
-        QString tipo = mediaElem.tagName();
-        if (tipo=="Film") {
-            Film* fd = XmlVisitor::fromXmlFilmElement(mediaElem,errors);
-            supportList.push_back(fd);
-            jsonManager.saveMediaInJson(fd,QString::fromStdString(cinemaName));
-        }else if (tipo=="Trailer") {
-            Trailer* td = XmlVisitor::fromXmlTrailerElement(mediaElem,supportList);
-            jsonManager.saveMediaInJson(td,QString::fromStdString(cinemaName));
-        }else if (tipo=="Inserzione") {
-            Inserzione* id = XmlVisitor::fromXmlInserzioneElement(mediaElem);
-            jsonManager.saveMediaInJson(id,QString::fromStdString(cinemaName));
-        }else if (tipo=="Podcast") {
-            Podcast* pdd = XmlVisitor::fromXmlPodcastElement(mediaElem);
-            supportList.push_back(pdd);
-            jsonManager.saveMediaInJson(pdd,QString::fromStdString(cinemaName));
-        } else if (tipo=="Puntata") {
-            Puntata* pd = XmlVisitor::fromXmlPuntataElement(mediaElem,supportList);
-            jsonManager.saveMediaInJson(pd,QString::fromStdString(cinemaName));
-        }else {
+        QString tipo = mediaElem.tagName(); 
+        Media* ptrMedia = nullptr;
+
+        if (tipo == "Film") {
+            ptrMedia = XmlVisitor::fromXmlFilmElement(mediaElem, errors);
+        } else if (tipo == "Trailer") {
+            ptrMedia = XmlVisitor::fromXmlTrailerElement(mediaElem, currentCinema ? currentCinema->getListaMedia() : supportList);
+        } else if (tipo == "Inserzione") {
+            ptrMedia = XmlVisitor::fromXmlInserzioneElement(mediaElem);
+        } else if (tipo == "Podcast") {
+            ptrMedia = XmlVisitor::fromXmlPodcastElement(mediaElem);
+        } else if (tipo == "Puntata") {
+            ptrMedia = XmlVisitor::fromXmlPuntataElement(mediaElem, currentCinema ? currentCinema->getListaMedia() : supportList);
+        } else {
             errors++;
         }
+
+        if (ptrMedia) {
+            if (currentCinema) {
+                currentCinema->addMedia(ptrMedia); 
+            } else if (tipo == "Film" || tipo=="Podcast") { //
+                supportList.push_back(ptrMedia);
+            }
+
+            jsonManager.saveMediaInJson(ptrMedia, QString::fromStdString(cinemaName));
+        }
+
         mediaElem = mediaElem.nextSiblingElement();
     }
 
-    if(errors)
-         QMessageBox::information(nullptr, "Info", QString::number(errors) + " media non sono stati importati correttamente");
+    if (errors)
+        QMessageBox::information(nullptr, "Info", QString::number(errors) + " media non sono stati importati correttamente");
 }
+
 bool MediaManagerXml::importMediaListFromXml(CinemaRepositoryJson& jsonManager){
     if(!currentCinema) return false;
     QString filePath = QFileDialog::getOpenFileName(

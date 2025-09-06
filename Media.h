@@ -87,8 +87,8 @@ public:
     
     // metodi get e set
     void setPath(const string& path);
-    void setFormato(const Formato& formato);
-    void setRisoluzione(const Risoluzione& risoluzione);
+    virtual void setFormato(const Formato& formato);
+    virtual void setRisoluzione(const Risoluzione& risoluzione);
     void setDescrizione(const string& descrizione);
     void setAutore(const string& autore);
     void setTitolo(const string& titolo);

@@ -22,7 +22,7 @@ private:
     string p_conduttore;
     vector<Puntata *> p_elencoPuntate;
     int isPuntataIn(Puntata * puntata) const;
-
+    
 public:
     Podcast(const string &titolo, const string &descrizione,
             Formato formato, Risoluzione risoluzione,
@@ -105,6 +105,8 @@ public:
 
     string getConduttore() const;
     void setConduttore(const string& nome);
+    void setFormato(const Formato& formato) override;
+    void setRisoluzione(const Risoluzione& ris) override;
 
     //visitor
     void accept(MediaVisitor* visitor)override;

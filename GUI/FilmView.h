@@ -9,10 +9,23 @@ class FilmView : public MediaView{
     Q_OBJECT
 public:
     explicit FilmView(Film* fPtr, QWidget* parent = nullptr);
+public slots:
+    void update() override;
 private:
     Film* filmPtr;
+
     void createMediaDetails() override;
     void createScrollableSection() override;
     void createButtons() override;
+
+    void updateMediaDetails() override;
+
+    QLabel* costoBiglietto;
+    QLabel* valutazione;
+    QLabel* postCredit;
+    ExpandableLabel* attoriLabel;
+    QLabel* genere;
+    QLabel* classificazione;
+    QLabel* casaProduzione;
 };
 #endif

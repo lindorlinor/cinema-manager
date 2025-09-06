@@ -3,7 +3,7 @@
 #include <QToolButton>
 MediaView::MediaView(Media* mPtr, QWidget* parent)
     : QWidget(parent), mediaPtr(mPtr),layoutPage( new QVBoxLayout(this)),splitter(new QWidget(this)),splitterLayout(new QHBoxLayout(splitter)),leftSide(new QWidget(splitter)),leftLayout(new QHBoxLayout(leftSide)),
-    details(new QFrame(leftSide)),detailsLayout(new QVBoxLayout(details)),endDateLabel(nullptr),rightSide(new QWidget(splitter)),rightLayout(new QVBoxLayout(rightSide)),card(new QWidget(leftSide)),cardLayout(new QVBoxLayout(card)){
+    details(new QFrame(leftSide)),detailsLayout(new QVBoxLayout(details)),endDateLabel(nullptr),rightSide(new QWidget(splitter)),rightLayout(new QVBoxLayout(rightSide)),card(new QWidget(leftSide)),cardLayout(new QVBoxLayout(card)), box(new QWidget(card)),copertina(new QLabel(card)){
     
     createHeader();
     
@@ -33,7 +33,7 @@ void MediaView::createHeader(){
     returnButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     connect(returnButton, &QPushButton::clicked, this, &MediaView::returnButton);
 
-    QLabel *titolo = new QLabel(QString::fromStdString(mediaPtr->getTitolo()));
+    titolo = new QLabel(contenitoreHeader);
     titolo->setContentsMargins(15,0,0,0);
     QFont fontTitolo = titolo->font();
     fontTitolo.setPointSize(21);
@@ -49,74 +49,83 @@ void MediaView::createHeader(){
     titolo->setStyleSheet("color: #fed36a;");
     returnButton->setObjectName("indietro");
 
-
+    updateHeader(); //aggiorna con il valore corrente
 }
 
+void MediaView::updateHeader(){
+    titolo->setText(QString::fromStdString(mediaPtr->getTitolo()));
+}
 
-
-void MediaView::createMediaCard(){
+void MediaView::createMediaCard() {
     card->setContentsMargins(0,0,0,0);
     cardLayout->setContentsMargins(0,0,0,0);
-    QPixmap image(QString::fromStdString(mediaPtr->getImPath()));
-    QLabel * copertina = new QLabel(card);
-    copertina->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    QPixmap scaled = image.scaled(390,577,Qt::KeepAspectRatio,Qt::SmoothTransformation);
-    copertina->setPixmap(scaled);
-    cardLayout->addWidget(copertina,0,Qt::AlignTop);
-    cardLayout->setSpacing(0);
-    QWidget* box = new QWidget(card);
+
+   
+    copertina->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    cardLayout->addWidget(copertina, 0, Qt::AlignTop);
+
+    
     box->setFixedSize(390, 218);
-    box->setObjectName("box");
     QVBoxLayout* layoutBox = new QVBoxLayout(box);
     layoutBox->setContentsMargins(35, 35, 35, 35);
     layoutBox->setSpacing(10);
-    QLabel* regista = new QLabel(
-        "<span style='color: #bdced3; font-size: 13pt; font-weight:bold;'>Autore: </span>"
-        "<span style='color: #bdced3; font-size: 11pt;'>" + QString::fromStdString(mediaPtr->getAutore()) + "</span>",box);
-    regista->setTextFormat(Qt::RichText);
 
-    QLabel* durata = new QLabel(
-        "<span style='color: #bdced3; font-size: 13pt; font-weight:bold;'>Durata: </span>"
-        "<span style='color: #bdced3; font-size: 11pt;'>" + QString::number(mediaPtr->getDurataMinuti()) + " min</span>",box);
-    durata->setTextFormat(Qt::RichText);
-
-    //creazione label lingue
-    std::vector<Lingua> lingueDisponibili = mediaPtr->getLingue();
-    QString lingueText;
-    for (size_t i = 0; i < lingueDisponibili.size(); ++i) {
-        lingueText += QString::fromUtf8(toString(lingueDisponibili[i]));
-        if (i != lingueDisponibili.size() - 1) {
-            lingueText += ", ";
-        }
-    }
-    QLabel* lingue = new QLabel(
-        "<span style='color: #bdced3; font-size: 13pt; font-weight:bold;'>Lingue: </span>"
-        "<span style='color: #bdced3; font-size: 11pt;'>" + lingueText + "</span>",box);
-    lingue->setTextFormat(Qt::RichText);
-
-    //creazione label sottotitoli
-    std::vector<Lingua> sottotitoliDisponibili = mediaPtr->getSottotitoli();
-    QString sottotitoliText;
-    for (size_t i = 0; i < sottotitoliDisponibili.size(); ++i) {
-        sottotitoliText += QString::fromUtf8(toString(sottotitoliDisponibili[i]));
-        if (i != sottotitoliDisponibili.size() - 1) sottotitoliText += ", ";
-    }
-    QLabel* sottotitoli = new QLabel(
-        "<span style='color: #bdced3;font-size: 13pt; font-weight:bold;'>Sottotitoli: </span>"
-        "<span style='color: #bdced3; font-size: 11pt; '>" + sottotitoliText + "</span>",box);
-    sottotitoli->setTextFormat(Qt::RichText);
+    regista = new QLabel(box);
+    durata = new QLabel(box);
+    lingue = new QLabel(box);
+    sottotitoli = new QLabel(box);
 
     layoutBox->addWidget(regista);
     layoutBox->addWidget(durata);
     layoutBox->addWidget(lingue);
     layoutBox->addWidget(sottotitoli);
     layoutBox->setAlignment(Qt::AlignLeft);
-    // box->setFixedHeight(165);
-    cardLayout->addWidget(box,0,Qt::AlignTop);
-    card->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    leftLayout->addWidget(card,0,Qt::AlignTop);
 
+    cardLayout->addWidget(box, 0, Qt::AlignTop);
+    card->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    leftLayout->addWidget(card, 0, Qt::AlignTop);
+
+    updateMediaCard(); //aggiorna con il valore corrente
+
+    box->setObjectName("box");
 }
+
+void MediaView::updateMediaCard() {
+    if (!mediaPtr) return;
+
+
+    QPixmap image(QString::fromStdString(mediaPtr->getImPath()));
+    QPixmap scaled = image.scaled(390,577,Qt::KeepAspectRatio,Qt::SmoothTransformation);
+    copertina->setPixmap(scaled);
+
+
+    regista->setText(
+        "<span style='color: #bdced3; font-size: 13pt; font-weight:bold;'>Autore: </span>"
+        "<span style='color: #bdced3; font-size: 11pt;'>" + QString::fromStdString(mediaPtr->getAutore()) + "</span>");
+    durata->setText(
+        "<span style='color: #bdced3; font-size: 13pt; font-weight:bold;'>Durata: </span>"
+        "<span style='color: #bdced3; font-size: 11pt;'>" + QString::number(mediaPtr->getDurataMinuti()) + " min</span>");
+
+    
+    QString lingueText;
+    for (size_t i = 0; i < mediaPtr->getLingue().size(); ++i) {
+        lingueText += QString::fromUtf8(toString(mediaPtr->getLingue()[i]));
+        if (i != mediaPtr->getLingue().size() - 1) lingueText += ", ";
+    }
+    lingue->setText(
+        "<span style='color: #bdced3; font-size: 13pt; font-weight:bold;'>Lingue: </span>"
+        "<span style='color: #bdced3; font-size: 11pt;'>" + lingueText + "</span>");
+
+    QString sottotitoliText;
+    for (size_t i = 0; i < mediaPtr->getSottotitoli().size(); ++i) {
+        sottotitoliText += QString::fromUtf8(toString(mediaPtr->getSottotitoli()[i]));
+        if (i != mediaPtr->getSottotitoli().size() - 1) sottotitoliText += ", ";
+    }
+    sottotitoli->setText(
+        "<span style='color: #bdced3; font-size: 13pt; font-weight:bold;'>Sottotitoli: </span>"
+        "<span style='color: #bdced3; font-size: 11pt;'>" + sottotitoliText + "</span>");
+}
+
 
 
 void MediaView::createRowDetails(){
@@ -138,7 +147,7 @@ void MediaView::createRowDetails(){
     }else{
         iconLabel->setPixmap(QPixmap(":/icons/non_in_sala.png").scaled(16,16, Qt::KeepAspectRatio));
         textLabel->setText("Fuori produzione");
-        textLabel->setStyleSheet("color: #BDCED3;");
+        textLabel->setStyleSheet("color: #bdced3;");
     }
 
     containerLayout->addWidget(iconLabel);
@@ -176,4 +185,10 @@ void MediaView::createRowDetails(){
     rowLayout->addStretch();
     rowLayout->addWidget(editTool,0,Qt::AlignRight);
     detailsLayout->addWidget(row);
+}
+
+
+void MediaView::update(){
+    updateHeader();
+    updateMediaCard();
 }

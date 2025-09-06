@@ -7,7 +7,7 @@ class ExpandableLabel : public QLabel {
     Q_OBJECT
 public:
     ExpandableLabel(const QString& fullText, QWidget* parent = nullptr);
-
+    void setText(const QString& text);
 private slots:
     void onLinkActivated(const QString&);
 

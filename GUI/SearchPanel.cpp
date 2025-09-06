@@ -243,6 +243,7 @@ void SearchPanel::addLatoDestra(){
         updateMediaList(); //to do
         updateFiltroTutto();
     });
+    
 
     connect(libreriaMediaGenerale, &MediaLibraryGenerale::requestMediaView, this, &SearchPanel::showMediaView);
     connect(libreriaMediaTutto, &MediaLibraryTutto::requestMediaView, this, &SearchPanel::showMediaView);
@@ -487,6 +488,8 @@ void SearchPanel::showEditPage(Media* media){
         updateFiltroTutto();
         stackModifiche->setCurrentIndex(backIndex);       
         stackModifiche->removeWidget(editMedia);
+        if(dynamic_cast<MediaView*>(stackModifiche->currentWidget())) //anche se a editmedia ci si arriva solo tramite MediaView faccio controllo
+            (static_cast<MediaView*>((stackModifiche->currentWidget())))->update(); //sfrutta il polimorfismo, viene chiamato update della MediaView corrente
         delete editMedia;});
     connect(editMedia, &EditMedia::savedMedia, this,[this](){updateMediaList();});
 
@@ -537,11 +540,18 @@ void SearchPanel::showMediaView(MediaView& widget){
     connect(&widget, &MediaView::deleteMediaClicked, this, [this, &widget](Media* m){removeMediaView(&widget); acceptDeleteMedia(m);});
 }
 
+/*@to do metto MediaView invece che widget? no tanto stackModifiche 
+ritorna sempre un QWidget non mi ritorna un mediaView...
+posso fare static_cast invece che dynamic_cast? tanto so per 
+certo che è sempre un mediaView.......giusto??? l
+inor del futuro pensaci meglio grazie*/
 void SearchPanel::removeMediaView(QWidget* widget){
     int widgetIndex = stackModifiche->indexOf(widget);
 
-    if(widgetIndex > 2)
+    if(widgetIndex > 2){
         stackModifiche->setCurrentIndex(widgetIndex-1);
+        (static_cast<MediaView*>((stackModifiche->currentWidget())))->update(); //fa l'update nel caso in cui vi è stata una modifica del media
+    }
     else
         stackModifiche->setCurrentIndex(0);
 

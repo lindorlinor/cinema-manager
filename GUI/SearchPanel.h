@@ -106,11 +106,6 @@ class SearchPanel:public QWidget{
     void addLatoFiltri(QWidget* widgetSinistra);             //lato di sinistra con i pulsanti
     void addLatoDestra();     //lato di destra con lo stackLibreria
 
-    /**
-     * @brief abbastanza autoesplicativo il nome XD
-     * 
-     */
-    void metodoTemporaneoPerPagineDiVisualizzazione();
 
     //cambio pagina
 
@@ -132,22 +127,23 @@ class SearchPanel:public QWidget{
     //indice per tenere traccia dell'ultima pagina presentata nello stackModifiche e poter tornare indietro
     int previousIndex;
 
-    //metodi che svolgono le attività necessarie che prevengono la chiamata all'update
-    void updateFiltroTutto();
-    void updateFiltroMedia(const QString& filtro);
-    void preUpdate();
     /**
     * @brief aggiorna la lista di supporto per visualizzare i media presenti nel cinema
     */
-    void updateMediaList();
-    
+   //metodi che svolgono le attività necessarie che prevengono la chiamata all'update
+   void updateFiltroMedia(const QString& filtro);
+   void preUpdate();
+   
     public:
 	explicit SearchPanel(CinemaRepositoryJson* jsonManager, MediaManagerXml* xmlManager,QWidget *parent);
     void addObserver(LibraryObserver* obs);
     void update(int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca);
-
-
+    
+    
     public slots:
+    
+    void updateMediaList();
+    void updateFiltroTutto();
     void showEditPage(Media* media);
     void updateModifierPanel(int index);
     void updateInfoCinema(Cinema* cinemaSel);
