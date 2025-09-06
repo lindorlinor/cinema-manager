@@ -21,6 +21,7 @@ void PuntataView::createMediaDetails() {
     leftLayout->setContentsMargins(0,0,0,0);
 
     createMediaCard();
+    copertina->setMaximumSize(390,266); //per evitare che mettendo una copertina più grande di quanto ci si aspetti questa crei problemi con il layout
 
     QScrollArea* scrollDetails = new QScrollArea(leftSide);
     detailsLayout->setParent(details);

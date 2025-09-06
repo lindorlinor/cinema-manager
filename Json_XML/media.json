@@ -7,9 +7,9 @@
         "autore": "FilmLab",
         "conduttore": "Marco Rossi",
         "dataFineRilascio": "2025-11-01",
-        "dataInizioRilascio": "2025-10-16",
+        "dataInizioRilascio": "2025-10-01",
         "descrizione": "Approfondimenti sui grandi registi e capolavori cinematografici.",
-        "durataMinuti": 35,
+        "durataMinuti": 75,
         "formato": "MP4",
         "lingueDisponibili": [
         ],
@@ -305,6 +305,96 @@
         "titolo": "I cacasasdasddasda"
     },
     {
+        "attoriPrincipali": [
+            "Rihanna",
+            "John Goodman",
+            "Nick Offerman"
+        ],
+        "autore": "Chris Miller",
+        "casaDiProduzione": "Paramount Animation",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-09-14",
+        "dataInizioRilascio": "2025-08-22",
+        "descrizione": "Un’avventura animata-musicale con i Puffi alla ricerca del Grande Puffo tra dimensioni magiche...",
+        "durataMinuti": 93,
+        "formato": "DCP",
+        "generi": [
+            "Animazione"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 1,
+        "nomeCinema": "Cinema prova",
+        "path": ":/images/locandina_ipuffiilfilm.jpg",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "I Puffi - Il Film"
+    },
+    {
+        "attoriPrincipali": [
+            "Emma Watson",
+            "Ralph Fiennes",
+            "Daniel Radcliffe",
+            "Emma Watson",
+            "Rupert Grint",
+            "Ralph Fiennes"
+        ],
+        "autore": "Mike Newell",
+        "casaDiProduzione": "Warner Bros Italia",
+        "costoBiglietto": 10.5,
+        "dataFineRilascio": "2025-09-07",
+        "dataInizioRilascio": "2025-08-28",
+        "descrizione": "Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.",
+        "durataMinuti": 158,
+        "formato": "DCP",
+        "generi": [
+            "Avventura",
+            "Fantasy"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "Cinema prova",
+        "path": ":/images/locandina_harrypottereilcalicedifuoco.jpg",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Harry Potter e il Calice di Fuoco - 20esimo anniversario"
+    },
+    {
+        "autore": "Autore1",
+        "aziendaInserzionista": "",
+        "costoFissoProiezione": 30,
+        "dataFineRilascio": "2025-09-18",
+        "dataInizioRilascio": "2025-09-06",
+        "descrizione": "Descrizione di una inserzione",
+        "durataMinuti": 1,
+        "fasceOrarie": [
+            "Mattina"
+        ],
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema prova",
+        "path": ":/images/default_inserzioni.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "inserzione",
+        "titolo": "Inserzione1"
+    },
+    {
         "autore": "FilmLab",
         "autorePodcastAssociato": "FilmLab",
         "dataFineRilascio": "2025-11-01",
@@ -425,6 +515,68 @@
         ],
         "tipologia": "trailer",
         "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
+    },
+    {
+        "autore": "FilmLab",
+        "autorePodcastAssociato": "FilmLab",
+        "dataFineRilascio": "2025-10-16",
+        "dataInizioRilascio": "2025-10-01",
+        "descrizione": "Esploriamo l'era del cinema muto e i suoi maestri.",
+        "durataMinuti": 40,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema prova",
+        "numeroPubblicita": 1,
+        "ospiti": [
+        ],
+        "path": ":/images/image17.png",
+        "podcastAssociato": "Cinema d'Autore",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "Analisi del cinema muto"
+    },
+    {
+        "autore": "Paramount",
+        "autoreFilmAssociato": "Chris Miller",
+        "dataFineRilascio": "2025-09-14",
+        "dataInizioRilascio": "2025-06-06",
+        "descrizione": "Primi scorci ufficiali dell’avventura dei Puffi in CGI.",
+        "durataMinuti": 2,
+        "filmAssociato": "I Puffi - Il Film",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 5,
+        "nomeCinema": "Cinema prova",
+        "path": ":/images/trailer_ipuffi.jpg",
+        "risoluzione": "HD 720p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - I Puffi - Il Film"
+    },
+    {
+        "autore": "Warner Bros",
+        "autoreFilmAssociato": "Mike Newell",
+        "dataFineRilascio": "2025-09-07",
+        "dataInizioRilascio": "2005-09-23",
+        "descrizione": "Il trailer ufficiale del quarto capitolo della saga di Harry Potter.",
+        "durataMinuti": 2,
+        "filmAssociato": "Harry Potter e il Calice di Fuoco - 20esimo anniversario",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 4,
+        "nomeCinema": "Cinema prova",
+        "path": ":/images/trailer_harrypottereilcalicedifuoco.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Harry Potter e il Calice di Fuoco"
     },
     {
         "copertinaCinema": ":/images/default.png",
@@ -1009,7 +1161,7 @@
         "autoreFilmAssociato": "Chris Miller",
         "dataFineRilascio": "2025-09-14",
         "dataInizioRilascio": "2025-06-06",
-        "descrizione": "Primi scorci ufficiali dell’avventura dei Puffi in CGI. asdsakd shdkajsdhkasjdhksjdh askjhaskdjh askdjhaskdjahskjsdhkajshd kajshdkjashdkjsdhksjdhsa",
+        "descrizione": "Primi scorci ufficiali dell’avventura dei Puffi in CGI.",
         "durataMinuti": 2,
         "filmAssociato": "I Puffi - Il Film",
         "formato": "MP4",
@@ -1017,7 +1169,7 @@
         ],
         "nProiezioniGiornaliere": 2,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_ipuffi.jpg",
+        "path": "images/trailer_ipuffi.jpg",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
         ],
@@ -1145,168 +1297,16 @@
         "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
     },
     {
-        "attoriPrincipali": [
-            "Rihanna",
-            "John Goodman",
-            "Nick Offerman"
-        ],
-        "autore": "Chris Miller",
-        "casaDiProduzione": "Paramount Animation",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-09-14",
-        "dataInizioRilascio": "2025-08-22",
-        "descrizione": "Un’avventura animata-musicale con i Puffi alla ricerca del Grande Puffo tra dimensioni magiche...",
-        "durataMinuti": 93,
-        "formato": "DCP",
-        "generi": [
-            "Animazione"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 1,
-        "nomeCinema": "Cinema prova",
-        "path": ":/images/locandina_ipuffiilfilm.jpg",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-            "Italiano"
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "I Puffi - Il Film"
-    },
-    {
-        "attoriPrincipali": [
-            "Emma Watson",
-            "Ralph Fiennes",
-            "Daniel Radcliffe",
-            "Emma Watson",
-            "Rupert Grint",
-            "Ralph Fiennes"
-        ],
-        "autore": "Mike Newell",
-        "casaDiProduzione": "Warner Bros Italia",
-        "costoBiglietto": 10.5,
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2025-08-28",
-        "descrizione": "Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.",
-        "durataMinuti": 158,
-        "formato": "DCP",
-        "generi": [
-            "Avventura",
-            "Fantasy"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema prova",
-        "path": ":/images/locandina_harrypottereilcalicedifuoco.jpg",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Harry Potter e il Calice di Fuoco - 20esimo anniversario"
-    },
-    {
-        "autore": "Autore1",
-        "aziendaInserzionista": "",
-        "costoFissoProiezione": 30,
-        "dataFineRilascio": "2025-09-18",
-        "dataInizioRilascio": "2025-09-06",
-        "descrizione": "Descrizione di una inserzione",
-        "durataMinuti": 1,
-        "fasceOrarie": [
-            "Mattina"
-        ],
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema prova",
-        "path": ":/images/default_inserzioni.png",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "inserzione",
-        "titolo": "Inserzione1"
-    },
-    {
-        "autore": "FilmLab",
-        "autorePodcastAssociato": "FilmLab",
-        "dataFineRilascio": "2025-10-16",
-        "dataInizioRilascio": "2025-10-01",
-        "descrizione": "Esploriamo l'era del cinema muto e i suoi maestri.",
-        "durataMinuti": 40,
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema prova",
-        "numeroPubblicita": 1,
-        "ospiti": [
-        ],
-        "path": ":/images/image17.png",
-        "podcastAssociato": "Cinema d'Autore",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "puntata",
-        "titolo": "Analisi del cinema muto"
-    },
-    {
-        "autore": "Paramount",
-        "autoreFilmAssociato": "Chris Miller",
-        "dataFineRilascio": "2025-09-14",
-        "dataInizioRilascio": "2025-06-06",
-        "descrizione": "Primi scorci ufficiali dell’avventura dei Puffi in CGI.",
-        "durataMinuti": 2,
-        "filmAssociato": "I Puffi - Il Film",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "Cinema prova",
-        "path": ":/images/trailer_ipuffi.jpg",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - I Puffi - Il Film"
-    },
-    {
-        "autore": "Warner Bros",
-        "autoreFilmAssociato": "Mike Newell",
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2005-09-23",
-        "descrizione": "Il trailer ufficiale del quarto capitolo della saga di Harry Potter.",
-        "durataMinuti": 2,
-        "filmAssociato": "Harry Potter e il Calice di Fuoco - 20esimo anniversario",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 4,
-        "nomeCinema": "Cinema prova",
-        "path": ":/images/trailer_harrypottereilcalicedifuoco.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Harry Potter e il Calice di Fuoco"
-    },
-    {
         "copertinaCinema": ":/images/coverCinema.png",
         "nomeCinema": "Cinema Provaa"
     },
     {
         "autore": "FilmLab",
         "conduttore": "Marco Rossi",
-        "dataFineRilascio": "2025-09-06",
-        "dataInizioRilascio": "2025-09-06",
+        "dataFineRilascio": "2025-11-01",
+        "dataInizioRilascio": "2025-10-01",
         "descrizione": "Approfondimenti sui grandi registi e capolavori cinematografici.",
-        "durataMinuti": 0,
+        "durataMinuti": 75,
         "formato": "MP4",
         "lingueDisponibili": [
         ],

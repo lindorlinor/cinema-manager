@@ -27,6 +27,7 @@ void InserzioneView::createMediaDetails() {
     leftLayout->setContentsMargins(0,0,0,0);
 
     createMediaCard(); //da MediaView
+    copertina->setMaximumSize(390,266); //per evitare che mettendo una copertina più grande di quanto ci si aspetti questa crei problemi con il layout
 
     QScrollArea* scrollDetails = new QScrollArea(leftSide);
     details->setParent(scrollDetails);
