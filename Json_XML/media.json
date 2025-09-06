@@ -42,6 +42,54 @@
         "titolo": "Il mio vicino Totoro (RE-RELEASE 2025)"
     },
     {
+        "attoriPrincipali": [
+        ],
+        "autore": "caca",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-09-26",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "",
+        "durataMinuti": 80,
+        "formato": "MP4",
+        "generi": [
+        ],
+        "lingueDisponibili": [
+            "Inglese",
+            "Tedesco"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/default.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Francese",
+            "Tedesco"
+        ],
+        "target": "TUTTI",
+            "attoriPrincipali": [
+        ],
+        "autore": "aaa",
+           "autore": "Studio Ghibli",
+        "autoreFilmAssociato": "Hayao Miyazaki",
+        "dataFineRilascio": "2025-05-31",
+        "dataInizioRilascio": "2025-04-15",
+        "descrizione": "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
+        "durataMinuti": 2,
+        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 5,
+        "nomeCinema": "Cinema Aurora",
+        "path": ":/images/image10.png",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Il mio vicino Totoro (2025)"
+    },
+    {
         "autore": "Hayao Miyazaki",
         "autoreFilmAssociato": "Hayao Miyazaki",
         "dataFineRilascio": "2025-06-15",
