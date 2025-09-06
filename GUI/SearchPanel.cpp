@@ -15,8 +15,8 @@ quando si esce dal cinema viene chiamato il reset che cancella tutti gli ogetti 
 eliminati, senza SF o dangling pointer. */
 
 SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xmlManager,QWidget *parent):QWidget(parent), s_jsonManager(s_jsonManager),
-                                                    s_xmlManager(xmlManager),stackModifiche(new QStackedWidget(this)), comboAttivita(0), comboOrdinamento(0), filtroBottone("Film"),
-                                                    ricerca(""), changeView(1){
+                                                    s_xmlManager(xmlManager), comboAttivita(0), comboOrdinamento(0), filtroBottone("Film"),
+                                                    ricerca(""), changeView(1),stackModifiche(new QStackedWidget(this)){
     //carico tutti gli oggetti sal Json
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
@@ -562,7 +562,7 @@ void SearchPanel::showMediaView(MediaView& widget){
     
     connect(&widget, &MediaView::extendMediaClicked, this, &SearchPanel::updateJson);
     connect(&widget, &MediaView::requestMediaView, this, &SearchPanel::showMediaView);
-    connect(&widget, &MediaView::deleteMediaClicked, this, [this, &widget](Media* m){removeMediaView(&widget); acceptDeleteMedia(m);});
+    connect(&widget, &MediaView::deleteMediaClicked, this, [this, &widget](Media* m){acceptDeleteMedia(m);});
 }
 
 /*@to do metto MediaView invece che widget? no tanto stackModifiche 
@@ -617,5 +617,6 @@ void SearchPanel::acceptDeleteMedia(Media* media){
     updateMediaList();
 
     deleteViewPages();
+    stackModifiche->setCurrentIndex(0);
     updateFiltroTutto();
 }

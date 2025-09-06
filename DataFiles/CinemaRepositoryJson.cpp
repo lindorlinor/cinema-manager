@@ -256,6 +256,10 @@ void CinemaRepositoryJson::saveJsonFile(const QString &fileName, const QJsonDocu
 
     file.write(doc.toJson());
     file.close();
+<<<<<<< HEAD
+=======
+    /* qDebug() << "File JSON creato o sovrascritto:" << filePath; */
+>>>>>>> 1c53dc34e4027553a4b0ecda8d0b54adeabb8b7d
 }
 
 void CinemaRepositoryJson::deleteMediaPointer(QList<Media*>& c_mediaList){
