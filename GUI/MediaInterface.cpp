@@ -6,7 +6,7 @@ MediaInterface::MediaInterface(QList<Media*>& mediaList, QWidget *parent): QWidg
                                                 numeroProiezioniGioInserzione(nullptr),numeroPubblicitaPuntata(nullptr),costoBigliettoFilm(nullptr),costoBaseProiezInserzione(nullptr),descrizioneMedia(nullptr),
                                                 comboTipologia(nullptr),framePath(nullptr),listLingue(nullptr),listSottotitoli(nullptr),listGeneri(nullptr),listFasceOrarie(nullptr),comboFormato(nullptr), comboRisoluzione(nullptr),
                                                 comboTargetFilm(nullptr),comboTargetInserzioni(nullptr),dataInizio(nullptr),dataFine(nullptr),titoloFilmRiferimento(""), 
-                                                autoreFilmRiferimento(""), titoloPodcastRiferimento(""),autorePodcastRiferimento(""),imagePath(""), tab(nullptr),referenceTrailer(nullptr),referencePuntate(nullptr){}
+                                                autoreFilmRiferimento(""), titoloPodcastRiferimento(""),autorePodcastRiferimento(""),imagePath(":images/default.png"), tab(nullptr),referenceTrailer(nullptr),referencePuntate(nullptr){}
 
 void MediaInterface::initUI(){
     cinemaManager = new CinemaRepositoryJson(); 
@@ -822,7 +822,13 @@ void MediaInterface::chooseImage(){
 }
 
 void MediaInterface::removeImage(){
-    QPixmap pixmap(":/images/default.png"); 
+    QPixmap pixmap;
+    if(stackTipologia->currentIndex() == 0) pixmap.load(":/images/default.png");                            //film
+    else if (stackTipologia->currentIndex() == 1) pixmap.load(":/images/default.png");                      //trailer
+    else if (stackTipologia->currentIndex() == 2) pixmap.load(":/images/default_podcast_puntate.png");      //podcast
+    else if (stackTipologia->currentIndex() == 3) pixmap.load(":/images/default.png");                      //puntata
+    else if (stackTipologia->currentIndex() == 4) pixmap.load(":/images/default_inserzioni.png");           //inserzione
+    
     copertina->setPixmap(pixmap.scaled(280,330, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     imagePath.clear();
 }

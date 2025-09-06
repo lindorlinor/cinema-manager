@@ -209,7 +209,7 @@ void EditMedia::salvaMedia(){
     em_media->setDurataMinuti(durataMinutiMedia->value());
     em_media->setFormato(toFormato(comboFormato->currentText().toStdString()));
     em_media->setRisoluzione(toRisoluzione(comboRisoluzione->currentText().toStdString()));
-    em_media->setPath(imagePath==""?":/images/default.png":imagePath.toStdString());
+    em_media->setPath(imagePath.toStdString());
 
     if(!(getSelectedList(listLingue)).empty()){
         for(const Lingua& l : em_media->getLingue())

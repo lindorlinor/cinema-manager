@@ -103,6 +103,7 @@ class MediaInterface:public QWidget{
     SelectMediaReference* referenceTrailer;
     SelectMediaReference* referencePuntate;
     QPushButton* indietro;
+    QString pathPodcast;
     
     //aggiunta elementi della pagina MediaInterface
     QWidget* addPagina();                    //pagine principale: viene aggiunta la parte del tab e della "selezione compertina"
