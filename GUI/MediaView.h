@@ -56,7 +56,7 @@ private:
     QLabel* lingue;
     QLabel* sottotitoli;
     QLabel * titolo;
-    QLabel* iconLabel;
+    QLabel* statusLabel;
     QLabel* textLabel;
     void updateMediaCard();
     void updateHeader();

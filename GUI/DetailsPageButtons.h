@@ -17,9 +17,10 @@ public:
     void updateButtons();
 
 private:
-    void createButtons(QVBoxLayout* mainLayout);
+    void createButtons();
 
     Media* mediaPtr;
+    QVBoxLayout* mainLayout;
     QPushButton* extendButton;
     QPushButton* deleteButton;
     QToolButton* extendTool;

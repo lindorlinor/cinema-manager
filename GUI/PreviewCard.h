@@ -28,6 +28,7 @@ private:
     QLabel* imageLabel;
     QLabel* titleLabel;
     QLabel* statusLabel;
+    QLabel* textLabel;
     QVBoxLayout* cardLayout;
 };
 

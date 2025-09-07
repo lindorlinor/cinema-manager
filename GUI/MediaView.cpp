@@ -139,12 +139,12 @@ void MediaView::createRowDetails() {
 
     QWidget* containerLabel = new QWidget(rowWidget);
     QHBoxLayout* containerLayout = new QHBoxLayout(containerLabel);
-    containerLayout->setContentsMargins(0, 0, 0, 0);
+    containerLayout->setContentsMargins(0,0,0,0);
 
-    iconLabel = new QLabel(containerLabel);
+    statusLabel = new QLabel(containerLabel);
     textLabel = new QLabel(containerLabel);
 
-    containerLayout->addWidget(iconLabel);
+    containerLayout->addWidget(statusLabel);
     containerLayout->addWidget(textLabel);
 
     QToolButton* editTool = new QToolButton(containerLabel);
@@ -169,7 +169,6 @@ void MediaView::createRowDetails() {
     editTool->setIcon(QIcon(":/icons/edit.png"));
 
     connect(editTool, &QToolButton::clicked, this, [this]() {
-        qDebug() << "hai cliccato edit del media " << QString::fromStdString(mediaPtr->getTitolo());
         emit editMediaClicked(mediaPtr);
     });
 
@@ -185,11 +184,11 @@ void MediaView::updateRowDetails(){
     if (!mediaPtr) return;
 
     if (!mediaPtr->FuoriProduzione()) {
-        iconLabel->setPixmap(QPixmap(":/icons/in_sala.png").scaled(16, 16, Qt::KeepAspectRatio));
+        statusLabel->setPixmap(QPixmap(":/icons/in_sala.png").scaled(16, 16, Qt::KeepAspectRatio));
         textLabel->setText("Attualmente in distribuzione");
         textLabel->setStyleSheet("font-size: 11pt; color: #FED36A;");
     } else {
-        iconLabel->setPixmap(QPixmap(":/icons/non_in_sala.png").scaled(16, 16, Qt::KeepAspectRatio));
+        statusLabel->setPixmap(QPixmap(":/icons/non_in_sala.png").scaled(16, 16, Qt::KeepAspectRatio));
         textLabel->setText("Fuori produzione");
         textLabel->setStyleSheet("color: #bdced3;");
     }

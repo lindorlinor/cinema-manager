@@ -6,13 +6,13 @@
 #include <QIcon>
 
 DetailsPageButtons::DetailsPageButtons(Media* mPtr, QWidget* parent)
-    : QWidget(parent), mediaPtr(mPtr){
-    QVBoxLayout* mainLayout = new QVBoxLayout(this);
-    createButtons(mainLayout);
+    : QWidget(parent), mediaPtr(mPtr),mainLayout(new QVBoxLayout(this)){
+    
+    createButtons();
     updateButtons();
 }
 
-void DetailsPageButtons::createButtons(QVBoxLayout* mainLayout) {
+void DetailsPageButtons::createButtons() {
     extendButton = new QPushButton("Estendi data");
     extendButton->setObjectName("extendButton");
     extendButton->setCursor(Qt::PointingHandCursor);
@@ -30,8 +30,7 @@ void DetailsPageButtons::createButtons(QVBoxLayout* mainLayout) {
     QHBoxLayout* rigaExtend = new QHBoxLayout();
     rigaExtend->addWidget(extendButton, 0, Qt::AlignLeft);
     rigaExtend->addWidget(extendTool, 0, Qt::AlignLeft);
-    mainLayout->addLayout(rigaExtend);
-
+    
     deleteButton = new QPushButton("Elimina media");
     deleteButton->setObjectName("deleteButton");
     deleteButton->setCursor(Qt::PointingHandCursor);
@@ -43,12 +42,16 @@ void DetailsPageButtons::createButtons(QVBoxLayout* mainLayout) {
     deleteTool->setObjectName("deleteTool");
     deleteTool->setCheckable(true);
     deleteTool->setAutoRaise(true);
-    deleteTool->setFixedSize(24, 24);
+    deleteTool->setFixedSize(24,24);
     deleteTool->setToolTip("Attiva/Disattiva pulsante");
-
+    
     QHBoxLayout* rigaDelete = new QHBoxLayout();
     rigaDelete->addWidget(deleteButton, 0, Qt::AlignLeft);
     rigaDelete->addWidget(deleteTool, 0, Qt::AlignLeft);
+
+
+    mainLayout->addLayout(rigaExtend);
+    mainLayout->addSpacing(20);
     mainLayout->addLayout(rigaDelete);
 
     connect(extendTool, &QToolButton::toggled, this, [this](bool checked) {

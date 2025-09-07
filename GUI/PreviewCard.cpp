@@ -23,28 +23,41 @@ PreviewCard::PreviewCard(const Media* mPtr, QWidget* parent)
     titleLabel->setWordWrap(true);
     titleLabel->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     
-    statusLabel = new QLabel(this);
+    QWidget* containerLabel = new QWidget(this);
+    QHBoxLayout* containerLayout = new QHBoxLayout(containerLabel);
+    containerLayout->setContentsMargins(0,0,0,0);
+
+    statusLabel = new QLabel(containerLabel);
+    textLabel = new QLabel(containerLabel);
+    
+    containerLayout->addWidget(statusLabel);
+    containerLayout->addWidget(textLabel);
+
     if (mediaPtr->FuoriProduzione()) {
-        statusLabel->setText("Fuori produzione");
+        statusLabel->setPixmap(QPixmap(":/icons/non_in_sala_dark.png").scaled(10, 10, Qt::KeepAspectRatio));
+        textLabel->setText("Fuori produzione");
     } else {
-        statusLabel->setText("Oggi in sala");
+        statusLabel->setPixmap(QPixmap(":/icons/in_sala_dark.png").scaled(10, 10, Qt::KeepAspectRatio));
+        textLabel->setText("Attualmente in distribuzione");
     }
     statusLabel->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
+    textLabel->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
+    containerLabel->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
     statusLabel->setAlignment(Qt::AlignRight);
+    textLabel->setAlignment(Qt::AlignRight);
 
-    // Layout
     cardLayout->addWidget(imageLabel);
     cardLayout->addWidget(titleLabel);
     cardLayout->addSpacing(20);
-    // cardLayout->addStretch();
-    cardLayout->addWidget(statusLabel);
+
+    cardLayout->addWidget(containerLabel);
     setLayout(cardLayout);
 
     setFixedWidth(224);
 
     setCursor(Qt::PointingHandCursor);
     setStyleSheet(
-        "#card { background-color: #BDCED3; border: 1px solid #BDCED3; border-radius: 5px; }"
+        "#card { color: #243F46; background-color: #BDCED3; border: 1px solid #BDCED3; border-radius: 5px; }"
         "#card:hover { background-color: rgba(189, 206, 211, 0.5); }"
     );
 }
