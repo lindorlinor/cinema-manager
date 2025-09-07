@@ -513,6 +513,7 @@ QDateEdit#dataFine:disabled QLineEdit {
     background-color: #365961;
     color: #05313c;
     border-radius: 10px;
+    padding: 8px 12px;
 }
 
 /* SpinBox (campo testo) */

@@ -6,7 +6,7 @@ MediaInterface::MediaInterface(QList<Media *> &mediaList, QWidget *parent) : QWi
                                                                              numeroProiezioniGioInserzione(nullptr), numeroPubblicitaPuntata(nullptr), costoBigliettoFilm(nullptr), costoBaseProiezInserzione(nullptr), descrizioneMedia(nullptr),
                                                                              comboTipologia(nullptr), framePath(nullptr), listLingue(nullptr), listSottotitoli(nullptr), listGeneri(nullptr), listFasceOrarie(nullptr), comboFormato(nullptr), comboRisoluzione(nullptr),
                                                                              comboTargetFilm(nullptr), comboTargetInserzioni(nullptr), dataInizio(nullptr), dataFine(nullptr), titoloFilmRiferimento(""),
-                                                                             autoreFilmRiferimento(""), titoloPodcastRiferimento(""), autorePodcastRiferimento(""), imagePath(":images/default.png"), tab(nullptr), referenceTrailer(nullptr), referencePuntate(nullptr) {}
+                                                                             autoreFilmRiferimento(""), titoloPodcastRiferimento(""), autorePodcastRiferimento(""), imagePath(""), tab(nullptr), referenceTrailer(nullptr), referencePuntate(nullptr) {}
 
 void MediaInterface::initUI()
 {
@@ -276,14 +276,8 @@ QWidget *MediaInterface::addDataFineRilascio(QDateEdit *dataFine)
     return addInput(label, dataFine);
 }
 
-void MediaInterface::checkMediaNameAvailability()
+void MediaInterface::setLimitTrailer()
 {
-    QString titolo = titoloMedia->text().trimmed();
-    QString autore = autoreMedia->text().trimmed();
-
-    bool isAvailable = true;
-    errorLabel->setVisible(false);
-
     bool trailer = (stackTipologia->currentIndex() == 1);
     if (trailer && titoloFilmRiferimento.isEmpty() && autoreFilmRiferimento.isEmpty())
     {
@@ -307,6 +301,17 @@ void MediaInterface::checkMediaNameAvailability()
         dataInizio->setMaximumDate(noLimit);
         dataFine->setMaximumDate(noLimit);
     }
+}
+
+void MediaInterface::checkMediaNameAvailability()
+{
+    QString titolo = titoloMedia->text().trimmed();
+    QString autore = autoreMedia->text().trimmed();
+
+    bool isAvailable = true;
+    errorLabel->setVisible(false);
+
+    setLimitTrailer();
 
     if (titolo.isEmpty() || autore.isEmpty())
         isAvailable = false;
@@ -582,7 +587,6 @@ QWidget *MediaInterface::addPagina()
                                      "QToolButton { border: none; color: #073c47; font-weight: bold; } "
                                      "QToolButton:hover { color: #ffffffff; }",
                                      this);
-    QPixmap pixmap(":/images/default.png");
     copertina = new QLabel(this);
     QLabel *anteprima = new QLabel("Anteprima immagine", this);
 
@@ -635,7 +639,7 @@ QWidget *MediaInterface::addPagina()
     copertina->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     copertina->setMaximumSize(300, 430);
     copertina->setAlignment(Qt::AlignCenter);
-    copertina->setPixmap(pixmap.scaled(280, 330, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    setDefaultCover();
 
     return widgetPagina4;
 }
@@ -838,6 +842,31 @@ QWidget *MediaInterface::annullaSalva()
     saveButton->setObjectName("saveButton");
 
     return asWidget;
+}
+
+/* se un media ha ancora l'immagine di default, quando si cambia la tipologia, cambia anche la copertina di default se invece
+non aveva nessuna immagine di default, la copertina non cambia */
+
+// da aggiungere: trailer, film e puntata
+void MediaInterface::setDefaultCover()
+{
+    if (imagePath == "" || imagePath == ":images/default.png" || imagePath == ":/images/default_podcast_puntate.png" || imagePath == ":/images/default_inserzioni.png")
+    {
+        if (stackTipologia->currentIndex() == 0)
+            imagePath = ":images/default.png"; // default del film
+        else if (stackTipologia->currentIndex() == 1)
+            imagePath = ":images/default.png"; // default del traielr
+        else if (stackTipologia->currentIndex() == 2)
+            imagePath = ":/images/default_podcast_puntate.png"; // default del podcast
+        else if (stackTipologia->currentIndex() == 3)
+            imagePath = ":images/default.png"; // default della puntata
+        else if (stackTipologia->currentIndex() == 4)
+            imagePath = ":/images/default_inserzioni.png"; // default dell'inserzione
+
+        QPixmap pixmap(imagePath);
+        copertina->setAlignment(Qt::AlignCenter);
+        copertina->setPixmap(pixmap.scaled(280, 330, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    }
 }
 
 // slots
