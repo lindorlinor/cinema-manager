@@ -22,5 +22,8 @@ private:
 
     QLabel* conduttore;
     QLabel* nPubblicita;
+private slots:
+    void extendMediaMessage() override;
+    void deleteMediaMessage() override;
 };
 #endif

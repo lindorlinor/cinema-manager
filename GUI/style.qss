@@ -857,6 +857,9 @@ QToolButton#deleteTool {
     border-radius: 8px;
 }
 
+#customMessageBox QPushButton#cancelButton:hover{
+     background-color: #3c6772;
+}
 #customMessageBox QPushButton#confirmButton {
     background-color: #1A6C80;
     color: #BDCED3;
@@ -865,6 +868,9 @@ QToolButton#deleteTool {
     font-size:14pt;
 }
 
+#customMessageBox QPushButton#confirmButton:hover {
+    background-color: #145869;
+}
 
 #separatorLine{
     background-color: #4E7F8B;  

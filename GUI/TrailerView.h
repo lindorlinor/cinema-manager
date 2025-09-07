@@ -23,5 +23,8 @@ private:
     QVBoxLayout* layoutTrailer;
     QLabel* nProiezioniGiornaliere;
     QLabel *targetPubb;
+private slots:
+    void extendMediaMessage() override;
+    void deleteMediaMessage() override;
 };
 #endif

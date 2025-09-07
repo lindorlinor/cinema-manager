@@ -163,6 +163,7 @@ void InserzioneView::createMediaDetails() {
 }
 
 void InserzioneView::updateMediaDetails() {
+    updateRowDetails();
     if (!insPtr) return;
 
     
@@ -228,60 +229,6 @@ void InserzioneView::updateMediaDetails() {
     );
 }
 
-
-void InserzioneView::createButtons(){
-    DetailsPageButtons * buttons = new DetailsPageButtons(insPtr,leftSide);
-    buttons->setDeleteButtonText("Elimina Inserzione");
-
-    connect(buttons,&DetailsPageButtons::extendMedia,this,
-        [this](){
-            QMessageBox msgBox(this);
-            auto fine = insPtr->getDataFineRilascio();
-            auto nuovaFine = insPtr->getDataFineRilascio() + months{1};
-
-            if(fine!=nuovaFine){
-                msgBox.setWindowTitle("Conferma estensione data");
-                msgBox.setText(QString::fromStdString(
-                "La data di fine proiezione cambierà in\n" + dateToString(fine) + " → " + dateToString(nuovaFine)));
-
-                msgBox.setInformativeText("Premi conferma per continuare, annulla per non modificare.");
-                msgBox.setStandardButtons(QMessageBox::Cancel | QMessageBox::Ok);
-                msgBox.button(QMessageBox::Ok)->setText("Conferma");
-                msgBox.button(QMessageBox::Cancel)->setText("Annulla");
-
-                int ret = msgBox.exec();
-                if (ret == QMessageBox::Ok) {
-                    insPtr->estendiDataFineRilascio();
-                    emit extendMediaClicked();
-                    endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
-                    "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(insPtr->getDataFineRilascio())) + "</span>");
-                }
-            }
-        });
-
-        connect(buttons, &DetailsPageButtons::deleteMedia, this, [this](){
-            QMessageBox msgBox;
-            msgBox.setWindowTitle("Conferma eliminazione");
-            msgBox.setText("Sei sicuro di voler eliminare l'inserzione? "
-                        "Premi conferma per continuare, annulla per non modificare.");
-
-            QPushButton* annullaBtn = msgBox.addButton("Annulla", QMessageBox::RejectRole);
-            QPushButton* confermaBtn = msgBox.addButton("Conferma", QMessageBox::AcceptRole);
-
-            msgBox.exec();
-
-            if (msgBox.clickedButton() == confermaBtn) {
-                emit deleteMediaClicked(insPtr);
-            }
-            else if(msgBox.clickedButton() == annullaBtn){
-                // qDebug()<<"Eliminazione del media annullata";
-            }
-        });
-
-    cardLayout->addSpacing(40);
-    cardLayout->addWidget(buttons,0,Qt::AlignCenter);
-}
-
 //@to do non so come farla al momento, devo passare la lista di media WOPSIEE COME FACCIO AAGHHH
 void InserzioneView::createScrollableSection() {
 
@@ -343,7 +290,14 @@ void InserzioneView::updateScrollableSection() {
     layoutInserzioni->addStretch();
 }
 
-
+void InserzioneView::createButtons(){
+    buttons = new DetailsPageButtons(insPtr,leftSide);
+    buttons->setDeleteButtonText("Elimina Inserzione");
+    connect(buttons,&DetailsPageButtons::extendMedia,this,&InserzioneView::extendMediaMessage);
+    connect(buttons,&DetailsPageButtons::deleteMedia,this,&InserzioneView::deleteMediaMessage);
+    cardLayout->addSpacing(40);
+    cardLayout->addWidget(buttons,0,Qt::AlignCenter);
+}
 
 void InserzioneView::setMediaList(const QList<Media*>* list) {
     mediaList = list;
@@ -355,4 +309,34 @@ void InserzioneView::update(){
     MediaView::update();
     updateMediaDetails();
     updateScrollableSection();
+    buttons->updateButtons();
+}
+
+
+void InserzioneView::extendMediaMessage(){
+    CustomMessageBox msgBox(this);
+    auto fine = insPtr->getDataFineRilascio();
+    auto nuovaFine = insPtr->getDataFineRilascio() + months{1};
+    
+    msgBox.setTitleText("Sei sicuro di voler estendere la data fine rilascio del media?");
+    msgBox.setMainMessage(QString::fromStdString(
+    "La data di fine proiezione cambierà in<br/>" + dateToString(fine) + " → " + dateToString(nuovaFine)));
+    msgBox.setInfoMessage();
+
+    if (msgBox.exec() == QDialog::Accepted){
+        insPtr->estendiDataFineRilascio();
+        emit extendMediaClicked();
+        endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(insPtr->getDataFineRilascio())) + "</span>");
+    }
+}
+void InserzioneView::deleteMediaMessage(){
+    CustomMessageBox msgBox;
+    msgBox.setTitleText("<span style='color: #E44043;'>Conferma eliminazione</span>");
+    msgBox.setMainMessage("Sei sicuro di voler eliminare l'inserzione? L'operazione è irreversibile.");
+    msgBox.setInfoMessage();
+
+    if(msgBox.exec() == QDialog::Accepted){
+        emit deleteMediaClicked(insPtr);
+    }
 }

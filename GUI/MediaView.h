@@ -1,13 +1,14 @@
 #ifndef MEDIAVIEW_H
 #define MEDIAVIEW_H
-
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QPushButton>
+#include "CustomMessageBox.h"
 #include "../DetailPageVisitor.h"
 #include "../GUI/ExpandableLabel.h"
+#include "GUI/DetailsPageButtons.h"
 #include "../Media.h"
 
 class MediaView : public QWidget{
@@ -31,7 +32,8 @@ protected:
     QVBoxLayout* rightLayout;
     QWidget * card;
     QVBoxLayout * cardLayout;
-    
+    DetailsPageButtons * buttons;
+
     QLabel * copertina;
     QLabel* inizioP;
     QLabel* incasso;
@@ -43,6 +45,7 @@ protected:
     void createHeader();
     void createMediaCard();
     void createRowDetails();
+    void updateRowDetails();
 
     void resizeEvent(QResizeEvent* event) override;
 
@@ -53,13 +56,15 @@ private:
     QLabel* lingue;
     QLabel* sottotitoli;
     QLabel * titolo;
+    QLabel* iconLabel;
+    QLabel* textLabel;
     void updateMediaCard();
     void updateHeader();
 
     //metodi di create che i figli devono overridare
     virtual void createMediaDetails() = 0;
     virtual void createScrollableSection() = 0;
-    virtual void createButtons() =0;
+    virtual void createButtons() =0 ;
 
     //metodi di update che i figli devono overridare
     virtual void updateMediaDetails() =0;
@@ -67,13 +72,17 @@ private:
 
 signals:
     void editMediaClicked(Media* mPtr); //segnale emesso quando cliccato sull'icona di modifica media
-    void extendMediaClicked(); //segnale emesso quando cliccato su "estendi Media" dopo aver esteso il media
-    void deleteMediaClicked(Media* mPtr);  //sengale emesso quando cliccato su "elimina Media"
+    void extendMediaClicked(); //segnale emesso dopo aver confermato l'estensione del media
+    void deleteMediaClicked(Media* mPtr);  //sengale emesso dopo aver confermato l'eliminazione del media
     void returnButton(); //segnale emesso quando cliccato il pulsante "Torna indietro"
     void requestMediaView(MediaView& widget); //segnale emesso quando cliccato su un altro media all'interno della pagina (p.es trailer correlato)
 
 public slots:
     virtual void update(); //metodo di update virtuale, i figli overridano richiamando i metodi di update per i loro campi privati
+
+private slots:
+    virtual void extendMediaMessage()=0;
+    virtual void deleteMediaMessage()=0;
 };
 
 #endif // MEDIAVIEW_H

@@ -14,6 +14,8 @@ PodcastView::PodcastView(Podcast* pPtr, QWidget* parent):MediaView(pPtr,parent),
     createScrollableSection();
     createButtons();
     layoutPage->addSpacing(30);
+
+
 }   
 
 void PodcastView::createMediaDetails() {
@@ -152,6 +154,7 @@ void PodcastView::createMediaDetails() {
 }
 
 void PodcastView::updateMediaDetails() {
+    updateRowDetails(); // da MediaView, aggiorna la scritta "Fuori produzione" o "Attualmente in distribuzione"
     inizioP->setText(
         "<span style='color: #bdced3; font-weight:bold;'>Inizio proiezione: </span>"
         "<span style='color: #4e7f8b;'>" +
@@ -252,63 +255,48 @@ void PodcastView::updateScrollableSection() {
 }
 
 void PodcastView::createButtons(){
-    DetailsPageButtons * buttons = new DetailsPageButtons(podPtr,leftSide);
+    buttons = new DetailsPageButtons(podPtr,leftSide);
     buttons->setDeleteButtonText("Elimina podcast");
-    connect(buttons,&DetailsPageButtons::extendMedia,this,
-        [this](){
-            QMessageBox msgBox(this);
-            auto fine = podPtr->getDataFineRilascio();
-            auto nuovaFine = sys_days(fine) + days{1};
-
-            if(fine!=nuovaFine){
-                msgBox.setWindowTitle("Conferma estensione data");
-                msgBox.setText(QString::fromStdString(
-                "La data di fine proiezione cambierà in\n" + dateToString(fine) + " → " + dateToString(nuovaFine) + "."));
-                msgBox.setInformativeText(QString::fromStdString("La data di fine rilascio delle puntate associate verrà posticipata di un giorno ciascuna \n\nPremi conferma per continuare, annulla per non modificare."));
-                msgBox.setStandardButtons(QMessageBox::Cancel | QMessageBox::Ok);
-                msgBox.button(QMessageBox::Ok)->setText("Conferma");
-                msgBox.button(QMessageBox::Cancel)->setText("Annulla");
-
-                int ret = msgBox.exec();
-                if (ret == QMessageBox::Ok) {
-                    podPtr->estendiDataFineRilascio();
-                    emit extendMediaClicked();
-                    endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
-                    "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(podPtr->getDataFineRilascio())) + "</span>");
-                }
-            }
-
-            
-        });
-           
-    
-    connect(buttons,&DetailsPageButtons::deleteMedia,this,[this](){
-        QMessageBox msgBox(this);
-        msgBox.setWindowTitle("Conferma eliminazione");
-        msgBox.setText("Sei sicuro di voler eliminare il Podcast? "
-                    "Questo avrà l'effetto di eliminare tutte le puntate associate.");
-
-        QPushButton* annullaBtn = msgBox.addButton("Annulla", QMessageBox::RejectRole);
-        QPushButton* confermaBtn = msgBox.addButton("Conferma", QMessageBox::AcceptRole);
-
-        msgBox.exec();
-
-
-        if (msgBox.clickedButton() == confermaBtn) {
-                emit deleteMediaClicked(podPtr);
-        }
-        else if(msgBox.clickedButton() == annullaBtn){
-            // qDebug()<<"Eliminazione del media annullata";
-            }
-
-        });
-
     cardLayout->addSpacing(40);
     cardLayout->addWidget(buttons,0,Qt::AlignCenter);
+    connect(buttons,&DetailsPageButtons::extendMedia,this,&PodcastView::extendMediaMessage);
+    connect(buttons,&DetailsPageButtons::deleteMedia,this,&PodcastView::deleteMediaMessage);
 }
 
 void PodcastView::update(){
     MediaView::update();
     updateMediaDetails();
     updateScrollableSection();
+    buttons->updateButtons();
+}
+
+
+void PodcastView::extendMediaMessage(){
+    CustomMessageBox msgBox(this);
+    auto fine = podPtr->getDataFineRilascio();
+    auto nuovaFine = sys_days(fine) + days{1};
+
+    msgBox.setTitleText("Sei sicuro di voler estendere la data fine rilascio del media?");
+    msgBox.setMainMessage(QString::fromStdString(
+    "La data di fine proiezione cambierà in<br/>" + dateToString(fine) + " → " + dateToString(nuovaFine) + ".") +
+    QString::fromStdString("<br/>La data di fine rilascio delle sue puntate attualmente in distribuzione verrà posticipata di un giorno ciascuna."));
+    msgBox.setInfoMessage();
+
+    if (msgBox.exec() == QDialog::Accepted){
+        podPtr->estendiDataFineRilascio();
+        emit extendMediaClicked();
+        endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(podPtr->getDataFineRilascio())) + "</span>");
+    }
+
+}
+void PodcastView::deleteMediaMessage(){
+    CustomMessageBox msgBox;
+    msgBox.setTitleText("<span style='color: #E44043;'>Conferma eliminazione</span>");
+    msgBox.setMainMessage("Sei sicuro di voler eliminare il podcast? Avrà l'effetto di eliminare tutti le puntate ad essa associate. <br/> L'operazione è irreversibile.");
+    msgBox.setInfoMessage();
+
+    if(msgBox.exec() == QDialog::Accepted){
+        emit deleteMediaClicked(podPtr);
+    }
 }

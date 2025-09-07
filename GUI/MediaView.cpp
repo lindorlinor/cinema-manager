@@ -1,4 +1,5 @@
 #include "MediaView.h"
+#include "CustomMessageBox.h"
 #include <QPushButton>
 #include <QToolButton>
 MediaView::MediaView(Media* mPtr, QWidget* parent)
@@ -14,6 +15,7 @@ MediaView::MediaView(Media* mPtr, QWidget* parent)
     details->setContentsMargins(15,15,15,0);
 
     details->setObjectName("details");
+
 }
 
 
@@ -127,34 +129,24 @@ void MediaView::updateMediaCard() {
 }
 
 
+void MediaView::createRowDetails() {
+    QWidget* rowWidget = new QWidget(details);
+    rowWidget->setFixedHeight(50);
+    rowWidget->setFixedWidth(580);
+    rowWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
-void MediaView::createRowDetails(){
-    QWidget * row = new QWidget(details);
-    row->setFixedHeight(50);
-    row->setFixedWidth(580);
-    row->setSizePolicy(QSizePolicy::Preferred,QSizePolicy::Fixed);
-    QHBoxLayout * rowLayout = new QHBoxLayout(row);
+    QHBoxLayout* rowLayout = new QHBoxLayout(rowWidget);
 
-    QWidget* containerLabel = new QWidget;
+    QWidget* containerLabel = new QWidget(rowWidget);
     QHBoxLayout* containerLayout = new QHBoxLayout(containerLabel);
-    containerLayout->setContentsMargins(0,0,0,0);
+    containerLayout->setContentsMargins(0, 0, 0, 0);
 
-    QLabel* iconLabel = new QLabel(containerLabel);
-    QLabel* textLabel = new QLabel(containerLabel);
-    if (!mediaPtr->FuoriProduzione()){
-        iconLabel->setPixmap(QPixmap(":/icons/in_sala.png").scaled(16,16, Qt::KeepAspectRatio));
-        textLabel->setText("Attualmente in distribuzione");
-        textLabel->setStyleSheet("font-size: 11pt; color: #FED36A;");
-    }else{
-        iconLabel->setPixmap(QPixmap(":/icons/non_in_sala.png").scaled(16,16, Qt::KeepAspectRatio));
-        textLabel->setText("Fuori produzione");
-        textLabel->setStyleSheet("color: #bdced3;");
-    }
+    iconLabel = new QLabel(containerLabel);
+    textLabel = new QLabel(containerLabel);
 
     containerLayout->addWidget(iconLabel);
     containerLayout->addWidget(textLabel);
 
-    
     QToolButton* editTool = new QToolButton(containerLabel);
     editTool->setFixedSize(135, 30);
     editTool->setCursor(Qt::PointingHandCursor);
@@ -173,19 +165,34 @@ void MediaView::createRowDetails(){
             background-color: #4e7f8a;
         }   
     )");
-
     editTool->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     editTool->setIcon(QIcon(":/icons/edit.png"));
 
-    connect(editTool, &QToolButton::clicked, this, [this](){
+    connect(editTool, &QToolButton::clicked, this, [this]() {
         qDebug() << "hai cliccato edit del media " << QString::fromStdString(mediaPtr->getTitolo());
         emit editMediaClicked(mediaPtr);
     });
 
     rowLayout->addWidget(containerLabel);
     rowLayout->addStretch();
-    rowLayout->addWidget(editTool,0,Qt::AlignRight);
-    detailsLayout->addWidget(row);
+    rowLayout->addWidget(editTool, 0, Qt::AlignRight);
+    detailsLayout->addWidget(rowWidget);
+
+    updateRowDetails();
+}
+
+void MediaView::updateRowDetails(){
+    if (!mediaPtr) return;
+
+    if (!mediaPtr->FuoriProduzione()) {
+        iconLabel->setPixmap(QPixmap(":/icons/in_sala.png").scaled(16, 16, Qt::KeepAspectRatio));
+        textLabel->setText("Attualmente in distribuzione");
+        textLabel->setStyleSheet("font-size: 11pt; color: #FED36A;");
+    } else {
+        iconLabel->setPixmap(QPixmap(":/icons/non_in_sala.png").scaled(16, 16, Qt::KeepAspectRatio));
+        textLabel->setText("Fuori produzione");
+        textLabel->setStyleSheet("color: #bdced3;");
+    }
 }
 
 
@@ -196,11 +203,11 @@ void MediaView::update(){
 
 
 void MediaView::resizeEvent(QResizeEvent* event) {
-    QWidget::resizeEvent(event); // chiama il comportamento di default
+    QWidget::resizeEvent(event);
 
     if (width() < 1350) {
-        rightSide->hide();   // nasconde rightSide se la larghezza è minore di 1027
+        rightSide->hide();
     } else {
-        rightSide->show();   // mostra rightSide se la larghezza è maggiore o uguale a 1027
+        rightSide->show();
     }
 }

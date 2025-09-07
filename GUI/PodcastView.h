@@ -19,6 +19,8 @@ private:
     QVBoxLayout * layoutPuntate;
     QLabel* conduttore;
     QLabel* puntate;
-
+private slots:
+    void extendMediaMessage() override;
+    void deleteMediaMessage() override;
 };
 #endif //PODCASTVOEW_H
