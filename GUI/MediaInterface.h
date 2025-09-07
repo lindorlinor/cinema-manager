@@ -116,11 +116,14 @@ protected:
     QHBoxLayout *addDescrizione();
     QWidget *addTipologia();
 
+    // setta la copertina di default a seconda del tipo, se quasto non ce l'ha
+    void setDefaultCover();
+
     // metodi funzionali per il corretto comportamento della pagina
     virtual void checkMediaNameAvailability();
 
     // set dei limiti a seconda della tipologia scelta o impostata
-    void setLimitTTrailer();
+    void setLimitTrailer();
 
     // set dei limiti a seconda della tipologia scelta o impostata
     virtual void setLimitTabTipologia(int index) = 0;

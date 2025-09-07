@@ -1,10 +1,10 @@
 [
     {
-        "copertinaCinema": ":/images/default.png",
+        "copertinaCinema": "images/default.png",
         "nomeCinema": "cinemaaa"
     },
     {
-        "copertinaCinema": ":/images/default.png",
+        "copertinaCinema": "images/default.png",
         "nomeCinema": "Cinema Prova"
     },
     {
@@ -31,7 +31,7 @@
         ],
         "nPostCredit": 1,
         "nomeCinema": "Cinema Prova",
-        "path": ":/images/image9.png",
+        "path": "images/image9.png",
         "risoluzione": "UHD 4K 2160p",
         "sottotitoliDisponibili": [
             "Italiano"
@@ -53,7 +53,7 @@
         ],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "Cinema Prova",
-        "path": ":/images/image10.png",
+        "path": "images/image10.png",
         "risoluzione": "UHD 4K 2160p",
         "sottotitoliDisponibili": [
         ],
@@ -73,7 +73,7 @@
         ],
         "nProiezioniGiornaliere": 3,
         "nomeCinema": "Cinema Prova",
-        "path": ":/images/image10.png",
+        "path": "images/image10.png",
         "risoluzione": "UHD 4K 2160p",
         "sottotitoliDisponibili": [
         ],
@@ -81,7 +81,7 @@
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },
     {
-        "copertinaCinema": ":/images/default.png",
+        "copertinaCinema": "images/default.png",
         "nomeCinema": "Cinema Limena"
     },
     {
@@ -111,7 +111,7 @@
         ],
         "nPostCredit": 1,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/image9.png",
+        "path": "images/image9.png",
         "risoluzione": "UHD 4K 2160p",
         "sottotitoliDisponibili": [
             "Italiano",
@@ -128,28 +128,24 @@
         "autore": "a",
         "casaDiProduzione": "",
         "costoBiglietto": 8,
-        "dataFineRilascio": "2025-09-26",
-        "dataInizioRilascio": "2025-09-04",
+        "dataFineRilascio": "2025-09-07",
+        "dataInizioRilascio": "2025-09-07",
         "descrizione": "",
-        "durataMinuti": 80,
+        "durataMinuti": 0,
         "formato": "MP4",
         "generi": [
         ],
         "lingueDisponibili": [
-            "Inglese",
-            "Tedesco"
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/default.png",
+        "path": "images/film1.png",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
-            "Francese",
-            "Tedesco"
         ],
         "target": "TUTTI",
         "tipologia": "film",
-        "titolo": "aaaacaaaaa"
+        "titolo": "a"
     },
     {
         "autore": "Studio Ghibli",
@@ -164,7 +160,7 @@
         ],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/image10.png",
+        "path": "images/image10.png",
         "risoluzione": "UHD 4K 2160p",
         "sottotitoliDisponibili": [
         ],
@@ -184,7 +180,7 @@
         ],
         "nProiezioniGiornaliere": 3,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/image10.png",
+        "path": "images/image10.png",
         "risoluzione": "UHD 4K 2160p",
         "sottotitoliDisponibili": [
         ],
@@ -192,7 +188,7 @@
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },
     {
-        "copertinaCinema": ":/images/coverCinema.png",
+        "copertinaCinema": "images/coverCinema.png",
         "nomeCinema": "Cinema ProvaProva"
     },
     {
@@ -206,7 +202,7 @@
         "lingueDisponibili": [
         ],
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/image17.png",
+        "path": "images/image17.png",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -238,7 +234,7 @@
         "autore": "Chris Miller",
         "casaDiProduzione": "Paramount Animation",
         "costoBiglietto": 8,
-        "dataFineRilascio": "2025-09-14",
+        "dataFineRilascio": "2025-09-21",
         "dataInizioRilascio": "2025-08-22",
         "descrizione": "Un’avventura animata-musicale con i Puffi alla ricerca del Grande Puffo tra dimensioni magiche...",
         "durataMinuti": 93,
@@ -252,7 +248,7 @@
         ],
         "nPostCredit": 1,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/locandina_ipuffiilfilm.jpg",
+        "path": "images/locandina_ipuffiilfilm.jpg",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
             "Italiano"
@@ -287,7 +283,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/locandina_irosesfilm.jpg",
+        "path": "images/locandina_irosesfilm.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -318,7 +314,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/locandina_tuttacolpadelrock.jpg",
+        "path": "images/locandina_tuttacolpadelrock.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -353,7 +349,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/locandina_harrypottereilcalicedifuoco.jpg",
+        "path": "images/locandina_harrypottereilcalicedifuoco.jpg",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
@@ -395,7 +391,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/locandina_caughtstealing.jpg",
+        "path": "images/locandina_caughtstealing.jpg",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
@@ -432,7 +428,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/locandina_weapons.jpg",
+        "path": "images/locandina_weapons.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -465,7 +461,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/locandina_losqualo50anniversario.jpg",
+        "path": "images/locandina_losqualo50anniversario.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -488,7 +484,7 @@
         "lingueDisponibili": [
         ],
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/default_inserzioni.png",
+        "path": "images/default_inserzioni.png",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
@@ -510,7 +506,7 @@
         "numeroPubblicita": 1,
         "ospiti": [
         ],
-        "path": ":/images/image17.png",
+        "path": "images/image17.png",
         "podcastAssociato": "Cinema d'Autore",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
@@ -532,7 +528,7 @@
         "numeroPubblicita": 2,
         "ospiti": [
         ],
-        "path": ":/images/image17.png",
+        "path": "images/image17.png",
         "podcastAssociato": "Cinema d'Autore",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
@@ -543,7 +539,7 @@
     {
         "autore": "Paramount",
         "autoreFilmAssociato": "Chris Miller",
-        "dataFineRilascio": "2025-09-14",
+        "dataFineRilascio": "2025-09-21",
         "dataInizioRilascio": "2025-06-06",
         "descrizione": "Primi scorci ufficiali dell’avventura dei Puffi in CGI.",
         "durataMinuti": 2,
@@ -553,7 +549,7 @@
         ],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/trailer_ipuffi.jpg",
+        "path": "images/trailer_ipuffi.jpg",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
         ],
@@ -573,7 +569,7 @@
         ],
         "nProiezioniGiornaliere": 15,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/trailer_iroses.jpg",
+        "path": "images/trailer_iroses.jpg",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
         ],
@@ -593,7 +589,7 @@
         ],
         "nProiezioniGiornaliere": 7,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/trailer_tuttacolpadelrock.jpg",
+        "path": "images/trailer_tuttacolpadelrock.jpg",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
         ],
@@ -613,7 +609,7 @@
         ],
         "nProiezioniGiornaliere": 4,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/trailer_harrypottereilcalicedifuoco.jpg",
+        "path": "images/trailer_harrypottereilcalicedifuoco.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -633,7 +629,7 @@
         ],
         "nProiezioniGiornaliere": 3,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/trailer_caughtstealing.jpg",
+        "path": "images/trailer_caughtstealing.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -653,7 +649,7 @@
         ],
         "nProiezioniGiornaliere": 3,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/trailer_weapons.jpg",
+        "path": "images/trailer_weapons.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -673,7 +669,7 @@
         ],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":/images/trailer_losqualo50anniversario.jpg",
+        "path": "images/trailer_losqualo50anniversario.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -681,23 +677,26 @@
         "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
     },
     {
-        "autore": "aa",
-        "autoreFilmAssociato": "Chris Miller",
+        "autore": "a",
+        "aziendaInserzionista": "",
+        "costoFissoProiezione": 30,
         "dataFineRilascio": "2025-09-07",
         "dataInizioRilascio": "2025-09-07",
         "descrizione": "",
         "durataMinuti": 0,
-        "filmAssociato": "I Puffi - Il Film",
+        "fasceOrarie": [
+            "Mattina"
+        ],
         "formato": "MP4",
         "lingueDisponibili": [
         ],
-        "nProiezioniGiornaliere": 0,
         "nomeCinema": "Cinema ProvaProva",
-        "path": ":images/default.png",
+        "path": ":/images/default_inserzioni.png",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
-        "tipologia": "trailer",
-        "titolo": "trailer puffi"
+        "target": "TUTTI",
+        "tipologia": "inserzione",
+        "titolo": "caca"
     }
 ]

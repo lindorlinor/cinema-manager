@@ -41,28 +41,7 @@ void InsertMedia::setLimitTabTipologia(int index)
 
     MediaInterface::setLimitTabTipologia(index);
 
-    /* se un media ha ancora l'immagine di default, quando si cambia la tipologia, cambia anche la copertina di default se invece
-    non aveva nessuna immagine di default, la copertina non cambia */
-
-    // da aggiungere: trailer, film e puntata
-    if (imagePath == ":images/default.png" || imagePath == ":/images/default_podcast_puntate.png" || imagePath == ":/images/default_inserzioni.png")
-    {
-
-        if (index == 0)
-            imagePath = ":images/default.png"; // default del film
-        else if (index == 1)
-            imagePath = ":images/default.png"; // default del traielr
-        else if (index == 2)
-            imagePath = ":/images/default_podcast_puntate.png"; // default del podcast
-        else if (index == 3)
-            imagePath = ":images/default.png"; // default della puntata
-        else if (index == 4)
-            imagePath = ":/images/default_inserzioni.png"; // default dell'inserzione
-
-        QPixmap pixmap(imagePath);
-        copertina->setAlignment(Qt::AlignCenter);
-        copertina->setPixmap(pixmap.scaled(280, 330, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-    }
+    setDefaultCover();
 
     checkMediaNameAvailability();
 }
@@ -338,14 +317,14 @@ void InsertMedia::resetAllInput()
     if (referenceTrailer)
         referenceTrailer->reloadMedia(*im_cinemaSelezionato);
 
-    QPixmap pixmap(":/images/default.png");
-    copertina->setPixmap(pixmap.scaled(280, 330, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     if (stackTipologia)
         stackTipologia->setCurrentIndex(0);
     if (tab)
         tab->setCurrentIndex(0);
     if (comboTipologia)
         comboTipologia->setCurrentIndex(0);
+
+    setDefaultCover();
 
     // QString
     imagePath.clear();
