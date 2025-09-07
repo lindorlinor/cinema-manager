@@ -126,7 +126,6 @@ void PuntataView::createMediaDetails() {
 
     layoutDettagli->addWidget(dettagliDettagli);
 
-    // ---- aggiungo sezioni ----
     detailsLayout->addWidget(sezioneProgrammazione);
     detailsLayout->addWidget(sezionePerformance);
     detailsLayout->addWidget(sezioneTecnica);
@@ -136,7 +135,6 @@ void PuntataView::createMediaDetails() {
     leftSide->setFixedHeight(700);
     splitterLayout->addWidget(leftSide);
 
-    // stile
     labelProgrammazione->setObjectName("programmazione");
     labelPerformance->setObjectName("labelPerformance");
     labelTecnica->setObjectName("labelTecnica");
@@ -147,6 +145,7 @@ void PuntataView::createMediaDetails() {
 }
 
 void PuntataView::updateMediaDetails() {
+    updateRowDetails();
     inizioP->setText(
         "<span style='color: #bdced3; font-weight:bold;'>Inizio proiezione: </span>"
         "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(puntPtr->getDataInizioRilascio())) + "</span>");
@@ -276,60 +275,13 @@ void PuntataView::updateScrollableSection() {
 
 
 void PuntataView::createButtons(){
-    DetailsPageButtons * buttons = new DetailsPageButtons(puntPtr,leftSide);
+    buttons = new DetailsPageButtons(puntPtr,leftSide);
     buttons->setDeleteButtonText("Elimina puntata");
-    connect(buttons,&DetailsPageButtons::extendMedia,this,
-        [this](){
-            QMessageBox msgBox(this);
-            auto fine = puntPtr->getDataFineRilascio();
-            auto nuovaFine = sys_days(fine) + days{1};
-
-            if(fine!=nuovaFine){
-                msgBox.setWindowTitle("Conferma estensione data");
-                msgBox.setText(QString::fromStdString(
-                "La data di fine proiezione cambierà in\n" + dateToString(fine) + " → " + dateToString(nuovaFine) + "."));
-                msgBox.setInformativeText(QString::fromStdString("Confermando l'estensione potrebbe cambiare la data di fine rilascio del podcast associato \n\nPremi conferma per continuare, annulla per non modificare."));
-                msgBox.setStandardButtons(QMessageBox::Cancel | QMessageBox::Ok);
-                msgBox.button(QMessageBox::Ok)->setText("Conferma");
-                msgBox.button(QMessageBox::Cancel)->setText("Annulla");
-
-                int ret = msgBox.exec();
-                if (ret == QMessageBox::Ok) {
-                    puntPtr->estendiDataFineRilascio();
-                    emit extendMediaClicked();
-                    endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
-                    "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(puntPtr->getDataFineRilascio())) + "</span>");
-                }
-            }else{
-                msgBox.setWindowTitle("Impossibile estendere la data");
-                msgBox.setText("La data di fine rilascio del trailer non può superare quella del film");
-                msgBox.setInformativeText("Estendere la proiezione del film in sala per poter estendere il rilascio dei suoi trailer");
-            }
-        });
-           
-    
-    connect(buttons,&DetailsPageButtons::deleteMedia,this,[this](){
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("Conferma eliminazione");
-        msgBox.setText("Sei sicuro di voler eliminare la puntata?"
-                    "Premi conferma per continuare, annulla per non modificare.");
-        
-        QPushButton* annullaBtn = msgBox.addButton("Annulla", QMessageBox::RejectRole);
-        QPushButton* confermaBtn = msgBox.addButton("Conferma", QMessageBox::AcceptRole);
-        
-        msgBox.exec();
-        
-        if (msgBox.clickedButton() == confermaBtn) {
-            emit deleteMediaClicked(puntPtr);
-        }
-        else if(msgBox.clickedButton() == annullaBtn){
-            // qDebug()<<"Eliminazione del media annullata";
-        }
-    });
-    
     cardLayout->addSpacing(40);
     cardLayout->addWidget(buttons,0,Qt::AlignCenter);
 
+    connect(buttons,&DetailsPageButtons::extendMedia,this,&PuntataView::extendMediaMessage);
+    connect(buttons,&DetailsPageButtons::deleteMedia,this,&PuntataView::deleteMediaMessage);
 
 }
 
@@ -337,6 +289,35 @@ void PuntataView::update(){
     MediaView::update();
     updateMediaDetails();
     updateScrollableSection();
+    buttons->update();
 }
 
+
+void PuntataView::extendMediaMessage(){
+    CustomMessageBox msgBox(this);
+    auto fine = puntPtr->getDataFineRilascio();
+    auto nuovaFine = sys_days(fine) + days{1};
+
+    msgBox.setTitleText("Sei sicuro di voler estendere la data fine rilascio del media?");
+    msgBox.setMainMessage(QString::fromStdString(
+    "La data di fine proiezione cambierà in<br/>" + dateToString(fine) + " → " + dateToString(nuovaFine) + ".") + QString::fromStdString("<br/>Confermando l'estensione potrebbe cambiare la data di fine rilascio del podcast associato."));
+    msgBox.setInfoMessage();
+
+    if (msgBox.exec() == QDialog::Accepted){
+        puntPtr->estendiDataFineRilascio();
+        emit extendMediaClicked();
+        endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
+        "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(puntPtr->getDataFineRilascio())) + "</span>");
+    }
+}
+void PuntataView::deleteMediaMessage(){
+    CustomMessageBox msgBox;
+    msgBox.setTitleText("<span style='color: #E44043;'>Conferma eliminazione</span>");
+    msgBox.setMainMessage("Sei sicuro di voler eliminare la puntata? L'operazione è irreversibile.");
+    msgBox.setInfoMessage();
+
+    if(msgBox.exec() == QDialog::Accepted){
+        emit deleteMediaClicked(puntPtr);
+    }
+}
 

@@ -24,6 +24,9 @@ private:
     QLabel* fasce;
     QLabel* targetPubb;
     QLabel* costoFissoProiezioni;
+private slots:
+    void extendMediaMessage() override;
+    void deleteMediaMessage() override;
 };
 
 #endif //INSERZIONEVIEW_H

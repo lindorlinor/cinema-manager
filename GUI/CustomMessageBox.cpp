@@ -14,7 +14,7 @@ CustomMessageBox::CustomMessageBox(QWidget *parent):QDialog(parent){
 
     titleLabel = new QLabel(this);
     titleLabel->setObjectName("titleLabel");
-
+    titleLabel->setTextFormat(Qt::RichText); 
     QFrame *line = new QFrame(this);
     line->setFrameShape(QFrame::HLine);
     line->setFrameShadow(QFrame::Sunken);
@@ -23,10 +23,12 @@ CustomMessageBox::CustomMessageBox(QWidget *parent):QDialog(parent){
     mainMessageLabel = new QLabel(this);
     mainMessageLabel->setWordWrap(true);
     mainMessageLabel->setObjectName("mainMessageLabel");
-
+    mainMessageLabel->setTextFormat(Qt::RichText); 
+    
     infoMessageLabel = new QLabel(this);
     infoMessageLabel->setWordWrap(true);
     infoMessageLabel->setObjectName("infoMessageLabel");
+    infoMessageLabel->setTextFormat(Qt::RichText); 
 
     cancelButton = new QPushButton("Annulla", this);
     cancelButton->setObjectName("cancelButton");
@@ -49,7 +51,7 @@ CustomMessageBox::CustomMessageBox(QWidget *parent):QDialog(parent){
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(titleLabel);
     mainLayout->addWidget(line);
-    mainLayout->addSpacing(30);
+    mainLayout->addSpacing(20);
     mainLayout->addWidget(mainMessageLabel);
     mainLayout->addWidget(infoMessageLabel);
     mainLayout->addStretch();
@@ -59,19 +61,21 @@ CustomMessageBox::CustomMessageBox(QWidget *parent):QDialog(parent){
     connect(confirmButton, &QPushButton::clicked, this, &CustomMessageBox::accept);
 }
 
-void CustomMessageBox::setTitleText(const QString &text)
-{
+void CustomMessageBox::setTitleText(const QString &text){
     titleLabel->setText(text);
 }
 
-void CustomMessageBox::setMainMessage(const QString &text)
-{
+void CustomMessageBox::setMainMessage(const QString &text){
     mainMessageLabel->setText(text);
 }
 
-void CustomMessageBox::setInfoMessage(const QString &text)
-{
+void CustomMessageBox::setInfoMessage(const QString &text){
     infoMessageLabel->setText(text);
+}
+
+void CustomMessageBox::hideCancelButton(){
+    confirmButton->setText("Ok");
+    cancelButton->hide();
 }
 
 

@@ -30,5 +30,9 @@ private:
     QLabel* genere;
     QLabel* classificazione;
     QLabel* casaProduzione;
+
+private slots:
+    void extendMediaMessage() override;
+    void deleteMediaMessage() override;
 };
 #endif

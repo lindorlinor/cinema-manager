@@ -17,6 +17,7 @@ public:
     void setTitleText(const QString &text);
     void setMainMessage(const QString &text);
     void setInfoMessage(const QString &text="Premi conferma per continuare, annulla per non modificare.");
+    void hideCancelButton();
 
 private:
     QLabel *titleLabel;

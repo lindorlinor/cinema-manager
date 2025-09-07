@@ -831,16 +831,16 @@
     {
         "autore": "FilmLab",
         "conduttore": "Marco Rossi",
-        "dataFineRilascio": "2025-11-01",
-        "dataInizioRilascio": "2025-10-01",
+        "dataFineRilascio": "2025-11-05",
+        "dataInizioRilascio": "2025-10-16",
         "descrizione": "Approfondimenti sui grandi registi e capolavori cinematografici.",
-        "durataMinuti": 75,
+        "durataMinuti": 35,
         "formato": "MP4",
         "lingueDisponibili": [
         ],
         "nomeCinema": "Cinema Limena",
         "path": ":/images/image17.png",
-        "risoluzione": "FullHD 1080p",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
         "tipologia": "podcast",
@@ -922,7 +922,7 @@
         "autore": "Andrea Jublin",
         "casaDiProduzione": "Be Water Film / PiperFilm",
         "costoBiglietto": 7,
-        "dataFineRilascio": "2025-09-08",
+        "dataFineRilascio": "2025-09-15",
         "dataInizioRilascio": "2025-08-28",
         "descrizione": "\n            Bruno è un ex chitarrista rock egoista e bugiardo che finisce in carcere. Nel luogo più costrittivo trova però un’opportunità di riscatto: formare una band con altri detenuti e partecipare al Roma Rock Contest per mantenere una promessa fatta alla figlia.\n        ",
         "durataMinuti": 100,
@@ -955,7 +955,7 @@
         "autore": "Mike Newell",
         "casaDiProduzione": "Warner Bros Italia",
         "costoBiglietto": 10.5,
-        "dataFineRilascio": "2025-09-07",
+        "dataFineRilascio": "2025-09-14",
         "dataInizioRilascio": "2025-08-28",
         "descrizione": "Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.",
         "durataMinuti": 158,
@@ -997,7 +997,7 @@
         "autore": "Darren Aronofsky",
         "casaDiProduzione": "Columbia Pictures / Protozoa Pictures (distribuito in Italia da Eagle Pictures)",
         "costoBiglietto": 12,
-        "dataFineRilascio": "2025-09-14",
+        "dataFineRilascio": "2025-09-21",
         "dataInizioRilascio": "2025-08-27",
         "descrizione": "Hank Thompson, ex promessa del baseball, finisce coinvolto in una violenta caccia all'uomo nel crudo sottobosco criminale di New York anni ’90 dopo aver accettato di badare al gatto del suo stravagante vicino.",
         "durataMinuti": 110,
@@ -1115,29 +1115,7 @@
     {
         "autore": "FilmLab",
         "autorePodcastAssociato": "FilmLab",
-        "dataFineRilascio": "2025-10-16",
-        "dataInizioRilascio": "2025-10-01",
-        "descrizione": "Esploriamo l'era del cinema muto e i suoi maestri.",
-        "durataMinuti": 40,
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Limena",
-        "numeroPubblicita": 1,
-        "ospiti": [
-        ],
-        "path": ":/images/image17.png",
-        "podcastAssociato": "Cinema d'Autore",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "puntata",
-        "titolo": "Analisi del cinema muto"
-    },
-    {
-        "autore": "FilmLab",
-        "autorePodcastAssociato": "FilmLab",
-        "dataFineRilascio": "2025-11-01",
+        "dataFineRilascio": "2025-11-05",
         "dataInizioRilascio": "2025-10-16",
         "descrizione": "Il movimento francese che ha rivoluzionato il cinema.",
         "durataMinuti": 35,
@@ -1150,7 +1128,7 @@
         ],
         "path": ":/images/image17.png",
         "podcastAssociato": "Cinema d'Autore",
-        "risoluzione": "FullHD 1080p",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
         "tipologia": "puntata",
@@ -1199,7 +1177,7 @@
     {
         "autore": "PiperFilm",
         "autoreFilmAssociato": "Andrea Jublin",
-        "dataFineRilascio": "2025-09-08",
+        "dataFineRilascio": "2025-09-06",
         "dataInizioRilascio": "2025-07-07",
         "descrizione": "Il trailer ufficiale mostra l’energia rock e l’irriverente cast carcerario alle prese con una rinascita a ritmo di musica.",
         "durataMinuti": 1,
@@ -1207,7 +1185,7 @@
         "formato": "MP4",
         "lingueDisponibili": [
         ],
-        "nProiezioniGiornaliere": 7,
+        "nProiezioniGiornaliere": 1,
         "nomeCinema": "Cinema Limena",
         "path": ":/images/trailer_tuttacolpadelrock.jpg",
         "risoluzione": "HD 720p",
@@ -1219,7 +1197,7 @@
     {
         "autore": "Warner Bros",
         "autoreFilmAssociato": "Mike Newell",
-        "dataFineRilascio": "2025-09-07",
+        "dataFineRilascio": "2025-09-06",
         "dataInizioRilascio": "2005-09-23",
         "descrizione": "Il trailer ufficiale del quarto capitolo della saga di Harry Potter.",
         "durataMinuti": 2,
@@ -1227,10 +1205,10 @@
         "formato": "MP4",
         "lingueDisponibili": [
         ],
-        "nProiezioniGiornaliere": 4,
+        "nProiezioniGiornaliere": 2,
         "nomeCinema": "Cinema Limena",
         "path": ":/images/trailer_harrypottereilcalicedifuoco.jpg",
-        "risoluzione": "FullHD 1080p",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
         "tipologia": "trailer",
@@ -1239,7 +1217,7 @@
     {
         "autore": "Sony Pictures / Eagle Pictures",
         "autoreFilmAssociato": "Darren Aronofsky",
-        "dataFineRilascio": "2025-09-02",
+        "dataFineRilascio": "2025-09-21",
         "dataInizioRilascio": "2025-07-24",
         "descrizione": "Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.",
         "durataMinuti": 2,
@@ -1247,10 +1225,10 @@
         "formato": "MP4",
         "lingueDisponibili": [
         ],
-        "nProiezioniGiornaliere": 3,
+        "nProiezioniGiornaliere": 2,
         "nomeCinema": "Cinema Limena",
         "path": ":/images/trailer_caughtstealing.jpg",
-        "risoluzione": "FullHD 1080p",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
         "tipologia": "trailer",
