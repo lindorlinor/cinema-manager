@@ -15,8 +15,8 @@ quando si esce dal cinema viene chiamato il reset che cancella tutti gli ogetti 
 eliminati, senza SF o dangling pointer. */
 
 SearchPanel::SearchPanel(CinemaRepositoryJson* s_jsonManager,MediaManagerXml* xmlManager,QWidget *parent):QWidget(parent), s_jsonManager(s_jsonManager),
-                                                    s_xmlManager(xmlManager),stackModifiche(new QStackedWidget(this)), comboAttivita(0), comboOrdinamento(0), filtroBottone("Film"),
-                                                    ricerca(""), changeView(1){
+                                                    s_xmlManager(xmlManager), comboAttivita(0), comboOrdinamento(0), filtroBottone("Film"),
+                                                    ricerca(""), changeView(1),stackModifiche(new QStackedWidget(this)){
     //carico tutti gli oggetti sal Json
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
@@ -223,7 +223,7 @@ void SearchPanel::addLatoDestra(){
     connect(inserzione, &QToolButton::clicked, this, [this](){
         deleteViewPages();
         updateModifierPanel(0);
-        updateFiltroMedia("Inserzione");});
+        updateFiltroMedia("Inserzioni");});
     connect(podcast, &QToolButton::clicked, this, [this](){
         deleteViewPages();
         updateModifierPanel(0);
@@ -289,7 +289,7 @@ void SearchPanel::acceptViewTrailer(){
     updateModifierPanel(0);}
 
 void SearchPanel::acceptViewInserzione(){
-    updateFiltroMedia("Inserzione");
+    updateFiltroMedia("Inserzioni");
     deleteViewPages(); 
     updateModifierPanel(0);}
 
@@ -314,9 +314,9 @@ void SearchPanel::updateCerca(const QString& filtro){
     tutto->setChecked(filtro == "Tutto");
     film->setChecked(filtro == "Film");
     trailer->setChecked(filtro == "Trailer");
-    inserzione->setChecked(filtro == "Inserzione");
+    inserzione->setChecked(filtro == "Inserzioni");
     podcast->setChecked(filtro == "Podcast");
-    puntata->setChecked(filtro == "Puntata");
+    puntata->setChecked(filtro == "Puntate");
 }
 
 void SearchPanel::addPagina(QVBoxLayout* mainLayout){

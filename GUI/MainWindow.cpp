@@ -107,7 +107,6 @@ MainWindow::MainWindow(QWidget *parent):    QMainWindow(parent), cinemaPage(new 
     connect(menu,&Menu::viewPodcast,searchPage,&SearchPanel::acceptViewPodcast);
     connect(menu,&Menu::viewPuntate,searchPage,&SearchPanel::acceptViewPuntata);
 
-    connect(menu,&Menu::backToCinemaSelection,this,[menu](){menu->setOtherActionEnabled(0,false);});
     connect(menu,&Menu::backToCinemaSelection,this,&MainWindow::showCinemaSelectionPage);
     connect(menu,&Menu::changeView,searchPage,&SearchPanel::acceptChangeView);
     connect(menu,&Menu::backToCinemaSelection,searchPage,&SearchPanel::resetSearchPanel);
