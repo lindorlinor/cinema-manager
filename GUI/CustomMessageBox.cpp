@@ -37,8 +37,8 @@ CustomMessageBox::CustomMessageBox(QWidget *parent):QDialog(parent){
     QWidget* contenitoreButton = new QWidget(this); 
     QHBoxLayout *layoutbutton = new QHBoxLayout(contenitoreButton);
 
-    cancelButton->setMinimumWidth(100);
-    confirmButton->setMinimumWidth(100);
+    cancelButton->setFixedWidth(125);
+    confirmButton->setFixedWidth(125);
 
     // contenitoreButton->setStyleSheet("background-color: red");
     layoutbutton->addWidget(cancelButton);

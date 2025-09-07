@@ -298,35 +298,13 @@ void FilmView::createButtons(){
         box.setTitleText("Sei sicuro di voler estendere la data fine rilascio del media?");
         box.setMainMessage(QString::fromStdString("La data di fine proiezione cambierà in\n" + dateToString(fine) + " → " + dateToString(year_month_day{nuovaFine})) + 
                      QString::fromStdString("\nI trailer associati in sala termineranno la proiezione il " + dateToString(year_month_day{nuovaFine})));
-        box.setInfoMessage("Premi conferma per continuare, annulla per non modificare.");
+        box.setInfoMessage();
         if (box.exec() == QDialog::Accepted) {
             filmPtr->estendiDataFineRilascio();
             emit extendMediaClicked();
             endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
             "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(filmPtr->getDataFineRilascio())) + "</span>");
         }
-            /* QMessageBox msgBox(this);
-            msgBox.setWindowTitle("Conferma estensione data");
-
-            auto fine = filmPtr->getDataFineRilascio();
-            auto nuovaFine = sys_days(fine) + days{7}; 
-
-            msgBox.setText(QString::fromStdString(
-                "La data di fine proiezione cambierà in\n" + dateToString(fine) + " → " + dateToString(year_month_day{nuovaFine})));
-
-            msgBox.setInformativeText(QString::fromStdString("I trailer associati in sala termineranno la proiezione il " + dateToString(year_month_day{nuovaFine}) +
-                                      "\n\nPremi conferma per continuare, annulla per non modificare."));
-            msgBox.setStandardButtons(QMessageBox::Cancel | QMessageBox::Ok);
-            msgBox.button(QMessageBox::Ok)->setText("Conferma");
-            msgBox.button(QMessageBox::Cancel)->setText("Annulla");
-
-            int ret = msgBox.exec();
-            if (ret == QMessageBox::Ok) {
-                filmPtr->estendiDataFineRilascio();
-                emit extendMediaClicked();
-                endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
-                "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(filmPtr->getDataFineRilascio())) + "</span>");
-            } */
         });
     
         connect(buttons, &DetailsPageButtons::deleteMedia, this, [this](){
