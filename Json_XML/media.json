@@ -579,252 +579,6 @@
         "titolo": "Trailer ufficiale - Harry Potter e il Calice di Fuoco"
     },
     {
-        "copertinaCinema": ":/images/default.png",
-        "nomeCinema": "cinema"
-    },
-    {
-        "attoriPrincipali": [
-            "Olivia Colman",
-            "Benedict Cumberbatch",
-            "Andy Samberg",
-            "Hitoshi Takagi",
-            "Takashi Nagasako"
-        ],
-        "autore": "Jay Roach",
-        "casaDiProduzione": "Searchlight Pictures / Disney Italia",
-        "costoBiglietto": 9,
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-08-27",
-        "descrizione": "Commedia nera in cui una coppia apparentemente perfetta — Ivy e Theo Rose — vede naufragare il proprio matrimonio in una guerra emotiva tra ambizione professionale e risentimento.",
-        "durataMinuti": 105,
-        "formato": "DCP",
-        "generi": [
-            "Nessuno",
-            "Commedia"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "cinema",
-        "path": ":/images/locandina_irosesfilm.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "I Roses"
-    },
-    {
-        "attoriPrincipali": [
-            "Josh Brolin",
-            "Julia Garner",
-            "Alden Ehrenreich",
-            "Austin Abrams",
-            "Cary Christopher",
-            "Toby Huss",
-            "Benedict Wong",
-            "Amy Madigan"
-        ],
-        "autore": "Zach Cregger",
-        "casaDiProduzione": "New Line Cinema / Warner Bros. Pictures Italia",
-        "costoBiglietto": 11.5,
-        "dataFineRilascio": "2025-08-31",
-        "dataInizioRilascio": "2025-08-06",
-        "descrizione": "In una misteriosa cittadina, diciassette bambini spariscono nella stessa notte: un horror/thriller enigmatico e disturbante.",
-        "durataMinuti": 128,
-        "formato": "DCP",
-        "generi": [
-            "Horror",
-            "Thriller"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "cinema",
-        "path": ":/images/locandina_weapons.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Weapons"
-    },
-    {
-        "attoriPrincipali": [
-            "Roy Scheider",
-            "Robert Shaw",
-            "Richard Dreyfuss",
-            "Lorraine Gary",
-            "Murray Hamilton"
-        ],
-        "autore": "Steven Spielberg",
-        "casaDiProduzione": "Universal Pictures / Adler Entertainment",
-        "costoBiglietto": 9,
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-09-01",
-        "descrizione": "Un capolavoro che ha inventato il blockbuster estivo: lo Squalo torna sul grande schermo per il suo cinquantesimo anniversario.",
-        "durataMinuti": 124,
-        "formato": "IMAX 3D",
-        "generi": [
-            "Horror",
-            "Thriller"
-        ],
-        "lingueDisponibili": [
-            "Italiano"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "cinema",
-        "path": ":/images/locandina_losqualo50anniversario.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Lo Squalo - 50esimo anniversario"
-    },
-    {
-        "attoriPrincipali": [
-            "Chika Sakamoto",
-            "Hitoshi Takagi",
-            "Noriko Hidaka",
-            "Chika Sakamoto",
-            "Shigesato Itoi",
-            "Hitoshi Takagi",
-            "Takashi Nagasako"
-        ],
-        "autore": "Hayao Miyazaki",
-        "casaDiProduzione": "Studio Ghibli",
-        "costoBiglietto": 12.5,
-        "dataFineRilascio": "2025-06-30",
-        "dataInizioRilascio": "2025-06-01",
-        "descrizione": "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
-        "durataMinuti": 90,
-        "formato": "MP4",
-        "generi": [
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese",
-            "Cinese"
-        ],
-        "nPostCredit": 1,
-        "nomeCinema": "cinema",
-        "path": ":/images/image9.png",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-            "Italiano",
-            "Spagnolo",
-            "Cinese"
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Il mio vicino Totoro (RE-RELEASE 2025)"
-    },
-    {
-        "autore": "Searchlight Pictures / Disney Italia",
-        "autoreFilmAssociato": "Jay Roach",
-        "dataFineRilascio": "2025-09-03",
-        "dataInizioRilascio": "2025-08-01",
-        "descrizione": "Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.",
-        "durataMinuti": 2,
-        "filmAssociato": "I Roses",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 15,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_iroses.png",
-        "risoluzione": "HD 720p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - I Roses"
-    },
-    {
-        "autore": "Warner Bros. Pictures Italia",
-        "autoreFilmAssociato": "Zach Cregger",
-        "dataFineRilascio": "2025-08-05",
-        "dataInizioRilascio": "2025-04-30",
-        "descrizione": "Trailer ufficiale italiano che anticipa il mistero inquietante dietro la sparizione dei bambini.",
-        "durataMinuti": 2,
-        "filmAssociato": "Weapons",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 3,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_weapons.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Weapons"
-    },
-    {
-        "autore": "Universal Pictures / Adler Entertainment",
-        "autoreFilmAssociato": "Steven Spielberg",
-        "dataFineRilascio": "2025-08-31",
-        "dataInizioRilascio": "2025-07-04",
-        "descrizione": "Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.",
-        "durataMinuti": 2,
-        "filmAssociato": "Lo Squalo - 50esimo anniversario",
-        "formato": "IMAX 3D",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "cinema",
-        "path": ":/images/trailer_losqualo50anniversario.jpg",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
-    },
-    {
-        "autore": "Studio Ghibli",
-        "autoreFilmAssociato": "Hayao Miyazaki",
-        "dataFineRilascio": "2025-05-31",
-        "dataInizioRilascio": "2025-04-15",
-        "descrizione": "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
-        "durataMinuti": 2,
-        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "cinema",
-        "path": ":/images/image10.png",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Il mio vicino Totoro (2025)"
-    },
-    {
-        "autore": "Hayao Miyazaki",
-        "autoreFilmAssociato": "Hayao Miyazaki",
-        "dataFineRilascio": "2025-06-15",
-        "dataInizioRilascio": "2025-05-01",
-        "descrizione": "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
-        "durataMinuti": 3,
-        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 3,
-        "nomeCinema": "cinema",
-        "path": ":/images/image10.png",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
-    },
-    {
         "copertinaCinema": ":/images/coverCinema.png",
         "nomeCinema": "Cinema Limena"
     },
@@ -889,13 +643,12 @@
         "autore": "Jay Roach",
         "casaDiProduzione": "Searchlight Pictures / Disney Italia",
         "costoBiglietto": 9,
-        "dataFineRilascio": "2025-09-03",
+        "dataFineRilascio": "2025-09-29",
         "dataInizioRilascio": "2025-08-27",
         "descrizione": "Commedia nera in cui una coppia apparentemente perfetta — Ivy e Theo Rose — vede naufragare il proprio matrimonio in una guerra emotiva tra ambizione professionale e risentimento.",
         "durataMinuti": 105,
         "formato": "DCP",
         "generi": [
-            "Nessuno",
             "Commedia"
         ],
         "lingueDisponibili": [
@@ -905,7 +658,7 @@
         "nPostCredit": 0,
         "nomeCinema": "Cinema Limena",
         "path": ":/images/locandina_irosesfilm.jpg",
-        "risoluzione": "FullHD 1080p",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
         "target": "TUTTI",
@@ -1137,7 +890,7 @@
     {
         "autore": "Paramount",
         "autoreFilmAssociato": "Chris Miller",
-        "dataFineRilascio": "2025-10-05",
+        "dataFineRilascio": "2025-09-09",
         "dataInizioRilascio": "2025-06-06",
         "descrizione": "Primi scorci ufficiali dell’avventura dei Puffi in CGI.",
         "durataMinuti": 2,
@@ -1157,7 +910,7 @@
     {
         "autore": "Searchlight Pictures / Disney Italia",
         "autoreFilmAssociato": "Jay Roach",
-        "dataFineRilascio": "2025-09-03",
+        "dataFineRilascio": "2025-09-29",
         "dataInizioRilascio": "2025-08-01",
         "descrizione": "Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.",
         "durataMinuti": 2,
@@ -1165,7 +918,7 @@
         "formato": "MP4",
         "lingueDisponibili": [
         ],
-        "nProiezioniGiornaliere": 15,
+        "nProiezioniGiornaliere": 2,
         "nomeCinema": "Cinema Limena",
         "path": ":/images/trailer_iroses.jpg",
         "risoluzione": "HD 720p",
@@ -1746,5 +1499,35 @@
         ],
         "tipologia": "trailer",
         "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
+    },
+    {
+        "attoriPrincipali": [
+            "Attoreeeeeeeeee1",
+            "Attoreeee2"
+        ],
+        "autore": "Film2",
+        "casaDiProduzione": "Casa diproduzone",
+        "costoBiglietto": 10,
+        "dataFineRilascio": "2025-09-14",
+        "dataInizioRilascio": "2025-09-01",
+        "descrizione": "Descrizione del film ",
+        "durataMinuti": 120,
+        "formato": "MP4",
+        "generi": [
+            "Azione",
+            "Avventura"
+        ],
+        "lingueDisponibili": [
+            "Italiano"
+        ],
+        "nPostCredit": 1,
+        "nomeCinema": "Cinema Limena",
+        "path": "images/default_film.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "18+",
+        "tipologia": "film",
+        "titolo": "Film1"
     }
 ]

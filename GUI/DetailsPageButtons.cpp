@@ -20,6 +20,7 @@ void DetailsPageButtons::createButtons(QVBoxLayout* mainLayout) {
     extendButton->setFixedWidth(234);
 
     extendTool = new QToolButton();
+    extendTool->setCursor(Qt::PointingHandCursor);
     extendTool->setObjectName("extendTool");
     extendTool->setCheckable(true);
     extendTool->setAutoRaise(true);
@@ -38,6 +39,7 @@ void DetailsPageButtons::createButtons(QVBoxLayout* mainLayout) {
     deleteButton->setFixedWidth(234);
 
     deleteTool = new QToolButton();
+    deleteTool->setCursor(Qt::PointingHandCursor);
     deleteTool->setObjectName("deleteTool");
     deleteTool->setCheckable(true);
     deleteTool->setAutoRaise(true);

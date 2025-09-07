@@ -309,7 +309,7 @@ void InserzioneView::update(){
     MediaView::update();
     updateMediaDetails();
     updateScrollableSection();
-    buttons->update();
+    buttons->updateButtons();
 }
 
 

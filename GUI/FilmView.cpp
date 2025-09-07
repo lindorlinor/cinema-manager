@@ -239,7 +239,7 @@ void FilmView::createScrollableSection() {
     scrollTrailer->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     scrollTrailer->setMinimumHeight(261);   
     scrollTrailer->setMaximumHeight(500);  
-    scrollTrailer->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Expanding); 
+    scrollTrailer->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding); 
     rightLayout->addWidget(scrollTrailer,1);
     splitterLayout->addWidget(rightSide);
 
@@ -280,7 +280,7 @@ void FilmView::update(){
     MediaView::update();
     updateMediaDetails();
     updateScrollableSection();
-    buttons->update();
+    buttons->updateButtons();
 }
 
 
