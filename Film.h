@@ -16,7 +16,7 @@ using namespace std::chrono;
 /**
  * @class Film
  * @brief Rappresenta un film distribuito al cinema.
- * 
+ *
  * Un film possiede un vettore di trailer. L'associazione tra film e trailer è sempre bidirezionale:
  * il trailer è collegato al film e il film al trailer. L'invariante è soddisfatta in ogni stato stabile del programma.
  * @see Trailer
@@ -29,7 +29,7 @@ private:
     string f_casaDiProduzione;
     Classificazione f_target;
     double f_valutazione;
-    vector<Genere>  f_genere;
+    vector<Genere> f_genere;
     vector<string> f_attoriPrincipali;
     vector<Trailer *> trailers;
     int isTrailerIn(Trailer *trailer) const;
@@ -38,9 +38,8 @@ public:
     Film(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
          year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
          unsigned int nPostCredit, double costoBiglietto, const string &casaDiProduzione = "Sconosciuto",
-         const string &autore = "Sconosciuto", const string &path = ":/images/default.png", Classificazione target = Classificazione::TUTTI);
-    
-    
+         const string &autore = "Sconosciuto", const string &path = ":/images/default_film.png", Classificazione target = Classificazione::TUTTI);
+
     // //metodi set
 
     /**
@@ -53,15 +52,15 @@ public:
      *
      */
     void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) override;
-    void aggiungiGenere(const Genere& genere);
-    void rimuoviGenere(const Genere& genere);
+    void aggiungiGenere(const Genere &genere);
+    void rimuoviGenere(const Genere &genere);
     void setTarget(Classificazione target);
-    void setCasaDiProduzione(const string& casaDiProduzione);
+    void setCasaDiProduzione(const string &casaDiProduzione);
     void setNPostCredit(unsigned int nPostCredit);
     void setCostoBiglietto(double costoBiglietto);
-    void aggiungiAttore(const string& nomeAttore);
-    void rimuoviAttore(const string& nomeAttore);
-    
+    void aggiungiAttore(const string &nomeAttore);
+    void rimuoviAttore(const string &nomeAttore);
+
     // // metodi get
     Classificazione getTarget() const;
     string getCasaDiProduzione() const;
@@ -69,28 +68,27 @@ public:
     vector<Genere> getGeneri() const;
     double getValutazione() const;
     double getCostoBiglietto() const;
-    const vector<string>& getAttoriPrincipali() const;
+    const vector<string> &getAttoriPrincipali() const;
     // metodi per aggiungere e togliere i trailer
     void aggiungiTrailer(Trailer *trailer);
 
-    const vector<Trailer *>& getTrailers() const;
+    const vector<Trailer *> &getTrailers() const;
     /**
      * @brief Disaccoppia un trailer dal film ed elimina definitivamennte il trailer
-     * 
+     *
      * @see disaccoppiaTrailer
-     * 
-     * @param trailer 
+     *
+     * @param trailer
      * @note Duplicazione di codice tra @ref rimuoviTrailer e @ref disaccoppiaTrailer perchè è minimo
      */
     void rimuoviTrailer(Trailer *trailer);
 
     /**
      * @brief Disaccoppia un trailer dal film
-     * 
-     * @param trailer 
+     *
+     * @param trailer
      */
-    void disaccoppiaTrailer(Trailer* trailer);
-
+    void disaccoppiaTrailer(Trailer *trailer);
 
     // i metodi puri
     /**
@@ -101,9 +99,9 @@ public:
 
     /**
      * @brief Calcola l'incasso della distribuzione del film al cinema.
-     * 
+     *
      * L'incasso del film si calcola moltiplicando le visualizzazioni per il costo del biglietto del film.
-     * 
+     *
      * @return L'incasso calcolato.
      */
     double calcolaIncasso() override;
@@ -112,8 +110,8 @@ public:
 
     ~Film();
 
-    //visitor
-    void accept(MediaVisitor* visitor) override;
+    // visitor
+    void accept(MediaVisitor *visitor) override;
 };
 
 #endif

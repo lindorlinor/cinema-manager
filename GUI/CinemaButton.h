@@ -12,7 +12,7 @@ class CinemaButton : public QFrame
     Q_OBJECT
 
 public:
-    explicit CinemaButton(const QString& cinemaName, const QPixmap& cinemaImage=QPixmap(":/images/default.png"),QWidget *parent=nullptr);
+    explicit CinemaButton(const QString &cinemaName, const QPixmap &cinemaImage = QPixmap(":/images/coverCinema.png"), QWidget *parent = nullptr);
 signals:
     void selected();
 
@@ -20,8 +20,8 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
 
 private:
-    QLabel* imageLabel;
-    QLabel* nameLabel;
+    QLabel *imageLabel;
+    QLabel *nameLabel;
 };
 
 #endif // CINEMABUTTON_H

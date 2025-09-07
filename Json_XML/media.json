@@ -1,10 +1,10 @@
 [
     {
-        "copertinaCinema": "images/default.png",
+        "copertinaCinema": "images/coverCinema.png",
         "nomeCinema": "cinemaaa"
     },
     {
-        "copertinaCinema": "images/default.png",
+        "copertinaCinema": "images/coverCinema.png",
         "nomeCinema": "Cinema Prova"
     },
     {
@@ -81,7 +81,7 @@
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },
     {
-        "copertinaCinema": "images/default.png",
+        "copertinaCinema": "images/coverCinema.png",
         "nomeCinema": "Cinema Limena"
     },
     {
