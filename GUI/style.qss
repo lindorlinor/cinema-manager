@@ -1,3 +1,99 @@
+/* CALENDAR */
+
+/* --- Calendario generale --- */
+QCalendarWidget {
+    background-color: #c7d8db;        
+    border: 1px solid #5d7a80;           
+    border-radius: 10px;
+    font-family: Arial;
+    font-size: 12px;
+}
+
+/* --- Celle dei giorni --- */
+QCalendarWidget QAbstractItemView {
+    background-color: #c7d8db;
+    color: #05313c;
+    selection-background-color: #4e7f8b;
+    selection-color: #c7d8db;
+    border: none;
+    gridline-color: #8cadb4;
+    border-radius: 5px;
+}
+
+/* Hover sulle celle dei giorni */
+QCalendarWidget QAbstractItemView::item:hover {
+    background-color: #4e7f8b;
+    color: #c7d8db;
+    border-radius: 5px;
+}
+
+/* Celle disabilitate */
+QCalendarWidget QAbstractItemView::item:disabled {
+    color: #849a9e;
+}
+
+/* Nascondere numeri a sinistra (settimane) */
+QCalendarWidget QAbstractItemView::verticalHeader {
+    width: 0px;
+}
+
+/* --- Header giorni della settimana --- */
+QCalendarWidget QTableView QHeaderView::section {
+    background-color: #87a0a5;
+    color: #05313c;
+    font-weight: bold;
+    border: none;
+}
+
+/* --- Top mese/anno --- */
+QCalendarWidget QToolButton {
+    background-color: #87a0a5;              
+    color: #05313c;                         
+    border: 1px solid #87a0a5;
+    min-width: 80px;
+    height: 30px;
+    font-weight: bold;
+    margin: 2px;
+}
+
+/* Pulsante premuto */
+QCalendarWidget QToolButton:pressed {
+    background-color: #4e7f8b;
+    color: #c7d8db;
+}
+
+/* --- Freccette personalizzate --- */
+QCalendarWidget QToolButton#qt_calendar_prevmonth{
+    qproperty-icon: url(:/icons/arrow_left.png);
+    qproperty-iconSize: 16px 16px;
+    background-color: #87a0a5; 
+    border: none;
+}
+
+QCalendarWidget QToolButton#qt_calendar_nextmonth {
+    qproperty-icon: url(:/icons/arrow_right.png);
+    qproperty-iconSize: 16px 16px;
+    background-color: #87a0a5; 
+    border: none;
+}
+
+/* --- Selettori anno/mese --- */
+QCalendarWidget QSpinBox {
+    background-color: #c7d8db;
+    border: 1px solid #8cadb4;
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: #05313c;
+}
+QCalendarWidget QSpinBox:hover {
+    background-color: #c7d8db;
+}
+
+
+
+
+
+
 /* PAGINE DETAILS */
 /* FILM */
 #labelPerformance,
