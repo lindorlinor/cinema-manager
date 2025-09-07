@@ -849,7 +849,6 @@ non aveva nessuna immagine di default, la copertina non cambia */
 
 void MediaInterface::setDefaultCover()
 {
-    qDebug() << "valore " << imagePath;
     if (imagePath == "" || imagePath == ":/images/default.png" || imagePath == ":/images/default_podcast_puntate.png" || imagePath == ":/images/default_inserzioni.png" || imagePath == ":/images/default_film.png" || imagePath == ":/images/default_trailer.png" || imagePath == ":/images/default_puntata.png")
     {
         if (stackTipologia->currentIndex() == 0)
