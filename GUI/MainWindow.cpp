@@ -12,10 +12,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), cinemaPage(new Ci
                                           m_xmlManager(new MediaManagerXml()), m_jsonManager(new CinemaRepositoryJson()),
                                           searchPage(new SearchPanel(m_jsonManager, m_xmlManager, this))
 {
-    setWindowFlags(Qt::Window | Qt::CustomizeWindowHint |
-                   Qt::WindowMinimizeButtonHint |
-                   Qt::WindowMaximizeButtonHint |
-                   Qt::WindowCloseButtonHint);
+    /* setWindowFlags(Qt::FramelessWindowHint | Qt::Window); */
 
     QVBoxLayout *layoutV = new QVBoxLayout;
     QWidget *central = new QWidget(this);
@@ -32,18 +29,20 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), cinemaPage(new Ci
     connect(cinemaPage, &CinemaSelectionPage::insertCinema, this, &MainWindow::showInsertCinemaPage);
     connect(cinemaPage, &CinemaSelectionPage::selectedCinema, this, &MainWindow::showSelectedCinemaPage);
     connect(cinemaPage, &CinemaSelectionPage::selectedCinema, searchPage, &SearchPanel::updateInfoCinema);
-    connect(cinemaPage, &CinemaSelectionPage::selectedCinema, this, &MainWindow::showFullScreen);
+    connect(cinemaPage, &CinemaSelectionPage::selectedCinema, this, &MainWindow::showMaximized);
 
     connect(insertPage, &InsertCinemaPage::returnCinemaSelectionPage, this, &MainWindow::showCinemaSelectionPage);
 
-    connect(menu, &Menu::setNormalRequest, this, &MainWindow::showNormal);
     connect(menu, &Menu::setMaximizeRequest, this, [this]()
             {
-        if (windowState() & Qt::WindowFullScreen) {
-            showMaximized();
+        if (windowState() & Qt::WindowMaximized) {
+            showNormal();
         } else {
-            showFullScreen();
+            showMaximized();
         } });
+
+    // Close
+    connect(menu, &Menu::closeRequested, this, &MainWindow::close);
 
     connect(stackedWidget, &QStackedWidget::currentChanged, this, [menu](int index)
             {

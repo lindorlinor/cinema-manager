@@ -89,7 +89,7 @@
         ],
         "nPostCredit": 1,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/locandina_ipuffiilfilm.jpg",
+        "path": "images/locandina_ipuffiilfilm.jpg",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
             "Italiano"
@@ -232,7 +232,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/locandina_caughtstealing.jpg",
+        "path": "images/locandina_caughtstealing.jpg",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
@@ -386,7 +386,7 @@
         ],
         "nProiezioniGiornaliere": 5,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_ipuffi.jpg",
+        "path": "images/trailer_ipuffi.jpg",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
         ],
@@ -446,7 +446,7 @@
         ],
         "nProiezioniGiornaliere": 4,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_harrypottereilcalicedifuoco.jpg",
+        "path": "images/trailer_harrypottereilcalicedifuoco.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
@@ -466,7 +466,7 @@
         ],
         "nProiezioniGiornaliere": 3,
         "nomeCinema": "Cinema Limena",
-        "path": ":/images/trailer_caughtstealing.jpg",
+        "path": "images/trailer_caughtstealing.jpg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],

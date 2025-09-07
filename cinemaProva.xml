@@ -1,6 +1,6 @@
 <Cinema>
     <Nome>Cinema Prova</Nome>
-    <Copertina>:/images/coverCinema.png</Copertina>
+    <Copertina>images/coverCinema.png</Copertina>
     <MediaList>
         <Film>
             <Titolo>Il mio vicino Totoro (RE-RELEASE 2025)</Titolo>
@@ -10,7 +10,7 @@
             <DurataMinuti>86</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>UHD 4K 2160p</Risoluzione>
-            <Path>:/images/image9.png</Path>
+            <Path>images/image9.png</Path>
             <DataInizioRilascio>1/6/2025</DataInizioRilascio>
             <DataFineRilascio>30/6/2025</DataFineRilascio>
             <LingueDisponibili>
@@ -40,7 +40,7 @@
             <DurataMinuti>2</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>UHD 4K 2160p</Risoluzione>
-            <Path>:/images/image10.png</Path>
+            <Path>images/image10.png</Path>
             <DataInizioRilascio>15/4/2025</DataInizioRilascio>
             <DataFineRilascio>31/5/2025</DataFineRilascio>
             <LingueDisponibili />
@@ -56,7 +56,7 @@
             <DurataMinuti>3</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>UHD 4K 2160p</Risoluzione>
-            <Path>:/images/image10.png</Path>
+            <Path>images/image10.png</Path>
             <DataInizioRilascio>1/5/2025</DataInizioRilascio>
             <DataFineRilascio>15/6/2025</DataFineRilascio>
             <LingueDisponibili />

@@ -1,6 +1,6 @@
 <Cinema>
     <Nome>Cinema Limena</Nome>
-    <Copertina>:/images/coverCinema.png</Copertina>
+    <Copertina>images/coverCinema.png</Copertina>
     <MediaList>
         <Podcast>
             <Titolo>Cinema d'Autore</Titolo>
@@ -9,7 +9,7 @@
             <DurataMinuti>75</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/image17.png</Path>
+            <Path>images/image17.png</Path>
             <DataInizioRilascio>1/10/2025</DataInizioRilascio>
             <DataFineRilascio>31/10/2025</DataFineRilascio>
             <LingueDisponibili />
@@ -23,7 +23,7 @@
             <DurataMinuti>40</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/image17.png</Path>
+            <Path>images/image17.png</Path>
             <DataInizioRilascio>1/10/2025</DataInizioRilascio>
             <DataFineRilascio>15/10/2025</DataFineRilascio>
             <LingueDisponibili />
@@ -39,7 +39,7 @@
             <DurataMinuti>35</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/image17.png</Path>
+            <Path>images/image17.png</Path>
             <DataInizioRilascio>16/10/2025</DataInizioRilascio>
             <DataFineRilascio>31/10/2025</DataFineRilascio>
             <LingueDisponibili />
@@ -56,7 +56,7 @@
             <DurataMinuti>92</DurataMinuti>
             <Formato>DCP</Formato>
             <Risoluzione>SD 480p</Risoluzione>
-            <Path>:/images/locandina_ipuffiilfilm.jpg</Path>
+            <Path>images/locandina_ipuffiilfilm.jpg</Path>
             <DataInizioRilascio>22/8/2025</DataInizioRilascio>
             <DataFineRilascio>7/9/2025</DataFineRilascio>
             <LingueDisponibili>
@@ -85,7 +85,7 @@
             <DurataMinuti>2</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>HD 720p</Risoluzione>
-            <Path>:/images/trailer_ipuffi.jpg</Path>
+            <Path>images/trailer_ipuffi.jpg</Path>
             <DataInizioRilascio>6/6/2025</DataInizioRilascio>
             <DataFineRilascio>7/9/2025</DataFineRilascio>
             <LingueDisponibili />
@@ -103,7 +103,7 @@
             <DurataMinuti>105</DurataMinuti>
             <Formato>DCP</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/locandina_irosesfilm.jpg</Path>
+            <Path>images/locandina_irosesfilm.jpg</Path>
             <DataInizioRilascio>27/8/2025</DataInizioRilascio>
             <DataFineRilascio>3/9/2025</DataFineRilascio>
             <LingueDisponibili>
@@ -135,7 +135,7 @@
             <DurataMinuti>2</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>HD 720p</Risoluzione>
-            <Path>:/images/trailer_iroses.jpg</Path>
+            <Path>images/trailer_iroses.jpg</Path>
             <DataInizioRilascio>1/8/2025</DataInizioRilascio>
             <DataFineRilascio>3/9/2025</DataFineRilascio>
             <LingueDisponibili />
@@ -156,7 +156,7 @@
             <DurataMinuti>100</DurataMinuti>
             <Formato>DCP</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/locandina_tuttacolpadelrock.jpg</Path>
+            <Path>images/locandina_tuttacolpadelrock.jpg</Path>
             <DataInizioRilascio>28/8/2025</DataInizioRilascio>
             <DataFineRilascio>8/9/2025</DataFineRilascio>
             <LingueDisponibili>
@@ -185,7 +185,7 @@
             <DurataMinuti>1</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>HD 720p</Risoluzione>
-            <Path>:/images/trailer_tuttacolpadelrock.jpg</Path>
+            <Path>images/trailer_tuttacolpadelrock.jpg</Path>
             <DataInizioRilascio>7/7/2025</DataInizioRilascio>
             <DataFineRilascio>8/9/2025</DataFineRilascio>
             <LingueDisponibili />
@@ -202,7 +202,7 @@
             <DurataMinuti>157</DurataMinuti>
             <Formato>DCP</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/locandina_harrypottereilcalicedifuoco.jpg</Path>
+            <Path>images/locandina_harrypottereilcalicedifuoco.jpg</Path>
             <DataInizioRilascio>28/8/2025</DataInizioRilascio>
             <DataFineRilascio>7/9/2025</DataFineRilascio>
             <LingueDisponibili>
@@ -232,7 +232,7 @@
             <DurataMinuti>2</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/trailer_harrypottereilcalicedifuoco.jpg</Path>
+            <Path>images/trailer_harrypottereilcalicedifuoco.jpg</Path>
             <DataInizioRilascio>23/9/2005</DataInizioRilascio>
             <DataFineRilascio>7/9/2025</DataFineRilascio>
             <LingueDisponibili />
@@ -250,7 +250,7 @@
             <DurataMinuti>109</DurataMinuti>
             <Formato>DCP</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/locandina_caughtstealing.jpg</Path>
+            <Path>images/locandina_caughtstealing.jpg</Path>
             <DataInizioRilascio>27/8/2025</DataInizioRilascio>
             <DataFineRilascio>7/9/2025</DataFineRilascio>
             <LingueDisponibili>
@@ -288,7 +288,7 @@
             <DurataMinuti>2</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/trailer_caughtstealing.jpg</Path>
+            <Path>images/trailer_caughtstealing.jpg</Path>
             <DataInizioRilascio>24/7/2025</DataInizioRilascio>
             <DataFineRilascio>2/9/2025</DataFineRilascio>
             <LingueDisponibili />
@@ -305,7 +305,7 @@
             <DurataMinuti>128</DurataMinuti>
             <Formato>DCP</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/locandina_weapons.jpg</Path>
+            <Path>images/locandina_weapons.jpg</Path>
             <DataInizioRilascio>6/8/2025</DataInizioRilascio>
             <DataFineRilascio>31/8/2025</DataFineRilascio>
             <LingueDisponibili>
@@ -340,7 +340,7 @@
             <DurataMinuti>2</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/trailer_weapons.jpg</Path>
+            <Path>images/trailer_weapons.jpg</Path>
             <DataInizioRilascio>30/4/2025</DataInizioRilascio>
             <DataFineRilascio>5/8/2025</DataFineRilascio>
             <LingueDisponibili />
@@ -357,7 +357,7 @@
             <DurataMinuti>124</DurataMinuti>
             <Formato>IMAX 3D</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/locandina_losqualo50anniversario.jpg</Path>
+            <Path>images/locandina_losqualo50anniversario.jpg</Path>
             <DataInizioRilascio>1/9/2025</DataInizioRilascio>
             <DataFineRilascio>3/9/2025</DataFineRilascio>
             <LingueDisponibili>
@@ -387,7 +387,7 @@
             <DurataMinuti>2</DurataMinuti>
             <Formato>IMAX 3D</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>:/images/trailer_losqualo50anniversario.jpg</Path>
+            <Path>images/trailer_losqualo50anniversario.jpg</Path>
             <DataInizioRilascio>4/7/2025</DataInizioRilascio>
             <DataFineRilascio>31/8/2025</DataFineRilascio>
             <LingueDisponibili />
@@ -405,7 +405,7 @@
             <DurataMinuti>2</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>SD 480p</Risoluzione>
-            <Path>:/images/default_inserzioni.png</Path>
+            <Path>images/default_inserzioni.png</Path>
             <DataInizioRilascio>4/9/2025</DataInizioRilascio>
             <DataFineRilascio>11/9/2025</DataFineRilascio>
             <LingueDisponibili>
@@ -427,7 +427,7 @@
             <DurataMinuti>1</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>UHD 8K 4320p</Risoluzione>
-            <Path>:/images/default_inserzioni.png</Path>
+            <Path>images/default_inserzioni.png</Path>
             <DataInizioRilascio>4/9/2025</DataInizioRilascio>
             <DataFineRilascio>9/10/2025</DataFineRilascio>
             <LingueDisponibili>
