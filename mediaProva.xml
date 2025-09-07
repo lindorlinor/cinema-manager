@@ -7,7 +7,7 @@
         <DurataMinuti>90</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>UHD 4K 2160p</Risoluzione>
-        <Path>:/images/image9.png</Path>
+        <Path>images/image9.png</Path>
         <DataInizioRilascio>1/6/2025</DataInizioRilascio>
         <DataFineRilascio>30/6/2025</DataFineRilascio>
         <LingueDisponibili>
@@ -42,7 +42,7 @@
         <DurataMinuti>2</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>UHD 4K 2160p</Risoluzione>
-        <Path>:/images/image10.png</Path>
+        <Path>images/image10.png</Path>
         <DataInizioRilascio>15/4/2025</DataInizioRilascio>
         <DataFineRilascio>31/5/2025</DataFineRilascio>
         <LingueDisponibili />
@@ -58,7 +58,7 @@
         <DurataMinuti>3</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>UHD 4K 2160p</Risoluzione>
-        <Path>:/images/image10.png</Path>
+        <Path>images/image10.png</Path>
         <DataInizioRilascio>1/5/2025</DataInizioRilascio>
         <DataFineRilascio>15/6/2025</DataFineRilascio>
         <LingueDisponibili />
@@ -74,7 +74,7 @@
         <DurataMinuti>80</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
-        <Path>:/images/cinemaCover.png</Path>
+        <Path>images/cinemaCover.png</Path>
         <DataInizioRilascio>4/9/2025</DataInizioRilascio>
         <DataFineRilascio>26/9/2025</DataFineRilascio>
         <LingueDisponibili>

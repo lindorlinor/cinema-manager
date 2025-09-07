@@ -1,87 +1,6 @@
 [
     {
         "copertinaCinema": "images/coverCinema.png",
-        "nomeCinema": "cinemaaa"
-    },
-    {
-        "copertinaCinema": "images/coverCinema.png",
-        "nomeCinema": "Cinema Prova"
-    },
-    {
-        "attoriPrincipali": [
-            "Noriko Hidaka",
-            "Chika Sakamoto",
-            "Shigesato Itoi",
-            "Hitoshi Takagi",
-            "Takashi Nagasako"
-        ],
-        "autore": "Hayao Miyazaki",
-        "casaDiProduzione": "Studio Ghibli",
-        "costoBiglietto": 12.5,
-        "dataFineRilascio": "2025-06-30",
-        "dataInizioRilascio": "2025-06-01",
-        "descrizione": "La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco",
-        "durataMinuti": 86,
-        "formato": "MP4",
-        "generi": [
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 1,
-        "nomeCinema": "Cinema Prova",
-        "path": "images/image9.png",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-            "Italiano"
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Il mio vicino Totoro (RE-RELEASE 2025)"
-    },
-    {
-        "autore": "Studio Ghibli",
-        "autoreFilmAssociato": "Hayao Miyazaki",
-        "dataFineRilascio": "2025-05-31",
-        "dataInizioRilascio": "2025-04-15",
-        "descrizione": "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
-        "durataMinuti": 2,
-        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "Cinema Prova",
-        "path": "images/image10.png",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Il mio vicino Totoro (2025)"
-    },
-    {
-        "autore": "Hayao Miyazaki",
-        "autoreFilmAssociato": "Hayao Miyazaki",
-        "dataFineRilascio": "2025-06-15",
-        "dataInizioRilascio": "2025-05-01",
-        "descrizione": "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
-        "durataMinuti": 3,
-        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 3,
-        "nomeCinema": "Cinema Prova",
-        "path": "images/image10.png",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
-    },
-    {
-        "copertinaCinema": "images/coverCinema.png",
         "nomeCinema": "Cinema Limena"
     },
     {
@@ -146,68 +65,6 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "a"
-    },
-    {
-        "autore": "Studio Ghibli",
-        "autoreFilmAssociato": "Hayao Miyazaki",
-        "dataFineRilascio": "2025-05-31",
-        "dataInizioRilascio": "2025-04-15",
-        "descrizione": "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
-        "durataMinuti": 2,
-        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 5,
-        "nomeCinema": "Cinema Limena",
-        "path": "images/image10.png",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer ufficiale - Il mio vicino Totoro (2025)"
-    },
-    {
-        "autore": "Hayao Miyazaki",
-        "autoreFilmAssociato": "Hayao Miyazaki",
-        "dataFineRilascio": "2025-06-15",
-        "dataInizioRilascio": "2025-05-01",
-        "descrizione": "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
-        "durataMinuti": 3,
-        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nProiezioniGiornaliere": 3,
-        "nomeCinema": "Cinema Limena",
-        "path": "images/image10.png",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "trailer",
-        "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
-    },
-    {
-        "copertinaCinema": "images/coverCinema.png",
-        "nomeCinema": "Cinema ProvaProva"
-    },
-    {
-        "autore": "FilmLab",
-        "conduttore": "Marco Rossi",
-        "dataFineRilascio": "2025-11-02",
-        "dataInizioRilascio": "2025-10-01",
-        "descrizione": "Approfondimenti sui grandi registi e capolavori cinematografici.",
-        "durataMinuti": 75,
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema ProvaProva",
-        "path": "images/image17.png",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "podcast",
-        "titolo": "Cinema d'Autore"
     },
     {
         "attoriPrincipali": [
@@ -477,48 +334,44 @@
         "titolo": "Inserzione1"
     },
     {
-        "autore": "FilmLab",
-        "autorePodcastAssociato": "FilmLab",
-        "dataFineRilascio": "2025-10-17",
-        "dataInizioRilascio": "2025-10-01",
-        "descrizione": "Esploriamo l'era del cinema muto e i suoi maestri.",
-        "durataMinuti": 40,
+        "autore": "Studio Ghibli",
+        "autoreFilmAssociato": "Hayao Miyazaki",
+        "dataFineRilascio": "2025-05-31",
+        "dataInizioRilascio": "2025-04-15",
+        "descrizione": "Un assaggio del ritorno al cinema del capolavoro di Hayao Miyazaki.",
+        "durataMinuti": 2,
+        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
         "formato": "MP4",
         "lingueDisponibili": [
         ],
+        "nProiezioniGiornaliere": 5,
         "nomeCinema": "Cinema Limena",
-        "numeroPubblicita": 1,
-        "ospiti": [
-        ],
-        "path": ":/images/image17.png",
-        "podcastAssociato": "Cinema d'Autore",
-        "risoluzione": "SD 480p",
+        "path": "images/image10.png",
+        "risoluzione": "UHD 4K 2160p",
         "sottotitoliDisponibili": [
         ],
-        "tipologia": "puntata",
-        "titolo": "Analisi del cinema muto"
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Il mio vicino Totoro (2025)"
     },
     {
-        "autore": "FilmLab",
-        "autorePodcastAssociato": "FilmLab",
-        "dataFineRilascio": "2025-11-02",
-        "dataInizioRilascio": "2025-10-16",
-        "descrizione": "Il movimento francese che ha rivoluzionato il cinema.",
-        "durataMinuti": 35,
+        "autore": "Hayao Miyazaki",
+        "autoreFilmAssociato": "Hayao Miyazaki",
+        "dataFineRilascio": "2025-06-15",
+        "dataInizioRilascio": "2025-05-01",
+        "descrizione": "Un trailer celebrativo con scene inedite per il ritorno del film in sala.",
+        "durataMinuti": 3,
+        "filmAssociato": "Il mio vicino Totoro (RE-RELEASE 2025)",
         "formato": "MP4",
         "lingueDisponibili": [
         ],
+        "nProiezioniGiornaliere": 3,
         "nomeCinema": "Cinema Limena",
-        "numeroPubblicita": 2,
-        "ospiti": [
-        ],
-        "path": "images/image17.png",
-        "podcastAssociato": "Cinema d'Autore",
-        "risoluzione": "SD 480p",
+        "path": "images/image10.png",
+        "risoluzione": "UHD 4K 2160p",
         "sottotitoliDisponibili": [
         ],
-        "tipologia": "puntata",
-        "titolo": "La Nouvelle Vague"
+        "tipologia": "trailer",
+        "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },
     {
         "autore": "Paramount",
@@ -662,19 +515,19 @@
     },
     {
         "copertinaCinema": "images/coverCinema.png",
-        "nomeCinema": "Cinema Provaa"
+        "nomeCinema": "Cinema ProvaProva"
     },
     {
         "autore": "FilmLab",
         "conduttore": "Marco Rossi",
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2025-09-07",
+        "dataFineRilascio": "2025-11-01",
+        "dataInizioRilascio": "2025-10-01",
         "descrizione": "Approfondimenti sui grandi registi e capolavori cinematografici.",
-        "durataMinuti": 0,
+        "durataMinuti": 75,
         "formato": "MP4",
         "lingueDisponibili": [
         ],
-        "nomeCinema": "Cinema Provaa",
+        "nomeCinema": "Cinema ProvaProva",
         "path": "images/image17.png",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
@@ -1132,5 +985,27 @@
         ],
         "tipologia": "trailer",
         "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
+    },
+    {
+        "copertinaCinema": "images/coverCinema.png",
+        "nomeCinema": "Cinema Provaa"
+    },
+    {
+        "autore": "FilmLab",
+        "conduttore": "Marco Rossi",
+        "dataFineRilascio": "2025-09-07",
+        "dataInizioRilascio": "2025-09-07",
+        "descrizione": "Approfondimenti sui grandi registi e capolavori cinematografici.",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "Cinema Provaa",
+        "path": "images/image17.png",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "Cinema d'Autore"
     }
 ]
