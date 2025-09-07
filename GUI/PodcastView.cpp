@@ -276,10 +276,6 @@ void PodcastView::createButtons(){
                     endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
                     "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(podPtr->getDataFineRilascio())) + "</span>");
                 }
-            }else{
-                msgBox.setWindowTitle("Impossibile estendere la data");
-                msgBox.setText("La data di fine rilascio del trailer non può superare quella del film");
-                msgBox.setInformativeText("Estendere la proiezione del film in sala per poter estendere il rilascio dei suoi trailer");
             }
 
             
@@ -289,8 +285,8 @@ void PodcastView::createButtons(){
     connect(buttons,&DetailsPageButtons::deleteMedia,this,[this](){
         QMessageBox msgBox(this);
         msgBox.setWindowTitle("Conferma eliminazione");
-        msgBox.setText("Sei sicuro di voler eliminare il trailer? "
-                    "Premi conferma per continuare, annulla per non modificare.");
+        msgBox.setText("Sei sicuro di voler eliminare il Podcast? "
+                    "Questo avrà l'effetto di eliminare tutte le puntate associate.");
 
         QPushButton* annullaBtn = msgBox.addButton("Annulla", QMessageBox::RejectRole);
         QPushButton* confermaBtn = msgBox.addButton("Conferma", QMessageBox::AcceptRole);

@@ -1,6 +1,8 @@
 #include "FilmView.h"
 #include <QVBoxLayout>
 #include <QMessageBox>
+#include "CustomMessageBox.h"
+#include <QApplication>
 #include <QLabel>
 #include <QString>
 #include <QPixmap>
@@ -285,7 +287,25 @@ void FilmView::createButtons(){
     DetailsPageButtons * buttons = new DetailsPageButtons(filmPtr,rightSide);
     buttons->setDeleteButtonText("Elimina film");
     connect(buttons,&DetailsPageButtons::extendMedia,this,[this](){
-            QMessageBox msgBox(this);
+
+        auto fine = filmPtr->getDataFineRilascio();
+        auto nuovaFine = sys_days(fine) + days{7}; 
+
+        CustomMessageBox box(this);
+        box.move(QApplication::primaryScreen()->geometry().center() - box.rect().center());
+
+
+        box.setTitleText("Sei sicuro di voler estendere la data fine rilascio del media?");
+        box.setMainMessage(QString::fromStdString("La data di fine proiezione cambierà in\n" + dateToString(fine) + " → " + dateToString(year_month_day{nuovaFine})) + 
+                     QString::fromStdString("\nI trailer associati in sala termineranno la proiezione il " + dateToString(year_month_day{nuovaFine})));
+        box.setInfoMessage("Premi conferma per continuare, annulla per non modificare.");
+        if (box.exec() == QDialog::Accepted) {
+            filmPtr->estendiDataFineRilascio();
+            emit extendMediaClicked();
+            endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
+            "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(filmPtr->getDataFineRilascio())) + "</span>");
+        }
+            /* QMessageBox msgBox(this);
             msgBox.setWindowTitle("Conferma estensione data");
 
             auto fine = filmPtr->getDataFineRilascio();
@@ -306,7 +326,7 @@ void FilmView::createButtons(){
                 emit extendMediaClicked();
                 endDateLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Fine proiezione: </span>"
                 "<span style='color: #4e7f8b;'>" + QString::fromStdString(dateToString(filmPtr->getDataFineRilascio())) + "</span>");
-            }
+            } */
         });
     
         connect(buttons, &DetailsPageButtons::deleteMedia, this, [this](){

@@ -62,6 +62,7 @@ HEADERS +=  \
             GUI/MediaInterface.h \
             GUI/EditMedia.h \
             GUI/HorizontalCard.h \
+            GUI/CustomMessageBox.h \
             DataFiles/CinemaRepositoryJson.h \
             DataFiles/JsonConverter.h \
             DataFiles/JsonVisitor.h \
@@ -109,6 +110,7 @@ SOURCES +=  \
             GUI/MediaInterface.cpp \
             GUI/EditMedia.cpp \
             GUI/HorizontalCard.cpp \
+            GUI/CustomMessageBox.cpp \
             DataFiles/CinemaRepositoryJson.cpp \
             DataFiles/JsonConverter.cpp \
             DataFiles/JsonVisitor.cpp \
