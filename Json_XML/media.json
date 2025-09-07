@@ -8,10 +8,6 @@
         "nomeCinema": "Cinema Prova"
     },
     {
-        "copertinaCinema": ":/images/default.png",
-        "nomeCinema": "Cinema Limena"
-    },
-    {
         "attoriPrincipali": [
             "Noriko Hidaka",
             "Chika Sakamoto",
@@ -85,6 +81,10 @@
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },
     {
+        "copertinaCinema": ":/images/default.png",
+        "nomeCinema": "Cinema Limena"
+    },
+    {
         "attoriPrincipali": [
             "Chika Sakamoto",
             "Hitoshi Takagi",
@@ -121,6 +121,35 @@
         "target": "TUTTI",
         "tipologia": "film",
         "titolo": "Il mio vicino Totoro (RE-RELEASE 2025)"
+    },
+    {
+        "attoriPrincipali": [
+        ],
+        "autore": "a",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-09-26",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "",
+        "durataMinuti": 80,
+        "formato": "MP4",
+        "generi": [
+        ],
+        "lingueDisponibili": [
+            "Inglese",
+            "Tedesco"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "Cinema Limena",
+        "path": ":/images/default.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Francese",
+            "Tedesco"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "aaaacaaaaa"
     },
     {
         "autore": "Studio Ghibli",
@@ -163,45 +192,16 @@
         "titolo": "Trailer speciale anniversario - Il mio vicino Totoro (2025)"
     },
     {
-        "attoriPrincipali": [
-        ],
-        "autore": "a",
-        "casaDiProduzione": "",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2025-09-26",
-        "dataInizioRilascio": "2025-09-04",
-        "descrizione": "",
-        "durataMinuti": 80,
-        "formato": "MP4",
-        "generi": [
-        ],
-        "lingueDisponibili": [
-            "Inglese",
-            "Tedesco"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Limena",
-        "path": ":/images/default.png",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-            "Francese",
-            "Tedesco"
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "aaaacaaaaa"
-    },
-    {
         "copertinaCinema": ":/images/coverCinema.png",
         "nomeCinema": "Cinema ProvaProva"
     },
     {
         "autore": "FilmLab",
         "conduttore": "Marco Rossi",
-        "dataFineRilascio": "2025-09-07",
-        "dataInizioRilascio": "2025-09-07",
+        "dataFineRilascio": "2025-11-01",
+        "dataInizioRilascio": "2025-10-01",
         "descrizione": "Approfondimenti sui grandi registi e capolavori cinematografici.",
-        "durataMinuti": 0,
+        "durataMinuti": 75,
         "formato": "MP4",
         "lingueDisponibili": [
         ],
@@ -338,7 +338,7 @@
         "autore": "Mike Newell",
         "casaDiProduzione": "Warner Bros Italia",
         "costoBiglietto": 10.5,
-        "dataFineRilascio": "2025-09-07",
+        "dataFineRilascio": "2025-09-23",
         "dataInizioRilascio": "2025-08-28",
         "descrizione": "Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.",
         "durataMinuti": 158,
@@ -603,7 +603,7 @@
     {
         "autore": "Warner Bros",
         "autoreFilmAssociato": "Mike Newell",
-        "dataFineRilascio": "2025-09-07",
+        "dataFineRilascio": "2025-09-23",
         "dataInizioRilascio": "2005-09-23",
         "descrizione": "Il trailer ufficiale del quarto capitolo della saga di Harry Potter.",
         "durataMinuti": 2,
@@ -679,5 +679,25 @@
         ],
         "tipologia": "trailer",
         "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
+    },
+    {
+        "autore": "aa",
+        "autoreFilmAssociato": "Chris Miller",
+        "dataFineRilascio": "2025-09-07",
+        "dataInizioRilascio": "2025-09-07",
+        "descrizione": "",
+        "durataMinuti": 0,
+        "filmAssociato": "I Puffi - Il Film",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 0,
+        "nomeCinema": "Cinema ProvaProva",
+        "path": ":images/default.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "trailer puffi"
     }
 ]
