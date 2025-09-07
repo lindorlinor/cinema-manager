@@ -307,6 +307,8 @@ void EditMedia::checkMediaNameAvailability()
     bool isAvailable = true;
     errorLabel->setVisible(false);
 
+    setLimitTrailer();
+
     if (titolo.isEmpty() || autore.isEmpty())
         isAvailable = false;
 

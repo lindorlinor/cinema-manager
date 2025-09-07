@@ -43,6 +43,9 @@ void InsertMedia::setLimitTabTipologia(int index)
 
     setDefaultCover();
 
+    if (index == 4)
+        listFasceOrarie->item(0)->setCheckState(Qt::Checked);
+
     checkMediaNameAvailability();
 }
 
