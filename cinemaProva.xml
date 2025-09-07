@@ -1,11 +1,12 @@
 <Cinema>
     <Nome>Cinema Prova</Nome>
-    <Copertina>:/images/default.png</Copertina>
+    <Copertina>:/images/coverCinema.png</Copertina>
     <MediaList>
         <Film>
             <Titolo>Il mio vicino Totoro (RE-RELEASE 2025)</Titolo>
             <Autore>Hayao Miyazaki</Autore>
-            <Descrizione>La magica storia di due sorelle che si trasferiscono in campagna e incontrano le creature fantastiche del bosco</Descrizione>
+            <Descrizione>La magica storia di due sorelle che si trasferiscono in campagna e
+                incontrano le creature fantastiche del bosco</Descrizione>
             <DurataMinuti>86</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>UHD 4K 2160p</Risoluzione>
@@ -19,7 +20,7 @@
             <SottotitoliDisponibili>
                 <Lingua>Italiano</Lingua>
             </SottotitoliDisponibili>
-            <Generi/>
+            <Generi />
             <AttoriPrincipali>
                 <Attore>Noriko Hidaka</Attore>
                 <Attore>Chika Sakamoto</Attore>
@@ -42,8 +43,8 @@
             <Path>:/images/image10.png</Path>
             <DataInizioRilascio>15/4/2025</DataInizioRilascio>
             <DataFineRilascio>31/5/2025</DataFineRilascio>
-            <LingueDisponibili/>
-            <SottotitoliDisponibili/>
+            <LingueDisponibili />
+            <SottotitoliDisponibili />
             <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
             <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
             <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>
@@ -58,8 +59,8 @@
             <Path>:/images/image10.png</Path>
             <DataInizioRilascio>1/5/2025</DataInizioRilascio>
             <DataFineRilascio>15/6/2025</DataFineRilascio>
-            <LingueDisponibili/>
-            <SottotitoliDisponibili/>
+            <LingueDisponibili />
+            <SottotitoliDisponibili />
             <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
             <TitoloFilmAssociato>Il mio vicino Totoro (RE-RELEASE 2025)</TitoloFilmAssociato>
             <AutoreFilmAssociato>Hayao Miyazaki</AutoreFilmAssociato>

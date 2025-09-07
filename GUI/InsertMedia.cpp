@@ -69,7 +69,7 @@ void InsertMedia::salvaMedia()
             costoBigliettoFilm->value(),
             CasaProdFilm->text().toStdString(),
             autoreMedia->text().toStdString(),
-            imagePath == "" ? ":/images/default.png" : imagePath.toStdString(),
+            imagePath == "" ? ":/images/default_film.png" : imagePath.toStdString(),
             toClassificazione(comboTargetFilm->currentText().toStdString()));
 
         addLingue(film);
@@ -105,7 +105,7 @@ void InsertMedia::salvaMedia()
             numeroProiezioniTrailer->value(),
             static_cast<Film *>(filmAssociato),
             autoreMedia->text().toStdString(),
-            imagePath == "" ? ":/images/default.png" : imagePath.toStdString());
+            imagePath == "" ? ":/images/default_trailer.png" : imagePath.toStdString());
 
         addLingue(trailer);
         addSottotitoli(trailer);
@@ -152,7 +152,7 @@ void InsertMedia::salvaMedia()
             static_cast<Podcast *>(PodcastAssociato),
             numeroPubblicitaPuntata->value(),
             autoreMedia->text().toStdString(),
-            imagePath == "" ? ":/images/default.png" : imagePath.toStdString());
+            imagePath == "" ? ":/images/default_puntata.png" : imagePath.toStdString());
 
         addLingue(puntata);
         addSottotitoli(puntata);

@@ -847,19 +847,19 @@ QWidget *MediaInterface::annullaSalva()
 /* se un media ha ancora l'immagine di default, quando si cambia la tipologia, cambia anche la copertina di default se invece
 non aveva nessuna immagine di default, la copertina non cambia */
 
-// da aggiungere: trailer, film e puntata
 void MediaInterface::setDefaultCover()
 {
-    if (imagePath == "" || imagePath == ":images/default.png" || imagePath == ":/images/default_podcast_puntate.png" || imagePath == ":/images/default_inserzioni.png")
+    qDebug() << "valore " << imagePath;
+    if (imagePath == "" || imagePath == ":/images/default.png" || imagePath == ":/images/default_podcast_puntate.png" || imagePath == ":/images/default_inserzioni.png" || imagePath == ":/images/default_film.png" || imagePath == ":/images/default_trailer.png" || imagePath == ":/images/default_puntata.png")
     {
         if (stackTipologia->currentIndex() == 0)
-            imagePath = ":images/default_film.png"; // default del film
+            imagePath = ":/images/default_film.png"; // default del film
         else if (stackTipologia->currentIndex() == 1)
-            imagePath = ":images/default.png"; // default del traielr
+            imagePath = ":/images/default_trailer.png"; // default del traielr
         else if (stackTipologia->currentIndex() == 2)
             imagePath = ":/images/default_podcast_puntate.png"; // default del podcast
         else if (stackTipologia->currentIndex() == 3)
-            imagePath = ":images/default.png"; // default della puntata
+            imagePath = ":/images/default_puntata.png"; // default della puntata
         else if (stackTipologia->currentIndex() == 4)
             imagePath = ":/images/default_inserzioni.png"; // default dell'inserzione
 
@@ -894,11 +894,11 @@ void MediaInterface::removeImage()
     if (stackTipologia->currentIndex() == 0)
         pixmap.load(":/images/default_film.png"); // film
     else if (stackTipologia->currentIndex() == 1)
-        pixmap.load(":/images/default.png"); // trailer
+        pixmap.load(":/images/default_trailer.png"); // trailer
     else if (stackTipologia->currentIndex() == 2)
         pixmap.load(":/images/default_podcast_puntate.png"); // podcast
     else if (stackTipologia->currentIndex() == 3)
-        pixmap.load(":/images/default.png"); // puntata
+        pixmap.load(":/images/default_puntata.png"); // puntata
     else if (stackTipologia->currentIndex() == 4)
         pixmap.load(":/images/default_inserzioni.png"); // inserzione
 
