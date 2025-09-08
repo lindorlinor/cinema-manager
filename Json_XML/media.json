@@ -318,8 +318,8 @@
         "autore": "Tim Burton",
         "casaDiProduzione": "20th Century Fox",
         "costoBiglietto": 8,
-        "dataFineRilascio": "2025-09-26",
-        "dataInizioRilascio": "2025-08-06",
+        "dataFineRilascio": "2024-09-27",
+        "dataInizioRilascio": "2024-08-06",
         "descrizione": "Edward è un essere artificiale incompiuto, creato da uno scienziato che muore prima di terminare il suo lavoro, lasciandolo con delle forbici al posto delle mani. Viene scoperto da una venditrice porta a porta, Peg, che lo porta nella sua famiglia suburbana. Edward viene ben accolto all’inizio, ma finisce per essere rifiutato quando la sua diversità causa incomprensioni e paura. Nonostante tutto, sviluppa un sentimento d’amore verso Kim, la figlia adolescente della famiglia",
         "durataMinuti": 107,
         "formato": "MP4",
@@ -359,8 +359,8 @@
         "autore": "Henry Selick",
         "casaDiProduzione": "Laika",
         "costoBiglietto": 8,
-        "dataFineRilascio": "2025-07-26",
-        "dataInizioRilascio": "2025-07-08",
+        "dataFineRilascio": "2024-11-08",
+        "dataInizioRilascio": "2024-10-08",
         "descrizione": "Coraline Jones, una ragazzina curiosa, trova una porta segreta nella sua nuova casa che la conduce in un mondo parallelo, apparentemente perfetto: lì, i suoi genitori sono premurosi, tutto è perfetto… finché scopre che simbolicamente la “Altra Madre” cela un’insidia sinistra e vuole che lei resti per sempre. Coraline lotta per tornare a casa, scoprendo il valore della sua realtà e delle sue relazioni",
         "durataMinuti": 100,
         "formato": "MP4",
@@ -400,8 +400,8 @@
         "autore": "Lewis Carroll",
         "casaDiProduzione": "Walt Disney Productions",
         "costoBiglietto": 8,
-        "dataFineRilascio": "2025-09-20",
-        "dataInizioRilascio": "2025-09-08",
+        "dataFineRilascio": "2024-09-20",
+        "dataInizioRilascio": "2024-09-08",
         "descrizione": "Alice, una bambina dai sogni vividi, insegue un coniglio bianco e finisce per cadere in un mondo assurdo e colorato: il Paese delle Meraviglie. Incontra personaggi bizzarri come il Cappellaio Matto, il Brucaliffo, lo Stregatto e la temibile Regina di Cuori, con cui affronta situazioni surreali prima di risvegliarsi — suggerendo che tutto fosse un sogno",
         "durataMinuti": 75,
         "formato": "MP4",
@@ -440,8 +440,8 @@
         "autore": "James Bobin",
         "casaDiProduzione": "Walt Disney Pictures",
         "costoBiglietto": 7,
-        "dataFineRilascio": "2026-02-28",
-        "dataInizioRilascio": "2025-10-22",
+        "dataFineRilascio": "2024-01-28",
+        "dataInizioRilascio": "2023-10-22",
         "descrizione": "Alice, ormai 22enne, attraversa uno specchio magico e torna nel mondo di SottoSopra (Underland). Qui scopre che lo Stregatto è più impazzito del solito e decide di usare la “Cronosfera” per viaggiare nel tempo e salvare la famiglia dello Stregatto prima che sia troppo tardi",
         "durataMinuti": 113,
         "formato": "MP4",
@@ -482,8 +482,8 @@
         "autore": "Tim Burton",
         "casaDiProduzione": "",
         "costoBiglietto": 8,
-        "dataFineRilascio": "2025-09-27",
-        "dataInizioRilascio": "2025-09-08",
+        "dataFineRilascio": "2023-09-28",
+        "dataInizioRilascio": "2023-09-08",
         "descrizione": "Victor, un giovane sposo nervoso, esercita i suoi voti nuziali nel bosco e posando l’anello su un ramo bucato, in realtà evoca una sposa cadavere che emerge dalla terra convinta di essere sposata con lui. Trasportato nel suggestivo regno dei morti, Victor scopre che l’amore vero supera qualsiasi confine tra la vita e l’aldilà",
         "durataMinuti": 77,
         "formato": "MP4",
@@ -524,8 +524,8 @@
         "autore": "Henry Selick",
         "casaDiProduzione": "Skellington Productions",
         "costoBiglietto": 8,
-        "dataFineRilascio": "2026-01-04",
-        "dataInizioRilascio": "2025-12-15",
+        "dataFineRilascio": "2023-01-04",
+        "dataInizioRilascio": "2022-12-15",
         "descrizione": "Jack Skellington, il Re delle Zucche di Halloween Town, si stanca della solita routine spaventosa e, esplorando nuovi orizzonti, scopre Christmas Town. Incantato dal Natale, decide di rapire Babbo Natale e prenderne il posto—ma i suoi piani avventati creano il caos. Spetta a Sally rimediare prima che sia troppo tardi.",
         "durataMinuti": 76,
         "formato": "MP4",
@@ -833,13 +833,14 @@
         "durataMinuti": 117,
         "formato": "MP4",
         "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
+            "Italiano"
         ],
         "nomeCinema": "Cinema Notorius",
         "path": "images/podcast_151eg.png",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese"
         ],
         "tipologia": "podcast",
         "titolo": "151eg"
@@ -853,13 +854,14 @@
         "durataMinuti": 70,
         "formato": "MP4",
         "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
+            "Italiano"
         ],
         "nomeCinema": "Cinema Notorius",
         "path": "images/synergo.png",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese"
         ],
         "tipologia": "podcast",
         "titolo": "Synergo"
@@ -873,16 +875,51 @@
         "durataMinuti": 66,
         "formato": "MP4",
         "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
+            "Italiano"
         ],
         "nomeCinema": "Cinema Notorius",
         "path": "images/podcast_caleel.png",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese"
         ],
         "tipologia": "podcast",
         "titolo": "Caleel"
+    },
+    {
+        "attoriPrincipali": [
+            "Vera Farmiga",
+            "Patrick Wilson",
+            "Ben Hardy"
+        ],
+        "autore": "Michael Chaves",
+        "casaDiProduzione": "New Line Cinema / Warner Bros. Pictures",
+        "costoBiglietto": 12,
+        "dataFineRilascio": "2025-09-08",
+        "dataInizioRilascio": "2025-09-08",
+        "descrizione": "“The Conjuring – Il rito finale” aggiunge un nuovo, elettrizzante capitolo all’iconico universo cinematografico ispirato ad eventi realmente accaduti. Vera Farmiga e Patrick Wilson tornano per affrontare un ultimo caso nei panni dei celebri investigatori del paranormale Ed e Lorraine Warren, in un’agghiacciante e potente nuovo atto della saga che ha conquistato il botteghino globale.",
+        "durataMinuti": 135,
+        "formato": "DCP",
+        "generi": [
+            "Horror",
+            "Thriller",
+            "Nessuno"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 1,
+        "nomeCinema": "Cinema Notorius",
+        "path": ":/images/conjuring_rito_finale.png",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "The Conjuring: Il rito finale"
     },
     {
         "autore": "FilmLab",
@@ -1278,42 +1315,5 @@
         ],
         "tipologia": "puntata",
         "titolo": "La FASE 5 MARVEL è stata un FALLIMENTO TOTALE - Retrospettiva completa"
-<<<<<<< HEAD
-    },
-    {
-        "attoriPrincipali": [
-            "Vera Farmiga",
-            "Patrick Wilson",
-            "Ben Hardy"
-        ],
-        "autore": "Michael Chaves",
-        "casaDiProduzione": "New Line Cinema / Warner Bros. Pictures",
-        "costoBiglietto": 12,
-        "dataFineRilascio": "2025-09-08",
-        "dataInizioRilascio": "2025-09-08",
-        "descrizione": "“The Conjuring – Il rito finale” aggiunge un nuovo, elettrizzante capitolo all’iconico universo cinematografico ispirato ad eventi realmente accaduti. Vera Farmiga e Patrick Wilson tornano per affrontare un ultimo caso nei panni dei celebri investigatori del paranormale Ed e Lorraine Warren, in un’agghiacciante e potente nuovo atto della saga che ha conquistato il botteghino globale.",
-        "durataMinuti": 135,
-        "formato": "DCP",
-        "generi": [
-            "Horror",
-            "Thriller",
-            "Nessuno"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 1,
-        "nomeCinema": "Cinema Notorius",
-        "path": ":/images/conjuring_rito_finale.png",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-            "Italiano"
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "The Conjuring: Il rito finale"
-=======
->>>>>>> 884225c279d6706a2f7847166b3e00621649298e
     }
 ]
