@@ -261,6 +261,7 @@ void SearchPanel::addLatoDestra()
     connect(libreriaMediaTutto, &MediaLibraryTutto::requestMediaView, this, &SearchPanel::showMediaView);
 
     // style
+    widgetDestra->setMaximumWidth(1500);
     latoDestra->setContentsMargins(60, 0, 0, 0);
     attivita->setView(new QListView(attivita));
     attivita->view()->setFrameShape(QFrame::NoFrame);

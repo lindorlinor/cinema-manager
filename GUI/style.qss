@@ -1,3 +1,4 @@
+
 /* CALENDAR */
 
 /* --- Calendario generale --- */
@@ -250,7 +251,7 @@ QCalendarWidget QSpinBox:hover {
     background-color:#05323c;
     color: #bdced3;
     border-radius: 35px;
-    font-size: 20pt;
+    font-size: 18pt;
     padding: 30px 50px; 
     margin-left: 40px;
     margin-right: 40px;

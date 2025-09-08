@@ -254,6 +254,7 @@ QWidget *MediaInterface::addDataInizioRilascio(QDateEdit *dataInizio)
     QCalendarWidget *calendar = new QCalendarWidget(this);
     calendar->setMinimumSize(280, 180);
     dataInizio->setCalendarWidget(calendar);
+    calendar->setMaximumSize(340, 200);
 
     return addInput(label, dataInizio);
 }

@@ -101,6 +101,8 @@ void EditMedia::initValue()
     {
         Trailer *trailer = static_cast<Trailer *>(em_media);
         referenceTrailer->setSelectedItem(QString::fromStdString(trailer->getFilm()->getTitolo()), QString::fromStdString(trailer->getFilm()->getAutore()));
+        titoloFilmRiferimento = QString::fromStdString(trailer->getFilm()->getTitolo());
+        autoreFilmRiferimento = QString::fromStdString(trailer->getFilm()->getAutore());
         if (referenceTrailer)
             referenceTrailer->reloadMedia(*im_cinemaSelezionato);
         numeroProiezioniTrailer->setValue(trailer->getDurataMinuti());
@@ -115,6 +117,8 @@ void EditMedia::initValue()
     {
         Puntata *puntata = static_cast<Puntata *>(em_media);
         referencePuntate->setSelectedItem(QString::fromStdString(puntata->getPodcast()->getTitolo()), QString::fromStdString(puntata->getPodcast()->getAutore()));
+        titoloPodcastRiferimento = QString::fromStdString(puntata->getPodcast()->getAutore());
+        autorePodcastRiferimento = QString::fromStdString(puntata->getPodcast()->getTitolo());
         if (referencePuntate)
             referencePuntate->reloadMedia(*im_cinemaSelezionato);
         QList<QString> risultato;
@@ -181,6 +185,18 @@ void EditMedia::setCheckListWidget(QListWidget *list, const QList<QString> &sele
 void EditMedia::salvaMedia()
 {
 
+    QString default_image;
+    if (stackTipologia->currentIndex() == 0)
+        default_image = ":/images/default_film.png";
+    else if (stackTipologia->currentIndex() == 1)
+        default_image = ":/images/default_trailer.png";
+    else if (stackTipologia->currentIndex() == 2)
+        default_image = ":/images/default_podcast_puntate.png";
+    else if (stackTipologia->currentIndex() == 3)
+        default_image = ":/images/default_puntata.png";
+    else if (stackTipologia->currentIndex() == 4)
+        default_image = ":/images/default_inserzioni.png";
+
     em_media->setAutore(autoreMedia->text().toStdString());
     em_media->setTitolo(titoloMedia->text().toStdString());
     em_media->setDescrizione(descrizioneMedia->toPlainText().toStdString());
@@ -189,7 +205,7 @@ void EditMedia::salvaMedia()
     em_media->setDurataMinuti(durataMinutiMedia->value());
     em_media->setFormato(toFormato(comboFormato->currentText().toStdString()));
     em_media->setRisoluzione(toRisoluzione(comboRisoluzione->currentText().toStdString()));
-    em_media->setPath(imagePath.toStdString());
+    em_media->setPath(imagePath == "" ? default_image.toStdString() : imagePath.toStdString());
 
     if (!(getSelectedList(listLingue)).empty())
     {
@@ -260,7 +276,7 @@ void EditMedia::salvaMedia()
     else if (stackTipologia->currentIndex() == 3)
     {
 
-        Media *PodcastAssociato = findMediaReference(titoloPodcastRiferimento, autorePodcastRiferimento, "podcast");
+        Media *PodcastAssociato = findMediaReference(titoloPodcastRiferimento, autorePodcastRiferimento, "puntata");
 
         if (!PodcastAssociato)
         {
@@ -306,6 +322,8 @@ void EditMedia::checkMediaNameAvailability()
 
     bool isAvailable = true;
     errorLabel->setVisible(false);
+
+    setLimitTrailer();
 
     if (titolo.isEmpty() || autore.isEmpty())
         isAvailable = false;
