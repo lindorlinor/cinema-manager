@@ -1,0 +1,135 @@
+<MediaList>
+    <Film>
+        <Titolo>The Conjuring: Il rito finale</Titolo>
+        <Autore>Michael Chaves</Autore>
+        <Descrizione>“The Conjuring – Il rito finale” aggiunge un nuovo, elettrizzante capitolo all’iconico universo cinematografico ispirato ad eventi realmente accaduti. Vera Farmiga e Patrick Wilson tornano per affrontare un ultimo caso nei panni dei celebri investigatori del paranormale Ed e Lorraine Warren, in un’agghiacciante e potente nuovo atto della saga che ha conquistato il botteghino globale.</Descrizione>
+        <DurataMinuti>135</DurataMinuti>
+        <Formato>DCP</Formato>
+        <Risoluzione>UHD 4K 2160p</Risoluzione>
+        <Path>/images/locandina_theconjuring4.jpg</Path>
+        <DataInizioRilascio>04.09.2025</DataInizioRilascio>
+        <DataFineRilascio>20/09/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Horror</Genere>
+            <Genere>Thriller</Genere>
+            <Genere>Soprannaturale</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Vera Farmiga</Attore>
+            <Attore>Patrick Wilson</Attore>
+            <Attore>Ben Hardy</Attore>
+        </AttoriPrincipali>
+        <Target>QUATTORDICI_PIU</Target>
+        <CostoBiglietto>12.00</CostoBiglietto>
+        <CasaDiProduzione>New Line Cinema / Warner Bros. Pictures</CasaDiProduzione>
+        <NPostCredit>1</NPostCredit>
+    </Film>
+    <Trailer>
+        <Titolo>Trailer ufficiale – The Conjuring: Il rito finale</Titolo>
+        <Autore>Warner Bros. Pictures Italia</Autore>
+        <Descrizione>Il trailer ufficiale del capitolo finale con Ed e Lorraine Warren, che affrontano il loro caso più terrificante.</Descrizione>
+        <DurataMinuti>3</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>/images/trailer_theconjuring4.jpg</Path>
+        <DataInizioRilascio>15/07/2025</DataInizioRilascio>
+        <DataFineRilascio>03.09.2025</DataFineRilascio>     
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>4</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>The Conjuring: Il rito finale</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Michael Chaves</AutoreFilmAssociato>
+    </Trailer>
+    <Film>
+        <Titolo>Material Love</Titolo>
+        <Autore>Celine Song</Autore>
+        <Descrizione>Una giovane e ambiziosa combina-coppie di New York si ritrova a dover scegliere tra l’uomo ideale e il suo ex, tutt’altro che perfetto.</Descrizione>
+        <DurataMinuti>116</DurataMinuti>
+        <Formato>DCP</Formato>
+        <Risoluzione>UHD 4K 2160p</Risoluzione>
+        <Path>/images/locandina_materiallove.jpg</Path>
+        <DataInizioRilascio>04.09.2025</DataInizioRilascio>
+        <DataFineRilascio>25.09.2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Commedia</Genere>
+            <Genere>Sentimentale</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Dakota Johnson</Attore>
+            <Attore>Chris Evans</Attore>
+            <Attore>Pedro Pascal</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>9.50</CostoBiglietto>
+        <CasaDiProduzione>A24 / Warner Bros. Pictures Italia</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Trailer>
+        <Titolo>Trailer ufficiale – Material Love</Titolo>
+        <Autore>A24</Autore>
+        <Descrizione>Il trailer ufficiale della nuova commedia romantica di Celine Song con Dakota Johnson, Chris Evans e Pedro Pascal.</Descrizione>
+        <DurataMinuti>2</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>/images/trailer_materiallove.jpg</Path>
+        <DataInizioRilascio>20.07.2025</DataInizioRilascio>
+        <DataFineRilascio>03.09.2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>4</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>Material Love</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Celine Song</AutoreFilmAssociato>
+    </Trailer>
+    <Film>
+        <Titolo>Arancia Meccanica – 50mo Anniversario</Titolo>
+        <Autore>Stanley Kubrick</Autore>
+        <Descrizione>Il percorso di Alex – da punk amorale ad onorato cittadino, previo lavaggio del cervello – viene ambientato in un futuro scioccante dall’ardita interpretazione kubrickiana del romanzo di Anthony Burgess.</Descrizione>
+        <DurataMinuti>137</DurataMinuti>
+        <Formato>DCP</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>/images/locandina_aranciameccanica.png</Path>
+        <DataInizioRilascio>13.10.2025</DataInizioRilascio>
+        <DataFineRilascio>31.10.2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Distopico</Genere>
+            <Genere>Thriller</Genere>
+            <Genere>Fantascienza</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Patrick Magee</Attore>
+            <Attore>Adrienne Corri</Attore>
+            <Attore>Miriam Karlin</Attore>
+            <Attore>Malcolm McDowell</Attore>
+            <Attore>Michael Bates</Attore>
+            <Attore>Carl Duering</Attore>
+            <Attore>John Clive</Attore>
+            <Attore>Warren Clarke</Attore>
+        </AttoriPrincipali>
+        <Target>DICIOTTO_PIU</Target>
+        <CostoBiglietto>11.00</CostoBiglietto>
+        <CasaDiProduzione>Warner Bros. Pictures / MGM</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+
+</MediaList>

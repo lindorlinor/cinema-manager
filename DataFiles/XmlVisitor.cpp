@@ -5,6 +5,7 @@
 #include <iostream>
 #include <QDebug>
 #include <qmessagebox.h>
+#include "../GUI/CustomMessageBox.h"
 
 XmlVisitor::XmlVisitor(QDomDocument *d) : doc(d) {}
 QDomElement XmlVisitor::getXmlElement() const
@@ -258,7 +259,7 @@ void XmlVisitor::populateCommonFields(const QDomElement &elem, Media *media)
     }
 }
 
-Film *XmlVisitor::fromXmlFilmElement(const QDomElement &elem, unsigned int &errors)
+Film *XmlVisitor::fromXmlFilmElement(const QDomElement &elem)
 {
     std::string titolo = elem.firstChildElement("Titolo").text().toStdString();
     std::string autore = elem.firstChildElement("Autore").text().toStdString();
@@ -270,16 +271,17 @@ Film *XmlVisitor::fromXmlFilmElement(const QDomElement &elem, unsigned int &erro
 
     year_month_day dI;
     year_month_day dF;
-    try
-    {
+    try{
         dI = stringToDate(elem.firstChildElement("DataInizioRilascio").text().toStdString());
         dF = stringToDate(elem.firstChildElement("DataFineRilascio").text().toStdString());
-    }
-    catch (const std::exception &e)
-    {
-        errors++;
-        QString msg = QString("Errore parsing della data: %1").arg(e.what());
-        QMessageBox::warning(nullptr, "Errore importazione", msg);
+    }catch (const std::exception &e){
+        QString msg = QString("%1").arg(e.what());
+        CustomMessageBox msgbox;
+        msgbox.setTitleText("<span style='color: #E44043;'>Errore importazione di un media</span>");
+        msgbox.setMainMessage("<span style='color: #E44043;'> Nel media dal titolo '"+ QString::fromStdString(titolo)+"' è stato trovo il seguente errore: <br/><br/></span>"+ QString("Errore importazione del media dal titolo %1: \n").arg(msg));
+        msgbox.hideCancelButton();
+        msgbox.exec();
+        return nullptr;
     }
 
     Classificazione target = toClassificazione(elem.firstChildElement("Target").text().toStdString());
@@ -303,7 +305,6 @@ Film *XmlVisitor::fromXmlFilmElement(const QDomElement &elem, unsigned int &erro
     {
         media->aggiungiAttore(a.text().toStdString());
     }
-
     return media;
 }
 
@@ -317,8 +318,20 @@ Trailer *XmlVisitor::fromXmlTrailerElement(const QDomElement &elem, list<Media *
     Risoluzione ris = toRisoluzione(elem.firstChildElement("Risoluzione").text().toStdString());
     std::string path = elem.firstChildElement("Path").text().toStdString();
 
-    year_month_day dI = stringToDate(elem.firstChildElement("DataInizioRilascio").text().toStdString());
-    year_month_day dF = stringToDate(elem.firstChildElement("DataFineRilascio").text().toStdString());
+    year_month_day dI;
+    year_month_day dF;
+    try{
+        dI = stringToDate(elem.firstChildElement("DataInizioRilascio").text().toStdString());
+        dF = stringToDate(elem.firstChildElement("DataFineRilascio").text().toStdString());
+    }catch (const std::exception &e){
+        QString msg = QString("%1").arg(e.what());
+        CustomMessageBox msgbox;
+        msgbox.setTitleText("<span style='color: #E44043;'>Errore importazione di un media</span>");
+        msgbox.setMainMessage("<span style='color: #E44043;'> Nel media dal titolo '"+ QString::fromStdString(titolo)+"' è stato trovo il seguente errore: <br/><br/></span>"+ QString("Errore importazione del media dal titolo %1: \n").arg(msg));
+        msgbox.hideCancelButton();
+        msgbox.exec();
+        return nullptr;
+    }
 
     QDomElement nProiezioniElem = elem.firstChildElement("NProiezioniGiornaliere");
     int nProiezioniGiornaliere;
@@ -343,7 +356,12 @@ Trailer *XmlVisitor::fromXmlTrailerElement(const QDomElement &elem, list<Media *
         populateCommonFields(elem, media);
         return media;
     }
-
+    
+    CustomMessageBox msgbox;
+    msgbox.setTitleText("<span style='color: #E44043;'>Errore importazione di un media</span>");
+    msgbox.setMainMessage("<span style='color: #E44043;'> Il media dal titolo '"+ QString::fromStdString(titolo)+"' non è stato associato correttamente ad alcun film.</span>");
+    msgbox.hideCancelButton();
+    msgbox.exec();
     return nullptr;
 }
 
@@ -358,8 +376,20 @@ Inserzione *XmlVisitor::fromXmlInserzioneElement(const QDomElement &elem)
     Risoluzione ris = toRisoluzione(elem.firstChildElement("Risoluzione").text().toStdString());
     std::string path = elem.firstChildElement("Path").text().toStdString();
 
-    year_month_day dI = stringToDate(elem.firstChildElement("DataInizioRilascio").text().toStdString());
-    year_month_day dF = stringToDate(elem.firstChildElement("DataFineRilascio").text().toStdString());
+    year_month_day dI;
+    year_month_day dF;
+    try{
+        dI = stringToDate(elem.firstChildElement("DataInizioRilascio").text().toStdString());
+        dF = stringToDate(elem.firstChildElement("DataFineRilascio").text().toStdString());
+    }catch (const std::exception &e){
+        QString msg = QString("%1").arg(e.what());
+        CustomMessageBox msgbox;
+        msgbox.setTitleText("<span style='color: #E44043;'>Errore importazione di un media</span>");
+        msgbox.setMainMessage("<span style='color: #E44043;'> Nel media dal titolo '"+ QString::fromStdString(titolo)+"' è stato trovo il seguente errore: <br/><br/></span>"+ QString("Errore importazione del media dal titolo %1: \n").arg(msg));
+        msgbox.hideCancelButton();
+        msgbox.exec();
+        return nullptr;
+    }
 
     QDomElement nProiezioniElem = elem.firstChildElement("NProiezioniGiornaliere");
     int nProiezioniGiornaliere;
@@ -432,8 +462,20 @@ Puntata *XmlVisitor::fromXmlPuntataElement(const QDomElement &elem, list<Media *
     int durata = elem.firstChildElement("DurataMinuti").text().toInt();
     std::string path = elem.firstChildElement("Path").text().toStdString();
 
-    year_month_day dI = stringToDate(elem.firstChildElement("DataInizioRilascio").text().toStdString());
-    year_month_day dF = stringToDate(elem.firstChildElement("DataFineRilascio").text().toStdString());
+    year_month_day dI;
+    year_month_day dF;
+    try{
+        dI = stringToDate(elem.firstChildElement("DataInizioRilascio").text().toStdString());
+        dF = stringToDate(elem.firstChildElement("DataFineRilascio").text().toStdString());
+    }catch (const std::exception &e){
+        QString msg = QString("%1").arg(e.what());
+        CustomMessageBox msgbox;
+        msgbox.setTitleText("<span style='color: #E44043;'>Errore importazione di un media</span>");
+        msgbox.setMainMessage("<span style='color: #E44043;'> Nel media dal titolo '"+ QString::fromStdString(titolo)+"' è stato trovo il seguente errore: <br/><br/></span>"+ QString("Errore importazione del media dal titolo %1: \n").arg(msg));
+        msgbox.hideCancelButton();
+        msgbox.exec();
+        return nullptr;
+    }
 
     QDomElement podcastElem = elem.firstChildElement("TitoloPodcastAssociato");
     QDomElement autoreElem = elem.firstChildElement("AutorePodcastAssociato");
@@ -451,15 +493,25 @@ Puntata *XmlVisitor::fromXmlPuntataElement(const QDomElement &elem, list<Media *
     {
         nPubblicita = numPubElem.text().trimmed().toInt();
     }
-    Puntata *media = new Puntata(titolo, descrizione, dI, dF, durata, findPodcastInList(mediaList, titoloPodA, autorePodA), nPubblicita, autore, path);
-    populateCommonFields(elem, media);
 
-    QDomElement ospitiElem = elem.firstChildElement("Ospiti");
-    for (QDomElement o = ospitiElem.firstChildElement("Ospite"); !o.isNull(); o = o.nextSiblingElement("Ospite"))
-    {
-        media->aggiungiOspite(o.text().toStdString());
+    Podcast *podA = findPodcastInList(mediaList, titoloPodA, autorePodA);
+    if (podA){
+        Puntata * media = new Puntata(titolo, descrizione, dI, dF, durata, podA , nPubblicita, autore, path);
+        populateCommonFields(elem, media);
+        QDomElement ospitiElem = elem.firstChildElement("Ospiti");
+        for (QDomElement o = ospitiElem.firstChildElement("Ospite"); !o.isNull(); o = o.nextSiblingElement("Ospite")){
+            media->aggiungiOspite(o.text().toStdString());
+        }
+
+        return media;
     }
-    return media;
+
+    CustomMessageBox msgbox;
+    msgbox.setTitleText("<span style='color: #E44043;'>Errore importazione di un media</span>");
+    msgbox.setMainMessage("<span style='color: #E44043;'> Il media dal titolo '"+ QString::fromStdString(titolo)+"' non è stato associato correttamente ad alcun podcast.</span>");
+    msgbox.hideCancelButton();
+    msgbox.exec();
+    return nullptr;
 }
 
 Film *XmlVisitor::findFilmInList(const list<Media *> &mediaList, const string &titolo, const string &autore)
@@ -472,7 +524,7 @@ Film *XmlVisitor::findFilmInList(const list<Media *> &mediaList, const string &t
             return f;
         }
     }
-    return nullptr; // non trovato
+    return nullptr; //non trovato
 }
 
 Podcast *XmlVisitor::findPodcastInList(const list<Media *> &mediaList, const string &titolo, const string &autore)
@@ -485,5 +537,5 @@ Podcast *XmlVisitor::findPodcastInList(const list<Media *> &mediaList, const str
             return p;
         }
     }
-    return nullptr; // non trovato
+    return nullptr; //non trovato
 }

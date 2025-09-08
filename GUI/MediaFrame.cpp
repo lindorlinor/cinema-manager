@@ -2,6 +2,9 @@
 
 MediaFrame::MediaFrame( const Media& media, QWidget* parent):QFrame(parent),imgLabel(new QLabel(this)), pix(QString::fromStdString(media.getImPath())), mf_media(&media){
 
+    if (pix.isNull()) {
+        pix = QPixmap(":/images/default.png"); 
+    }
     imgLabel->setPixmap(pix.scaled(160, 160, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     
     titoloLabel = new QLabel(QString::fromStdString(mf_media->getTitolo()));

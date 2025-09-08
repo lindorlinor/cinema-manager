@@ -85,7 +85,7 @@ void MediaManagerXml::saveDocument() {
 
 bool MediaManagerXml::importSessionFromXml(CinemaRepositoryJson& jsonManager){
     QString filePath = QFileDialog::getOpenFileName(
-        nullptr, "Apri sessione XML", "", "XML Files (*.xml)");
+        nullptr, "Apri cinema in XML", "", "XML Files (*.xml)");
     if (filePath.isEmpty()) return false;
 
     QFile file(filePath);
@@ -143,14 +143,13 @@ bool MediaManagerXml::importSessionFromXml(CinemaRepositoryJson& jsonManager){
 
 void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem, CinemaRepositoryJson& jsonManager, const string& cinemaName) {  
     list<Media*> supportList;  
-    unsigned int errors = 0;
 
     while (!mediaElem.isNull()) {
         QString tipo = mediaElem.tagName(); 
         Media* ptrMedia = nullptr;
 
         if (tipo == "Film") {
-            ptrMedia = XmlVisitor::fromXmlFilmElement(mediaElem, errors);
+            ptrMedia = XmlVisitor::fromXmlFilmElement(mediaElem);
         } else if (tipo == "Trailer") {
             ptrMedia = XmlVisitor::fromXmlTrailerElement(mediaElem, currentCinema ? currentCinema->getListaMedia() : supportList);
         } else if (tipo == "Inserzione") {
@@ -159,8 +158,6 @@ void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem, CinemaRepos
             ptrMedia = XmlVisitor::fromXmlPodcastElement(mediaElem);
         } else if (tipo == "Puntata") {
             ptrMedia = XmlVisitor::fromXmlPuntataElement(mediaElem, currentCinema ? currentCinema->getListaMedia() : supportList);
-        } else {
-            errors++;
         }
 
         if (ptrMedia) {
@@ -176,14 +173,12 @@ void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem, CinemaRepos
         mediaElem = mediaElem.nextSiblingElement();
     }
 
-    if (errors)
-        QMessageBox::information(nullptr, "Info", QString::number(errors) + " media non sono stati importati correttamente");
 }
 
 bool MediaManagerXml::importMediaListFromXml(CinemaRepositoryJson& jsonManager){
     if(!currentCinema) return false;
     QString filePath = QFileDialog::getOpenFileName(
-    nullptr, "Apri sessione XML", "", "XML Files (*.xml)");
+    nullptr, "Apri media in XML", "", "XML Files (*.xml)");
     if (filePath.isEmpty()) return false;
 
     QFile file(filePath);

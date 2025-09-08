@@ -4,7 +4,6 @@
 #include "ExpandableLabel.h"
 #include "DetailsPageButtons.h"
 #include "PreviewCard.h"
-#include <QMessageBox>
 #include <QAbstractButton>
 PuntataView::PuntataView(Puntata* pPtr,QWidget* parent):MediaView(pPtr,parent),puntPtr(pPtr){
     createMediaDetails();

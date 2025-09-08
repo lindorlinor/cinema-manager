@@ -5,7 +5,6 @@
 #include "PreviewCard.h"
 #include "PreviewCard.h"
 #include "DetailsPageButtons.h"
-#include <QMessageBox>
 #include <QPushButton>
 
 TrailerView::TrailerView(Trailer* tPtr, QWidget* parent)

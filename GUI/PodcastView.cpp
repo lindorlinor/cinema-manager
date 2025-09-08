@@ -5,7 +5,6 @@
 #include "ExpandableLabel.h"
 #include "PreviewCard.h"
 #include "DetailsPageButtons.h"
-#include <QMessageBox>
 #include <QAbstractButton>
 #include <QStyle>
 

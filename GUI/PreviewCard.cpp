@@ -15,6 +15,9 @@ PreviewCard::PreviewCard(const Media* mPtr, QWidget* parent)
 
     imageLabel = new QLabel(this);
     QPixmap pix(QString::fromStdString(mediaPtr->getImPath()));
+    if (pix.isNull()) {
+        pix = QPixmap(":/images/default.png"); 
+    }
     imageLabel->setPixmap(pix.scaled(222, 320, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     imageLabel->setAlignment(Qt::AlignCenter);
     
