@@ -12,12 +12,14 @@ Film::Film( const string &titolo, const string &descrizione, year_month_day gg_m
             f_costoBiglietto(costoBiglietto),f_casaDiProduzione(casaDiProduzione),
             f_target(target), f_valutazione(0){setValutazione();}
 
-Film::~Film(){
-    for (auto it = trailers.begin(); it!= trailers.end(); ++it) {
-        delete *it;
-        *it = nullptr;
+Film::~Film() {
+    while (!trailers.empty()) {
+        Trailer* t = trailers.back(); // prendi l’ultimo
+        t->associaFilm(nullptr); 
+        disaccoppiaTrailer(t);         // disattiva callback
+        delete t;                     // distrugge il Trailer
+        trailers.pop_back();          // rimuovi dal vector
     }
-    trailers.clear();
 }
 
 double Film::calcolaIncasso() { return getVisualizzazioni() * f_costoBiglietto; }

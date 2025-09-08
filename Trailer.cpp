@@ -12,21 +12,23 @@ Trailer::Trailer(const string &titolo, const string &descrizione, year_month_day
 
 
 Trailer::~Trailer(){
-    t_film->disaccoppiaTrailer(this);
-}                                    
+    if(t_film)
+        t_film->disaccoppiaTrailer(this);
+}  
 
 void Trailer::associaFilm(Film* film) {
-    if (!film || t_film == film)
+    if (t_film == film)
         return;
         
     if (t_film){
         t_film->disaccoppiaTrailer(this);
     }
     t_film = film;
-    if (getDataFineRilascio() > film->getDataFineRilascio()) {
+    if (t_film && getDataFineRilascio() > film->getDataFineRilascio()) {
         setDataFineRilascio(film->getDataFineRilascio());
     }
-    film->aggiungiTrailer(this);
+    if(t_film)
+        film->aggiungiTrailer(this);
 }   
 
 void Trailer::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio){ 

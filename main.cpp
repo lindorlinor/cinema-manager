@@ -7,11 +7,13 @@
 int main(int argc, char *argv[])
 {
     qputenv("QT_QPA_PLATFORM", QByteArray("xcb"));
+    
     QApplication a(argc, argv);
 
-    /* Catch::Session session;
+    Catch::Session session;
 
     // Configura gli argomenti per Catch2
+
     const char *catch_argv[] = {
         argv[0], // usa il nome reale dell'eseguibile
         "--reporter", "console",
@@ -25,10 +27,9 @@ int main(int argc, char *argv[])
     if (test_result != 0)
     {
         return test_result; // esci se i test falliscono
-    } */
-    // Avvia l'applicazione Qt solo se i test passano
+    }
 
-    qputenv("QT_QPA_PLATFORM", QByteArray("xcb"));
+    //avvia l'applicazione Qt solo se i test passano
 
     MainWindow w;
     w.show();

@@ -8,15 +8,15 @@ Podcast::Podcast(const string &titolo, const string &descrizione, Formato format
     setVisualizzazioni(0);
 }
 
-Podcast::~Podcast()
-{
-    for (auto it = p_elencoPuntate.begin(); it != p_elencoPuntate.end(); ++it)
-    {
-        delete *it;
-        *it = nullptr;
+Podcast::~Podcast(){
+    while (!p_elencoPuntate.empty()) {
+        Puntata* puntata = p_elencoPuntate.back();
+        // puntata->setPodcast(nullptr);
+        delete puntata;
+        p_elencoPuntate.pop_back();
     }
-    p_elencoPuntate.clear();
 }
+
 
 string Podcast::getConduttore() const
 {
