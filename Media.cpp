@@ -153,17 +153,6 @@ void Media::setVisualizzazioni(unsigned int visualizzazioni)
     m_visualizzazioni = visualizzazioni;
 }
 
-// void Media::setAutore(const string& autore){
-//     m_autore = autore;
-// }
-// void Media::setTitolo(const string& titolo) {
-//     m_titolo = titolo;
-// }
-
-// void Media::setDescrizione(const string& descrizione) {
-//     m_descrizione = descrizione;
-// }
-
 
 // // Metodi get
 string Media::getAutore() const{

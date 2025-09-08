@@ -26,7 +26,6 @@ public:
             year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti, Formato formato, Risoluzione risoluzione,
             unsigned int nProiezioniGiornaliere, Film *film, const string &autore = "Sconosciuto",
             const string &path = ":/images/default_trailer.png");
-
     ~Trailer();
 
     /**

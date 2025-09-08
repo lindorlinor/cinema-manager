@@ -10,12 +10,12 @@ Podcast::Podcast(const string &titolo, const string &descrizione, Formato format
 
 Podcast::~Podcast()
 {
-    for (auto it = p_elencoPuntate.begin(); it != p_elencoPuntate.end(); ++it)
+    while (!p_elencoPuntate.empty())
     {
-        delete *it;
-        *it = nullptr;
+        Puntata *puntata = p_elencoPuntate.back();
+        delete puntata;
+        p_elencoPuntate.pop_back();
     }
-    p_elencoPuntate.clear();
 }
 
 string Podcast::getConduttore() const
