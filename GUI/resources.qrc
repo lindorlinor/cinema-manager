@@ -2,6 +2,7 @@
     <!-- Immagini -->
     <qresource>
         <file>../images/coverCinema.png</file>
+        <file>../images/default.png</file>
         <file>../images/default_film.png</file>
         <file>../images/default_podcast_puntate.png</file>
         <file>../images/default_inserzioni.png</file>
