@@ -85,7 +85,7 @@ void MediaManagerXml::saveDocument() {
 
 bool MediaManagerXml::importSessionFromXml(CinemaRepositoryJson& jsonManager){
     QString filePath = QFileDialog::getOpenFileName(
-        nullptr, "Apri sessione XML", "", "XML Files (*.xml)");
+        nullptr, "Apri cinema in XML", "", "XML Files (*.xml)");
     if (filePath.isEmpty()) return false;
 
     QFile file(filePath);
@@ -183,7 +183,7 @@ void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem, CinemaRepos
 bool MediaManagerXml::importMediaListFromXml(CinemaRepositoryJson& jsonManager){
     if(!currentCinema) return false;
     QString filePath = QFileDialog::getOpenFileName(
-    nullptr, "Apri sessione XML", "", "XML Files (*.xml)");
+    nullptr, "Apri media in XML", "", "XML Files (*.xml)");
     if (filePath.isEmpty()) return false;
 
     QFile file(filePath);

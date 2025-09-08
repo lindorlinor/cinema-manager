@@ -3,9 +3,10 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QFileDialog>
-#include <QMessageBox>
+#include "CustomMessageBox.h"
 #include <QDomDocument>
 #include <QCoreApplication>
+#include <QApplication>
 
 InsertCinemaPage::InsertCinemaPage(QList<Cinema*>& w_cinema, QWidget * parent):QWidget(parent), ic_cinema(w_cinema),
                                             frameLayout(new QVBoxLayout),
@@ -90,7 +91,7 @@ void InsertCinemaPage::removeImage(){
     hasCustomImage = false;
 }
 
-//crea il file xml del cinema e appare un messaggio che conferma il successo dell'operazione
+
 void InsertCinemaPage::saveCinemaInJson() {
     
     Cinema* cinema = new Cinema(textInput->text().trimmed().toStdString(), imagePath.toStdString());
@@ -99,11 +100,17 @@ void InsertCinemaPage::saveCinemaInJson() {
     CinemaRepositoryJson cinemaManager;
     cinemaManager.saveCinemaInJson(cinema);
 
-    QMessageBox::information(this, tr("Salvato"), tr("Cinema salvato correttamente."));
+    CustomMessageBox msgbox(this);
+    msgbox.move(QApplication::primaryScreen()->geometry().center() - msgbox.rect().center());
+    msgbox.setTitleText("Salvato");
+    msgbox.setMainMessage("Cinema salvato correttamente.");
+    msgbox.hideCancelButton();
+    msgbox.setInfoMessage("Premi ok per continuare.");
+    msgbox.exec();
     emit returnCinemaSelectionPage();
 }
 
-/**@to do e se mettessi che se textInput è clear allora saveButton è disabilitato, con un trigger connect?
+/**
  * @brief per togliere quello che era stato precedentemente inserito nei campi di input e nella imageArea. 
  * 
  * In particolare per farlo: cancella l'input text, setta l'immagine di default, richima @ref InsertImageFrame::reset, setta la label
@@ -160,8 +167,8 @@ void InsertCinemaPage::createHeader(){
     layoutLabels->addWidget(titolo);
     layoutLabels->addWidget(descrizione);
     layoutLabels->setAlignment(Qt::AlignLeft);
-    contenitoreLabels->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed); //permette il margine, altrimenti non sarebbe esattamente 70
-    //aggiunge il contenitore per le due label al frame e le allinea a sinistra
+    contenitoreLabels->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+
     frameLayout->addWidget(contenitoreLabels);
     frameLayout->addStretch();
     frameLayout->setAlignment( Qt::AlignLeft);
@@ -180,10 +187,8 @@ void InsertCinemaPage::createSplitView(){
 
     createLayoutInput(layoutdx);
 
-    contenitoredx->setMinimumHeight(400);  //alto quanto l'immagine, così quando appare l'immagine la transizione è giusto un po più fluida
+    contenitoredx->setMinimumHeight(400);
 
- 
-    // contenitoredx->setObjectName("gaga");
     imageLabel->setMaximumSize(330,400);
     QPixmap pixmap(":/images/coverCinema.png");
     imageLabel->setAlignment(Qt::AlignCenter);
@@ -251,8 +256,15 @@ void InsertCinemaPage::createButtonLayout(QVBoxLayout* layoutdx) {
 
     connect(escButton,&QPushButton::clicked,this,&InsertCinemaPage::returnCinemaSelectionPage);
     connect(saveButton,&QPushButton::clicked,this,[this](){
-        if(!hasCustomImage)
-            QMessageBox::information(this, tr("Immagine non selezionata"), tr("Verrà impostata un'immagine di default"));
+        if(!hasCustomImage){
+            CustomMessageBox msgbox(this);
+            msgbox.move(QApplication::primaryScreen()->geometry().center() - msgbox.rect().center());
+            msgbox.setTitleText("Immagine non selezionata");
+            msgbox.setMainMessage("Verrà impostata un'immagine di default");
+            msgbox.hideCancelButton();
+            msgbox.exec();
+            msgbox.setInfoMessage("Premi ok per continuare");
+        } 
         saveCinemaInJson();
     });
 

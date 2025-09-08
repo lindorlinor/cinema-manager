@@ -14,7 +14,6 @@
 #include <QIcon>
 #include <QFile>
 #include <QToolButton>
-#include <QMessageBox>
 
 #include "../Cinema.h"
 #include "CinemaSelectionPage.h"

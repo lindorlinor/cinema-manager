@@ -1,6 +1,5 @@
 #include "InserzioneView.h"
 #include <QVBoxLayout>
-#include <QMessageBox>
 #include <QLabel>
 #include <QString>
 #include <QPixmap>

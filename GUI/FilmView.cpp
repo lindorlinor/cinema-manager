@@ -1,6 +1,5 @@
 #include "FilmView.h"
 #include <QVBoxLayout>
-#include <QMessageBox>
 #include <QApplication>
 #include <QLabel>
 #include <QString>

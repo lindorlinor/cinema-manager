@@ -1,5 +1,5 @@
 #include "Puntata.h"
-#include "POdcast.h"
+#include "Podcast.h"
 
 Puntata::Puntata(const string &titolo, const string &descrizione, year_month_day gg_mm_aaInizioRilascio,
                  year_month_day gg_mm_aaFineRilascio, unsigned int durataMinuti,

@@ -4,6 +4,7 @@
 #include "DetailPageVisitor.h"
 #include "LibraryObserver.h"
 #include "InserzioneView.h"
+#include "CustomMessageBox.h"
 
 /* NOTE IMPORTANTI: s_MediaListOfCinema contiene gli oggetti caricati nel json ed è tramite lei che popolo il cinema selezionato con gli addMedia, ma così
 ci sono i puntatori della liste di supporto e della liste media del cinema che puntano allo stesso media -> attenzione al dangling, quando si aggiunge un elemento non
@@ -517,26 +518,17 @@ void SearchPanel::acceptEditCinema()
     }
 }
 
-void SearchPanel::acceptDeleteCinema()
-{
-    QMessageBox msgBox(this);
-    msgBox.setWindowTitle("Conferma eliminazione");
-    msgBox.setText("Sei sicuro di voler eliminare il cinema? "
+void SearchPanel::acceptDeleteCinema(){
+    CustomMessageBox msgbox(this);
+    msgbox.setTitleText("Conferma eliminazione");
+    msgbox.setMainMessage("Sei sicuro di voler eliminare il cinema? <br/>"
                    "Avrà l'effetto di eliminare tutti i media ad esso associati");
-    QPushButton *annulla = msgBox.addButton("Annulla", QMessageBox::RejectRole);
-    QPushButton *conferma = msgBox.addButton("Conferma", QMessageBox::AcceptRole);
-    msgBox.exec();
-    if (msgBox.clickedButton() == conferma)
-    {
-        // qDebug() << "Eliminazione cinema "<<QString::fromStdString(s_cinemaSelezionato->getNomeCinema())<<" confermata";
-        s_xmlManager->setCurrentCinema(nullptr);
+    msgbox.setInfoMessage();
+    if(msgbox.exec() == QDialog::Accepted){
+        s_xmlManager->setCurrentCinema(nullptr); //imposta nullptr al campo dati CinemaCurrent in MediaManagerXml
         emit deleteCinemaInSearchPanel(s_cinemaSelezionato);
         resetSearchPanelAfterDeleteCinema();
         emit escSearchPanelAfterDeleteCinema();
-    }
-    else if (msgBox.clickedButton() == annulla)
-    {
-        // qDebug() << "Eliminazione cinema "<<QString::fromStdString(s_cinemaSelezionato->getNomeCinema())<<" annullata";
     }
 }
 

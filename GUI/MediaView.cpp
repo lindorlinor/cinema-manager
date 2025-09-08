@@ -87,7 +87,7 @@ void MediaView::createMediaCard() {
     card->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
     leftLayout->addWidget(card, 0, Qt::AlignTop);
 
-    updateMediaCard(); //aggiorna con il valore corrente
+    updateMediaCard(); //aggiorna con l'immagine corrente
 
     box->setObjectName("box");
 }
@@ -97,6 +97,9 @@ void MediaView::updateMediaCard() {
 
 
     QPixmap image(QString::fromStdString(mediaPtr->getImPath()));
+    if (image.isNull()) {
+        image = QPixmap(":/images/default.png"); 
+    }
     QPixmap scaled = image.scaled(390,577,Qt::KeepAspectRatio,Qt::SmoothTransformation);
     copertina->setPixmap(scaled);
 
