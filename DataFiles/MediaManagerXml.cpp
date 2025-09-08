@@ -143,14 +143,13 @@ bool MediaManagerXml::importSessionFromXml(CinemaRepositoryJson& jsonManager){
 
 void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem, CinemaRepositoryJson& jsonManager, const string& cinemaName) {  
     list<Media*> supportList;  
-    unsigned int errors = 0;
 
     while (!mediaElem.isNull()) {
         QString tipo = mediaElem.tagName(); 
         Media* ptrMedia = nullptr;
 
         if (tipo == "Film") {
-            ptrMedia = XmlVisitor::fromXmlFilmElement(mediaElem, errors);
+            ptrMedia = XmlVisitor::fromXmlFilmElement(mediaElem);
         } else if (tipo == "Trailer") {
             ptrMedia = XmlVisitor::fromXmlTrailerElement(mediaElem, currentCinema ? currentCinema->getListaMedia() : supportList);
         } else if (tipo == "Inserzione") {
@@ -159,8 +158,6 @@ void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem, CinemaRepos
             ptrMedia = XmlVisitor::fromXmlPodcastElement(mediaElem);
         } else if (tipo == "Puntata") {
             ptrMedia = XmlVisitor::fromXmlPuntataElement(mediaElem, currentCinema ? currentCinema->getListaMedia() : supportList);
-        } else {
-            errors++;
         }
 
         if (ptrMedia) {
@@ -176,8 +173,6 @@ void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem, CinemaRepos
         mediaElem = mediaElem.nextSiblingElement();
     }
 
-    if (errors)
-        QMessageBox::information(nullptr, "Info", QString::number(errors) + " media non sono stati importati correttamente");
 }
 
 bool MediaManagerXml::importMediaListFromXml(CinemaRepositoryJson& jsonManager){
