@@ -1,9 +1,9 @@
 #include "InsertCinemaPage.h"
+#include "Custom/CustomMessageBox.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QFileDialog>
-#include "CustomMessageBox.h"
 #include <QDomDocument>
 #include <QCoreApplication>
 #include <QApplication>
@@ -119,8 +119,8 @@ void InsertCinemaPage::saveCinemaInJson()
 }
 
 /**
- * @brief per togliere quello che era stato precedentemente inserito nei campi di input e nella imageArea. 
- * 
+ * @brief per togliere quello che era stato precedentemente inserito nei campi di input e nella imageArea.
+ *
  * In particolare per farlo: cancella l'input text, setta l'immagine di default, richima @ref InsertImageFrame::reset, setta la label
  * di errore invisibile, setta il pulsante di salvataggio disabilitato (perchè la input text è vuota)
  *
@@ -202,7 +202,7 @@ void InsertCinemaPage::createSplitView()
 
     contenitoredx->setMinimumHeight(400);
 
-    imageLabel->setMaximumSize(330,400);
+    imageLabel->setMaximumSize(330, 400);
     QPixmap pixmap(":/images/coverCinema.png");
     imageLabel->setAlignment(Qt::AlignCenter);
     imageLabel->setPixmap(pixmap);
@@ -267,8 +267,9 @@ void InsertCinemaPage::createButtonLayout(QVBoxLayout *layoutdx)
     escButton->setFixedSize(160, 40);
     saveButton->setFixedSize(160, 40);
 
-    connect(escButton,&QPushButton::clicked,this,&InsertCinemaPage::returnCinemaSelectionPage);
-    connect(saveButton,&QPushButton::clicked,this,[this](){
+    connect(escButton, &QPushButton::clicked, this, &InsertCinemaPage::returnCinemaSelectionPage);
+    connect(saveButton, &QPushButton::clicked, this, [this]()
+            {
         if(!hasCustomImage){
             CustomMessageBox msgbox(this);
             msgbox.move(QApplication::primaryScreen()->geometry().center() - msgbox.rect().center());
@@ -278,8 +279,7 @@ void InsertCinemaPage::createButtonLayout(QVBoxLayout *layoutdx)
             msgbox.exec();
             msgbox.setInfoMessage("Premi ok per continuare");
         } 
-        saveCinemaInJson();
-    });
+        saveCinemaInJson(); });
 
     layoutPulsanti->addWidget(escButton);
     layoutPulsanti->addStretch();

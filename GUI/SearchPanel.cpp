@@ -1,10 +1,10 @@
 #include "SearchPanel.h"
-#include "FilmView.h"
-#include "TrailerView.h"
-#include "DetailPageVisitor.h"
-#include "LibraryObserver.h"
-#include "InserzioneView.h"
-#include "CustomMessageBox.h"
+#include "MediaViewPages/FilmView.h"
+#include "MediaViewPages/TrailerView.h"
+#include "MediaViewPages/DetailPageVisitor.h"
+#include "Library/LibraryObserver.h"
+#include "MediaViewPages/InserzioneView.h"
+#include "Custom/CustomMessageBox.h"
 
 /* NOTE IMPORTANTI: s_MediaListOfCinema contiene gli oggetti caricati nel json ed è tramite lei che popolo il cinema selezionato con gli addMedia, ma così
 ci sono i puntatori della liste di supporto e della liste media del cinema che puntano allo stesso media -> attenzione al dangling, quando si aggiunge un elemento non
@@ -519,14 +519,16 @@ void SearchPanel::acceptEditCinema()
     }
 }
 
-void SearchPanel::acceptDeleteCinema(){
+void SearchPanel::acceptDeleteCinema()
+{
     CustomMessageBox msgbox(this);
     msgbox.setTitleText("Conferma eliminazione");
     msgbox.setMainMessage("Sei sicuro di voler eliminare il cinema? <br/>"
-                   "Avrà l'effetto di eliminare tutti i media ad esso associati");
+                          "Avrà l'effetto di eliminare tutti i media ad esso associati");
     msgbox.setInfoMessage();
-    if(msgbox.exec() == QDialog::Accepted){
-        s_xmlManager->setCurrentCinema(nullptr); //imposta nullptr al campo dati CinemaCurrent in MediaManagerXml
+    if (msgbox.exec() == QDialog::Accepted)
+    {
+        s_xmlManager->setCurrentCinema(nullptr); // imposta nullptr al campo dati CinemaCurrent in MediaManagerXml
         emit deleteCinemaInSearchPanel(s_cinemaSelezionato);
         resetSearchPanelAfterDeleteCinema();
         emit escSearchPanelAfterDeleteCinema();

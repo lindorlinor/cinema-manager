@@ -30,39 +30,39 @@ HEADERS +=  \
             Cinema.h \
             catch.hpp \
             MediaVisitor.h \
-            DetailPageVisitor.h \
-            GUI/CinemaButton.h \
             GUI/MainWindow.h \
             GUI/CinemaSelectionPage.h \
             GUI/SearchPanel.h \
             GUI/InsertCinemaPage.h \
-            GUI/InsertMedia.h \
-            GUI/ListPersone.h \
-            GUI/InsertImageFrame.h \
-            GUI/MediaFrame.h \
-            GUI/SelectMediaReference.h \
-            GUI/MediaView.h \
-            GUI/FilmView.h \
-            GUI/TrailerView.h \
-            GUI/inserzioneView.h \
-            GUI/PodcastView.h \
-            GUI/PuntataView.h \
-            GUI/ExpandableLabel.h \
-            GUI/PreviewCard.h \
-            GUI/DetailsPageButtons.h \
-            GUI/MediaLibraryGenerale.h \
-            GUI/MediaLibraryTutto.h \
-            GUI/FlowLayout.h \
-            GUI/LibraryObserver.h \
-            GUI/Menu.h \
-            GUI/CardVisitor.h \
-            GUI/ScrollListWidget.h \
-            GUI/UpdateMediaLibrary.h \
-            GUI/CinemaModifier.h \
-            GUI/MediaInterface.h \
-            GUI/EditMedia.h \
-            GUI/HorizontalCard.h \
-            GUI/CustomMessageBox.h \
+            GUI/Library/MediaLibraryGenerale.h \
+            GUI/Library/MediaLibraryTutto.h \
+            GUI/Library/LibraryObserver.h \
+            GUI/Library/CardVisitor.h \
+            GUI/Library/UpdateMediaLibrary.h \
+            GUI/MediaEditor/InsertMedia.h \
+            GUI/MediaEditor/MediaInterface.h \
+            GUI/MediaEditor/EditMedia.h \
+            GUI/Custom/Menu.h \
+            GUI/Custom/SelectMediaReference.h \
+            GUI/Custom/InsertImageFrame.h \
+            GUI/Custom/ListPersone.h \
+            GUI/Custom/MediaFrame.h \
+            GUI/Custom/FlowLayout.h \
+            GUI/Custom/ScrollListWidget.h \
+            GUI/Custom/CinemaButton.h \
+            GUI/Custom/CinemaModifier.h \
+            GUI/Custom/HorizontalCard.h \
+            GUI/Custom/CustomMessageBox.h \
+            GUI/Custom/ExpandableLabel.h \
+            GUI/Custom/DetailsPageButtons.h \
+            GUI/Custom/PreviewCard.h \
+            GUI/MediaViewPages/DetailPageVisitor.h \
+            GUI/MediaViewPages/FilmView.h \
+            GUI/MediaViewPages/TrailerView.h \
+            GUI/MediaViewPages/inserzioneView.h \
+            GUI/MediaViewPages/PodcastView.h \
+            GUI/MediaViewPages/PuntataView.h \
+            GUI/MediaViewPages/MediaView.h \
             DataFiles/CinemaRepositoryJson.h \
             DataFiles/JsonConverter.h \
             DataFiles/JsonVisitor.h \
@@ -78,39 +78,39 @@ SOURCES +=  \
             Podcast.cpp \
             Puntata.cpp \
             Cinema.cpp \
-            DetailPageVisitor.cpp \
             test/test.cpp \
-            GUI/CinemaButton.cpp \
             GUI/MainWindow.cpp \
             GUI/CinemaSelectionPage.cpp \
             GUI/SearchPanel.cpp \
             GUI/InsertCinemaPage.cpp \
-            GUI/InsertMedia.cpp \
-            GUI/ListPersone.cpp \
-            GUI/InsertImageFrame.cpp \
-            GUI/MediaFrame.cpp \
-            GUI/SelectMediaReference.cpp \
-            GUI/MediaView.cpp \
-            GUI/FilmView.cpp \
-            GUI/inserzioneView.cpp \
-            GUI/PodcastView.cpp \
-            GUI/PuntataView.cpp \
-            GUI/TrailerView.cpp \
-            GUI/ExpandableLabel.cpp \
-            GUI/PreviewCard.cpp \
-            GUI/MediaLibraryGenerale.cpp \
-            GUI/MediaLibraryTutto.cpp \
-            GUI/DetailsPageButtons.cpp \
-            GUI/ScrollListWidget.cpp \
-            GUI/FlowLayout.cpp \
-            GUI/UpdateMediaLibrary.cpp \
-            GUI/Menu.cpp \
-            GUI/CardVisitor.cpp \
-            GUI/CinemaModifier.cpp \
-            GUI/MediaInterface.cpp \
-            GUI/EditMedia.cpp \
-            GUI/HorizontalCard.cpp \
-            GUI/CustomMessageBox.cpp \
+            GUI/Library/MediaLibraryGenerale.cpp \
+            GUI/Library/MediaLibraryTutto.cpp \
+            GUI/Library/UpdateMediaLibrary.cpp \
+            GUI/Library/CardVisitor.cpp \
+            GUI/MediaEditor/InsertMedia.cpp \
+            GUI/MediaEditor/MediaInterface.cpp \
+            GUI/MediaEditor/EditMedia.cpp \
+            GUI/Custom/CinemaModifier.cpp \
+            GUI/Custom/CinemaButton.cpp \
+            GUI/Custom/ListPersone.cpp \
+            GUI/Custom/InsertImageFrame.cpp \
+            GUI/Custom/MediaFrame.cpp \
+            GUI/Custom/SelectMediaReference.cpp \
+            GUI/Custom/ScrollListWidget.cpp \
+            GUI/Custom/FlowLayout.cpp \
+            GUI/Custom/HorizontalCard.cpp \
+            GUI/Custom/Menu.cpp \
+            GUI/Custom/CustomMessageBox.cpp \
+            GUI/Custom/ExpandableLabel.cpp \
+            GUI/Custom/DetailsPageButtons.cpp \
+            GUI/Custom/PreviewCard.cpp \
+            GUI/MediaViewPages/DetailPageVisitor.cpp \
+            GUI/MediaViewPages/MediaView.cpp \
+            GUI/MediaViewPages/FilmView.cpp \
+            GUI/MediaViewPages/inserzioneView.cpp \
+            GUI/MediaViewPages/PodcastView.cpp \
+            GUI/MediaViewPages/PuntataView.cpp \
+            GUI/MediaViewPages/TrailerView.cpp \
             DataFiles/CinemaRepositoryJson.cpp \
             DataFiles/JsonConverter.cpp \
             DataFiles/JsonVisitor.cpp \
