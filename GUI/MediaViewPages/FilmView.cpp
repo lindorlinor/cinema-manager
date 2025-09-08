@@ -164,8 +164,7 @@ void FilmView::createMediaDetails()
     sezioneDettagli->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
     updateMediaDetails();
 }
-void FilmView::updateMediaDetails()
-{
+void FilmView::updateMediaDetails(){
     updateRowDetails();
     if (!filmPtr)
         return;
@@ -203,22 +202,24 @@ void FilmView::updateMediaDetails()
     descrizione->setText("<span style='color: #bdced3; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(filmPtr->getDescrizione()));
 
     QString attoriText;
-    for (const auto &attore : filmPtr->getAttoriPrincipali())
-    {
+    for (const auto &attore : filmPtr->getAttoriPrincipali()){
         attoriText += QString::fromStdString(attore) + ", ";
     }
     if (!attoriText.isEmpty())
         attoriText.chop(2); // rimuove gli ultimi due caratteri (ossia , )
+    if (attoriText.isEmpty())
+        attoriText = "Nessuno";
     attoriLabel->setText("<span style='color: #bdced3; font-weight:bold;'>Attori principali: </span>" + attoriText);
 
     QString generiText;
-    for (const auto &g : filmPtr->getGeneri())
-    {
-        generiText += QString::fromUtf8(toString(g)) + ", ";
+    for (const auto &g : filmPtr->getGeneri()){
+        if(g!= Genere::NonTrovato)
+            generiText += QString::fromUtf8(toString(g)) + ", ";
     }
     if (!generiText.isEmpty())
         generiText.chop(2); // rimuove gli ultimi due caratteri (ossia , )
-
+    if(generiText.isEmpty())
+        generiText = "Nessuno";
     genere->setText("<span style='color: #bdced3; font-weight:bold;'>Genere: </span><span style='color: #4e7f8b;'>" + generiText + "</span>");
 
     classificazione->setText("<span style='color: #bdced3; font-weight:bold;'>Classificazione: </span>"
@@ -271,10 +272,8 @@ void FilmView::updateScrollableSection()
         return;
 
     QLayoutItem *item;
-    while ((item = layoutTrailer->takeAt(0)) != nullptr)
-    {
-        if (QWidget *w = item->widget())
-        {
+    while ((item = layoutTrailer->takeAt(0)) != nullptr){
+        if (QWidget *w = item->widget()){
             w->deleteLater();
         }
         delete item;

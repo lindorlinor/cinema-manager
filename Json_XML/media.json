@@ -70,7 +70,7 @@
         "durataMinuti": 105,
         "formato": "DCP",
         "generi": [
-            "Nessuno",
+            "Non trovato",
             "Commedia"
         ],
         "lingueDisponibili": [
@@ -908,7 +908,7 @@
         "generi": [
             "Horror",
             "Thriller",
-            "Nessuno"
+            "Non trovato"
         ],
         "lingueDisponibili": [
             "Italiano",
@@ -941,7 +941,7 @@
         "formato": "DCP",
         "generi": [
             "Commedia",
-            "Nessuno"
+            "Non trovato"
         ],
         "lingueDisponibili": [
             "Italiano",
@@ -972,15 +972,13 @@
         "autore": "Stanley Kubrick",
         "casaDiProduzione": "Warner Bros. Pictures / MGM",
         "costoBiglietto": 11,
-        "dataFineRilascio": "2025-10-31",
+        "dataFineRilascio": "2025-10-15",
         "dataInizioRilascio": "2025-10-13",
         "descrizione": "Il percorso di Alex – da punk amorale ad onorato cittadino, previo lavaggio del cervello – viene ambientato in un futuro scioccante dall’ardita interpretazione kubrickiana del romanzo di Anthony Burgess.",
         "durataMinuti": 137,
         "formato": "DCP",
         "generi": [
-            "Nessuno",
-            "Thriller",
-            "Nessuno"
+            "Thriller"
         ],
         "lingueDisponibili": [
             "Italiano",
@@ -989,7 +987,7 @@
         "nPostCredit": 0,
         "nomeCinema": "Cinema Notorius",
         "path": "images/locandina_aranciameccanica.png",
-        "risoluzione": "FullHD 1080p",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
             "Italiano"
         ],
@@ -1107,8 +1105,7 @@
         "sottotitoliDisponibili": [
             "Italiano",
             "Inglese",
-            "Francese",
-            "Tedesco"
+            "Francese"
         ],
         "tipologia": "trailer",
         "titolo": "Trailer ufficiale - Tutta colpa del rock"
@@ -1438,5 +1435,177 @@
         ],
         "tipologia": "trailer",
         "titolo": "Trailer ufficiale – Material Love"
+    },
+    {
+        "copertinaCinema": ":/images/coverCinema.png",
+        "nomeCinema": "cinemaprov"
+    },
+    {
+        "attoriPrincipali": [
+            "D'Pharaoh Woon-A-Tai",
+            "Will Poulter",
+            "Kit Connor",
+            "Joseph Quinn",
+            "Cosmo Jarvis",
+            "Charles Melton",
+            "Finn Bennett",
+            "Noah Centineo"
+        ],
+        "autore": "Alex Garland, Ray Mendoza",
+        "casaDiProduzione": "20th Century Studios",
+        "costoBiglietto": 10.5,
+        "dataFineRilascio": "2025-09-15",
+        "dataInizioRilascio": "2025-08-21",
+        "descrizione": "Tratto da una storia vera, Warfare – Tempo di guerra è un’immersione nella sconvolgente realtà dei conflitti moderni, ispirata alle esperienze dei Navy SEAL in Iraq nel 2006.",
+        "durataMinuti": 95,
+        "formato": "DCP",
+        "generi": [
+            "Azione",
+            "Non trovato",
+            "Non trovato"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "cinemaprov",
+        "path": ":/images/warfare.png",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Warfare – Tempo di guerra"
+    },
+    {
+        "attoriPrincipali": [
+            "Zach Aguilar",
+            "Laila Berzins",
+            "Kira Buckland",
+            "Reba Buhr",
+            "Griffin Burns"
+        ],
+        "autore": "Haruo Sotozaki",
+        "casaDiProduzione": "Aniplex / Ufotable / Crunchyroll",
+        "costoBiglietto": 10,
+        "dataFineRilascio": "2025-09-30",
+        "dataInizioRilascio": "2025-09-11",
+        "descrizione": "Tanjiro Kamado e i suoi compagni Hashira si ritrovano a combattere nella fortezza dei demoni: l’Infinity Castle. Lo scontro finale tra la Demon Slayer Corps e Muzan Kibutsuji ha inizio.",
+        "durataMinuti": 155,
+        "formato": "RealD 3D",
+        "generi": [
+            "Animazione",
+            "Azione",
+            "Fantasy"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Giapponese"
+        ],
+        "nPostCredit": 1,
+        "nomeCinema": "cinemaprov",
+        "path": ":/images/demonslayer_castello.png",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Demon Slayer: Kimetsu no Yaiba – Il Castello dell’Infinito"
+    },
+    {
+        "attoriPrincipali": [
+            "John Sparkes",
+            "Morwenna Banks",
+            "Richard Ridings"
+        ],
+        "autore": "Gretchen Mallorie, Andrea Tran",
+        "casaDiProduzione": "Entertainment One",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-09-25",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "Fiocco rosa alla porta! Arriva al cinema Una sorellina per Peppa Pig, il film evento che introduce Evie, la nuova sorellina di Peppa e George, con episodi inediti, canzoni e videoclip musicali.",
+        "durataMinuti": 65,
+        "formato": "DCP",
+        "generi": [
+            "Animazione",
+            "Non trovato",
+            "Non trovato"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "cinemaprov",
+        "path": ":/images/peppa_sorellina.png",
+        "risoluzione": "HD 720p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Una sorellina per Peppa Pig"
+    },
+    {
+        "autore": "20th Century Studios",
+        "autoreFilmAssociato": "Alex Garland, Ray Mendoza",
+        "dataFineRilascio": "2025-08-20",
+        "dataInizioRilascio": "2025-07-10",
+        "descrizione": "Il trailer ufficiale che mostra l’intensità e il realismo del conflitto iracheno vissuto dai Navy SEAL.",
+        "durataMinuti": 2,
+        "filmAssociato": "Warfare – Tempo di guerra",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 4,
+        "nomeCinema": "cinemaprov",
+        "path": ":/images/trailer_warfare.png",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale – Warfare: Tempo di guerra"
+    },
+    {
+        "autore": "Aniplex",
+        "autoreFilmAssociato": "Haruo Sotozaki",
+        "dataFineRilascio": "2025-09-10",
+        "dataInizioRilascio": "2025-08-01",
+        "descrizione": "Il trailer ufficiale che introduce la battaglia finale della Demon Slayer Corps contro Muzan Kibutsuji nell’Infinity Castle.",
+        "durataMinuti": 3,
+        "filmAssociato": "Demon Slayer: Kimetsu no Yaiba – Il Castello dell’Infinito",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 5,
+        "nomeCinema": "cinemaprov",
+        "path": ":/images/trailer_demonslayer_castello.png",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale – Demon Slayer: Il Castello dell’Infinito"
+    },
+    {
+        "autore": "Entertainment One",
+        "autoreFilmAssociato": "Gretchen Mallorie, Andrea Tran",
+        "dataFineRilascio": "2025-09-03",
+        "dataInizioRilascio": "2025-07-20",
+        "descrizione": "Il trailer del film evento dedicato a Peppa Pig con l’arrivo della nuova sorellina Evie, tra canzoni e avventure divertenti.",
+        "durataMinuti": 2,
+        "filmAssociato": "Una sorellina per Peppa Pig",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 5,
+        "nomeCinema": "cinemaprov",
+        "path": ":/images/trailer_peppa_sorellina.png",
+        "risoluzione": "HD 720p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale – Una sorellina per Peppa Pig"
     }
 ]

@@ -3,8 +3,7 @@
 #include <QToolButton>
 MediaView::MediaView(Media *mPtr, QWidget *parent)
     : QWidget(parent), mediaPtr(mPtr), layoutPage(new QVBoxLayout(this)), splitter(new QWidget(this)), splitterLayout(new QHBoxLayout(splitter)), leftSide(new QWidget(splitter)), leftLayout(new QHBoxLayout(leftSide)),
-      details(new QFrame(leftSide)), detailsLayout(new QVBoxLayout(details)), endDateLabel(nullptr), rightSide(new QWidget(splitter)), rightLayout(new QVBoxLayout(rightSide)), card(new QWidget(leftSide)), cardLayout(new QVBoxLayout(card)), copertina(new QLabel(card)), box(new QWidget(card))
-{
+      details(new QFrame(leftSide)), detailsLayout(new QVBoxLayout(details)), endDateLabel(nullptr), rightSide(new QWidget(splitter)), rightLayout(new QVBoxLayout(rightSide)), card(new QWidget(leftSide)), cardLayout(new QVBoxLayout(card)), copertina(new QLabel(card)), box(new QWidget(card)){
 
     createHeader();
 
@@ -17,8 +16,7 @@ MediaView::MediaView(Media *mPtr, QWidget *parent)
     details->setObjectName("details");
 }
 
-void MediaView::createHeader()
-{
+void MediaView::createHeader(){
     QWidget *contenitoreHeader = new QWidget(this);
     contenitoreHeader->setContentsMargins(62, 20, 0, 0);
     contenitoreHeader->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
@@ -53,13 +51,11 @@ void MediaView::createHeader()
     updateHeader(); // aggiorna con il valore corrente
 }
 
-void MediaView::updateHeader()
-{
+void MediaView::updateHeader(){
     titolo->setText(QString::fromStdString(mediaPtr->getTitolo()));
 }
 
-void MediaView::createMediaCard()
-{
+void MediaView::createMediaCard(){
     card->setContentsMargins(0, 0, 0, 0);
     cardLayout->setContentsMargins(0, 0, 0, 0);
 
@@ -91,16 +87,14 @@ void MediaView::createMediaCard()
     box->setObjectName("box");
 }
 
-void MediaView::updateMediaCard()
-{
+void MediaView::updateMediaCard(){
     if (!mediaPtr)
         return;
 
     QPixmap image(QString::fromStdString(mediaPtr->getImPath()));
     if (image.isNull())
-    {
         image = QPixmap(":/images/default.png");
-    }
+    
     QPixmap scaled = image.scaled(390, 577, Qt::KeepAspectRatio, Qt::SmoothTransformation);
     copertina->setPixmap(scaled);
 
@@ -114,32 +108,38 @@ void MediaView::updateMediaCard()
         QString::number(mediaPtr->getDurataMinuti()) + " min</span>");
 
     QString lingueText;
-    for (size_t i = 0; i < mediaPtr->getLingue().size(); ++i)
-    {
-        lingueText += QString::fromUtf8(toString(mediaPtr->getLingue()[i]));
-        if (i != mediaPtr->getLingue().size() - 1)
-            lingueText += ", ";
+    for(const auto &l : mediaPtr->getLingue()){
+        if (l != Lingua::NonTrovata)
+            lingueText += QString::fromUtf8(toString(l)) + ", ";
     }
+    if (!lingueText.isEmpty())
+        lingueText.chop(2); // rimuove l'ultima ", "
+
+    if(lingueText.isEmpty())
+        lingueText = "Nessuna";
+
     lingue->setText(
         "<span style='color: #bdced3; font-size: 13pt; font-weight:bold;'>Lingue: </span>"
         "<span style='color: #bdced3; font-size: 11pt;'>" +
         lingueText + "</span>");
 
     QString sottotitoliText;
-    for (size_t i = 0; i < mediaPtr->getSottotitoli().size(); ++i)
-    {
-        sottotitoliText += QString::fromUtf8(toString(mediaPtr->getSottotitoli()[i]));
-        if (i != mediaPtr->getSottotitoli().size() - 1)
-            sottotitoliText += ", ";
+    for (const auto &s : mediaPtr->getSottotitoli()) {
+        if (s != Lingua::NonTrovata)
+            sottotitoliText += QString::fromUtf8(toString(s)) + ", ";
     }
+    if (!sottotitoliText.isEmpty())
+        sottotitoliText.chop(2);
+    if (sottotitoliText.isEmpty())
+        sottotitoliText = "Nessuno";
+
     sottotitoli->setText(
         "<span style='color: #bdced3; font-size: 13pt; font-weight:bold;'>Sottotitoli: </span>"
         "<span style='color: #bdced3; font-size: 11pt;'>" +
         sottotitoliText + "</span>");
 }
 
-void MediaView::createRowDetails()
-{
+void MediaView::createRowDetails(){
     QWidget *rowWidget = new QWidget(details);
     rowWidget->setFixedHeight(50);
     rowWidget->setFixedWidth(580);
@@ -189,41 +189,33 @@ void MediaView::createRowDetails()
     updateRowDetails();
 }
 
-void MediaView::updateRowDetails()
-{
+void MediaView::updateRowDetails(){
     if (!mediaPtr)
         return;
 
-    if (!mediaPtr->FuoriProduzione())
-    {
+    if (!mediaPtr->FuoriProduzione()){
         statusLabel->setPixmap(QPixmap(":/icons/in_sala.png").scaled(16, 16, Qt::KeepAspectRatio));
         textLabel->setText("Attualmente in distribuzione");
         textLabel->setStyleSheet("font-size: 11pt; color: #FED36A;");
     }
-    else
-    {
+    else{
         statusLabel->setPixmap(QPixmap(":/icons/non_in_sala.png").scaled(16, 16, Qt::KeepAspectRatio));
         textLabel->setText("Fuori produzione");
         textLabel->setStyleSheet("color: #bdced3;");
     }
 }
 
-void MediaView::update()
-{
+void MediaView::update(){
     updateHeader();
     updateMediaCard();
 }
 
-void MediaView::resizeEvent(QResizeEvent *event)
-{
+void MediaView::resizeEvent(QResizeEvent *event){
     QWidget::resizeEvent(event);
 
     if (width() < 1350)
-    {
         rightSide->hide();
-    }
+    
     else
-    {
         rightSide->show();
-    }
 }

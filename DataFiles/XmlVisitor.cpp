@@ -8,12 +8,11 @@
 #include "../GUI/Custom/CustomMessageBox.h"
 
 XmlVisitor::XmlVisitor(QDomDocument *d) : doc(d) {}
-QDomElement XmlVisitor::getXmlElement() const
-{
+QDomElement XmlVisitor::getXmlElement() const{
     return xmlElement;
 }
-QDomElement XmlVisitor::populateCommonFields(const Media *media)
-{
+
+QDomElement XmlVisitor::populateCommonFields(const Media *media){
     QDomElement mediaElem = doc->createElement("MediaFields");
 
     QDomElement elem = doc->createElement("Titolo");
@@ -53,8 +52,7 @@ QDomElement XmlVisitor::populateCommonFields(const Media *media)
     mediaElem.appendChild(elem);
 
     QDomElement lingueElem = doc->createElement("LingueDisponibili");
-    for (const Lingua &l : media->getLingue())
-    {
+    for (const Lingua &l : media->getLingue()){
 
         QDomElement lElem = doc->createElement("Lingua");
         lElem.appendChild(doc->createTextNode(toString(l)));
@@ -63,8 +61,7 @@ QDomElement XmlVisitor::populateCommonFields(const Media *media)
     mediaElem.appendChild(lingueElem);
 
     QDomElement subElem = doc->createElement("SottotitoliDisponibili");
-    for (const Lingua &l : media->getSottotitoli())
-    {
+    for (const Lingua &l : media->getSottotitoli()){
         QDomElement lElem = doc->createElement("Lingua");
         lElem.appendChild(doc->createTextNode(toString(l)));
         subElem.appendChild(lElem);
@@ -74,22 +71,19 @@ QDomElement XmlVisitor::populateCommonFields(const Media *media)
     return mediaElem;
 }
 
-void XmlVisitor::visit(Film *film)
-{
+void XmlVisitor::visit(Film *film){
 
     QDomElement filmElem = doc->createElement("Film");
 
     QDomElement commonMediaFields = populateCommonFields(film);
     QDomNode child = commonMediaFields.firstChild();
-    while (!child.isNull())
-    {
+    while (!child.isNull()){
         filmElem.appendChild(child.cloneNode()); // clone necessario perchè i nodi di commonMediaFields hanno già genitore
         child = child.nextSibling();
     }
 
     QDomElement genElem = doc->createElement("Generi");
-    for (const Genere &g : film->getGeneri())
-    {
+    for (const Genere &g : film->getGeneri()){
         QDomElement gElem = doc->createElement("Genere");
         gElem.appendChild(doc->createTextNode(toString(g)));
         genElem.appendChild(gElem);
@@ -97,8 +91,7 @@ void XmlVisitor::visit(Film *film)
     filmElem.appendChild(genElem);
 
     QDomElement attoriElem = doc->createElement("AttoriPrincipali");
-    for (const string &attore : film->getAttoriPrincipali())
-    {
+    for (const string &attore : film->getAttoriPrincipali()){
         QDomElement aElem = doc->createElement("Attore");
         aElem.appendChild(doc->createTextNode(QString::fromStdString(attore)));
         attoriElem.appendChild(aElem);
@@ -124,16 +117,14 @@ void XmlVisitor::visit(Film *film)
     xmlElement = filmElem;
 }
 
-void XmlVisitor::visit(Trailer *trailer)
-{
+void XmlVisitor::visit(Trailer *trailer){
 
     QDomElement trailerElem = doc->createElement("Trailer");
 
     QDomElement commonMediaFields = populateCommonFields(trailer);
 
     QDomNode child = commonMediaFields.firstChild();
-    while (!child.isNull())
-    {
+    while (!child.isNull()){
         trailerElem.appendChild(child.cloneNode());
         child = child.nextSibling();
     }
@@ -152,15 +143,13 @@ void XmlVisitor::visit(Trailer *trailer)
 
     xmlElement = trailerElem;
 }
-void XmlVisitor::visit(Inserzione *inserzione)
-{
+void XmlVisitor::visit(Inserzione *inserzione){
 
     QDomElement insElem = doc->createElement("Inserzione");
 
     QDomElement commonMediaFields = populateCommonFields(inserzione);
     QDomNode child = commonMediaFields.firstChild();
-    while (!child.isNull())
-    {
+    while (!child.isNull()){
         insElem.appendChild(child.cloneNode());
         child = child.nextSibling();
     }
@@ -170,8 +159,7 @@ void XmlVisitor::visit(Inserzione *inserzione)
     insElem.appendChild(nProiezElem);
 
     QDomElement fasceOrarieElem = doc->createElement("FasceOrarie");
-    for (const FasciaOraria &fo : inserzione->getFasceOrarie())
-    {
+    for (const FasciaOraria &fo : inserzione->getFasceOrarie()){
         QDomElement fasciaElem = doc->createElement("Fascia");
         fasciaElem.appendChild(doc->createTextNode(toString(fo)));
         fasceOrarieElem.appendChild(fasciaElem);
@@ -192,15 +180,13 @@ void XmlVisitor::visit(Inserzione *inserzione)
 
     xmlElement = insElem;
 }
-void XmlVisitor::visit(Podcast *podcast)
-{
 
+void XmlVisitor::visit(Podcast *podcast){
     QDomElement podElem = doc->createElement("Podcast");
 
     QDomElement commonMediaFields = populateCommonFields(podcast);
     QDomNode child = commonMediaFields.firstChild();
-    while (!child.isNull())
-    {
+    while (!child.isNull()){
         podElem.appendChild(child.cloneNode());
         child = child.nextSibling();
     }
@@ -212,9 +198,7 @@ void XmlVisitor::visit(Podcast *podcast)
     xmlElement = podElem;
 }
 
-void XmlVisitor::visit(Puntata *puntata)
-{
-
+void XmlVisitor::visit(Puntata *puntata){
     QDomElement puntElem = doc->createElement("Puntata");
 
     QDomElement commonMediaFields = populateCommonFields(puntata);
@@ -239,8 +223,7 @@ void XmlVisitor::visit(Puntata *puntata)
 
     xmlElement = puntElem;
 }
-void XmlVisitor::populateCommonFields(const QDomElement &elem, Media *media)
-{
+void XmlVisitor::populateCommonFields(const QDomElement &elem, Media *media){
 
     QDomElement lingElem = elem.firstChildElement("LingueDisponibili");
     QDomElement l = lingElem.firstChildElement("Lingua");
@@ -259,8 +242,7 @@ void XmlVisitor::populateCommonFields(const QDomElement &elem, Media *media)
     }
 }
 
-Film *XmlVisitor::fromXmlFilmElement(const QDomElement &elem)
-{
+Film *XmlVisitor::fromXmlFilmElement(const QDomElement &elem){
     std::string titolo = elem.firstChildElement("Titolo").text().toStdString();
     std::string autore = elem.firstChildElement("Autore").text().toStdString();
     std::string descrizione = elem.firstChildElement("Descrizione").text().toStdString();
@@ -271,13 +253,10 @@ Film *XmlVisitor::fromXmlFilmElement(const QDomElement &elem)
 
     year_month_day dI;
     year_month_day dF;
-    try
-    {
+    try{
         dI = stringToDate(elem.firstChildElement("DataInizioRilascio").text().toStdString());
         dF = stringToDate(elem.firstChildElement("DataFineRilascio").text().toStdString());
-    }
-    catch (const std::exception &e)
-    {
+    }catch (const std::exception &e){
         QString msg = QString("%1").arg(e.what());
         CustomMessageBox msgbox;
         msgbox.setTitleText("<span style='color: #E44043;'>Errore importazione di un media</span>");
@@ -298,21 +277,18 @@ Film *XmlVisitor::fromXmlFilmElement(const QDomElement &elem)
     populateCommonFields(elem, media);
 
     QDomElement generiElem = elem.firstChildElement("Generi");
-    for (QDomElement g = generiElem.firstChildElement("Genere"); !g.isNull(); g = g.nextSiblingElement("Genere"))
-    {
+    for (QDomElement g = generiElem.firstChildElement("Genere"); !g.isNull(); g = g.nextSiblingElement("Genere")){
         media->aggiungiGenere((toGenere(g.text().toStdString())));
     }
 
     QDomElement attoriElem = elem.firstChildElement("AttoriPrincipali");
-    for (QDomElement a = attoriElem.firstChildElement("Attore"); !a.isNull(); a = a.nextSiblingElement("Attore"))
-    {
+    for (QDomElement a = attoriElem.firstChildElement("Attore"); !a.isNull(); a = a.nextSiblingElement("Attore")){
         media->aggiungiAttore(a.text().toStdString());
     }
     return media;
 }
 
-Trailer *XmlVisitor::fromXmlTrailerElement(const QDomElement &elem, list<Media *> mediaList)
-{
+Trailer *XmlVisitor::fromXmlTrailerElement(const QDomElement &elem, list<Media *> mediaList){
     std::string titolo = elem.firstChildElement("Titolo").text().toStdString();
     std::string autore = elem.firstChildElement("Autore").text().toStdString();
     std::string descrizione = elem.firstChildElement("Descrizione").text().toStdString();
@@ -323,13 +299,10 @@ Trailer *XmlVisitor::fromXmlTrailerElement(const QDomElement &elem, list<Media *
 
     year_month_day dI;
     year_month_day dF;
-    try
-    {
+    try{
         dI = stringToDate(elem.firstChildElement("DataInizioRilascio").text().toStdString());
         dF = stringToDate(elem.firstChildElement("DataFineRilascio").text().toStdString());
-    }
-    catch (const std::exception &e)
-    {
+    }catch (const std::exception &e){
         QString msg = QString("%1").arg(e.what());
         CustomMessageBox msgbox;
         msgbox.setTitleText("<span style='color: #E44043;'>Errore importazione di un media</span>");
@@ -341,8 +314,7 @@ Trailer *XmlVisitor::fromXmlTrailerElement(const QDomElement &elem, list<Media *
 
     QDomElement nProiezioniElem = elem.firstChildElement("NProiezioniGiornaliere");
     int nProiezioniGiornaliere;
-    if (!nProiezioniElem.isNull())
-    {
+    if (!nProiezioniElem.isNull()){
         nProiezioniGiornaliere = nProiezioniElem.text().toInt();
     }
 
@@ -350,14 +322,12 @@ Trailer *XmlVisitor::fromXmlTrailerElement(const QDomElement &elem, list<Media *
     QDomElement autoreElem = elem.firstChildElement("AutoreFilmAssociato");
     string titoloFilmA;
     string autoreFilmA;
-    if (!autoreElem.isNull() && !filmElem.isNull())
-    {
+    if (!autoreElem.isNull() && !filmElem.isNull()){
         titoloFilmA = filmElem.text().toStdString();
         autoreFilmA = autoreElem.text().toStdString();
     }
     Film *filmA = findFilmInList(mediaList, titoloFilmA, autoreFilmA);
-    if (filmA)
-    {
+    if (filmA){
         Trailer *media = new Trailer(titolo, descrizione, dI, dF, durata, formato, ris, nProiezioniGiornaliere, filmA, autore, path);
         populateCommonFields(elem, media);
         return media;
@@ -384,13 +354,11 @@ Inserzione *XmlVisitor::fromXmlInserzioneElement(const QDomElement &elem)
 
     year_month_day dI;
     year_month_day dF;
-    try
-    {
+    try{
         dI = stringToDate(elem.firstChildElement("DataInizioRilascio").text().toStdString());
         dF = stringToDate(elem.firstChildElement("DataFineRilascio").text().toStdString());
     }
-    catch (const std::exception &e)
-    {
+    catch (const std::exception &e){
         QString msg = QString("%1").arg(e.what());
         CustomMessageBox msgbox;
         msgbox.setTitleText("<span style='color: #E44043;'>Errore importazione di un media</span>");
@@ -403,48 +371,43 @@ Inserzione *XmlVisitor::fromXmlInserzioneElement(const QDomElement &elem)
     QDomElement nProiezioniElem = elem.firstChildElement("NProiezioniGiornaliere");
     int nProiezioniGiornaliere;
     if (!nProiezioniElem.isNull())
-    {
         nProiezioniGiornaliere = nProiezioniElem.text().toInt();
-    }
+    
 
     Classificazione target = toClassificazione(elem.firstChildElement("Target").text().toStdString());
 
     QDomElement costoElem = elem.firstChildElement("CostoFissoProiezione");
     double costoFissoProiezione;
     if (!costoElem.isNull())
-    {
         costoFissoProiezione = costoElem.text().toDouble();
-    }
+    
 
     QDomElement aziendaElem = elem.firstChildElement("AziendaInserzionistica");
     string aziendaI;
     if (!aziendaElem.isNull())
-    {
         aziendaI = aziendaElem.text().toStdString();
-    }
+    
 
     Inserzione *media = new Inserzione(titolo, descrizione, dI, dF, durata, formato, ris, nProiezioniGiornaliere, target, costoFissoProiezione, aziendaI, autore, path);
     populateCommonFields(elem, media);
 
     QDomElement fasceOrarieEleme = elem.firstChildElement("FasceOrarie");
     QDomElement f = fasceOrarieEleme.firstChildElement("Fascia");
-    while (!f.isNull())
-    {
+    while (!f.isNull()){
         media->aggiungiFasciaOraria(toFasciaOraria(f.text().toStdString()));
         f = f.nextSiblingElement("Fascia");
     }
+    
 
     QDomElement targetElem = elem.firstChildElement("Target");
     if (!targetElem.isNull())
-    {
         media->setTarget(toClassificazione(targetElem.text().toStdString()));
-    }
+    
 
     return media;
 }
 
-Podcast *XmlVisitor::fromXmlPodcastElement(const QDomElement &elem)
-{
+Podcast *XmlVisitor::fromXmlPodcastElement(const QDomElement &elem){
 
     std::string titolo = elem.firstChildElement("Titolo").text().toStdString();
     std::string autore = elem.firstChildElement("Autore").text().toStdString();
@@ -463,8 +426,7 @@ Podcast *XmlVisitor::fromXmlPodcastElement(const QDomElement &elem)
     return media;
 }
 
-Puntata *XmlVisitor::fromXmlPuntataElement(const QDomElement &elem, list<Media *> mediaList)
-{
+Puntata *XmlVisitor::fromXmlPuntataElement(const QDomElement &elem, list<Media *> mediaList){
     std::string titolo = elem.firstChildElement("Titolo").text().toStdString();
     std::string autore = elem.firstChildElement("Autore").text().toStdString();
     std::string descrizione = elem.firstChildElement("Descrizione").text().toStdString();
@@ -473,13 +435,10 @@ Puntata *XmlVisitor::fromXmlPuntataElement(const QDomElement &elem, list<Media *
 
     year_month_day dI;
     year_month_day dF;
-    try
-    {
+    try{
         dI = stringToDate(elem.firstChildElement("DataInizioRilascio").text().toStdString());
         dF = stringToDate(elem.firstChildElement("DataFineRilascio").text().toStdString());
-    }
-    catch (const std::exception &e)
-    {
+    }catch (const std::exception &e){
         QString msg = QString("%1").arg(e.what());
         CustomMessageBox msgbox;
         msgbox.setTitleText("<span style='color: #E44043;'>Errore importazione di un media</span>");
@@ -493,30 +452,25 @@ Puntata *XmlVisitor::fromXmlPuntataElement(const QDomElement &elem, list<Media *
     QDomElement autoreElem = elem.firstChildElement("AutorePodcastAssociato");
     string titoloPodA;
     string autorePodA;
-    if (!podcastElem.isNull() && !autoreElem.isNull())
-    {
+    if (!podcastElem.isNull() && !autoreElem.isNull()){
         titoloPodA = podcastElem.text().toStdString();
         autorePodA = autoreElem.text().toStdString();
     }
 
     QDomElement numPubElem = elem.firstChildElement("NPubblicita");
     int nPubblicita = 0;
-    if (!numPubElem.isNull())
-    {
+    if (!numPubElem.isNull()){
         nPubblicita = numPubElem.text().trimmed().toInt();
     }
 
     Podcast *podA = findPodcastInList(mediaList, titoloPodA, autorePodA);
-    if (podA)
-    {
+    if (podA){
         Puntata *media = new Puntata(titolo, descrizione, dI, dF, durata, podA, nPubblicita, autore, path);
         populateCommonFields(elem, media);
         QDomElement ospitiElem = elem.firstChildElement("Ospiti");
-        for (QDomElement o = ospitiElem.firstChildElement("Ospite"); !o.isNull(); o = o.nextSiblingElement("Ospite"))
-        {
+        for (QDomElement o = ospitiElem.firstChildElement("Ospite"); !o.isNull(); o = o.nextSiblingElement("Ospite")){
             media->aggiungiOspite(o.text().toStdString());
         }
-
         return media;
     }
 
@@ -528,28 +482,21 @@ Puntata *XmlVisitor::fromXmlPuntataElement(const QDomElement &elem, list<Media *
     return nullptr;
 }
 
-Film *XmlVisitor::findFilmInList(const list<Media *> &mediaList, const string &titolo, const string &autore)
-{
-    for (Media *m : mediaList)
-    {
+Film *XmlVisitor::findFilmInList(const list<Media *> &mediaList, const string &titolo, const string &autore){
+    for (Media *m : mediaList){
         Film *f = dynamic_cast<Film *>(m);
         if (f && f->getTitolo() == titolo && f->getAutore() == autore)
-        {
             return f;
-        }
+        
     }
     return nullptr; // non trovato
 }
 
-Podcast *XmlVisitor::findPodcastInList(const list<Media *> &mediaList, const string &titolo, const string &autore)
-{
-    for (Media *m : mediaList)
-    {
+Podcast *XmlVisitor::findPodcastInList(const list<Media *> &mediaList, const string &titolo, const string &autore){
+    for (Media *m : mediaList){
         Podcast *p = dynamic_cast<Podcast *>(m);
         if (p && p->getTitolo() == titolo && p->getAutore() == autore)
-        {
             return p;
-        }
     }
     return nullptr; // non trovato
 }

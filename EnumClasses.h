@@ -151,8 +151,7 @@ enum class FasciaOraria
 {
     Mattina,
     Pomeriggio,
-    Sera,
-    Nessuno
+    Sera
 };
 
 inline const char *toString(FasciaOraria fo)
@@ -165,10 +164,8 @@ inline const char *toString(FasciaOraria fo)
         return "Pomeriggio";
     case FasciaOraria::Sera:
         return "Sera";
-    case FasciaOraria::Nessuno:
-        return "Nessuno";
     default:
-        return "Non trovato";
+        return "Non trovata";
     }
 }
 
@@ -177,8 +174,8 @@ inline std::vector<FasciaOraria> tutteLeFasceOrarie()
     return {
         FasciaOraria::Mattina,
         FasciaOraria::Pomeriggio,
-        FasciaOraria::Sera,
-        FasciaOraria::Nessuno};
+        FasciaOraria::Sera
+    };
 }
 
 enum class Lingua
@@ -190,7 +187,7 @@ enum class Lingua
     Tedesco,
     Giapponese,
     Cinese,
-    Nessuno
+    NonTrovata
 };
 
 inline const char *toString(Lingua l)
@@ -211,11 +208,9 @@ inline const char *toString(Lingua l)
         return "Giapponese";
     case Lingua::Cinese:
         return "Cinese";
-    case Lingua::Nessuno:
-        return "Nessuno";
     default:
-        return "Non trovato";
-    }
+        return "Non trovata";
+}
 }
 
 inline std::vector<Lingua> tutteLeLingue()
@@ -228,7 +223,7 @@ inline std::vector<Lingua> tutteLeLingue()
         Lingua::Tedesco,
         Lingua::Giapponese,
         Lingua::Cinese,
-        Lingua::Nessuno};
+        Lingua::NonTrovata};
 }
 
 enum class Classificazione
@@ -283,7 +278,7 @@ enum class Genere
     Storico,
     Romantico,
     Supereroi,
-    Nessuno
+    NonTrovato
 };
 
 inline const char *toString(Genere g)
@@ -322,8 +317,6 @@ inline const char *toString(Genere g)
         return "Romantico";
     case Genere::Supereroi:
         return "Supereroi";
-    case Genere::Nessuno:
-        return "Nessuno";
     default:
         return "Non trovato";
     }
@@ -348,7 +341,7 @@ inline std::vector<Genere> tuttiIGeneri()
         Genere::Storico,
         Genere::Romantico,
         Genere::Supereroi,
-        Genere::Nessuno};
+        Genere::NonTrovato};
 }
 
 enum class Risoluzione
@@ -419,13 +412,11 @@ inline Formato toFormato(const std::string &s)
 
 inline FasciaOraria toFasciaOraria(const std::string &s)
 {
-    if (s == "Mattina")
-        return FasciaOraria::Mattina;
     if (s == "Pomeriggio")
         return FasciaOraria::Pomeriggio;
     if (s == "Sera")
         return FasciaOraria::Sera;
-    return FasciaOraria::Nessuno;
+    return FasciaOraria::Mattina; //almeno sempre la mattina
 }
 
 inline Lingua toLingua(const std::string &s)
@@ -444,7 +435,7 @@ inline Lingua toLingua(const std::string &s)
         return Lingua::Giapponese;
     if (s == "Cinese")
         return Lingua::Cinese;
-    return Lingua::Nessuno;
+    return Lingua::NonTrovata;
 }
 
 inline Classificazione toClassificazione(const std::string &s)
@@ -494,7 +485,7 @@ inline Genere toGenere(const std::string &s)
         return Genere::Romantico;
     if (s == "Supereroi")
         return Genere::Supereroi;
-    return Genere::Nessuno;
+    return Genere::NonTrovato;
 }
 
 inline Risoluzione toRisoluzione(const std::string &s)
