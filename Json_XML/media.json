@@ -106,13 +106,17 @@
             "Commedia"
         ],
         "lingueDisponibili": [
-            "Italiano"
+            "Italiano",
+            "Inglese"
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema Notorius",
         "path": "images/locandina_tuttacolpadelrock.jpg",
-        "risoluzione": "FullHD 1080p",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese"
         ],
         "target": "TUTTI",
         "tipologia": "film",
@@ -833,13 +837,14 @@
         "durataMinuti": 117,
         "formato": "MP4",
         "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
+            "Italiano"
         ],
         "nomeCinema": "Cinema Notorius",
         "path": "images/podcast_151eg.png",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese"
         ],
         "tipologia": "podcast",
         "titolo": "151eg"
@@ -853,13 +858,14 @@
         "durataMinuti": 70,
         "formato": "MP4",
         "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
+            "Italiano"
         ],
         "nomeCinema": "Cinema Notorius",
         "path": "images/synergo.png",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese"
         ],
         "tipologia": "podcast",
         "titolo": "Synergo"
@@ -873,13 +879,14 @@
         "durataMinuti": 66,
         "formato": "MP4",
         "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
+            "Italiano"
         ],
         "nomeCinema": "Cinema Notorius",
         "path": "images/podcast_caleel.png",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese"
         ],
         "tipologia": "podcast",
         "titolo": "Caleel"
@@ -983,12 +990,19 @@
         "filmAssociato": "Tutta colpa del rock",
         "formato": "MP4",
         "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese"
         ],
-        "nProiezioniGiornaliere": 7,
+        "nProiezioniGiornaliere": 1,
         "nomeCinema": "Cinema Notorius",
         "path": "images/trailer_tuttacolpadelrock.jpg",
         "risoluzione": "HD 720p",
         "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Tedesco"
         ],
         "tipologia": "trailer",
         "titolo": "Trailer ufficiale - Tutta colpa del rock"

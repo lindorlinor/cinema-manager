@@ -409,7 +409,6 @@ QWidget *MediaInterface::addTipologiaTrailer()
             {
             titoloFilmRiferimento = f->getTitolo();
             autoreFilmRiferimento = f->getAutore();
-            qDebug()<<"valore titolo "<<titoloFilmRiferimento;
             checkMediaNameAvailability(); });
 
     // style
