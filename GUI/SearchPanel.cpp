@@ -519,14 +519,16 @@ void SearchPanel::acceptEditCinema()
     }
 }
 
-void SearchPanel::acceptDeleteCinema(){
+void SearchPanel::acceptDeleteCinema()
+{
     CustomMessageBox msgbox(this);
     msgbox.setTitleText("Conferma eliminazione");
     msgbox.setMainMessage("Sei sicuro di voler eliminare il cinema? <br/>"
-                   "Avrà l'effetto di eliminare tutti i media ad esso associati");
+                          "Avrà l'effetto di eliminare tutti i media ad esso associati");
     msgbox.setInfoMessage();
-    if(msgbox.exec() == QDialog::Accepted){
-        s_xmlManager->setCurrentCinema(nullptr); //imposta nullptr al campo dati CinemaCurrent in MediaManagerXml
+    if (msgbox.exec() == QDialog::Accepted)
+    {
+        s_xmlManager->setCurrentCinema(nullptr); // imposta nullptr al campo dati CinemaCurrent in MediaManagerXml
         emit deleteCinemaInSearchPanel(s_cinemaSelezionato);
         resetSearchPanelAfterDeleteCinema();
         emit escSearchPanelAfterDeleteCinema();
@@ -626,32 +628,47 @@ void SearchPanel::removeMediaView(QWidget *widget)
 void SearchPanel::acceptDeleteMedia(Media *media)
 {
 
-    if (Film *film = dynamic_cast<Film *>(media))
+    // elimino la puntata
+    if (Puntata *puntata = dynamic_cast<Puntata *>(media))
+    {
+        s_MediaListOfCinema.removeOne(media);
+        s_cinemaSelezionato->removeMedia(media);
+        puntata->getPodcast()->rimuoviPuntata(puntata);
+    }
+    // elimino la puntata
+    else if (Trailer *trailer = dynamic_cast<Trailer *>(media))
+    {
+        s_MediaListOfCinema.removeOne(media);
+        s_cinemaSelezionato->removeMedia(media);
+        trailer->getFilm()->rimuoviTrailer(trailer);
+    }
+
+    else if (Film *film = dynamic_cast<Film *>(media))
     {
         for (Trailer *t : film->getTrailers())
         {
-            film->disaccoppiaTrailer(t);
             s_MediaListOfCinema.removeOne(t);
             s_cinemaSelezionato->removeMedia(t);
-
-            delete t;
+            film->rimuoviTrailer(t);
         }
     }
 
-    if (Podcast *podcast = dynamic_cast<Podcast *>(media))
+    else if (Podcast *podcast = dynamic_cast<Podcast *>(media))
     {
         for (Puntata *p : podcast->getElencoPuntate())
         {
-            podcast->disaccoppiaPuntata(p);
             s_MediaListOfCinema.removeOne(p);
             s_cinemaSelezionato->removeMedia(p);
-            delete p;
+            podcast->rimuoviPuntata(p);
         }
     }
+    else
+    {
+        s_MediaListOfCinema.removeOne(media);
+        s_cinemaSelezionato->removeMedia(media);
+        delete media;
+    }
 
-    s_MediaListOfCinema.removeOne(media);
-    s_cinemaSelezionato->removeMedia(media);
-    delete media;
     updateJson();
     updateMediaList();
 

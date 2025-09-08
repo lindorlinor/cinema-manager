@@ -888,6 +888,112 @@
         "titolo": "Caleel"
     },
     {
+        "attoriPrincipali": [
+            "Vera Farmiga",
+            "Patrick Wilson",
+            "Ben Hardy"
+        ],
+        "autore": "Michael Chaves",
+        "casaDiProduzione": "New Line Cinema / Warner Bros. Pictures",
+        "costoBiglietto": 12,
+        "dataFineRilascio": "2025-09-20",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "“The Conjuring – Il rito finale” aggiunge un nuovo, elettrizzante capitolo all’iconico universo cinematografico ispirato ad eventi realmente accaduti. Vera Farmiga e Patrick Wilson tornano per affrontare un ultimo caso nei panni dei celebri investigatori del paranormale Ed e Lorraine Warren, in un’agghiacciante e potente nuovo atto della saga che ha conquistato il botteghino globale.",
+        "durataMinuti": 135,
+        "formato": "DCP",
+        "generi": [
+            "Horror",
+            "Thriller",
+            "Nessuno"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 1,
+        "nomeCinema": "Cinema Notorius",
+        "path": "images/locandina_theconjuring4.jpg",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "The Conjuring: Il rito finale"
+    },
+    {
+        "attoriPrincipali": [
+            "Dakota Johnson",
+            "Chris Evans",
+            "Pedro Pascal"
+        ],
+        "autore": "Celine Song",
+        "casaDiProduzione": "A24 / Warner Bros. Pictures Italia",
+        "costoBiglietto": 9.5,
+        "dataFineRilascio": "2025-09-25",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "Una giovane e ambiziosa combina-coppie di New York si ritrova a dover scegliere tra l’uomo ideale e il suo ex, tutt’altro che perfetto.",
+        "durataMinuti": 116,
+        "formato": "DCP",
+        "generi": [
+            "Commedia",
+            "Nessuno"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "Cinema Notorius",
+        "path": "images/locandina_materiallove.jpg",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Material Love"
+    },
+    {
+        "attoriPrincipali": [
+            "Patrick Magee",
+            "Adrienne Corri",
+            "Miriam Karlin",
+            "Malcolm McDowell",
+            "Michael Bates",
+            "Carl Duering",
+            "John Clive",
+            "Warren Clarke"
+        ],
+        "autore": "Stanley Kubrick",
+        "casaDiProduzione": "Warner Bros. Pictures / MGM",
+        "costoBiglietto": 11,
+        "dataFineRilascio": "2025-10-31",
+        "dataInizioRilascio": "2025-10-13",
+        "descrizione": "Il percorso di Alex – da punk amorale ad onorato cittadino, previo lavaggio del cervello – viene ambientato in un futuro scioccante dall’ardita interpretazione kubrickiana del romanzo di Anthony Burgess.",
+        "durataMinuti": 137,
+        "formato": "DCP",
+        "generi": [
+            "Nessuno",
+            "Thriller",
+            "Nessuno"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "Cinema Notorius",
+        "path": "images/locandina_aranciameccanica.png",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Arancia Meccanica – 50mo Anniversario"
+    },
+    {
         "autore": "FilmLab",
         "autorePodcastAssociato": "FilmLab",
         "dataFineRilascio": "2025-10-16",
@@ -1283,40 +1389,6 @@
         "titolo": "La FASE 5 MARVEL è stata un FALLIMENTO TOTALE - Retrospettiva completa"
     },
     {
-        "attoriPrincipali": [
-            "Vera Farmiga",
-            "Patrick Wilson",
-            "Ben Hardy"
-        ],
-        "autore": "Michael Chaves",
-        "casaDiProduzione": "New Line Cinema / Warner Bros. Pictures",
-        "costoBiglietto": 12,
-        "dataFineRilascio": "2025-09-20",
-        "dataInizioRilascio": "2025-09-04",
-        "descrizione": "“The Conjuring – Il rito finale” aggiunge un nuovo, elettrizzante capitolo all’iconico universo cinematografico ispirato ad eventi realmente accaduti. Vera Farmiga e Patrick Wilson tornano per affrontare un ultimo caso nei panni dei celebri investigatori del paranormale Ed e Lorraine Warren, in un’agghiacciante e potente nuovo atto della saga che ha conquistato il botteghino globale.",
-        "durataMinuti": 135,
-        "formato": "DCP",
-        "generi": [
-            "Horror",
-            "Thriller",
-            "Nessuno"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 1,
-        "nomeCinema": "Cinema Notorius",
-        "path": "images/locandina_theconjuring4.jpg",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-            "Italiano"
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "The Conjuring: Il rito finale"
-    },
-    {
         "autore": "Warner Bros. Pictures Italia",
         "autoreFilmAssociato": "Michael Chaves",
         "dataFineRilascio": "2025-09-03",
@@ -1337,39 +1409,6 @@
         "titolo": "Trailer ufficiale – The Conjuring: Il rito finale"
     },
     {
-        "attoriPrincipali": [
-            "Dakota Johnson",
-            "Chris Evans",
-            "Pedro Pascal"
-        ],
-        "autore": "Celine Song",
-        "casaDiProduzione": "A24 / Warner Bros. Pictures Italia",
-        "costoBiglietto": 9.5,
-        "dataFineRilascio": "2025-09-25",
-        "dataInizioRilascio": "2025-09-04",
-        "descrizione": "Una giovane e ambiziosa combina-coppie di New York si ritrova a dover scegliere tra l’uomo ideale e il suo ex, tutt’altro che perfetto.",
-        "durataMinuti": 116,
-        "formato": "DCP",
-        "generi": [
-            "Commedia",
-            "Nessuno"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Notorius",
-        "path": "images/locandina_materiallove.jpg",
-        "risoluzione": "UHD 4K 2160p",
-        "sottotitoliDisponibili": [
-            "Italiano"
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Material Love"
-    },
-    {
         "autore": "A24",
         "autoreFilmAssociato": "Celine Song",
         "dataFineRilascio": "2025-09-03",
@@ -1388,44 +1427,5 @@
         ],
         "tipologia": "trailer",
         "titolo": "Trailer ufficiale – Material Love"
-    },
-    {
-        "attoriPrincipali": [
-            "Patrick Magee",
-            "Adrienne Corri",
-            "Miriam Karlin",
-            "Malcolm McDowell",
-            "Michael Bates",
-            "Carl Duering",
-            "John Clive",
-            "Warren Clarke"
-        ],
-        "autore": "Stanley Kubrick",
-        "casaDiProduzione": "Warner Bros. Pictures / MGM",
-        "costoBiglietto": 11,
-        "dataFineRilascio": "2025-10-31",
-        "dataInizioRilascio": "2025-10-13",
-        "descrizione": "Il percorso di Alex – da punk amorale ad onorato cittadino, previo lavaggio del cervello – viene ambientato in un futuro scioccante dall’ardita interpretazione kubrickiana del romanzo di Anthony Burgess.",
-        "durataMinuti": 137,
-        "formato": "DCP",
-        "generi": [
-            "Nessuno",
-            "Thriller",
-            "Nessuno"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Notorius",
-        "path": "images/locandina_aranciameccanica.png",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-            "Italiano"
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Arancia Meccanica – 50mo Anniversario"
     }
 ]
