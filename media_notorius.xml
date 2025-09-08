@@ -1,0 +1,1155 @@
+<MediaList>
+    <Podcast>
+        <Titolo>Cinema d'Autore</Titolo>
+        <Autore>FilmLab</Autore>
+        <Descrizione>Approfondimenti sui grandi registi e capolavori cinematografici.</Descrizione>
+        <DurataMinuti>75</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>images/image17.png</Path>
+        <DataInizioRilascio>1/10/2025</DataInizioRilascio>
+        <DataFineRilascio>1/11/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <Conduttore>Marco Rossi</Conduttore>
+    </Podcast>
+    <Film>
+        <Titolo>I Puffi - Il Film</Titolo>
+        <Autore>Chris Miller</Autore>
+        <Descrizione>Un’avventura animata-musicale con i Puffi alla ricerca del Grande Puffo tra dimensioni magiche...</Descrizione>
+        <DurataMinuti>93</DurataMinuti>
+        <Formato>DCP</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_ipuffiilfilm.jpg</Path>
+        <DataInizioRilascio>22/8/2025</DataInizioRilascio>
+        <DataFineRilascio>28/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Animazione</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Rihanna</Attore>
+            <Attore>John Goodman</Attore>
+            <Attore>Nick Offerman</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>8</CostoBiglietto>
+        <CasaDiProduzione>Paramount Animation</CasaDiProduzione>
+        <NPostCredit>1</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>I Roses</Titolo>
+        <Autore>Jay Roach</Autore>
+        <Descrizione>Commedia nera in cui una coppia apparentemente perfetta — Ivy e Theo Rose — vede naufragare il proprio matrimonio in una guerra emotiva tra ambizione professionale e risentimento.</Descrizione>
+        <DurataMinuti>105</DurataMinuti>
+        <Formato>DCP</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>images/locandina_irosesfilm.jpg</Path>
+        <DataInizioRilascio>27/8/2025</DataInizioRilascio>
+        <DataFineRilascio>3/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili/>
+        <Generi>
+            <Genere>Nessuno</Genere>
+            <Genere>Commedia</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Olivia Colman</Attore>
+            <Attore>Benedict Cumberbatch</Attore>
+            <Attore>Andy Samberg</Attore>
+            <Attore>Hitoshi Takagi</Attore>
+            <Attore>Takashi Nagasako</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>9</CostoBiglietto>
+        <CasaDiProduzione>Searchlight Pictures / Disney Italia</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Tutta colpa del rock</Titolo>
+        <Autore>Andrea Jublin</Autore>
+        <Descrizione>
+            Bruno è un ex chitarrista rock egoista e bugiardo che finisce in carcere. Nel luogo più costrittivo trova però un’opportunità di riscatto: formare una band con altri detenuti e partecipare al Roma Rock Contest per mantenere una promessa fatta alla figlia.
+        </Descrizione>
+        <DurataMinuti>100</DurataMinuti>
+        <Formato>DCP</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>images/locandina_tuttacolpadelrock.jpg</Path>
+        <DataInizioRilascio>28/8/2025</DataInizioRilascio>
+        <DataFineRilascio>8/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili/>
+        <Generi>
+            <Genere>Commedia</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Lillo Petrolo</Attore>
+            <Attore>Maurizio Lastrico</Attore>
+            <Attore>Elio</Attore>
+            <Attore>Naska</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>7</CostoBiglietto>
+        <CasaDiProduzione>Be Water Film / PiperFilm</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Harry Potter e il Calice di Fuoco - 20esimo anniversario</Titolo>
+        <Autore>Mike Newell</Autore>
+        <Descrizione>Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.</Descrizione>
+        <DurataMinuti>158</DurataMinuti>
+        <Formato>DCP</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_harrypottereilcalicedifuoco.jpg</Path>
+        <DataInizioRilascio>28/8/2025</DataInizioRilascio>
+        <DataFineRilascio>23/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili/>
+        <Generi>
+            <Genere>Avventura</Genere>
+            <Genere>Fantasy</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Emma Watson</Attore>
+            <Attore>Ralph Fiennes</Attore>
+            <Attore>Daniel Radcliffe</Attore>
+            <Attore>Emma Watson</Attore>
+            <Attore>Rupert Grint</Attore>
+            <Attore>Ralph Fiennes</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>10.5</CostoBiglietto>
+        <CasaDiProduzione>Warner Bros Italia</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Una scomoda circostanza - Caught Stealing</Titolo>
+        <Autore>Darren Aronofsky</Autore>
+        <Descrizione>Hank Thompson, ex promessa del baseball, finisce coinvolto in una violenta caccia all'uomo nel crudo sottobosco criminale di New York anni ’90 dopo aver accettato di badare al gatto del suo stravagante vicino.</Descrizione>
+        <DurataMinuti>110</DurataMinuti>
+        <Formato>DCP</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_caughtstealing.jpg</Path>
+        <DataInizioRilascio>27/8/2025</DataInizioRilascio>
+        <DataFineRilascio>7/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili/>
+        <Generi>
+            <Genere>Crime</Genere>
+            <Genere>Thriller</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Zoë Kravitz</Attore>
+            <Attore>Regina King</Attore>
+            <Attore>Vincent D'Onofrio</Attore>
+            <Attore>Bad Bunny</Attore>
+            <Attore>Austin Butler</Attore>
+            <Attore>Zoë Kravitz</Attore>
+            <Attore>Matt Smith</Attore>
+            <Attore>Regina King</Attore>
+            <Attore>Liev Schreiber</Attore>
+            <Attore>Vincent D'Onofrio</Attore>
+            <Attore>Griffin Dunne</Attore>
+            <Attore>Bad Bunny</Attore>
+            <Attore>Carol Kane</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>12</CostoBiglietto>
+        <CasaDiProduzione>Columbia Pictures / Protozoa Pictures (distribuito in Italia da Eagle Pictures)</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Weapons</Titolo>
+        <Autore>Zach Cregger</Autore>
+        <Descrizione>In una misteriosa cittadina, diciassette bambini spariscono nella stessa notte: un horror/thriller enigmatico e disturbante.</Descrizione>
+        <DurataMinuti>128</DurataMinuti>
+        <Formato>DCP</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>images/locandina_weapons.jpg</Path>
+        <DataInizioRilascio>6/8/2025</DataInizioRilascio>
+        <DataFineRilascio>31/8/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili/>
+        <Generi>
+            <Genere>Horror</Genere>
+            <Genere>Thriller</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Josh Brolin</Attore>
+            <Attore>Julia Garner</Attore>
+            <Attore>Alden Ehrenreich</Attore>
+            <Attore>Austin Abrams</Attore>
+            <Attore>Cary Christopher</Attore>
+            <Attore>Toby Huss</Attore>
+            <Attore>Benedict Wong</Attore>
+            <Attore>Amy Madigan</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>11.5</CostoBiglietto>
+        <CasaDiProduzione>New Line Cinema / Warner Bros. Pictures Italia</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Lo Squalo - 50esimo anniversario</Titolo>
+        <Autore>Steven Spielberg</Autore>
+        <Descrizione>Un capolavoro che ha inventato il blockbuster estivo: lo Squalo torna sul grande schermo per il suo cinquantesimo anniversario.</Descrizione>
+        <DurataMinuti>124</DurataMinuti>
+        <Formato>IMAX 3D</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>images/locandina_losqualo50anniversario.jpg</Path>
+        <DataInizioRilascio>1/9/2025</DataInizioRilascio>
+        <DataFineRilascio>3/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili/>
+        <Generi>
+            <Genere>Horror</Genere>
+            <Genere>Thriller</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Roy Scheider</Attore>
+            <Attore>Robert Shaw</Attore>
+            <Attore>Richard Dreyfuss</Attore>
+            <Attore>Lorraine Gary</Attore>
+            <Attore>Murray Hamilton</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>9</CostoBiglietto>
+        <CasaDiProduzione>Universal Pictures / Adler Entertainment</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>La Fabbrica di Cioccolato</Titolo>
+        <Autore>Roald Dahl</Autore>
+        <Descrizione>L'eccentrico Willy Wonka apre le porte della sua fabbrica di dolci a cinque fortunati, che imparano così i segreti delle sue meravigliose creazioni.</Descrizione>
+        <DurataMinuti>124</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_fabbrica_di_cioccolato.png</Path>
+        <DataInizioRilascio>4/3/2025</DataInizioRilascio>
+        <DataFineRilascio>24/4/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Giapponese</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Azione</Genere>
+            <Genere>Avventura</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Johnny Depp</Attore>
+            <Attore>Freddie Highmore</Attore>
+            <Attore>David Kelly</Attore>
+            <Attore>Helena Bonham Carter</Attore>
+            <Attore>Noah Taylor</Attore>
+            <Attore>Missi Pyle</Attore>
+        </AttoriPrincipali>
+        <Target>6+</Target>
+        <CostoBiglietto>7</CostoBiglietto>
+        <CasaDiProduzione>Warner Bros</CasaDiProduzione>
+        <NPostCredit>3</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Eduard Mani di Forbici</Titolo>
+        <Autore>Tim Burton</Autore>
+        <Descrizione>Edward è un essere artificiale incompiuto, creato da uno scienziato che muore prima di terminare il suo lavoro, lasciandolo con delle forbici al posto delle mani. Viene scoperto da una venditrice porta a porta, Peg, che lo porta nella sua famiglia suburbana. Edward viene ben accolto all’inizio, ma finisce per essere rifiutato quando la sua diversità causa incomprensioni e paura. Nonostante tutto, sviluppa un sentimento d’amore verso Kim, la figlia adolescente della famiglia</Descrizione>
+        <DurataMinuti>107</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_eduard_mani_di_forbici.png</Path>
+        <DataInizioRilascio>6/8/2025</DataInizioRilascio>
+        <DataFineRilascio>26/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Spagnolo</Lingua>
+            <Lingua>Giapponese</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Drama</Genere>
+            <Genere>Fantasy</Genere>
+            <Genere>Romantico</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Johnny Depp</Attore>
+            <Attore>Winona Ryder</Attore>
+            <Attore>Dianne Wiest</Attore>
+            <Attore>Anthony Michael Hall</Attore>
+            <Attore>Kathy Baker</Attore>
+            <Attore>Vincent Price</Attore>
+            <Attore>Alan Arkin</Attore>
+        </AttoriPrincipali>
+        <Target>14+</Target>
+        <CostoBiglietto>8</CostoBiglietto>
+        <CasaDiProduzione>20th Century Fox</CasaDiProduzione>
+        <NPostCredit>2</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Coraline</Titolo>
+        <Autore>Henry Selick</Autore>
+        <Descrizione>Coraline Jones, una ragazzina curiosa, trova una porta segreta nella sua nuova casa che la conduce in un mondo parallelo, apparentemente perfetto: lì, i suoi genitori sono premurosi, tutto è perfetto… finché scopre che simbolicamente la “Altra Madre” cela un’insidia sinistra e vuole che lei resti per sempre. Coraline lotta per tornare a casa, scoprendo il valore della sua realtà e delle sue relazioni</Descrizione>
+        <DurataMinuti>100</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_coraline.png</Path>
+        <DataInizioRilascio>8/7/2025</DataInizioRilascio>
+        <DataFineRilascio>26/7/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Tedesco</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+            <Lingua>Tedesco</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Fantasy</Genere>
+            <Genere>Horror</Genere>
+            <Genere>Animazione</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Dakota Fanning</Attore>
+            <Attore>Teri Hatcher</Attore>
+            <Attore>Jennifer Saunders e Dawn French</Attore>
+            <Attore>Keith David</Attore>
+            <Attore>Ian McShane</Attore>
+            <Attore>John Hodgman</Attore>
+            <Attore>Robert Bailey Jr</Attore>
+        </AttoriPrincipali>
+        <Target>14+</Target>
+        <CostoBiglietto>8</CostoBiglietto>
+        <CasaDiProduzione>Laika</CasaDiProduzione>
+        <NPostCredit>4</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Alice in Wonderland</Titolo>
+        <Autore>Lewis Carroll</Autore>
+        <Descrizione>Alice, una bambina dai sogni vividi, insegue un coniglio bianco e finisce per cadere in un mondo assurdo e colorato: il Paese delle Meraviglie. Incontra personaggi bizzarri come il Cappellaio Matto, il Brucaliffo, lo Stregatto e la temibile Regina di Cuori, con cui affronta situazioni surreali prima di risvegliarsi — suggerendo che tutto fosse un sogno</Descrizione>
+        <DurataMinuti>75</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_alice_in_the_wonderland.png</Path>
+        <DataInizioRilascio>8/9/2025</DataInizioRilascio>
+        <DataFineRilascio>20/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Tedesco</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Tedesco</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Avventura</Genere>
+            <Genere>Fantasy</Genere>
+            <Genere>Animazione</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Kathryn Beaumont</Attore>
+            <Attore>Ed Wynn</Attore>
+            <Attore>Richard Haydn</Attore>
+            <Attore>Sterling Holloway</Attore>
+            <Attore>Jerry Colonna</Attore>
+            <Attore>Verna Felton</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>8</CostoBiglietto>
+        <CasaDiProduzione>Walt Disney Productions</CasaDiProduzione>
+        <NPostCredit>1</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Alice Attraverso lo Specchio</Titolo>
+        <Autore>James Bobin</Autore>
+        <Descrizione>Alice, ormai 22enne, attraversa uno specchio magico e torna nel mondo di SottoSopra (Underland). Qui scopre che lo Stregatto è più impazzito del solito e decide di usare la “Cronosfera” per viaggiare nel tempo e salvare la famiglia dello Stregatto prima che sia troppo tardi</Descrizione>
+        <DurataMinuti>113</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_alice_atraverso_lo_specchio.png</Path>
+        <DataInizioRilascio>22/10/2025</DataInizioRilascio>
+        <DataFineRilascio>28/2/2026</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+            <Lingua>Giapponese</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Avventura</Genere>
+            <Genere>Fantasy</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Mia Wasikowska</Attore>
+            <Attore>Johnny Depp</Attore>
+            <Attore>Anne Hathaway</Attore>
+            <Attore>Helena Bonham Carter</Attore>
+            <Attore>Sacha Baron Cohen</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>7</CostoBiglietto>
+        <CasaDiProduzione>Walt Disney Pictures</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>La Sposa Cadavere</Titolo>
+        <Autore>Tim Burton</Autore>
+        <Descrizione>Victor, un giovane sposo nervoso, esercita i suoi voti nuziali nel bosco e posando l’anello su un ramo bucato, in realtà evoca una sposa cadavere che emerge dalla terra convinta di essere sposata con lui. Trasportato nel suggestivo regno dei morti, Victor scopre che l’amore vero supera qualsiasi confine tra la vita e l’aldilà</Descrizione>
+        <DurataMinuti>77</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_la_sposa_cadavere.png</Path>
+        <DataInizioRilascio>8/9/2025</DataInizioRilascio>
+        <DataFineRilascio>27/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Tedesco</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Fantasy</Genere>
+            <Genere>Animazione</Genere>
+            <Genere>Romantico</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Johnny Depp</Attore>
+            <Attore>Helena Bonham Carter</Attore>
+            <Attore>Emily Watson</Attore>
+            <Attore>Tracey Ullman</Attore>
+            <Attore>Joanna Lumley</Attore>
+            <Attore>Albert Finney</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>8</CostoBiglietto>
+        <CasaDiProduzione></CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>The Nightmare Before Christmas</Titolo>
+        <Autore>Henry Selick</Autore>
+        <Descrizione>Jack Skellington, il Re delle Zucche di Halloween Town, si stanca della solita routine spaventosa e, esplorando nuovi orizzonti, scopre Christmas Town. Incantato dal Natale, decide di rapire Babbo Natale e prenderne il posto—ma i suoi piani avventati creano il caos. Spetta a Sally rimediare prima che sia troppo tardi.</Descrizione>
+        <DurataMinuti>76</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_nightmare_before_christmas.png</Path>
+        <DataInizioRilascio>15/12/2025</DataInizioRilascio>
+        <DataFineRilascio>4/1/2026</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Francese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+            <Lingua>Tedesco</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Fantasy</Genere>
+            <Genere>Animazione</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Chris Sarandon</Attore>
+            <Attore>Danny Elfman</Attore>
+            <Attore>Catherine O'Hara</Attore>
+            <Attore>William Hickey</Attore>
+            <Attore>Glenn Shadix</Attore>
+            <Attore>Paul Reubens</Attore>
+            <Attore>Edward Ivory</Attore>
+            <Attore>Ken Page</Attore>
+        </AttoriPrincipali>
+        <Target>6+</Target>
+        <CostoBiglietto>8</CostoBiglietto>
+        <CasaDiProduzione>Skellington Productions</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Beetlejuice</Titolo>
+        <Autore>Tim Burton</Autore>
+        <Descrizione>Barbara e Adam Maitland, morti in un incidente, rimangono intrappolati come fantasmi nella loro casa. Quando una famiglia invadente (i Deetz) si trasferisce, i Maitland chiamano un “bio-esorcista”, Beetlejuice, per aiutarli a scacciarla… ma lui ha altri piani e tutto sfugge rapidamente al controllo.</Descrizione>
+        <DurataMinuti>92</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_beetlejuice.png</Path>
+        <DataInizioRilascio>16/7/2024</DataInizioRilascio>
+        <DataFineRilascio>25/7/2024</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+            <Lingua>Tedesco</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Tedesco</Lingua>
+            <Lingua>Giapponese</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Commedia</Genere>
+            <Genere>Fantasy</Genere>
+            <Genere>Horror</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Michael Keaton</Attore>
+            <Attore>Alec Baldwin</Attore>
+            <Attore>Geena Davis</Attore>
+            <Attore>Winona Ryder</Attore>
+            <Attore>Catherine O'Hara</Attore>
+            <Attore>Jeffrey Jones</Attore>
+            <Attore>Glenn Shadix</Attore>
+            <Attore>Sylvia Sidney</Attore>
+        </AttoriPrincipali>
+        <Target>14+</Target>
+        <CostoBiglietto>8</CostoBiglietto>
+        <CasaDiProduzione>Warner Bros. Pictures</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Una notte da leoni</Titolo>
+        <Autore>Todd Phillips</Autore>
+        <Descrizione>Due giorni prima del matrimonio, Doug (Justin Bartha) e tre amici – Phil (Bradley Cooper), Stu (Ed Helms) e Alan (Zach Galifianakis) – partono per Las Vegas per una festa di addio al celibato. Il giorno dopo, si risvegliano in una suite del Caesars Palace senza alcun ricordo della notte precedente e con Doug scomparso. Devono ricostruire gli eventi per trovarlo e riportarlo a Los Angeles in tempo per il matrimonio.</Descrizione>
+        <DurataMinuti>100</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_notte_da_leoni.png</Path>
+        <DataInizioRilascio>4/2/2025</DataInizioRilascio>
+        <DataFineRilascio>20/3/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+            <Lingua>Giapponese</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Avventura</Genere>
+            <Genere>Commedia</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Bradley Cooper</Attore>
+            <Attore>Ed Helms</Attore>
+            <Attore>Zach Galifianakis</Attore>
+            <Attore>Justin Bartha</Attore>
+            <Attore>Heather Graham</Attore>
+            <Attore>Ken Jeong</Attore>
+            <Attore>Mike Tyson</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>8</CostoBiglietto>
+        <CasaDiProduzione>Mike Tyson</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Il gigante di ferro</Titolo>
+        <Autore>Ted Hughes</Autore>
+        <Descrizione>Nel 1957, durante la Guerra Fredda, un gigantesco robot alieno precipita vicino alla cittadina di Rockwell, nel Maine. Un giovane ragazzo di nome Hogarth Hughes scopre il robot e, nonostante la paura iniziale, stringe un'amicizia con lui. Insieme, cercano di nascondere l'esistenza del gigante dalle autorità governative e militari, ma la situazione si complica quando un agente paranoico, Kent Mansley, inizia a indagare.</Descrizione>
+        <DurataMinuti>86</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_gigante_di_ferro.png</Path>
+        <DataInizioRilascio>4/6/2024</DataInizioRilascio>
+        <DataFineRilascio>20/7/2024</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+            <Lingua>Giapponese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Tedesco</Lingua>
+            <Lingua>Giapponese</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Avventura</Genere>
+            <Genere>ScienceFiction</Genere>
+            <Genere>Animazione</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Vin Diesel</Attore>
+            <Attore>Eli Marienthal</Attore>
+            <Attore>Jennifer Aniston</Attore>
+            <Attore>Harry Connick Jr.</Attore>
+            <Attore>James Gammon</Attore>
+            <Attore>Cloris Leachman</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>8</CostoBiglietto>
+        <CasaDiProduzione>Cloris Leachman</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Inserzione>
+        <Titolo>Sweet Chilli Burger</Titolo>
+        <Autore>Luca Ferrari</Autore>
+        <Descrizione>Vieni a provare il nuovo Sweet Chilli Burger da Burger King! Gusto piccante e dolce in un unico panino, pronto a conquistare il tuo palato. Solo per un periodo limitato!</Descrizione>
+        <DurataMinuti>1</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/burger_king_pubblicita.png</Path>
+        <DataInizioRilascio>5/2/2024</DataInizioRilascio>
+        <DataFineRilascio>23/3/2024</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+        </SottotitoliDisponibili>
+        <NProiezioniGiornaliere>0</NProiezioniGiornaliere>
+        <FasceOrarie>
+            <Fascia>Mattina</Fascia>
+        </FasceOrarie>
+        <Target>TUTTI</Target>
+        <AziendaInserzionista>Burger King</AziendaInserzionista>
+        <CostoFissoProiezione>30</CostoFissoProiezione>
+    </Inserzione>
+    <Inserzione>
+        <Titolo>La Pausa che Conviene</Titolo>
+        <Autore>Marco Rossi</Autore>
+        <Descrizione>Fai una pausa con gusto! Scopri le offerte imperdibili di McDonald’s e rendi il tuo break la pausa che conviene. Panini, patatine e bevande a prezzi speciali, solo per te!</Descrizione>
+        <DurataMinuti>2</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/pubblicita_mc.png</Path>
+        <DataInizioRilascio>8/9/2025</DataInizioRilascio>
+        <DataFineRilascio>16/11/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>0</NProiezioniGiornaliere>
+        <FasceOrarie>
+            <Fascia>Mattina</Fascia>
+        </FasceOrarie>
+        <Target>TUTTI</Target>
+        <AziendaInserzionista>McDonald’s</AziendaInserzionista>
+        <CostoFissoProiezione>30</CostoFissoProiezione>
+    </Inserzione>
+    <Inserzione>
+        <Titolo>Croccante e Irresistibile</Titolo>
+        <Autore>Laura Bianchi</Autore>
+        <Descrizione>Non resistere alla bontà! Vieni da KFC e assapora il nostro pollo croccante e irresistibile, con le ricette originali che ami. Un morso e sei già conquistato!</Descrizione>
+        <DurataMinuti>1</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/pubblicita_kfc.png</Path>
+        <DataInizioRilascio>8/7/2025</DataInizioRilascio>
+        <DataFineRilascio>18/10/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+        </SottotitoliDisponibili>
+        <NProiezioniGiornaliere>0</NProiezioniGiornaliere>
+        <FasceOrarie>
+            <Fascia>Mattina</Fascia>
+        </FasceOrarie>
+        <Target>TUTTI</Target>
+        <AziendaInserzionista>KFC</AziendaInserzionista>
+        <CostoFissoProiezione>30</CostoFissoProiezione>
+    </Inserzione>
+    <Inserzione>
+        <Titolo>Scopri il Gusto</Titolo>
+        <Autore>Marco Rossi</Autore>
+        <Descrizione>Non aspettare! Corri da Bully Tacos e prova i nostri tacos pieni di sapore. Ingredienti freschi, ricette piccanti e tanto gusto ti aspettano ad ogni morso!</Descrizione>
+        <DurataMinuti>1</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/pubblicita_billy_tacos.png</Path>
+        <DataInizioRilascio>8/9/2025</DataInizioRilascio>
+        <DataFineRilascio>17/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+        </SottotitoliDisponibili>
+        <NProiezioniGiornaliere>0</NProiezioniGiornaliere>
+        <FasceOrarie>
+            <Fascia>Mattina</Fascia>
+        </FasceOrarie>
+        <Target>TUTTI</Target>
+        <AziendaInserzionista>Billy Tacos</AziendaInserzionista>
+        <CostoFissoProiezione>30</CostoFissoProiezione>
+    </Inserzione>
+    <Inserzione>
+        <Titolo>Il Gusto del Far West</Titolo>
+        <Autore>Laura Bianchi</Autore>
+        <Descrizione>Vivi l’avventura del Far West! Vieni da Old Wild West e assapora le nostre carni alla griglia e i piatti tipici americani, con il sapore autentico del selvaggio West!</Descrizione>
+        <DurataMinuti>0</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/pubblicita_old_wild_west.png</Path>
+        <DataInizioRilascio>1/9/2025</DataInizioRilascio>
+        <DataFineRilascio>26/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+            <Lingua>Giapponese</Lingua>
+        </SottotitoliDisponibili>
+        <NProiezioniGiornaliere>0</NProiezioniGiornaliere>
+        <FasceOrarie>
+            <Fascia>Mattina</Fascia>
+        </FasceOrarie>
+        <Target>TUTTI</Target>
+        <AziendaInserzionista>Old Wild West</AziendaInserzionista>
+        <CostoFissoProiezione>35</CostoFissoProiezione>
+    </Inserzione>
+    <Podcast>
+        <Titolo>151eg</Titolo>
+        <Autore>Enrico Gamba</Autore>
+        <Descrizione>151eg è Enrico Gamba. Io vi racconto le storie dietro i film della vostra infanzia. Come è stato realizzato Biancaneve? Che persona era Walt Disney? Perché Asterix ha avuto tanto successo? Quali significati nascondono i film di Hayao Miyazaki? Chi faceva i Looney Tunes li detestava? Rispondo a tutte le domande che non ti sei mai fatto ma avresti dovuto.</Descrizione>
+        <DurataMinuti>117</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/podcast_151eg.png</Path>
+        <DataInizioRilascio>13/8/2024</DataInizioRilascio>
+        <DataFineRilascio>29/11/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili/>
+        <Conduttore>Enrico Gamba</Conduttore>
+    </Podcast>
+    <Podcast>
+        <Titolo>Synergo</Titolo>
+        <Autore>Mario Palladino</Autore>
+        <Descrizione>Trattiamo di cinema e videomaking... ma lo facciamo pure, un po'.</Descrizione>
+        <DurataMinuti>70</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/synergo.png</Path>
+        <DataInizioRilascio>3/6/2025</DataInizioRilascio>
+        <DataFineRilascio>13/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili/>
+        <Conduttore>Mario Palladino</Conduttore>
+    </Podcast>
+    <Podcast>
+        <Titolo>Caleel</Titolo>
+        <Autore>Adrian Raul Rednic</Autore>
+        <Descrizione>Salve, Adrian R. Rednic a rapporto, conosciuto anche come Caleel su YouTube, dove sono attivo dal 2015. Nei miei video tratto principalmente di tutti quegli argomenti che riguardano le saghe e i fandom più in voga, basandomi principalmente su una componente fantasy, grande mia passione fin da ragazzino.
+Da Harry Potter al Signore degli Anelli, da Game of Thrones a Star Wars, vado ad esplorare i molteplici aspetti delle varie opere, che si tratti di discussioni approfondite sulla storia narrata, biografie dei personaggi, strane speculazioni sulla trama o semplici curiosità. Coltivo una grande passione per la scrittura, che cerco di trasmettere anche nei miei video, impegnandomi spesso a dare un aspetto quanto più narrativo e scorrevole alle varie opere.</Descrizione>
+        <DurataMinuti>66</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/podcast_caleel.png</Path>
+        <DataInizioRilascio>24/8/2025</DataInizioRilascio>
+        <DataFineRilascio>27/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili/>
+        <Conduttore>Adrian Raul Rednic</Conduttore>
+    </Podcast>
+    <Puntata>
+        <Titolo>Analisi del cinema muto</Titolo>
+        <Autore>FilmLab</Autore>
+        <Descrizione>Esploriamo l'era del cinema muto e i suoi maestri.</Descrizione>
+        <DurataMinuti>40</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/default_puntata.png</Path>
+        <DataInizioRilascio>1/10/2025</DataInizioRilascio>
+        <DataFineRilascio>16/10/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <TitoloPodcastAssociato>Cinema d'Autore</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>FilmLab</AutorePodcastAssociato>
+        <NPubblicita>1</NPubblicita>
+    </Puntata>
+    <Puntata>
+        <Titolo>La Nouvelle Vague</Titolo>
+        <Autore>FilmLab</Autore>
+        <Descrizione>Il movimento francese che ha rivoluzionato il cinema.</Descrizione>
+        <DurataMinuti>35</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/default_puntata.png</Path>
+        <DataInizioRilascio>16/10/2025</DataInizioRilascio>
+        <DataFineRilascio>1/11/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <TitoloPodcastAssociato>Cinema d'Autore</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>FilmLab</AutorePodcastAssociato>
+        <NPubblicita>2</NPubblicita>
+    </Puntata>
+    <Trailer>
+        <Titolo>Trailer ufficiale - I Puffi - Il Film</Titolo>
+        <Autore>Paramount</Autore>
+        <Descrizione>Primi scorci ufficiali dell’avventura dei Puffi in CGI.</Descrizione>
+        <DurataMinuti>2</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>HD 720p</Risoluzione>
+        <Path>images/trailer_ipuffi.jpg</Path>
+        <DataInizioRilascio>6/6/2025</DataInizioRilascio>
+        <DataFineRilascio>3/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </SottotitoliDisponibili>
+        <NProiezioniGiornaliere>2</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>I Puffi - Il Film</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Chris Miller</AutoreFilmAssociato>
+    </Trailer>
+    <Trailer>
+        <Titolo>Trailer ufficiale - I Roses</Titolo>
+        <Autore>Searchlight Pictures / Disney Italia</Autore>
+        <Descrizione>Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.</Descrizione>
+        <DurataMinuti>2</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>HD 720p</Risoluzione>
+        <Path>images/trailer_iroses.jpg</Path>
+        <DataInizioRilascio>1/8/2025</DataInizioRilascio>
+        <DataFineRilascio>3/9/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>15</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>I Roses</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Jay Roach</AutoreFilmAssociato>
+    </Trailer>
+    <Trailer>
+        <Titolo>Trailer ufficiale - Tutta colpa del rock</Titolo>
+        <Autore>PiperFilm</Autore>
+        <Descrizione>Il trailer ufficiale mostra l’energia rock e l’irriverente cast carcerario alle prese con una rinascita a ritmo di musica.</Descrizione>
+        <DurataMinuti>1</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>HD 720p</Risoluzione>
+        <Path>images/trailer_tuttacolpadelrock.jpg</Path>
+        <DataInizioRilascio>7/7/2025</DataInizioRilascio>
+        <DataFineRilascio>8/9/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>7</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>Tutta colpa del rock</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Andrea Jublin</AutoreFilmAssociato>
+    </Trailer>
+    <Trailer>
+        <Titolo>Trailer ufficiale - Harry Potter e il Calice di Fuoco</Titolo>
+        <Autore>Warner Bros</Autore>
+        <Descrizione>Il trailer ufficiale del quarto capitolo della saga di Harry Potter.</Descrizione>
+        <DurataMinuti>2</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>images/trailer_harrypottereilcalicedifuoco.jpg</Path>
+        <DataInizioRilascio>23/9/2005</DataInizioRilascio>
+        <DataFineRilascio>23/9/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>4</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>Harry Potter e il Calice di Fuoco - 20esimo anniversario</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Mike Newell</AutoreFilmAssociato>
+    </Trailer>
+    <Trailer>
+        <Titolo>Trailer italiano ufficiale - Una scomoda circostanza</Titolo>
+        <Autore>Sony Pictures / Eagle Pictures</Autore>
+        <Descrizione>Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.</Descrizione>
+        <DurataMinuti>2</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>images/trailer_caughtstealing.jpg</Path>
+        <DataInizioRilascio>24/7/2025</DataInizioRilascio>
+        <DataFineRilascio>2/9/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>Una scomoda circostanza - Caught Stealing</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Darren Aronofsky</AutoreFilmAssociato>
+    </Trailer>
+    <Trailer>
+        <Titolo>Trailer ufficiale - Weapons</Titolo>
+        <Autore>Warner Bros. Pictures Italia</Autore>
+        <Descrizione>Trailer ufficiale italiano che anticipa il mistero inquietante dietro la sparizione dei bambini.</Descrizione>
+        <DurataMinuti>2</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>images/trailer_weapons.jpg</Path>
+        <DataInizioRilascio>30/4/2025</DataInizioRilascio>
+        <DataFineRilascio>5/8/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>Weapons</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Zach Cregger</AutoreFilmAssociato>
+    </Trailer>
+    <Trailer>
+        <Titolo>Trailer IMAX - Lo Squalo 50° anniversario</Titolo>
+        <Autore>Universal Pictures / Adler Entertainment</Autore>
+        <Descrizione>Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.</Descrizione>
+        <DurataMinuti>2</DurataMinuti>
+        <Formato>IMAX 3D</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>images/trailer_losqualo50anniversario.jpg</Path>
+        <DataInizioRilascio>4/7/2025</DataInizioRilascio>
+        <DataFineRilascio>31/8/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>Lo Squalo - 50esimo anniversario</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Steven Spielberg</AutoreFilmAssociato>
+    </Trailer>
+    <Trailer>
+        <Titolo>Una Notte da Leoni - Trailer Ufficiale</Titolo>
+        <Autore>Todd Phillips</Autore>
+        <Descrizione>Due giorni prima del matrimonio, Doug (Justin Bartha) e tre amici – Phil (Bradley Cooper), Stu (Ed Helms) e Alan (Zach Galifianakis) – partono per Las Vegas per una festa di addio al celibato. Il giorno dopo, si risvegliano in una suite del Caesars Palace senza alcun ricordo della notte precedente e con Doug scomparso. Devono ricostruire gli eventi per trovarlo e riportarlo a Los Angeles in tempo per il matrimonio.</Descrizione>
+        <DurataMinuti>4</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/traiker_notte_da_leoni.png</Path>
+        <DataInizioRilascio>28/2/2025</DataInizioRilascio>
+        <DataFineRilascio>20/3/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+            <Lingua>Tedesco</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+        </SottotitoliDisponibili>
+        <NProiezioniGiornaliere>4</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>Una notte da leoni</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Todd Phillips</AutoreFilmAssociato>
+    </Trailer>
+    <Trailer>
+        <Titolo>Il Gigante di Ferro - Trailer Ufficiale</Titolo>
+        <Autore>Brad Bird</Autore>
+        <Descrizione>Nel 1957, durante la Guerra Fredda, un gigantesco robot alieno precipita vicino alla cittadina di Rockwell, nel Maine. Un giovane ragazzo di nome Hogarth Hughes scopre il robot e, nonostante la paura iniziale, stringe un'amicizia con lui. Insieme, cercano di nascondere l'esistenza del gigante dalle autorità governative e militari, ma la situazione si complica quando un agente paranoico, Kent Mansley, inizia a indagare.</Descrizione>
+        <DurataMinuti>3</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/trailer_il_gigante_di_ferro.png</Path>
+        <DataInizioRilascio>20/7/2024</DataInizioRilascio>
+        <DataFineRilascio>20/7/2024</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Giapponese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+            <Lingua>Giapponese</Lingua>
+        </SottotitoliDisponibili>
+        <NProiezioniGiornaliere>4</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>Il gigante di ferro</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Ted Hughes</AutoreFilmAssociato>
+    </Trailer>
+    <Puntata>
+        <Titolo>Storia di Sony Pictures Animation</Titolo>
+        <Autore>Enrico Gamba</Autore>
+        <Descrizione>La stessa casa di Spiderverse, KPopDemon Hunters e Emoji Movie. Com'è successo che Sony sia passata da essere una casa tra le tante ad essere la nuova testa d'ariete dell'animazione? Qual è la storia di Sony pictures animation? </Descrizione>
+        <DurataMinuti>34</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/puntata_sony.png</Path>
+        <DataInizioRilascio>16/7/2025</DataInizioRilascio>
+        <DataFineRilascio>19/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </SottotitoliDisponibili>
+        <TitoloPodcastAssociato>151eg</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>Enrico Gamba</AutorePodcastAssociato>
+        <NPubblicita>7</NPubblicita>
+    </Puntata>
+    <Puntata>
+        <Titolo>L'Evoluzione di Mercoledì Addams</Titolo>
+        <Autore>Enrico Gamba</Autore>
+        <Descrizione>Mercoledì è l'unico personaggio della famiglia Addams ad essere mai stato alterato ed è anche l'unico ad aver ricevuto una serie Netflix di Tim Burton. Voi che dite? Sarà il caso di spiegarne il motivo?</Descrizione>
+        <DurataMinuti>26</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/puntata_mercoledi.png</Path>
+        <DataInizioRilascio>13/8/2024</DataInizioRilascio>
+        <DataFineRilascio>13/9/2024</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </SottotitoliDisponibili>
+        <TitoloPodcastAssociato>151eg</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>Enrico Gamba</AutorePodcastAssociato>
+        <NPubblicita>6</NPubblicita>
+    </Puntata>
+    <Puntata>
+        <Titolo>storia dell'inizio del RINASCIMENTO DISNEY</Titolo>
+        <Autore>Enrico Gamba</Autore>
+        <Descrizione>Vi racconto la storia delle origini del Rinascimento Disney da La Sirenetta a Il re Leone (Poi vi parlerò del suo declino in un video futuro). Si torna a parlare di Katzenberg, Eisner e Wells e di come cambiarono le sorti di Walt disney Animation Studios.</Descrizione>
+        <DurataMinuti>57</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/puntata_disney.png</Path>
+        <DataInizioRilascio>8/9/2025</DataInizioRilascio>
+        <DataFineRilascio>29/11/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </SottotitoliDisponibili>
+        <TitoloPodcastAssociato>151eg</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>Enrico Gamba</AutorePodcastAssociato>
+        <NPubblicita>9</NPubblicita>
+    </Puntata>
+    <Puntata>
+        <Titolo>Un film MINECRAFT ma il film non c'è</Titolo>
+        <Autore>Mario Palladino</Autore>
+        <Descrizione>Questo """""""""""film""""""""""" di Minecraft è orrendo. E non scriverò altro, qui in descrizione. </Descrizione>
+        <DurataMinuti>28</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/puntata_minecraft.png</Path>
+        <DataInizioRilascio>5/9/2025</DataInizioRilascio>
+        <DataFineRilascio>13/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </SottotitoliDisponibili>
+        <TitoloPodcastAssociato>Synergo</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>Mario Palladino</AutorePodcastAssociato>
+        <NPubblicita>6</NPubblicita>
+    </Puntata>
+    <Puntata>
+        <Titolo>BIANCANEVE - L'ultima frontiera della BRUTTEZZA al CINEMA</Titolo>
+        <Autore>Mario Palladino</Autore>
+        <Descrizione>Ecco Biancaneve, il live Action Disney che non ne azzecca una, ma ne complica parecchie. L'ultima frontiera del vuoto cinematografico, senza "se" e senza "ma". Il film che farà cambiare i live action, per sempre. O, almeno, è ciò che mi auguro. </Descrizione>
+        <DurataMinuti>42</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/puntata_biancaneve.png</Path>
+        <DataInizioRilascio>3/6/2025</DataInizioRilascio>
+        <DataFineRilascio>17/7/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </SottotitoliDisponibili>
+        <TitoloPodcastAssociato>Synergo</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>Mario Palladino</AutorePodcastAssociato>
+        <NPubblicita>8</NPubblicita>
+    </Puntata>
+    <Puntata>
+        <Titolo>La FASE 5 MARVEL è stata un FALLIMENTO TOTALE - Retrospettiva completa</Titolo>
+        <Autore>Caleel</Autore>
+        <Descrizione>Ben 23 prodotti hanno composto questa fase 5 del Marvel Cinematic Universe, e in questo video li ho analizzati tutti per arrivare ad una semplice conclusione: l'MCU si sta rivelando un FALLIMENTO TOTALE.</Descrizione>
+        <DurataMinuti>66</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/puntata_marvel.png</Path>
+        <DataInizioRilascio>24/8/2025</DataInizioRilascio>
+        <DataFineRilascio>27/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </SottotitoliDisponibili>
+        <TitoloPodcastAssociato>Caleel</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>Adrian Raul Rednic</AutorePodcastAssociato>
+        <NPubblicita>10</NPubblicita>
+    </Puntata>
+</MediaList>

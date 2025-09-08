@@ -327,10 +327,10 @@ void InsertMedia::resetAllInput()
     if (comboTipologia)
         comboTipologia->setCurrentIndex(0);
 
-    setDefaultCover();
-
     // QString
     imagePath.clear();
+
+    setDefaultCover();
 
     checkMediaNameAvailability();
 }
