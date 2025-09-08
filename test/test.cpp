@@ -32,13 +32,8 @@ TEST_CASE("2. Estensione Trailer associati condizionale")
     year_month_day fine{2025y, December, 15d};
     year_month_day fine2{2025y, December, 22d};
 
-<<<<<<< HEAD
     Film *film = new Film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
                           3, 9.3, "azienda", "Autore");
-=======
-    Film* film = new Film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
-              3, 9.3, "azienda", "Autore");
->>>>>>> feature/caca
 
     Trailer *t1 = new Trailer("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
                               3, film, "Autore");
@@ -71,13 +66,8 @@ TEST_CASE("3. Trailer fuori produzione non aggiornato")
     year_month_day inizio{2025y, August, 30d};
     year_month_day fine{2025y, September, 1d};
 
-<<<<<<< HEAD
     Film *film = new Film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
                           3, 9.3, "azienda", "Autore");
-=======
-    Film*  film = new Film("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
-              3, 9.3, "azienda", "Autore");
->>>>>>> feature/caca
 
     Trailer *t1 = new Trailer("Titolo", "Descrizione", inizio, fine, 120, Formato::IMAX_3D, Risoluzione::FullHD_1080p,
                               3, film, "Autore");
@@ -209,13 +199,8 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)")
         year_month_day inizio{2025y, April, 1d};
         year_month_day fine{2025y, April, 15d};
 
-<<<<<<< HEAD
         Podcast *podcast = new Podcast("Titolo", "Descrizione",
                                        Formato::IMAX_3D, Risoluzione::FullHD_1080p);
-=======
-        Podcast* podcast = new Podcast("Titolo", "Descrizione",
-                        Formato::IMAX_3D, Risoluzione::FullHD_1080p);
->>>>>>> feature/caca
 
         Puntata *puntata1 = new Puntata("Titolo", "Descrizione",
                                         year_month_day{2025y, December, 15d}, year_month_day{2025y, December, 19d},
@@ -240,19 +225,11 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)")
     SECTION("8.3 verifica riassegnazione puntata")
     {
 
-<<<<<<< HEAD
         Podcast *podcast1 = new Podcast("Titolo", "Descrizione",
                                         Formato::IMAX_3D, Risoluzione::FullHD_1080p);
 
         Podcast *podcast2 = new Podcast("Titolo", "Descrizione",
                                         Formato::IMAX_3D, Risoluzione::FullHD_1080p);
-=======
-        Podcast* podcast1 = new Podcast("Titolo", "Descrizione",
-                         Formato::IMAX_3D, Risoluzione::FullHD_1080p);
-
-        Podcast* podcast2 = new Podcast("Titolo", "Descrizione",
-                         Formato::IMAX_3D, Risoluzione::FullHD_1080p);
->>>>>>> feature/caca
         Puntata *puntata1 = new Puntata("Titolo", "Descrizione",
                                         year_month_day{2025y, December, 15d}, year_month_day{2025y, December, 19d},
                                         60, podcast1, 3);
@@ -268,13 +245,8 @@ TEST_CASE("8. Podcast.aggiungiPuntata(puntata)")
 TEST_CASE("9. Verifica aggiunta ospite e rimozione")
 {
 
-<<<<<<< HEAD
     Podcast *podcast = new Podcast("Titolo", "Descrizione",
                                    Formato::IMAX_3D, Risoluzione::FullHD_1080p);
-=======
-    Podcast* podcast = new Podcast("Titolo", "Descrizione",
-                    Formato::IMAX_3D, Risoluzione::FullHD_1080p);
->>>>>>> feature/caca
     Puntata *puntata = new Puntata("Titolo", "Descrizione", year_month_day{2025y, December, 15d}, year_month_day{2025y, December, 19d},
                                    60, podcast, 3);
     puntata->aggiungiOspite("Minnie");
@@ -316,13 +288,8 @@ TEST_CASE("11. Verifica Puntata::setDataFineRilascio()")
 {
     SECTION("11.1 verifico che la modifica di una dataFineRilascio influisca sulle successive")
     {
-<<<<<<< HEAD
         Podcast *podcast = new Podcast("Titolo", "Descrizione",
                                        Formato::IMAX_3D, Risoluzione::FullHD_1080p);
-=======
-        Podcast* podcast = new Podcast("Titolo", "Descrizione",
-                        Formato::IMAX_3D, Risoluzione::FullHD_1080p);
->>>>>>> feature/caca
         Puntata *puntata1 = new Puntata("Titolo", "Descrizione", year_month_day{2025y, December, 15d}, year_month_day{2025y, December, 19d},
                                         60, podcast, 3);
         Puntata *puntata2 = new Puntata("Titolo", "Descrizione", year_month_day{2025y, December, 15d}, year_month_day{2025y, December, 26d},

@@ -9,15 +9,14 @@
         <Path>images/image17.png</Path>
         <DataInizioRilascio>1/10/2025</DataInizioRilascio>
         <DataFineRilascio>1/11/2025</DataFineRilascio>
-        <LingueDisponibili />
-        <SottotitoliDisponibili />
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
         <Conduttore>Marco Rossi</Conduttore>
     </Podcast>
     <Film>
         <Titolo>I Puffi - Il Film</Titolo>
         <Autore>Chris Miller</Autore>
-        <Descrizione>Un’avventura animata-musicale con i Puffi alla ricerca del Grande Puffo tra
-            dimensioni magiche...</Descrizione>
+        <Descrizione>Un’avventura animata-musicale con i Puffi alla ricerca del Grande Puffo tra dimensioni magiche...</Descrizione>
         <DurataMinuti>93</DurataMinuti>
         <Formato>DCP</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -47,9 +46,7 @@
     <Film>
         <Titolo>I Roses</Titolo>
         <Autore>Jay Roach</Autore>
-        <Descrizione>Commedia nera in cui una coppia apparentemente perfetta — Ivy e Theo Rose —
-            vede naufragare il proprio matrimonio in una guerra emotiva tra ambizione professionale
-            e risentimento.</Descrizione>
+        <Descrizione>Commedia nera in cui una coppia apparentemente perfetta — Ivy e Theo Rose — vede naufragare il proprio matrimonio in una guerra emotiva tra ambizione professionale e risentimento.</Descrizione>
         <DurataMinuti>105</DurataMinuti>
         <Formato>DCP</Formato>
         <Risoluzione>FullHD 1080p</Risoluzione>
@@ -60,7 +57,7 @@
             <Lingua>Italiano</Lingua>
             <Lingua>Inglese</Lingua>
         </LingueDisponibili>
-        <SottotitoliDisponibili />
+        <SottotitoliDisponibili/>
         <Generi>
             <Genere>Nessuno</Genere>
             <Genere>Commedia</Genere>
@@ -81,20 +78,23 @@
         <Titolo>Tutta colpa del rock</Titolo>
         <Autore>Andrea Jublin</Autore>
         <Descrizione>
-            Bruno è un ex chitarrista rock egoista e bugiardo che finisce in carcere. Nel luogo più
-            costrittivo trova però un’opportunità di riscatto: formare una band con altri detenuti e
-            partecipare al Roma Rock Contest per mantenere una promessa fatta alla figlia.
+            Bruno è un ex chitarrista rock egoista e bugiardo che finisce in carcere. Nel luogo più costrittivo trova però un’opportunità di riscatto: formare una band con altri detenuti e partecipare al Roma Rock Contest per mantenere una promessa fatta alla figlia.
         </Descrizione>
         <DurataMinuti>100</DurataMinuti>
         <Formato>DCP</Formato>
-        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Risoluzione>SD 480p</Risoluzione>
         <Path>images/locandina_tuttacolpadelrock.jpg</Path>
         <DataInizioRilascio>28/8/2025</DataInizioRilascio>
         <DataFineRilascio>8/9/2025</DataFineRilascio>
         <LingueDisponibili>
             <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
         </LingueDisponibili>
-        <SottotitoliDisponibili />
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+        </SottotitoliDisponibili>
         <Generi>
             <Genere>Commedia</Genere>
         </Generi>
@@ -112,8 +112,7 @@
     <Film>
         <Titolo>Harry Potter e il Calice di Fuoco - 20esimo anniversario</Titolo>
         <Autore>Mike Newell</Autore>
-        <Descrizione>Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno,
-            tra incantesimi, drago e sfida finale con Voldemort.</Descrizione>
+        <Descrizione>Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.</Descrizione>
         <DurataMinuti>158</DurataMinuti>
         <Formato>DCP</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -124,7 +123,7 @@
             <Lingua>Italiano</Lingua>
             <Lingua>Inglese</Lingua>
         </LingueDisponibili>
-        <SottotitoliDisponibili />
+        <SottotitoliDisponibili/>
         <Generi>
             <Genere>Avventura</Genere>
             <Genere>Fantasy</Genere>
@@ -145,20 +144,18 @@
     <Film>
         <Titolo>Una scomoda circostanza - Caught Stealing</Titolo>
         <Autore>Darren Aronofsky</Autore>
-        <Descrizione>Hank Thompson, ex promessa del baseball, finisce coinvolto in una violenta
-            caccia all'uomo nel crudo sottobosco criminale di New York anni ’90 dopo aver accettato
-            di badare al gatto del suo stravagante vicino.</Descrizione>
+        <Descrizione>Hank Thompson, ex promessa del baseball, finisce coinvolto in una violenta caccia all'uomo nel crudo sottobosco criminale di New York anni ’90 dopo aver accettato di badare al gatto del suo stravagante vicino.</Descrizione>
         <DurataMinuti>110</DurataMinuti>
         <Formato>DCP</Formato>
         <Risoluzione>SD 480p</Risoluzione>
         <Path>images/locandina_caughtstealing.jpg</Path>
         <DataInizioRilascio>27/8/2025</DataInizioRilascio>
-        <DataFineRilascio>7/9/2025</DataFineRilascio>
+        <DataFineRilascio>14/9/2025</DataFineRilascio>
         <LingueDisponibili>
             <Lingua>Italiano</Lingua>
             <Lingua>Inglese</Lingua>
         </LingueDisponibili>
-        <SottotitoliDisponibili />
+        <SottotitoliDisponibili/>
         <Generi>
             <Genere>Crime</Genere>
             <Genere>Thriller</Genere>
@@ -180,15 +177,13 @@
         </AttoriPrincipali>
         <Target>TUTTI</Target>
         <CostoBiglietto>12</CostoBiglietto>
-        <CasaDiProduzione>Columbia Pictures / Protozoa Pictures (distribuito in Italia da Eagle
-            Pictures)</CasaDiProduzione>
+        <CasaDiProduzione>Columbia Pictures / Protozoa Pictures (distribuito in Italia da Eagle Pictures)</CasaDiProduzione>
         <NPostCredit>0</NPostCredit>
     </Film>
     <Film>
         <Titolo>Weapons</Titolo>
         <Autore>Zach Cregger</Autore>
-        <Descrizione>In una misteriosa cittadina, diciassette bambini spariscono nella stessa notte:
-            un horror/thriller enigmatico e disturbante.</Descrizione>
+        <Descrizione>In una misteriosa cittadina, diciassette bambini spariscono nella stessa notte: un horror/thriller enigmatico e disturbante.</Descrizione>
         <DurataMinuti>128</DurataMinuti>
         <Formato>DCP</Formato>
         <Risoluzione>FullHD 1080p</Risoluzione>
@@ -199,7 +194,7 @@
             <Lingua>Italiano</Lingua>
             <Lingua>Inglese</Lingua>
         </LingueDisponibili>
-        <SottotitoliDisponibili />
+        <SottotitoliDisponibili/>
         <Generi>
             <Genere>Horror</Genere>
             <Genere>Thriller</Genere>
@@ -222,8 +217,7 @@
     <Film>
         <Titolo>Lo Squalo - 50esimo anniversario</Titolo>
         <Autore>Steven Spielberg</Autore>
-        <Descrizione>Un capolavoro che ha inventato il blockbuster estivo: lo Squalo torna sul
-            grande schermo per il suo cinquantesimo anniversario.</Descrizione>
+        <Descrizione>Un capolavoro che ha inventato il blockbuster estivo: lo Squalo torna sul grande schermo per il suo cinquantesimo anniversario.</Descrizione>
         <DurataMinuti>124</DurataMinuti>
         <Formato>IMAX 3D</Formato>
         <Risoluzione>FullHD 1080p</Risoluzione>
@@ -233,7 +227,7 @@
         <LingueDisponibili>
             <Lingua>Italiano</Lingua>
         </LingueDisponibili>
-        <SottotitoliDisponibili />
+        <SottotitoliDisponibili/>
         <Generi>
             <Genere>Horror</Genere>
             <Genere>Thriller</Genere>
@@ -253,8 +247,7 @@
     <Film>
         <Titolo>La Fabbrica di Cioccolato</Titolo>
         <Autore>Roald Dahl</Autore>
-        <Descrizione>L'eccentrico Willy Wonka apre le porte della sua fabbrica di dolci a cinque
-            fortunati, che imparano così i segreti delle sue meravigliose creazioni.</Descrizione>
+        <Descrizione>L'eccentrico Willy Wonka apre le porte della sua fabbrica di dolci a cinque fortunati, che imparano così i segreti delle sue meravigliose creazioni.</Descrizione>
         <DurataMinuti>124</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -292,18 +285,13 @@
     <Film>
         <Titolo>Edward Mani di Forbici</Titolo>
         <Autore>Tim Burton</Autore>
-        <Descrizione>Edward è un essere artificiale incompiuto, creato da uno scienziato che muore
-            prima di terminare il suo lavoro, lasciandolo con delle forbici al posto delle mani.
-            Viene scoperto da una venditrice porta a porta, Peg, che lo porta nella sua famiglia
-            suburbana. Edward viene ben accolto all’inizio, ma finisce per essere rifiutato quando
-            la sua diversità causa incomprensioni e paura. Nonostante tutto, sviluppa un sentimento
-            d’amore verso Kim, la figlia adolescente della famiglia</Descrizione>
+        <Descrizione>Edward è un essere artificiale incompiuto, creato da uno scienziato che muore prima di terminare il suo lavoro, lasciandolo con delle forbici al posto delle mani. Viene scoperto da una venditrice porta a porta, Peg, che lo porta nella sua famiglia suburbana. Edward viene ben accolto all’inizio, ma finisce per essere rifiutato quando la sua diversità causa incomprensioni e paura. Nonostante tutto, sviluppa un sentimento d’amore verso Kim, la figlia adolescente della famiglia</Descrizione>
         <DurataMinuti>107</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
         <Path>images/locandina_edward_mani_di_forbici.png</Path>
-        <DataInizioRilascio>6/8/2025</DataInizioRilascio>
-        <DataFineRilascio>26/9/2025</DataFineRilascio>
+        <DataInizioRilascio>6/8/2024</DataInizioRilascio>
+        <DataFineRilascio>27/9/2024</DataFineRilascio>
         <LingueDisponibili>
             <Lingua>Italiano</Lingua>
             <Lingua>Inglese</Lingua>
@@ -336,17 +324,13 @@
     <Film>
         <Titolo>Coraline</Titolo>
         <Autore>Henry Selick</Autore>
-        <Descrizione>Coraline Jones, una ragazzina curiosa, trova una porta segreta nella sua nuova
-            casa che la conduce in un mondo parallelo, apparentemente perfetto: lì, i suoi genitori
-            sono premurosi, tutto è perfetto… finché scopre che simbolicamente la “Altra Madre” cela
-            un’insidia sinistra e vuole che lei resti per sempre. Coraline lotta per tornare a casa,
-            scoprendo il valore della sua realtà e delle sue relazioni</Descrizione>
+        <Descrizione>Coraline Jones, una ragazzina curiosa, trova una porta segreta nella sua nuova casa che la conduce in un mondo parallelo, apparentemente perfetto: lì, i suoi genitori sono premurosi, tutto è perfetto… finché scopre che simbolicamente la “Altra Madre” cela un’insidia sinistra e vuole che lei resti per sempre. Coraline lotta per tornare a casa, scoprendo il valore della sua realtà e delle sue relazioni</Descrizione>
         <DurataMinuti>100</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
         <Path>images/locandina_coraline.png</Path>
-        <DataInizioRilascio>8/7/2025</DataInizioRilascio>
-        <DataFineRilascio>26/7/2025</DataFineRilascio>
+        <DataInizioRilascio>8/10/2024</DataInizioRilascio>
+        <DataFineRilascio>8/11/2024</DataFineRilascio>
         <LingueDisponibili>
             <Lingua>Italiano</Lingua>
             <Lingua>Francese</Lingua>
@@ -380,17 +364,13 @@
     <Film>
         <Titolo>Alice in Wonderland</Titolo>
         <Autore>Lewis Carroll</Autore>
-        <Descrizione>Alice, una bambina dai sogni vividi, insegue un coniglio bianco e finisce per
-            cadere in un mondo assurdo e colorato: il Paese delle Meraviglie. Incontra personaggi
-            bizzarri come il Cappellaio Matto, il Brucaliffo, lo Stregatto e la temibile Regina di
-            Cuori, con cui affronta situazioni surreali prima di risvegliarsi — suggerendo che tutto
-            fosse un sogno</Descrizione>
+        <Descrizione>Alice, una bambina dai sogni vividi, insegue un coniglio bianco e finisce per cadere in un mondo assurdo e colorato: il Paese delle Meraviglie. Incontra personaggi bizzarri come il Cappellaio Matto, il Brucaliffo, lo Stregatto e la temibile Regina di Cuori, con cui affronta situazioni surreali prima di risvegliarsi — suggerendo che tutto fosse un sogno</Descrizione>
         <DurataMinuti>75</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
         <Path>images/locandina_alice_in_the_wonderland.png</Path>
-        <DataInizioRilascio>8/9/2025</DataInizioRilascio>
-        <DataFineRilascio>20/9/2025</DataFineRilascio>
+        <DataInizioRilascio>8/9/2024</DataInizioRilascio>
+        <DataFineRilascio>20/9/2024</DataFineRilascio>
         <LingueDisponibili>
             <Lingua>Italiano</Lingua>
             <Lingua>Inglese</Lingua>
@@ -423,16 +403,13 @@
     <Film>
         <Titolo>Alice Attraverso lo Specchio</Titolo>
         <Autore>James Bobin</Autore>
-        <Descrizione>Alice, ormai 22enne, attraversa uno specchio magico e torna nel mondo di
-            SottoSopra (Underland). Qui scopre che lo Stregatto è più impazzito del solito e decide
-            di usare la “Cronosfera” per viaggiare nel tempo e salvare la famiglia dello Stregatto
-            prima che sia troppo tardi</Descrizione>
+        <Descrizione>Alice, ormai 22enne, attraversa uno specchio magico e torna nel mondo di SottoSopra (Underland). Qui scopre che lo Stregatto è più impazzito del solito e decide di usare la “Cronosfera” per viaggiare nel tempo e salvare la famiglia dello Stregatto prima che sia troppo tardi</Descrizione>
         <DurataMinuti>113</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
         <Path>images/locandina_alice_atraverso_lo_specchio.png</Path>
-        <DataInizioRilascio>22/10/2025</DataInizioRilascio>
-        <DataFineRilascio>28/2/2026</DataFineRilascio>
+        <DataInizioRilascio>22/10/2023</DataInizioRilascio>
+        <DataFineRilascio>28/1/2024</DataFineRilascio>
         <LingueDisponibili>
             <Lingua>Italiano</Lingua>
             <Lingua>Inglese</Lingua>
@@ -465,16 +442,13 @@
     <Film>
         <Titolo>La Sposa Cadavere</Titolo>
         <Autore>Tim Burton</Autore>
-        <Descrizione>Victor, un giovane sposo nervoso, esercita i suoi voti nuziali nel bosco e
-            posando l’anello su un ramo bucato, in realtà evoca una sposa cadavere che emerge dalla
-            terra convinta di essere sposata con lui. Trasportato nel suggestivo regno dei morti,
-            Victor scopre che l’amore vero supera qualsiasi confine tra la vita e l’aldilà</Descrizione>
+        <Descrizione>Victor, un giovane sposo nervoso, esercita i suoi voti nuziali nel bosco e posando l’anello su un ramo bucato, in realtà evoca una sposa cadavere che emerge dalla terra convinta di essere sposata con lui. Trasportato nel suggestivo regno dei morti, Victor scopre che l’amore vero supera qualsiasi confine tra la vita e l’aldilà</Descrizione>
         <DurataMinuti>77</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
         <Path>images/locandina_la_sposa_cadavere.png</Path>
-        <DataInizioRilascio>8/9/2025</DataInizioRilascio>
-        <DataFineRilascio>27/9/2025</DataFineRilascio>
+        <DataInizioRilascio>8/9/2023</DataInizioRilascio>
+        <DataFineRilascio>28/9/2023</DataFineRilascio>
         <LingueDisponibili>
             <Lingua>Italiano</Lingua>
             <Lingua>Inglese</Lingua>
@@ -506,16 +480,13 @@
     <Film>
         <Titolo>The Nightmare Before Christmas</Titolo>
         <Autore>Henry Selick</Autore>
-        <Descrizione>Jack Skellington, il Re delle Zucche di Halloween Town, si stanca della solita
-            routine spaventosa e, esplorando nuovi orizzonti, scopre Christmas Town. Incantato dal
-            Natale, decide di rapire Babbo Natale e prenderne il posto—ma i suoi piani avventati
-            creano il caos. Spetta a Sally rimediare prima che sia troppo tardi.</Descrizione>
+        <Descrizione>Jack Skellington, il Re delle Zucche di Halloween Town, si stanca della solita routine spaventosa e, esplorando nuovi orizzonti, scopre Christmas Town. Incantato dal Natale, decide di rapire Babbo Natale e prenderne il posto—ma i suoi piani avventati creano il caos. Spetta a Sally rimediare prima che sia troppo tardi.</Descrizione>
         <DurataMinuti>76</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
         <Path>images/locandina_nightmare_before_christmas.png</Path>
-        <DataInizioRilascio>15/12/2025</DataInizioRilascio>
-        <DataFineRilascio>4/1/2026</DataFineRilascio>
+        <DataInizioRilascio>15/12/2022</DataInizioRilascio>
+        <DataFineRilascio>4/1/2023</DataFineRilascio>
         <LingueDisponibili>
             <Lingua>Italiano</Lingua>
             <Lingua>Inglese</Lingua>
@@ -549,10 +520,7 @@
     <Film>
         <Titolo>Beetlejuice</Titolo>
         <Autore>Tim Burton</Autore>
-        <Descrizione>Barbara e Adam Maitland, morti in un incidente, rimangono intrappolati come
-            fantasmi nella loro casa. Quando una famiglia invadente (i Deetz) si trasferisce, i
-            Maitland chiamano un “bio-esorcista”, Beetlejuice, per aiutarli a scacciarla… ma lui ha
-            altri piani e tutto sfugge rapidamente al controllo.</Descrizione>
+        <Descrizione>Barbara e Adam Maitland, morti in un incidente, rimangono intrappolati come fantasmi nella loro casa. Quando una famiglia invadente (i Deetz) si trasferisce, i Maitland chiamano un “bio-esorcista”, Beetlejuice, per aiutarli a scacciarla… ma lui ha altri piani e tutto sfugge rapidamente al controllo.</Descrizione>
         <DurataMinuti>92</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -596,12 +564,7 @@
     <Film>
         <Titolo>Una notte da leoni</Titolo>
         <Autore>Todd Phillips</Autore>
-        <Descrizione>Due giorni prima del matrimonio, Doug (Justin Bartha) e tre amici – Phil
-            (Bradley Cooper), Stu (Ed Helms) e Alan (Zach Galifianakis) – partono per Las Vegas per
-            una festa di addio al celibato. Il giorno dopo, si risvegliano in una suite del Caesars
-            Palace senza alcun ricordo della notte precedente e con Doug scomparso. Devono
-            ricostruire gli eventi per trovarlo e riportarlo a Los Angeles in tempo per il
-            matrimonio.</Descrizione>
+        <Descrizione>Due giorni prima del matrimonio, Doug (Justin Bartha) e tre amici – Phil (Bradley Cooper), Stu (Ed Helms) e Alan (Zach Galifianakis) – partono per Las Vegas per una festa di addio al celibato. Il giorno dopo, si risvegliano in una suite del Caesars Palace senza alcun ricordo della notte precedente e con Doug scomparso. Devono ricostruire gli eventi per trovarlo e riportarlo a Los Angeles in tempo per il matrimonio.</Descrizione>
         <DurataMinuti>100</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -642,11 +605,7 @@
     <Film>
         <Titolo>Il gigante di ferro</Titolo>
         <Autore>Ted Hughes</Autore>
-        <Descrizione>Nel 1957, durante la Guerra Fredda, un gigantesco robot alieno precipita vicino
-            alla cittadina di Rockwell, nel Maine. Un giovane ragazzo di nome Hogarth Hughes scopre
-            il robot e, nonostante la paura iniziale, stringe un'amicizia con lui. Insieme, cercano
-            di nascondere l'esistenza del gigante dalle autorità governative e militari, ma la
-            situazione si complica quando un agente paranoico, Kent Mansley, inizia a indagare.</Descrizione>
+        <Descrizione>Nel 1957, durante la Guerra Fredda, un gigantesco robot alieno precipita vicino alla cittadina di Rockwell, nel Maine. Un giovane ragazzo di nome Hogarth Hughes scopre il robot e, nonostante la paura iniziale, stringe un'amicizia con lui. Insieme, cercano di nascondere l'esistenza del gigante dalle autorità governative e militari, ma la situazione si complica quando un agente paranoico, Kent Mansley, inizia a indagare.</Descrizione>
         <DurataMinuti>86</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -688,9 +647,7 @@
     <Inserzione>
         <Titolo>Sweet Chilli Burger</Titolo>
         <Autore>Luca Ferrari</Autore>
-        <Descrizione>Vieni a provare il nuovo Sweet Chilli Burger da Burger King! Gusto piccante e
-            dolce in un unico panino, pronto a conquistare il tuo palato. Solo per un periodo
-            limitato!</Descrizione>
+        <Descrizione>Vieni a provare il nuovo Sweet Chilli Burger da Burger King! Gusto piccante e dolce in un unico panino, pronto a conquistare il tuo palato. Solo per un periodo limitato!</Descrizione>
         <DurataMinuti>1</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -711,36 +668,33 @@
             <Fascia>Mattina</Fascia>
         </FasceOrarie>
         <Target>TUTTI</Target>
-        <AziendaInserzionista>Burger King</AziendaInserzionista>
+        <AziendaInserzionista></AziendaInserzionista>
         <CostoFissoProiezione>30</CostoFissoProiezione>
     </Inserzione>
     <Inserzione>
         <Titolo>La Pausa che Conviene</Titolo>
         <Autore>Marco Rossi</Autore>
-        <Descrizione>Fai una pausa con gusto! Scopri le offerte imperdibili di McDonald’s e rendi il
-            tuo break la pausa che conviene. Panini, patatine e bevande a prezzi speciali, solo per
-            te!</Descrizione>
+        <Descrizione>Fai una pausa con gusto! Scopri le offerte imperdibili di McDonald’s e rendi il tuo break la pausa che conviene. Panini, patatine e bevande a prezzi speciali, solo per te!</Descrizione>
         <DurataMinuti>2</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
         <Path>images/pubblicita_mc.png</Path>
         <DataInizioRilascio>8/9/2025</DataInizioRilascio>
         <DataFineRilascio>16/11/2025</DataFineRilascio>
-        <LingueDisponibili />
-        <SottotitoliDisponibili />
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
         <NProiezioniGiornaliere>0</NProiezioniGiornaliere>
         <FasceOrarie>
             <Fascia>Mattina</Fascia>
         </FasceOrarie>
         <Target>TUTTI</Target>
-        <AziendaInserzionista>McDonald’s</AziendaInserzionista>
+        <AziendaInserzionista></AziendaInserzionista>
         <CostoFissoProiezione>30</CostoFissoProiezione>
     </Inserzione>
     <Inserzione>
         <Titolo>Croccante e Irresistibile</Titolo>
         <Autore>Laura Bianchi</Autore>
-        <Descrizione>Non resistere alla bontà! Vieni da KFC e assapora il nostro pollo croccante e
-            irresistibile, con le ricette originali che ami. Un morso e sei già conquistato!</Descrizione>
+        <Descrizione>Non resistere alla bontà! Vieni da KFC e assapora il nostro pollo croccante e irresistibile, con le ricette originali che ami. Un morso e sei già conquistato!</Descrizione>
         <DurataMinuti>1</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -762,14 +716,13 @@
             <Fascia>Mattina</Fascia>
         </FasceOrarie>
         <Target>TUTTI</Target>
-        <AziendaInserzionista>KFC</AziendaInserzionista>
+        <AziendaInserzionista></AziendaInserzionista>
         <CostoFissoProiezione>30</CostoFissoProiezione>
     </Inserzione>
     <Inserzione>
         <Titolo>Scopri il Gusto</Titolo>
         <Autore>Marco Rossi</Autore>
-        <Descrizione>Non aspettare! Corri da Bully Tacos e prova i nostri tacos pieni di sapore.
-            Ingredienti freschi, ricette piccanti e tanto gusto ti aspettano ad ogni morso!</Descrizione>
+        <Descrizione>Non aspettare! Corri da Bully Tacos e prova i nostri tacos pieni di sapore. Ingredienti freschi, ricette piccanti e tanto gusto ti aspettano ad ogni morso!</Descrizione>
         <DurataMinuti>1</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -790,15 +743,13 @@
             <Fascia>Mattina</Fascia>
         </FasceOrarie>
         <Target>TUTTI</Target>
-        <AziendaInserzionista>Billy Tacos</AziendaInserzionista>
+        <AziendaInserzionista></AziendaInserzionista>
         <CostoFissoProiezione>30</CostoFissoProiezione>
     </Inserzione>
     <Inserzione>
         <Titolo>Il Gusto del Far West</Titolo>
         <Autore>Laura Bianchi</Autore>
-        <Descrizione>Vivi l’avventura del Far West! Vieni da Old Wild West e assapora le nostre
-            carni alla griglia e i piatti tipici americani, con il sapore autentico del selvaggio
-            West!</Descrizione>
+        <Descrizione>Vivi l’avventura del Far West! Vieni da Old Wild West e assapora le nostre carni alla griglia e i piatti tipici americani, con il sapore autentico del selvaggio West!</Descrizione>
         <DurataMinuti>0</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -822,17 +773,13 @@
             <Fascia>Mattina</Fascia>
         </FasceOrarie>
         <Target>TUTTI</Target>
-        <AziendaInserzionista>Old Wild West</AziendaInserzionista>
+        <AziendaInserzionista></AziendaInserzionista>
         <CostoFissoProiezione>35</CostoFissoProiezione>
     </Inserzione>
     <Podcast>
         <Titolo>151eg</Titolo>
         <Autore>Enrico Gamba</Autore>
-        <Descrizione>151eg è Enrico Gamba. Io vi racconto le storie dietro i film della vostra
-            infanzia. Come è stato realizzato Biancaneve? Che persona era Walt Disney? Perché
-            Asterix ha avuto tanto successo? Quali significati nascondono i film di Hayao Miyazaki?
-            Chi faceva i Looney Tunes li detestava? Rispondo a tutte le domande che non ti sei mai
-            fatto ma avresti dovuto.</Descrizione>
+        <Descrizione>151eg è Enrico Gamba. Io vi racconto le storie dietro i film della vostra infanzia. Come è stato realizzato Biancaneve? Che persona era Walt Disney? Perché Asterix ha avuto tanto successo? Quali significati nascondono i film di Hayao Miyazaki? Chi faceva i Looney Tunes li detestava? Rispondo a tutte le domande che non ti sei mai fatto ma avresti dovuto.</Descrizione>
         <DurataMinuti>117</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -841,9 +788,11 @@
         <DataFineRilascio>29/11/2025</DataFineRilascio>
         <LingueDisponibili>
             <Lingua>Italiano</Lingua>
-            <Lingua>Inglese</Lingua>
         </LingueDisponibili>
-        <SottotitoliDisponibili />
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </SottotitoliDisponibili>
         <Conduttore>Enrico Gamba</Conduttore>
     </Podcast>
     <Podcast>
@@ -858,24 +807,18 @@
         <DataFineRilascio>13/9/2025</DataFineRilascio>
         <LingueDisponibili>
             <Lingua>Italiano</Lingua>
-            <Lingua>Inglese</Lingua>
         </LingueDisponibili>
-        <SottotitoliDisponibili />
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </SottotitoliDisponibili>
         <Conduttore>Mario Palladino</Conduttore>
     </Podcast>
     <Podcast>
         <Titolo>Caleel</Titolo>
         <Autore>Adrian Raul Rednic</Autore>
-        <Descrizione>Salve, Adrian R. Rednic a rapporto, conosciuto anche come Caleel su YouTube,
-            dove sono attivo dal 2015. Nei miei video tratto principalmente di tutti quegli
-            argomenti che riguardano le saghe e i fandom più in voga, basandomi principalmente su
-            una componente fantasy, grande mia passione fin da ragazzino.
-            Da Harry Potter al Signore degli Anelli, da Game of Thrones a Star Wars, vado ad
-            esplorare i molteplici aspetti delle varie opere, che si tratti di discussioni
-            approfondite sulla storia narrata, biografie dei personaggi, strane speculazioni sulla
-            trama o semplici curiosità. Coltivo una grande passione per la scrittura, che cerco di
-            trasmettere anche nei miei video, impegnandomi spesso a dare un aspetto quanto più
-            narrativo e scorrevole alle varie opere.</Descrizione>
+        <Descrizione>Salve, Adrian R. Rednic a rapporto, conosciuto anche come Caleel su YouTube, dove sono attivo dal 2015. Nei miei video tratto principalmente di tutti quegli argomenti che riguardano le saghe e i fandom più in voga, basandomi principalmente su una componente fantasy, grande mia passione fin da ragazzino.
+Da Harry Potter al Signore degli Anelli, da Game of Thrones a Star Wars, vado ad esplorare i molteplici aspetti delle varie opere, che si tratti di discussioni approfondite sulla storia narrata, biografie dei personaggi, strane speculazioni sulla trama o semplici curiosità. Coltivo una grande passione per la scrittura, che cerco di trasmettere anche nei miei video, impegnandomi spesso a dare un aspetto quanto più narrativo e scorrevole alle varie opere.</Descrizione>
         <DurataMinuti>66</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -884,11 +827,113 @@
         <DataFineRilascio>27/9/2025</DataFineRilascio>
         <LingueDisponibili>
             <Lingua>Italiano</Lingua>
-            <Lingua>Inglese</Lingua>
         </LingueDisponibili>
-        <SottotitoliDisponibili />
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </SottotitoliDisponibili>
         <Conduttore>Adrian Raul Rednic</Conduttore>
     </Podcast>
+    <Film>
+        <Titolo>The Conjuring: Il rito finale</Titolo>
+        <Autore>Michael Chaves</Autore>
+        <Descrizione>“The Conjuring – Il rito finale” aggiunge un nuovo, elettrizzante capitolo all’iconico universo cinematografico ispirato ad eventi realmente accaduti. Vera Farmiga e Patrick Wilson tornano per affrontare un ultimo caso nei panni dei celebri investigatori del paranormale Ed e Lorraine Warren, in un’agghiacciante e potente nuovo atto della saga che ha conquistato il botteghino globale.</Descrizione>
+        <DurataMinuti>135</DurataMinuti>
+        <Formato>DCP</Formato>
+        <Risoluzione>UHD 4K 2160p</Risoluzione>
+        <Path>images/locandina_theconjuring4.jpg</Path>
+        <DataInizioRilascio>4/9/2025</DataInizioRilascio>
+        <DataFineRilascio>20/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Horror</Genere>
+            <Genere>Thriller</Genere>
+            <Genere>Nessuno</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Vera Farmiga</Attore>
+            <Attore>Patrick Wilson</Attore>
+            <Attore>Ben Hardy</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>12</CostoBiglietto>
+        <CasaDiProduzione>New Line Cinema / Warner Bros. Pictures</CasaDiProduzione>
+        <NPostCredit>1</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Material Love</Titolo>
+        <Autore>Celine Song</Autore>
+        <Descrizione>Una giovane e ambiziosa combina-coppie di New York si ritrova a dover scegliere tra l’uomo ideale e il suo ex, tutt’altro che perfetto.</Descrizione>
+        <DurataMinuti>116</DurataMinuti>
+        <Formato>DCP</Formato>
+        <Risoluzione>UHD 4K 2160p</Risoluzione>
+        <Path>images/locandina_materiallove.jpg</Path>
+        <DataInizioRilascio>4/9/2025</DataInizioRilascio>
+        <DataFineRilascio>25/9/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Commedia</Genere>
+            <Genere>Nessuno</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Dakota Johnson</Attore>
+            <Attore>Chris Evans</Attore>
+            <Attore>Pedro Pascal</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>9.5</CostoBiglietto>
+        <CasaDiProduzione>A24 / Warner Bros. Pictures Italia</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Arancia Meccanica – 50mo Anniversario</Titolo>
+        <Autore>Stanley Kubrick</Autore>
+        <Descrizione>Il percorso di Alex – da punk amorale ad onorato cittadino, previo lavaggio del cervello – viene ambientato in un futuro scioccante dall’ardita interpretazione kubrickiana del romanzo di Anthony Burgess.</Descrizione>
+        <DurataMinuti>137</DurataMinuti>
+        <Formato>DCP</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>images/locandina_aranciameccanica.png</Path>
+        <DataInizioRilascio>13/10/2025</DataInizioRilascio>
+        <DataFineRilascio>31/10/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Nessuno</Genere>
+            <Genere>Thriller</Genere>
+            <Genere>Nessuno</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Patrick Magee</Attore>
+            <Attore>Adrienne Corri</Attore>
+            <Attore>Miriam Karlin</Attore>
+            <Attore>Malcolm McDowell</Attore>
+            <Attore>Michael Bates</Attore>
+            <Attore>Carl Duering</Attore>
+            <Attore>John Clive</Attore>
+            <Attore>Warren Clarke</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>11</CostoBiglietto>
+        <CasaDiProduzione>Warner Bros. Pictures / MGM</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
     <Puntata>
         <Titolo>Analisi del cinema muto</Titolo>
         <Autore>FilmLab</Autore>
@@ -899,8 +944,8 @@
         <Path>:/images/default_puntata.png</Path>
         <DataInizioRilascio>1/10/2025</DataInizioRilascio>
         <DataFineRilascio>16/10/2025</DataFineRilascio>
-        <LingueDisponibili />
-        <SottotitoliDisponibili />
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
         <TitoloPodcastAssociato>Cinema d'Autore</TitoloPodcastAssociato>
         <AutorePodcastAssociato>FilmLab</AutorePodcastAssociato>
         <NPubblicita>1</NPubblicita>
@@ -915,8 +960,8 @@
         <Path>:/images/default_puntata.png</Path>
         <DataInizioRilascio>16/10/2025</DataInizioRilascio>
         <DataFineRilascio>1/11/2025</DataFineRilascio>
-        <LingueDisponibili />
-        <SottotitoliDisponibili />
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
         <TitoloPodcastAssociato>Cinema d'Autore</TitoloPodcastAssociato>
         <AutorePodcastAssociato>FilmLab</AutorePodcastAssociato>
         <NPubblicita>2</NPubblicita>
@@ -947,16 +992,15 @@
     <Trailer>
         <Titolo>Trailer ufficiale - I Roses</Titolo>
         <Autore>Searchlight Pictures / Disney Italia</Autore>
-        <Descrizione>Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre
-            interiori del matrimonio moderno.</Descrizione>
+        <Descrizione>Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.</Descrizione>
         <DurataMinuti>2</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>HD 720p</Risoluzione>
         <Path>images/trailer_iroses.jpg</Path>
         <DataInizioRilascio>1/8/2025</DataInizioRilascio>
         <DataFineRilascio>3/9/2025</DataFineRilascio>
-        <LingueDisponibili />
-        <SottotitoliDisponibili />
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
         <NProiezioniGiornaliere>15</NProiezioniGiornaliere>
         <TitoloFilmAssociato>I Roses</TitoloFilmAssociato>
         <AutoreFilmAssociato>Jay Roach</AutoreFilmAssociato>
@@ -964,17 +1008,25 @@
     <Trailer>
         <Titolo>Trailer ufficiale - Tutta colpa del rock</Titolo>
         <Autore>PiperFilm</Autore>
-        <Descrizione>Il trailer ufficiale mostra l’energia rock e l’irriverente cast carcerario alle
-            prese con una rinascita a ritmo di musica.</Descrizione>
+        <Descrizione>Il trailer ufficiale mostra l’energia rock e l’irriverente cast carcerario alle prese con una rinascita a ritmo di musica.</Descrizione>
         <DurataMinuti>1</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>HD 720p</Risoluzione>
         <Path>images/trailer_tuttacolpadelrock.jpg</Path>
         <DataInizioRilascio>7/7/2025</DataInizioRilascio>
         <DataFineRilascio>8/9/2025</DataFineRilascio>
-        <LingueDisponibili />
-        <SottotitoliDisponibili />
-        <NProiezioniGiornaliere>7</NProiezioniGiornaliere>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Tedesco</Lingua>
+        </SottotitoliDisponibili>
+        <NProiezioniGiornaliere>1</NProiezioniGiornaliere>
         <TitoloFilmAssociato>Tutta colpa del rock</TitoloFilmAssociato>
         <AutoreFilmAssociato>Andrea Jublin</AutoreFilmAssociato>
     </Trailer>
@@ -988,8 +1040,8 @@
         <Path>images/trailer_harrypottereilcalicedifuoco.jpg</Path>
         <DataInizioRilascio>23/9/2005</DataInizioRilascio>
         <DataFineRilascio>23/9/2025</DataFineRilascio>
-        <LingueDisponibili />
-        <SottotitoliDisponibili />
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
         <NProiezioniGiornaliere>4</NProiezioniGiornaliere>
         <TitoloFilmAssociato>Harry Potter e il Calice di Fuoco - 20esimo anniversario</TitoloFilmAssociato>
         <AutoreFilmAssociato>Mike Newell</AutoreFilmAssociato>
@@ -997,16 +1049,15 @@
     <Trailer>
         <Titolo>Trailer italiano ufficiale - Una scomoda circostanza</Titolo>
         <Autore>Sony Pictures / Eagle Pictures</Autore>
-        <Descrizione>Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di
-            Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.</Descrizione>
+        <Descrizione>Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.</Descrizione>
         <DurataMinuti>2</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>FullHD 1080p</Risoluzione>
         <Path>images/trailer_caughtstealing.jpg</Path>
         <DataInizioRilascio>24/7/2025</DataInizioRilascio>
         <DataFineRilascio>2/9/2025</DataFineRilascio>
-        <LingueDisponibili />
-        <SottotitoliDisponibili />
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
         <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
         <TitoloFilmAssociato>Una scomoda circostanza - Caught Stealing</TitoloFilmAssociato>
         <AutoreFilmAssociato>Darren Aronofsky</AutoreFilmAssociato>
@@ -1014,16 +1065,15 @@
     <Trailer>
         <Titolo>Trailer ufficiale - Weapons</Titolo>
         <Autore>Warner Bros. Pictures Italia</Autore>
-        <Descrizione>Trailer ufficiale italiano che anticipa il mistero inquietante dietro la
-            sparizione dei bambini.</Descrizione>
+        <Descrizione>Trailer ufficiale italiano che anticipa il mistero inquietante dietro la sparizione dei bambini.</Descrizione>
         <DurataMinuti>2</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>FullHD 1080p</Risoluzione>
         <Path>images/trailer_weapons.jpg</Path>
         <DataInizioRilascio>30/4/2025</DataInizioRilascio>
         <DataFineRilascio>5/8/2025</DataFineRilascio>
-        <LingueDisponibili />
-        <SottotitoliDisponibili />
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
         <NProiezioniGiornaliere>3</NProiezioniGiornaliere>
         <TitoloFilmAssociato>Weapons</TitoloFilmAssociato>
         <AutoreFilmAssociato>Zach Cregger</AutoreFilmAssociato>
@@ -1038,8 +1088,8 @@
         <Path>images/trailer_losqualo50anniversario.jpg</Path>
         <DataInizioRilascio>4/7/2025</DataInizioRilascio>
         <DataFineRilascio>31/8/2025</DataFineRilascio>
-        <LingueDisponibili />
-        <SottotitoliDisponibili />
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
         <NProiezioniGiornaliere>5</NProiezioniGiornaliere>
         <TitoloFilmAssociato>Lo Squalo - 50esimo anniversario</TitoloFilmAssociato>
         <AutoreFilmAssociato>Steven Spielberg</AutoreFilmAssociato>
@@ -1047,12 +1097,7 @@
     <Trailer>
         <Titolo>Una Notte da Leoni - Trailer Ufficiale</Titolo>
         <Autore>Todd Phillips</Autore>
-        <Descrizione>Due giorni prima del matrimonio, Doug (Justin Bartha) e tre amici – Phil
-            (Bradley Cooper), Stu (Ed Helms) e Alan (Zach Galifianakis) – partono per Las Vegas per
-            una festa di addio al celibato. Il giorno dopo, si risvegliano in una suite del Caesars
-            Palace senza alcun ricordo della notte precedente e con Doug scomparso. Devono
-            ricostruire gli eventi per trovarlo e riportarlo a Los Angeles in tempo per il
-            matrimonio.</Descrizione>
+        <Descrizione>Due giorni prima del matrimonio, Doug (Justin Bartha) e tre amici – Phil (Bradley Cooper), Stu (Ed Helms) e Alan (Zach Galifianakis) – partono per Las Vegas per una festa di addio al celibato. Il giorno dopo, si risvegliano in una suite del Caesars Palace senza alcun ricordo della notte precedente e con Doug scomparso. Devono ricostruire gli eventi per trovarlo e riportarlo a Los Angeles in tempo per il matrimonio.</Descrizione>
         <DurataMinuti>4</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -1078,11 +1123,7 @@
     <Trailer>
         <Titolo>Il Gigante di Ferro - Trailer Ufficiale</Titolo>
         <Autore>Brad Bird</Autore>
-        <Descrizione>Nel 1957, durante la Guerra Fredda, un gigantesco robot alieno precipita vicino
-            alla cittadina di Rockwell, nel Maine. Un giovane ragazzo di nome Hogarth Hughes scopre
-            il robot e, nonostante la paura iniziale, stringe un'amicizia con lui. Insieme, cercano
-            di nascondere l'esistenza del gigante dalle autorità governative e militari, ma la
-            situazione si complica quando un agente paranoico, Kent Mansley, inizia a indagare.</Descrizione>
+        <Descrizione>Nel 1957, durante la Guerra Fredda, un gigantesco robot alieno precipita vicino alla cittadina di Rockwell, nel Maine. Un giovane ragazzo di nome Hogarth Hughes scopre il robot e, nonostante la paura iniziale, stringe un'amicizia con lui. Insieme, cercano di nascondere l'esistenza del gigante dalle autorità governative e militari, ma la situazione si complica quando un agente paranoico, Kent Mansley, inizia a indagare.</Descrizione>
         <DurataMinuti>3</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -1108,9 +1149,7 @@
     <Puntata>
         <Titolo>Storia di Sony Pictures Animation</Titolo>
         <Autore>Enrico Gamba</Autore>
-        <Descrizione>La stessa casa di Spiderverse, KPopDemon Hunters e Emoji Movie. Com'è successo
-            che Sony sia passata da essere una casa tra le tante ad essere la nuova testa d'ariete
-            dell'animazione? Qual è la storia di Sony pictures animation? </Descrizione>
+        <Descrizione>La stessa casa di Spiderverse, KPopDemon Hunters e Emoji Movie. Com'è successo che Sony sia passata da essere una casa tra le tante ad essere la nuova testa d'ariete dell'animazione? Qual è la storia di Sony pictures animation? </Descrizione>
         <DurataMinuti>34</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -1131,9 +1170,7 @@
     <Puntata>
         <Titolo>L'Evoluzione di Mercoledì Addams</Titolo>
         <Autore>Enrico Gamba</Autore>
-        <Descrizione>Mercoledì è l'unico personaggio della famiglia Addams ad essere mai stato
-            alterato ed è anche l'unico ad aver ricevuto una serie Netflix di Tim Burton. Voi che
-            dite? Sarà il caso di spiegarne il motivo?</Descrizione>
+        <Descrizione>Mercoledì è l'unico personaggio della famiglia Addams ad essere mai stato alterato ed è anche l'unico ad aver ricevuto una serie Netflix di Tim Burton. Voi che dite? Sarà il caso di spiegarne il motivo?</Descrizione>
         <DurataMinuti>26</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -1154,10 +1191,7 @@
     <Puntata>
         <Titolo>storia dell'inizio del RINASCIMENTO DISNEY</Titolo>
         <Autore>Enrico Gamba</Autore>
-        <Descrizione>Vi racconto la storia delle origini del Rinascimento Disney da La Sirenetta a
-            Il re Leone (Poi vi parlerò del suo declino in un video futuro). Si torna a parlare di
-            Katzenberg, Eisner e Wells e di come cambiarono le sorti di Walt disney Animation
-            Studios.</Descrizione>
+        <Descrizione>Vi racconto la storia delle origini del Rinascimento Disney da La Sirenetta a Il re Leone (Poi vi parlerò del suo declino in un video futuro). Si torna a parlare di Katzenberg, Eisner e Wells e di come cambiarono le sorti di Walt disney Animation Studios.</Descrizione>
         <DurataMinuti>57</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -1178,8 +1212,7 @@
     <Puntata>
         <Titolo>Un film MINECRAFT ma il film non c'è</Titolo>
         <Autore>Mario Palladino</Autore>
-        <Descrizione>Questo """""""""""film""""""""""" di Minecraft è orrendo. E non scriverò altro,
-            qui in descrizione. </Descrizione>
+        <Descrizione>Questo """""""""""film""""""""""" di Minecraft è orrendo. E non scriverò altro, qui in descrizione. </Descrizione>
         <DurataMinuti>28</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -1200,9 +1233,7 @@
     <Puntata>
         <Titolo>BIANCANEVE - L'ultima frontiera della BRUTTEZZA al CINEMA</Titolo>
         <Autore>Mario Palladino</Autore>
-        <Descrizione>Ecco Biancaneve, il live Action Disney che non ne azzecca una, ma ne complica
-            parecchie. L'ultima frontiera del vuoto cinematografico, senza "se" e senza "ma". Il
-            film che farà cambiare i live action, per sempre. O, almeno, è ciò che mi auguro. </Descrizione>
+        <Descrizione>Ecco Biancaneve, il live Action Disney che non ne azzecca una, ma ne complica parecchie. L'ultima frontiera del vuoto cinematografico, senza "se" e senza "ma". Il film che farà cambiare i live action, per sempre. O, almeno, è ciò che mi auguro. </Descrizione>
         <DurataMinuti>42</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -1223,9 +1254,7 @@
     <Puntata>
         <Titolo>La FASE 5 MARVEL è stata un FALLIMENTO TOTALE - Retrospettiva completa</Titolo>
         <Autore>Caleel</Autore>
-        <Descrizione>Ben 23 prodotti hanno composto questa fase 5 del Marvel Cinematic Universe, e
-            in questo video li ho analizzati tutti per arrivare ad una semplice conclusione: l'MCU
-            si sta rivelando un FALLIMENTO TOTALE.</Descrizione>
+        <Descrizione>Ben 23 prodotti hanno composto questa fase 5 del Marvel Cinematic Universe, e in questo video li ho analizzati tutti per arrivare ad una semplice conclusione: l'MCU si sta rivelando un FALLIMENTO TOTALE.</Descrizione>
         <DurataMinuti>66</DurataMinuti>
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
@@ -1243,4 +1272,36 @@
         <AutorePodcastAssociato>Adrian Raul Rednic</AutorePodcastAssociato>
         <NPubblicita>10</NPubblicita>
     </Puntata>
+    <Trailer>
+        <Titolo>Trailer ufficiale – The Conjuring: Il rito finale</Titolo>
+        <Autore>Warner Bros. Pictures Italia</Autore>
+        <Descrizione>Il trailer ufficiale del capitolo finale con Ed e Lorraine Warren, che affrontano il loro caso più terrificante.</Descrizione>
+        <DurataMinuti>3</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>images/trailer_theconjuring4.jpg</Path>
+        <DataInizioRilascio>15/7/2025</DataInizioRilascio>
+        <DataFineRilascio>3/9/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>4</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>The Conjuring: Il rito finale</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Michael Chaves</AutoreFilmAssociato>
+    </Trailer>
+    <Trailer>
+        <Titolo>Trailer ufficiale – Material Love</Titolo>
+        <Autore>A24</Autore>
+        <Descrizione>Il trailer ufficiale della nuova commedia romantica di Celine Song con Dakota Johnson, Chris Evans e Pedro Pascal.</Descrizione>
+        <DurataMinuti>2</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>images/trailer_materiallove.jpg</Path>
+        <DataInizioRilascio>20/7/2025</DataInizioRilascio>
+        <DataFineRilascio>3/9/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <NProiezioniGiornaliere>4</NProiezioniGiornaliere>
+        <TitoloFilmAssociato>Material Love</TitoloFilmAssociato>
+        <AutoreFilmAssociato>Celine Song</AutoreFilmAssociato>
+    </Trailer>
 </MediaList>

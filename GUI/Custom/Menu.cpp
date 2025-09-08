@@ -1,5 +1,5 @@
 #include "Menu.h"
-#include "MainWindow.h"
+#include "../MainWindow.h"
 
 Menu::Menu(QWidget *parent) : QWidget(parent), menuBar(new QMenuBar(this)), file(new QMenu("File", menuBar)),
                               modifica(new QMenu("Modifica", menuBar)), visualizza(new QMenu("Visualizza", menuBar)),

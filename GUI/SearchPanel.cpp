@@ -633,16 +633,16 @@ void SearchPanel::acceptDeleteMedia(Media *media)
     {
         s_MediaListOfCinema.removeOne(media);
         s_cinemaSelezionato->removeMedia(media);
-        puntata->getPodcast()->rimuoviPuntata(puntata);
+        puntata->getPodcast()->rimuoviPuntata(puntata); // all'interno di rimuoviPuntata c'è un delete alla puntata
     }
-    // elimino la puntata
+    // elimino il trailer
     else if (Trailer *trailer = dynamic_cast<Trailer *>(media))
     {
         s_MediaListOfCinema.removeOne(media);
         s_cinemaSelezionato->removeMedia(media);
-        trailer->getFilm()->rimuoviTrailer(trailer);
+        trailer->getFilm()->rimuoviTrailer(trailer); // all'interno di rimuoviTrailer c'è un delete al trailer
     }
-
+    // elimino il film e i trailer
     else if (Film *film = dynamic_cast<Film *>(media))
     {
         for (Trailer *t : film->getTrailers())
@@ -651,8 +651,11 @@ void SearchPanel::acceptDeleteMedia(Media *media)
             s_cinemaSelezionato->removeMedia(t);
             film->rimuoviTrailer(t);
         }
+        s_MediaListOfCinema.removeOne(film);
+        s_cinemaSelezionato->removeMedia(film);
+        delete film;
     }
-
+    // elimino il podcast e le puntate
     else if (Podcast *podcast = dynamic_cast<Podcast *>(media))
     {
         for (Puntata *p : podcast->getElencoPuntate())
@@ -661,8 +664,11 @@ void SearchPanel::acceptDeleteMedia(Media *media)
             s_cinemaSelezionato->removeMedia(p);
             podcast->rimuoviPuntata(p);
         }
-    }
-    else
+        s_MediaListOfCinema.removeOne(podcast);
+        s_cinemaSelezionato->removeMedia(podcast);
+        delete podcast;
+    } // elimino l'inserzione
+    else if (dynamic_cast<Inserzione *>(media))
     {
         s_MediaListOfCinema.removeOne(media);
         s_cinemaSelezionato->removeMedia(media);

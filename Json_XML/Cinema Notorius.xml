@@ -85,14 +85,19 @@
         </Descrizione>
             <DurataMinuti>100</DurataMinuti>
             <Formato>DCP</Formato>
-            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Risoluzione>SD 480p</Risoluzione>
             <Path>images/locandina_tuttacolpadelrock.jpg</Path>
             <DataInizioRilascio>28/8/2025</DataInizioRilascio>
             <DataFineRilascio>8/9/2025</DataFineRilascio>
             <LingueDisponibili>
                 <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
             </LingueDisponibili>
-            <SottotitoliDisponibili/>
+            <SottotitoliDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+                <Lingua>Francese</Lingua>
+            </SottotitoliDisponibili>
             <Generi>
                 <Genere>Commedia</Genere>
             </Generi>
@@ -148,7 +153,7 @@
             <Risoluzione>SD 480p</Risoluzione>
             <Path>images/locandina_caughtstealing.jpg</Path>
             <DataInizioRilascio>27/8/2025</DataInizioRilascio>
-            <DataFineRilascio>7/9/2025</DataFineRilascio>
+            <DataFineRilascio>14/9/2025</DataFineRilascio>
             <LingueDisponibili>
                 <Lingua>Italiano</Lingua>
                 <Lingua>Inglese</Lingua>
@@ -281,15 +286,15 @@
             <NPostCredit>3</NPostCredit>
         </Film>
         <Film>
-            <Titolo>Eduard Mani di Forbici</Titolo>
+            <Titolo>Edward Mani di Forbici</Titolo>
             <Autore>Tim Burton</Autore>
             <Descrizione>Edward è un essere artificiale incompiuto, creato da uno scienziato che muore prima di terminare il suo lavoro, lasciandolo con delle forbici al posto delle mani. Viene scoperto da una venditrice porta a porta, Peg, che lo porta nella sua famiglia suburbana. Edward viene ben accolto all’inizio, ma finisce per essere rifiutato quando la sua diversità causa incomprensioni e paura. Nonostante tutto, sviluppa un sentimento d’amore verso Kim, la figlia adolescente della famiglia</Descrizione>
             <DurataMinuti>107</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>SD 480p</Risoluzione>
-            <Path>images/locandina_eduard_mani_di_forbici.png</Path>
-            <DataInizioRilascio>6/8/2025</DataInizioRilascio>
-            <DataFineRilascio>26/9/2025</DataFineRilascio>
+            <Path>images/locandina_edward_mani_di_forbici.png</Path>
+            <DataInizioRilascio>6/8/2024</DataInizioRilascio>
+            <DataFineRilascio>27/9/2024</DataFineRilascio>
             <LingueDisponibili>
                 <Lingua>Italiano</Lingua>
                 <Lingua>Inglese</Lingua>
@@ -327,8 +332,8 @@
             <Formato>MP4</Formato>
             <Risoluzione>SD 480p</Risoluzione>
             <Path>images/locandina_coraline.png</Path>
-            <DataInizioRilascio>8/7/2025</DataInizioRilascio>
-            <DataFineRilascio>26/7/2025</DataFineRilascio>
+            <DataInizioRilascio>8/10/2024</DataInizioRilascio>
+            <DataFineRilascio>8/11/2024</DataFineRilascio>
             <LingueDisponibili>
                 <Lingua>Italiano</Lingua>
                 <Lingua>Francese</Lingua>
@@ -367,8 +372,8 @@
             <Formato>MP4</Formato>
             <Risoluzione>SD 480p</Risoluzione>
             <Path>images/locandina_alice_in_the_wonderland.png</Path>
-            <DataInizioRilascio>8/9/2025</DataInizioRilascio>
-            <DataFineRilascio>20/9/2025</DataFineRilascio>
+            <DataInizioRilascio>8/9/2024</DataInizioRilascio>
+            <DataFineRilascio>20/9/2024</DataFineRilascio>
             <LingueDisponibili>
                 <Lingua>Italiano</Lingua>
                 <Lingua>Inglese</Lingua>
@@ -406,8 +411,8 @@
             <Formato>MP4</Formato>
             <Risoluzione>SD 480p</Risoluzione>
             <Path>images/locandina_alice_atraverso_lo_specchio.png</Path>
-            <DataInizioRilascio>22/10/2025</DataInizioRilascio>
-            <DataFineRilascio>28/2/2026</DataFineRilascio>
+            <DataInizioRilascio>22/10/2023</DataInizioRilascio>
+            <DataFineRilascio>28/1/2024</DataFineRilascio>
             <LingueDisponibili>
                 <Lingua>Italiano</Lingua>
                 <Lingua>Inglese</Lingua>
@@ -445,8 +450,8 @@
             <Formato>MP4</Formato>
             <Risoluzione>SD 480p</Risoluzione>
             <Path>images/locandina_la_sposa_cadavere.png</Path>
-            <DataInizioRilascio>8/9/2025</DataInizioRilascio>
-            <DataFineRilascio>27/9/2025</DataFineRilascio>
+            <DataInizioRilascio>8/9/2023</DataInizioRilascio>
+            <DataFineRilascio>28/9/2023</DataFineRilascio>
             <LingueDisponibili>
                 <Lingua>Italiano</Lingua>
                 <Lingua>Inglese</Lingua>
@@ -483,8 +488,8 @@
             <Formato>MP4</Formato>
             <Risoluzione>SD 480p</Risoluzione>
             <Path>images/locandina_nightmare_before_christmas.png</Path>
-            <DataInizioRilascio>15/12/2025</DataInizioRilascio>
-            <DataFineRilascio>4/1/2026</DataFineRilascio>
+            <DataInizioRilascio>15/12/2022</DataInizioRilascio>
+            <DataFineRilascio>4/1/2023</DataFineRilascio>
             <LingueDisponibili>
                 <Lingua>Italiano</Lingua>
                 <Lingua>Inglese</Lingua>
@@ -666,7 +671,7 @@
                 <Fascia>Mattina</Fascia>
             </FasceOrarie>
             <Target>TUTTI</Target>
-            <AziendaInserzionista>Burger King</AziendaInserzionista>
+            <AziendaInserzionista></AziendaInserzionista>
             <CostoFissoProiezione>30</CostoFissoProiezione>
         </Inserzione>
         <Inserzione>
@@ -686,7 +691,7 @@
                 <Fascia>Mattina</Fascia>
             </FasceOrarie>
             <Target>TUTTI</Target>
-            <AziendaInserzionista>McDonald’s</AziendaInserzionista>
+            <AziendaInserzionista></AziendaInserzionista>
             <CostoFissoProiezione>30</CostoFissoProiezione>
         </Inserzione>
         <Inserzione>
@@ -714,7 +719,7 @@
                 <Fascia>Mattina</Fascia>
             </FasceOrarie>
             <Target>TUTTI</Target>
-            <AziendaInserzionista>KFC</AziendaInserzionista>
+            <AziendaInserzionista></AziendaInserzionista>
             <CostoFissoProiezione>30</CostoFissoProiezione>
         </Inserzione>
         <Inserzione>
@@ -741,7 +746,7 @@
                 <Fascia>Mattina</Fascia>
             </FasceOrarie>
             <Target>TUTTI</Target>
-            <AziendaInserzionista>Billy Tacos</AziendaInserzionista>
+            <AziendaInserzionista></AziendaInserzionista>
             <CostoFissoProiezione>30</CostoFissoProiezione>
         </Inserzione>
         <Inserzione>
@@ -771,7 +776,7 @@
                 <Fascia>Mattina</Fascia>
             </FasceOrarie>
             <Target>TUTTI</Target>
-            <AziendaInserzionista>Old Wild West</AziendaInserzionista>
+            <AziendaInserzionista></AziendaInserzionista>
             <CostoFissoProiezione>35</CostoFissoProiezione>
         </Inserzione>
         <Podcast>
@@ -786,9 +791,11 @@
             <DataFineRilascio>29/11/2025</DataFineRilascio>
             <LingueDisponibili>
                 <Lingua>Italiano</Lingua>
-                <Lingua>Inglese</Lingua>
             </LingueDisponibili>
-            <SottotitoliDisponibili/>
+            <SottotitoliDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+            </SottotitoliDisponibili>
             <Conduttore>Enrico Gamba</Conduttore>
         </Podcast>
         <Podcast>
@@ -803,9 +810,11 @@
             <DataFineRilascio>13/9/2025</DataFineRilascio>
             <LingueDisponibili>
                 <Lingua>Italiano</Lingua>
-                <Lingua>Inglese</Lingua>
             </LingueDisponibili>
-            <SottotitoliDisponibili/>
+            <SottotitoliDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+            </SottotitoliDisponibili>
             <Conduttore>Mario Palladino</Conduttore>
         </Podcast>
         <Podcast>
@@ -821,11 +830,113 @@ Da Harry Potter al Signore degli Anelli, da Game of Thrones a Star Wars, vado ad
             <DataFineRilascio>27/9/2025</DataFineRilascio>
             <LingueDisponibili>
                 <Lingua>Italiano</Lingua>
-                <Lingua>Inglese</Lingua>
             </LingueDisponibili>
-            <SottotitoliDisponibili/>
+            <SottotitoliDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+            </SottotitoliDisponibili>
             <Conduttore>Adrian Raul Rednic</Conduttore>
         </Podcast>
+        <Film>
+            <Titolo>The Conjuring: Il rito finale</Titolo>
+            <Autore>Michael Chaves</Autore>
+            <Descrizione>“The Conjuring – Il rito finale” aggiunge un nuovo, elettrizzante capitolo all’iconico universo cinematografico ispirato ad eventi realmente accaduti. Vera Farmiga e Patrick Wilson tornano per affrontare un ultimo caso nei panni dei celebri investigatori del paranormale Ed e Lorraine Warren, in un’agghiacciante e potente nuovo atto della saga che ha conquistato il botteghino globale.</Descrizione>
+            <DurataMinuti>135</DurataMinuti>
+            <Formato>DCP</Formato>
+            <Risoluzione>UHD 4K 2160p</Risoluzione>
+            <Path>images/locandina_theconjuring4.jpg</Path>
+            <DataInizioRilascio>4/9/2025</DataInizioRilascio>
+            <DataFineRilascio>20/9/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili>
+                <Lingua>Italiano</Lingua>
+            </SottotitoliDisponibili>
+            <Generi>
+                <Genere>Horror</Genere>
+                <Genere>Thriller</Genere>
+                <Genere>Nessuno</Genere>
+            </Generi>
+            <AttoriPrincipali>
+                <Attore>Vera Farmiga</Attore>
+                <Attore>Patrick Wilson</Attore>
+                <Attore>Ben Hardy</Attore>
+            </AttoriPrincipali>
+            <Target>TUTTI</Target>
+            <CostoBiglietto>12</CostoBiglietto>
+            <CasaDiProduzione>New Line Cinema / Warner Bros. Pictures</CasaDiProduzione>
+            <NPostCredit>1</NPostCredit>
+        </Film>
+        <Film>
+            <Titolo>Material Love</Titolo>
+            <Autore>Celine Song</Autore>
+            <Descrizione>Una giovane e ambiziosa combina-coppie di New York si ritrova a dover scegliere tra l’uomo ideale e il suo ex, tutt’altro che perfetto.</Descrizione>
+            <DurataMinuti>116</DurataMinuti>
+            <Formato>DCP</Formato>
+            <Risoluzione>UHD 4K 2160p</Risoluzione>
+            <Path>images/locandina_materiallove.jpg</Path>
+            <DataInizioRilascio>4/9/2025</DataInizioRilascio>
+            <DataFineRilascio>25/9/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili>
+                <Lingua>Italiano</Lingua>
+            </SottotitoliDisponibili>
+            <Generi>
+                <Genere>Commedia</Genere>
+                <Genere>Nessuno</Genere>
+            </Generi>
+            <AttoriPrincipali>
+                <Attore>Dakota Johnson</Attore>
+                <Attore>Chris Evans</Attore>
+                <Attore>Pedro Pascal</Attore>
+            </AttoriPrincipali>
+            <Target>TUTTI</Target>
+            <CostoBiglietto>9.5</CostoBiglietto>
+            <CasaDiProduzione>A24 / Warner Bros. Pictures Italia</CasaDiProduzione>
+            <NPostCredit>0</NPostCredit>
+        </Film>
+        <Film>
+            <Titolo>Arancia Meccanica – 50mo Anniversario</Titolo>
+            <Autore>Stanley Kubrick</Autore>
+            <Descrizione>Il percorso di Alex – da punk amorale ad onorato cittadino, previo lavaggio del cervello – viene ambientato in un futuro scioccante dall’ardita interpretazione kubrickiana del romanzo di Anthony Burgess.</Descrizione>
+            <DurataMinuti>137</DurataMinuti>
+            <Formato>DCP</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>images/locandina_aranciameccanica.png</Path>
+            <DataInizioRilascio>13/10/2025</DataInizioRilascio>
+            <DataFineRilascio>31/10/2025</DataFineRilascio>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili>
+                <Lingua>Italiano</Lingua>
+            </SottotitoliDisponibili>
+            <Generi>
+                <Genere>Nessuno</Genere>
+                <Genere>Thriller</Genere>
+                <Genere>Nessuno</Genere>
+            </Generi>
+            <AttoriPrincipali>
+                <Attore>Patrick Magee</Attore>
+                <Attore>Adrienne Corri</Attore>
+                <Attore>Miriam Karlin</Attore>
+                <Attore>Malcolm McDowell</Attore>
+                <Attore>Michael Bates</Attore>
+                <Attore>Carl Duering</Attore>
+                <Attore>John Clive</Attore>
+                <Attore>Warren Clarke</Attore>
+            </AttoriPrincipali>
+            <Target>TUTTI</Target>
+            <CostoBiglietto>11</CostoBiglietto>
+            <CasaDiProduzione>Warner Bros. Pictures / MGM</CasaDiProduzione>
+            <NPostCredit>0</NPostCredit>
+        </Film>
         <Puntata>
             <Titolo>Analisi del cinema muto</Titolo>
             <Autore>FilmLab</Autore>
@@ -907,9 +1018,18 @@ Da Harry Potter al Signore degli Anelli, da Game of Thrones a Star Wars, vado ad
             <Path>images/trailer_tuttacolpadelrock.jpg</Path>
             <DataInizioRilascio>7/7/2025</DataInizioRilascio>
             <DataFineRilascio>8/9/2025</DataFineRilascio>
-            <LingueDisponibili/>
-            <SottotitoliDisponibili/>
-            <NProiezioniGiornaliere>7</NProiezioniGiornaliere>
+            <LingueDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+                <Lingua>Francese</Lingua>
+            </LingueDisponibili>
+            <SottotitoliDisponibili>
+                <Lingua>Italiano</Lingua>
+                <Lingua>Inglese</Lingua>
+                <Lingua>Francese</Lingua>
+                <Lingua>Tedesco</Lingua>
+            </SottotitoliDisponibili>
+            <NProiezioniGiornaliere>1</NProiezioniGiornaliere>
             <TitoloFilmAssociato>Tutta colpa del rock</TitoloFilmAssociato>
             <AutoreFilmAssociato>Andrea Jublin</AutoreFilmAssociato>
         </Trailer>
@@ -1155,5 +1275,37 @@ Da Harry Potter al Signore degli Anelli, da Game of Thrones a Star Wars, vado ad
             <AutorePodcastAssociato>Adrian Raul Rednic</AutorePodcastAssociato>
             <NPubblicita>10</NPubblicita>
         </Puntata>
+        <Trailer>
+            <Titolo>Trailer ufficiale – The Conjuring: Il rito finale</Titolo>
+            <Autore>Warner Bros. Pictures Italia</Autore>
+            <Descrizione>Il trailer ufficiale del capitolo finale con Ed e Lorraine Warren, che affrontano il loro caso più terrificante.</Descrizione>
+            <DurataMinuti>3</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>images/trailer_theconjuring4.jpg</Path>
+            <DataInizioRilascio>15/7/2025</DataInizioRilascio>
+            <DataFineRilascio>3/9/2025</DataFineRilascio>
+            <LingueDisponibili/>
+            <SottotitoliDisponibili/>
+            <NProiezioniGiornaliere>4</NProiezioniGiornaliere>
+            <TitoloFilmAssociato>The Conjuring: Il rito finale</TitoloFilmAssociato>
+            <AutoreFilmAssociato>Michael Chaves</AutoreFilmAssociato>
+        </Trailer>
+        <Trailer>
+            <Titolo>Trailer ufficiale – Material Love</Titolo>
+            <Autore>A24</Autore>
+            <Descrizione>Il trailer ufficiale della nuova commedia romantica di Celine Song con Dakota Johnson, Chris Evans e Pedro Pascal.</Descrizione>
+            <DurataMinuti>2</DurataMinuti>
+            <Formato>MP4</Formato>
+            <Risoluzione>FullHD 1080p</Risoluzione>
+            <Path>images/trailer_materiallove.jpg</Path>
+            <DataInizioRilascio>20/7/2025</DataInizioRilascio>
+            <DataFineRilascio>3/9/2025</DataFineRilascio>
+            <LingueDisponibili/>
+            <SottotitoliDisponibili/>
+            <NProiezioniGiornaliere>4</NProiezioniGiornaliere>
+            <TitoloFilmAssociato>Material Love</TitoloFilmAssociato>
+            <AutoreFilmAssociato>Celine Song</AutoreFilmAssociato>
+        </Trailer>
     </MediaList>
 </Cinema>
