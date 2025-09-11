@@ -16,8 +16,7 @@ class Puntata; // dichiarazione incompleta
  * @note L'INVARIANTE É BELLA, VEDI SE CI SONO PROBLEMI DI COERENZA CON I METODI (soprattutto setDataFineRilascio delle puntate!!)
  */
 
-class Podcast : public Media
-{
+class Podcast : public Media{
 private:
     string p_conduttore;
     vector<Puntata *> p_elencoPuntate;

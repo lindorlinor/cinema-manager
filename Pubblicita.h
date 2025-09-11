@@ -11,8 +11,7 @@
  * Classe astratta derivata dalla classe base astratta Media. Una pubblicità riporta
  * in più il numero di proiezioni giornaliere del media nei canali adatti del cinema.
  */
-class Pubblicita : public Media
-{
+class Pubblicita : public Media{
 private:
     unsigned int p_nProiezioniGiornaliere;
 

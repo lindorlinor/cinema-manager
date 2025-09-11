@@ -18,10 +18,9 @@ class MediaVisitor;
  * @class Media
  * @brief Rappresenta un media generico della biblioteca del cinema.
  *
- * Classe base astratta per tutti i tipi di media: film, pubblicità, podcast e puntate.
+ * Classe base astratta per tutti i tipi di media: film, trailer, podcast e puntate.
  */
-class Media
-{
+class Media{
 private:
     string m_titolo;
     string m_descrizione;

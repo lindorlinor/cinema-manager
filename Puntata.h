@@ -13,8 +13,7 @@ class Podcast;
  * di tutte le puntate che lo compongono. La data di fine rilascio di un podcast coincide con quella dell'ultima puntata pubblicata.
  * Invariante: Le puntate che compongono il podcast possono avere, tra di loro, date di fine rilascio diverse ma queste tra di loro devono sempre essere ordinate.
  */
-class Puntata : public Media
-{
+class Puntata : public Media{
 private:
     vector<string> p_ospiti;
     Podcast *p_podcast;
