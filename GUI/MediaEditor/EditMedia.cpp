@@ -207,19 +207,17 @@ void EditMedia::salvaMedia()
     em_media->setRisoluzione(toRisoluzione(comboRisoluzione->currentText().toStdString()));
     em_media->setPath(imagePath == "" ? default_image.toStdString() : imagePath.toStdString());
 
+    for (const Lingua &l : em_media->getLingue())
+        em_media->rimuoviLingua(l);
+
     if (!(getSelectedList(listLingue)).empty())
-    {
-        for (const Lingua &l : em_media->getLingue())
-            em_media->rimuoviLingua(l);
         addLingue(em_media);
-    }
+
+    for (const Lingua &s : em_media->getSottotitoli())
+        em_media->rimuoviSottotitolo(s);
 
     if (!(getSelectedList(listSottotitoli)).empty())
-    {
-        for (const Lingua &s : em_media->getSottotitoli())
-            em_media->rimuoviSottotitolo(s);
         addSottotitoli(em_media);
-    }
 
     if (stackTipologia->currentIndex() == 0)
     {
