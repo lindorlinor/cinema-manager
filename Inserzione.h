@@ -11,7 +11,6 @@
  * Un'inserzione è una pubblicità commissionata da un'azienda per essere riprodotta al cinema nelle fasce orarie indicate. L'autore di una pubblicità è
  * il regista della pubblicità. Da contratto un'inserzione include sempre la fascia oraria mattutina. 
  * Le altre fasce orarie richiedono un pagamento di un'incremento sul costo base.
- * @note l'inclusione della fascia oraria mattutina è una novità.
  */
 class Inserzione : public Pubblicita{
     Classificazione i_target;
@@ -27,8 +26,6 @@ public:
                unsigned int nProiezioniGiornaliere, const Classificazione& target, double costoProiezione,const string &aziendaInserzionista = "Sconosciuto", 
                const string &autore = "Sconosciuto", const string &path = ":/images/default_inserzioni.png");
 
-    
-    
     void aggiungiFasciaOraria(FasciaOraria fasciaO);
     void rimuoviFasciaOraria(FasciaOraria fasciaO);
     Classificazione getTarget() const;
@@ -37,8 +34,6 @@ public:
     void setTarget(const Classificazione& target);
     void setAziendaInserzionistica(const string& nome);
     void setCostoFissoProiezione(const double& nome);
-
-    //void setTarget(Classificazione target);
     
     /**
      * @brief Se la pubblicita non è fuori produzione, estende la data di fine rilascio dell'inserzione di un mese.

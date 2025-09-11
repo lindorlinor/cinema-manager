@@ -16,8 +16,7 @@ class Film; // forward declaration
  * delle verifiche attraverso if per controllare questa cosa
  * @see Film
  */
-class Trailer : public Pubblicita
-{
+class Trailer : public Pubblicita{
     Film *t_film;
     double calcolaTassoDiStima() const;
 

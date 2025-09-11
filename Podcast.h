@@ -12,12 +12,9 @@ class Puntata; // dichiarazione incompleta
  * 
  * Un podcast ha un conduttore ed è composto da delle puntate. La durata del podcast corrisponde alla durata complessiva
  * di tutte le puntate che lo compongono. La data di fine rilascio di un podcast coincide con quella dell'ultima puntata pubblicata.
- * Invariante: Le puntate che compongono il podcast possono avere, tra di loro, date di fine rilascio diverse ma queste tra di loro devono sempre essere ordinate.
- * @note L'INVARIANTE É BELLA, VEDI SE CI SONO PROBLEMI DI COERENZA CON I METODI (soprattutto setDataFineRilascio delle puntate!!)
  */
 
-class Podcast : public Media
-{
+class Podcast : public Media{
 private:
     string p_conduttore;
     vector<Puntata *> p_elencoPuntate;

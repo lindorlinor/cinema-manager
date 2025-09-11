@@ -262,12 +262,12 @@
         "nPostCredit": 0,
         "nomeCinema": "Cinema Notorius",
         "path": "images/locandina_losqualo50anniversario.jpg",
-        "risoluzione": "FullHD 1080p",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
         "target": "TUTTI",
         "tipologia": "film",
-        "titolo": "Lo Squalo - 50esimo anniversario"
+        "titolo": "Lo Squalo - 50mo anniversario"
     },
     {
         "attoriPrincipali": [
@@ -1114,7 +1114,7 @@
         "autore": "Warner Bros",
         "autoreFilmAssociato": "Mike Newell",
         "dataFineRilascio": "2025-09-23",
-        "dataInizioRilascio": "2005-09-23",
+        "dataInizioRilascio": "2025-09-10",
         "descrizione": "Il trailer ufficiale del quarto capitolo della saga di Harry Potter.",
         "durataMinuti": 2,
         "filmAssociato": "Harry Potter e il Calice di Fuoco - 20esimo anniversario",
@@ -1143,10 +1143,10 @@
         "formato": "MP4",
         "lingueDisponibili": [
         ],
-        "nProiezioniGiornaliere": 3,
+        "nProiezioniGiornaliere": 2,
         "nomeCinema": "Cinema Notorius",
         "path": "images/trailer_caughtstealing.jpg",
-        "risoluzione": "FullHD 1080p",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
         "tipologia": "trailer",
@@ -1156,17 +1156,17 @@
         "autore": "Warner Bros. Pictures Italia",
         "autoreFilmAssociato": "Zach Cregger",
         "dataFineRilascio": "2025-08-05",
-        "dataInizioRilascio": "2025-04-30",
+        "dataInizioRilascio": "2025-06-06",
         "descrizione": "Trailer ufficiale italiano che anticipa il mistero inquietante dietro la sparizione dei bambini.",
         "durataMinuti": 2,
         "filmAssociato": "Weapons",
         "formato": "MP4",
         "lingueDisponibili": [
         ],
-        "nProiezioniGiornaliere": 3,
+        "nProiezioniGiornaliere": 2,
         "nomeCinema": "Cinema Notorius",
         "path": "images/trailer_weapons.jpg",
-        "risoluzione": "FullHD 1080p",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
         "tipologia": "trailer",
@@ -1179,18 +1179,18 @@
         "dataInizioRilascio": "2025-07-04",
         "descrizione": "Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.",
         "durataMinuti": 2,
-        "filmAssociato": "Lo Squalo - 50esimo anniversario",
+        "filmAssociato": "Lo Squalo - 50mo anniversario",
         "formato": "IMAX 3D",
         "lingueDisponibili": [
         ],
-        "nProiezioniGiornaliere": 5,
+        "nProiezioniGiornaliere": 2,
         "nomeCinema": "Cinema Notorius",
         "path": "images/trailer_losqualo50anniversario.jpg",
-        "risoluzione": "FullHD 1080p",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
         "tipologia": "trailer",
-        "titolo": "Trailer IMAX - Lo Squalo 50° anniversario"
+        "titolo": "Trailer IMAX - Lo Squalo 50mo anniversario"
     },
     {
         "autore": "Todd Phillips",
