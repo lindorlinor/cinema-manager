@@ -1120,11 +1120,13 @@
         "filmAssociato": "Harry Potter e il Calice di Fuoco - 20esimo anniversario",
         "formato": "MP4",
         "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
         ],
-        "nProiezioniGiornaliere": 4,
+        "nProiezioniGiornaliere": 2,
         "nomeCinema": "Cinema Notorius",
         "path": "images/trailer_harrypottereilcalicedifuoco.jpg",
-        "risoluzione": "FullHD 1080p",
+        "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
         ],
         "tipologia": "trailer",
@@ -1249,7 +1251,7 @@
     {
         "autore": "Enrico Gamba",
         "autorePodcastAssociato": "Enrico Gamba",
-        "dataFineRilascio": "2025-09-19",
+        "dataFineRilascio": "2025-09-21",
         "dataInizioRilascio": "2025-07-16",
         "descrizione": "La stessa casa di Spiderverse, KPopDemon Hunters e Emoji Movie. Com'è successo che Sony sia passata da essere una casa tra le tante ad essere la nuova testa d'ariete dell'animazione? Qual è la storia di Sony pictures animation? ",
         "durataMinuti": 34,
