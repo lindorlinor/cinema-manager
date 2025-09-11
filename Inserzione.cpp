@@ -12,21 +12,15 @@ Inserzione::Inserzione(const string &titolo, const string &descrizione, year_mon
                                     }
 
 
-int Inserzione::isFasciaOrariaIn(FasciaOraria fasciaO) const
-{
+int Inserzione::isFasciaOrariaIn(FasciaOraria fasciaO) const{
     vector<FasciaOraria>::const_iterator cit = std::find(i_fasceOrarie.begin(), i_fasceOrarie.end(), fasciaO);
     if (cit != i_fasceOrarie.end())
-    {
-        return std::distance(i_fasceOrarie.begin(), cit);
-    }
+            return std::distance(i_fasceOrarie.begin(), cit);
     else
-    {
         return -1;
-    }
 }
 
-void Inserzione::aggiungiFasciaOraria(FasciaOraria fasciaO)
-{
+void Inserzione::aggiungiFasciaOraria(FasciaOraria fasciaO){
     if (isFasciaOrariaIn(fasciaO) == -1)
         i_fasceOrarie.push_back(fasciaO);
 }
@@ -39,19 +33,13 @@ void Inserzione::rimuoviFasciaOraria(FasciaOraria fasciaO){
     }
 }
 
-double Inserzione::fattoreVariazionePrezzo() const
-{
+double Inserzione::fattoreVariazionePrezzo() const{
     double percentuale = 1;
-    for (FasciaOraria fa : i_fasceOrarie)
-    {
+    for (FasciaOraria fa : i_fasceOrarie){
         if (fa == FasciaOraria::Pomeriggio)
-        {
             percentuale += 0.1;
-        }
         if (fa == FasciaOraria::Sera)
-        {
             percentuale += 0.2;
-        }
     }
     return percentuale;
 }

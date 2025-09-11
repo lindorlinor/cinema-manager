@@ -32,6 +32,15 @@ private:
     vector<Genere> f_genere;
     vector<string> f_attoriPrincipali;
     vector<Trailer *> trailers;
+
+    /**
+     * @brief Dato un puntatore a trailer restituisce l'indice che corrisponde alla posizione 
+     * del trailer all'interno del vettore. Se non vi è alcuna corrispondenza di trailer ritorna
+     * -1.
+     * 
+     * @param trailer Il trailer da cercare.
+     * @return int L'indice del trailer o -1.
+     */
     int isTrailerIn(Trailer *trailer) const;
 
 public:
@@ -40,7 +49,7 @@ public:
          unsigned int nPostCredit, double costoBiglietto, const string &casaDiProduzione = "Sconosciuto",
          const string &autore = "Sconosciuto", const string &path = ":/images/default_film.png", Classificazione target = Classificazione::TUTTI);
 
-    // //metodi set
+    //metodi set
 
     /**
      * @brief Imposta una specifica data di fine rilascio del film e aggiorna quella dei trailer associati.
@@ -52,6 +61,15 @@ public:
      *
      */
     void setDataFineRilascio(year_month_day gg_mm_aaFineRilascio) override;
+
+    /**
+     * @brief calcola e assegna al campo valutazione la valutazione del film.
+     * 
+     * La valutazione è calcolata tenendo conto delle visualizzazioni.
+     * 
+     */
+    void setValutazione();
+
     void aggiungiGenere(const Genere &genere);
     void rimuoviGenere(const Genere &genere);
     void setTarget(Classificazione target);
@@ -61,7 +79,7 @@ public:
     void aggiungiAttore(const string &nomeAttore);
     void rimuoviAttore(const string &nomeAttore);
 
-    // // metodi get
+    // metodi get
     Classificazione getTarget() const;
     string getCasaDiProduzione() const;
     unsigned int getNPostCredit() const;
@@ -69,7 +87,8 @@ public:
     double getValutazione() const;
     double getCostoBiglietto() const;
     const vector<string> &getAttoriPrincipali() const;
-    // metodi per aggiungere e togliere i trailer
+
+
     void aggiungiTrailer(Trailer *trailer);
 
     const vector<Trailer *> &getTrailers() const;
@@ -106,7 +125,6 @@ public:
      */
     double calcolaIncasso() override;
 
-    void setValutazione();
 
     ~Film();
 
