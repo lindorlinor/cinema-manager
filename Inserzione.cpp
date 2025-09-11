@@ -15,10 +15,9 @@ Inserzione::Inserzione(const string &titolo, const string &descrizione, year_mon
 int Inserzione::isFasciaOrariaIn(FasciaOraria fasciaO) const{
     vector<FasciaOraria>::const_iterator cit = std::find(i_fasceOrarie.begin(), i_fasceOrarie.end(), fasciaO);
     if (cit != i_fasceOrarie.end())
-        return std::distance(i_fasceOrarie.begin(), cit);
+            return std::distance(i_fasceOrarie.begin(), cit);
     else
         return -1;
-    
 }
 
 void Inserzione::aggiungiFasciaOraria(FasciaOraria fasciaO){

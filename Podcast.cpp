@@ -8,67 +8,51 @@ Podcast::Podcast(const string &titolo, const string &descrizione, Formato format
     setVisualizzazioni(0);
 }
 
-Podcast::~Podcast()
-{
-    while (!p_elencoPuntate.empty())
-    {
+Podcast::~Podcast(){
+    while (!p_elencoPuntate.empty()){
         Puntata *puntata = p_elencoPuntate.back();
         delete puntata;
         p_elencoPuntate.pop_back();
     }
 }
 
-string Podcast::getConduttore() const
-{
+string Podcast::getConduttore() const{
     return p_conduttore;
 }
 
-void Podcast::setConduttore(const string &nome)
-{
+void Podcast::setConduttore(const string &nome){
     p_conduttore = nome;
 }
 
-void Podcast::setFormato(const Formato &formato)
-{
+void Podcast::setFormato(const Formato &formato){
     Media::setFormato(formato);
 
-    for (Puntata *puntata : p_elencoPuntate)
-    {
+    for (Puntata *puntata : p_elencoPuntate){
         if (puntata)
-        {
             puntata->setFormato(formato);
-        }
     }
 }
 
-void Podcast::setRisoluzione(const Risoluzione &ris)
-{
+void Podcast::setRisoluzione(const Risoluzione &ris){
     Media::setRisoluzione(ris);
 
-    for (Puntata *puntata : p_elencoPuntate)
-    {
+    for (Puntata *puntata : p_elencoPuntate){
         if (puntata)
-        {
             puntata->setRisoluzione(ris);
-        }
     }
 }
-void Podcast::aggiungiPuntata(Puntata *puntata)
-{
-    if (puntata && isPuntataIn(puntata) == -1 && puntata->getPodcast() == this)
-    {
+void Podcast::aggiungiPuntata(Puntata *puntata){
+    if (puntata && isPuntataIn(puntata) == -1 && puntata->getPodcast() == this){
 
         setVisualizzazioni(getVisualizzazioni() + puntata->getVisualizzazioni());
         setDurataMinuti(getDurataMinuti() + puntata->getDurataMinuti());
         p_elencoPuntate.push_back(puntata);
 
         aggiornaDate();
-        for (Lingua l : puntata->getLingue())
-        {
+        for (Lingua l : puntata->getLingue()){
             aggiungiLingua(l);
         }
-        for (Lingua l : puntata->getSottotitoli())
-        {
+        for (Lingua l : puntata->getSottotitoli()){
             aggiungiSottotitolo(l);
         }
     }
@@ -78,20 +62,14 @@ int Podcast::isPuntataIn(Puntata *puntata) const
 {
     auto it = std::find(p_elencoPuntate.begin(), p_elencoPuntate.end(), puntata);
     if (it != p_elencoPuntate.end())
-    {
         return std::distance(p_elencoPuntate.begin(), it);
-    }
     else
-    {
         return -1;
-    }
 }
 
-void Podcast::rimuoviPuntata(Puntata *puntata)
-{
+void Podcast::rimuoviPuntata(Puntata *puntata){
     int i_puntata = isPuntataIn(puntata);
-    if (i_puntata != -1)
-    {
+    if (i_puntata != -1){
 
         setVisualizzazioni(getVisualizzazioni() - puntata->getVisualizzazioni());
         setDurataMinuti(getDurataMinuti() - puntata->getDurataMinuti());
@@ -103,41 +81,33 @@ void Podcast::rimuoviPuntata(Puntata *puntata)
     }
 }
 
-double Podcast::calcolaIncasso()
-{
+double Podcast::calcolaIncasso(){
     double tot = 0;
-    for (Puntata *puntata : p_elencoPuntate)
-    {
+    for (Puntata *puntata : p_elencoPuntate){
         if (puntata)
             tot += puntata->calcolaIncasso();
     }
     return tot;
 }
 
-void Podcast::estendiDataFineRilascio()
-{
-    if (!FuoriProduzione())
-    {
+void Podcast::estendiDataFineRilascio(){
+    if (!FuoriProduzione()){
         for (auto it = p_elencoPuntate.begin(); it != p_elencoPuntate.end(); it++)
             (*it)->estendiDataFineRilascio();
     }
     aggiornaDate();
 }
 
-vector<Puntata *> Podcast::getElencoPuntate() const
-{
+vector<Puntata *> Podcast::getElencoPuntate() const{
     return p_elencoPuntate;
 }
 
-void Podcast::disaccoppiaPuntata(Puntata *puntata)
-{
+void Podcast::disaccoppiaPuntata(Puntata *puntata){
     int i_puntata = isPuntataIn(puntata);
-    if (i_puntata != -1)
-    {
+    if (i_puntata != -1){
         p_elencoPuntate.erase(p_elencoPuntate.begin() + i_puntata);
         aggiornaDate();
-        for (Lingua l : puntata->getLingue())
-        {
+        for (Lingua l : puntata->getLingue()){
             rimuoviLingua(l);
         }
         for (Lingua l : puntata->getSottotitoli())
@@ -147,10 +117,8 @@ void Podcast::disaccoppiaPuntata(Puntata *puntata)
     }
 }
 
-void Podcast::aggiornaDate()
-{
-    if (!p_elencoPuntate.empty())
-    {
+void Podcast::aggiornaDate(){
+    if (!p_elencoPuntate.empty()){
         // trovo la puntata con la data di inizio rilascio minore
         auto minPuntata = std::min_element(p_elencoPuntate.begin(), p_elencoPuntate.end(),
                                            [](Puntata *a, Puntata *b)
@@ -170,62 +138,43 @@ void Podcast::aggiornaDate()
     }
 }
 
-void Podcast::aggiungiLingua(Lingua lingua)
-{
-    for (Puntata *p : p_elencoPuntate)
-    {
-        if (std::find(p->getLingue().begin(), p->getLingue().end(), lingua) != p->getLingue().end())
-        {
+void Podcast::aggiungiLingua(Lingua lingua){
+    for (Puntata *p : p_elencoPuntate){
+        if (std::find(p->getLingue().begin(), p->getLingue().end(), lingua) != p->getLingue().end()){
             Media::aggiungiLingua(lingua);
             return;
         }
     }
 }
 
-void Podcast::aggiungiSottotitolo(Lingua lingua)
-{
-    for (Puntata *p : p_elencoPuntate)
-    {
-        if (std::find(p->getSottotitoli().begin(), p->getSottotitoli().end(), lingua) != p->getSottotitoli().end())
-        {
+void Podcast::aggiungiSottotitolo(Lingua lingua){
+    for (Puntata *p : p_elencoPuntate){
+        if (std::find(p->getSottotitoli().begin(), p->getSottotitoli().end(), lingua) != p->getSottotitoli().end()){
             Media::aggiungiSottotitolo(lingua);
             return;
         }
     }
 }
 
-void Podcast::rimuoviLingua(Lingua lingua)
-{
-    for (Puntata *p : p_elencoPuntate)
-    {
+void Podcast::rimuoviLingua(Lingua lingua){
+    for (Puntata *p : p_elencoPuntate){
         if (std::find(p->getLingue().begin(), p->getLingue().end(), lingua) != p->getLingue().end())
-        {
             return;
-        }
         else
-        {
             Media::rimuoviLingua(lingua);
-        }
     }
 }
 
-void Podcast::rimuoviSottotitolo(Lingua lingua)
-{
-    for (Puntata *p : p_elencoPuntate)
-    {
+void Podcast::rimuoviSottotitolo(Lingua lingua){
+    for (Puntata *p : p_elencoPuntate){
         if (std::find(p->getSottotitoli().begin(), p->getSottotitoli().end(), lingua) != p->getSottotitoli().end())
-        {
             return;
-        }
         else
-        {
             Media::rimuoviSottotitolo(lingua);
-        }
     }
 }
 
 // visitor
-void Podcast::accept(MediaVisitor *visitor)
-{
+void Podcast::accept(MediaVisitor *visitor){
     visitor->visit(this);
 }

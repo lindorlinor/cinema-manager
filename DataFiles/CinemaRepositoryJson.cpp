@@ -234,7 +234,6 @@ QJsonDocument CinemaRepositoryJson::loadJsonFile(const QString &fileName) {
 
     QFile file(filePath);
     if (!file.open(QIODevice::ReadOnly)) {
-        qWarning() << "Impossibile aprire" << filePath;
         return QJsonDocument();
     }
     QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
