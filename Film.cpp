@@ -9,14 +9,14 @@ Film::Film(const string &titolo, const string &descrizione, year_month_day gg_mm
            const string &autore, const string &path, Classificazione target) : Media(titolo, descrizione, gg_mm_aaInizioRilascio, gg_mm_aaFineRilascio,
                                                                                      durataMinuti, formato, risoluzione, autore, path),
                                                                                f_nPostCredit(nPostCredit),
-                                                                               f_costoBiglietto(costoBiglietto), f_casaDiProduzione(casaDiProduzione),
+                                                                               f_costoBiglietto(costoBiglietto>=0.0?costoBiglietto:0.0), f_casaDiProduzione(casaDiProduzione),
                                                                                f_target(target), f_valutazione(0) { setValutazione(); }
 
 Film::~Film(){
     while (!trailers.empty()){
-        Trailer *t = trailers.back(); // prendi l’ultimo
+        Trailer *t = trailers.back();
         delete t;
-        trailers.pop_back(); // rimuovi dal vector
+        trailers.pop_back();
     }
 }
 

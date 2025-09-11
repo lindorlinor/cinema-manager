@@ -159,19 +159,17 @@ void Podcast::aggiungiSottotitolo(Lingua lingua){
 void Podcast::rimuoviLingua(Lingua lingua){
     for (Puntata *p : p_elencoPuntate){
         if (std::find(p->getLingue().begin(), p->getLingue().end(), lingua) != p->getLingue().end())
-            return;
-        else
-            Media::rimuoviLingua(lingua);
+            return; 
     }
+    Media::rimuoviLingua(lingua);
 }
 
 void Podcast::rimuoviSottotitolo(Lingua lingua){
     for (Puntata *p : p_elencoPuntate){
         if (std::find(p->getSottotitoli().begin(), p->getSottotitoli().end(), lingua) != p->getSottotitoli().end())
             return;
-        else
-            Media::rimuoviSottotitolo(lingua);
     }
+    Media::rimuoviSottotitolo(lingua);
 }
 
 // visitor

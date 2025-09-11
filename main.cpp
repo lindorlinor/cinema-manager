@@ -30,7 +30,6 @@ int main(int argc, char *argv[])
     }
 
     // avvia l'applicazione Qt solo se i test passano
-
     MainWindow w;
     w.show();
 

@@ -8,14 +8,14 @@ Trailer::Trailer(const string &titolo, const string &descrizione, year_month_day
                                                   durataMinuti, formato, risoluzione, nProiezioniGiornaliere, autore, path),
                                        t_film(film)
 {
-    film->aggiungiTrailer(this);
+    if (t_film)
+        t_film->aggiungiTrailer(this);
 }
 
 Trailer::~Trailer() = default;
 
-void Trailer::associaFilm(Film *film)
-{
-    if (t_film == film)
+void Trailer::associaFilm(Film *film){
+    if (!film || t_film == film)
         return;
 
     if (t_film && film)
@@ -23,15 +23,17 @@ void Trailer::associaFilm(Film *film)
 
     t_film = film;
 
-    if (t_film && getDataFineRilascio() > film->getDataFineRilascio())
+    if (getDataFineRilascio() > film->getDataFineRilascio())
         setDataFineRilascio(film->getDataFineRilascio());
-    if (t_film)
-        film->aggiungiTrailer(this);
+    
+    film->aggiungiTrailer(this);
 }
 
 void Trailer::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio){
+    if(!t_film)
+        return;
     if (gg_mm_aaFineRilascio > t_film->getDataFineRilascio())
-        t_film->getDataFineRilascio();
+        Pubblicita::setDataFineRilascio(t_film->getDataFineRilascio());
     else
         Pubblicita::setDataFineRilascio(gg_mm_aaFineRilascio);
 }

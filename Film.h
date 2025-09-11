@@ -17,8 +17,7 @@ using namespace std::chrono;
  * @class Film
  * @brief Rappresenta un film distribuito al cinema.
  *
- * Un film possiede un vettore di trailer. L'associazione tra film e trailer è sempre bidirezionale:
- * il trailer è collegato al film e il film al trailer. L'invariante è soddisfatta in ogni stato stabile del programma.
+ * Un film possiede un vettore di trailer.
  * @see Trailer
  */
 class Film : public Media
@@ -103,9 +102,13 @@ public:
     void rimuoviTrailer(Trailer *trailer);
 
     /**
-     * @brief Disaccoppia un trailer dal film
+     * @brief Disaccoppia un trailer dal film rimuovendolo dal vettore.
      *
+     * Il metodo continua a mantenere l'invariante che un Film ha solo trailer ad esso associati.
+     * @details il metodo è utile al metodo associaTrailer
      * @param trailer
+     * @see Trailer::associaFilm @see @see \link Cinema::~Cinema() Distruttore di Cinema \endlink
+
      */
     void disaccoppiaTrailer(Trailer *trailer);
 

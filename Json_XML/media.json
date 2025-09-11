@@ -144,7 +144,6 @@
             "Fantasy"
         ],
         "lingueDisponibili": [
-            "Italiano",
             "Inglese"
         ],
         "nPostCredit": 0,
@@ -152,6 +151,7 @@
         "path": "images/locandina_harrypottereilcalicedifuoco.jpg",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
+            "Italiano"
         ],
         "target": "TUTTI",
         "tipologia": "film",
@@ -810,7 +810,6 @@
         ],
         "formato": "MP4",
         "lingueDisponibili": [
-            "Italiano",
             "Inglese",
             "Spagnolo"
         ],
@@ -1120,12 +1119,14 @@
         "filmAssociato": "Harry Potter e il Calice di Fuoco - 20esimo anniversario",
         "formato": "MP4",
         "lingueDisponibili": [
+            "Italiano"
         ],
         "nProiezioniGiornaliere": 2,
         "nomeCinema": "Cinema Notorius",
         "path": "images/trailer_harrypottereilcalicedifuoco.jpg",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
+            "Italiano"
         ],
         "tipologia": "trailer",
         "titolo": "Trailer ufficiale - Harry Potter e il Calice di Fuoco"
@@ -1290,7 +1291,6 @@
         "podcastAssociato": "151eg",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
-            "Italiano",
             "Inglese"
         ],
         "tipologia": "puntata",

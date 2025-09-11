@@ -30,9 +30,9 @@ public:
     /**
      * @brief assegna un film ad un Trailer
      *
-     * @param film
+     * @param film un puntatore ad un film esistente
      *
-     * @see disaccoppiaFilm
+     * @see Film::disaccoppiaTrailer
      */
     void associaFilm(Film *film);
 

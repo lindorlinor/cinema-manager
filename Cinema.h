@@ -8,6 +8,11 @@ class Media;
 
 using namespace std;
 
+/**
+ * @brief Rappresenta un cinema con una lista di media (film, trailer, ecc.)
+ * 
+ * La classe gestisce il nome, la copertina e la lista di Media associati.
+ */
 class Cinema{
     private:
 
@@ -18,6 +23,14 @@ class Cinema{
     public:
     Cinema(const string &nome, const string &copertina);
 
+    /**
+     * @brief Distruttore del cinema
+     * 
+     * Disaccoppia tutti i trailer dai film e tutte le puntate dai podcast
+     * prima di eliminare i media, per evitare dangling pointer e doppi delete.
+     * 
+     * @see Film::disaccoppiaTrailer @see Podcast::disaccoppiaPuntata
+     */
     ~Cinema();
 
     //set
