@@ -96,6 +96,14 @@ void Puntata::aggiungiLingua(Lingua lingua){
     Media::aggiungiLingua(lingua);
     p_podcast->aggiungiLingua(lingua);
 }
+void Puntata::rimuoviLingua(Lingua lingua){
+    Media::rimuoviLingua(lingua);
+    p_podcast->rimuoviLingua(lingua);
+}
+void Puntata::rimuoviSottotitolo(Lingua lingua){
+    Media::rimuoviSottotitolo(lingua);
+    p_podcast->rimuoviSottotitolo(lingua);
+}
 void Puntata::aggiungiSottotitolo(Lingua lingua){
     Media::aggiungiSottotitolo(lingua);
     p_podcast->aggiungiSottotitolo(lingua);
