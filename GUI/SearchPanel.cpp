@@ -604,17 +604,11 @@ void SearchPanel::showMediaView(MediaView &widget)
             { acceptDeleteMedia(m); });
 }
 
-/*@to do metto MediaView invece che widget? no tanto stackModifiche
-ritorna sempre un QWidget non mi ritorna un mediaView...
-posso fare static_cast invece che dynamic_cast? tanto so per
-certo che è sempre un mediaView.......giusto??? l
-inor del futuro pensaci meglio grazie*/
-void SearchPanel::removeMediaView(QWidget *widget)
-{
+
+void SearchPanel::removeMediaView(QWidget *widget){
     int widgetIndex = stackModifiche->indexOf(widget);
 
-    if (widgetIndex > 2)
-    {
+    if (widgetIndex > 2){
         stackModifiche->setCurrentIndex(widgetIndex - 1);
         (static_cast<MediaView *>((stackModifiche->currentWidget())))->update(); // fa l'update nel caso in cui vi è stata una modifica del media
     }

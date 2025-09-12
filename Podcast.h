@@ -37,7 +37,6 @@ public:
      * 
      * @param p Puntatore a puntata esistente
      */
-    //TO DO: DA MODIFICARE FORSE LA DOCUMENTAZIONE su come è gestita la parte con l'eccezione
     void aggiungiPuntata(Puntata * p);
 
     /**
