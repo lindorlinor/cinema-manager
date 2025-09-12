@@ -9,7 +9,7 @@ Puntata::Puntata(const string &titolo, const string &descrizione, year_month_day
                                        p_podcast(podcast),
                                        p_numeroPubblicita(numeroPubblicita)
 {
-    if(p_podcast)
+    if (p_podcast)
         p_podcast->aggiungiPuntata(this);
 }
 
@@ -60,25 +60,31 @@ void Puntata::estendiDataFineRilascio()
     }
 }
 
-void Puntata::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio){
-    if (p_podcast){
+void Puntata::setDataFineRilascio(year_month_day gg_mm_aaFineRilascio)
+{
+    if (p_podcast)
+    {
         Media::setDataFineRilascio(gg_mm_aaFineRilascio);
         p_podcast->aggiornaDate();
     }
 }
 
-void Puntata::setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio){
-    if (p_podcast){
+void Puntata::setDataInizioRilascio(year_month_day gg_mm_aaInizioRilascio)
+{
+    if (p_podcast)
+    {
         Media::setDataInizioRilascio(gg_mm_aaInizioRilascio);
         p_podcast->aggiornaDate();
     }
 }
 
-vector<string> Puntata::getOspiti() const{
+vector<string> Puntata::getOspiti() const
+{
     return p_ospiti;
 }
 
-void Puntata::associaPodcast(Podcast *podcast){
+void Puntata::associaPodcast(Podcast *podcast)
+{
     if (!podcast || p_podcast == podcast)
         return;
     if (p_podcast)
@@ -86,13 +92,17 @@ void Puntata::associaPodcast(Podcast *podcast){
 
     p_podcast = podcast;
     p_podcast->aggiungiPuntata(this);
+    setFormato(p_podcast->getFormato());
+    setRisoluzione(p_podcast->getRisoluzione());
 }
 
-Podcast *Puntata::getPodcast() const{
+Podcast *Puntata::getPodcast() const
+{
     return p_podcast;
 }
 
-void Puntata::aggiungiLingua(Lingua lingua){
+void Puntata::aggiungiLingua(Lingua lingua)
+{
     Media::aggiungiLingua(lingua);
     p_podcast->aggiungiLingua(lingua);
 }
@@ -109,15 +119,18 @@ void Puntata::aggiungiSottotitolo(Lingua lingua){
     p_podcast->aggiungiSottotitolo(lingua);
 }
 
-unsigned int Puntata::getNumeroPubblicita() const{
+unsigned int Puntata::getNumeroPubblicita() const
+{
     return p_numeroPubblicita;
 }
 
-void Puntata::setNumeroPubblicita(const int &num){
+void Puntata::setNumeroPubblicita(const int &num)
+{
     p_numeroPubblicita = num;
 }
 
 // visitor
-void Puntata::accept(MediaVisitor *visitor){
+void Puntata::accept(MediaVisitor *visitor)
+{
     visitor->visit(this);
 }
