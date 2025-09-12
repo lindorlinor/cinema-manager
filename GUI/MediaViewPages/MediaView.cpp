@@ -68,9 +68,13 @@ void MediaView::createMediaCard(){
     layoutBox->setSpacing(10);
 
     regista = new QLabel(box);
+    regista->setWordWrap(true);
     durata = new QLabel(box);
+    durata->setWordWrap(true);
     lingue = new QLabel(box);
+    lingue->setWordWrap(true);
     sottotitoli = new QLabel(box);
+    sottotitoli->setWordWrap(true);
 
     layoutBox->addWidget(regista);
     layoutBox->addWidget(durata);
@@ -83,6 +87,12 @@ void MediaView::createMediaCard(){
     leftLayout->addWidget(card, 0, Qt::AlignTop);
 
     updateMediaCard(); // aggiorna con l'immagine corrente
+
+    regista->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    durata->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    lingue->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    sottotitoli->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+
 
     box->setObjectName("box");
 }

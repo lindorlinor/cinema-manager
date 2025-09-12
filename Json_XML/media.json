@@ -763,7 +763,9 @@
         "sottotitoliDisponibili": [
             "Italiano",
             "Inglese",
-            "Francese"
+            "Francese",
+            "Tedesco",
+            "Cinese"
         ],
         "target": "TUTTI",
         "tipologia": "inserzione",
@@ -842,7 +844,11 @@
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
             "Italiano",
-            "Inglese"
+            "Inglese",
+            "Tedesco",
+            "Giapponese",
+            "Cinese",
+            "Non trovata"
         ],
         "tipologia": "podcast",
         "titolo": "151eg"
@@ -1288,7 +1294,7 @@
         "podcastAssociato": "151eg",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
-            "Inglese"
+            "Italiano"
         ],
         "tipologia": "puntata",
         "titolo": "L'Evoluzione di Mercoledì Addams"
@@ -1312,7 +1318,11 @@
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
             "Italiano",
-            "Inglese"
+            "Inglese",
+            "Tedesco",
+            "Giapponese",
+            "Cinese",
+            "Non trovata"
         ],
         "tipologia": "puntata",
         "titolo": "storia dell'inizio del RINASCIMENTO DISNEY"
