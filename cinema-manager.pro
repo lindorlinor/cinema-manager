@@ -67,7 +67,8 @@ HEADERS +=  \
             DataFiles/JsonConverter.h \
             DataFiles/JsonVisitor.h \
             DataFiles/MediaManagerXml.h \
-            DataFiles/XmlVisitor.h
+            DataFiles/XmlVisitor.h \
+            DataFiles/XmlReader.h
 SOURCES +=  \
             main.cpp \
             Inserzione.cpp \
@@ -115,5 +116,6 @@ SOURCES +=  \
             DataFiles/JsonConverter.cpp \
             DataFiles/JsonVisitor.cpp \
             DataFiles/MediaManagerXml.cpp \
-            DataFiles/XmlVisitor.cpp
+            DataFiles/XmlVisitor.cpp \
+            DataFiles/XmlReader.cpp
 RESOURCES += GUI/resources.qrc

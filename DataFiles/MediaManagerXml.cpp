@@ -1,5 +1,6 @@
 #include "MediaManagerXml.h"
 #include "XmlVisitor.h"
+#include "XmlReader.h"
 #include <QFile>
 #include <QFileDialog>
 #include <QDomElement>
@@ -149,15 +150,15 @@ void MediaManagerXml::importMediaListFromXml(QDomElement& mediaElem, CinemaRepos
         Media* ptrMedia = nullptr;
 
         if (tipo == "Film") {
-            ptrMedia = XmlVisitor::fromXmlFilmElement(mediaElem);
+            ptrMedia = XmlReader::fromXmlFilmElement(mediaElem);
         } else if (tipo == "Trailer") {
-            ptrMedia = XmlVisitor::fromXmlTrailerElement(mediaElem, currentCinema ? currentCinema->getListaMedia() : supportList);
+            ptrMedia = XmlReader::fromXmlTrailerElement(mediaElem, currentCinema ? currentCinema->getListaMedia() : supportList);
         } else if (tipo == "Inserzione") {
-            ptrMedia = XmlVisitor::fromXmlInserzioneElement(mediaElem);
+            ptrMedia = XmlReader::fromXmlInserzioneElement(mediaElem);
         } else if (tipo == "Podcast") {
-            ptrMedia = XmlVisitor::fromXmlPodcastElement(mediaElem);
+            ptrMedia = XmlReader::fromXmlPodcastElement(mediaElem);
         } else if (tipo == "Puntata") {
-            ptrMedia = XmlVisitor::fromXmlPuntataElement(mediaElem, currentCinema ? currentCinema->getListaMedia() : supportList);
+            ptrMedia = XmlReader::fromXmlPuntataElement(mediaElem, currentCinema ? currentCinema->getListaMedia() : supportList);
         }
 
         if (ptrMedia) {
