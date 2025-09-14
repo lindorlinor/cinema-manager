@@ -229,7 +229,6 @@ void InserzioneView::updateMediaDetails()
         "<span style='color: #bdced3; font-weight:bold;'>Descrizione: </span><br>" + QString::fromStdString(insPtr->getDescrizione()));
 }
 
-//@to do non so come farla al momento, devo passare la lista di media WOPSIEE COME FACCIO AAGHHH
 void InserzioneView::createScrollableSection()
 {
 

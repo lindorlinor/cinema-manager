@@ -113,10 +113,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), cinemaPage(new Ci
     connect(menu, &Menu::addMedia, searchPage, &SearchPanel::acceptAddMedia);
     connect(menu, &Menu::editCinema, searchPage, &SearchPanel::acceptEditCinema);
     connect(menu, &Menu::deleteCinema, searchPage, &SearchPanel::acceptDeleteCinema);
-    connect(menu, &Menu::importMediaList, this, [this]()
-            {
+    connect(menu, &Menu::importMediaList, this, [this](){
                 m_xmlManager->importMediaListFromXml(*m_jsonManager);
-                // searchPage->updateInfoCinema(m_xmlManager->getCurrentCinema());
                 searchPage->updateMediaList();
                 searchPage->updateFiltroTutto(); });
     connect(menu, &Menu::importSession, this, [this]()
@@ -138,15 +136,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), cinemaPage(new Ci
                 else menu->setOtherActionEnabled(0,false); });
     connect(searchPage, &SearchPanel::setQMenuDisabled, this, [menu]()
             { menu->setOtherActionEnabled(0, false); });
-    connect(searchPage, &SearchPanel::deleteCinema, this, [this]()
-            {
-        /* debug perchè non capivo perchè non si aggiornasse nel json ma il metodo non aggiorna il json veramente ciao
-        qDebug() << "aggiorna il json perchè ho chiamato la funzione";
-        qDebug() << QString::fromStdString(w_cinema[2]->getNomeCinema());
-        qDebug() << w_cinema[2]->getListaMedia().size();
-        for (Media* media : w_cinema[2]->getListaMedia()) {
-            qDebug() << QString::fromStdString(media->getTitolo()) << " " << QString::fromStdString(dateToString(media->getDataFineRilascio()));
-        } */
+    connect(searchPage, &SearchPanel::deleteCinema, this, [this](){
         m_jsonManager->deleteCinemaInJson(w_cinema); });
 
     stackedWidget->addWidget(cinemaPage);
@@ -165,43 +155,33 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), cinemaPage(new Ci
     layoutV->setSpacing(0);
 
     QFile file(dir.filePath("GUI/style.qss"));
-    if (file.open(QFile::ReadOnly))
-    {
+    if (file.open(QFile::ReadOnly)){
         QString styleSheet = QLatin1String(file.readAll());
         qApp->setStyleSheet(styleSheet);
         file.close();
-        qDebug() << "Style sheet applicato correttamente.";
     }
-    else
-        qDebug() << "Impossibile aprire il file style.qss";
 }
 
-void MainWindow::showInsertCinemaPage()
-{
+void MainWindow::showInsertCinemaPage(){
     insertPage->reset();
     stackedWidget->setCurrentIndex(1);
 }
 
-void MainWindow::showSelectedCinemaPage()
-{
+void MainWindow::showSelectedCinemaPage(){
     stackedWidget->setCurrentIndex(2);
 }
-void MainWindow::showCinemaSelectionPage()
-{
+
+void MainWindow::showCinemaSelectionPage(){
 
     searchPage->deleteViewPages();
 
     if (cinemaPage)
-    {
         cinemaPage->refreshCinemaButtons();
-    }
     stackedWidget->setCurrentIndex(0);
 }
 
-void MainWindow::deleteCinemaFromList(Cinema *cinema)
-{
-    if (w_cinema.removeOne(cinema))
-    {
+void MainWindow::deleteCinemaFromList(Cinema *cinema){
+    if (w_cinema.removeOne(cinema)){
         delete cinema;
         cinema = nullptr;
     }

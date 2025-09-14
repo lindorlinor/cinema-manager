@@ -59,7 +59,6 @@ void MediaLibraryTutto::update(const bool& view, int comboAttivita, int comboOrd
 
     for(auto &f : allFiltri){
         QString filtro = f.first;
-        QString prefisso = f.second;
 
         QWidget* salaWidget = new QWidget(container);
         QVBoxLayout* salaV = new QVBoxLayout(salaWidget);
@@ -69,20 +68,11 @@ void MediaLibraryTutto::update(const bool& view, int comboAttivita, int comboOrd
 
         
         if (scroll->getNumeroWidgetLayout()){
-            QLabel* titolo;
-            if(comboAttivita==0)
-                titolo = new QLabel(filtro + " in Sala", salaWidget);
-            else if(comboAttivita==1)
-                titolo = new QLabel(filtro + " fuori produzione", salaWidget);
-            else
-                titolo = new QLabel(prefisso + filtro , salaWidget);
-            salaV->addWidget(titolo);
             salaV->addWidget(scroll);
             salaWidget->setLayout(salaV);
             layoutContainer->addWidget(salaWidget,0,Qt::AlignTop);
     
             connect(scroll, &ScrollListWidget::requestMediaView, this, &MediaLibraryTutto::reciveRequestMediaView);
-            titolo->setStyleSheet("color: #fed36a; font-size: 18pt; font-weight: bold;");
         }
 
         

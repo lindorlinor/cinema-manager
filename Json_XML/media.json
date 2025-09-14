@@ -763,7 +763,9 @@
         "sottotitoliDisponibili": [
             "Italiano",
             "Inglese",
-            "Francese"
+            "Francese",
+            "Tedesco",
+            "Cinese"
         ],
         "target": "TUTTI",
         "tipologia": "inserzione",
@@ -836,14 +838,17 @@
         "durataMinuti": 117,
         "formato": "MP4",
         "lingueDisponibili": [
-            "Italiano"
         ],
         "nomeCinema": "Cinema Notorius",
         "path": "images/podcast_151eg.png",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
             "Italiano",
-            "Inglese"
+            "Inglese",
+            "Tedesco",
+            "Giapponese",
+            "Cinese",
+            "Non trovata"
         ],
         "tipologia": "podcast",
         "titolo": "151eg"
@@ -1256,7 +1261,6 @@
         "durataMinuti": 34,
         "formato": "MP4",
         "lingueDisponibili": [
-            "Italiano"
         ],
         "nomeCinema": "Cinema Notorius",
         "numeroPubblicita": 7,
@@ -1281,7 +1285,6 @@
         "durataMinuti": 26,
         "formato": "MP4",
         "lingueDisponibili": [
-            "Italiano"
         ],
         "nomeCinema": "Cinema Notorius",
         "numeroPubblicita": 6,
@@ -1291,7 +1294,7 @@
         "podcastAssociato": "151eg",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
-            "Inglese"
+            "Italiano"
         ],
         "tipologia": "puntata",
         "titolo": "L'Evoluzione di Mercoledì Addams"
@@ -1305,7 +1308,6 @@
         "durataMinuti": 57,
         "formato": "MP4",
         "lingueDisponibili": [
-            "Italiano"
         ],
         "nomeCinema": "Cinema Notorius",
         "numeroPubblicita": 9,
@@ -1316,7 +1318,11 @@
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
             "Italiano",
-            "Inglese"
+            "Inglese",
+            "Tedesco",
+            "Giapponese",
+            "Cinese",
+            "Non trovata"
         ],
         "tipologia": "puntata",
         "titolo": "storia dell'inizio del RINASCIMENTO DISNEY"

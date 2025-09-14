@@ -148,7 +148,6 @@ void EditMedia::initValue()
 
 // metodi funzionali per il corretto comportamento della pagina
 
-// TO DO: quando funzionerà tutto, provo a spostare il comportamento comune nella base MediInterface
 void EditMedia::setLimitTabTipologia(int i)
 {
 

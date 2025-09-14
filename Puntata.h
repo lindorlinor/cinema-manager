@@ -43,7 +43,7 @@ public:
      * @note Il metodo non ha effetto se il podcast è fuori produzione o non esiste.
      */
     void estendiDataFineRilascio() override;
-
+        
     /**
      * @brief Calcola l'incasso generato dalla puntata.
      *
@@ -61,6 +61,9 @@ public:
      */
     void aggiungiLingua(Lingua lingua) override;
     void aggiungiSottotitolo(Lingua lingua) override;
+    void rimuoviLingua(Lingua lingua) override;
+    void rimuoviSottotitolo(Lingua lingua) override;
+
 
     vector<string> getOspiti() const;
 

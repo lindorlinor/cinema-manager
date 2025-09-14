@@ -110,8 +110,7 @@ void Podcast::disaccoppiaPuntata(Puntata *puntata){
         for (Lingua l : puntata->getLingue()){
             rimuoviLingua(l);
         }
-        for (Lingua l : puntata->getSottotitoli())
-        {
+        for (Lingua l : puntata->getSottotitoli()){
             rimuoviSottotitolo(l);
         }
     }
@@ -121,8 +120,7 @@ void Podcast::aggiornaDate(){
     if (!p_elencoPuntate.empty()){
         // trovo la puntata con la data di inizio rilascio minore
         auto minPuntata = std::min_element(p_elencoPuntate.begin(), p_elencoPuntate.end(),
-                                           [](Puntata *a, Puntata *b)
-                                           {
+                                           [](Puntata *a, Puntata *b){
                                                return a->getDataInizioRilascio() < b->getDataInizioRilascio();
                                            });
         setDataInizioRilascio((*minPuntata)->getDataInizioRilascio());
