@@ -1,8 +1,27 @@
 #include "UpdateMediaLibrary.h"
 
-UpdateMediaLibrary::UpdateMediaLibrary(QWidget* parent):QWidget(parent),chooseLayout(false){}
+UpdateMediaLibrary::UpdateMediaLibrary(QWidget* parent):QWidget(parent),titolo(new QLabel(this)),chooseLayout(false){
+    titolo->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+}
 
 void UpdateMediaLibrary::update(const bool& view, int comboAttivita, int comboOrdinamento, const QString& filtro, const QString& ricerca, QList<Media*>& mediaList) {
+   
+    QString prefisso;
+    for (const auto &f : allFiltri)
+    { // recupero del prefisso a seconda del filtro ("Film","Inserzioni" etc) ; -> "Tutte le inserzioni, Tutti i film"
+        if (f.first == filtro)
+        {
+            prefisso = f.second;
+            break;
+        }
+    }
+
+    if (comboAttivita == 0)
+        titolo->setText(filtro + " in Sala");
+    else if (comboAttivita == 1)
+        titolo->setText(filtro + " fuori produzione");
+    else
+        titolo->setText(prefisso + filtro);
 
     //oridnamento
     if(comboOrdinamento == 0){

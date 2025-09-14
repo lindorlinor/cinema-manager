@@ -3,7 +3,8 @@
 ScrollListWidget::ScrollListWidget(QWidget *parent) : UpdateMediaLibrary(parent)
 {
     setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-
+    titolo = new QLabel("", this);
+    titolo->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
     container = new QWidget(this);
     HorizontalLayoutContainer = new QHBoxLayout(container);
     container->setLayout(HorizontalLayoutContainer);
@@ -15,7 +16,8 @@ ScrollListWidget::ScrollListWidget(QWidget *parent) : UpdateMediaLibrary(parent)
     scrollArea->setWidgetResizable(true);
     scrollArea->setWidget(container);
     scrollArea->setMaximumHeight(340);
-    QHBoxLayout *mainLayout = new QHBoxLayout(this);
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    mainLayout->addWidget(titolo);
     mainLayout->addWidget(scrollArea);
     setLayout(mainLayout);
 
@@ -25,7 +27,7 @@ ScrollListWidget::ScrollListWidget(QWidget *parent) : UpdateMediaLibrary(parent)
     mainLayout->setAlignment(Qt::AlignLeft);
     scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-
+    titolo->setStyleSheet("color: #fed36a; font-size: 18pt; font-weight: bold;");
     scrollArea->setStyleSheet(
         "QScrollArea QWidget{"
         "border-radius: 10px;"

@@ -57,6 +57,7 @@ class UpdateMediaLibrary : public QWidget, public LibraryObserver
     Q_OBJECT
 
 protected:
+    QLabel* titolo;
     QWidget *container;
     QHBoxLayout *HorizontalLayoutContainer; // true
     FlowLayout *FlowLayoutContainer;        // false
