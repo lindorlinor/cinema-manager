@@ -7,7 +7,6 @@
 #include "Custom/CustomMessageBox.h"
 
 
-
 SearchPanel::SearchPanel(CinemaRepositoryJson *s_jsonManager, MediaManagerXml *xmlManager, QWidget *parent) : QWidget(parent), s_jsonManager(s_jsonManager),
                                                                                                               s_xmlManager(xmlManager), comboAttivita(0), comboOrdinamento(0), filtroBottone("Film"),
                                                                                                               ricerca(""), changeView(1), stackModifiche(new QStackedWidget(this))
@@ -199,11 +198,11 @@ void SearchPanel::addLatoDestra()
     stackLibreria->setCurrentIndex(0);
 
     // GESTIONE PULSANTI
-    connect(cerca, &QLineEdit::textChanged, this, [this](const QString &testo)
-            { ricerca = testo; 
-                                                                                updateFiltroTutto();
-                                                                                for(auto o : s_libraryObservers) 
-                                                                                    o->update(changeView, comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema); });
+    connect(cerca, &QLineEdit::textChanged, this, [this](const QString &testo){   
+                ricerca = testo; 
+                updateFiltroTutto();
+                for(auto o : s_libraryObservers) 
+                    o->update(changeView, comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema); });
     connect(addMedia, &QPushButton::clicked, this, [this]()
             {
         deleteViewPages();

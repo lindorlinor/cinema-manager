@@ -7,7 +7,7 @@
 #include "LibraryObserver.h"
 #include "UpdateMediaLibrary.h"
 
-class MediaLibraryGenerale : public UpdateMediaLibrary, public LibraryObserver
+class MediaLibraryGenerale : public UpdateMediaLibrary
 {
     Q_OBJECT
 private:

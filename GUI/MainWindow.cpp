@@ -181,8 +181,9 @@ void MainWindow::showCinemaSelectionPage(){
 }
 
 void MainWindow::deleteCinemaFromList(Cinema *cinema){
-    if (w_cinema.removeOne(cinema))
+    if (w_cinema.removeOne(cinema)){
         delete cinema;
         cinema = nullptr;
+    }
     m_jsonManager->deleteCinemaInJson(w_cinema);
 }

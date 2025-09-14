@@ -11,6 +11,7 @@
 #include <QLayout>
 
 #include "CardVisitor.h"
+#include "LibraryObserver.h"
 #include "../Custom/FlowLayout.h"
 #include "../MediaViewPages/MediaView.h"
 #include "../Custom/MediaFrame.h"
@@ -51,7 +52,7 @@
  * @see FlowLayout
  */
 
-class UpdateMediaLibrary : public QWidget
+class UpdateMediaLibrary : public QWidget, public LibraryObserver
 {
     Q_OBJECT
 
@@ -65,7 +66,7 @@ protected:
 
 public:
     UpdateMediaLibrary(QWidget *parent = nullptr);
-    virtual void update(const bool &view, int comboAttivita, int comboOrdinamento, const QString &filtro, const QString &ricerca, QList<Media *> &mediaList);
+    void update(const bool &view, int comboAttivita, int comboOrdinamento, const QString &filtro, const QString &ricerca, QList<Media *> &mediaList) override;
     int getNumeroWidgetLayout() const;
 
 signals:
