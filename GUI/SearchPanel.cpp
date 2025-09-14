@@ -6,14 +6,7 @@
 #include "MediaViewPages/InserzioneView.h"
 #include "Custom/CustomMessageBox.h"
 
-/* NOTE IMPORTANTI: s_MediaListOfCinema contiene gli oggetti caricati nel json ed è tramite lei che popolo il cinema selezionato con gli addMedia, ma così
-ci sono i puntatori della liste di supporto e della liste media del cinema che puntano allo stesso media -> attenzione al dangling, quando si aggiunge un elemento non
-c'è bisogno di aggiornare la lista passata all'InsertMedia perché è passata per riferimento, e ogni volta che richiamo la libreria (tutto o generale)
-aggiorno la lista: cancella i suoi contenuti, quindi i puntatori agli oggetti, che non diventano garbage perché sono ancora associati alla lista del cinema, e la ripopolo
-con gli elementi del cinema -> NON STO DISTRUGGENDO OGGETTI E RICREANDOLI, STO SOLO ASSEGNANDO E TOGLIENDO PUNTATORI AGLI OGGETTI. La popolazione degli oggetti nel cinema,
-ad eccezione del primo richiamo, è fatta all'interno di InsertMedia quando viene creato un oggetto. La lista rimane aggiornata anche in InserMedia perché è èassata per riferimento.
-quando si esce dal cinema viene chiamato il reset che cancella tutti gli ogetti puntati nella lista media del cinema e cancella con clean() le lista, tutti gli oggetti sono stati
-eliminati, senza SF o dangling pointer. */
+
 
 SearchPanel::SearchPanel(CinemaRepositoryJson *s_jsonManager, MediaManagerXml *xmlManager, QWidget *parent) : QWidget(parent), s_jsonManager(s_jsonManager),
                                                                                                               s_xmlManager(xmlManager), comboAttivita(0), comboOrdinamento(0), filtroBottone("Film"),
@@ -497,7 +490,7 @@ void SearchPanel::resetSearchPanelAfterDeleteCinema()
     stackModifiche->setCurrentIndex(0);
 
     // non elimino gli oggetti e non li tolgo dalla lista media del cinema perché
-    // quest'operazione è già stata fatta quando + stato eliminato il cinema
+    // quest'operazione è già stata fatta quando e' stato eliminato il cinema
     s_MediaListOfCinema.clear();
 
     updateFiltroTutto();
@@ -545,8 +538,7 @@ void SearchPanel::showEditPage(Media *media)
 
     stackModifiche->addWidget(editMedia);
     stackModifiche->setCurrentWidget(editMedia);
-    connect(editMedia, &EditMedia::tornaIndietro, this, [this, editMedia, backIndex]()
-            {
+    connect(editMedia, &EditMedia::tornaIndietro, this, [this, editMedia, backIndex](){
         updateMediaList(); 
         updateFiltroTutto();
         stackModifiche->setCurrentIndex(backIndex);       
@@ -589,7 +581,7 @@ void SearchPanel::updateModifierPanel(int index)
 void SearchPanel::showMediaView(MediaView &widget)
 {
     if (auto inserzione = dynamic_cast<InserzioneView *>(&widget))
-        inserzione->setMediaList(&s_MediaListOfCinema); // per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, mi semrbava meglio cosi
+        inserzione->setMediaList(&s_MediaListOfCinema); // per passargli il mediaList, dovevo scegliere tra un set oppure passarlo al visitor, meglio lasciare visitor stateless
 
     stackModifiche->addWidget(&widget);
     stackModifiche->setCurrentWidget(&widget);

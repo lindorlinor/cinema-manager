@@ -54,7 +54,7 @@ void MediaLibraryGenerale::update(const bool &view, int comboAttivita, int combo
 {
     QString prefisso;
     for (const auto &f : allFiltri)
-    { // recupero del prefisso a seconda del filtro ("Film","Inserzioni" etc)
+    { // recupero del prefisso a seconda del filtro ("Film","Inserzioni" etc) ; -> "Tutte le inserzioni, Tutti i film"
         if (f.first == filtro)
         {
             prefisso = f.second;

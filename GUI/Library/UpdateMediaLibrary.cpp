@@ -50,18 +50,9 @@ void UpdateMediaLibrary::update(const bool& view, int comboAttivita, int comboOr
         if( //controllo che sia attivo o meno
             ((comboAttivita == 0 && !m->FuoriProduzione()) || (comboAttivita == 1 && m->FuoriProduzione()) || comboAttivita == 2) &&
             //trovo i media che soddisfano la ricerca
-
             //controllo se hanno un titolo o un autore corrispondente
-            ((QString::fromStdString(m->getTitolo()).contains(ricerca, Qt::CaseInsensitive)) || (QString::fromStdString(m->getAutore()).contains(ricerca, Qt::CaseInsensitive)) /* ||
-            
-            //controllo se hanno un genere o un attore corrispondente 
-            (film && (std::any_of(film->getGeneri().begin(), film->getGeneri().end(), [&](const Genere& g)
-            { return QString::fromStdString(toString(g)).contains(ricerca, Qt::CaseInsensitive);}) || std::any_of(film->getAttoriPrincipali().begin(), 
-            film->getAttoriPrincipali().end(), [&](const std::string& a){return QString::fromStdString(a).contains(ricerca, Qt::CaseInsensitive);}))) ||
-
-            //controllo se hanno ospiti corrispondenti
-            (puntata && std::any_of(puntata->getOspiti().begin(), puntata->getOspiti().end(), [&](const std::string& a)
-            {return QString::fromStdString(a).contains(ricerca, Qt::CaseInsensitive);})) */)){
+            ((QString::fromStdString(m->getTitolo()).contains(ricerca, Qt::CaseInsensitive)) || (QString::fromStdString(m->getAutore()).contains(ricerca, Qt::CaseInsensitive))   
+         )){
                 
             CardVisitor libraryVisitor(container, filtro, view);
             m->accept(&libraryVisitor);
