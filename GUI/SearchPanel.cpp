@@ -206,11 +206,23 @@ void SearchPanel::addLatoDestra()
     stackLibreria->setCurrentIndex(0);
 
     // GESTIONE PULSANTI
-    connect(cerca, &QLineEdit::textChanged, this, [this](const QString &testo)
-            { ricerca = testo; 
-                                                                                updateFiltroTutto();
-                                                                                for(auto o : s_libraryObservers) 
-                                                                                    o->update(changeView, comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema); });
+    connect(cerca, &QLineEdit::textChanged, this,
+            [this](const QString &testo)
+            {
+                ricerca = testo;
+
+                if (this->stackLibreria->currentIndex() == 0)
+                {
+                    updateFiltroTutto();
+                }
+
+                for (auto o : s_libraryObservers)
+                {
+                    o->update(changeView, comboAttivita, comboOrdinamento,
+                              filtroBottone, ricerca, s_MediaListOfCinema);
+                }
+            });
+
     connect(addMedia, &QPushButton::clicked, this, [this]()
             {
         deleteViewPages();
