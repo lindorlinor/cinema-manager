@@ -2,7 +2,7 @@
 
 MediaLibraryGenerale::MediaLibraryGenerale(const QString &filtroBottone, QWidget *parent) : UpdateMediaLibrary(parent), filtro(filtroBottone)
 {
-
+    titolo->setParent(parent);
     titolo = new QLabel(filtroBottone + " in Sala", this);
     QVBoxLayout *mainLayout = new QVBoxLayout;
     container = new QWidget(this);

@@ -68,7 +68,6 @@ void MediaLibraryTutto::update(const bool& view, int comboAttivita, int comboOrd
 
         
         if (scroll->getNumeroWidgetLayout()){
-           
             salaV->addWidget(scroll);
             salaWidget->setLayout(salaV);
             layoutContainer->addWidget(salaWidget,0,Qt::AlignTop);

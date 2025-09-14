@@ -3,7 +3,7 @@
 ScrollListWidget::ScrollListWidget(QWidget *parent) : UpdateMediaLibrary(parent)
 {
     setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    titolo = new QLabel("", this);
+    titolo = new QLabel("", parent);
     titolo->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
     container = new QWidget(this);
     HorizontalLayoutContainer = new QHBoxLayout(container);
