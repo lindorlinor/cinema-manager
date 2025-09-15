@@ -67,13 +67,16 @@ void MediaLibraryTutto::update(const bool& view, int comboAttivita, int comboOrd
         scroll->setFixedHeight(350);
 
         
-        if (scroll->getNumeroWidgetLayout()){
+        if (scroll->getNumeroWidgetLayout()) {
             salaV->addWidget(scroll);
             salaWidget->setLayout(salaV);
             layoutContainer->addWidget(salaWidget,0,Qt::AlignTop);
-    
             connect(scroll, &ScrollListWidget::requestMediaView, this, &MediaLibraryTutto::reciveRequestMediaView);
+        } else {
+            scroll->deleteLater();
+            salaWidget->deleteLater();
         }
+
 
         
 

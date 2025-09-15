@@ -12,7 +12,6 @@ MediaLibraryGenerale::MediaLibraryGenerale(const QString &filtroBottone, QWidget
     scrollArea->setWidget(container);
 
     setPreferredLayout(FlowLayoutContainer);
-
     mainLayout->addWidget(titolo);
     mainLayout->addWidget(scrollArea);
     setLayout(mainLayout);
