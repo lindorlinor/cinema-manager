@@ -119,7 +119,7 @@
             <DurataMinuti>158</DurataMinuti>
             <Formato>DCP</Formato>
             <Risoluzione>SD 480p</Risoluzione>
-            <Path>images/locandina_harrypottereilcalicedifuoco.jpg</Path>
+            <Path>images/locandina_harrypottereilcalicedifuoco.png</Path>
             <DataInizioRilascio>28/8/2025</DataInizioRilascio>
             <DataFineRilascio>23/9/2025</DataFineRilascio>
             <LingueDisponibili>
@@ -1298,7 +1298,7 @@ Da Harry Potter al Signore degli Anelli, da Game of Thrones a Star Wars, vado ad
             <DurataMinuti>2</DurataMinuti>
             <Formato>MP4</Formato>
             <Risoluzione>FullHD 1080p</Risoluzione>
-            <Path>images/trailer_materiallove.jpg</Path>
+            <Path>images/trailer_materiallove.jpeg</Path>
             <DataInizioRilascio>20/7/2025</DataInizioRilascio>
             <DataFineRilascio>3/9/2025</DataFineRilascio>
             <LingueDisponibili/>

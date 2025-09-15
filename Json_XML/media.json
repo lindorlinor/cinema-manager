@@ -148,7 +148,7 @@
         ],
         "nPostCredit": 0,
         "nomeCinema": "Cinema Notorius",
-        "path": "images/locandina_harrypottereilcalicedifuoco.jpg",
+        "path": "images/locandina_harrypottereilcalicedifuoco.png",
         "risoluzione": "SD 480p",
         "sottotitoliDisponibili": [
             "Italiano"
@@ -1435,7 +1435,7 @@
         ],
         "nProiezioniGiornaliere": 4,
         "nomeCinema": "Cinema Notorius",
-        "path": "images/trailer_materiallove.jpg",
+        "path": "images/trailer_materiallove.jpeg",
         "risoluzione": "FullHD 1080p",
         "sottotitoliDisponibili": [
         ],
