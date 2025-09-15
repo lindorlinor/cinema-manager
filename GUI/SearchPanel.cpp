@@ -6,7 +6,6 @@
 #include "MediaViewPages/InserzioneView.h"
 #include "Custom/CustomMessageBox.h"
 
-
 SearchPanel::SearchPanel(CinemaRepositoryJson *s_jsonManager, MediaManagerXml *xmlManager, QWidget *parent) : QWidget(parent), s_jsonManager(s_jsonManager),
                                                                                                               s_xmlManager(xmlManager), comboAttivita(0), comboOrdinamento(0), filtroBottone("Film"),
                                                                                                               ricerca(""), changeView(1), stackModifiche(new QStackedWidget(this))
@@ -198,11 +197,23 @@ void SearchPanel::addLatoDestra()
     stackLibreria->setCurrentIndex(0);
 
     // GESTIONE PULSANTI
-    connect(cerca, &QLineEdit::textChanged, this, [this](const QString &testo){   
-                ricerca = testo; 
-                updateFiltroTutto();
-                for(auto o : s_libraryObservers) 
-                    o->update(changeView, comboAttivita, comboOrdinamento, filtroBottone, ricerca, s_MediaListOfCinema); });
+    connect(cerca, &QLineEdit::textChanged, this,
+            [this](const QString &testo)
+            {
+                ricerca = testo;
+
+                if (this->stackLibreria->currentIndex() == 0)
+                {
+                    updateFiltroTutto();
+                }
+
+                for (auto o : s_libraryObservers)
+                {
+                    o->update(changeView, comboAttivita, comboOrdinamento,
+                              filtroBottone, ricerca, s_MediaListOfCinema);
+                }
+            });
+
     connect(addMedia, &QPushButton::clicked, this, [this]()
             {
         deleteViewPages();
@@ -537,7 +548,8 @@ void SearchPanel::showEditPage(Media *media)
 
     stackModifiche->addWidget(editMedia);
     stackModifiche->setCurrentWidget(editMedia);
-    connect(editMedia, &EditMedia::tornaIndietro, this, [this, editMedia, backIndex](){
+    connect(editMedia, &EditMedia::tornaIndietro, this, [this, editMedia, backIndex]()
+            {
         updateMediaList(); 
         updateFiltroTutto();
         stackModifiche->setCurrentIndex(backIndex);       
@@ -595,11 +607,12 @@ void SearchPanel::showMediaView(MediaView &widget)
             { acceptDeleteMedia(m); });
 }
 
-
-void SearchPanel::removeMediaView(QWidget *widget){
+void SearchPanel::removeMediaView(QWidget *widget)
+{
     int widgetIndex = stackModifiche->indexOf(widget);
 
-    if (widgetIndex > 2){
+    if (widgetIndex > 2)
+    {
         stackModifiche->setCurrentIndex(widgetIndex - 1);
         (static_cast<MediaView *>((stackModifiche->currentWidget())))->update(); // fa l'update nel caso in cui vi è stata una modifica del media
     }
