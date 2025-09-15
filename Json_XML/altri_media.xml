@@ -1,0 +1,154 @@
+<MediaList>
+    <Film>
+        <Titolo>Coraline</Titolo>
+        <Autore>Henry Selick</Autore>
+        <Descrizione>Coraline Jones, una ragazzina curiosa, trova una porta segreta nella sua nuova casa che la conduce in un mondo parallelo, apparentemente perfetto: lì, i suoi genitori sono premurosi, tutto è perfetto… finché scopre che simbolicamente la “Altra Madre” cela un’insidia sinistra e vuole che lei resti per sempre. Coraline lotta per tornare a casa, scoprendo il valore della sua realtà e delle sue relazioni</Descrizione>
+        <DurataMinuti>100</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_coraline.png</Path>
+        <DataInizioRilascio>8/10/2024</DataInizioRilascio>
+        <DataFineRilascio>8/11/2024</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Tedesco</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+            <Lingua>Tedesco</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Fantasy</Genere>
+            <Genere>Horror</Genere>
+            <Genere>Animazione</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Dakota Fanning</Attore>
+            <Attore>Teri Hatcher</Attore>
+            <Attore>Jennifer Saunders e Dawn French</Attore>
+            <Attore>Keith David</Attore>
+            <Attore>Ian McShane</Attore>
+            <Attore>John Hodgman</Attore>
+            <Attore>Robert Bailey Jr</Attore>
+        </AttoriPrincipali>
+        <Target>14+</Target>
+        <CostoBiglietto>8</CostoBiglietto>
+        <CasaDiProduzione>Laika</CasaDiProduzione>
+        <NPostCredit>4</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>ParaNorman</Titolo>
+        <Autore>Chris Butler, Sam Fell</Autore>
+        <Descrizione>
+            Norman Babcock è un ragazzino che ha un dono particolare: riesce a vedere e parlare con i fantasmi. Quando la sua cittadina viene minacciata da una maledizione antica che risveglia i morti, Norman è l’unico che può affrontare la situazione. Con l’aiuto dei suoi amici e della famiglia, impara a trasformare la sua diversità in forza, affrontando paure e pregiudizi.
+        </Descrizione>
+        <DurataMinuti>92</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>HD 720p</Risoluzione>
+        <Path>images/locandina_paranorman.jpg</Path>
+        <DataInizioRilascio>31/10/2025</DataInizioRilascio>
+        <DataFineRilascio>3/11/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Tedesco</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+            <Lingua>Francese</Lingua>
+            <Lingua>Spagnolo</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Animazione</Genere>
+            <Genere>Fantasy</Genere>
+            <Genere>Horror</Genere>
+            <Genere>Commedia</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Kodi Smit-McPhee</Attore>
+            <Attore>Tucker Albrizzi</Attore>
+            <Attore>Anna Kendrick</Attore>
+            <Attore>Casey Affleck</Attore>
+            <Attore>Leslie Mann</Attore>
+            <Attore>Jeff Garlin</Attore>
+            <Attore>Christopher Mintz-Plasse</Attore>
+            <Attore>John Goodman</Attore>
+        </AttoriPrincipali>
+        <Target>10+</Target>
+        <CostoBiglietto>8</CostoBiglietto>
+        <CasaDiProduzione>Laika</CasaDiProduzione>
+        <NPostCredit>1</NPostCredit>
+    </Film>
+    <Film>
+        <Titolo>Arancia Meccanica – 50mo Anniversario</Titolo>
+        <Autore>Stanley Kubrick</Autore>
+        <Descrizione>Il percorso di Alex – da punk amorale ad onorato cittadino, previo lavaggio del cervello – viene ambientato in un futuro scioccante dall’ardita interpretazione kubrickiana del romanzo di Anthony Burgess.</Descrizione>
+        <DurataMinuti>137</DurataMinuti>
+        <Formato>DCP</Formato>
+        <Risoluzione>SD 480p</Risoluzione>
+        <Path>images/locandina_aranciameccanica.png</Path>
+        <DataInizioRilascio>13/10/2025</DataInizioRilascio>
+        <DataFineRilascio>15/10/2025</DataFineRilascio>
+        <LingueDisponibili>
+            <Lingua>Italiano</Lingua>
+            <Lingua>Inglese</Lingua>
+        </LingueDisponibili>
+        <SottotitoliDisponibili>
+            <Lingua>Italiano</Lingua>
+        </SottotitoliDisponibili>
+        <Generi>
+            <Genere>Thriller</Genere>
+        </Generi>
+        <AttoriPrincipali>
+            <Attore>Patrick Magee</Attore>
+            <Attore>Adrienne Corri</Attore>
+            <Attore>Miriam Karlin</Attore>
+            <Attore>Malcolm McDowell</Attore>
+            <Attore>Michael Bates</Attore>
+            <Attore>Carl Duering</Attore>
+            <Attore>John Clive</Attore>
+            <Attore>Warren Clarke</Attore>
+        </AttoriPrincipali>
+        <Target>TUTTI</Target>
+        <CostoBiglietto>11</CostoBiglietto>
+        <CasaDiProduzione>Warner Bros. Pictures / MGM</CasaDiProduzione>
+        <NPostCredit>0</NPostCredit>
+    </Film>
+    <Puntata>
+        <Titolo>Analisi del cinema muto</Titolo>
+        <Autore>FilmLab</Autore>
+        <Descrizione>Esploriamo l'era del cinema muto e i suoi maestri.</Descrizione>
+        <DurataMinuti>40</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/default_puntata.png</Path>
+        <DataInizioRilascio>1/10/2025</DataInizioRilascio>
+        <DataFineRilascio>16/10/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <TitoloPodcastAssociato>Cinema d'Autore</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>FilmLab</AutorePodcastAssociato>
+        <NPubblicita>1</NPubblicita>
+    </Puntata>
+    <Puntata>
+        <Titolo>La Nouvelle Vague</Titolo>
+        <Autore>FilmLab</Autore>
+        <Descrizione>Il movimento francese che ha rivoluzionato il cinema.</Descrizione>
+        <DurataMinuti>35</DurataMinuti>
+        <Formato>MP4</Formato>
+        <Risoluzione>FullHD 1080p</Risoluzione>
+        <Path>:/images/default_puntata.png</Path>
+        <DataInizioRilascio>16/10/2025</DataInizioRilascio>
+        <DataFineRilascio>1/11/2025</DataFineRilascio>
+        <LingueDisponibili/>
+        <SottotitoliDisponibili/>
+        <TitoloPodcastAssociato>Cinema d'Autore</TitoloPodcastAssociato>
+        <AutorePodcastAssociato>FilmLab</AutorePodcastAssociato>
+        <NPubblicita>2</NPubblicita>
+    </Puntata>
+</MediaList>
