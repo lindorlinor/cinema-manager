@@ -1441,5 +1441,1436 @@
         ],
         "tipologia": "trailer",
         "titolo": "Trailer ufficiale – Material Love"
+    },
+    {
+        "copertinaCinema": ":/images/coverCinema.png",
+        "nomeCinema": "prova"
+    },
+    {
+        "autore": "FilmLab",
+        "conduttore": "Marco Rossi",
+        "dataFineRilascio": "2025-09-15",
+        "dataInizioRilascio": "2025-09-15",
+        "descrizione": "Approfondimenti sui grandi registi e capolavori cinematografici.",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "prova",
+        "path": "images/image17.png",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "Cinema d'Autore"
+    },
+    {
+        "attoriPrincipali": [
+            "Rihanna",
+            "John Goodman",
+            "Nick Offerman"
+        ],
+        "autore": "Chris Miller",
+        "casaDiProduzione": "Paramount Animation",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-09-28",
+        "dataInizioRilascio": "2025-08-22",
+        "descrizione": "Un’avventura animata-musicale con i Puffi alla ricerca del Grande Puffo tra dimensioni magiche...",
+        "durataMinuti": 93,
+        "formato": "DCP",
+        "generi": [
+            "Animazione"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 1,
+        "nomeCinema": "prova",
+        "path": "images/locandina_ipuffiilfilm.jpg",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "I Puffi - Il Film"
+    },
+    {
+        "attoriPrincipali": [
+            "Olivia Colman",
+            "Benedict Cumberbatch",
+            "Andy Samberg",
+            "Hitoshi Takagi",
+            "Takashi Nagasako"
+        ],
+        "autore": "Jay Roach",
+        "casaDiProduzione": "Searchlight Pictures / Disney Italia",
+        "costoBiglietto": 9,
+        "dataFineRilascio": "2025-09-03",
+        "dataInizioRilascio": "2025-08-27",
+        "descrizione": "Commedia nera in cui una coppia apparentemente perfetta — Ivy e Theo Rose — vede naufragare il proprio matrimonio in una guerra emotiva tra ambizione professionale e risentimento.",
+        "durataMinuti": 105,
+        "formato": "DCP",
+        "generi": [
+            "Non trovato",
+            "Commedia"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "prova",
+        "path": "images/locandina_irosesfilm.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "I Roses"
+    },
+    {
+        "attoriPrincipali": [
+            "Lillo Petrolo",
+            "Maurizio Lastrico",
+            "Elio",
+            "Naska"
+        ],
+        "autore": "Andrea Jublin",
+        "casaDiProduzione": "Be Water Film / PiperFilm",
+        "costoBiglietto": 7,
+        "dataFineRilascio": "2025-09-08",
+        "dataInizioRilascio": "2025-08-28",
+        "descrizione": "\n            Bruno è un ex chitarrista rock egoista e bugiardo che finisce in carcere. Nel luogo più costrittivo trova però un’opportunità di riscatto: formare una band con altri detenuti e partecipare al Roma Rock Contest per mantenere una promessa fatta alla figlia.\n        ",
+        "durataMinuti": 100,
+        "formato": "DCP",
+        "generi": [
+            "Commedia"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "prova",
+        "path": "images/locandina_tuttacolpadelrock.jpg",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Tutta colpa del rock"
+    },
+    {
+        "attoriPrincipali": [
+            "Emma Watson",
+            "Ralph Fiennes",
+            "Daniel Radcliffe",
+            "Emma Watson",
+            "Rupert Grint",
+            "Ralph Fiennes"
+        ],
+        "autore": "Mike Newell",
+        "casaDiProduzione": "Warner Bros Italia",
+        "costoBiglietto": 10.5,
+        "dataFineRilascio": "2025-09-23",
+        "dataInizioRilascio": "2025-08-28",
+        "descrizione": "Harry affronta il pericoloso Torneo Tremaghi a Hogwarts nel suo quarto anno, tra incantesimi, drago e sfida finale con Voldemort.",
+        "durataMinuti": 158,
+        "formato": "DCP",
+        "generi": [
+            "Avventura",
+            "Fantasy"
+        ],
+        "lingueDisponibili": [
+            "Inglese"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "prova",
+        "path": "images/locandina_harrypottereilcalicedifuoco.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Harry Potter e il Calice di Fuoco - 20esimo anniversario"
+    },
+    {
+        "attoriPrincipali": [
+            "Zoë Kravitz",
+            "Regina King",
+            "Vincent D'Onofrio",
+            "Bad Bunny",
+            "Austin Butler",
+            "Zoë Kravitz",
+            "Matt Smith",
+            "Regina King",
+            "Liev Schreiber",
+            "Vincent D'Onofrio",
+            "Griffin Dunne",
+            "Bad Bunny",
+            "Carol Kane"
+        ],
+        "autore": "Darren Aronofsky",
+        "casaDiProduzione": "Columbia Pictures / Protozoa Pictures (distribuito in Italia da Eagle Pictures)",
+        "costoBiglietto": 12,
+        "dataFineRilascio": "2025-09-14",
+        "dataInizioRilascio": "2025-08-27",
+        "descrizione": "Hank Thompson, ex promessa del baseball, finisce coinvolto in una violenta caccia all'uomo nel crudo sottobosco criminale di New York anni ’90 dopo aver accettato di badare al gatto del suo stravagante vicino.",
+        "durataMinuti": 110,
+        "formato": "DCP",
+        "generi": [
+            "Crime",
+            "Thriller"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "prova",
+        "path": "images/locandina_caughtstealing.jpg",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Una scomoda circostanza - Caught Stealing"
+    },
+    {
+        "attoriPrincipali": [
+            "Josh Brolin",
+            "Julia Garner",
+            "Alden Ehrenreich",
+            "Austin Abrams",
+            "Cary Christopher",
+            "Toby Huss",
+            "Benedict Wong",
+            "Amy Madigan"
+        ],
+        "autore": "Zach Cregger",
+        "casaDiProduzione": "New Line Cinema / Warner Bros. Pictures Italia",
+        "costoBiglietto": 11.5,
+        "dataFineRilascio": "2025-08-31",
+        "dataInizioRilascio": "2025-08-06",
+        "descrizione": "In una misteriosa cittadina, diciassette bambini spariscono nella stessa notte: un horror/thriller enigmatico e disturbante.",
+        "durataMinuti": 128,
+        "formato": "DCP",
+        "generi": [
+            "Horror",
+            "Thriller"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "prova",
+        "path": "images/locandina_weapons.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Weapons"
+    },
+    {
+        "attoriPrincipali": [
+            "Roy Scheider",
+            "Robert Shaw",
+            "Richard Dreyfuss",
+            "Lorraine Gary",
+            "Murray Hamilton"
+        ],
+        "autore": "Steven Spielberg",
+        "casaDiProduzione": "Universal Pictures / Adler Entertainment",
+        "costoBiglietto": 9,
+        "dataFineRilascio": "2025-09-03",
+        "dataInizioRilascio": "2025-09-01",
+        "descrizione": "Un capolavoro che ha inventato il blockbuster estivo: lo Squalo torna sul grande schermo per il suo cinquantesimo anniversario.",
+        "durataMinuti": 124,
+        "formato": "IMAX 3D",
+        "generi": [
+            "Horror",
+            "Thriller"
+        ],
+        "lingueDisponibili": [
+            "Italiano"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "prova",
+        "path": "images/locandina_losqualo50anniversario.jpg",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Lo Squalo - 50mo anniversario"
+    },
+    {
+        "attoriPrincipali": [
+            "Johnny Depp",
+            "Freddie Highmore",
+            "David Kelly",
+            "Helena Bonham Carter",
+            "Noah Taylor",
+            "Missi Pyle"
+        ],
+        "autore": "Roald Dahl",
+        "casaDiProduzione": "Warner Bros",
+        "costoBiglietto": 7,
+        "dataFineRilascio": "2025-04-24",
+        "dataInizioRilascio": "2025-03-04",
+        "descrizione": "L'eccentrico Willy Wonka apre le porte della sua fabbrica di dolci a cinque fortunati, che imparano così i segreti delle sue meravigliose creazioni.",
+        "durataMinuti": 124,
+        "formato": "MP4",
+        "generi": [
+            "Azione",
+            "Avventura"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Spagnolo"
+        ],
+        "nPostCredit": 3,
+        "nomeCinema": "prova",
+        "path": "images/locandina_fabbrica_di_cioccolato.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Giapponese"
+        ],
+        "target": "6+",
+        "tipologia": "film",
+        "titolo": "La Fabbrica di Cioccolato"
+    },
+    {
+        "attoriPrincipali": [
+            "Johnny Depp",
+            "Winona Ryder",
+            "Dianne Wiest",
+            "Anthony Michael Hall",
+            "Kathy Baker",
+            "Vincent Price",
+            "Alan Arkin"
+        ],
+        "autore": "Tim Burton",
+        "casaDiProduzione": "20th Century Fox",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2024-09-27",
+        "dataInizioRilascio": "2024-08-06",
+        "descrizione": "Edward è un essere artificiale incompiuto, creato da uno scienziato che muore prima di terminare il suo lavoro, lasciandolo con delle forbici al posto delle mani. Viene scoperto da una venditrice porta a porta, Peg, che lo porta nella sua famiglia suburbana. Edward viene ben accolto all’inizio, ma finisce per essere rifiutato quando la sua diversità causa incomprensioni e paura. Nonostante tutto, sviluppa un sentimento d’amore verso Kim, la figlia adolescente della famiglia",
+        "durataMinuti": 107,
+        "formato": "MP4",
+        "generi": [
+            "Drama",
+            "Fantasy",
+            "Romantico"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese"
+        ],
+        "nPostCredit": 2,
+        "nomeCinema": "prova",
+        "path": "images/locandina_edward_mani_di_forbici.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Spagnolo",
+            "Giapponese"
+        ],
+        "target": "14+",
+        "tipologia": "film",
+        "titolo": "Edward Mani di Forbici"
+    },
+    {
+        "attoriPrincipali": [
+            "Dakota Fanning",
+            "Teri Hatcher",
+            "Jennifer Saunders e Dawn French",
+            "Keith David",
+            "Ian McShane",
+            "John Hodgman",
+            "Robert Bailey Jr"
+        ],
+        "autore": "Henry Selick",
+        "casaDiProduzione": "Laika",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2024-11-08",
+        "dataInizioRilascio": "2024-10-08",
+        "descrizione": "Coraline Jones, una ragazzina curiosa, trova una porta segreta nella sua nuova casa che la conduce in un mondo parallelo, apparentemente perfetto: lì, i suoi genitori sono premurosi, tutto è perfetto… finché scopre che simbolicamente la “Altra Madre” cela un’insidia sinistra e vuole che lei resti per sempre. Coraline lotta per tornare a casa, scoprendo il valore della sua realtà e delle sue relazioni",
+        "durataMinuti": 100,
+        "formato": "MP4",
+        "generi": [
+            "Fantasy",
+            "Horror",
+            "Animazione"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Francese",
+            "Tedesco"
+        ],
+        "nPostCredit": 4,
+        "nomeCinema": "prova",
+        "path": "images/locandina_coraline.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Francese",
+            "Spagnolo",
+            "Tedesco"
+        ],
+        "target": "14+",
+        "tipologia": "film",
+        "titolo": "Coraline"
+    },
+    {
+        "attoriPrincipali": [
+            "Kathryn Beaumont",
+            "Ed Wynn",
+            "Richard Haydn",
+            "Sterling Holloway",
+            "Jerry Colonna",
+            "Verna Felton"
+        ],
+        "autore": "Lewis Carroll",
+        "casaDiProduzione": "Walt Disney Productions",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2024-09-20",
+        "dataInizioRilascio": "2024-09-08",
+        "descrizione": "Alice, una bambina dai sogni vividi, insegue un coniglio bianco e finisce per cadere in un mondo assurdo e colorato: il Paese delle Meraviglie. Incontra personaggi bizzarri come il Cappellaio Matto, il Brucaliffo, lo Stregatto e la temibile Regina di Cuori, con cui affronta situazioni surreali prima di risvegliarsi — suggerendo che tutto fosse un sogno",
+        "durataMinuti": 75,
+        "formato": "MP4",
+        "generi": [
+            "Avventura",
+            "Fantasy",
+            "Animazione"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Tedesco"
+        ],
+        "nPostCredit": 1,
+        "nomeCinema": "prova",
+        "path": "images/locandina_alice_in_the_wonderland.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Tedesco"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Alice in Wonderland"
+    },
+    {
+        "attoriPrincipali": [
+            "Mia Wasikowska",
+            "Johnny Depp",
+            "Anne Hathaway",
+            "Helena Bonham Carter",
+            "Sacha Baron Cohen"
+        ],
+        "autore": "James Bobin",
+        "casaDiProduzione": "Walt Disney Pictures",
+        "costoBiglietto": 7,
+        "dataFineRilascio": "2024-01-28",
+        "dataInizioRilascio": "2023-10-22",
+        "descrizione": "Alice, ormai 22enne, attraversa uno specchio magico e torna nel mondo di SottoSopra (Underland). Qui scopre che lo Stregatto è più impazzito del solito e decide di usare la “Cronosfera” per viaggiare nel tempo e salvare la famiglia dello Stregatto prima che sia troppo tardi",
+        "durataMinuti": 113,
+        "formato": "MP4",
+        "generi": [
+            "Avventura",
+            "Fantasy"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Spagnolo"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "prova",
+        "path": "images/locandina_alice_atraverso_lo_specchio.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Spagnolo",
+            "Giapponese"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Alice Attraverso lo Specchio"
+    },
+    {
+        "attoriPrincipali": [
+            "Johnny Depp",
+            "Helena Bonham Carter",
+            "Emily Watson",
+            "Tracey Ullman",
+            "Joanna Lumley",
+            "Albert Finney"
+        ],
+        "autore": "Tim Burton",
+        "casaDiProduzione": "",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2023-09-28",
+        "dataInizioRilascio": "2023-09-08",
+        "descrizione": "Victor, un giovane sposo nervoso, esercita i suoi voti nuziali nel bosco e posando l’anello su un ramo bucato, in realtà evoca una sposa cadavere che emerge dalla terra convinta di essere sposata con lui. Trasportato nel suggestivo regno dei morti, Victor scopre che l’amore vero supera qualsiasi confine tra la vita e l’aldilà",
+        "durataMinuti": 77,
+        "formato": "MP4",
+        "generi": [
+            "Fantasy",
+            "Animazione",
+            "Romantico"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "prova",
+        "path": "images/locandina_la_sposa_cadavere.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Inglese",
+            "Francese",
+            "Tedesco"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "La Sposa Cadavere"
+    },
+    {
+        "attoriPrincipali": [
+            "Chris Sarandon",
+            "Danny Elfman",
+            "Catherine O'Hara",
+            "William Hickey",
+            "Glenn Shadix",
+            "Paul Reubens",
+            "Edward Ivory",
+            "Ken Page"
+        ],
+        "autore": "Henry Selick",
+        "casaDiProduzione": "Skellington Productions",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2023-01-04",
+        "dataInizioRilascio": "2022-12-15",
+        "descrizione": "Jack Skellington, il Re delle Zucche di Halloween Town, si stanca della solita routine spaventosa e, esplorando nuovi orizzonti, scopre Christmas Town. Incantato dal Natale, decide di rapire Babbo Natale e prenderne il posto—ma i suoi piani avventati creano il caos. Spetta a Sally rimediare prima che sia troppo tardi.",
+        "durataMinuti": 76,
+        "formato": "MP4",
+        "generi": [
+            "Fantasy",
+            "Animazione"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Spagnolo"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "prova",
+        "path": "images/locandina_nightmare_before_christmas.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Francese",
+            "Spagnolo",
+            "Tedesco"
+        ],
+        "target": "6+",
+        "tipologia": "film",
+        "titolo": "The Nightmare Before Christmas"
+    },
+    {
+        "attoriPrincipali": [
+            "Michael Keaton",
+            "Alec Baldwin",
+            "Geena Davis",
+            "Winona Ryder",
+            "Catherine O'Hara",
+            "Jeffrey Jones",
+            "Glenn Shadix",
+            "Sylvia Sidney"
+        ],
+        "autore": "Tim Burton",
+        "casaDiProduzione": "Warner Bros. Pictures",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2024-07-25",
+        "dataInizioRilascio": "2024-07-16",
+        "descrizione": "Barbara e Adam Maitland, morti in un incidente, rimangono intrappolati come fantasmi nella loro casa. Quando una famiglia invadente (i Deetz) si trasferisce, i Maitland chiamano un “bio-esorcista”, Beetlejuice, per aiutarli a scacciarla… ma lui ha altri piani e tutto sfugge rapidamente al controllo.",
+        "durataMinuti": 92,
+        "formato": "MP4",
+        "generi": [
+            "Commedia",
+            "Fantasy",
+            "Horror"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Spagnolo",
+            "Tedesco"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "prova",
+        "path": "images/locandina_beetlejuice.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Tedesco",
+            "Giapponese"
+        ],
+        "target": "14+",
+        "tipologia": "film",
+        "titolo": "Beetlejuice"
+    },
+    {
+        "attoriPrincipali": [
+            "Bradley Cooper",
+            "Ed Helms",
+            "Zach Galifianakis",
+            "Justin Bartha",
+            "Heather Graham",
+            "Ken Jeong",
+            "Mike Tyson"
+        ],
+        "autore": "Todd Phillips",
+        "casaDiProduzione": "Mike Tyson",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2025-03-20",
+        "dataInizioRilascio": "2025-02-04",
+        "descrizione": "Due giorni prima del matrimonio, Doug (Justin Bartha) e tre amici – Phil (Bradley Cooper), Stu (Ed Helms) e Alan (Zach Galifianakis) – partono per Las Vegas per una festa di addio al celibato. Il giorno dopo, si risvegliano in una suite del Caesars Palace senza alcun ricordo della notte precedente e con Doug scomparso. Devono ricostruire gli eventi per trovarlo e riportarlo a Los Angeles in tempo per il matrimonio.",
+        "durataMinuti": 100,
+        "formato": "MP4",
+        "generi": [
+            "Avventura",
+            "Commedia"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Spagnolo"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "prova",
+        "path": "images/locandina_notte_da_leoni.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Spagnolo",
+            "Giapponese"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Una notte da leoni"
+    },
+    {
+        "attoriPrincipali": [
+            "Vin Diesel",
+            "Eli Marienthal",
+            "Jennifer Aniston",
+            "Harry Connick Jr.",
+            "James Gammon",
+            "Cloris Leachman"
+        ],
+        "autore": "Ted Hughes",
+        "casaDiProduzione": "Cloris Leachman",
+        "costoBiglietto": 8,
+        "dataFineRilascio": "2024-07-20",
+        "dataInizioRilascio": "2024-06-04",
+        "descrizione": "Nel 1957, durante la Guerra Fredda, un gigantesco robot alieno precipita vicino alla cittadina di Rockwell, nel Maine. Un giovane ragazzo di nome Hogarth Hughes scopre il robot e, nonostante la paura iniziale, stringe un'amicizia con lui. Insieme, cercano di nascondere l'esistenza del gigante dalle autorità governative e militari, ma la situazione si complica quando un agente paranoico, Kent Mansley, inizia a indagare.",
+        "durataMinuti": 86,
+        "formato": "MP4",
+        "generi": [
+            "Avventura",
+            "ScienceFiction",
+            "Animazione"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Spagnolo",
+            "Giapponese"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "prova",
+        "path": "images/locandina_gigante_di_ferro.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Tedesco",
+            "Giapponese"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Il gigante di ferro"
+    },
+    {
+        "autore": "Luca Ferrari",
+        "aziendaInserzionista": "",
+        "costoFissoProiezione": 30,
+        "dataFineRilascio": "2024-03-23",
+        "dataInizioRilascio": "2024-02-05",
+        "descrizione": "Vieni a provare il nuovo Sweet Chilli Burger da Burger King! Gusto piccante e dolce in un unico panino, pronto a conquistare il tuo palato. Solo per un periodo limitato!",
+        "durataMinuti": 1,
+        "fasceOrarie": [
+            "Mattina"
+        ],
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nomeCinema": "prova",
+        "path": "images/burger_king_pubblicita.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese"
+        ],
+        "target": "TUTTI",
+        "tipologia": "inserzione",
+        "titolo": "Sweet Chilli Burger"
+    },
+    {
+        "autore": "Marco Rossi",
+        "aziendaInserzionista": "",
+        "costoFissoProiezione": 30,
+        "dataFineRilascio": "2025-11-16",
+        "dataInizioRilascio": "2025-09-08",
+        "descrizione": "Fai una pausa con gusto! Scopri le offerte imperdibili di McDonald’s e rendi il tuo break la pausa che conviene. Panini, patatine e bevande a prezzi speciali, solo per te!",
+        "durataMinuti": 2,
+        "fasceOrarie": [
+            "Mattina"
+        ],
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "prova",
+        "path": "images/pubblicita_mc.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "target": "TUTTI",
+        "tipologia": "inserzione",
+        "titolo": "La Pausa che Conviene"
+    },
+    {
+        "autore": "Laura Bianchi",
+        "aziendaInserzionista": "",
+        "costoFissoProiezione": 30,
+        "dataFineRilascio": "2025-10-18",
+        "dataInizioRilascio": "2025-07-08",
+        "descrizione": "Non resistere alla bontà! Vieni da KFC e assapora il nostro pollo croccante e irresistibile, con le ricette originali che ami. Un morso e sei già conquistato!",
+        "durataMinuti": 1,
+        "fasceOrarie": [
+            "Mattina"
+        ],
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese"
+        ],
+        "nomeCinema": "prova",
+        "path": "images/pubblicita_kfc.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Tedesco",
+            "Cinese"
+        ],
+        "target": "TUTTI",
+        "tipologia": "inserzione",
+        "titolo": "Croccante e Irresistibile"
+    },
+    {
+        "autore": "Marco Rossi",
+        "aziendaInserzionista": "",
+        "costoFissoProiezione": 30,
+        "dataFineRilascio": "2025-09-17",
+        "dataInizioRilascio": "2025-09-08",
+        "descrizione": "Non aspettare! Corri da Bully Tacos e prova i nostri tacos pieni di sapore. Ingredienti freschi, ricette piccanti e tanto gusto ti aspettano ad ogni morso!",
+        "durataMinuti": 1,
+        "fasceOrarie": [
+            "Mattina"
+        ],
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nomeCinema": "prova",
+        "path": "images/pubblicita_billy_tacos.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Spagnolo"
+        ],
+        "target": "TUTTI",
+        "tipologia": "inserzione",
+        "titolo": "Scopri il Gusto"
+    },
+    {
+        "autore": "Laura Bianchi",
+        "aziendaInserzionista": "",
+        "costoFissoProiezione": 35,
+        "dataFineRilascio": "2025-09-26",
+        "dataInizioRilascio": "2025-09-01",
+        "descrizione": "Vivi l’avventura del Far West! Vieni da Old Wild West e assapora le nostre carni alla griglia e i piatti tipici americani, con il sapore autentico del selvaggio West!",
+        "durataMinuti": 0,
+        "fasceOrarie": [
+            "Mattina"
+        ],
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Inglese",
+            "Spagnolo"
+        ],
+        "nomeCinema": "prova",
+        "path": "images/pubblicita_old_wild_west.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Spagnolo",
+            "Giapponese"
+        ],
+        "target": "TUTTI",
+        "tipologia": "inserzione",
+        "titolo": "Il Gusto del Far West"
+    },
+    {
+        "autore": "Enrico Gamba",
+        "conduttore": "Enrico Gamba",
+        "dataFineRilascio": "2025-09-15",
+        "dataInizioRilascio": "2025-09-15",
+        "descrizione": "151eg è Enrico Gamba. Io vi racconto le storie dietro i film della vostra infanzia. Come è stato realizzato Biancaneve? Che persona era Walt Disney? Perché Asterix ha avuto tanto successo? Quali significati nascondono i film di Hayao Miyazaki? Chi faceva i Looney Tunes li detestava? Rispondo a tutte le domande che non ti sei mai fatto ma avresti dovuto.",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "prova",
+        "path": "images/podcast_151eg.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "151eg"
+    },
+    {
+        "autore": "Mario Palladino",
+        "conduttore": "Mario Palladino",
+        "dataFineRilascio": "2025-09-15",
+        "dataInizioRilascio": "2025-09-15",
+        "descrizione": "Trattiamo di cinema e videomaking... ma lo facciamo pure, un po'.",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "prova",
+        "path": "images/synergo.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "Synergo"
+    },
+    {
+        "autore": "Adrian Raul Rednic",
+        "conduttore": "Adrian Raul Rednic",
+        "dataFineRilascio": "2025-09-15",
+        "dataInizioRilascio": "2025-09-15",
+        "descrizione": "Salve, Adrian R. Rednic a rapporto, conosciuto anche come Caleel su YouTube, dove sono attivo dal 2015. Nei miei video tratto principalmente di tutti quegli argomenti che riguardano le saghe e i fandom più in voga, basandomi principalmente su una componente fantasy, grande mia passione fin da ragazzino.\nDa Harry Potter al Signore degli Anelli, da Game of Thrones a Star Wars, vado ad esplorare i molteplici aspetti delle varie opere, che si tratti di discussioni approfondite sulla storia narrata, biografie dei personaggi, strane speculazioni sulla trama o semplici curiosità. Coltivo una grande passione per la scrittura, che cerco di trasmettere anche nei miei video, impegnandomi spesso a dare un aspetto quanto più narrativo e scorrevole alle varie opere.",
+        "durataMinuti": 0,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "prova",
+        "path": "images/podcast_caleel.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "podcast",
+        "titolo": "Caleel"
+    },
+    {
+        "attoriPrincipali": [
+            "Vera Farmiga",
+            "Patrick Wilson",
+            "Ben Hardy"
+        ],
+        "autore": "Michael Chaves",
+        "casaDiProduzione": "New Line Cinema / Warner Bros. Pictures",
+        "costoBiglietto": 12,
+        "dataFineRilascio": "2025-09-20",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "“The Conjuring – Il rito finale” aggiunge un nuovo, elettrizzante capitolo all’iconico universo cinematografico ispirato ad eventi realmente accaduti. Vera Farmiga e Patrick Wilson tornano per affrontare un ultimo caso nei panni dei celebri investigatori del paranormale Ed e Lorraine Warren, in un’agghiacciante e potente nuovo atto della saga che ha conquistato il botteghino globale.",
+        "durataMinuti": 135,
+        "formato": "DCP",
+        "generi": [
+            "Horror",
+            "Thriller",
+            "Non trovato"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 1,
+        "nomeCinema": "prova",
+        "path": "images/locandina_theconjuring4.jpg",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "The Conjuring: Il rito finale"
+    },
+    {
+        "attoriPrincipali": [
+            "Dakota Johnson",
+            "Chris Evans",
+            "Pedro Pascal"
+        ],
+        "autore": "Celine Song",
+        "casaDiProduzione": "A24 / Warner Bros. Pictures Italia",
+        "costoBiglietto": 9.5,
+        "dataFineRilascio": "2025-09-25",
+        "dataInizioRilascio": "2025-09-04",
+        "descrizione": "Una giovane e ambiziosa combina-coppie di New York si ritrova a dover scegliere tra l’uomo ideale e il suo ex, tutt’altro che perfetto.",
+        "durataMinuti": 116,
+        "formato": "DCP",
+        "generi": [
+            "Commedia",
+            "Non trovato"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "prova",
+        "path": "images/locandina_materiallove.jpg",
+        "risoluzione": "UHD 4K 2160p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Material Love"
+    },
+    {
+        "attoriPrincipali": [
+            "Patrick Magee",
+            "Adrienne Corri",
+            "Miriam Karlin",
+            "Malcolm McDowell",
+            "Michael Bates",
+            "Carl Duering",
+            "John Clive",
+            "Warren Clarke"
+        ],
+        "autore": "Stanley Kubrick",
+        "casaDiProduzione": "Warner Bros. Pictures / MGM",
+        "costoBiglietto": 11,
+        "dataFineRilascio": "2025-10-15",
+        "dataInizioRilascio": "2025-10-13",
+        "descrizione": "Il percorso di Alex – da punk amorale ad onorato cittadino, previo lavaggio del cervello – viene ambientato in un futuro scioccante dall’ardita interpretazione kubrickiana del romanzo di Anthony Burgess.",
+        "durataMinuti": 137,
+        "formato": "DCP",
+        "generi": [
+            "Thriller"
+        ],
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "nPostCredit": 0,
+        "nomeCinema": "prova",
+        "path": "images/locandina_aranciameccanica.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "target": "TUTTI",
+        "tipologia": "film",
+        "titolo": "Arancia Meccanica – 50mo Anniversario"
+    },
+    {
+        "autore": "FilmLab",
+        "autorePodcastAssociato": "FilmLab",
+        "dataFineRilascio": "2025-10-16",
+        "dataInizioRilascio": "2025-10-01",
+        "descrizione": "Esploriamo l'era del cinema muto e i suoi maestri.",
+        "durataMinuti": 40,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "prova",
+        "numeroPubblicita": 1,
+        "ospiti": [
+        ],
+        "path": ":/images/default_puntata.png",
+        "podcastAssociato": "Cinema d'Autore",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "Analisi del cinema muto"
+    },
+    {
+        "autore": "FilmLab",
+        "autorePodcastAssociato": "FilmLab",
+        "dataFineRilascio": "2025-11-01",
+        "dataInizioRilascio": "2025-10-16",
+        "descrizione": "Il movimento francese che ha rivoluzionato il cinema.",
+        "durataMinuti": 35,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "prova",
+        "numeroPubblicita": 2,
+        "ospiti": [
+        ],
+        "path": ":/images/default_puntata.png",
+        "podcastAssociato": "Cinema d'Autore",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "puntata",
+        "titolo": "La Nouvelle Vague"
+    },
+    {
+        "autore": "Paramount",
+        "autoreFilmAssociato": "Chris Miller",
+        "dataFineRilascio": "2025-09-03",
+        "dataInizioRilascio": "2025-06-06",
+        "descrizione": "Primi scorci ufficiali dell’avventura dei Puffi in CGI.",
+        "durataMinuti": 2,
+        "filmAssociato": "I Puffi - Il Film",
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese"
+        ],
+        "nProiezioniGiornaliere": 2,
+        "nomeCinema": "prova",
+        "path": "images/trailer_ipuffi.jpg",
+        "risoluzione": "HD 720p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - I Puffi - Il Film"
+    },
+    {
+        "autore": "Searchlight Pictures / Disney Italia",
+        "autoreFilmAssociato": "Jay Roach",
+        "dataFineRilascio": "2025-09-03",
+        "dataInizioRilascio": "2025-08-01",
+        "descrizione": "Primo trailer italiano che anticipa l’irriverente black comedy sulle guerre interiori del matrimonio moderno.",
+        "durataMinuti": 2,
+        "filmAssociato": "I Roses",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 15,
+        "nomeCinema": "prova",
+        "path": "images/trailer_iroses.jpg",
+        "risoluzione": "HD 720p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - I Roses"
+    },
+    {
+        "autore": "PiperFilm",
+        "autoreFilmAssociato": "Andrea Jublin",
+        "dataFineRilascio": "2025-09-08",
+        "dataInizioRilascio": "2025-07-07",
+        "descrizione": "Il trailer ufficiale mostra l’energia rock e l’irriverente cast carcerario alle prese con una rinascita a ritmo di musica.",
+        "durataMinuti": 1,
+        "filmAssociato": "Tutta colpa del rock",
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese"
+        ],
+        "nProiezioniGiornaliere": 1,
+        "nomeCinema": "prova",
+        "path": "images/trailer_tuttacolpadelrock.jpg",
+        "risoluzione": "HD 720p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese"
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Tutta colpa del rock"
+    },
+    {
+        "autore": "Warner Bros",
+        "autoreFilmAssociato": "Mike Newell",
+        "dataFineRilascio": "2025-09-23",
+        "dataInizioRilascio": "2025-09-10",
+        "descrizione": "Il trailer ufficiale del quarto capitolo della saga di Harry Potter.",
+        "durataMinuti": 2,
+        "filmAssociato": "Harry Potter e il Calice di Fuoco - 20esimo anniversario",
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Italiano"
+        ],
+        "nProiezioniGiornaliere": 2,
+        "nomeCinema": "prova",
+        "path": "images/trailer_harrypottereilcalicedifuoco.jpg",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Harry Potter e il Calice di Fuoco"
+    },
+    {
+        "autore": "Sony Pictures / Eagle Pictures",
+        "autoreFilmAssociato": "Darren Aronofsky",
+        "dataFineRilascio": "2025-09-02",
+        "dataInizioRilascio": "2025-07-24",
+        "descrizione": "Trailer italiano che introduce la cruda, violenta e noir New York anni ’90 di Darren Aronofsky con Austin Butler alle prese con una fuga per la vita.",
+        "durataMinuti": 2,
+        "filmAssociato": "Una scomoda circostanza - Caught Stealing",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 2,
+        "nomeCinema": "prova",
+        "path": "images/trailer_caughtstealing.jpg",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer italiano ufficiale - Una scomoda circostanza"
+    },
+    {
+        "autore": "Warner Bros. Pictures Italia",
+        "autoreFilmAssociato": "Zach Cregger",
+        "dataFineRilascio": "2025-08-05",
+        "dataInizioRilascio": "2025-06-06",
+        "descrizione": "Trailer ufficiale italiano che anticipa il mistero inquietante dietro la sparizione dei bambini.",
+        "durataMinuti": 2,
+        "filmAssociato": "Weapons",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 2,
+        "nomeCinema": "prova",
+        "path": "images/trailer_weapons.jpg",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale - Weapons"
+    },
+    {
+        "autore": "Universal Pictures / Adler Entertainment",
+        "autoreFilmAssociato": "Steven Spielberg",
+        "dataFineRilascio": "2025-08-31",
+        "dataInizioRilascio": "2025-07-04",
+        "descrizione": "Trailer IMAX celebrativo per il ritorno in sala del cult di Spielberg.",
+        "durataMinuti": 2,
+        "filmAssociato": "Lo Squalo - 50mo anniversario",
+        "formato": "IMAX 3D",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 2,
+        "nomeCinema": "prova",
+        "path": "images/trailer_losqualo50anniversario.jpg",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer IMAX - Lo Squalo 50mo anniversario"
+    },
+    {
+        "autore": "Todd Phillips",
+        "autoreFilmAssociato": "Todd Phillips",
+        "dataFineRilascio": "2025-03-20",
+        "dataInizioRilascio": "2025-02-28",
+        "descrizione": "Due giorni prima del matrimonio, Doug (Justin Bartha) e tre amici – Phil (Bradley Cooper), Stu (Ed Helms) e Alan (Zach Galifianakis) – partono per Las Vegas per una festa di addio al celibato. Il giorno dopo, si risvegliano in una suite del Caesars Palace senza alcun ricordo della notte precedente e con Doug scomparso. Devono ricostruire gli eventi per trovarlo e riportarlo a Los Angeles in tempo per il matrimonio.",
+        "durataMinuti": 4,
+        "filmAssociato": "Una notte da leoni",
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Spagnolo",
+            "Tedesco"
+        ],
+        "nProiezioniGiornaliere": 4,
+        "nomeCinema": "prova",
+        "path": "images/traiker_notte_da_leoni.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese"
+        ],
+        "tipologia": "trailer",
+        "titolo": "Una Notte da Leoni - Trailer Ufficiale"
+    },
+    {
+        "autore": "Brad Bird",
+        "autoreFilmAssociato": "Ted Hughes",
+        "dataFineRilascio": "2024-07-20",
+        "dataInizioRilascio": "2024-07-20",
+        "descrizione": "Nel 1957, durante la Guerra Fredda, un gigantesco robot alieno precipita vicino alla cittadina di Rockwell, nel Maine. Un giovane ragazzo di nome Hogarth Hughes scopre il robot e, nonostante la paura iniziale, stringe un'amicizia con lui. Insieme, cercano di nascondere l'esistenza del gigante dalle autorità governative e militari, ma la situazione si complica quando un agente paranoico, Kent Mansley, inizia a indagare.",
+        "durataMinuti": 3,
+        "filmAssociato": "Il gigante di ferro",
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Giapponese"
+        ],
+        "nProiezioniGiornaliere": 4,
+        "nomeCinema": "prova",
+        "path": "images/trailer_il_gigante_di_ferro.png",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Francese",
+            "Spagnolo",
+            "Giapponese"
+        ],
+        "tipologia": "trailer",
+        "titolo": "Il Gigante di Ferro - Trailer Ufficiale"
+    },
+    {
+        "autore": "Enrico Gamba",
+        "autorePodcastAssociato": "Enrico Gamba",
+        "dataFineRilascio": "2025-09-21",
+        "dataInizioRilascio": "2025-07-16",
+        "descrizione": "La stessa casa di Spiderverse, KPopDemon Hunters e Emoji Movie. Com'è successo che Sony sia passata da essere una casa tra le tante ad essere la nuova testa d'ariete dell'animazione? Qual è la storia di Sony pictures animation? ",
+        "durataMinuti": 34,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "prova",
+        "numeroPubblicita": 7,
+        "ospiti": [
+        ],
+        "path": "images/puntata_sony.png",
+        "podcastAssociato": "151eg",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "tipologia": "puntata",
+        "titolo": "Storia di Sony Pictures Animation"
+    },
+    {
+        "autore": "Enrico Gamba",
+        "autorePodcastAssociato": "Enrico Gamba",
+        "dataFineRilascio": "2024-09-13",
+        "dataInizioRilascio": "2024-08-13",
+        "descrizione": "Mercoledì è l'unico personaggio della famiglia Addams ad essere mai stato alterato ed è anche l'unico ad aver ricevuto una serie Netflix di Tim Burton. Voi che dite? Sarà il caso di spiegarne il motivo?",
+        "durataMinuti": 26,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "prova",
+        "numeroPubblicita": 6,
+        "ospiti": [
+        ],
+        "path": "images/puntata_mercoledi.png",
+        "podcastAssociato": "151eg",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano"
+        ],
+        "tipologia": "puntata",
+        "titolo": "L'Evoluzione di Mercoledì Addams"
+    },
+    {
+        "autore": "Enrico Gamba",
+        "autorePodcastAssociato": "Enrico Gamba",
+        "dataFineRilascio": "2025-11-29",
+        "dataInizioRilascio": "2025-09-08",
+        "descrizione": "Vi racconto la storia delle origini del Rinascimento Disney da La Sirenetta a Il re Leone (Poi vi parlerò del suo declino in un video futuro). Si torna a parlare di Katzenberg, Eisner e Wells e di come cambiarono le sorti di Walt disney Animation Studios.",
+        "durataMinuti": 57,
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nomeCinema": "prova",
+        "numeroPubblicita": 9,
+        "ospiti": [
+        ],
+        "path": "images/puntata_disney.png",
+        "podcastAssociato": "151eg",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese",
+            "Tedesco",
+            "Giapponese",
+            "Cinese",
+            "Non trovata"
+        ],
+        "tipologia": "puntata",
+        "titolo": "storia dell'inizio del RINASCIMENTO DISNEY"
+    },
+    {
+        "autore": "Mario Palladino",
+        "autorePodcastAssociato": "Mario Palladino",
+        "dataFineRilascio": "2025-09-13",
+        "dataInizioRilascio": "2025-09-05",
+        "descrizione": "Questo \"\"\"\"\"\"\"\"\"\"\"film\"\"\"\"\"\"\"\"\"\"\" di Minecraft è orrendo. E non scriverò altro, qui in descrizione. ",
+        "durataMinuti": 28,
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Italiano"
+        ],
+        "nomeCinema": "prova",
+        "numeroPubblicita": 6,
+        "ospiti": [
+        ],
+        "path": "images/puntata_minecraft.png",
+        "podcastAssociato": "Synergo",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "tipologia": "puntata",
+        "titolo": "Un film MINECRAFT ma il film non c'è"
+    },
+    {
+        "autore": "Mario Palladino",
+        "autorePodcastAssociato": "Mario Palladino",
+        "dataFineRilascio": "2025-07-17",
+        "dataInizioRilascio": "2025-06-03",
+        "descrizione": "Ecco Biancaneve, il live Action Disney che non ne azzecca una, ma ne complica parecchie. L'ultima frontiera del vuoto cinematografico, senza \"se\" e senza \"ma\". Il film che farà cambiare i live action, per sempre. O, almeno, è ciò che mi auguro. ",
+        "durataMinuti": 42,
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Italiano"
+        ],
+        "nomeCinema": "prova",
+        "numeroPubblicita": 8,
+        "ospiti": [
+        ],
+        "path": "images/puntata_biancaneve.png",
+        "podcastAssociato": "Synergo",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "tipologia": "puntata",
+        "titolo": "BIANCANEVE - L'ultima frontiera della BRUTTEZZA al CINEMA"
+    },
+    {
+        "autore": "Caleel",
+        "autorePodcastAssociato": "Adrian Raul Rednic",
+        "dataFineRilascio": "2025-09-27",
+        "dataInizioRilascio": "2025-08-24",
+        "descrizione": "Ben 23 prodotti hanno composto questa fase 5 del Marvel Cinematic Universe, e in questo video li ho analizzati tutti per arrivare ad una semplice conclusione: l'MCU si sta rivelando un FALLIMENTO TOTALE.",
+        "durataMinuti": 66,
+        "formato": "MP4",
+        "lingueDisponibili": [
+            "Italiano"
+        ],
+        "nomeCinema": "prova",
+        "numeroPubblicita": 10,
+        "ospiti": [
+        ],
+        "path": "images/puntata_marvel.png",
+        "podcastAssociato": "Caleel",
+        "risoluzione": "SD 480p",
+        "sottotitoliDisponibili": [
+            "Italiano",
+            "Inglese"
+        ],
+        "tipologia": "puntata",
+        "titolo": "La FASE 5 MARVEL è stata un FALLIMENTO TOTALE - Retrospettiva completa"
+    },
+    {
+        "autore": "Warner Bros. Pictures Italia",
+        "autoreFilmAssociato": "Michael Chaves",
+        "dataFineRilascio": "2025-09-03",
+        "dataInizioRilascio": "2025-07-15",
+        "descrizione": "Il trailer ufficiale del capitolo finale con Ed e Lorraine Warren, che affrontano il loro caso più terrificante.",
+        "durataMinuti": 3,
+        "filmAssociato": "The Conjuring: Il rito finale",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 4,
+        "nomeCinema": "prova",
+        "path": "images/trailer_theconjuring4.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale – The Conjuring: Il rito finale"
+    },
+    {
+        "autore": "A24",
+        "autoreFilmAssociato": "Celine Song",
+        "dataFineRilascio": "2025-09-03",
+        "dataInizioRilascio": "2025-07-20",
+        "descrizione": "Il trailer ufficiale della nuova commedia romantica di Celine Song con Dakota Johnson, Chris Evans e Pedro Pascal.",
+        "durataMinuti": 2,
+        "filmAssociato": "Material Love",
+        "formato": "MP4",
+        "lingueDisponibili": [
+        ],
+        "nProiezioniGiornaliere": 4,
+        "nomeCinema": "prova",
+        "path": "images/trailer_materiallove.jpg",
+        "risoluzione": "FullHD 1080p",
+        "sottotitoliDisponibili": [
+        ],
+        "tipologia": "trailer",
+        "titolo": "Trailer ufficiale – Material Love"
     }
 ]

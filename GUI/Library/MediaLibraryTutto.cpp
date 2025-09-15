@@ -64,7 +64,7 @@ void MediaLibraryTutto::update(const bool& view, int comboAttivita, int comboOrd
         QVBoxLayout* salaV = new QVBoxLayout(salaWidget);
         ScrollListWidget* scroll = new ScrollListWidget(salaWidget); 
         scroll->update(view, comboAttivita, comboOrdinamento, filtro, ricerca, mediaList);
-        scroll->setFixedHeight(350);
+        scroll->setFixedHeight(365);
 
         
         if (scroll->getNumeroWidgetLayout()) {

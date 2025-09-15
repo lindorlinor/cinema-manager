@@ -14,7 +14,6 @@ ScrollListWidget::ScrollListWidget(QWidget *parent) : UpdateMediaLibrary(parent)
     scrollArea = new QScrollArea(this);
     scrollArea->setWidgetResizable(true);
     scrollArea->setWidget(container);
-    scrollArea->setMaximumHeight(340);
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(titolo);
     mainLayout->addWidget(scrollArea);
