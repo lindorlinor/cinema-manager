@@ -352,48 +352,6 @@
     },
     {
         "attoriPrincipali": [
-            "Dakota Fanning",
-            "Teri Hatcher",
-            "Jennifer Saunders e Dawn French",
-            "Keith David",
-            "Ian McShane",
-            "John Hodgman",
-            "Robert Bailey Jr"
-        ],
-        "autore": "Henry Selick",
-        "casaDiProduzione": "Laika",
-        "costoBiglietto": 8,
-        "dataFineRilascio": "2024-11-08",
-        "dataInizioRilascio": "2024-10-08",
-        "descrizione": "Coraline Jones, una ragazzina curiosa, trova una porta segreta nella sua nuova casa che la conduce in un mondo parallelo, apparentemente perfetto: lì, i suoi genitori sono premurosi, tutto è perfetto… finché scopre che simbolicamente la “Altra Madre” cela un’insidia sinistra e vuole che lei resti per sempre. Coraline lotta per tornare a casa, scoprendo il valore della sua realtà e delle sue relazioni",
-        "durataMinuti": 100,
-        "formato": "MP4",
-        "generi": [
-            "Fantasy",
-            "Horror",
-            "Animazione"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Francese",
-            "Tedesco"
-        ],
-        "nPostCredit": 4,
-        "nomeCinema": "Cinema Notorius",
-        "path": "images/locandina_coraline.png",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-            "Italiano",
-            "Francese",
-            "Spagnolo",
-            "Tedesco"
-        ],
-        "target": "14+",
-        "tipologia": "film",
-        "titolo": "Coraline"
-    },
-    {
-        "attoriPrincipali": [
             "Kathryn Beaumont",
             "Ed Wynn",
             "Richard Haydn",
@@ -963,43 +921,6 @@
         "titolo": "Material Love"
     },
     {
-        "attoriPrincipali": [
-            "Patrick Magee",
-            "Adrienne Corri",
-            "Miriam Karlin",
-            "Malcolm McDowell",
-            "Michael Bates",
-            "Carl Duering",
-            "John Clive",
-            "Warren Clarke"
-        ],
-        "autore": "Stanley Kubrick",
-        "casaDiProduzione": "Warner Bros. Pictures / MGM",
-        "costoBiglietto": 11,
-        "dataFineRilascio": "2025-10-15",
-        "dataInizioRilascio": "2025-10-13",
-        "descrizione": "Il percorso di Alex – da punk amorale ad onorato cittadino, previo lavaggio del cervello – viene ambientato in un futuro scioccante dall’ardita interpretazione kubrickiana del romanzo di Anthony Burgess.",
-        "durataMinuti": 137,
-        "formato": "DCP",
-        "generi": [
-            "Thriller"
-        ],
-        "lingueDisponibili": [
-            "Italiano",
-            "Inglese"
-        ],
-        "nPostCredit": 0,
-        "nomeCinema": "Cinema Notorius",
-        "path": "images/locandina_aranciameccanica.png",
-        "risoluzione": "SD 480p",
-        "sottotitoliDisponibili": [
-            "Italiano"
-        ],
-        "target": "TUTTI",
-        "tipologia": "film",
-        "titolo": "Arancia Meccanica – 50mo Anniversario"
-    },
-    {
         "autore": "FilmLab",
         "autorePodcastAssociato": "FilmLab",
         "dataFineRilascio": "2025-10-16",
@@ -1020,28 +941,6 @@
         ],
         "tipologia": "puntata",
         "titolo": "Analisi del cinema muto"
-    },
-    {
-        "autore": "FilmLab",
-        "autorePodcastAssociato": "FilmLab",
-        "dataFineRilascio": "2025-11-01",
-        "dataInizioRilascio": "2025-10-16",
-        "descrizione": "Il movimento francese che ha rivoluzionato il cinema.",
-        "durataMinuti": 35,
-        "formato": "MP4",
-        "lingueDisponibili": [
-        ],
-        "nomeCinema": "Cinema Notorius",
-        "numeroPubblicita": 2,
-        "ospiti": [
-        ],
-        "path": ":/images/default_puntata.png",
-        "podcastAssociato": "Cinema d'Autore",
-        "risoluzione": "FullHD 1080p",
-        "sottotitoliDisponibili": [
-        ],
-        "tipologia": "puntata",
-        "titolo": "La Nouvelle Vague"
     },
     {
         "autore": "Paramount",

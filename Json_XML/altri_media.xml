@@ -7,8 +7,8 @@
         <Formato>MP4</Formato>
         <Risoluzione>SD 480p</Risoluzione>
         <Path>images/locandina_coraline.png</Path>
-        <DataInizioRilascio>8/10/2024</DataInizioRilascio>
-        <DataFineRilascio>8/11/2024</DataFineRilascio>
+        <DataInizioRilascio>31/10/2024</DataInizioRilascio>
+        <DataFineRilascio>7/11/2024</DataFineRilascio>
         <LingueDisponibili>
             <Lingua>Italiano</Lingua>
             <Lingua>Francese</Lingua>
@@ -41,7 +41,7 @@
     </Film>
     <Film>
         <Titolo>ParaNorman</Titolo>
-        <Autore>Chris Butler, Sam Fell</Autore>
+        <Autore>Chris Butler</Autore>
         <Descrizione>
             Norman Babcock è un ragazzino che ha un dono particolare: riesce a vedere e parlare con i fantasmi. Quando la sua cittadina viene minacciata da una maledizione antica che risveglia i morti, Norman è l’unico che può affrontare la situazione. Con l’aiuto dei suoi amici e della famiglia, impara a trasformare la sua diversità in forza, affrontando paure e pregiudizi.
         </Descrizione>
