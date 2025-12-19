@@ -1,0 +1,32 @@
+#ifndef EDITMEDIA_H
+#define EDITMEDIA_H
+
+#include <string>
+#include <vector>
+#include <chrono>
+
+#include "MediaInterface.h"
+
+class EditMedia:public MediaInterface{
+    Q_OBJECT
+
+    private:
+
+    virtual void checkMediaNameAvailability() override;
+    virtual void salvaMedia() override;
+    void setCheckListWidget(QListWidget* list, const QList<QString>& select);
+    int index;
+    Media* em_media;
+    
+    virtual void setLimitTabTipologia(int index) override;     
+    
+    public:
+	explicit EditMedia(QList<Media*>& mediaList, Media* media, QWidget *parent);
+    void initValue();
+
+    signals: 
+    void savedMedia();
+    
+};
+
+#endif //EDITMEDIA_H

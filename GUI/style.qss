@@ -1,0 +1,880 @@
+
+/* CALENDAR */
+
+/* --- Calendario generale --- */
+QCalendarWidget {
+    background-color: #c7d8db;        
+    border: 1px solid #5d7a80;           
+    border-radius: 10px;
+    font-family: Arial;
+    font-size: 12px;
+}
+
+/* --- Celle dei giorni --- */
+QCalendarWidget QAbstractItemView {
+    background-color: #c7d8db;
+    color: #05313c;
+    selection-background-color: #4e7f8b;
+    selection-color: #c7d8db;
+    border: none;
+    gridline-color: #8cadb4;
+    border-radius: 5px;
+}
+
+/* Hover sulle celle dei giorni */
+QCalendarWidget QAbstractItemView::item:hover {
+    background-color: #4e7f8b;
+    color: #c7d8db;
+    border-radius: 5px;
+}
+
+/* Celle disabilitate */
+QCalendarWidget QAbstractItemView::item:disabled {
+    color: #849a9e;
+}
+
+/* Nascondere numeri a sinistra (settimane) */
+QCalendarWidget QAbstractItemView::verticalHeader {
+    width: 0px;
+}
+
+/* --- Header giorni della settimana --- */
+QCalendarWidget QTableView QHeaderView::section {
+    background-color: #87a0a5;
+    color: #05313c;
+    font-weight: bold;
+    border: none;
+}
+
+/* --- Top mese/anno --- */
+QCalendarWidget QToolButton {
+    background-color: #87a0a5;              
+    color: #05313c;                         
+    border: 1px solid #87a0a5;
+    min-width: 80px;
+    height: 30px;
+    font-weight: bold;
+    margin: 2px;
+}
+
+/* Pulsante premuto */
+QCalendarWidget QToolButton:pressed {
+    background-color: #4e7f8b;
+    color: #c7d8db;
+}
+
+/* --- Freccette personalizzate --- */
+QCalendarWidget QToolButton#qt_calendar_prevmonth{
+    qproperty-icon: url(:/icons/arrow_left.png);
+    qproperty-iconSize: 16px 16px;
+    background-color: #87a0a5; 
+    border: none;
+}
+
+QCalendarWidget QToolButton#qt_calendar_nextmonth {
+    qproperty-icon: url(:/icons/arrow_right.png);
+    qproperty-iconSize: 16px 16px;
+    background-color: #87a0a5; 
+    border: none;
+}
+
+/* --- Selettori anno/mese --- */
+QCalendarWidget QSpinBox {
+    background-color: #c7d8db;
+    border: 1px solid #8cadb4;
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: #05313c;
+}
+QCalendarWidget QSpinBox:hover {
+    background-color: #c7d8db;
+}
+
+
+
+
+
+
+/* PAGINE DETAILS */
+/* FILM */
+#labelPerformance,
+#programmazione,
+#labelTecnica,
+#labelDettagli{
+    color: #4e7f8b;
+    font-weight: bold;
+}
+
+#labelTrailer{
+    color: #fed36a;
+}
+
+#leftSide{
+    border-top:3px solid #295763;
+}
+
+#details{
+    background-color: #05313c;
+}
+
+#box{
+    background-color: #4e7f8b;
+}
+
+
+
+
+/* POP-UP MODIFICA CINEMA */
+#saveButtonCinemaModifica,
+#cancelButtonCinemaModifica{
+    padding: 10px; 
+    border-radius: 3px; 
+    font-size: 10pt;
+    background-color: #4e7f8b;
+    color: #073c47;
+}
+
+#saveButtonCinemaModifica:hover,
+#cancelButtonCinemaModifica:hover{
+    background-color: #36606b;
+}
+
+#saveButtonCinemaModifica:pressed{
+    background-color:#6a9955;
+    color:#cde0c4;
+}
+
+#saveButtonCinemaModifica:disabled{
+    background-color:#72898f;
+    color:#3b4446;
+}
+
+#cancelButtonCinemaModifica:pressed{
+    background-color:#E44043;
+    color:#dbc9ca;
+}
+
+#popUpModificheCinema{
+    background-color: #bdced3;
+}
+
+
+
+
+
+
+
+
+
+/* SELECTED CINEMA */
+
+#addCinema{
+    border-radius: 13px;
+    padding: 8px 12px;
+    font-size: 14pt;
+    background-color: #ffcb60;
+    color: #073c48;
+}
+
+#addCinema:hover{
+    background-color: #b8944e;
+}
+
+#addCinema:pressed{
+    text-decoration: underline;
+}
+
+#escButtonSelectCinema{
+    background-color: #285a66;
+    color: #afc5cc;
+    border-radius: 13px;
+    padding: 8px 12px;
+    font-size: 14pt;
+}
+
+#escButtonSelectCinema:hover{
+    background-color: #204a55;
+    color: #97b0b8;
+}
+
+#escButtonSelectCinema:pressed{
+    background-color: #E44043;
+    color: #dbc9ca;
+}
+
+#contenitoreCinema{
+    background-color: #073c48;
+    border: none;
+} 
+
+#nomeCinema{
+    font-size: 12pt;
+    color: #243f46;
+}
+
+#CinemaButton{
+    background-color: #4e7f8b;
+    border: 1px solid #4e7f8b;
+    padding: 2px;
+}
+
+#CinemaButton:hover{
+    background-color: #36606b;
+}
+
+#titoloSelectCinema{
+    color: #ffcb60;
+}
+
+#descrizioneSelectCinema{
+    color: #ced7da;
+}
+
+
+
+
+
+
+
+
+
+
+/* PAGINA SEARCHPANEL */
+
+/* lato filtri */
+#widgetFiltri{
+    background-color: #0e4551;
+}
+
+/* bottone aggiungi */
+#addMedia{
+    background-color:#05323c;
+    color: #bdced3;
+    border-radius: 35px;
+    font-size: 18pt;
+    padding: 30px 50px; 
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+#addMedia:hover{
+    color: #fed36a;
+}
+
+#tutto,
+#film,
+#trailer,
+#inserzione,
+#podcast,
+#puntata,
+#cinema{
+    background-color: #0e4551;
+    font-size: 16pt;
+    color: #afc5cc;
+    margin-left: 35px;
+    margin-right: 40px;
+    width: 280px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+#tutto:hover,
+#film:hover,
+#trailer:hover,
+#inserzione:hover,
+#podcast:hover,
+#puntata:hover,
+#cinema:hover{
+    color: #fed36a;
+}
+
+#tutto:checked,
+#film:checked,
+#trailer:checked,
+#inserzione:checked,
+#podcast:checked,
+#puntata:checked,
+#cinema:checked{
+    color: #fed36a;
+    text-decoration: underline;
+}
+
+#cinema{
+    margin-bottom: 50px;
+}
+
+/* pulsanti dei filtri e vista (solo icone) */
+#vista{
+    background-color: #073c47;
+    border-radius: 10px;
+    padding: 5px;
+    min-width: 65px;
+    max-width: 65px;
+}
+
+#vista:hover{
+    background-color: #05323c;
+}
+
+/* barra di ricerca */
+#cerca{
+    background-color: #05313c;
+    border-radius: 25px;
+    padding-left: 40;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    color: #bdced3;
+    font-size: 14pt;
+    margin-right: 220px;
+}
+
+/* Menu Bar */
+
+#menuBar{
+    padding: 5px;
+}
+
+#menuBar,
+#file,
+#modifica,
+#visualizza,
+#altro{
+    background-color: #05313c;
+    color: #bec4c5;
+    font-size: 13pt;
+}
+
+#file,
+#modifica,
+#visualizza,
+#altro{
+    border: 1px solid #be708084;
+    border-radius:8px;
+}
+
+#file::item,
+#modifica::item,
+#visualizza::item,
+#altro::item{
+    padding: 5px 12px;
+}
+
+#file::item:selected,
+#modifica::item:selected,
+#visualizza::item:selected,
+#altro::item:selected,
+#menuBar::item:selected{
+    color: #05313c;
+    border-radius:8px;
+    background-color: #4e7f8b;
+}
+
+#file::item:disabled,
+#modifica::item:disabled,
+#visualizza::item:disabled,
+#altro::item:disabled{
+    color: #5a6264;
+    background-color: #0e2d35;
+    padding: 5px 8px;
+    border-radius:0px;
+}
+
+#central{
+    background-color: #073c48;
+}
+
+#menuWidget
+{
+    background-color: #05313c;
+}
+
+#minBtn,
+#maxBtn,
+#closeBtn{
+    background-color: #05313c;
+    border: 1px solid #05313c;
+    padding: 5px 12px;
+}
+
+#minBtn:hover,
+#maxBtn:hover{
+    background-color: #4e7f8b;
+}
+
+#closeBtn:hover{
+    background-color: #E44043;
+}
+
+
+
+
+
+
+
+
+/* INSERT CINEMA */
+
+
+#saveButInsertCinema,
+#escButInsertCinema{
+    padding: 5px 12px;
+    font-size: 14pt;
+    border-radius: 13px;
+}
+
+#saveButInsertCinema:disabled{
+    background-color: #a59f90;
+    color: #515a5c;
+}
+
+#saveButInsertCinema{
+    background-color: #fecb60;
+    color: #243f46;
+}
+
+#saveButInsertCinema:hover{
+    background-color: #c5a258;
+    color: #244b55;
+}
+
+#escButInsertCinema{
+    background-color: #285965;
+    color: #ffffff;
+}
+
+#escButInsertCinema:hover{
+    background-color: #204a55;
+    color: #97b0b8;
+}
+
+#titoloInsertCinema{
+    color: #ffcc61;
+}
+
+#descrizioneInsertCinema,
+#labelInsertCinema{
+    color: #bdced3;
+}
+
+#labelInsertCinema{
+    font-size: 12pt;
+}
+
+#inputInsertCinema{
+    font-size: 12pt;
+    color: #04303b;
+    padding: 8px 12px;
+    background-color: #4e7f8b;
+    border-radius: 10px;
+}
+
+
+
+/* PAGINA INSERTMEDIA */
+/* LineEdit + ComboBox (parte visibile) */
+#titoloMedia,
+#autoreMedia,
+#CasaProdFilm,
+#conduttorePodcast,
+#aziendaInserzInserzione,
+#inputPersone,
+#aggiungi,
+#descrizioneMedia,
+#rimuovi,
+#listapersone,
+QDateEdit#dataFine:enabled,
+QDateEdit#dataInizio:enabled {
+    border: none;   
+    border-radius: 10px;
+    background-color: #4e7f8b;
+    color: #05313c;
+    padding: 8px 12px;
+    font-size: 14pt;
+}
+
+#rimuovi{
+    border: none;   
+    border-radius: 10px;
+    background-color: #4e7f8b;
+    color: #05313c;
+    padding: 8px 12px;
+    font-size: 14pt;
+}
+
+#durataMinutiMedia::up-button:disabled,
+#durataMinutiMedia::down-button:disabled,
+#durataMinutiMedia:disabled,
+#comboTipologia:disabled,
+#comboFormato:disabled,
+#comboRisoluzione:disabled,
+QDateEdit#dataInizio:disabled,
+QDateEdit#dataFine:disabled,
+QDateEdit#dataInizio:disabled QLineEdit,
+QDateEdit#dataFine:disabled QLineEdit {
+    background-color: #365961;
+    color: #05313c;
+    border-radius: 10px;
+    padding: 8px 12px;
+}
+
+/* SpinBox (campo testo) */
+#durataMinutiMedia,
+#totPostCreditFilm,
+#numeroProiezioniTrailer,
+#numeroProiezioniGioInserzione,
+#numeroPubblicitaPuntata,
+#costoBigliettoFilm,
+#costoBaseProiezInserzione {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background-color: #4e7f8b;
+    color: #05313c;
+    padding: 6px 10px;
+    font-size: 14pt;
+}
+
+/* SpinBox */
+#durataMinutiMedia::up-button,
+#totPostCreditFilm::up-button,
+#numeroProiezioniTrailer::up-button,
+#numeroProiezioniGioInserzione::up-button,
+#numeroPubblicitaPuntata::up-button,
+#costoBigliettoFilm::up-button,
+#costoBaseProiezInserzione::up-button {
+    subcontrol-origin: border;
+    subcontrol-position: top right;
+    width: 16px;
+    background-color: #4e7f8b;
+    border: none;
+}
+
+#durataMinutiMedia::down-button,
+#totPostCreditFilm::down-button,
+#numeroProiezioniTrailer::down-button,
+#numeroProiezioniGioInserzione::down-button,
+#numeroPubblicitaPuntata::down-button,
+#costoBigliettoFilm::down-button,
+#costoBaseProiezInserzione::down-button {
+    subcontrol-origin: border;
+    subcontrol-position: bottom right;
+    width: 16px;
+    background-color: #4e7f8b;
+    border: none;
+} 
+
+#durataMinutiMedia::up-arrow,
+#totPostCreditFilm::up-arrow,
+#numeroProiezioniTrailer::up-arrow,
+#numeroProiezioniGioInserzione::up-arrow,
+#numeroPubblicitaPuntata::up-arrow,
+#costoBigliettoFilm::up-arrow,
+#costoBaseProiezInserzione::up-arrow,
+#durataMinutiMedia::down-arrow,
+#totPostCreditFilm::down-arrow,
+#numeroProiezioniTrailer::down-arrow,
+#numeroProiezioniGioInserzione::down-arrow,
+#numeroPubblicitaPuntata::down-arrow,
+#costoBigliettoFilm::down-arrow,
+#costoBaseProiezInserzione::down-arrow {
+    width: 10px;
+    height: 10px;
+}
+
+#durataMinutiMedia::up-arrow,
+#totPostCreditFilm::up-arrow,
+#numeroProiezioniTrailer::up-arrow,
+#numeroProiezioniGioInserzione::up-arrow,
+#numeroPubblicitaPuntata::up-arrow,
+#costoBigliettoFilm::up-arrow,
+#costoBaseProiezInserzione::up-arrow
+{
+    image: url(:/icons/arrow_up.png);
+}
+
+#durataMinutiMedia::down-arrow,
+#totPostCreditFilm::down-arrow,
+#numeroProiezioniTrailer::down-arrow,
+#numeroProiezioniGioInserzione::down-arrow,
+#numeroPubblicitaPuntata::down-arrow,
+#costoBigliettoFilm::down-arrow,
+#costoBaseProiezInserzione::down-arrow 
+{
+    image: url(:/icons/arrow_down.png);
+}
+
+
+/* Lista a tendina delle combo */
+#attivita,      /*di searchpanel */
+#ordinamento,    /*di searchpanel */
+#comboFormato,
+#comboRisoluzione,
+#comboTargetInserzioni,
+#comboTargetFilm,
+#comboTipologia{
+    border: none;   
+    border-radius: 10px;
+    background-color: #4e7f8b;
+    color: #05313c;
+    padding: 0px 12px;
+    font-size: 14pt;
+    min-height: 37px; 
+    max-height: 37px; 
+}
+
+#attivita QAbstractItemView,      /*di searchpanel */
+#ordinamento QAbstractItemView,    /*di searchpanel */
+#comboFormato QAbstractItemView,
+#comboRisoluzione QAbstractItemView,
+#comboTargetFilm QAbstractItemView,
+#comboTargetInserzioni QAbstractItemView,
+#comboTipologia QAbstractItemView {
+    border-bottom: 3px solid #05313c;
+    border-left: 3px solid #05313c;
+    border-right: 3px solid #05313c;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #4e7f8b; 
+    color: #05313c;
+}
+
+#attivita QAbstractItemView::item,      /*di searchpanel */
+#ordinamento QAbstractItemView::item,    /*di searchpanel */
+#comboFormato QAbstractItemView::item,
+#comboRisoluzione QAbstractItemView::item,
+#comboTargetInserzioni QAbstractItemView::item,
+#comboTargetFilm QAbstractItemView::item,
+#comboTipologia QAbstractItemView::item {
+    padding: 8px 12px;
+    margin: 0;
+    border: none;
+    background-color: #4e7f8b; 
+    color: #05313c;
+}
+
+#attivita QAbstractItemView::item:hover,      /*di searchpanel */
+#ordinamento QAbstractItemView::item:hover,    /*di searchpanel */
+#comboFormato QAbstractItemView::item:hover,
+#comboRisoluzione QAbstractItemView::item:hover,
+#comboTargetInserzioni QAbstractItemView::item:hover,
+#comboTargetFilm QAbstractItemView::item:hover,
+#comboTipologia QAbstractItemView::item:hover {
+    background-color: #365961;
+    color: #bdced3;
+}
+
+#attivita::down-arrow,      /*di searchpanel */
+#ordinamento::down-arrow,    /*di searchpanel */
+#comboFormato::down-arrow,
+#comboRisoluzione::down-arrow,
+#comboTargetInserzioni::down-arrow,
+#comboTargetFilm::down-arrow,
+#comboTipologia::down-arrow,
+#dataInizio::down-arrow,
+#dataFine::down-arrow{
+    image: url(:/icons/arrow_down.png);
+}
+
+/* bottoni salva e annulla */
+#saveButton,
+#cancelButton
+{
+    font-size:14pt;
+    border-radius:10px;
+    padding: 10px 18px
+}
+
+#indietro
+{
+    border-radius:10px;
+    padding: 0px 18px;
+    font-size:18pt;
+    color: #bdced3;
+    background-color: #073c47;
+/*     margin-top: 70px;
+    margin-bottom: 30px */;
+}
+
+
+#saveButton:pressed,
+#saveButton{
+    color: #243f46;
+    background-color: #fed36a;
+}
+
+#saveButton:hover{
+    background-color: #b1934a;
+}
+
+QPushButton#saveButton:disabled {
+    background-color: #777777;
+}
+
+#cancelButton:hover{
+    background-color: #0e4551;
+}
+
+#cancelButton:pressed,
+#cancelButton{
+    color: #bdced3;
+    background-color: #285965;
+}
+
+#anteprima{
+    background-color: #4e7f8b;
+    padding: 40px;
+}
+
+/* stackWidget */
+#stackModifiche{
+    background-color: #073c47;
+}
+
+#sezioneScroll{
+    background-color: #05313C;
+}
+
+
+QPushButton#extendButton {
+    background-color: #b1934a;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #2b2b2b;
+}
+
+QPushButton#extendButton:enabled:hover {
+    background-color: #b8944e;
+}
+
+QPushButton#extendButton:enabled {
+    background-color: #fed36a;
+}
+
+QPushButton#deleteButton {
+    background-color: rgba(228, 64, 67, 0.46); /*angela amo figma*/ 
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #e0e0e0;;
+}
+
+QPushButton#deleteButton:enabled:hover {
+    background-color: rgba(228, 64, 67, 0.65);
+}
+
+QPushButton#deleteButton:enabled {
+    background-color: #E44043
+}
+
+/* --- TOOLS --- */
+QToolButton#extendTool, 
+QToolButton#deleteTool {
+    border: none;
+    background: transparent;
+}
+
+#labelCorrelati{
+    color: #ffcb60;
+}
+
+#scrollDetails {
+    border: none;
+    background-color: #05313c;
+}
+
+#scrollDetails QScrollBar:vertical {
+    background: #4e7f8a;
+    width: 12px;
+    margin: 0px 0px 0px 0px;
+    border: 1px solid #4e7f8a;
+    border-radius: 5px;
+}
+
+#scrollDetails QScrollBar::handle:vertical {
+    background: #d9d9d9;
+    border-radius: 3px;
+    min-height: 20px;
+}
+
+#scrollDetails QScrollBar::add-line:vertical,
+#scrollDetails QScrollBar::sub-line:vertical {
+    background: #4e7f8a;
+    border: 1px solid #4e7f8a;
+    height: 12px;
+    border-radius: 5px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+#scrollDetails QScrollBar::add-line:vertical:hover,
+#scrollDetails QScrollBar::sub-line:vertical:hover {
+    background: #4e7f8a;
+}
+
+
+#details QLabel {
+    font-size: 11pt;
+    color: #4e7f8b;
+}
+
+#details QLabel#programmazione,
+#details QLabel#labelPerformance,
+#details QLabel#labelTecnica,
+#details QLabel#labelDettagli {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #bdced3;
+}
+
+/*custom message box style*/
+#customMessageBox {
+    background-color: #BDCED3;
+    border-radius: 12px;
+}
+
+#titleLabel {
+    color: #4E7F8B;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+#mainMessageLabel {
+    color: #1A6C80;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#infoMessageLabel {
+    color: #4E7F8B;
+    font-weight: normal;
+    font-size: 13px;
+}
+
+#customMessageBox QPushButton#cancelButton {
+    background-color: #4E7F8B;
+    color: #BDCED3;
+    padding: 6px 16px;
+    border-radius: 8px;
+}
+
+#customMessageBox QPushButton#cancelButton:hover{
+     background-color: #3c6772;
+}
+#customMessageBox QPushButton#confirmButton {
+    background-color: #1A6C80;
+    color: #BDCED3;
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size:14pt;
+}
+
+#customMessageBox QPushButton#confirmButton:hover {
+    background-color: #145869;
+}
+
+#separatorLine{
+    background-color: #4E7F8B;  
+    max-height: 1px;          
+    border: none;
+}

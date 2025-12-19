@@ -1,0 +1,16 @@
+#ifndef LIBRARYOBSERVER_H
+#define LIBRARYOBSERVER_H
+
+#include <QString>
+
+class Media;
+
+class LibraryObserver{
+    private:
+    public:
+        virtual ~ LibraryObserver () = default ;
+        virtual void update (const bool& view, int comboAttivita, int comboOrdinamento, const QString& filtroBottone, const QString& ricerca, QList<Media*>& mediaList) = 0;
+
+};
+
+#endif //LIBRARYOBSERVER_H

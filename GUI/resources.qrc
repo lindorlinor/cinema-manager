@@ -1,0 +1,38 @@
+<RCC>
+    <!-- Immagini -->
+    <qresource>
+        <file>../images/coverCinema.png</file>
+        <file>../images/default.png</file>
+        <file>../images/default_film.png</file>
+        <file>../images/default_podcast_puntate.png</file>
+        <file>../images/default_inserzioni.png</file>
+        <file>../images/default_puntata.png</file>
+        <file>../images/default_trailer.png</file>
+    </qresource>
+
+    <!-- Icone -->
+    <qresource>
+        <file>../icons/max.png</file>
+        <file>../icons/esc.png</file>
+        <file>../icons/min.png</file>
+        <file>../icons/arrow_left.png</file>
+        <file>../icons/arrow_up.png</file>
+        <file>../icons/arrow_down.png</file>
+        <file>../icons/arrow_right.png</file>
+        <file>../icons/exit.png</file>
+        <file>../icons/Film.png</file>
+        <file>../icons/tutto.png</file>
+        <file>../icons/inserzione.png</file>
+        <file>../icons/trailer.png</file>
+        <file>../icons/podcast.png</file>
+        <file>../icons/puntata.png</file>
+        <file>../icons/vista.png</file>
+        <file>../icons/disabled.png</file>
+        <file>../icons/enabled.png</file>
+        <file>../icons/in_sala.png</file>
+        <file>../icons/in_sala_dark.png</file>
+        <file>../icons/non_in_sala.png</file>
+        <file>../icons/non_in_sala_dark.png</file>
+        <file>../icons/edit.png</file>
+    </qresource>
+</RCC>
